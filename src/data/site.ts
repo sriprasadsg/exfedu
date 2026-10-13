@@ -26,10 +26,10 @@ export type Page = {
 };
 
 export const categories = [
-  { slug: "core", title: "Core" },
-  { slug: "academic", title: "Academic Collaborations" },
-  { slug: "industry", title: "Industry & Technology" },
-  { slug: "learning", title: "Learning & Student Ecosystem" },
+  { slug: "core", title: "Core", short: "About" },
+  { slug: "academic", title: "Academic Collaborations", short: "Academic" },
+  { slug: "industry", title: "Industry & Technology", short: "Industry" },
+  { slug: "learning", title: "Learning & Student Ecosystem", short: "Learning & Students" },
 ] as const;
 export type CategorySlug = (typeof categories)[number]["slug"];
 

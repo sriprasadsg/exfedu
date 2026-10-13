@@ -19,8 +19,8 @@ const Header = () => {
             const wide = items.length > 6;
             return (
               <div key={c.slug} className="group relative">
-                <button className="flex items-center gap-1 px-3 py-2 text-sm text-foreground/80 hover:text-primary">
-                  {c.title} <ChevronDown className="h-3.5 w-3.5" strokeWidth={1.5} />
+                <button className="flex items-center gap-1 whitespace-nowrap px-3 py-2 text-sm text-foreground/80 hover:text-primary">
+                  {c.short} <ChevronDown className="h-3.5 w-3.5" strokeWidth={1.5} />
                 </button>
                 <div className={`invisible absolute top-full rounded-lg border bg-popover p-2 opacity-0 shadow-sm transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 ${ci > 1 ? "right-0" : "left-0"} ${wide ? "grid w-[34rem] grid-cols-2" : "w-64"}`}>
                   {items.map((s) => (
