@@ -155,7 +155,7 @@ export const pages: Page[] = [
     blocks: [
       { type: "logo", src: skillshoneLogo.url, alt: "SkillShone" },
       { type: "features", title: "On the platform", items: ["Online Learning", "Video Lessons", "Learning Modules", "Hands-on Practice", "Assessments", "Projects & Assignments", "Progress Tracking", "Certificates"] },
-      { type: "cta", title: "Access SkillShone", text: "The SkillShone login link will be added once confirmed.", label: "Go to SkillShone" },
+      { type: "cta", title: "Access SkillShone", text: "Solve Industry-Grade Problems Using AI.", label: "Go to SkillShone", to: "https://skillshone.com/" },
     ] },
   { path: "/gallery", title: "Gallery & Highlights", category: "learning", icon: Images,
     summary: "Moments from events, visits and achievements.",
