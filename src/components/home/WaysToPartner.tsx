@@ -14,6 +14,7 @@ const ways: Way[] = [
     body: "Co-develop curriculum, faculty enablement and programme delivery with Exafluence Education.",
     path: "/academic-collaborations",
     icon: Landmark,
+    tone: "blue",
   },
   {
     title: "Industry & Technology",
@@ -21,6 +22,7 @@ const ways: Way[] = [
     body: "Bring industry platforms, tools and real projects into programmes and student work.",
     path: "/industry-collaborations",
     icon: Network,
+    tone: "teal",
   },
   {
     title: "Research & Innovation",
@@ -28,6 +30,7 @@ const ways: Way[] = [
     body: "Work together on publications, conferences, hackathons and applied innovation projects.",
     path: "/research-innovation",
     icon: Lightbulb,
+    tone: "violet",
   },
   {
     title: "Internships & Exposure",
@@ -35,6 +38,7 @@ const ways: Way[] = [
     body: "Offer internships, industry visits and open-day experiences to build your future talent pool.",
     path: "/internships",
     icon: FlaskConical,
+    tone: "amber",
   },
   {
     title: "Career Development",
@@ -42,6 +46,7 @@ const ways: Way[] = [
     body: "Mentor students, share industry skills sessions and take part in career guidance.",
     path: "/career-development",
     icon: Compass,
+    tone: "blue",
   },
   {
     title: "Programmes & Upskilling",
@@ -49,6 +54,7 @@ const ways: Way[] = [
     body: "Shape short courses and practitioner learning for your teams and for students.",
     path: "/programmes",
     icon: Briefcase,
+    tone: "teal",
   },
 ];
 
@@ -67,7 +73,7 @@ const WaysToPartner = () => (
       {ways.map((w) => (
         <li key={w.path}>
           <Link to={w.path} className="ways-card">
-            <span className="ways-icon" aria-hidden>
+            <span className={`ways-icon tone-${w.tone}`} aria-hidden>
               <w.icon className="h-5 w-5" strokeWidth={1.5} />
             </span>
             <span className="min-w-0">
