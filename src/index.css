@@ -343,5 +343,4 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .site-header-panel .mobile-sublink { color: hsl(210 30% 86%); }
 .site-header-panel .mobile-sublink:hover { color: hsl(0 0% 100%); }
 
-@media (prefers-reduced-motion: no-preference) {
 
