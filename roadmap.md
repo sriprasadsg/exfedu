@@ -43,5 +43,6 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Pen mark animation more noticeable (stronger drift, faster 7s cycle)
 - [x] Shrink infographic: centre circle 300→248px, nodes and text scaled down accordingly
 - [x] 2027-ready hero section: EXAFLUENCE EDUCATION + tagline, Explore Programmes / Partner with Us CTAs, white bg, navy/grey slim type, glossy 3D cap accent
-- [ ] Hero background: user says "pure milk white" — clarify desired background treatment
+- [x] Hero background: flat pure white (soft glow around the 3D cap removed)
 - [x] Ways-to-partner heading replaced with "Partnerships for Academic–Industry Integration" (client's exact wording)
+- [x] Hero attribution line: punctuation removed ("Exafluence Inc USA"), smaller text, "Exa" in logo blue and "fluence" in logo red
