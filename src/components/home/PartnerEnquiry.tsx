@@ -108,7 +108,7 @@ const PartnerEnquiry = () => {
       <div className="container grid gap-8 py-14 lg:grid-cols-[0.85fr_1.5fr] lg:gap-16">
         <div className="min-w-0">
           <p className="mb-3 text-sm font-normal text-accent">Partner enquiry</p>
-          <h2 className="site-section-title font-display leading-snug">Partner with<br />Exafluence Education</h2>
+          <h2 className="site-section-title enquiry-title-gradient font-display leading-snug">Partner with<br />Exafluence Education</h2>
           <p className="mt-4 max-w-[38ch] text-sm font-normal leading-relaxed text-muted-foreground">
             Become an industry-integrated collaboration partner — building programmes, projects, research and student opportunities together.
           </p>
@@ -117,23 +117,23 @@ const PartnerEnquiry = () => {
           </div>
         </div>
         <form className="partner-3d-card grid min-w-0 gap-5 sm:grid-cols-2" noValidate onSubmit={handleSubmit} aria-busy={submitting}>
-          <label className="min-w-0 space-y-2 text-sm font-normal"><span className="block">Contact name</span>
+          <label className="min-w-0 space-y-2 text-sm font-normal"><span className="block"><i aria-hidden className="enq-dot enq-dot--blue" />Contact name</span>
             <Input name="name" autoComplete="name" maxLength={100} {...aria("name")} />
             {err("name")}
           </label>
-          <label className="min-w-0 space-y-2 text-sm font-normal"><span className="block">Organisation / Institution</span>
+          <label className="min-w-0 space-y-2 text-sm font-normal"><span className="block"><i aria-hidden className="enq-dot enq-dot--teal" />Organisation / Institution</span>
             <Input name="organisation" autoComplete="organization" maxLength={150} {...aria("organisation")} />
             {err("organisation")}
           </label>
-          <label className="min-w-0 space-y-2 text-sm font-normal"><span className="block">Work email</span>
+          <label className="min-w-0 space-y-2 text-sm font-normal"><span className="block"><i aria-hidden className="enq-dot enq-dot--amber" />Work email</span>
             <Input name="email" type="email" inputMode="email" autoComplete="email" maxLength={255} {...aria("email")} />
             {err("email")}
           </label>
-          <label className="min-w-0 space-y-2 text-sm font-normal"><span className="block">Phone number <span className="font-normal text-muted-foreground">(optional)</span></span>
+          <label className="min-w-0 space-y-2 text-sm font-normal"><span className="block"><i aria-hidden className="enq-dot enq-dot--violet" />Phone number <span className="font-normal text-muted-foreground">(optional)</span></span>
             <Input name="phone" type="tel" inputMode="tel" autoComplete="tel" maxLength={20} {...aria("phone")} />
             {err("phone")}
           </label>
-          <label className="min-w-0 space-y-2 text-sm font-normal sm:col-span-2"><span className="block">Collaboration type</span>
+          <label className="min-w-0 space-y-2 text-sm font-normal sm:col-span-2"><span className="block"><i aria-hidden className="enq-dot enq-dot--blue" />Collaboration type</span>
             <select
               name="type"
               defaultValue=""
@@ -145,7 +145,7 @@ const PartnerEnquiry = () => {
             </select>
             {err("type")}
           </label>
-          <label className="min-w-0 space-y-2 text-sm font-normal sm:col-span-2"><span className="block">Collaboration requirement</span>
+          <label className="min-w-0 space-y-2 text-sm font-normal sm:col-span-2"><span className="block"><i aria-hidden className="enq-dot enq-dot--teal" />Collaboration requirement</span>
             <Textarea name="message" rows={3} maxLength={1000} className="break-words" {...aria("message")} />
             {err("message")}
           </label>
@@ -157,7 +157,7 @@ const PartnerEnquiry = () => {
             {err("consent")}
           </div>
           <div className="min-w-0 sm:col-span-2">
-            <Button type="submit" disabled={submitting} className="h-12 w-full text-sm font-medium sm:w-auto">
+            <Button type="submit" disabled={submitting} className="enquiry-cta h-12 w-full text-sm font-medium sm:w-auto">
               {submitting ? "Sending…" : "Send Partner Enquiry"}<ArrowUpRight />
             </Button>
             <div aria-live="polite">
