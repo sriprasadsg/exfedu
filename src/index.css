@@ -125,8 +125,8 @@ html {
 .education-arm:hover, .education-arm:focus-visible { border-color: hsl(var(--accent)); box-shadow: var(--hub-shadow); outline-color: hsl(var(--ring)); }
 .education-icon { flex-shrink: 0; width: 58px; height: 58px; border-radius: 50%; border: 3px solid hsl(var(--muted)); display: flex; align-items: center; justify-content: center; color: hsl(var(--accent)); background: hsl(var(--background)); }
 .education-icon svg { width: 32px; height: 32px; }
-@media (min-width: 768px) and (max-width: 1050px) {
-  .education-arm { gap: 8px; padding: 9px; min-height: 96px; }
+@media (min-width: 768px) and (max-width: 1200px) {
+  .education-arm { gap: 8px; padding: 9px; min-height: 86px; }
   .education-icon { width: 40px; height: 40px; }
   .education-icon svg { width: 24px; height: 24px; }
   .education-arm h2 { font-size: 12px; }
