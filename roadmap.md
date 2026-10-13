@@ -46,3 +46,5 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Hero background: flat pure white (soft glow around the 3D cap removed)
 - [x] Ways-to-partner heading replaced with "Partnerships for Academic–Industry Integration" (client's exact wording)
 - [x] Hero attribution line: punctuation removed ("Exafluence Inc USA"), smaller text, "Exa" in logo blue and "fluence" in logo red
+- [x] Hero: large "EXAFLUENCE EDUCATION" heading removed from view (kept as hidden h1 for search engines)
+- [x] Hero tagline: gentle animation (slow 11s drift with a soft brightness lift; off under reduced motion)
