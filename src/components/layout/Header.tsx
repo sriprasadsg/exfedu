@@ -6,6 +6,12 @@ import { categories, navPages } from "@/data/site";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@/components/ui/dropdown-menu";
+import catCore from "@/assets/cat-core.png";
+import catAcademic from "@/assets/cat-academic.png";
+import catIndustry from "@/assets/cat-industry.png";
+import catLearning from "@/assets/cat-learning.png";
+
+const catIcons: Record<string, string> = { core: catCore, academic: catAcademic, industry: catIndustry, learning: catLearning };
 
 const Header = () => {
   const [open, setOpen] = useState(false);
