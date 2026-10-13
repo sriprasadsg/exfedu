@@ -31,8 +31,16 @@ const ContentPage = () => {
 
   return (
     <Layout>
-      <section className="border-b">
-        <div className="container py-14 md:py-20">
+      <section className="relative overflow-hidden border-b">
+        {page.path === "/programmes" && (
+          <div className="page-decor" aria-hidden="true">
+            <img src={miniChip} alt="" loading="lazy" className="page-decor__item page-decor__item--chip" />
+            <img src={miniNet} alt="" loading="lazy" className="page-decor__item page-decor__item--net" />
+            <img src={miniSpark} alt="" loading="lazy" className="page-decor__item page-decor__item--spark" />
+            <img src={miniNet} alt="" loading="lazy" className="page-decor__item page-decor__item--net2" />
+          </div>
+        )}
+        <div className="container relative py-14 md:py-20">
           <nav className="text-sm text-muted-foreground" aria-label="Breadcrumb">
             <Link to="/" className="hover:text-primary">Exafluence Education</Link> / {cat.title}
             {parent && <> / <Link to={parent.path} className="hover:text-primary">{parent.title}</Link></>}
