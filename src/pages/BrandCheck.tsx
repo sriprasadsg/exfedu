@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { AlertCircle, CheckCircle2, Sparkles } from "lucide-react";
-import { Layout } from "@/components/layout/Layout";
+import Layout from "@/components/layout/Layout";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { aiReviewAvailable, checkBrandWording, requestAiReview, type BrandIssue } from "@/lib/brandCheck";
