@@ -236,6 +236,24 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
   .eco-orbit, .eco-conn path, .eco-hub, .eco-stage .eco-node { animation: none !important; opacity: 1; stroke-dashoffset: 0; }
 }
 
+/* ===== Ways to partner (RMIT-style card grid) ===== */
+.ways-section { font-family: 'Geist', 'Manrope', system-ui, sans-serif; max-width: 1240px; margin: 0 auto; padding: 1rem 1rem 3.5rem; }
+.ways-eyebrow { font-size: .74rem; letter-spacing: .18em; text-transform: uppercase; color: hsl(var(--primary) / .7); font-weight: 500; }
+.ways-heading { margin-top: .6rem; font-size: clamp(1.35rem, 2.4vw, 2rem); line-height: 1.25; font-weight: 500; letter-spacing: -.01em; color: hsl(var(--primary)); max-width: 34rem; }
+.ways-intro { margin-top: .8rem; font-size: .92rem; line-height: 1.7; color: hsl(var(--muted-foreground)); max-width: 42rem; }
+.ways-grid { list-style: none; margin: 2.25rem 0 0; padding: 0; display: grid; grid-template-columns: 1fr; gap: .9rem; }
+@media (min-width: 768px) { .ways-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; } }
+@media (min-width: 1024px) { .ways-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.ways-card { display: flex; align-items: flex-start; gap: .9rem; height: 100%; background: hsl(var(--background)); border: 1px solid hsl(var(--muted-foreground) / .2); border-top: 2px solid hsl(var(--primary) / .55); border-radius: 14px; padding: 1.15rem 1.2rem; text-decoration: none; transition: border-color .3s ease, transform .3s ease; }
+.ways-card:hover, .ways-card:focus-visible { border-color: hsl(var(--primary) / .45); border-top-color: hsl(var(--primary)); transform: translateY(-2px); outline: none; }
+.ways-icon { flex: none; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 11px; color: hsl(var(--primary)); background: hsl(var(--muted)); }
+.ways-title { display: block; color: hsl(var(--primary)); font-weight: 500; font-size: 1rem; line-height: 1.3; }
+.ways-line { display: block; margin-top: .2rem; font-size: .74rem; letter-spacing: .04em; text-transform: uppercase; color: hsl(var(--muted-foreground) / .85); }
+.ways-body { display: block; margin-top: .55rem; font-size: .84rem; line-height: 1.65; color: hsl(var(--muted-foreground)); }
+.ways-cta { display: inline-flex; align-items: center; gap: .35rem; margin-top: .7rem; font-size: .78rem; font-weight: 500; color: hsl(var(--primary)); }
+.ways-arrow { width: 14px; height: 14px; transition: transform .3s ease; }
+.ways-card:hover .ways-arrow, .ways-card:focus-visible .ways-arrow { transform: translateX(3px); }
+
 /* Partner enquiry 3D presentation */
 .partner-3d-stage { position: relative; max-width: 264px; margin-top: .25rem; perspective: 900px; }
 .partner-3d-stage::after { content: ""; position: absolute; left: 18%; right: 18%; bottom: -4px; height: 18px; border-radius: 50%; background: hsl(var(--primary) / .12); filter: blur(11px); }
