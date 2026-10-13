@@ -54,3 +54,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Hero brand name: smaller still and light weight (400)
 - [x] Programme & collaboration cards now share the partnership card colours
 - [ ] Apply gentle, slightly more noticeable animation to the element in the client's newest screenshot (image-27)
+- [ ] Animate the side icons gently (client screenshot image-28)
