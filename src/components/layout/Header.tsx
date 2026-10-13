@@ -21,7 +21,10 @@ const Header = () => {
     <header className="site-header sticky top-0 z-50 border-b">
       <div className="container flex h-20 items-center justify-between gap-4">
         <Link to="/" className="flex min-w-0 items-center" aria-label="Exafluence Education home">
-          <img src={logo.url} alt="Exafluence Education — A Division of Exafluence Inc., USA" className="h-10 w-auto max-w-[200px] object-contain" />
+          <span className="inline-flex min-w-0 items-center rounded-md bg-background px-1 py-0.5">
+            <img src={logo.url} alt="Exafluence Education — A Division of Exafluence Inc., USA" className="h-10 w-auto max-w-[200px] object-contain" />
+          </span>
+
         </Link>
         <nav aria-label="Main navigation" className="hidden items-center gap-1 lg:flex">
           <Button asChild variant="ghost" className="nav-on-navy"><Link to="/" aria-current={pathname === "/" ? "page" : undefined}>Home</Link></Button>
