@@ -53,3 +53,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Hero tagline: smaller and held on a single line at every width
 - [x] Hero brand name: smaller still and light weight (400)
 - [x] Programme & collaboration cards now share the partnership card colours
+- [ ] Apply gentle, slightly more noticeable animation to the element in the client's newest screenshot (image-27)
