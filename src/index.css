@@ -278,7 +278,11 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .enq-dot--blue, .enq-dot--teal, .enq-dot--amber, .enq-dot--violet { background: hsl(214 68% 14%); }
 .partner-3d-card .enquiry-cta { background-image: none; background-color: hsl(214 68% 14%); border: 0; }
 .partner-3d-card .enquiry-cta:hover { background-image: none; background-color: hsl(214 62% 22%); }
-@media (prefers-reduced-motion: reduce) { .partner-3d-object { animation: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .partner-3d-object { animation: none; }
+  .partner-3d-card input:not([type="checkbox"]):hover, .partner-3d-card select:hover, .partner-3d-card textarea:hover,
+  .partner-3d-card input:not([type="checkbox"]):focus-visible, .partner-3d-card select:focus-visible, .partner-3d-card textarea:focus-visible { transform: none; }
+}
 
 /* Footer */
 .footer-brand-line { font-size: clamp(8px, 2.1vw, 1.35rem); }
