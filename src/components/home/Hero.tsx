@@ -12,7 +12,7 @@ const Hero = () => (
           An Edtech Division of <span className="brand-exa">Exa</span><span className="brand-fluence">fluence</span> Inc USA
         </p>
         <h1 className="hero-title">Exafluence Education</h1>
-        <p className="hero-tagline">Where Academia, Industry &amp; Technology Converge</p>
+        <p className="hero-tagline">Connecting Academia, Industry &amp; Technology</p>
         <div className="hero-ctas">
           <Link to="/programmes" className="hero-cta hero-cta--primary">
             Explore Programmes<ArrowRight className="h-4 w-4" strokeWidth={1.75} />
