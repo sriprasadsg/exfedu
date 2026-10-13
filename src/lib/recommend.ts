@@ -1,16 +1,18 @@
 /**
  * Student programme recommender.
- * Local keyword matching runs in the browser now. The AI recommendation is
- * intentionally NOT connected: when Exafluence AWS Cloud hosts the AI endpoint,
- * set recommendConfig.endpoint (e.g. import.meta.env.VITE_RECOMMEND_API_URL).
- * The AWS endpoint should accept { interests, goals, catalog } and return
- * { recommendations: Recommendation[] }. The AI key must live on the AWS
- * server, never in this website.
+ *
+ * Local keyword matching runs in the browser for instant results. AI
+ * recommendations run through a server-side function so the AI key never
+ * reaches the website. `recommendConfig.endpoint` is the single wiring point:
+ * leave it empty to use the built-in AI function, or set it to a full URL to
+ * point the same request at an Exafluence-hosted endpoint.
  */
+import { supabase } from "@/integrations/supabase/client";
 import { programmes, arms } from "@/data/site";
 
 export const recommendConfig = {
-  mode: "test" as "test" | "production",
+  mode: "ai" as "ai" | "off",
+  /** Empty = the project's own AI function. Set a full URL to override. */
   endpoint: "",
 };
 
