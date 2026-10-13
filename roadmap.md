@@ -62,3 +62,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Programmes page icons: gentle staggered animation (client 14:46 UTC)
 - [x] Programmes page: navy edge line removed, colourful books visual inserted (client 14:47 UTC)
 - [ ] Homepage hero: animate only the outer circle, keep the cap still (client 14:51 UTC)
+- [ ] Programme page side icons: make them colourful again (client 14:53 UTC)
