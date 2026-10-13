@@ -49,7 +49,7 @@ const ways: Way[] = [
     tone: "blue",
   },
   {
-    title: "Programmes & Upskilling",
+    title: "Programmes & Professional Learning",
     line: "Workforce learning",
     body: "Shape short courses and practitioner learning for your teams and for students.",
     path: "/programmes",
