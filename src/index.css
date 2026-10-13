@@ -329,18 +329,47 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 }
 .site-header .nav-on-navy,
 .site-header-panel .nav-on-navy { color: hsl(210 40% 98%); }
+
+/* Menu labels: white by default; category accent only on hover/open (one treatment: colour + soft underline) */
+.site-header .nav-on-navy { position: relative; transition: color .22s ease; }
+.site-header .nav-on-navy::after {
+  content: "";
+  position: absolute;
+  left: 22%;
+  right: 22%;
+  bottom: 7px;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  opacity: 0;
+  transform: scaleX(.55);
+  transition: opacity .22s ease, transform .22s ease;
+}
 .site-header .nav-on-navy:hover,
 .site-header .nav-on-navy[data-state="open"],
 .site-header-panel .nav-on-navy:hover,
 .site-header-panel .nav-on-navy[data-state="open"] {
-  background-color: hsl(210 40% 98% / .1);
-  color: hsl(0 0% 100%);
+  background-color: transparent;
 }
-/* Category accents, lifted to stay readable on navy */
-.site-header .cat-core, .site-header-panel .cat-core { color: hsl(214 95% 74%); }
-.site-header .cat-academic, .site-header-panel .cat-academic { color: hsl(172 60% 62%); }
-.site-header .cat-industry, .site-header-panel .cat-industry { color: hsl(38 96% 68%); }
-.site-header .cat-learning, .site-header-panel .cat-learning { color: hsl(262 84% 78%); }
+.site-header .nav-on-navy:hover::after,
+.site-header .nav-on-navy[data-state="open"]::after {
+  opacity: .85;
+  transform: scaleX(1);
+}
+/* Category accents apply only on hover/open; labels stay white otherwise */
+.site-header .nav-on-navy.cat-core:hover, .site-header .nav-on-navy.cat-core[data-state="open"],
+.site-header-panel .nav-on-navy.cat-core:hover, .site-header-panel .nav-on-navy.cat-core[data-state="open"] { color: hsl(214 95% 74%); }
+.site-header .nav-on-navy.cat-academic:hover, .site-header .nav-on-navy.cat-academic[data-state="open"],
+.site-header-panel .nav-on-navy.cat-academic:hover, .site-header-panel .nav-on-navy.cat-academic[data-state="open"] { color: hsl(172 60% 62%); }
+.site-header .nav-on-navy.cat-industry:hover, .site-header .nav-on-navy.cat-industry[data-state="open"],
+.site-header-panel .nav-on-navy.cat-industry:hover, .site-header-panel .nav-on-navy.cat-industry[data-state="open"] { color: hsl(38 96% 68%); }
+.site-header .nav-on-navy.cat-learning:hover, .site-header .nav-on-navy.cat-learning[data-state="open"],
+.site-header-panel .nav-on-navy.cat-learning:hover, .site-header-panel .nav-on-navy.cat-learning[data-state="open"] { color: hsl(262 84% 78%); }
+/* Home has no category colour: gentle light-blue accent on hover */
+.site-header .nav-on-navy:not([class*="cat-"]):hover,
+.site-header .nav-on-navy:not([class*="cat-"])[data-state="open"],
+.site-header-panel .nav-on-navy:not([class*="cat-"]):hover,
+.site-header-panel .nav-on-navy:not([class*="cat-"])[data-state="open"] { color: hsl(210 80% 82%); }
 .site-header-panel {
   background: linear-gradient(180deg, hsl(216 66% 11%), hsl(216 60% 9%));
   border-top-color: hsl(214 45% 34% / .5);
