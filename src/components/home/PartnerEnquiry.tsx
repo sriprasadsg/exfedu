@@ -109,15 +109,15 @@ const PartnerEnquiry = () => {
           <h2 className="site-section-title font-display leading-snug">Industry Integrated<br />Collaboration Partner</h2>
         </div>
         <form className="grid min-w-0 gap-5 sm:grid-cols-2" noValidate onSubmit={handleSubmit} aria-busy={submitting}>
-          <label className="min-w-0 space-y-2 text-sm font-medium">Contact name
+          <label className="min-w-0 space-y-2 text-sm font-medium"><span className="block">Contact name</span>
             <Input name="name" autoComplete="name" maxLength={100} {...aria("name")} />
             {err("name")}
           </label>
-          <label className="min-w-0 space-y-2 text-sm font-medium">Organisation / Institution
+          <label className="min-w-0 space-y-2 text-sm font-medium"><span className="block">Organisation / Institution</span>
             <Input name="organisation" autoComplete="organization" maxLength={150} {...aria("organisation")} />
             {err("organisation")}
           </label>
-          <label className="min-w-0 space-y-2 text-sm font-medium">Work email
+          <label className="min-w-0 space-y-2 text-sm font-medium"><span className="block">Work email</span>
             <Input name="email" type="email" inputMode="email" autoComplete="email" maxLength={255} {...aria("email")} />
             {err("email")}
           </label>
@@ -125,7 +125,7 @@ const PartnerEnquiry = () => {
             <Input name="phone" type="tel" inputMode="tel" autoComplete="tel" maxLength={20} {...aria("phone")} />
             {err("phone")}
           </label>
-          <label className="min-w-0 space-y-2 text-sm font-medium sm:col-span-2">Collaboration type
+          <label className="min-w-0 space-y-2 text-sm font-medium sm:col-span-2"><span className="block">Collaboration type</span>
             <select
               name="type"
               defaultValue=""
@@ -137,7 +137,7 @@ const PartnerEnquiry = () => {
             </select>
             {err("type")}
           </label>
-          <label className="min-w-0 space-y-2 text-sm font-medium sm:col-span-2">Collaboration interests
+          <label className="min-w-0 space-y-2 text-sm font-medium sm:col-span-2"><span className="block">Collaboration interests</span>
             <Textarea name="message" rows={4} maxLength={1000} className="break-words" {...aria("message")} />
             {err("message")}
           </label>
