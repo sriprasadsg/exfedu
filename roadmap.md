@@ -39,3 +39,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Footer: SkillShone featured as a highlighted pill at the top of its column
 - [x] Ecosystem ring and box edges recoloured to graded navy (no teal/amber/violet)
 - [x] Ecosystem centre: Exafluence pen-and-cap mark above "EXAFLUENCE EDUCATION" (extracted from the client logo, redrawn crisp, colours matched)
+- [x] Ecosystem pen mark: gentle bob animation (slow drift, soft shadow; off under reduced motion)
