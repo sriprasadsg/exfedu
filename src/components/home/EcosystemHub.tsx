@@ -20,13 +20,13 @@ export const ecosystemNodes: EcoNode[] = [
   { title: "Industry & Technology", line: "IBM • Exafluence Inc.", path: "/industry-collaborations", icon: Network, weight: "strong", x: 83, y: 19 },
   { title: "Programmes", line: "AI • Data • FinTech • Cloud • Quantum", path: "/programmes", icon: BookOpen, weight: "strong", accent: true, x: 13, y: 52 },
   { title: "Practical Learning", line: "Labs • Projects • Capstones", path: "/practical-learning", icon: FlaskConical, weight: "strong", x: 87, y: 50 },
-  { title: "Internships & Exposure", line: "Internships • Industry Visits • ODC", path: "/internships", icon: Briefcase, weight: "medium", x: 20, y: 81 },
-  { title: "Career Development", line: "Placements • Skills • Mentoring", path: "/career-development", icon: Compass, weight: "medium", x: 80, y: 80 },
+  { title: "Internships & Exposure", line: "Internships • Industry Visits • ODC", path: "/internships", icon: Briefcase, weight: "medium", x: 14, y: 79 },
+  { title: "Career Development", line: "Placements • Skills • Mentoring", path: "/career-development", icon: Compass, weight: "medium", x: 86, y: 78 },
   { title: "Research & Innovation", line: "Publications • Conferences • Hackathons", path: "/research-innovation", icon: Lightbulb, weight: "medium", accent: true, x: 41, y: 6 },
   { title: "Student Success", line: "Achievements • Placements • Career Growth", path: "/student-success", icon: Award, weight: "medium", accent: true, x: 61, y: 7 },
-  { title: "Student’s Corner", line: "Resources • Updates • Downloads", path: "/students-corner", icon: LayoutGrid, weight: "light", x: 37, y: 95 },
-  { title: "SkillShone", line: "Courses • Assessments • Certificates", path: "/skillshone", icon: MonitorPlay, weight: "light", accent: true, x: 63, y: 95 },
-  { title: "Gallery & Highlights", line: "Events • Activities • Awards", path: "/gallery", icon: Images, weight: "light", x: 50, y: 99.5 },
+  { title: "Student’s Corner", line: "Resources • Updates • Downloads", path: "/students-corner", icon: LayoutGrid, weight: "light", x: 29, y: 96 },
+  { title: "SkillShone", line: "Courses • Assessments • Certificates", path: "/skillshone", icon: MonitorPlay, weight: "light", accent: true, x: 71, y: 96 },
+  { title: "Gallery & Highlights", line: "Events • Activities • Awards", path: "/gallery", icon: Images, weight: "light", x: 50, y: 100 },
 ];
 
 const W = 1200, H = 780, CX = 600, CY = 380;
