@@ -30,3 +30,5 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Partner enquiry image: client chose the convergence orbits visual
 - [x] Footer brand line stays on a single unbroken line (name + Exafluence Inc., USA logo) at every screen width
 - [x] Deep navy for enquiry hairline, dots and button (no mixed colours); site background pure white; footer titles single colour (no gradient)
+- [x] Ecosystem centre circle: pure white interior (no tint), bold "EXAFLUENCE EDUCATION" on one line, bolder navy ring, very gentle animation
+- [ ] RMIT partner page (rmit.edu.au/partner) sent as reference — confirm what to take from it before changing anything
