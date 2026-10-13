@@ -120,6 +120,10 @@ export function recommendLocal(interests: string, goals: string): Recommendation
  * Exafluence-hosted URL to send the identical request there instead.
  */
 export async function recommendWithAI(interests: string, goals: string): Promise<Recommendation[]> {
+  if (interests.trim().length + goals.trim().length < MIN_COMBINED) {
+    throw new Error("Please tell us a little more about your interests or goals first.");
+  }
+
   const aiCatalog = catalog.map(({ title, path, kind, why }) => ({ title, path, kind, why }));
 
   const { data, error } = await supabase.functions.invoke(
