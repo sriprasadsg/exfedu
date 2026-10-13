@@ -188,7 +188,7 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 
 /* ===== Ecosystem hub (native, rebuilt) ===== */
 .eco-section { font-family: 'Geist', 'Manrope', system-ui, sans-serif; max-width: 1240px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
-.eco-stage { position: relative; width: 100%; aspect-ratio: 1200 / 820; padding-bottom: 2rem; }
+.eco-stage { position: relative; width: 100%; aspect-ratio: 1200 / 820; padding-bottom: 2rem; margin: 4rem 0 5rem; }
 .eco-svg { position: absolute; inset: 0; width: 100%; height: calc(100% - 40px); overflow: visible; }
 .eco-grid-line { stroke: hsl(var(--primary) / .05); stroke-width: 1; }
 .eco-orbit { fill: none; stroke: hsl(var(--muted-foreground) / .18); stroke-width: 1; stroke-dasharray: 2 6; opacity: 0; animation: eco-fade .9s ease-out both; }

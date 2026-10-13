@@ -26,7 +26,7 @@ export const ecosystemNodes: EcoNode[] = [
   { title: "Student Success", line: "Achievements • Placements • Career Growth", path: "/student-success", icon: Award, weight: "medium", accent: true, x: 63, y: 5 },
   { title: "Student’s Corner", line: "Resources • Updates • Downloads", path: "/students-corner", icon: LayoutGrid, weight: "light", x: 20, y: 96 },
   { title: "SkillShone", line: "Courses • Assessments • Certificates", path: "/skillshone", icon: MonitorPlay, weight: "light", accent: true, x: 80, y: 96 },
-  { title: "Gallery & Highlights", line: "Events • Activities • Awards", path: "/gallery", icon: Images, weight: "light", x: 50, y: 98 },
+  { title: "Gallery & Highlights", line: "Events • Activities • Awards", path: "/gallery", icon: Images, weight: "light", x: 50, y: 96 },
 ];
 
 const W = 1200, H = 780, CX = 600, CY = 380;
