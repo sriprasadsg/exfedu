@@ -3,14 +3,14 @@ import Layout from "@/components/layout/Layout";
 import NotFound from "./NotFound";
 import { BlockView } from "@/components/site/Blocks";
 import { categories, findPage, navPages } from "@/data/site";
-import programmesImg from "@/assets/books-3d-colorful.png";
+import programmesImg from "@/assets/books-3d-open.png";
 import researchImg from "@/assets/hero-research.png";
 import ibmImg from "@/assets/hero-ibm.png";
 import successImg from "@/assets/hero-success.png";
 import skillshoneImg from "@/assets/hero-skillshone.png";
-import miniChip from "@/assets/mini-ai-chip-color.png";
-import miniNet from "@/assets/mini-neural-net-color.png";
-import miniSpark from "@/assets/mini-genai-spark-color.png";
+import techChip from "@/assets/tech-chip.png";
+import techNeural from "@/assets/tech-neural.png";
+import techCloud from "@/assets/tech-cloud.png";
 
 const heroVisuals: Record<string, string> = {
   "/programmes": programmesImg,
@@ -31,13 +31,12 @@ const ContentPage = () => {
 
   return (
     <Layout>
-      <section className="relative overflow-hidden border-b">
+      <section className={`relative overflow-hidden border-b${page.path === "/programmes" ? " pb-24 lg:pb-0" : ""}`}>
         {page.path === "/programmes" && (
           <div className="page-decor" aria-hidden="true">
-            <img src={miniChip} alt="" loading="lazy" className="page-decor__item page-decor__item--chip" />
-            <img src={miniNet} alt="" loading="lazy" className="page-decor__item page-decor__item--net" />
-            <img src={miniSpark} alt="" loading="lazy" className="page-decor__item page-decor__item--spark" />
-            <img src={miniNet} alt="" loading="lazy" className="page-decor__item page-decor__item--net2" />
+            <img src={techChip} alt="" loading="lazy" width={816} height={816} className="page-decor__item page-decor__item--chip" />
+            <img src={techNeural} alt="" loading="lazy" width={816} height={816} className="page-decor__item page-decor__item--net" />
+            <img src={techCloud} alt="" loading="lazy" width={816} height={816} className="page-decor__item page-decor__item--cloud" />
           </div>
         )}
         <div className="container relative py-14 md:py-20">
@@ -55,7 +54,7 @@ const ContentPage = () => {
               </div>
             </div>
             {heroVisuals[page.path] && (
-              <img src={heroVisuals[page.path]} alt="" aria-hidden="true" width={1024} height={1024} className="hero-visual hero-visual--float mx-auto w-56 md:w-72 lg:w-80" />
+              <img src={heroVisuals[page.path]} alt="" aria-hidden="true" width={1024} height={1024} className={`hero-visual mx-auto w-56 md:w-72 lg:w-80${page.path === "/programmes" ? "" : " hero-visual--float"}`} />
             )}
           </div>
         </div>

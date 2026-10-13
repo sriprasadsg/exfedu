@@ -178,9 +178,26 @@ html {
 body { line-height: 1.7; }
 h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .glossy-icon {
-  background: radial-gradient(circle at 30% 25%, hsl(0 0% 100%), hsl(210 20% 97%) 55%, hsl(212 10% 85%));
+  position: relative;
+  background: hsl(0 0% 100%);
   border: 1px solid hsl(var(--border));
   box-shadow: inset 0 1px 1px hsl(0 0% 100%), 0 8px 20px -10px hsl(var(--primary) / 0.25);
+}
+/* Colourful pastel ring turning slowly behind the white disc; the navy symbol breathes gently. */
+.glossy-icon::before {
+  content: ""; position: absolute; inset: -4px; border-radius: 999px;
+  background: conic-gradient(from 0deg, #8FBDF2, #6FD6C8, #F5C87A, #B9A6F0, #8FBDF2);
+  animation: icon-ring-spin 16s linear infinite;
+}
+.glossy-icon::after {
+  content: ""; position: absolute; inset: 0; border-radius: 999px; background: hsl(0 0% 100%);
+  box-shadow: inset 0 1px 1px hsl(0 0% 100%);
+}
+.glossy-icon svg { position: relative; z-index: 1; animation: icon-breathe 6s ease-in-out infinite; }
+@keyframes icon-ring-spin { to { transform: rotate(360deg); } }
+@keyframes icon-breathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.12); } }
+@media (prefers-reduced-motion: reduce) {
+  .glossy-icon::before, .glossy-icon svg { animation: none; }
 }
 .hero-visual { filter: drop-shadow(0 18px 22px hsl(var(--primary) / 0.07)); }
 .hero-visual--float { animation: slowFloat 7s ease-in-out infinite; }
@@ -251,8 +268,8 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 /* ===== Ways to partner (RMIT-style card grid) ===== */
 .ways-section { font-family: 'Google Sans Flex', 'Figtree', system-ui, sans-serif; max-width: 1240px; margin: 0 auto; padding: 1rem 1rem 3.5rem; }
 .ways-eyebrow { font-size: .74rem; letter-spacing: .18em; text-transform: uppercase; color: hsl(var(--primary) / .7); font-weight: 500; }
-.ways-heading { margin-top: .6rem; font-size: clamp(.8rem, 3.3vw, 2rem); line-height: 1.25; font-weight: 500; letter-spacing: -.01em; color: hsl(var(--primary)); white-space: nowrap; }
-.ways-intro { margin-top: .8rem; font-size: .92rem; line-height: 1.7; color: hsl(var(--muted-foreground)); max-width: 42rem; }
+.ways-heading { margin-top: .6rem; font-size: clamp(.6rem, 2.7vw, 2rem); line-height: 1.25; font-weight: 500; letter-spacing: -.01em; color: hsl(var(--primary)); white-space: nowrap; }
+.ways-intro { margin-top: .8rem; font-size: .92rem; line-height: 1.7; color: hsl(var(--muted-foreground)); max-width: 44rem; text-wrap: balance; }
 .ways-grid { list-style: none; margin: 2.25rem 0 0; padding: 0; display: grid; grid-template-columns: 1fr; gap: .9rem; }
 @media (min-width: 768px) { .ways-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; } }
 @media (min-width: 1024px) { .ways-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
@@ -486,39 +503,45 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .hero-cap-stage { position: relative; width: min(15rem, 100%); margin-inline: auto; aspect-ratio: 1; }
 .hero-cap-stage img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
 .hero-cap { z-index: 1; }
-.hero-ring { z-index: 0; transform-origin: 52% 45%; animation: hero-ring-orbit 9s ease-in-out infinite; }
+.hero-ring { z-index: 0; transform-origin: 52% 45%; animation: hero-ring-orbit 6s ease-in-out infinite; }
 .hero-ring--front { z-index: 2; clip-path: inset(45% 0 0 0); }
+.hero-tassel { z-index: 3; transform-origin: 69.8% 67.6%; animation: hero-tassel-swing 5s ease-in-out infinite; }
+/* The tassel is its own layer so it can swing on its own; the cap stays still. */
+@keyframes hero-tassel-swing {
+  0%, 100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+}
 /* The ring is a separate transparent layer so only it moves; the cap stays still. */
 @keyframes hero-ring-orbit {
-  0%, 100% { transform: rotate(-1.3deg) scale(1); }
-  50% { transform: rotate(1.3deg) scale(1.03); }
+  0%, 100% { transform: rotate(-1.5deg) scale(1); }
+  50% { transform: rotate(1.5deg) scale(1.07); }
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-eyebrow, .hero-title, .hero-tagline, .hero-ctas { animation: none; }
   .hero-ring { animation: none; }
+  .hero-tassel { animation: none; }
 }
 
 /* Programmes page: faint colourful AI / Gen AI mini-illustrations behind the header */
 .page-decor { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
 .page-decor__item {
   position: absolute;
-  opacity: .13;
+  opacity: .3;
   animation: decor-drift 14s ease-in-out infinite;
 }
-.page-decor__item--chip  { top: 6%;  left: 2%;  width: 8.5rem; }
-.page-decor__item--net   { top: 30%; right: 30%; width: 5.5rem; animation-delay: -5s; }
-.page-decor__item--spark { bottom: 8%; left: 30%; width: 5rem; animation-delay: -9s; }
-.page-decor__item--net2  { bottom: 14%; right: 3%; width: 7rem; animation-delay: -7s; }
+/* Kept out of the breadcrumb and heading text zones: they sit low, in the clear band. */
+.page-decor__item--chip  { bottom: 2%;  left: 2%;  width: 8rem; }
+.page-decor__item--net   { bottom: 4%;  left: 40%; width: 6rem;  animation-delay: -5s; }
+.page-decor__item--cloud { bottom: 2%;  right: 30%; width: 7rem;  animation-delay: -9s; }
 @keyframes decor-drift {
   0%, 100% { transform: translateY(0) rotate(0deg); }
   50% { transform: translateY(-9px) rotate(2.5deg); }
 }
-@media (max-width: 767px) {
-  .page-decor__item { opacity: .1; }
-  .page-decor__item--chip  { width: 5.5rem; top: 4%; }
+@media (max-width: 1023px) {
+  .page-decor__item { opacity: .22; }
+  .page-decor__item--chip  { width: 5rem; bottom: .75rem; left: 4%; }
   .page-decor__item--net   { display: none; }
-  .page-decor__item--spark { width: 3.75rem; left: 6%; }
-  .page-decor__item--net2  { width: 4.5rem; bottom: 6%; }
+  .page-decor__item--cloud { width: 4.5rem; bottom: .75rem; right: 6%; }
 }
 @media (prefers-reduced-motion: reduce) {
   .page-decor__item { animation: none; }
