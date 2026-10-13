@@ -135,7 +135,6 @@ export const pages: Page[] = [
     blocks: [
       { type: "areas", title: "Areas of study" },
       { type: "programmes", title: "Current programmes" },
-      { type: "pending", title: "Coming next", items: ["GenAI", "FinTech", "IBM programmes", "Quantum"] },
       enquire("Explore with an advisor"),
     ] },
   ...programmes.map<Page>((p) => ({
