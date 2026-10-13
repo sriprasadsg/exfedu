@@ -3,7 +3,7 @@ import exafluence from "@/assets/exafluence-footer.png.asset.json";
 import { categories, sections } from "@/data/site";
 
 const Footer = () => (
-  <footer className="mt-24 border-t bg-primary text-primary-foreground">
+  <footer className="border-t bg-primary text-primary-foreground">
     <div className="container grid gap-8 py-14 md:grid-cols-5">
       <div>
         <p className="font-display text-lg font-bold">Exafluence Education</p>
