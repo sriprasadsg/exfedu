@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500&display=swap');
 
 
 @tailwind base;
@@ -229,3 +230,4 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 @media (prefers-reduced-motion: reduce) {
   .eco-orbit, .eco-conn path, .eco-hub, .eco-stage .eco-node, .eco-hub-object { animation: none !important; opacity: 1; stroke-dashoffset: 0; }
 }
+@keyframes slow-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
