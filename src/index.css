@@ -192,7 +192,7 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .eco-svg { position: absolute; inset: 0; width: 100%; height: calc(100% - 40px); overflow: visible; }
 .eco-grid-line { stroke: hsl(var(--primary) / .05); stroke-width: 1; }
 .eco-orbit { fill: none; stroke: hsl(var(--muted-foreground) / .18); stroke-width: 1; stroke-dasharray: 2 6; opacity: 0; animation: eco-fade .9s ease-out both; }
-.eco-conn path { fill: none; stroke: hsl(var(--muted-foreground) / .4); stroke-width: 1; stroke-dasharray: 1; stroke-dashoffset: 1; animation: eco-draw .9s ease-out both, eco-ray 5.5s ease-in-out infinite; animation-delay: inherit; transition: stroke .3s; }
+.eco-conn path { fill: none; stroke: hsl(var(--muted-foreground) / .4); stroke-width: 1; stroke-dasharray: 1; stroke-dashoffset: 1; animation: eco-draw 1.2s ease-out both, eco-ray 10s ease-in-out infinite; animation-delay: inherit; transition: stroke .3s; }
 .eco-conn circle { fill: hsl(var(--background)); stroke: hsl(var(--muted-foreground) / .6); stroke-width: 1; transition: all .3s; }
 .eco-conn.is-active path { stroke: hsl(var(--primary)); stroke-width: 1.25; }
 .eco-conn.is-active circle { fill: hsl(var(--primary)); stroke: hsl(var(--primary)); }
