@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { ArrowUpRight } from "lucide-react";
 import exafluence from "@/assets/exafluence-footer.png.asset.json";
 import { categories, navPages } from "@/data/site";
 
