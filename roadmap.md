@@ -71,3 +71,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [ ] Make the animation clearly noticeable on the element in the client's screenshot (client 15:09 UTC)
 - [x] Homepage partnerships heading replaced with "Academia–Industry Collaboration for Future-Ready Learning" on a single line, intro set out neatly and reworded to end "get started with us" (client 15:14/15:19 UTC)
 - [x] Homepage hero: tassel separated into its own layer and given a gentle swing; cap stays still (client 15:18 UTC)
+- [ ] Homepage hero tagline: wording replaced with "Connecting Academia, Industry & Technology" (done) and font size reduced further (client 15:26 UTC)
