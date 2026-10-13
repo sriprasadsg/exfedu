@@ -4,7 +4,7 @@ import { ArrowRight, Check, CircleDashed, ImageOff, type LucideIcon } from "luci
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { PENDING, pages, programmes, galleryItems, type Block, type Page, type Tone } from "@/data/site";
+import { PENDING, pages, programmes, programmeAreas, galleryItems, type Block, type Page, type Tone } from "@/data/site";
 
 const H2 = ({ children }: { children: React.ReactNode }) => <h2 className="site-section-title font-display font-normal">{children}</h2>;
 
@@ -31,6 +31,18 @@ const LinkCard = ({ to, title, meta, icon: Icon, tone = "blue" }: {
     </span>
     <ArrowRight className="ways-arrow ml-auto shrink-0" aria-hidden />
   </Link>
+);
+
+const AreaCard = ({ title, text, icon: Icon, tone }: { title: string; text: string; icon: LucideIcon; tone: Tone }) => (
+  <div className="area-card">
+    <span className={`ways-icon tone-${tone}`} aria-hidden>
+      <Icon className="h-5 w-5" strokeWidth={1.5} />
+    </span>
+    <span className="min-w-0">
+      <span className="ways-title">{title}</span>
+      <span className="mt-1.5 block text-sm font-light leading-relaxed text-muted-foreground">{text}</span>
+    </span>
+  </div>
 );
 
 const Gallery = ({ filters }: { filters: string[] }) => {
@@ -121,6 +133,8 @@ export const BlockView = ({ block, page }: { block: Block; page: Page }) => {
           </div>
         </div>
       );
+    case "areas":
+      return <div><H2>{block.title}</H2><div className="areas-grid mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">{programmeAreas.map((a) => <AreaCard key={a.title} {...a} />)}</div></div>;
     case "programmes":
       return <div><H2>{block.title}</H2><div className="mt-6 grid gap-3 md:grid-cols-2">{programmes.map((p) => <LinkCard key={p.slug} to={`/programmes/${p.slug}`} title={p.title} meta={p.level} icon={p.icon} tone={p.tone} />)}</div></div>;
     case "children": {
