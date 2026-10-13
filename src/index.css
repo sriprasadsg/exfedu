@@ -245,3 +245,11 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .footer-title-gradient { background: linear-gradient(90deg, hsl(199 92% 70%), hsl(172 66% 62%), hsl(43 96% 66%)); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .footer-option { color: hsl(var(--muted-foreground)); transition: color .2s; }
 .footer-option:hover { color: hsl(var(--primary-foreground)); }
+
+/* Colourful menu category accents */
+.cat-core { color: hsl(214 84% 48%); }
+.cat-academic { color: hsl(172 66% 34%); }
+.cat-industry { color: hsl(32 92% 44%); }
+.cat-learning { color: hsl(262 68% 55%); }
+.menu-cat-icon { height: 1.6rem; width: 1.6rem; object-fit: contain; filter: drop-shadow(0 2px 4px hsl(220 30% 20% / .25)); }
+.menu-cat-hero { height: 3.2rem; width: 3.2rem; object-fit: contain; filter: drop-shadow(0 4px 8px hsl(220 30% 20% / .3)); }
