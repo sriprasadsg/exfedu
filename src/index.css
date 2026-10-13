@@ -315,3 +315,33 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .cat-learning { color: hsl(262 68% 55%); }
 .menu-cat-icon { height: 1.6rem; width: 1.6rem; object-fit: contain; filter: drop-shadow(0 2px 4px hsl(220 30% 20% / .25)); }
 .menu-cat-hero { height: 3.2rem; width: 3.2rem; object-fit: contain; filter: drop-shadow(0 4px 8px hsl(220 30% 20% / .3)); }
+
+/* Navy menu bar (desktop + mobile panel) */
+.site-header {
+  background: linear-gradient(180deg, hsl(218 68% 15%), hsl(216 66% 11%));
+  border-bottom-color: hsl(214 45% 34% / .55);
+}
+.site-header .nav-on-navy,
+.site-header-panel .nav-on-navy { color: hsl(210 40% 98%); }
+.site-header .nav-on-navy:hover,
+.site-header .nav-on-navy[data-state="open"],
+.site-header-panel .nav-on-navy:hover,
+.site-header-panel .nav-on-navy[data-state="open"] {
+  background-color: hsl(210 40% 98% / .1);
+  color: hsl(0 0% 100%);
+}
+/* Category accents, lifted to stay readable on navy */
+.site-header .cat-core, .site-header-panel .cat-core { color: hsl(214 95% 74%); }
+.site-header .cat-academic, .site-header-panel .cat-academic { color: hsl(172 60% 62%); }
+.site-header .cat-industry, .site-header-panel .cat-industry { color: hsl(38 96% 68%); }
+.site-header .cat-learning, .site-header-panel .cat-learning { color: hsl(262 84% 78%); }
+.site-header-panel {
+  background: linear-gradient(180deg, hsl(216 66% 11%), hsl(216 60% 9%));
+  border-top-color: hsl(214 45% 34% / .5);
+}
+.site-header-panel .border-b { border-bottom-color: hsl(210 40% 98% / .14); }
+.site-header-panel .mobile-sublink { color: hsl(210 30% 86%); }
+.site-header-panel .mobile-sublink:hover { color: hsl(0 0% 100%); }
+
+@media (prefers-reduced-motion: no-preference) {
+
