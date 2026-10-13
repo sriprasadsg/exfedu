@@ -419,12 +419,13 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
   animation: fadeInUp .55s .08s both;
 }
 .hero-tagline {
-  margin-top: .8rem;
+  margin-top: .7rem;
   max-width: none;
-  font-size: clamp(.8rem, 3.1vw, 1.75rem);
+  font-size: clamp(.68rem, 2.1vw, 1.15rem);
   font-weight: 400;
-  line-height: 1.35;
-  color: hsl(var(--primary));
+  letter-spacing: .045em;
+  line-height: 1.4;
+  color: hsl(214 38% 42%);
   white-space: nowrap;
   animation: fadeInUp .55s .16s both, hero-tagline-breathe 11s ease-in-out 1.4s infinite;
 }
