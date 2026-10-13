@@ -184,3 +184,6 @@ export const arms: { title: string; path: string; icon: LucideIcon; items: strin
   { title: "SkillShone", path: "/skillshone", icon: MonitorPlay, items: ["Digital Learning Platform", "Courses · Assessments"] },
   { title: "Gallery & Highlights", path: "/gallery", icon: Images, items: ["Events", "Activities", "Awards"] },
 ];
+
+/** Add approved photos here: { src, alt, category } where category matches a gallery filter. */
+export const galleryItems: { src: string; alt: string; category: string }[] = [];
