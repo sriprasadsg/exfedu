@@ -2,7 +2,7 @@
 - [x] Finish homepage infographic, accessible four-category navigation, global design and responsive rules
 - [x] Refine reusable programme, collaboration, research and gallery templates without adding unapproved content
 - [x] Verify desktop, tablet, mobile navigation and homepage enquiry states
-- [ ] Confirm supplied logos in hosted preview — local asset serving cannot render them; hosted page unavailable to browser check
+- [x] Confirm supplied logos in hosted preview — client confirmed header, footer and SkillShone logos display correctly
 - [x] Homepage hub: Exafluence Education centre with 11 arms (latest brief)
 - [x] 4 main categories, 12 section pages + contact, 12 sub-pages
 - [ ] Real content/photos from client
