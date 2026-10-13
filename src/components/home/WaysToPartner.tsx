@@ -1,0 +1,94 @@
+import { Link } from "react-router-dom";
+import {
+  Landmark, Network, FlaskConical, Briefcase, Compass, Lightbulb,
+  type LucideIcon,
+} from "lucide-react";
+
+type Way = { title: string; line: string; body: string; path: string; icon: LucideIcon };
+
+/** Edit partnership routes here — order is also the mobile order. */
+const ways: Way[] = [
+  {
+    title: "Academic Collaborations",
+    line: "Universities & institutions",
+    body: "Co-develop curriculum, faculty enablement and programme delivery with Exafluence Education.",
+    path: "/academic-collaborations",
+    icon: Landmark,
+  },
+  {
+    title: "Industry & Technology",
+    line: "Technology partners",
+    body: "Bring industry platforms, tools and real projects into programmes and student work.",
+    path: "/industry-collaborations",
+    icon: Network,
+  },
+  {
+    title: "Research & Innovation",
+    line: "Joint research",
+    body: "Work together on publications, conferences, hackathons and applied innovation projects.",
+    path: "/research-innovation",
+    icon: Lightbulb,
+  },
+  {
+    title: "Internships & Exposure",
+    line: "Host students",
+    body: "Offer internships, industry visits and open-day experiences to build your future talent pool.",
+    path: "/internships",
+    icon: FlaskConical,
+  },
+  {
+    title: "Career Development",
+    line: "Mentoring & skills",
+    body: "Mentor students, share industry skills sessions and take part in career guidance.",
+    path: "/career-development",
+    icon: Compass,
+  },
+  {
+    title: "Programmes & Upskilling",
+    line: "Workforce learning",
+    body: "Shape short courses and practitioner learning for your teams and for students.",
+    path: "/programmes",
+    icon: Briefcase,
+  },
+];
+
+const WaysToPartner = () => (
+  <section aria-labelledby="ways-heading" className="ways-section">
+    <p className="ways-eyebrow">Partner with us</p>
+    <h2 id="ways-heading" className="ways-heading">
+      Some of the ways you can partner with Exafluence Education
+    </h2>
+    <p className="ways-intro">
+      Choose the collaboration route closest to your organisation. Each one leads to a page
+      describing how the collaboration works and how to begin.
+    </p>
+
+    <ul className="ways-grid">
+      {ways.map((w) => (
+        <li key={w.path}>
+          <Link to={w.path} className="ways-card">
+            <span className="ways-icon" aria-hidden>
+              <w.icon className="h-5 w-5" strokeWidth={1.5} />
+            </span>
+            <span className="min-w-0">
+              <span className="ways-title">{w.title}</span>
+              <span className="ways-line">{w.line}</span>
+              <span className="ways-body">{w.body}</span>
+              <span className="ways-cta">
+                Explore <ArrowGlyph />
+              </span>
+            </span>
+          </Link>
+        </li>
+      ))}
+    </ul>
+  </section>
+);
+
+const ArrowGlyph = () => (
+  <svg viewBox="0 0 16 16" className="ways-arrow" aria-hidden>
+    <path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+export default WaysToPartner;
