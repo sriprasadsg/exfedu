@@ -269,14 +269,20 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .partner-3d-object { position: relative; z-index: 1; width: 100%; height: auto; filter: drop-shadow(0 12px 18px hsl(var(--primary) / .16)); animation: slow-float 7s ease-in-out infinite; }
 .partner-3d-card { position: relative; overflow: hidden; background: hsl(var(--background)); border: 1px solid hsl(var(--border)); border-radius: 18px; padding: clamp(1.25rem, 3vw, 1.75rem); }
 .partner-3d-card::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 3px; background: hsl(214 68% 14%); }
-.partner-3d-card input:not([type="checkbox"]), .partner-3d-card select, .partner-3d-card textarea { min-height: 48px; }
+.partner-3d-card input:not([type="checkbox"]), .partner-3d-card select, .partner-3d-card textarea { min-height: 48px; transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease; }
 .partner-3d-card textarea { min-height: 84px; }
+.partner-3d-card input:not([type="checkbox"]):hover, .partner-3d-card select:hover, .partner-3d-card textarea:hover { border-color: hsl(214 53% 55% / .55); transform: translateY(-1px); }
+.partner-3d-card input:not([type="checkbox"]):focus-visible, .partner-3d-card select:focus-visible, .partner-3d-card textarea:focus-visible { border-color: hsl(var(--primary) / .7); transform: translateY(-1px); }
 .enquiry-title-gradient { background: linear-gradient(90deg, hsl(214 68% 14%), hsl(216 62% 30%)); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .enq-dot { display: inline-block; width: 7px; height: 7px; margin-right: 8px; border-radius: 50%; vertical-align: middle; }
 .enq-dot--blue, .enq-dot--teal, .enq-dot--amber, .enq-dot--violet { background: hsl(214 68% 14%); }
 .partner-3d-card .enquiry-cta { background-image: none; background-color: hsl(214 68% 14%); border: 0; }
 .partner-3d-card .enquiry-cta:hover { background-image: none; background-color: hsl(214 62% 22%); }
-@media (prefers-reduced-motion: reduce) { .partner-3d-object { animation: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .partner-3d-object { animation: none; }
+  .partner-3d-card input:not([type="checkbox"]):hover, .partner-3d-card select:hover, .partner-3d-card textarea:hover,
+  .partner-3d-card input:not([type="checkbox"]):focus-visible, .partner-3d-card select:focus-visible, .partner-3d-card textarea:focus-visible { transform: none; }
+}
 
 /* Footer */
 .footer-brand-line { font-size: clamp(8px, 2.1vw, 1.35rem); }
