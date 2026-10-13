@@ -44,7 +44,7 @@ const ContentPage = () => {
               </div>
             </div>
             {heroVisuals[page.path] && (
-              <img src={heroVisuals[page.path]} alt="" aria-hidden="true" width={1024} height={1024} className="hero-visual mx-auto w-56 md:w-72 lg:w-80" />
+              <img src={heroVisuals[page.path]} alt="" aria-hidden="true" width={1024} height={1024} className="hero-visual hero-visual--float mx-auto w-56 md:w-72 lg:w-80" />
             )}
           </div>
         </div>
