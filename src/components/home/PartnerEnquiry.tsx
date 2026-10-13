@@ -10,8 +10,8 @@ const PartnerEnquiry = () => {
     <section id="partner-enquiry" className="border-t bg-muted/40 scroll-mt-24">
       <div className="container grid gap-8 py-14 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
         <div>
-          <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-accent">Partner enquiry</p>
-          <h2 className="font-display text-2xl font-semibold leading-snug">Industry Integrated<br />Collaboration Partner</h2>
+          <p className="mb-3 text-sm font-normal text-accent">Partner enquiry</p>
+          <h2 className="site-section-title font-display leading-snug">Industry Integrated<br />Collaboration Partner</h2>
         </div>
         <form className="grid gap-5 sm:grid-cols-2" onSubmit={(event) => { event.preventDefault(); setUnavailable(true); }}>
           <label className="space-y-2 text-sm font-medium">Contact name<Input name="name" autoComplete="name" required /></label>

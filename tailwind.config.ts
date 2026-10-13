@@ -7,9 +7,9 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: "2rem",
+      padding: "1.5rem",
       screens: {
-        "2xl": "1400px",
+        "2xl": "1280px",
       },
     },
     extend: {
@@ -56,27 +56,6 @@ export default {
           800: "hsl(var(--navy-800))",
           700: "hsl(var(--navy-700))",
           600: "hsl(var(--navy-600))",
-        },
-        purple: {
-          600: "hsl(var(--purple-600))",
-          500: "hsl(var(--purple-500))",
-          400: "hsl(var(--purple-400))",
-          300: "hsl(var(--purple-300))",
-          100: "hsl(var(--purple-100))",
-        },
-        amber: {
-          600: "hsl(var(--amber-600))",
-          500: "hsl(var(--amber-500))",
-          400: "hsl(var(--amber-400))",
-          300: "hsl(var(--amber-300))",
-          100: "hsl(var(--amber-100))",
-        },
-        cream: {
-          DEFAULT: "hsl(var(--cream))",
-          dark: "hsl(var(--cream-dark))",
-        },
-        sage: {
-          DEFAULT: "hsl(var(--sage))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
