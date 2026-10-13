@@ -62,11 +62,11 @@ const WaysToPartner = () => (
   <section aria-labelledby="ways-heading" className="ways-section">
     <p className="ways-eyebrow">Partner with us</p>
     <h2 id="ways-heading" className="ways-heading">
-      Partnerships for Academic–Industry Integration
+      Academia–Industry Collaboration for Future-Ready Learning
     </h2>
     <p className="ways-intro">
-      Choose the collaboration route closest to your organisation. Each one leads to a page
-      describing how the collaboration works and how to begin.
+      Explore the collaboration pathway that best aligns with your institution or organisation, and
+      discover how to get started with Exafluence Education.
     </p>
 
     <ul className="ways-grid">
