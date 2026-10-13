@@ -33,3 +33,6 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Ecosystem centre circle: pure white interior (no tint), bold "EXAFLUENCE EDUCATION" on one line, bolder navy ring, very gentle animation
 - [x] RMIT partner page reviewed — client chose the "ways to partner" card grid only
 - [x] Homepage "ways to partner" card grid (6 routes, navy/grey/white, links to existing pages)
+- [x] Ways-to-partner card wording approved by client
+- [x] Footer: SkillShone featured as a highlighted pill at the top of its column
+- [x] Ecosystem ring and box edges recoloured to graded navy (no teal/amber/violet)
