@@ -56,3 +56,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Apply gentle, slightly more noticeable animation to the element in the client's newest screenshot (image-27)
 - [x] Animate the side icons gently (client screenshot image-28)
 - [x] Student recommender AI mode live — server-side AI function, key held off the website; recommendConfig.endpoint remains the override
+- [ ] Clarify the client's 'refe., site' note (14:39 UTC) — meaning unclear
