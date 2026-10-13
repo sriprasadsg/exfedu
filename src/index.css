@@ -429,6 +429,9 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
   white-space: nowrap;
   animation: fadeInUp .55s .16s both, hero-tagline-breathe 11s ease-in-out 1.4s infinite;
 }
+@media (max-width: 480px) {
+  .hero-tagline { font-size: .76rem; letter-spacing: .004em; }
+}
 @keyframes hero-tagline-breathe {
   0%, 100% { transform: translateY(0); opacity: .94; }
   50% { transform: translateY(-2px); opacity: 1; }
