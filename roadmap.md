@@ -27,4 +27,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Footer brand line + Exafluence Inc., USA logo as one inline line pointer (positions adjusted)
 - [x] Partner enquiry section made premium: shorter heading, intro line, smaller 3D visual, light-border white card, slim weights, 48px fields, shorter textarea, "Collaboration requirement", lighter consent, "Send Partner Enquiry"
 - [ ] Make the enquiry form colourful
-- [ ] Client to choose the partner enquiry image — modern photo-style options (not 3D renders) to be shared
+- [ ] Client to choose the partner enquiry image — modern illustration-style options (latest request after photos and 3D)
