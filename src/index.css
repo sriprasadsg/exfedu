@@ -286,6 +286,7 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .partner-3d-card .enquiry-cta:hover { background-image: none; background-color: hsl(214 62% 22%); }
 @media (prefers-reduced-motion: reduce) {
   .partner-3d-object { animation: none; }
+  .partner-3d-stage, .partner-3d-stage:hover { transform: translateX(-16px); transition: none; }
   .partner-3d-card input:not([type="checkbox"]):hover, .partner-3d-card select:hover, .partner-3d-card textarea:hover,
   .partner-3d-card input:not([type="checkbox"]):focus-visible, .partner-3d-card select:focus-visible, .partner-3d-card textarea:focus-visible { transform: none; }
 }
