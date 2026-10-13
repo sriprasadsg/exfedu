@@ -104,7 +104,7 @@ const PartnerEnquiry = () => {
   const submitting = status.kind === "submitting";
 
   return (
-    <section id="partner-enquiry" className="border-t bg-muted/40 scroll-mt-24">
+    <section id="partner-enquiry" className="border-t bg-background scroll-mt-24">
       <div className="container grid gap-8 py-14 lg:grid-cols-[0.85fr_1.5fr] lg:gap-16">
         <div className="min-w-0">
           <p className="mb-3 text-sm font-normal text-accent">Partner enquiry</p>
