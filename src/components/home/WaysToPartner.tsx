@@ -66,7 +66,7 @@ const WaysToPartner = () => (
     </h2>
     <p className="ways-intro">
       Explore the collaboration pathway that best aligns with your institution or organisation, and
-      discover how to get started with Exafluence Education.
+      discover how to get started with us.
     </p>
 
     <ul className="ways-grid">
