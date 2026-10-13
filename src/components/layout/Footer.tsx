@@ -8,7 +8,7 @@ const Footer = () => (
       <div>
         <p className="font-display text-xl text-primary-foreground">Exafluence Education</p>
         <p className="mt-2 text-sm font-light opacity-70">Where Academia, Industry & Technology Converge.</p>
-        <p className="mt-1 text-xs font-light opacity-60">A Division of Exafluence Inc., USA</p>
+        <p className="mt-1 text-xs font-light opacity-60">An Edtech Division of Exafluence Inc., USA</p>
         <div className="mt-5 inline-block rounded-md bg-background p-3">
           <img src={exafluence.url} alt="Exafluence — Data Driven Influence" className="h-12 w-auto" />
         </div>
@@ -23,7 +23,7 @@ const Footer = () => (
       ))}
     </div>
     <div className="border-t border-primary-foreground/10 py-5 text-center text-xs font-light opacity-60">
-      © {new Date().getFullYear()} Exafluence Education · A Division of Exafluence Inc., USA
+      © {new Date().getFullYear()} Exafluence Education · An Edtech Division of Exafluence Inc., USA
     </div>
   </footer>
 );
