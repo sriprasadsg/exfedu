@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import heroCap from "@/assets/hero-3d-cap.png";
+import heroCap from "@/assets/hero-cap-only.png";
+import heroRing from "@/assets/hero-ring-only.png";
 
 const Hero = () => (
   <section aria-label="Exafluence Education introduction" className="hero-section">
@@ -21,7 +22,11 @@ const Hero = () => (
         </div>
       </div>
       <div className="hero-visual" aria-hidden>
-        <img src={heroCap} alt="" width={1024} height={1024} className="hero-cap" />
+        <div className="hero-cap-stage">
+          <img src={heroRing} alt="" width={1024} height={1024} className="hero-ring" />
+          <img src={heroCap} alt="" width={1024} height={1024} className="hero-cap" />
+          <img src={heroRing} alt="" width={1024} height={1024} className="hero-ring hero-ring--front" />
+        </div>
       </div>
     </div>
   </section>
