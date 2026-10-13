@@ -240,7 +240,7 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .partner-3d-card::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 3px; background: linear-gradient(90deg, hsl(214 84% 48%), hsl(172 66% 34%), hsl(32 92% 44%), hsl(262 68% 55%)); }
 .partner-3d-card input:not([type="checkbox"]), .partner-3d-card select, .partner-3d-card textarea { min-height: 48px; }
 .partner-3d-card textarea { min-height: 84px; }
-.enquiry-title-gradient { background: linear-gradient(90deg, hsl(214 84% 48%), hsl(172 66% 34%), hsl(32 92% 44%)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.enquiry-title-gradient { background: linear-gradient(90deg, hsl(214 68% 14%), hsl(216 62% 30%)); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .enq-dot { display: inline-block; width: 7px; height: 7px; margin-right: 8px; border-radius: 50%; vertical-align: middle; }
 .enq-dot--blue { background: hsl(214 84% 48%); }
 .enq-dot--teal { background: hsl(172 66% 34%); }
