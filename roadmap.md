@@ -40,3 +40,5 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Ecosystem ring and box edges recoloured to graded navy (no teal/amber/violet)
 - [x] Ecosystem centre: Exafluence pen-and-cap mark above "EXAFLUENCE EDUCATION" (extracted from the client logo, redrawn crisp, colours matched)
 - [x] Ecosystem pen mark: gentle bob animation (slow drift, soft shadow; off under reduced motion)
+- [x] Pen mark animation more noticeable (stronger drift, faster 7s cycle)
+- [x] Shrink infographic: centre circle 300→248px, nodes and text scaled down accordingly
