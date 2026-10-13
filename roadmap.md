@@ -22,3 +22,5 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] SkillShone button live → https://skillshone.com/
 - [x] Admin brand-wording checker (/admin/brand-check) — rule checks live, AI review waits on Exafluence AWS endpoint
 - [ ] Connect brand checker AI review + admin login via Exafluence AWS (no Lovable Cloud)
+- [x] Student programme recommender (/programme-finder) — local matching live, AI recommendations wait on Exafluence AWS endpoint
+- [ ] Connect recommender AI mode to Exafluence AWS endpoint (recommendConfig.endpoint; AI key server-side only)
