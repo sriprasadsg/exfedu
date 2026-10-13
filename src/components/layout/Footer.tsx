@@ -4,8 +4,8 @@ import { categories, navPages } from "@/data/site";
 
 const Footer = () => (
   <footer className="border-t bg-primary text-primary-foreground">
-    <div className="container flex flex-wrap items-center gap-x-3 gap-y-2 pt-14 pb-8 sm:gap-x-4">
-      <p className="footer-brand-line whitespace-nowrap font-display"><span className="footer-title-gradient">Exafluence Education</span> <span className="opacity-80">— An Edtech Division of Exafluence Inc., USA</span></p>
+    <div className="container flex flex-nowrap items-center gap-x-2 pt-14 pb-8 sm:gap-x-4">
+      <p className="footer-brand-line min-w-0 whitespace-nowrap font-display"><span className="footer-title-gradient">Exafluence Education</span> <span className="opacity-80">— An Edtech Division of Exafluence Inc., USA</span></p>
       <span className="inline-flex shrink-0 items-center rounded-md bg-background px-1 py-0.5 sm:px-3 sm:py-1.5">
         <img src={exafluence.url} alt="Exafluence — Data Driven Influence" className="footer-brand-logo w-auto" />
       </span>
