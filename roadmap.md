@@ -65,3 +65,7 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Programme page side icons: colourful icon tiles restored (client 14:53 UTC)
 - [x] Programme page: "Coming next" placeholder block removed (client 14:53 UTC)
 - [x] Programmes header background: faint colourful AI/Gen AI mini-illustrations with gentle drift (client 15:00/15:01 UTC)
+- [x] Programmes header: faint illustration behind the breadcrumb removed, replaced with clearer technical illustrations (client 15:03 UTC)
+- [x] Programmes books visual: animation removed, top book now open (client 15:05 UTC)
+- [ ] Programmes page icon: make it colourful and animate it gently (client 15:08 UTC)
+- [ ] Make the animation clearly noticeable on the element in the client's screenshot (client 15:09 UTC)
