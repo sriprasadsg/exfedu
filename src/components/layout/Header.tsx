@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { GraduationCap, Menu, X, ChevronDown } from "lucide-react";
+import logo from "@/assets/exf-education-logo.png.asset.json";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { categories, sections } from "@/data/site";
 
 const Header = () => {
@@ -8,8 +9,8 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50 border-b bg-background/90 backdrop-blur">
       <div className="container flex h-16 items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 font-display font-bold tracking-tight">
-          <GraduationCap className="h-6 w-6 text-accent" /> Exafluence Education
+        <Link to="/" className="flex items-center">
+          <img src={logo.url} alt="exf Education — An EdTech unit of Exafluence Inc. USA" className="h-11 w-auto" />
         </Link>
         <nav className="hidden items-center gap-1 lg:flex">
           {categories.map((c) => (

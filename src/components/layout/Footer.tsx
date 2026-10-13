@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import exafluence from "@/assets/exafluence-footer.png.asset.json";
 import { categories, sections } from "@/data/site";
 
 const Footer = () => (
@@ -7,6 +8,9 @@ const Footer = () => (
       <div>
         <p className="font-display text-lg font-bold">Exafluence Education</p>
         <p className="mt-2 text-sm opacity-70">Where Academia, Industry & Technology Converge.</p>
+        <div className="mt-5 inline-block rounded-lg bg-background p-3">
+          <img src={exafluence.url} alt="Exafluence — Data Driven Influence, ISO 27001:2022 Certified" className="h-14 w-auto" />
+        </div>
       </div>
       {categories.map((c) => (
         <div key={c.slug}>
