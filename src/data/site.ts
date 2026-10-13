@@ -1,6 +1,7 @@
 import {
   Building2, Landmark, Network, BookOpen, FlaskConical, Briefcase, Compass, Lightbulb, Award,
-  LayoutGrid, MonitorPlay, Images, Newspaper, Info, Users, Mail, HelpCircle, GraduationCap, type LucideIcon,
+  LayoutGrid, MonitorPlay, Images, Newspaper, Info, Users, Mail, HelpCircle, GraduationCap,
+  Code2, BarChart3, Cloud, type LucideIcon,
 } from "lucide-react";
 import skillshoneLogo from "@/assets/skillshone-logo.png.asset.json";
 
@@ -37,12 +38,14 @@ export const PENDING = "Approved Content Required";
 
 const enquire = (label = "Enquire Now"): Block => ({ type: "cta", title: "Have a question?", text: "Speak with the Exafluence Education team.", label, to: "/contact" });
 
-export const programmes = [
-  { slug: "masters-data-science", title: "Master's in Data Science", level: "Master's & PG" },
-  { slug: "pg-diploma-data-science", title: "PG Diploma in Data Science", level: "Master's & PG" },
-  { slug: "python-ai-ml-genai", title: "Python for AI, ML & Generative AI", level: "Diplomas & Certifications" },
-  { slug: "data-visualization", title: "Data Visualization", level: "Diplomas & Certifications" },
-  { slug: "cloud-technologies", title: "Cloud Technologies", level: "Diplomas & Certifications" },
+export type Tone = "blue" | "teal" | "amber" | "violet";
+
+export const programmes: { slug: string; title: string; level: string; icon: LucideIcon; tone: Tone }[] = [
+  { slug: "masters-data-science", title: "Master's in Data Science", level: "Master's & PG", icon: GraduationCap, tone: "blue" },
+  { slug: "pg-diploma-data-science", title: "PG Diploma in Data Science", level: "Master's & PG", icon: Award, tone: "teal" },
+  { slug: "python-ai-ml-genai", title: "Python for AI, ML & Generative AI", level: "Diplomas & Certifications", icon: Code2, tone: "violet" },
+  { slug: "data-visualization", title: "Data Visualization", level: "Diplomas & Certifications", icon: BarChart3, tone: "amber" },
+  { slug: "cloud-technologies", title: "Cloud Technologies", level: "Diplomas & Certifications", icon: Cloud, tone: "blue" },
 ];
 
 const programmeSections = [

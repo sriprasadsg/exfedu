@@ -52,3 +52,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] "Partnerships for Academic–Industry Integration" heading kept on a single line at every width
 - [x] Hero tagline: smaller and held on a single line at every width
 - [x] Hero brand name: smaller still and light weight (400)
+- [x] Programme & collaboration cards now share the partnership card colours

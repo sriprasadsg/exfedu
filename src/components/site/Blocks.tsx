@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Check, CircleDashed, ImageOff } from "lucide-react";
+import { ArrowRight, Check, CircleDashed, ImageOff, type LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { PENDING, pages, programmes, galleryItems, type Block, type Page } from "@/data/site";
+import { PENDING, pages, programmes, galleryItems, type Block, type Page, type Tone } from "@/data/site";
 
 const H2 = ({ children }: { children: React.ReactNode }) => <h2 className="site-section-title font-display font-normal">{children}</h2>;
 
@@ -14,10 +14,22 @@ export const PendingTag = () => (
   </span>
 );
 
-const LinkCard = ({ to, title, meta }: { to: string; title: string; meta?: string }) => (
-  <Link to={to} className="group flex items-center justify-between card-premium rounded-lg border bg-card p-5 transition-colors hover:border-primary">
-    <span>{meta && <span className="block text-xs uppercase tracking-wider text-muted-foreground">{meta}</span>}<span className="text-base">{title}</span></span>
-    <ArrowRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-1 group-hover:text-primary" />
+const categoryTone: Record<string, Tone> = { academic: "blue", industry: "teal", learning: "violet", core: "amber" };
+
+const LinkCard = ({ to, title, meta, icon: Icon, tone = "blue" }: {
+  to: string; title: string; meta?: string; icon?: LucideIcon; tone?: Tone;
+}) => (
+  <Link to={to} className="ways-card">
+    {Icon && (
+      <span className={`ways-icon tone-${tone}`} aria-hidden>
+        <Icon className="h-5 w-5" strokeWidth={1.5} />
+      </span>
+    )}
+    <span className="min-w-0">
+      <span className="ways-title">{title}</span>
+      {meta && <span className="ways-line">{meta}</span>}
+    </span>
+    <ArrowRight className="ways-arrow ml-auto shrink-0" aria-hidden />
   </Link>
 );
 
@@ -110,10 +122,10 @@ export const BlockView = ({ block, page }: { block: Block; page: Page }) => {
         </div>
       );
     case "programmes":
-      return <div><H2>{block.title}</H2><div className="mt-6 grid gap-3 md:grid-cols-2">{programmes.map((p) => <LinkCard key={p.slug} to={`/programmes/${p.slug}`} title={p.title} meta={p.level} />)}</div></div>;
+      return <div><H2>{block.title}</H2><div className="mt-6 grid gap-3 md:grid-cols-2">{programmes.map((p) => <LinkCard key={p.slug} to={`/programmes/${p.slug}`} title={p.title} meta={p.level} icon={p.icon} tone={p.tone} />)}</div></div>;
     case "children": {
       const kids = pages.filter((p) => p.parent === page.path);
-      return <div><H2>{block.title}</H2><div className="mt-6 grid gap-3 md:grid-cols-2">{kids.map((k) => <LinkCard key={k.path} to={k.path} title={k.title} meta="View Collaboration" />)}</div></div>;
+      return <div><H2>{block.title}</H2><div className="mt-6 grid gap-3 md:grid-cols-2">{kids.map((k) => <LinkCard key={k.path} to={k.path} title={k.title} meta="View Collaboration" icon={k.icon} tone={categoryTone[k.category] ?? "blue"} />)}</div></div>;
     }
     case "faq":
       return (
