@@ -268,7 +268,7 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 /* ===== Ways to partner (RMIT-style card grid) ===== */
 .ways-section { font-family: 'Google Sans Flex', 'Figtree', system-ui, sans-serif; max-width: 1240px; margin: 0 auto; padding: 1rem 1rem 3.5rem; }
 .ways-eyebrow { font-size: .74rem; letter-spacing: .18em; text-transform: uppercase; color: hsl(var(--primary) / .7); font-weight: 500; }
-.ways-heading { margin-top: .6rem; font-size: clamp(.8rem, 3.3vw, 2rem); line-height: 1.25; font-weight: 500; letter-spacing: -.01em; color: hsl(var(--primary)); white-space: nowrap; }
+.ways-heading { margin-top: .6rem; font-size: clamp(.6rem, 2.7vw, 2rem); line-height: 1.25; font-weight: 500; letter-spacing: -.01em; color: hsl(var(--primary)); white-space: nowrap; }
 .ways-intro { margin-top: .8rem; font-size: .92rem; line-height: 1.7; color: hsl(var(--muted-foreground)); max-width: 44rem; text-wrap: balance; }
 .ways-grid { list-style: none; margin: 2.25rem 0 0; padding: 0; display: grid; grid-template-columns: 1fr; gap: .9rem; }
 @media (min-width: 768px) { .ways-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; } }
