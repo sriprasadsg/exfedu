@@ -53,5 +53,6 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Hero tagline: smaller and held on a single line at every width
 - [x] Hero brand name: smaller still and light weight (400)
 - [x] Programme & collaboration cards now share the partnership card colours
-- [ ] Apply gentle, slightly more noticeable animation to the element in the client's newest screenshot (image-27)
-- [ ] Animate the side icons gently (client screenshot image-28)
+- [x] Apply gentle, slightly more noticeable animation to the element in the client's newest screenshot (image-27)
+- [x] Animate the side icons gently (client screenshot image-28)
+- [x] Student recommender AI mode live — server-side AI function, key held off the website; recommendConfig.endpoint remains the override
