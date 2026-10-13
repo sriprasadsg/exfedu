@@ -7,7 +7,7 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 220 30% 16%;
+    --foreground: 214 68% 14%;
 
     --card: 0 0% 100%;
     --card-foreground: 220 30% 16%;
@@ -15,24 +15,24 @@
     --popover: 0 0% 100%;
     --popover-foreground: 220 30% 16%;
 
-    --primary: 220 60% 20%;
+    --primary: 214 68% 14%;
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 220 10% 95%;
+    --secondary: 210 20% 97%;
     --secondary-foreground: 218 68% 15%;
 
-    --muted: 220 10% 96%;
+    --muted: 210 20% 97%;
     --muted-foreground: 220 8% 46%;
 
-    --accent: 220 60% 20%;
+    --accent: 214 68% 14%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 220 30% 30%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 220 10% 89%;
-    --input: 220 10% 85%;
-    --ring: 220 60% 20%;
+    --border: 212 10% 88%;
+    --input: 212 9% 69%;
+    --ring: 214 68% 14%;
 
     --radius: 0.5rem;
 
@@ -167,3 +167,20 @@ html {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* Premium accents: glossy 3D used selectively */
+body { line-height: 1.7; }
+h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
+.glossy-icon {
+  background: radial-gradient(circle at 30% 25%, hsl(0 0% 100%), hsl(210 20% 97%) 55%, hsl(212 10% 85%));
+  border: 1px solid hsl(var(--border));
+  box-shadow: inset 0 1px 1px hsl(0 0% 100%), 0 8px 20px -10px hsl(var(--primary) / 0.25);
+}
+.hero-visual {
+  filter: drop-shadow(0 24px 30px hsl(var(--primary) / 0.14));
+  animation: slowFloat 7s ease-in-out infinite;
+}
+@keyframes slowFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+.card-premium { transition: transform .3s ease, box-shadow .3s ease; }
+.card-premium:hover { transform: translateY(-3px); box-shadow: 0 14px 30px -18px hsl(var(--primary) / 0.25); }
+@media (prefers-reduced-motion: reduce) { .hero-visual { animation: none; } }
