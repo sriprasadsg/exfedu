@@ -1,227 +1,91 @@
 import { Link } from "react-router-dom";
+import { GraduationCap, ArrowRight } from "lucide-react";
 import Layout from "@/components/layout/Layout";
-import { ArrowRight, CheckCircle, ChevronRight } from "lucide-react";
-import { images } from "@/lib/images";
-import whyLawyerIllustration from "@/assets/why-lawyer-illustration.svg";
-import iconTraffic from "@/assets/icons/traffic-accident.svg";
-import iconWorkplace from "@/assets/icons/workplace-injury.svg";
-import iconMedical from "@/assets/icons/medical-error.svg";
-import iconOccupational from "@/assets/icons/occupational-illness.svg";
-import iconSports from "@/assets/icons/sports-games.svg";
-import iconChildhood from "@/assets/icons/childhood-injury.svg";
-import iconProductLiability from "@/assets/icons/product-liability.svg";
-import iconBusiness from "@/assets/icons/business-owners.svg";
+import { sections, categories, type Section } from "@/data/site";
 
-const services = [
-  { img: iconTraffic, title: "Traffic accident", path: "/injuries/traffic-accidents" },
-  { img: iconWorkplace, title: "Occupational accident", path: "/injuries/workplace-injuries" },
-  { img: iconMedical, title: "Medical error", path: "/injuries/medical-malpractice" },
-  { img: iconOccupational, title: "Occupational illness", path: "/injuries/occupational-disease" },
-  { img: iconSports, title: "Sport and games", path: "/injuries/sports-recreation" },
-  { img: iconChildhood, title: "Childhood injury", path: "/injuries/childrens-injuries" },
-  { img: iconProductLiability, title: "Product liability", path: "/injuries/product-liability" },
-  { img: iconBusiness, title: "Business owners", path: "/injuries/business-owners" },
-];
+const W = 1240, H = 1020, CX = W / 2, CY = H / 2, RX = 500, RY = 390;
 
-const articles = [
-  {
-    slug: "insurance-settlement-negotiations",
-    author: "Sarah Martinez",
-    date: "March 15, 2024",
-    title: "Understanding Insurance Settlement Negotiations: What You Need to Know",
-    excerpt: "Insurance companies often make initial settlement offers that are far below what your claim is worth. Learn how to navigate these negotiations effectively and ensure you receive fair compensation for your injuries.",
-  },
-  {
-    slug: "medical-malpractice-proving-negligence",
-    author: "Jennifer Chen",
-    date: "March 8, 2024",
-    title: "Medical Malpractice Claims: Proving Negligence in Treatment",
-    excerpt: "Not every negative medical outcome constitutes malpractice. Learn the key elements required to prove medical negligence and when you should consider pursuing a claim.",
-  },
-  {
-    slug: "occupational-illness-compensation",
-    author: "Rebecca Thompson",
-    date: "February 28, 2024",
-    title: "Occupational Illness Compensation: Your Rights as an Employee",
-    excerpt: "Developed a work-related illness? You may be entitled to compensation beyond standard workers' comp. Understand the full range of benefits available to you.",
-  },
-];
+const Card = ({ s, className = "", style }: { s: Section; className?: string; style?: React.CSSProperties }) => (
+  <Link
+    to={`/${s.slug}`}
+    style={style}
+    className={`group flex gap-3 rounded-2xl border bg-card p-4 shadow-sm transition hover:-translate-y-0.5 hover:border-accent hover:shadow-lg ${className}`}
+  >
+    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border bg-muted text-foreground group-hover:bg-accent group-hover:text-accent-foreground">
+      <s.icon className="h-5 w-5" />
+    </span>
+    <span className="min-w-0">
+      <span className="block font-display text-sm font-semibold leading-tight">{s.title}</span>
+      {s.tagline && <span className="block text-[11px] text-muted-foreground">({s.tagline})</span>}
+      <span className="mt-1 block space-y-0.5 text-xs text-muted-foreground">
+        {s.items.slice(0, 3).map((i) => <span key={i} className="block truncate">• {i}</span>)}
+      </span>
+    </span>
+  </Link>
+);
 
-const attorneys = [
-  { name: "Sarah Martinez", title: "Senior Partner", img: images.attorney1 },
-  { name: "Jennifer Chen", title: "Managing Partner", img: images.attorney2 },
-  { name: "Rebecca Thompson", title: "Lead Trial Attorney", img: images.attorney3 },
-];
+const Hub = () => (
+  <div className="mx-auto mb-4 flex h-64 w-64 flex-col items-center justify-center rounded-full border-[10px] border-muted bg-card text-center shadow-xl ring-1 ring-border">
+    <GraduationCap className="h-10 w-10" />
+    <p className="mt-2 font-display text-2xl font-bold leading-tight tracking-tight">EXAFLUENCE<br />EDUCATION</p>
+    <div className="my-2 h-px w-24 bg-border" />
+    <p className="px-6 text-xs text-muted-foreground">Where Academia, Industry &amp; Technology Converge</p>
+  </div>
+);
 
 const Index = () => {
+  const pts = sections.map((_, i) => {
+    const a = (-90 + i * 30) * (Math.PI / 180);
+    return { x: CX + RX * Math.cos(a), y: CY + RY * Math.sin(a), a };
+  });
   return (
     <Layout>
-      {/* Hero */}
-      <section className="min-h-[80vh] flex items-center bg-background py-20 md:py-28">
-        <div className="container mx-auto px-4 md:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="animate-fade-in-up">
-              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-navy-900 leading-tight mb-6">
-                <span className="italic">Injured?</span><br />
-                We protect your rights<br />
-                and future!
-              </h1>
-              <ul className="space-y-3 mb-8">
-                {["Compassionate, transparent legal guidance", "Serving clients nationwide", "Board-certified personal injury specialists"].map((item) => (
-                  <li key={item} className="flex items-center gap-3 text-foreground text-base">
-                    <span className="w-5 h-5 rounded-full bg-navy-900 flex items-center justify-center shrink-0">
-                      <CheckCircle className="w-3.5 h-3.5 text-white" />
-                    </span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <Link
-                to="/contact"
-                className="inline-block bg-purple-500 hover:bg-purple-600 text-white font-medium px-6 py-3 rounded-full transition-all duration-300 text-sm"
-              >
-                Need help?
-              </Link>
-            </div>
-
-            {/* Staggered attorney photos — asymmetric 2+1 grid */}
-            <div className="relative h-[480px] hidden lg:block">
-              <div className="absolute top-0 left-0 w-[240px] h-[300px] overflow-hidden">
-                <img src={attorneys[0].img} alt={attorneys[0].name} className="w-full h-full object-cover" />
-              </div>
-              <div className="absolute top-[80px] right-0 w-[240px] h-[300px] overflow-hidden">
-                <img src={attorneys[1].img} alt={attorneys[1].name} className="w-full h-full object-cover" />
-              </div>
-              <div className="absolute bottom-0 left-[100px] w-[240px] h-[300px] overflow-hidden">
-                <img src={attorneys[2].img} alt={attorneys[2].name} className="w-full h-full object-cover" />
-              </div>
-            </div>
-
-            {/* Mobile attorney layout */}
-            <div className="flex justify-center gap-4 lg:hidden">
-              {attorneys.map((attorney) => (
-                <div key={attorney.name} className="text-center">
-                  <img src={attorney.img} alt={attorney.name} className="w-28 h-36 object-cover mb-2" />
-                  <p className="font-semibold text-navy-900 text-xs">{attorney.name}</p>
-                  <p className="text-[10px] text-muted-foreground">{attorney.title}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Why a Lawyer */}
-      <section className="py-20 md:py-28 bg-background">
-        <div className="container mx-auto px-4 md:px-8">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div className="flex justify-center">
-              <img src={whyLawyerIllustration} alt="Person with questions about injury compensation" className="w-full max-w-md" loading="lazy" width={800} height={800} />
-            </div>
-            <div>
-              <h2 className="font-display text-3xl md:text-5xl font-bold text-navy-900 mb-6">
-                Why a personal injury<br /><span className="italic">lawyer?</span>
-              </h2>
-              <p className="text-muted-foreground leading-relaxed text-lg">
-                Following an accident or medical error, you'll have many questions going through your head. Are you entitled to compensation? What if the other party refuses to pay? How can you continue to live independently or return to work? Our personal injury lawyers can help you to get peace of mind, clarity and the compensation that you are entitled to.
-              </p>
-              <div className="w-16 h-1 bg-primary rounded-full mt-8" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Services */}
-      <section className="py-20 md:py-28 bg-background">
-        <div className="container mx-auto px-4 md:px-8">
-          <h2 className="font-display text-3xl md:text-5xl font-bold text-navy-900 text-center mb-16">
-            Need <span className="italic">Help?</span>
-          </h2>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12">
-            {services.map((service) => (
-              <Link
-                key={service.title}
-                to={service.path}
-                className="group flex flex-col"
-              >
-                <div className="h-28 md:h-36 flex items-end justify-center mb-4">
-                  <img src={service.img} alt={service.title} className="h-full w-auto object-contain" loading="lazy" />
-                </div>
-                <div className="flex items-center justify-between">
-                  <h3 className="font-medium text-navy-900 text-sm md:text-base">{service.title}</h3>
-                  <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-purple-500 shrink-0 transition-colors" />
-                </div>
-              </Link>
+      <section className="container py-10">
+        {/* Desktop radial hub */}
+        <div className="hidden xl:block">
+          <div className="relative mx-auto" style={{ width: W, height: H }}>
+            <svg className="absolute inset-0 text-foreground/70" width={W} height={H}>
+              <circle cx={CX} cy={CY} r={175} fill="none" stroke="currentColor" strokeDasharray="3 6" opacity={0.3} />
+              {pts.map((p, i) => {
+                const sx = CX + 150 * Math.cos(p.a), sy = CY + 150 * Math.sin(p.a);
+                const ex = CX + (RX - 120) * Math.cos(p.a), ey = CY + (RY - 70) * Math.sin(p.a);
+                return (
+                  <g key={i}>
+                    <line x1={sx} y1={sy} x2={ex} y2={ey} stroke="currentColor" strokeWidth={1.5} />
+                    <circle cx={sx} cy={sy} r={5} fill="currentColor" />
+                    <circle cx={ex} cy={ey} r={5} fill="hsl(var(--background))" stroke="currentColor" strokeWidth={2} />
+                  </g>
+                );
+              })}
+            </svg>
+            <div className="absolute" style={{ left: CX - 128, top: CY - 128 }}><Hub /></div>
+            {sections.map((s, i) => (
+              <Card key={s.slug} s={s} className="absolute w-[230px]" style={{ left: pts[i].x - 115, top: pts[i].y - 62 }} />
             ))}
           </div>
         </div>
-      </section>
-
-      {/* About Preview */}
-      <section className="py-20 md:py-28 bg-cream">
-        <div className="container mx-auto px-4 md:px-8">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-navy-900 mb-2">
-                We fight for<br /><span className="italic">your future</span>
-              </h2>
-              <div className="w-16 h-1 bg-purple-500 rounded-full mb-6" />
-              <p className="text-muted-foreground leading-relaxed mb-8">
-                Founded by Sarah Martinez and Jennifer Chen, Apex Injury Advocates combines over 40 years of personal injury expertise with a client-first philosophy. Our team of board-certified specialists has recovered over $250 million for injury victims nationwide.
-              </p>
-              <Link
-                to="/about-us"
-                className="inline-block border-2 border-navy-900 text-navy-900 hover:bg-navy-900 hover:text-white font-medium px-6 py-2.5 rounded-full transition-all duration-300 text-sm"
-              >
-                About us
-              </Link>
-            </div>
-            <div className="flex justify-center">
-              <div className="relative">
-                <div className="absolute -bottom-4 -right-4 w-full h-full bg-purple-500 rounded-2xl" />
-                <img
-                  src={images.aboutPreview}
-                  alt="Attorneys in discussion"
-                  className="relative w-full max-w-md rounded-2xl object-cover shadow-lg z-10"
-                />
-              </div>
-            </div>
+        {/* Mobile / tablet */}
+        <div className="xl:hidden">
+          <Hub />
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {sections.map((s) => <Card key={s.slug} s={s} />)}
           </div>
         </div>
       </section>
 
-      {/* News */}
-      <section className="py-20 md:py-28 bg-cream-dark">
-        <div className="container mx-auto px-4 md:px-8">
-          <div className="flex items-end justify-between mb-14">
-            <div>
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-navy-900">
-                Stay <span className="italic">informed</span>
-              </h2>
-              <div className="w-16 h-1 bg-purple-500 rounded-full mt-3" />
-            </div>
-            <Link to="/news" className="text-navy-900 hover:text-purple-500 font-medium text-sm transition-colors">
-              View all articles →
-            </Link>
-          </div>
-          <div className="grid md:grid-cols-3 gap-10">
-            {articles.map((article) => (
-              <Link key={article.slug} to={`/news/${article.slug}`} className="group">
-                <p className="font-semibold text-navy-900 text-sm mb-1 group-hover:text-purple-500 transition-colors">
-                  {article.author}
-                </p>
-                <p className="text-xs text-muted-foreground mb-3">{article.date}</p>
-                <h3 className="font-display text-lg font-semibold text-navy-900 mb-2 leading-snug group-hover:text-purple-500 transition-colors">
-                  {article.title}
-                </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{article.excerpt}</p>
+      <section className="container mt-10 grid gap-6 md:grid-cols-4">
+        {categories.map((c) => (
+          <div key={c.slug} className="rounded-2xl border p-6">
+            <p className="text-xs font-semibold uppercase tracking-wider text-accent">{c.title}</p>
+            {sections.filter((s) => s.category === c.slug).map((s) => (
+              <Link key={s.slug} to={`/${s.slug}`} className="mt-3 flex items-center justify-between text-sm font-medium hover:text-accent">
+                {s.title} <ArrowRight className="h-4 w-4" />
               </Link>
             ))}
           </div>
-        </div>
+        ))}
       </section>
     </Layout>
   );
 };
-
 export default Index;
