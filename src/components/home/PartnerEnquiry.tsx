@@ -121,7 +121,7 @@ const PartnerEnquiry = () => {
             <Input name="email" type="email" inputMode="email" autoComplete="email" maxLength={255} {...aria("email")} />
             {err("email")}
           </label>
-          <label className="min-w-0 space-y-2 text-sm font-medium">Phone number <span className="font-normal text-muted-foreground">(optional)</span>
+          <label className="min-w-0 space-y-2 text-sm font-medium"><span className="block">Phone number <span className="font-normal text-muted-foreground">(optional)</span></span>
             <Input name="phone" type="tel" inputMode="tel" autoComplete="tel" maxLength={20} {...aria("phone")} />
             {err("phone")}
           </label>
