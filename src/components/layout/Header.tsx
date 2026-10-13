@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import logo from "@/assets/exf-education-logo.png.asset.json";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { categories, sections } from "@/data/site";
+import { Button } from "@/components/ui/button";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
@@ -15,10 +16,10 @@ const Header = () => {
         <nav className="hidden items-center gap-1 lg:flex">
           {categories.map((c) => (
             <div key={c.slug} className="group relative">
-              <button className="flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium hover:bg-muted">
+              <Button variant="ghost" className="flex items-center gap-1 px-3 py-2">
                 {c.title} <ChevronDown className="h-3.5 w-3.5" />
-              </button>
-              <div className="invisible absolute left-0 top-full w-64 rounded-xl border bg-popover p-2 opacity-0 shadow-lg transition group-hover:visible group-hover:opacity-100">
+              </Button>
+              <div className="invisible absolute left-0 top-full w-64 rounded-xl border bg-popover p-2 opacity-0 shadow-lg transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
                 {sections.filter((s) => s.category === c.slug).map((s) => (
                   <Link key={s.slug} to={`/${s.slug}`} className="flex items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-muted">
                     <s.icon className="h-4 w-4 text-accent" /> {s.title}
@@ -27,11 +28,11 @@ const Header = () => {
               </div>
             </div>
           ))}
-          <Link to="/contact" className="ml-2 rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground">Contact</Link>
+          <Button asChild className="ml-2"><Link to="/#partner-enquiry">Partner enquiry</Link></Button>
         </nav>
-        <button className="lg:hidden" onClick={() => setOpen(!open)} aria-label="Menu">
+        <Button variant="ghost" size="icon" className="lg:hidden" onClick={() => setOpen(!open)} aria-label="Menu" aria-expanded={open}>
           {open ? <X /> : <Menu />}
-        </button>
+        </Button>
       </div>
       {open && (
         <div className="border-t bg-background lg:hidden">
@@ -44,7 +45,7 @@ const Header = () => {
                 ))}
               </div>
             ))}
-            <Link to="/contact" onClick={() => setOpen(false)} className="block font-medium text-accent">Contact</Link>
+            <Link to="/#partner-enquiry" onClick={() => setOpen(false)} className="block font-medium text-accent">Partner enquiry</Link>
           </div>
         </div>
       )}
