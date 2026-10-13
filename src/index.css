@@ -548,3 +548,9 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 }
 
 
+
+/* Colourful, gently animated ecosystem icons */
+.eco-icon-color { color: hsl(var(--icon-h) 70% 38%); background: linear-gradient(145deg, hsl(var(--icon-h) 90% 94%), hsl(var(--icon-h) 75% 84%)); box-shadow: inset 0 1px 1px hsl(0 0% 100% / .7), 0 4px 10px -4px hsl(var(--icon-h) 70% 45% / .55); animation: eco-icon-bob 4.5s ease-in-out infinite; }
+.eco-node:hover .eco-icon-color, .eco-node.is-active .eco-icon-color { transform: scale(1.12) rotate(-6deg); transition: transform .3s ease; }
+@keyframes eco-icon-bob { 0%,100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-2px) rotate(4deg); } }
+@media (prefers-reduced-motion: reduce) { .eco-icon-color { animation: none !important; } }
