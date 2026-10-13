@@ -50,6 +50,24 @@ const armKeywords: Record<string, string[]> = {
   "/student-success": ["achievement", "success", "placement", "growth", "alumni"],
 };
 
+/** Keyword map over approved programmes and ecosystem arms. */
+export const catalog: CatalogEntry[] = [
+  ...programmes.map((p) => ({
+    title: p.title,
+    path: `/programmes/${p.slug}`,
+    kind: "programme" as const,
+    keywords: programmeKeywords[p.slug] ?? [],
+    why: `${p.level} programme`,
+  })),
+  ...arms.map((a) => ({
+    title: a.title,
+    path: a.path,
+    kind: "ecosystem" as const,
+    keywords: armKeywords[a.path] ?? [],
+    why: a.subtitle,
+  })),
+];
+
 const STOP = new Set(["the", "and", "for", "with", "want", "like", "from", "that", "this", "into", "are", "was", "have", "will"]);
 
 function tokens(text: string): string[] {
