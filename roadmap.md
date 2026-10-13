@@ -1,4 +1,7 @@
 # Roadmap
+- [ ] Finish homepage infographic, accessible four-category navigation, global design and responsive rules
+- [ ] Refine reusable programme, collaboration, research and gallery templates without adding unapproved content
+- [ ] Verify desktop, tablet, mobile navigation and homepage enquiry states
 - [x] Homepage hub: Exafluence Education centre with 12 arms (per sketch)
 - [x] 4 main categories, 12 section pages + contact, 12 sub-pages
 - [ ] Real content/photos from client
