@@ -31,11 +31,20 @@ export const ecosystemNodes: EcoNode[] = [
 
 const W = 1200, H = 780, CX = 600, CY = 380;
 
-const Icon = ({ n }: { n: EcoNode }) => (
-  <span className={`eco-icon ${n.accent ? "eco-icon-3d" : ""}`} aria-hidden>
-    <n.icon className="h-4 w-4" strokeWidth={1.5} />
-  </span>
-);
+const ICON_HUES = [214, 160, 262, 28, 340, 190, 45, 290, 120, 0, 230];
+const Icon = ({ n }: { n: EcoNode }) => {
+  const i = ecosystemNodes.indexOf(n);
+  const hue = ICON_HUES[(i < 0 ? 0 : i) % ICON_HUES.length];
+  return (
+    <span
+      className="eco-icon eco-icon-color"
+      style={{ "--icon-h": hue, animationDelay: `${(i % 6) * 0.6}s` } as import("react").CSSProperties}
+      aria-hidden
+    >
+      <n.icon className="h-4 w-4" strokeWidth={1.7} />
+    </span>
+  );
+};
 
 const NodeBody = ({ n, i }: { n: EcoNode; i: number }) => (
   <>
