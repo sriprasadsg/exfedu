@@ -22,9 +22,9 @@ describe("programme recommender", () => {
     expect(recommendLocal("cooking recipes", "open a bakery")).toEqual([]);
   });
 
-  it("AI mode is not connected without an AWS endpoint", async () => {
+  it("AI recommendations run through the project's own AI function", async () => {
     expect(recommendConfig.endpoint).toBe("");
-    await expect(recommendWithAI("data", "career")).rejects.toThrow(/not connected/i);
+    await expect(recommendWithAI("data", "career")).rejects.toThrow(/tell us a little more/i);
   });
 
   it("catalog covers every programme and arm", () => {

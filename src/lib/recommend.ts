@@ -1,18 +1,23 @@
 /**
  * Student programme recommender.
- * Local keyword matching runs in the browser now. The AI recommendation is
- * intentionally NOT connected: when Exafluence AWS Cloud hosts the AI endpoint,
- * set recommendConfig.endpoint (e.g. import.meta.env.VITE_RECOMMEND_API_URL).
- * The AWS endpoint should accept { interests, goals, catalog } and return
- * { recommendations: Recommendation[] }. The AI key must live on the AWS
- * server, never in this website.
+ *
+ * Local keyword matching runs in the browser for instant results. AI
+ * recommendations run through a server-side function so the AI key never
+ * reaches the website. `recommendConfig.endpoint` is the single wiring point:
+ * leave it empty to use the built-in AI function, or set it to a full URL to
+ * point the same request at an Exafluence-hosted endpoint.
  */
+import { supabase } from "@/integrations/supabase/client";
 import { programmes, arms } from "@/data/site";
 
 export const recommendConfig = {
-  mode: "test" as "test" | "production",
+  mode: "ai" as "ai" | "off",
+  /** Empty = the project's own AI function. Set a full URL to override. */
   endpoint: "",
 };
+
+/** Below this the AI pass is skipped — the text is too thin to match honestly. */
+export const MIN_COMBINED = 20;
 
 export type Recommendation = {
   title: string;
@@ -109,17 +114,32 @@ export function recommendLocal(interests: string, goals: string): Recommendation
   return scored.sort((a, b) => b.score - a.score).slice(0, 6);
 }
 
-/** AI recommendation via the Exafluence AWS endpoint. Not connected yet. */
+/**
+ * AI recommendation. Runs through the project's server-side AI function, so the
+ * AI key stays off the website. Point recommendConfig.endpoint at an
+ * Exafluence-hosted URL to send the identical request there instead.
+ */
 export async function recommendWithAI(interests: string, goals: string): Promise<Recommendation[]> {
-  if (!recommendConfig.endpoint) {
-    throw new Error("AI recommendations are not connected yet. The Exafluence AWS endpoint is pending.");
+  if (interests.trim().length + goals.trim().length < MIN_COMBINED) {
+    throw new Error("Please tell us a little more about your interests or goals first.");
   }
-  const res = await fetch(recommendConfig.endpoint, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ interests, goals, catalog }),
-  });
-  if (!res.ok) throw new Error(`Recommendation request failed (${res.status})`);
-  const data = (await res.json()) as { recommendations: Recommendation[] };
-  return data.recommendations.map((r) => ({ ...r, source: "ai" as const }));
+
+  const aiCatalog = catalog.map(({ title, path, kind, why }) => ({ title, path, kind, why }));
+
+  const { data, error } = await supabase.functions.invoke(
+    recommendConfig.endpoint || "programme-recommend",
+    { body: { interests, goals, catalog: aiCatalog } },
+  );
+
+  if (error) {
+    const context = (error as { context?: unknown }).context;
+    if (context instanceof Response) {
+      const payload = (await context.json().catch(() => null)) as { error?: string } | null;
+      throw new Error(payload?.error || "AI recommendations are unavailable right now.");
+    }
+    throw new Error(error.message || "AI recommendations are unavailable right now.");
+  }
+
+  const payload = data as { recommendations?: Recommendation[] } | null;
+  return (payload?.recommendations ?? []).map((r) => ({ ...r, source: "ai" as const }));
 }
