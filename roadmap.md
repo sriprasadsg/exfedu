@@ -28,3 +28,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Partner enquiry section made premium: shorter heading, intro line, smaller 3D visual, light-border white card, slim weights, 48px fields, shorter textarea, "Collaboration requirement", lighter consent, "Send Partner Enquiry"
 - [x] Make the enquiry form colourful
 - [x] Partner enquiry image: client chose the convergence orbits visual
+- [ ] Footer brand line must stay on a single unbroken line (name + Exafluence Inc., USA logo) at every screen width
