@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { z } from "zod";
+import partner3d from "@/assets/partner-3d.png";
 import { ArrowUpRight, CheckCircle2, AlertCircle } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -108,8 +109,11 @@ const PartnerEnquiry = () => {
         <div className="min-w-0">
           <p className="mb-3 text-sm font-normal text-accent">Partner enquiry</p>
           <h2 className="site-section-title font-display leading-snug">Industry Integrated<br />Collaboration Partner</h2>
+          <div className="partner-3d-stage mt-8">
+            <img src={partner3d} alt="" aria-hidden loading="lazy" width={1024} height={1024} className="partner-3d-object" />
+          </div>
         </div>
-        <form className="grid min-w-0 gap-5 sm:grid-cols-2" noValidate onSubmit={handleSubmit} aria-busy={submitting}>
+        <form className="partner-3d-card grid min-w-0 gap-5 sm:grid-cols-2" noValidate onSubmit={handleSubmit} aria-busy={submitting}>
           <label className="min-w-0 space-y-2 text-sm font-medium"><span className="block">Contact name</span>
             <Input name="name" autoComplete="name" maxLength={100} {...aria("name")} />
             {err("name")}
