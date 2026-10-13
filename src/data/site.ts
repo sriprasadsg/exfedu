@@ -28,7 +28,7 @@ export type Page = {
 export const categories = [
   { slug: "core", title: "Core", short: "About" },
   { slug: "academic", title: "Academic Collaborations", short: "Academic" },
-  { slug: "industry", title: "Industry & Technology", short: "Industry" },
+  { slug: "industry", title: "Industry & Technology Collaborations", short: "Industry" },
   { slug: "learning", title: "Learning & Student Ecosystem", short: "Learning & Students" },
 ] as const;
 export type CategorySlug = (typeof categories)[number]["slug"];
@@ -47,7 +47,7 @@ export const programmes = [
 
 const programmeSections = [
   "Programme Overview", "Programme Significance", "Who Should Join", "Student Benefits", "Curriculum / Modules",
-  "Practical Learning", "Tools & Technologies", "Projects / Capstone", "Duration & Delivery Mode", "Eligibility",
+  "Practical Learning", "Tools & Technologies", "Projects / Capstone", "Duration", "Delivery Mode", "Eligibility",
   "Career Opportunities", "Certification", "Brochure",
 ];
 
@@ -80,7 +80,6 @@ export const pages: Page[] = [
     summary: "University partners delivering industry-integrated programmes with Exafluence Education.",
     blocks: [
       { type: "children", title: "Current collaborations" },
-      { type: "pending", title: "Future University Partners", items: ["Listed only after official approval"] },
       enquire("Become an academic partner"),
     ] },
   { path: "/academic-collaborations/svu", parent: "/academic-collaborations", title: "SVU Collaboration", category: "academic", icon: GraduationCap,
@@ -102,7 +101,6 @@ export const pages: Page[] = [
     summary: "Industry connections that keep every programme aligned with real-world practice.",
     blocks: [
       { type: "children", title: "Collaborations" },
-      { type: "pending", title: "Additional partners", items: ["Other Technology Partners — after official confirmation", "Industry Networks — after official confirmation"] },
       enquire("Become an industry partner"),
     ] },
   { path: "/industry-collaborations/exafluence-inc", parent: "/industry-collaborations", title: "Exafluence Inc. Industry Connection", category: "industry", icon: Building2,
@@ -171,18 +169,18 @@ export const findPage = (path: string) => pages.find((p) => p.path === path.repl
 export const navPages = (cat: CategorySlug) => pages.filter((p) => p.category === cat && !p.hideInNav);
 
 /** Hub arms: every arm is subordinate to the central Exafluence Education brand. */
-export const arms: { title: string; path: string; icon: LucideIcon; items: string[] }[] = [
-  { title: "Academic Collaborations", path: "/academic-collaborations", icon: Landmark, items: ["SVU", "XIME"] },
-  { title: "Industry & Technology", path: "/industry-collaborations", icon: Network, items: ["IBM", "Exafluence Inc."] },
-  { title: "Programmes", path: "/programmes", icon: BookOpen, items: ["Master's & PG", "Diplomas & Certifications", "AI · Data · Cloud"] },
-  { title: "Practical Learning", path: "/practical-learning", icon: FlaskConical, items: ["Hands-on Labs", "Industry Projects", "Capstones"] },
-  { title: "Internships & Exposure", path: "/internships", icon: Briefcase, items: ["Internships", "Industry Visits", "ODC Exposure"] },
-  { title: "Career Development", path: "/career-development", icon: Compass, items: ["Placement Training", "Mock Interviews", "Career Guidance"] },
-  { title: "Research & Innovation", path: "/research-innovation", icon: Lightbulb, items: ["Publications", "Conferences", "Hackathons"] },
-  { title: "Student Success", path: "/student-success", icon: Award, items: ["Placements", "Achievements", "Career Growth"] },
-  { title: "Student's Corner", path: "/students-corner", icon: LayoutGrid, items: ["Resources", "Announcements", "Downloads"] },
-  { title: "SkillShone", path: "/skillshone", icon: MonitorPlay, items: ["Digital Learning Platform", "Courses · Assessments"] },
-  { title: "Gallery & Highlights", path: "/gallery", icon: Images, items: ["Events", "Activities", "Awards"] },
+export const arms: { title: string; path: string; icon: LucideIcon; subtitle: string; priority: "institutional" | "learning" | "student" }[] = [
+  { title: "Academic Collaborations", path: "/academic-collaborations", icon: Landmark, subtitle: "SVU · XIME", priority: "institutional" },
+  { title: "Industry & Technology", path: "/industry-collaborations", icon: Network, subtitle: "IBM · Exafluence Inc.", priority: "institutional" },
+  { title: "Programmes", path: "/programmes", icon: BookOpen, subtitle: "AI · Data · Cloud", priority: "learning" },
+  { title: "Practical Learning", path: "/practical-learning", icon: FlaskConical, subtitle: "Labs · Projects · Capstones", priority: "learning" },
+  { title: "Internships & Exposure", path: "/internships", icon: Briefcase, subtitle: "Internships · Industry visits", priority: "learning" },
+  { title: "Career Development", path: "/career-development", icon: Compass, subtitle: "Skills · Career guidance", priority: "learning" },
+  { title: "Research & Innovation", path: "/research-innovation", icon: Lightbulb, subtitle: "Research · Ideas · Innovation", priority: "student" },
+  { title: "Student Success", path: "/student-success", icon: Award, subtitle: "Achievements · Career growth", priority: "student" },
+  { title: "Student’s Corner", path: "/students-corner", icon: LayoutGrid, subtitle: "Resources · Updates · Downloads", priority: "student" },
+  { title: "SkillShone", path: "/skillshone", icon: MonitorPlay, subtitle: "Digital learning platform", priority: "student" },
+  { title: "Gallery & Highlights", path: "/gallery", icon: Images, subtitle: "Events · Activities", priority: "student" },
 ];
 
 /** Add approved photos here: { src, alt, category } where category matches a gallery filter. */

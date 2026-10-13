@@ -8,7 +8,8 @@ const ContentPage = () => {
   const { pathname } = useLocation();
   const page = findPage(pathname);
   if (!page) return <NotFound />;
-  const cat = categories.find((c) => c.slug === page.category)!;
+  const cat = categories.find((c) => c.slug === page.category);
+  if (!cat) return <NotFound />;
   const parent = page.parent ? findPage(page.parent) : undefined;
   const siblings = navPages(page.category);
 

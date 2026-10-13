@@ -6,10 +6,10 @@ import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { PENDING, pages, programmes, galleryItems, type Block, type Page } from "@/data/site";
 
-const H2 = ({ children }: { children: React.ReactNode }) => <h2 className="font-display text-2xl font-normal tracking-tight">{children}</h2>;
+const H2 = ({ children }: { children: React.ReactNode }) => <h2 className="site-section-title font-display font-normal">{children}</h2>;
 
 export const PendingTag = () => (
-  <span className="inline-flex items-center gap-1.5 rounded-full border border-dashed px-2.5 py-0.5 text-[11px] uppercase tracking-wider text-muted-foreground">
+  <span className="inline-flex items-center gap-1.5 border-l border-dashed pl-2 text-xs text-muted-foreground">
     <CircleDashed className="h-3 w-3" /> {PENDING}
   </span>
 );
@@ -29,8 +29,8 @@ const Gallery = ({ filters }: { filters: string[] }) => {
     <div>
       <div className="flex flex-wrap gap-2" role="tablist">
         {filters.map((f) => (
-          <button key={f} role="tab" aria-selected={active === f} onClick={() => setActive(f)}
-            className={`rounded-full border px-4 py-1.5 text-sm transition-colors ${active === f ? "border-primary bg-primary text-primary-foreground" : "hover:border-primary"}`}>{f}</button>
+          <Button variant="outline" key={f} role="tab" aria-selected={active === f} onClick={() => setActive(f)}
+            className={`rounded-full border px-4 py-1.5 text-sm transition-colors ${active === f ? "border-primary bg-primary text-primary-foreground" : "hover:border-primary"}`}>{f}</Button>
         ))}
       </div>
       {shown.length === 0 ? (
@@ -42,9 +42,9 @@ const Gallery = ({ filters }: { filters: string[] }) => {
       ) : (
         <div className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4">
           {shown.map((g, i) => (
-            <button key={g.src} onClick={() => setOpen(i)} className="aspect-[4/3] overflow-hidden rounded-lg border">
+            <Button variant="ghost" aria-label={`Open photo: ${g.alt}`} key={g.src} onClick={() => setOpen(i)} className="h-auto aspect-[4/3] overflow-hidden rounded-lg border p-0">
               <img src={g.src} alt={g.alt} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 hover:scale-105" />
-            </button>
+            </Button>
           ))}
         </div>
       )}
@@ -141,7 +141,7 @@ export const BlockView = ({ block, page }: { block: Block; page: Page }) => {
       return <img src={block.src} alt={block.alt} className="h-20 w-auto" />;
     case "cta":
       return (
-        <div className="flex flex-col items-start justify-between gap-4 rounded-lg border p-8 md:flex-row md:items-center">
+        <div className="flex flex-col items-start justify-between gap-4 border-y py-8 md:flex-row md:items-center">
           <div><p className="font-display text-xl">{block.title}</p><p className="mt-1 text-muted-foreground">{block.text}</p></div>
           {block.to ? <Button asChild><Link to={block.to}>{block.label}<ArrowRight /></Link></Button> : <Button disabled>{block.label}</Button>}
         </div>
