@@ -4,9 +4,8 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
 import Contact from "./pages/Contact";
-import SectionPage from "./pages/SectionPage";
+import ContentPage from "./pages/ContentPage";
 
 const queryClient = new QueryClient();
 
@@ -19,9 +18,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/:section" element={<SectionPage />} />
-          <Route path="/:section/:sub" element={<SectionPage />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path="*" element={<ContentPage />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
