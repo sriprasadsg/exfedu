@@ -70,3 +70,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [ ] Programmes page icon: make it colourful and animate it gently (client 15:08 UTC)
 - [ ] Make the animation clearly noticeable on the element in the client's screenshot (client 15:09 UTC)
 - [ ] Homepage partnerships heading replaced with "Academia–Industry Collaboration for Future-Ready Learning" on a single line, intro paragraph set out and aligned neatly (client 15:14 UTC)
+- [ ] Homepage hero: tassel separated into its own layer and given a gentle swing (client 15:18 UTC)
