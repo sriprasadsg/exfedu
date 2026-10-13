@@ -16,6 +16,9 @@ export const recommendConfig = {
   endpoint: "",
 };
 
+/** Below this the AI pass is skipped — the text is too thin to match honestly. */
+export const MIN_COMBINED = 20;
+
 export type Recommendation = {
   title: string;
   path: string;
