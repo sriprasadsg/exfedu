@@ -73,3 +73,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Homepage hero: tassel separated into its own layer and given a gentle swing; cap stays still (client 15:18 UTC)
 - [x] Homepage hero tagline: wording replaced with "Connecting Academia, Industry & Technology" and font size reduced further (client 15:26 UTC)
 - [ ] Replace the network symbol with the client's university-to-industry illustration (uploaded, 1672x941, now at src/assets/university-industry-hub.png.asset.json) — awaiting client's choice of placement (client 15:34 UTC)
+- [ ] Custom icon set for the circle graphic's 11 arms — stopped on client request (15:50 UTC); generated files sit unused in src/assets/icons/ and are not imported anywhere. Do not wire them in unless the client asks.
