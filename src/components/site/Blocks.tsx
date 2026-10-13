@@ -15,7 +15,7 @@ export const PendingTag = () => (
 );
 
 const LinkCard = ({ to, title, meta }: { to: string; title: string; meta?: string }) => (
-  <Link to={to} className="group flex items-center justify-between rounded-lg border p-5 transition-colors hover:border-primary">
+  <Link to={to} className="group flex items-center justify-between card-premium rounded-lg border bg-card p-5 transition-colors hover:border-primary">
     <span>{meta && <span className="block text-xs uppercase tracking-wider text-muted-foreground">{meta}</span>}<span className="text-base">{title}</span></span>
     <ArrowRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-1 group-hover:text-primary" />
   </Link>
