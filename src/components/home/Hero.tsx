@@ -9,7 +9,7 @@ const Hero = () => (
         <p className="hero-eyebrow">
           An Edtech Division of <span className="brand-exa">Exa</span><span className="brand-fluence">fluence</span> Inc USA
         </p>
-        <h1 className="hero-title sr-only">Exafluence Education</h1>
+        <h1 className="hero-title">Exafluence Education</h1>
         <p className="hero-tagline">Where Academia, Industry &amp; Technology Converge</p>
         <div className="hero-ctas">
           <Link to="/programmes" className="hero-cta hero-cta--primary">

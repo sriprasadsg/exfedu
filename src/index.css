@@ -410,21 +410,22 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .brand-exa { color: hsl(var(--brand-blue)); }
 .brand-fluence { color: hsl(var(--brand-red)); }
 .hero-title {
-  margin-top: .7rem;
-  font-size: clamp(2rem, 5.2vw, 3.4rem);
-  line-height: 1.08;
+  margin-top: .55rem;
+  font-size: clamp(1.05rem, 2.2vw, 1.45rem);
+  line-height: 1.25;
   font-weight: 500;
-  color: hsl(var(--primary));
+  letter-spacing: .22em;
+  color: hsl(var(--navy-600));
   text-transform: uppercase;
   animation: fadeInUp .55s .08s both;
 }
 .hero-tagline {
-  margin-top: .9rem;
-  max-width: 46ch;
-  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  margin-top: .8rem;
+  max-width: 30ch;
+  font-size: clamp(1.45rem, 3.2vw, 2.15rem);
   font-weight: 400;
-  line-height: 1.65;
-  color: hsl(var(--muted-foreground));
+  line-height: 1.35;
+  color: hsl(var(--primary));
   animation: fadeInUp .55s .16s both, hero-tagline-breathe 11s ease-in-out 1.4s infinite;
 }
 @keyframes hero-tagline-breathe {
