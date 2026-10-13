@@ -1,114 +1,189 @@
 import {
-  Building2, Landmark, Users, BookOpen, Laptop, Briefcase, TrendingUp,
-  UsersRound, PlayCircle, Image, Lightbulb, Mountain, type LucideIcon,
+  Building2, Landmark, Network, BookOpen, FlaskConical, Briefcase, Compass, Lightbulb, Award,
+  LayoutGrid, MonitorPlay, Images, Newspaper, Info, Users, Mail, HelpCircle, GraduationCap, type LucideIcon,
 } from "lucide-react";
+import skillshoneLogo from "@/assets/skillshone-logo.png.asset.json";
 
-export type Offering = { title: string; points: string[]; benefits: string };
-export type SubPage = { slug: string; title: string; summary: string; intro?: string; offerings?: Offering[] };
-export type Section = {
-  slug: string;
-  title: string;
-  tagline?: string;
-  icon: LucideIcon;
-  category: string;
-  intro: string;
-  items: string[];
-  subPages?: SubPage[];
+/** Content is data-only: add approved pages, partners or programmes here without touching layouts. */
+export type Offering = { name: string; significance: string[]; benefits: string };
+export type Block =
+  | { type: "text"; title?: string; text: string }
+  | { type: "features"; title: string; items: string[]; note?: string }
+  | { type: "pending"; title: string; items: string[] }
+  | { type: "pathway"; title: string; steps: string[] }
+  | { type: "offerings"; title: string; rows: Offering[] }
+  | { type: "programmes"; title: string }
+  | { type: "faq"; title: string }
+  | { type: "team"; title: string; groups: string[] }
+  | { type: "gallery"; filters: string[] }
+  | { type: "children"; title: string }
+  | { type: "logo"; src: string; alt: string }
+  | { type: "cta"; title: string; text: string; label: string; to?: string };
+
+export type Page = {
+  path: string; title: string; category: CategorySlug; icon: LucideIcon;
+  summary: string; eyebrow?: string; parent?: string; blocks: Block[]; hideInNav?: boolean;
 };
 
 export const categories = [
-  { slug: "about", title: "About" },
-  { slug: "programmes", title: "Programmes" },
-  { slug: "careers", title: "Careers" },
-  { slug: "campus", title: "Research & Campus" },
+  { slug: "core", title: "Core", short: "About" },
+  { slug: "academic", title: "Academic Collaborations", short: "Academic" },
+  { slug: "industry", title: "Industry & Technology", short: "Industry" },
+  { slug: "learning", title: "Learning & Student Ecosystem", short: "Learning & Students" },
 ] as const;
+export type CategorySlug = (typeof categories)[number]["slug"];
 
-export const sections: Section[] = [
-  {
-    slug: "exafluence-inc", title: "Exafluence Inc.", tagline: "Parent Company", icon: Building2, category: "about",
-    intro: "Exafluence Education is backed by Exafluence Inc., bringing real industry expertise and a global perspective into every classroom.",
-    items: ["Industry Expertise", "Technology Solutions", "Global Perspective"],
-  },
-  {
-    slug: "academic-collaborations", title: "Academic Collaborations", icon: Landmark, category: "about",
-    intro: "We partner with respected universities to co-create degree and diploma programmes.",
-    items: ["SVU", "XIME", "Future University Partners"],
-    subPages: [
-      { slug: "svu", title: "SVU Partnership", summary: "Jointly delivered postgraduate programmes with Sri Venkateswara University." },
-      { slug: "xime", title: "XIME Partnership", summary: "Management and technology programmes delivered with XIME." },
-    ],
-  },
-  {
-    slug: "industry-collaborations", title: "Industry & Technology Collaborations", icon: Users, category: "about",
-    intro: "Curriculum shaped with technology leaders so students learn what industry actually uses.",
-    items: ["IBM", "Industry-aligned Programmes"],
-    subPages: [{
-      slug: "ibm", title: "Exafluence Education × IBM Career Education",
-      summary: "Empowering future-ready talent through industry-aligned education.",
-      intro: "Exafluence Education, the EdTech division of Exafluence Inc., USA, collaborates with IBM Career Education to bridge the gap between academic learning and industry expectations. This collaboration focuses on equipping students with emerging technology skills, practical learning experiences, and industry-relevant knowledge to prepare them for future career opportunities.",
-      offerings: [
-        { title: "Co-Branded Program", points: ["Complete offline delivery by Exafluence Education with technical support of IBM", "Course plugged into the credit structure"], benefits: "Gain industry-relevant skills through semester-wise learning, hands-on training, and exposure to emerging technologies. Earn semester-wise certificates from IBM and co-branded certifications from IBM & the institution that strengthen your academic profile and career readiness." },
-        { title: "Value-Added Program", points: ["Complete offline delivery by Exafluence Education with technical support of IBM", "Course plugged into the credit structure"], benefits: "Enhance your academic qualifications with industry-focused technical skills beyond the regular curriculum. Gain practical exposure to emerging technologies and earn IBM certification to strengthen your employability and professional profile." },
-        { title: "Project-Based Experiential Learning (PBEL)", points: ["Complete online mentorship by Exafluence Education with technical support of IBM"], benefits: "Work on real-world industry challenges through hands-on projects, expert mentorship, and collaborative learning. Build problem-solving skills, gain practical project experience, and earn an IBM Digital Badge and Certificate of Completion." },
-        { title: "Certificate in Quantum Computing", points: ["Complete offline delivery by Exafluence Education with technical support of IBM"], benefits: "Explore the fundamentals of Quantum Computing through an IBM-aligned curriculum and hands-on learning with Qiskit. Develop foundational quantum technology skills and earn an IBM certificate to prepare for emerging opportunities in quantum computing and research." },
-      ],
-    }],
-  },
-  {
-    slug: "programmes", title: "Programmes", icon: BookOpen, category: "programmes",
-    intro: "Future-ready programmes across AI, Data, FinTech, Cloud, Quantum and more.",
-    items: ["Masters & PG Diplomas", "Diplomas & Certifications", "AI, Data, FinTech, Cloud", "Quantum & More"],
-    subPages: [
-      { slug: "masters-pg-diplomas", title: "Masters & PG Diplomas", summary: "Long-form postgraduate programmes with university partners." },
-      { slug: "diplomas-certifications", title: "Diplomas & Certifications", summary: "Short, focused credentials for working learners." },
-      { slug: "ai-data", title: "AI & Data", summary: "Machine learning, analytics and data engineering tracks." },
-      { slug: "fintech-cloud", title: "FinTech & Cloud", summary: "Digital finance and cloud platform tracks." },
-      { slug: "quantum", title: "Quantum Computing", summary: "Foundations of quantum computing and its applications." },
-    ],
-  },
-  {
-    slug: "practical-learning", title: "Practical Learning", icon: Laptop, category: "programmes",
-    intro: "Learning by doing — labs, live projects and real business cases.",
-    items: ["Hands-on Labs", "Industry Projects", "Case Studies", "Capstone Projects"],
-  },
-  {
-    slug: "skillshone", title: "SkillShone", tagline: "Solve Industry-Grade Problems Using AI", icon: PlayCircle, category: "programmes",
-    intro: "SkillShone — a product of Exafluence Education (a division of Exafluence Inc. USA) — is our platform for solving industry-grade problems using AI: self-paced courses, hands-on practice and certification.",
-    items: ["Online Courses", "Video Lessons", "Hands-on Practice", "Assessments", "Certificates"],
-  },
-  {
-    slug: "career-development", title: "Career Development", icon: Mountain, category: "careers",
-    intro: "Structured support that takes students from classroom to career.",
-    items: ["Placement Training", "Soft Skills", "Mock Interviews", "Resume Building", "Career Guidance"],
-  },
-  {
-    slug: "internships", title: "Internships & Industry Exposure", icon: Briefcase, category: "careers",
-    intro: "Real-world experience inside working technology teams.",
-    items: ["Student Internships", "Industry Visits", "Exafluence ODC Exposure", "Real-world Experience"],
-    subPages: [{ slug: "odc-exposure", title: "Exafluence ODC Exposure", summary: "Work alongside delivery teams at the Exafluence offshore development centre." }],
-  },
-  {
-    slug: "student-success", title: "Student Success", icon: TrendingUp, category: "careers",
-    intro: "Outcomes that speak for themselves.",
-    items: ["Placements", "Achievements", "Alumni Stories", "Career Growth"],
-    subPages: [{ slug: "alumni-stories", title: "Alumni Stories", summary: "Where our graduates are now and how they got there." }],
-  },
-  {
-    slug: "research-innovation", title: "Research & Innovation", icon: Lightbulb, category: "campus",
-    intro: "A culture of curiosity — publishing, presenting and building.",
-    items: ["Research Publications", "Conference Participation", "Hackathons", "Innovation Projects"],
-    subPages: [{ slug: "hackathons", title: "Hackathons", summary: "Team challenges solving real problems in limited time." }],
-  },
-  {
-    slug: "gallery", title: "Gallery & Highlights", icon: Image, category: "campus",
-    intro: "Moments from events, activities and visits.",
-    items: ["Events", "Student Activities", "Awards & Recognitions", "Campus & Industry Visits"],
-  },
-  {
-    slug: "students-corner", title: "Student's Corner", icon: UsersRound, category: "campus",
-    intro: "Everything current students need in one place.",
-    items: ["Academic Resources", "Projects & Capstones", "Opportunities & Announcements", "Student Achievements", "Downloads & Support"],
-  },
+export const PENDING = "Approved Content Required";
+
+const enquire = (label = "Enquire Now"): Block => ({ type: "cta", title: "Have a question?", text: "Speak with the Exafluence Education team.", label, to: "/contact" });
+
+export const programmes = [
+  { slug: "masters-data-science", title: "Master's in Data Science", level: "Master's & PG" },
+  { slug: "pg-diploma-data-science", title: "PG Diploma in Data Science", level: "Master's & PG" },
+  { slug: "python-ai-ml-genai", title: "Python for AI, ML & Generative AI", level: "Diplomas & Certifications" },
+  { slug: "data-visualization", title: "Data Visualization", level: "Diplomas & Certifications" },
+  { slug: "cloud-technologies", title: "Cloud Technologies", level: "Diplomas & Certifications" },
 ];
 
-export const findSection = (slug?: string) => sections.find((s) => s.slug === slug);
+const programmeSections = [
+  "Programme Overview", "Programme Significance", "Who Should Join", "Student Benefits", "Curriculum / Modules",
+  "Practical Learning", "Tools & Technologies", "Projects / Capstone", "Duration & Delivery Mode", "Eligibility",
+  "Career Opportunities", "Certification", "Brochure",
+];
+
+const ibmOfferings: Offering[] = [
+  { name: "Co-Branded Program", significance: ["Complete offline delivery by Exafluence Education with technical support of IBM", "Course plugged into the credit structure"], benefits: "Gain industry-relevant skills through semester-wise learning, hands-on training, and exposure to emerging technologies. Earn semester-wise certificates from IBM and co-branded certifications from IBM & the institution that strengthen your academic profile and career readiness." },
+  { name: "Value-Added Program", significance: ["Complete offline delivery by Exafluence Education with technical support of IBM", "Course plugged into the credit structure"], benefits: "Enhance your academic qualifications with industry-focused technical skills beyond the regular curriculum. Gain practical exposure to emerging technologies and earn IBM certification to strengthen your employability and professional profile." },
+  { name: "Project-Based Experiential Learning (PBEL)", significance: ["Complete online mentorship by Exafluence Education with technical support of IBM"], benefits: "Work on real-world industry challenges through hands-on projects, expert mentorship, and collaborative learning. Build problem-solving skills, gain practical project experience, and earn an IBM Digital Badge and Certificate of Completion." },
+  { name: "Certificate in Quantum Computing", significance: ["Complete offline delivery by Exafluence Education with technical support of IBM"], benefits: "Explore the fundamentals of Quantum Computing through an IBM-aligned curriculum and hands-on learning with Qiskit. Develop foundational quantum technology skills and earn an IBM certificate to prepare for emerging opportunities in quantum computing and research." },
+];
+
+export const pages: Page[] = [
+  // Core
+  { path: "/about", title: "About Exafluence Education", category: "core", icon: Info, eyebrow: "A Division of Exafluence Inc., USA",
+    summary: "The education arm connecting academia with industry and technology.",
+    blocks: [
+      { type: "pending", title: "Who we are", items: ["About Exafluence Education", "Connection with Exafluence Inc.", "Vision", "Mission"] },
+      { type: "pathway", title: "Academic–Industry–Technology Ecosystem", steps: ["Academia", "Exafluence Education", "Industry", "Technology"] },
+      { type: "pending", title: "How we work", items: ["Industry-Integrated Learning Approach", "Quality / Standards", "Tools & Technologies"] },
+      enquire(),
+    ] },
+  { path: "/team", title: "Academic & Technical Team", category: "core", icon: Users,
+    summary: "Faculty and industry practitioners who guide every learner.",
+    blocks: [{ type: "team", title: "Our team", groups: ["Core Faculty", "Guest & Visiting Faculty"] }] },
+  { path: "/contact", title: "Contact / Enquiry", category: "core", icon: Mail, summary: "Ask about programmes, collaborations or admissions.", blocks: [] },
+  { path: "/faqs", title: "FAQs", category: "core", icon: HelpCircle, summary: "Answers to common questions from students, parents and partners.",
+    blocks: [{ type: "faq", title: "Frequently asked questions" }, enquire("Ask a question")] },
+
+  // Academic
+  { path: "/academic-collaborations", title: "Academic Collaborations", category: "academic", icon: Landmark,
+    summary: "University partners delivering industry-integrated programmes with Exafluence Education.",
+    blocks: [
+      { type: "children", title: "Current collaborations" },
+      { type: "pending", title: "Future University Partners", items: ["Listed only after official approval"] },
+      enquire("Become an academic partner"),
+    ] },
+  { path: "/academic-collaborations/svu", parent: "/academic-collaborations", title: "SVU Collaboration", category: "academic", icon: GraduationCap,
+    summary: "Exafluence Education × SVU.",
+    blocks: [
+      { type: "pending", title: "The collaboration", items: ["About the Collaboration", "Collaboration Significance", "Programmes Offered", "Programme Significance", "Student Benefits", "Eligibility"] },
+      { type: "pending", title: "Learning & outcomes", items: ["Practical Learning", "Projects", "Internships", "Industry Exposure", "Career Development", "Research & Publications", "Innovation & Achievements", "Student Outcomes", "Gallery"] },
+      enquire("Enquire about SVU programmes"),
+    ] },
+  { path: "/academic-collaborations/xime", parent: "/academic-collaborations", title: "XIME Collaboration", category: "academic", icon: GraduationCap,
+    summary: "Exafluence Education × XIME.",
+    blocks: [
+      { type: "pending", title: "The collaboration", items: ["About the Collaboration", "Programmes Offered", "Student Benefits", "Eligibility"] },
+      enquire("Enquire about XIME programmes"),
+    ] },
+
+  // Industry
+  { path: "/industry-collaborations", title: "Industry & Technology Collaborations", category: "industry", icon: Network,
+    summary: "Industry connections that keep every programme aligned with real-world practice.",
+    blocks: [
+      { type: "children", title: "Collaborations" },
+      { type: "pending", title: "Additional partners", items: ["Other Technology Partners — after official confirmation", "Industry Networks — after official confirmation"] },
+      enquire("Become an industry partner"),
+    ] },
+  { path: "/industry-collaborations/exafluence-inc", parent: "/industry-collaborations", title: "Exafluence Inc. Industry Connection", category: "industry", icon: Building2,
+    summary: "The industry backing behind Exafluence Education.",
+    blocks: [{ type: "pending", title: "Industry connection", items: ["About Exafluence Inc.", "How industry expertise reaches learners", "Exafluence ODC Exposure"] }] },
+  { path: "/industry-collaborations/ibm", parent: "/industry-collaborations", title: "IBM Collaboration", category: "industry", icon: Network,
+    summary: "Exafluence Education × IBM Career Education.",
+    blocks: [
+      { type: "text", title: "About the Collaboration", text: "Exafluence Education, the EdTech division of Exafluence Inc., USA, collaborates with IBM Career Education to bridge the gap between academic learning and industry expectations. This collaboration focuses on equipping students with emerging technology skills, practical learning experiences, and industry-relevant knowledge to prepare them for future career opportunities." },
+      { type: "offerings", title: "Programmes", rows: ibmOfferings },
+      { type: "pending", title: "Programme details", items: ["Technologies & Tools", "Hands-on Learning & Labs", "Projects / Capstone", "Duration", "Delivery Mode", "Eligibility", "Certification"] },
+      enquire("Enquire about IBM programmes"),
+    ] },
+
+  // Learning & Student Ecosystem
+  { path: "/programmes", title: "Programmes", category: "learning", icon: BookOpen,
+    summary: "Industry-integrated programmes across AI, Data Science, Cloud and emerging technologies.",
+    blocks: [
+      { type: "programmes", title: "Current programmes" },
+      { type: "pending", title: "Coming next", items: ["GenAI", "FinTech", "IBM programmes", "Quantum"] },
+      enquire("Explore with an advisor"),
+    ] },
+  ...programmes.map<Page>((p) => ({
+    path: `/programmes/${p.slug}`, parent: "/programmes", title: p.title, category: "learning", icon: BookOpen, eyebrow: p.level, hideInNav: true,
+    summary: "Programme details will be published once approved.",
+    blocks: [{ type: "pending", title: "Programme details", items: programmeSections }, enquire()],
+  })),
+  { path: "/practical-learning", title: "Practical Learning", category: "learning", icon: FlaskConical,
+    summary: "Learning by doing — from academic knowledge to real student outcomes.",
+    blocks: [
+      { type: "pathway", title: "The learning pathway", steps: ["Academic Knowledge", "Industry Challenge", "Hands-on Practice", "Real Project", "Mentor Feedback", "Student Outcome"] },
+      { type: "features", title: "Formats", items: ["Hands-on Labs", "Industry Projects", "Case Studies", "Capstone Projects"] },
+      { type: "pending", title: "Project examples", items: ["Project example 1", "Project example 2", "Project example 3"] },
+    ] },
+  { path: "/internships", title: "Internships & Industry Exposure", category: "learning", icon: Briefcase,
+    summary: "Real-world experience inside working technology teams.",
+    blocks: [{ type: "features", title: "Exposure", items: ["Student Internships", "Industry Visits", "Exafluence ODC Exposure", "Real-world Experience"] }] },
+  { path: "/career-development", title: "Career Development", category: "learning", icon: Compass,
+    summary: "Structured preparation from classroom to career.",
+    blocks: [{ type: "features", title: "Support", items: ["Placement Training", "Soft Skills", "Resume Building", "Mock Interviews", "Coding Tests", "Group Discussions", "Career Guidance", "Industry Sessions"] }] },
+  { path: "/research-innovation", title: "Research & Innovation", category: "learning", icon: Lightbulb,
+    summary: "Publishing, presenting and building.",
+    blocks: [{ type: "pending", title: "Research", items: ["Research Publications", "Accepted Papers", "International Conference Participation", "Student Research", "Hackathons", "Innovation Projects", "Awards and Recognition"] }] },
+  { path: "/student-success", title: "Student Success", category: "learning", icon: Award,
+    summary: "Outcomes reported only from verified records.",
+    blocks: [{ type: "pending", title: "Outcomes", items: ["Placements", "Achievements", "Recognitions", "Career Growth"] }] },
+  { path: "/students-corner", title: "Student's Corner", category: "learning", icon: LayoutGrid,
+    summary: "One hub for resources, updates and support.",
+    blocks: [{ type: "features", title: "Resources", note: "Links and updates will appear here as they are published.", items: ["Academic Resources", "Projects & Capstones", "Opportunities", "Announcements", "Internship Updates", "Placement Updates", "Research Opportunities", "Student Achievements", "Downloads", "Support"] }] },
+  { path: "/skillshone", title: "SkillShone", eyebrow: "Digital Learning Platform", category: "learning", icon: MonitorPlay,
+    summary: "Exafluence Education's learner-access gateway — Solve Industry-Grade Problems Using AI.",
+    blocks: [
+      { type: "logo", src: skillshoneLogo.url, alt: "SkillShone" },
+      { type: "features", title: "On the platform", items: ["Online Learning", "Video Lessons", "Learning Modules", "Hands-on Practice", "Assessments", "Projects & Assignments", "Progress Tracking", "Certificates"] },
+      { type: "cta", title: "Access SkillShone", text: "The SkillShone login link will be added once confirmed.", label: "Go to SkillShone" },
+    ] },
+  { path: "/gallery", title: "Gallery & Highlights", category: "learning", icon: Images,
+    summary: "Moments from events, visits and achievements.",
+    blocks: [{ type: "gallery", filters: ["All", "Academic Events", "Industry Visits", "Internships", "Research", "Hackathons", "Placements", "Student Activities", "Awards & Recognition"] }] },
+  { path: "/events-news", title: "Events & News", category: "learning", icon: Newspaper,
+    summary: "Announcements and upcoming events.",
+    blocks: [{ type: "pending", title: "Latest", items: ["Upcoming Events", "News & Announcements"] }] },
+];
+
+export const findPage = (path: string) => pages.find((p) => p.path === path.replace(/\/$/, "") );
+export const navPages = (cat: CategorySlug) => pages.filter((p) => p.category === cat && !p.hideInNav);
+
+/** Hub arms: every arm is subordinate to the central Exafluence Education brand. */
+export const arms: { title: string; path: string; icon: LucideIcon; items: string[] }[] = [
+  { title: "Academic Collaborations", path: "/academic-collaborations", icon: Landmark, items: ["SVU", "XIME"] },
+  { title: "Industry & Technology", path: "/industry-collaborations", icon: Network, items: ["IBM", "Exafluence Inc."] },
+  { title: "Programmes", path: "/programmes", icon: BookOpen, items: ["Master's & PG", "Diplomas & Certifications", "AI · Data · Cloud"] },
+  { title: "Practical Learning", path: "/practical-learning", icon: FlaskConical, items: ["Hands-on Labs", "Industry Projects", "Capstones"] },
+  { title: "Internships & Exposure", path: "/internships", icon: Briefcase, items: ["Internships", "Industry Visits", "ODC Exposure"] },
+  { title: "Career Development", path: "/career-development", icon: Compass, items: ["Placement Training", "Mock Interviews", "Career Guidance"] },
+  { title: "Research & Innovation", path: "/research-innovation", icon: Lightbulb, items: ["Publications", "Conferences", "Hackathons"] },
+  { title: "Student Success", path: "/student-success", icon: Award, items: ["Placements", "Achievements", "Career Growth"] },
+  { title: "Student's Corner", path: "/students-corner", icon: LayoutGrid, items: ["Resources", "Announcements", "Downloads"] },
+  { title: "SkillShone", path: "/skillshone", icon: MonitorPlay, items: ["Digital Learning Platform", "Courses · Assessments"] },
+  { title: "Gallery & Highlights", path: "/gallery", icon: Images, items: ["Events", "Activities", "Awards"] },
+];
+
+/** Add approved photos here: { src, alt, category } where category matches a gallery filter. */
+export const galleryItems: { src: string; alt: string; category: string }[] = [];

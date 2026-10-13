@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Manrope', 'system-ui', 'sans-serif'],
-        display: ['Sora', 'sans-serif'],
+        sans: ['"Google Sans Flex"', 'Figtree', 'system-ui', 'sans-serif'],
+        display: ['"Google Sans Flex"', 'Figtree', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
