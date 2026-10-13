@@ -29,3 +29,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Make the enquiry form colourful
 - [x] Partner enquiry image: client chose the convergence orbits visual
 - [x] Footer brand line stays on a single unbroken line (name + Exafluence Inc., USA logo) at every screen width
+- [x] Deep navy for enquiry hairline, dots and button (no mixed colours); site background pure white; footer titles single colour (no gradient)
