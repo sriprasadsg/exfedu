@@ -11,14 +11,25 @@ const Footer = () => (
       </span>
     </div>
     <div className="container grid gap-10 pb-14 md:grid-cols-2 lg:grid-cols-4">
-      {categories.map((c) => (
-        <div key={c.slug}>
-          <p className="footer-title-gradient mb-3 text-base font-medium">{c.title}</p>
-          {navPages(c.slug).map((s) => (
-            <Link key={s.path} to={s.path} className="footer-option block py-2 text-sm font-light">{s.title}</Link>
-          ))}
-        </div>
-      ))}
+      {categories.map((c) => {
+        const pages = navPages(c.slug);
+        const featured = pages.filter((s) => s.path === "/skillshone");
+        const rest = pages.filter((s) => s.path !== "/skillshone");
+        return (
+          <div key={c.slug}>
+            <p className="footer-title-gradient mb-3 text-base font-medium">{c.title}</p>
+            {featured.map((s) => (
+              <Link key={s.path} to={s.path} className="footer-featured">
+                {s.title}
+                <ArrowUpRight className="h-3 w-3" strokeWidth={1.75} aria-hidden />
+              </Link>
+            ))}
+            {rest.map((s) => (
+              <Link key={s.path} to={s.path} className="footer-option block py-2 text-sm font-light">{s.title}</Link>
+            ))}
+          </div>
+        );
+      })}
     </div>
     <div className="border-t border-primary-foreground/10 py-5 text-center text-xs font-light opacity-60">
       © {new Date().getFullYear()} Exafluence Education · An Edtech Division of Exafluence Inc., USA
