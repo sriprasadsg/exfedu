@@ -110,7 +110,7 @@ const PartnerEnquiry = () => {
           <p className="mb-3 text-sm font-normal text-accent">Partner enquiry</p>
           <h2 className="site-section-title enquiry-title-gradient font-display leading-snug">Partner with<br />Exafluence Education</h2>
           <p className="mt-4 max-w-[38ch] text-sm font-normal leading-relaxed text-muted-foreground">
-            Become an industry-integrated collaboration partner — building programmes, projects, research and student opportunities together.
+            Become a collaboration partner with Exafluence Education, integrating industry into programmes, projects, research and student opportunities.
           </p>
           <div className="partner-3d-stage">
             <img src={partner3d} alt="" aria-hidden loading="lazy" width={816} height={816} className="partner-3d-object" />
