@@ -254,6 +254,29 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .footer-brand-line { font-size: clamp(8px, 2.1vw, 1.35rem); }
 .footer-brand-logo { height: clamp(12px, 1.6vw, 28px); }
 .footer-title-gradient { background: none; -webkit-background-clip: initial; background-clip: initial; color: hsl(var(--primary-foreground)); }
+
+/* Gentle focused light around the Exafluence Inc. logo badge */
+.footer-logo-glow {
+  box-shadow:
+    0 0 10px 2px hsl(210 60% 70% / 0.35),
+    0 0 24px 4px hsl(210 60% 65% / 0.18);
+  animation: footer-glow 4s ease-in-out infinite;
+}
+@keyframes footer-glow {
+  0%, 100% {
+    box-shadow:
+      0 0 10px 2px hsl(210 60% 70% / 0.35),
+      0 0 24px 4px hsl(210 60% 65% / 0.18);
+  }
+  50% {
+    box-shadow:
+      0 0 14px 4px hsl(210 60% 72% / 0.55),
+      0 0 32px 8px hsl(210 60% 68% / 0.28);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .footer-logo-glow { animation: none; }
+}
 .footer-option { color: hsl(var(--muted-foreground)); transition: color .2s; }
 .footer-option:hover { color: hsl(var(--primary-foreground)); }
 
