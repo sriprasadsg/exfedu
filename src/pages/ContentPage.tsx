@@ -3,14 +3,14 @@ import Layout from "@/components/layout/Layout";
 import NotFound from "./NotFound";
 import { BlockView } from "@/components/site/Blocks";
 import { categories, findPage, navPages } from "@/data/site";
-import programmesImg from "@/assets/books-3d.png.asset.json";
+import programmesImg from "@/assets/books-3d-colorful.png";
 import researchImg from "@/assets/hero-research.png";
 import ibmImg from "@/assets/hero-ibm.png";
 import successImg from "@/assets/hero-success.png";
 import skillshoneImg from "@/assets/hero-skillshone.png";
 
 const heroVisuals: Record<string, string> = {
-  "/programmes": programmesImg.url,
+  "/programmes": programmesImg,
   "/research-innovation": researchImg,
   "/industry-collaborations/ibm": ibmImg,
   "/student-success": successImg,
