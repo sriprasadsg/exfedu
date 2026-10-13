@@ -51,3 +51,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Hero balance: name back small and light (letter-spaced, soft navy) above a larger deep-navy tagline
 - [x] "Partnerships for Academic–Industry Integration" heading kept on a single line at every width
 - [x] Hero tagline: smaller and held on a single line at every width
+- [x] Hero brand name: smaller still and light weight (400)
