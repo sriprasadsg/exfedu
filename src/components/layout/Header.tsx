@@ -54,7 +54,7 @@ const Header = () => {
             <Accordion type="single" collapsible>
               {categories.map((c) => (
                 <AccordionItem key={c.slug} value={c.slug}>
-                  <AccordionTrigger className="text-left font-normal">{c.title}</AccordionTrigger>
+                  <AccordionTrigger className={`text-left font-normal ${c.accent}`}><span className="flex items-center gap-2.5"><img src={catIcons[c.slug]} alt="" aria-hidden className="menu-cat-icon" loading="lazy" />{c.title}</span></AccordionTrigger>
                   <AccordionContent>
                     {navPages(c.slug).map((s) => <Link key={s.path} to={s.path} onClick={() => setOpen(false)} className="flex min-h-11 items-center gap-3 py-2 text-base"><s.icon className="h-4 w-4 shrink-0 text-muted-foreground" />{s.title}</Link>)}
                   </AccordionContent>
