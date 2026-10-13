@@ -8,6 +8,9 @@ import researchImg from "@/assets/hero-research.png";
 import ibmImg from "@/assets/hero-ibm.png";
 import successImg from "@/assets/hero-success.png";
 import skillshoneImg from "@/assets/hero-skillshone.png";
+import miniChip from "@/assets/mini-ai-chip-color.png";
+import miniNet from "@/assets/mini-neural-net-color.png";
+import miniSpark from "@/assets/mini-genai-spark-color.png";
 
 const heroVisuals: Record<string, string> = {
   "/programmes": programmesImg,
