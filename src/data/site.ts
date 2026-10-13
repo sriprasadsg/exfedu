@@ -1,7 +1,7 @@
 import {
   Building2, Landmark, Network, BookOpen, FlaskConical, Briefcase, Compass, Lightbulb, Award,
   LayoutGrid, MonitorPlay, Images, Newspaper, Info, Users, Mail, HelpCircle, GraduationCap,
-  Code2, BarChart3, Cloud, type LucideIcon,
+  Code2, BarChart3, Cloud, Sparkles, Database, Terminal, Presentation, Rocket, type LucideIcon,
 } from "lucide-react";
 import skillshoneLogo from "@/assets/skillshone-logo.png.asset.json";
 
@@ -14,6 +14,7 @@ export type Block =
   | { type: "pathway"; title: string; steps: string[] }
   | { type: "offerings"; title: string; rows: Offering[] }
   | { type: "programmes"; title: string }
+  | { type: "areas"; title: string }
   | { type: "faq"; title: string }
   | { type: "team"; title: string; groups: string[] }
   | { type: "gallery"; filters: string[] }
@@ -46,6 +47,16 @@ export const programmes: { slug: string; title: string; level: string; icon: Luc
   { slug: "python-ai-ml-genai", title: "Python for AI, ML & Generative AI", level: "Diplomas & Certifications", icon: Code2, tone: "violet" },
   { slug: "data-visualization", title: "Data Visualization", level: "Diplomas & Certifications", icon: BarChart3, tone: "amber" },
   { slug: "cloud-technologies", title: "Cloud Technologies", level: "Diplomas & Certifications", icon: Cloud, tone: "blue" },
+];
+
+/** Study areas the programme range covers. Neutral wording only — no unapproved claims. */
+export const programmeAreas: { title: string; text: string; icon: LucideIcon; tone: Tone }[] = [
+  { title: "AI & Gen AI", text: "Applied artificial intelligence and generative AI systems.", icon: Sparkles, tone: "blue" },
+  { title: "Data Science", text: "Working with data through to insight and visualisation.", icon: Database, tone: "teal" },
+  { title: "Cloud Technologies", text: "Modern platforms, deployment and cloud operations.", icon: Cloud, tone: "violet" },
+  { title: "Python", text: "Programming foundations through to advanced practice.", icon: Terminal, tone: "amber" },
+  { title: "Realtime Case Studies", text: "Live industry problems worked through end to end.", icon: Presentation, tone: "blue" },
+  { title: "More Emerging Technologies", text: "New and advancing fields added as programmes are approved.", icon: Rocket, tone: "teal" },
 ];
 
 const programmeSections = [
@@ -120,8 +131,9 @@ export const pages: Page[] = [
 
   // Learning & Student Ecosystem
   { path: "/programmes", title: "Programmes", category: "learning", icon: BookOpen,
-    summary: "Industry-integrated programmes across AI, Data Science, Cloud and emerging technologies.",
+    summary: "Industry-integrated programmes across AI & Gen AI, Data Science, Cloud Technologies, Python, realtime case studies and more emerging technologies.",
     blocks: [
+      { type: "areas", title: "Areas of study" },
       { type: "programmes", title: "Current programmes" },
       { type: "pending", title: "Coming next", items: ["GenAI", "FinTech", "IBM programmes", "Quantum"] },
       enquire("Explore with an advisor"),

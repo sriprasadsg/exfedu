@@ -58,3 +58,6 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Student recommender AI mode live — server-side AI function, key held off the website; recommendConfig.endpoint remains the override
 - [ ] Clarify the client's 'refe., site' note (14:39 UTC) — meaning unclear
 - [x] Make the site whites pure and peaceful (client 14:39 UTC)
+- [x] Programmes page: add study areas — AI & Gen AI, Data Science, Cloud Technologies, Python, Realtime Case Studies, More Emerging Technologies
+- [x] Programmes page icons: gentle staggered animation (client 14:46 UTC)
+- [x] Programmes page: navy edge line removed, colourful books visual inserted (client 14:47 UTC)
