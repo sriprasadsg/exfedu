@@ -498,4 +498,30 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
   .hero-ring { animation: none; }
 }
 
+/* Programmes page: faint colourful AI / Gen AI mini-illustrations behind the header */
+.page-decor { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.page-decor__item {
+  position: absolute;
+  opacity: .13;
+  animation: decor-drift 14s ease-in-out infinite;
+}
+.page-decor__item--chip  { top: 6%;  left: 2%;  width: 8.5rem; }
+.page-decor__item--net   { top: 30%; right: 30%; width: 5.5rem; animation-delay: -5s; }
+.page-decor__item--spark { bottom: 8%; left: 30%; width: 5rem; animation-delay: -9s; }
+.page-decor__item--net2  { bottom: 14%; right: 3%; width: 7rem; animation-delay: -7s; }
+@keyframes decor-drift {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-9px) rotate(2.5deg); }
+}
+@media (max-width: 767px) {
+  .page-decor__item { opacity: .1; }
+  .page-decor__item--chip  { width: 5.5rem; top: 4%; }
+  .page-decor__item--net   { display: none; }
+  .page-decor__item--spark { width: 3.75rem; left: 6%; }
+  .page-decor__item--net2  { width: 4.5rem; bottom: 6%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .page-decor__item { animation: none; }
+}
+
 
