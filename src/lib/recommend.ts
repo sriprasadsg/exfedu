@@ -111,17 +111,28 @@ export function recommendLocal(interests: string, goals: string): Recommendation
   return scored.sort((a, b) => b.score - a.score).slice(0, 6);
 }
 
-/** AI recommendation via the Exafluence AWS endpoint. Not connected yet. */
+/**
+ * AI recommendation. Runs through the project's server-side AI function, so the
+ * AI key stays off the website. Point recommendConfig.endpoint at an
+ * Exafluence-hosted URL to send the identical request there instead.
+ */
 export async function recommendWithAI(interests: string, goals: string): Promise<Recommendation[]> {
-  if (!recommendConfig.endpoint) {
-    throw new Error("AI recommendations are not connected yet. The Exafluence AWS endpoint is pending.");
+  const aiCatalog = catalog.map(({ title, path, kind, why }) => ({ title, path, kind, why }));
+
+  const { data, error } = await supabase.functions.invoke(
+    recommendConfig.endpoint || "programme-recommend",
+    { body: { interests, goals, catalog: aiCatalog } },
+  );
+
+  if (error) {
+    const context = (error as { context?: unknown }).context;
+    if (context instanceof Response) {
+      const payload = (await context.json().catch(() => null)) as { error?: string } | null;
+      throw new Error(payload?.error || "AI recommendations are unavailable right now.");
+    }
+    throw new Error(error.message || "AI recommendations are unavailable right now.");
   }
-  const res = await fetch(recommendConfig.endpoint, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ interests, goals, catalog }),
-  });
-  if (!res.ok) throw new Error(`Recommendation request failed (${res.status})`);
-  const data = (await res.json()) as { recommendations: Recommendation[] };
-  return data.recommendations.map((r) => ({ ...r, source: "ai" as const }));
+
+  const payload = data as { recommendations?: Recommendation[] } | null;
+  return (payload?.recommendations ?? []).map((r) => ({ ...r, source: "ai" as const }));
 }

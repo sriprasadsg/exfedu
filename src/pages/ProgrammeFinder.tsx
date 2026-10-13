@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Compass, Sparkles, ArrowUpRight } from "lucide-react";
+import { Compass, Sparkles, ArrowUpRight, Loader2 } from "lucide-react";
 import Layout from "@/components/layout/Layout";
-import { recommendLocal, recommendWithAI, recommendConfig, type Recommendation } from "@/lib/recommend";
+import { recommendLocal, recommendWithAI, type Recommendation } from "@/lib/recommend";
 
 const MIN = 20;
 
@@ -11,6 +11,7 @@ const ProgrammeFinder = () => {
   const [goals, setGoals] = useState("");
   const [results, setResults] = useState<Recommendation[] | null>(null);
   const [error, setError] = useState("");
+  const [pending, setPending] = useState(false);
 
   useEffect(() => {
     document.title = "Find Your Programme | Exafluence Education";
@@ -20,25 +21,36 @@ const ProgrammeFinder = () => {
 
   const ready = interests.trim().length + goals.trim().length >= MIN;
 
-  const submit = (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
     if (!ready) {
       setError("Please tell us a little more about your interests or goals first.");
       return;
     }
+
+    // Show instant rule-based matches while the AI pass is still running.
     const local = recommendLocal(interests, goals);
     setResults(local.length ? local : null);
-    if (!local.length) setError("We couldn't match that yet — try mentioning topics like data, AI, cloud, design, research or careers.");
-  };
 
-  const aiReview = async () => {
+    setPending(true);
     try {
-      setResults(await recommendWithAI(interests, goals));
+      const ai = await recommendWithAI(interests, goals);
+      if (ai.length) {
+        setResults(ai);
+        setError("");
+      } else if (!local.length) {
+        setError("We couldn't match that yet — try mentioning topics like data, AI, cloud, design, research or careers.");
+      }
     } catch (err) {
       setError(err instanceof Error ? err.message : "AI recommendations are unavailable right now.");
+      if (!local.length) setResults(null);
+    } finally {
+      setPending(false);
     }
   };
+
+  const fromAI = results?.some((r) => r.source === "ai");
 
   return (
     <Layout>
@@ -81,40 +93,42 @@ const ProgrammeFinder = () => {
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
             <button
               type="submit"
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition hover:opacity-90"
+              disabled={pending}
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition hover:opacity-90 disabled:cursor-wait disabled:opacity-70"
             >
-              <Compass className="h-4 w-4" aria-hidden /> Suggest programmes
+              {pending ? <Loader2 className="h-4 w-4 animate-spin" aria-hidden /> : <Compass className="h-4 w-4" aria-hidden />}
+              {pending ? "Thinking…" : "Suggest programmes"}
             </button>
-            <button
-              type="button"
-              onClick={aiReview}
-              disabled={!recommendConfig.endpoint}
-              title={recommendConfig.endpoint ? "Get AI-powered recommendations" : "AI recommendations await the Exafluence AWS endpoint"}
-              className="inline-flex items-center justify-center gap-2 rounded-lg border border-border px-5 py-2.5 text-sm font-medium text-foreground transition hover:bg-muted disabled:cursor-not-allowed disabled:opacity-50"
-            >
-              <Sparkles className="h-4 w-4" aria-hidden /> AI recommendations (awaiting AWS)
-            </button>
+            <span className="inline-flex items-center gap-1.5 text-xs text-muted-foreground">
+              <Sparkles className="h-3.5 w-3.5" aria-hidden />
+              AI-powered, based on what you tell us
+            </span>
           </div>
         </form>
 
         {results && (
-          <div className="mt-8 grid gap-4 sm:grid-cols-2">
-            {results.map((r) => (
-              <Link
-                key={r.path + r.title}
-                to={r.path}
-                className="card-premium group rounded-2xl border border-border bg-card p-5"
-              >
-                <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
-                  {r.kind === "programme" ? "Programme" : "Ecosystem area"}
-                </p>
-                <h2 className="mt-1.5 flex items-center gap-1.5 text-lg font-medium text-foreground">
-                  {r.title}
-                  <ArrowUpRight className="h-4 w-4 text-muted-foreground transition group-hover:text-foreground" aria-hidden />
-                </h2>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{r.why}</p>
-              </Link>
-            ))}
+          <div className="mt-8">
+            <p className="mb-3 text-xs uppercase tracking-widest text-muted-foreground">
+              {pending ? "Refining your matches…" : fromAI ? "Recommended for you" : "Closest matches"}
+            </p>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {results.map((r) => (
+                <Link
+                  key={r.path + r.title}
+                  to={r.path}
+                  className="card-premium group rounded-2xl border border-border bg-card p-5"
+                >
+                  <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
+                    {r.kind === "programme" ? "Programme" : "Ecosystem area"}
+                  </p>
+                  <h2 className="mt-1.5 flex items-center gap-1.5 text-lg font-medium text-foreground">
+                    {r.title}
+                    <ArrowUpRight className="h-4 w-4 text-muted-foreground transition group-hover:text-foreground" aria-hidden />
+                  </h2>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{r.why}</p>
+                </Link>
+              ))}
+            </div>
           </div>
         )}
       </section>
