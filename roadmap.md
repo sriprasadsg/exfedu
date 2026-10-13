@@ -50,3 +50,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Hero tagline: gentle animation (slow 11s drift with a soft brightness lift; off under reduced motion)
 - [x] Hero balance: name back small and light (letter-spaced, soft navy) above a larger deep-navy tagline
 - [x] "Partnerships for Academic–Industry Integration" heading kept on a single line at every width
+- [x] Hero tagline: smaller and held on a single line at every width
