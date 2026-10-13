@@ -6,7 +6,9 @@ const Hero = () => (
   <section aria-label="Exafluence Education introduction" className="hero-section">
     <div className="container hero-inner">
       <div className="hero-copy">
-        <p className="hero-eyebrow">An Edtech Division of Exafluence Inc., USA</p>
+        <p className="hero-eyebrow">
+          An Edtech Division of <span className="brand-exa">Exa</span><span className="brand-fluence">fluence</span> Inc USA
+        </p>
         <h1 className="hero-title">Exafluence Education</h1>
         <p className="hero-tagline">Where Academia, Industry &amp; Technology Converge</p>
         <div className="hero-ctas">
