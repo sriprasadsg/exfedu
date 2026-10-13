@@ -61,8 +61,8 @@ export const sections: Section[] = [
     items: ["Hands-on Labs", "Industry Projects", "Case Studies", "Capstone Projects"],
   },
   {
-    slug: "skillshone", title: "SkillShone", tagline: "Digital Learning Platform", icon: PlayCircle, category: "programmes",
-    intro: "Our online platform for self-paced courses, practice and certification.",
+    slug: "skillshone", title: "SkillShone", tagline: "Solve Industry-Grade Problems Using AI", icon: PlayCircle, category: "programmes",
+    intro: "SkillShone — a product of Exafluence Education (a division of Exafluence Inc. USA) — is our platform for solving industry-grade problems using AI: self-paced courses, hands-on practice and certification.",
     items: ["Online Courses", "Video Lessons", "Hands-on Practice", "Assessments", "Certificates"],
   },
   {

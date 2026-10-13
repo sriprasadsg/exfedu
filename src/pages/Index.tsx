@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { GraduationCap, ArrowRight } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import { sections, categories, type Section } from "@/data/site";
+import skillshoneLogo from "@/assets/skillshone-logo.png.asset.json";
 
 const W = 1240, H = 1020, CX = W / 2, CY = H / 2, RX = 500, RY = 390;
 
@@ -71,6 +72,29 @@ const Index = () => {
             {sections.map((s) => <Card key={s.slug} s={s} />)}
           </div>
         </div>
+      </section>
+
+      {/* SkillShone flagship banner */}
+      <section className="container mt-12">
+        <Link
+          to="/skillshone"
+          className="group flex flex-col items-center gap-6 rounded-3xl border bg-card p-8 text-center shadow-sm transition hover:shadow-lg md:flex-row md:text-left"
+        >
+          <span className="rounded-2xl bg-white p-6">
+            <img src={skillshoneLogo.url} alt="SkillShone — A product of Exafluence Education, a division of Exafluence Inc. USA" className="h-24 w-auto md:h-28" />
+          </span>
+          <span className="flex-1">
+            <span className="block font-display text-2xl font-bold tracking-tight md:text-3xl">
+              Solve Industry-Grade Problems Using AI
+            </span>
+            <span className="mt-2 block text-sm text-muted-foreground md:text-base">
+              Our flagship learning platform — real industry problems, hands-on AI practice, and certification that employers recognise.
+            </span>
+          </span>
+          <span className="flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition group-hover:gap-3">
+            Explore SkillShone <ArrowRight className="h-4 w-4" />
+          </span>
+        </Link>
       </section>
 
       <section className="container mt-10 grid gap-6 md:grid-cols-4">
