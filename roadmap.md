@@ -42,3 +42,5 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Ecosystem pen mark: gentle bob animation (slow drift, soft shadow; off under reduced motion)
 - [x] Pen mark animation more noticeable (stronger drift, faster 7s cycle)
 - [x] Shrink infographic: centre circle 300→248px, nodes and text scaled down accordingly
+- [x] 2027-ready hero section: EXAFLUENCE EDUCATION + tagline, Explore Programmes / Partner with Us CTAs, white bg, navy/grey slim type, glossy 3D cap accent
+- [ ] Hero background: user says "pure milk white" — clarify desired background treatment

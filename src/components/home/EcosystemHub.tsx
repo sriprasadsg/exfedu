@@ -68,8 +68,8 @@ const EcosystemHub = () => {
   };
 
   return (
-    <section aria-labelledby="eco-heading" className="eco-section">
-      <h1 id="eco-heading" className="sr-only">Exafluence Education — Where Academia, Industry &amp; Technology Converge</h1>
+    <section aria-label="Education ecosystem" className="eco-section">
+      <p className="sr-only">Exafluence Education — Where Academia, Industry &amp; Technology Converge</p>
 
       {/* Desktop: open radial composition */}
       <div className={`eco-stage hidden lg:block ${active !== null ? "has-active" : ""}`}>

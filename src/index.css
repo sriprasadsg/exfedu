@@ -393,4 +393,66 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .site-header-panel .mobile-sublink { color: hsl(210 30% 86%); }
 .site-header-panel .mobile-sublink:hover { color: hsl(0 0% 100%); }
 
+/* Hero — compact, white, slim; one selective glossy 3D accent */
+.hero-section { background: hsl(var(--background)); }
+.hero-inner {
+  display: grid;
+  align-items: center;
+  gap: 2rem;
+  padding-block: 3.25rem 2.75rem;
+}
+.hero-eyebrow { font-size: .85rem; font-weight: 400; color: hsl(var(--muted-foreground)); animation: fadeInUp .55s both; }
+.hero-title {
+  margin-top: .7rem;
+  font-size: clamp(2rem, 5.2vw, 3.4rem);
+  line-height: 1.08;
+  font-weight: 500;
+  color: hsl(var(--primary));
+  text-transform: uppercase;
+  animation: fadeInUp .55s .08s both;
+}
+.hero-tagline {
+  margin-top: .9rem;
+  max-width: 46ch;
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  font-weight: 400;
+  line-height: 1.65;
+  color: hsl(var(--muted-foreground));
+  animation: fadeInUp .55s .16s both;
+}
+.hero-ctas { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.9rem; animation: fadeInUp .55s .24s both; }
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  height: 3rem;
+  padding: 0 1.45rem;
+  border-radius: .55rem;
+  font-size: .95rem;
+  font-weight: 500;
+  transition: background-color .2s ease, border-color .2s ease, color .2s ease, transform .2s ease;
+}
+.hero-cta:active { transform: translateY(1px); }
+.hero-cta--primary { background: hsl(var(--primary)); color: hsl(var(--primary-foreground)); }
+.hero-cta--primary:hover { background: hsl(214 62% 22%); }
+.hero-cta--ghost { border: 1px solid hsl(var(--input)); color: hsl(var(--primary)); }
+.hero-cta--ghost:hover { border-color: hsl(var(--primary) / .6); background: hsl(var(--secondary)); }
+.hero-visual { display: none; }
+@media (min-width: 1024px) {
+  .hero-inner { grid-template-columns: minmax(0, 1.4fr) minmax(0, .6fr); padding-block: 4.5rem 4rem; }
+  .hero-visual { display: block; }
+}
+.hero-cap {
+  display: block;
+  width: min(15rem, 100%);
+  height: auto;
+  margin-inline: auto;
+  filter: drop-shadow(0 18px 32px hsl(214 68% 14% / .14));
+  animation: slow-float 10s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-eyebrow, .hero-title, .hero-tagline, .hero-ctas { animation: none; }
+  .hero-cap { animation: none; }
+}
+
 
