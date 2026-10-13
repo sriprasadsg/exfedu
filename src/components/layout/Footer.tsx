@@ -9,8 +9,7 @@ const Footer = () => (
     </div>
     <div className="container grid gap-10 pb-14 md:grid-cols-2 lg:grid-cols-5">
       <div>
-        <p className="text-sm font-light opacity-70">Where Academia, Industry & Technology Converge.</p>
-        <div className="mt-5 inline-block rounded-md bg-background p-3">
+        <div className="inline-block rounded-md bg-background p-3">
           <img src={exafluence.url} alt="Exafluence — Data Driven Influence" className="h-12 w-auto" />
         </div>
       </div>
