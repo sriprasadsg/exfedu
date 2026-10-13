@@ -30,6 +30,28 @@ const SectionPage = () => {
 
       <section className="container grid gap-10 py-14 lg:grid-cols-3">
         <div className="lg:col-span-2">
+          {subPage?.intro && <p className="mb-10 text-lg leading-relaxed text-muted-foreground">{subPage.intro}</p>}
+          {subPage?.offerings ? (
+            <>
+              <h2 className="font-display text-2xl font-semibold">Programmes</h2>
+              <div className="mt-6 grid gap-5 sm:grid-cols-2">
+                {subPage.offerings.map((o, idx) => (
+                  <div key={o.title} className="flex flex-col rounded-xl border bg-card p-6">
+                    <span className="text-sm font-semibold text-accent">0{idx + 1}</span>
+                    <h3 className="mt-2 font-display text-lg font-semibold">{o.title}</h3>
+                    <ul className="mt-3 space-y-2">
+                      {o.points.map((p) => (
+                        <li key={p} className="flex items-start gap-2 text-sm"><Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />{p}</li>
+                      ))}
+                    </ul>
+                    <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-muted-foreground">Student benefits</p>
+                    <p className="mt-1 text-sm text-muted-foreground">{o.benefits}</p>
+                  </div>
+                ))}
+              </div>
+            </>
+          ) : (
+            <>
           <h2 className="font-display text-2xl font-semibold">{subPage ? "Overview" : "What's included"}</h2>
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
             {s.items.map((i) => (
@@ -39,6 +61,8 @@ const SectionPage = () => {
               </div>
             ))}
           </div>
+            </>
+          )}
         </div>
         <aside className="space-y-6">
           {s.subPages && (

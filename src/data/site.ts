@@ -3,7 +3,8 @@ import {
   UsersRound, PlayCircle, Image, Lightbulb, Mountain, type LucideIcon,
 } from "lucide-react";
 
-export type SubPage = { slug: string; title: string; summary: string };
+export type Offering = { title: string; points: string[]; benefits: string };
+export type SubPage = { slug: string; title: string; summary: string; intro?: string; offerings?: Offering[] };
 export type Section = {
   slug: string;
   title: string;
@@ -41,7 +42,17 @@ export const sections: Section[] = [
     slug: "industry-collaborations", title: "Industry & Technology Collaborations", icon: Users, category: "about",
     intro: "Curriculum shaped with technology leaders so students learn what industry actually uses.",
     items: ["IBM", "Industry-aligned Programmes"],
-    subPages: [{ slug: "ibm", title: "IBM Collaboration", summary: "IBM-aligned content, tools and certifications built into our programmes." }],
+    subPages: [{
+      slug: "ibm", title: "Exafluence Education × IBM Career Education",
+      summary: "Empowering future-ready talent through industry-aligned education.",
+      intro: "Exafluence Education, the EdTech division of Exafluence Inc., USA, collaborates with IBM Career Education to bridge the gap between academic learning and industry expectations. This collaboration focuses on equipping students with emerging technology skills, practical learning experiences, and industry-relevant knowledge to prepare them for future career opportunities.",
+      offerings: [
+        { title: "Co-Branded Program", points: ["Complete offline delivery by Exafluence Education with technical support of IBM", "Course plugged into the credit structure"], benefits: "Gain industry-relevant skills through semester-wise learning, hands-on training, and exposure to emerging technologies. Earn semester-wise certificates from IBM and co-branded certifications from IBM & the institution that strengthen your academic profile and career readiness." },
+        { title: "Value-Added Program", points: ["Complete offline delivery by Exafluence Education with technical support of IBM", "Course plugged into the credit structure"], benefits: "Enhance your academic qualifications with industry-focused technical skills beyond the regular curriculum. Gain practical exposure to emerging technologies and earn IBM certification to strengthen your employability and professional profile." },
+        { title: "Project-Based Experiential Learning (PBEL)", points: ["Complete online mentorship by Exafluence Education with technical support of IBM"], benefits: "Work on real-world industry challenges through hands-on projects, expert mentorship, and collaborative learning. Build problem-solving skills, gain practical project experience, and earn an IBM Digital Badge and Certificate of Completion." },
+        { title: "Certificate in Quantum Computing", points: ["Complete offline delivery by Exafluence Education with technical support of IBM"], benefits: "Explore the fundamentals of Quantum Computing through an IBM-aligned curriculum and hands-on learning with Qiskit. Develop foundational quantum technology skills and earn an IBM certificate to prepare for emerging opportunities in quantum computing and research." },
+      ],
+    }],
   },
   {
     slug: "programmes", title: "Programmes", icon: BookOpen, category: "programmes",
