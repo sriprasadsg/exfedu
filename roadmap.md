@@ -64,3 +64,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Homepage hero: only the outer metallic ring animates, the cap stays still (client 14:51 UTC)
 - [x] Programme page side icons: colourful icon tiles restored (client 14:53 UTC)
 - [x] Programme page: "Coming next" placeholder block removed (client 14:53 UTC)
+- [x] Programmes header background: faint colourful AI/Gen AI mini-illustrations with gentle drift (client 15:00/15:01 UTC)
