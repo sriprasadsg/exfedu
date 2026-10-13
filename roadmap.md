@@ -60,3 +60,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Make the site whites pure and peaceful (client 14:39 UTC)
 - [x] Programmes page: add study areas — AI & Gen AI, Data Science, Cloud Technologies, Python, Realtime Case Studies, More Emerging Technologies
 - [x] Programmes page icons: gentle staggered animation (client 14:46 UTC)
+- [ ] Programmes page: remove the disliked line, use the colourful books visual instead (client 14:47 UTC)
