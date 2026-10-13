@@ -1,10 +1,10 @@
 import Layout from "@/components/layout/Layout";
-import EducationHub from "@/components/home/EducationHub";
+import EcosystemHub from "@/components/home/EcosystemHub";
 import PartnerEnquiry from "@/components/home/PartnerEnquiry";
 
 const Index = () => (
   <Layout>
-    <div className="px-3 py-6 sm:px-6"><EducationHub /></div>
+    <EcosystemHub />
     <PartnerEnquiry />
   </Layout>
 );
