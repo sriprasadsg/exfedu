@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,300..1000&display=swap');
 
 
 @tailwind base;
@@ -190,7 +190,7 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .footer-featured:hover, .footer-featured:focus-visible { background: hsl(var(--primary-foreground) / .12); border-color: hsl(var(--primary-foreground) / .8); outline: none; }
 
 /* ===== Ecosystem hub (native, rebuilt) ===== */
-.eco-section { font-family: 'Geist', 'Manrope', system-ui, sans-serif; max-width: 1240px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+.eco-section { font-family: 'Google Sans Flex', 'Figtree', system-ui, sans-serif; max-width: 1240px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
 .eco-stage { position: relative; width: 100%; aspect-ratio: 1200 / 820; padding-bottom: 2rem; margin: 4rem 0 5rem; }
 .eco-svg { position: absolute; inset: 0; width: 100%; height: calc(100% - 40px); overflow: visible; }
 .eco-grid-line { stroke: hsl(var(--primary) / .05); stroke-width: 1; }
@@ -242,7 +242,7 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 }
 
 /* ===== Ways to partner (RMIT-style card grid) ===== */
-.ways-section { font-family: 'Geist', 'Manrope', system-ui, sans-serif; max-width: 1240px; margin: 0 auto; padding: 1rem 1rem 3.5rem; }
+.ways-section { font-family: 'Google Sans Flex', 'Figtree', system-ui, sans-serif; max-width: 1240px; margin: 0 auto; padding: 1rem 1rem 3.5rem; }
 .ways-eyebrow { font-size: .74rem; letter-spacing: .18em; text-transform: uppercase; color: hsl(var(--primary) / .7); font-weight: 500; }
 .ways-heading { margin-top: .6rem; font-size: clamp(1.35rem, 2.4vw, 2rem); line-height: 1.25; font-weight: 500; letter-spacing: -.01em; color: hsl(var(--primary)); max-width: 34rem; }
 .ways-intro { margin-top: .8rem; font-size: .92rem; line-height: 1.7; color: hsl(var(--muted-foreground)); max-width: 42rem; }
@@ -251,7 +251,11 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 @media (min-width: 1024px) { .ways-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 .ways-card { display: flex; align-items: flex-start; gap: .9rem; height: 100%; background: hsl(var(--background)); border: 1px solid hsl(var(--muted-foreground) / .2); border-top: 2px solid hsl(var(--primary) / .55); border-radius: 14px; padding: 1.15rem 1.2rem; text-decoration: none; transition: border-color .3s ease, transform .3s ease; }
 .ways-card:hover, .ways-card:focus-visible { border-color: hsl(var(--primary) / .45); border-top-color: hsl(var(--primary)); transform: translateY(-2px); outline: none; }
-.ways-icon { flex: none; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 11px; color: hsl(214 68% 14%); background: hsl(214 68% 14% / .08); }
+.ways-icon { flex: none; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 11px; }
+.ways-icon.tone-blue { color: hsl(214 84% 48%); background: hsl(214 84% 48% / .1); }
+.ways-icon.tone-teal { color: hsl(172 66% 34%); background: hsl(172 66% 34% / .1); }
+.ways-icon.tone-amber { color: hsl(32 92% 44%); background: hsl(32 92% 44% / .12); }
+.ways-icon.tone-violet { color: hsl(262 68% 55%); background: hsl(262 68% 55% / .1); }
 .ways-title { display: block; color: hsl(var(--primary)); font-weight: 500; font-size: 1rem; line-height: 1.3; }
 .ways-line { display: block; margin-top: .2rem; font-size: .74rem; letter-spacing: .04em; text-transform: uppercase; color: hsl(var(--muted-foreground) / .85); }
 .ways-body { display: block; margin-top: .55rem; font-size: .84rem; line-height: 1.65; color: hsl(var(--muted-foreground)); }
