@@ -10,9 +10,13 @@
 - [x] Partner enquiry test mode — zod validation, simulated submit, success/error messages; no backend connected
 - [x] Partner enquiry form QA — 7 widths, validation, success/error, dropdown, consent, AWS-ready config
 - [x] Full website responsive QA — all 27 routes at 1440/1280/1024/768/430/390/360, nav dropdowns, mobile menu, no overflow
-- [ ] Confirm collaboration-type dropdown list with client (placeholder list in use)
+- [x] Collaboration-type dropdown set to client's list
 - [ ] Real-device check of the form on iPhone/Android (layout held in desktop browser at short heights)
 - [ ] Connect enquiry delivery to Exafluence AWS Cloud (client deploys backend after UI/workflow testing; never Lovable Cloud)
 
 - [x] Rebuild per full brief: 4 categories (Core, Academic, Industry & Technology, Learning & Student Ecosystem), reusable page templates, programme template, gallery filters, navy/grey slim styling
 - [ ] Approved content for placeholder sections, SkillShone link, team, photos — waits on client
+
+## Stage order
+Content Approval → Final Responsive QA → AWS Integration → Production Deployment (AWS not started — waits on client go-ahead)
+- [ ] SkillShone button stays disabled until final URL is provided

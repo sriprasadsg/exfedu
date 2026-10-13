@@ -19,11 +19,12 @@ export const enquiryConfig = {
 };
 
 export const collaborationTypes = [
-  "Academic collaboration",
-  "Industry project",
-  "Internships",
-  "Training & workshops",
-  "Research & innovation",
+  "Academic Collaboration",
+  "Industry Collaboration",
+  "Technology Collaboration",
+  "Programme Partnership",
+  "Research Collaboration",
+  "Internship / Placement Collaboration",
   "Other",
 ] as const;
 
