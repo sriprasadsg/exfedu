@@ -44,3 +44,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Shrink infographic: centre circle 300→248px, nodes and text scaled down accordingly
 - [x] 2027-ready hero section: EXAFLUENCE EDUCATION + tagline, Explore Programmes / Partner with Us CTAs, white bg, navy/grey slim type, glossy 3D cap accent
 - [ ] Hero background: user says "pure milk white" — clarify desired background treatment
+- [x] Ways-to-partner heading replaced with "Partnerships for Academic–Industry Integration" (client's exact wording)
