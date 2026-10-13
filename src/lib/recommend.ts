@@ -31,24 +31,6 @@ type CatalogEntry = {
   why: string;
 };
 
-/** Keyword map over approved programmes and ecosystem arms. */
-export const catalog: CatalogEntry[] = [
-  ...programmes.map((p) => ({
-    title: p.title,
-    path: `/programmes/${p.slug}`,
-    kind: "programme" as const,
-    keywords: programmeKeywords[p.slug] ?? [],
-    why: `${p.level} programme`,
-  })),
-  ...arms.map((a) => ({
-    title: a.title,
-    path: a.path,
-    kind: "ecosystem" as const,
-    keywords: armKeywords[a.path] ?? [],
-    why: a.subtitle,
-  })),
-];
-
 const programmeKeywords: Record<string, string[]> = {
   "masters-data-science": ["data", "science", "analytics", "master", "pg", "postgraduate", "statistics", "machine learning", "ml", "career", "degree"],
   "pg-diploma-data-science": ["data", "science", "diploma", "analytics", "pg", "postgraduate", "statistics", "short", "career switch"],
