@@ -57,4 +57,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Animate the side icons gently (client screenshot image-28)
 - [x] Student recommender AI mode live — server-side AI function, key held off the website; recommendConfig.endpoint remains the override
 - [ ] Clarify the client's 'refe., site' note (14:39 UTC) — meaning unclear
-- [ ] Make the site whites pure and peaceful (client 14:39 UTC)
+- [x] Make the site whites pure and peaceful (client 14:39 UTC)
