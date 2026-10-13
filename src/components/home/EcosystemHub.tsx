@@ -5,7 +5,6 @@ import {
   Landmark, Network, BookOpen, FlaskConical, Briefcase, Compass,
   Lightbulb, Award, LayoutGrid, MonitorPlay, Images, type LucideIcon,
 } from "lucide-react";
-import hubObject from "@/assets/hub-object.png";
 
 type Weight = "strong" | "medium" | "light";
 export type EcoNode = {
@@ -51,8 +50,7 @@ const NodeBody = ({ n, i }: { n: EcoNode; i: number }) => (
 
 const Hub = ({ compact = false }: { compact?: boolean }) => (
   <div className={`eco-hub ${compact ? "eco-hub-compact" : ""}`}>
-    <img src={hubObject} alt="" aria-hidden className="eco-hub-object" />
-    <p className="eco-hub-name">Exafluence<br />Education</p>
+    <p className="eco-hub-name">Exafluence Education</p>
     <p className="eco-hub-tag">Where Academia, Industry &amp; Technology Converge</p>
   </div>
 );
@@ -99,7 +97,7 @@ const EcosystemHub = () => {
           <Link
             key={n.path}
             to={n.path}
-            className={`eco-node eco-node-${n.weight} ${active === i ? "is-active" : ""}`}
+            className={`eco-node eco-node-${n.weight} eco-edge-${i % 4} ${active === i ? "is-active" : ""}`}
             style={{ left: `${n.x}%`, top: `${n.y}%`, animationDelay: `${1 + i * 0.07}s` }}
             onMouseEnter={() => setActive(i)} onMouseLeave={() => setActive(null)}
             onFocus={() => setActive(i)} onBlur={() => setActive(null)}
@@ -115,7 +113,7 @@ const EcosystemHub = () => {
         <ul className="mt-10 grid grid-cols-2 gap-x-6 gap-y-3">
           {ecosystemNodes.map((n, i) => (
             <li key={n.path}>
-              <Link to={n.path} className={`eco-node eco-flow eco-node-${n.weight}`}><NodeBody n={n} i={i} /></Link>
+              <Link to={n.path} className={`eco-node eco-flow eco-node-${n.weight} eco-edge-${i % 4}`}><NodeBody n={n} i={i} /></Link>
             </li>
           ))}
         </ul>
@@ -128,7 +126,7 @@ const EcosystemHub = () => {
           {ecosystemNodes.map((n, i) => (
             <li key={n.path}>
               <ArrowDown className="eco-journey-arrow" aria-hidden strokeWidth={1.25} />
-              <Link to={n.path} className={`eco-node eco-flow eco-node-${n.weight}`}><NodeBody n={n} i={i} /></Link>
+              <Link to={n.path} className={`eco-node eco-flow eco-node-${n.weight} eco-edge-${i % 4}`}><NodeBody n={n} i={i} /></Link>
             </li>
           ))}
         </ol>
