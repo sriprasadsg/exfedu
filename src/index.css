@@ -266,7 +266,13 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 /* Partner enquiry 3D presentation */
 .partner-3d-stage { position: relative; max-width: 210px; margin: .75rem auto 0; transform: translateX(-16px); perspective: 900px; }
 .partner-3d-stage::after { content: ""; position: absolute; left: 18%; right: 18%; bottom: -4px; height: 18px; border-radius: 50%; background: hsl(var(--primary) / .12); filter: blur(11px); }
-.partner-3d-object { position: relative; z-index: 1; width: 100%; height: auto; filter: drop-shadow(0 12px 18px hsl(var(--primary) / .16)); animation: slow-float 7s ease-in-out infinite; }
+.partner-3d-object { position: relative; z-index: 1; width: 100%; height: auto; filter: drop-shadow(0 12px 18px hsl(var(--primary) / .16)); animation: slow-float 10s ease-in-out infinite; }
+@keyframes slow-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-3px) rotate(0.5deg); }
+}
+.partner-3d-stage { transition: transform .7s ease; }
+.partner-3d-stage:hover { transform: translateX(-16px) rotateX(1.5deg) rotateY(-2deg); }
 .partner-3d-card { position: relative; overflow: hidden; background: hsl(var(--background)); border: 1px solid hsl(var(--border)); border-radius: 18px; padding: clamp(1.25rem, 3vw, 1.75rem); }
 .partner-3d-card::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 3px; background: hsl(214 68% 14%); }
 .partner-3d-card input:not([type="checkbox"]), .partner-3d-card select, .partner-3d-card textarea { min-height: 48px; transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease; }
@@ -280,6 +286,7 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .partner-3d-card .enquiry-cta:hover { background-image: none; background-color: hsl(214 62% 22%); }
 @media (prefers-reduced-motion: reduce) {
   .partner-3d-object { animation: none; }
+  .partner-3d-stage, .partner-3d-stage:hover { transform: translateX(-16px); transition: none; }
   .partner-3d-card input:not([type="checkbox"]):hover, .partner-3d-card select:hover, .partner-3d-card textarea:hover,
   .partner-3d-card input:not([type="checkbox"]):focus-visible, .partner-3d-card select:focus-visible, .partner-3d-card textarea:focus-visible { transform: none; }
 }
@@ -329,18 +336,51 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 }
 .site-header .nav-on-navy,
 .site-header-panel .nav-on-navy { color: hsl(210 40% 98%); }
+
+/* Menu labels: white by default; category accent only on hover/open (one treatment: colour + soft underline) */
+.site-header .nav-on-navy { position: relative; transition: color .22s ease; }
+.site-header .nav-icon-btn::after { content: none; }
+/* Active page takes the same accent as hover */
+.site-header .nav-on-navy:has([aria-current="page"]) { color: hsl(210 80% 82%); }
+.site-header .nav-on-navy:has([aria-current="page"])::after { opacity: .85; transform: scaleX(1); }
+.site-header .nav-on-navy::after {
+  content: "";
+  position: absolute;
+  left: 22%;
+  right: 22%;
+  bottom: 7px;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  opacity: 0;
+  transform: scaleX(.55);
+  transition: opacity .22s ease, transform .22s ease;
+}
 .site-header .nav-on-navy:hover,
 .site-header .nav-on-navy[data-state="open"],
 .site-header-panel .nav-on-navy:hover,
 .site-header-panel .nav-on-navy[data-state="open"] {
-  background-color: hsl(210 40% 98% / .1);
-  color: hsl(0 0% 100%);
+  background-color: transparent;
 }
-/* Category accents, lifted to stay readable on navy */
-.site-header .cat-core, .site-header-panel .cat-core { color: hsl(214 95% 74%); }
-.site-header .cat-academic, .site-header-panel .cat-academic { color: hsl(172 60% 62%); }
-.site-header .cat-industry, .site-header-panel .cat-industry { color: hsl(38 96% 68%); }
-.site-header .cat-learning, .site-header-panel .cat-learning { color: hsl(262 84% 78%); }
+.site-header .nav-on-navy:hover::after,
+.site-header .nav-on-navy[data-state="open"]::after {
+  opacity: .85;
+  transform: scaleX(1);
+}
+/* Category accents apply only on hover/open; labels stay white otherwise */
+.site-header .nav-on-navy.cat-core:hover, .site-header .nav-on-navy.cat-core[data-state="open"],
+.site-header-panel .nav-on-navy.cat-core:hover, .site-header-panel .nav-on-navy.cat-core[data-state="open"] { color: hsl(214 95% 74%); }
+.site-header .nav-on-navy.cat-academic:hover, .site-header .nav-on-navy.cat-academic[data-state="open"],
+.site-header-panel .nav-on-navy.cat-academic:hover, .site-header-panel .nav-on-navy.cat-academic[data-state="open"] { color: hsl(172 60% 62%); }
+.site-header .nav-on-navy.cat-industry:hover, .site-header .nav-on-navy.cat-industry[data-state="open"],
+.site-header-panel .nav-on-navy.cat-industry:hover, .site-header-panel .nav-on-navy.cat-industry[data-state="open"] { color: hsl(38 96% 68%); }
+.site-header .nav-on-navy.cat-learning:hover, .site-header .nav-on-navy.cat-learning[data-state="open"],
+.site-header-panel .nav-on-navy.cat-learning:hover, .site-header-panel .nav-on-navy.cat-learning[data-state="open"] { color: hsl(262 84% 78%); }
+/* Home has no category colour: gentle light-blue accent on hover */
+.site-header .nav-on-navy:not([class*="cat-"]):hover,
+.site-header .nav-on-navy:not([class*="cat-"])[data-state="open"],
+.site-header-panel .nav-on-navy:not([class*="cat-"]):hover,
+.site-header-panel .nav-on-navy:not([class*="cat-"])[data-state="open"] { color: hsl(210 80% 82%); }
 .site-header-panel {
   background: linear-gradient(180deg, hsl(216 66% 11%), hsl(216 60% 9%));
   border-top-color: hsl(214 45% 34% / .5);

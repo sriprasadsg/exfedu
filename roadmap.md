@@ -27,7 +27,9 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Footer brand line + Exafluence Inc., USA logo as one inline line pointer (positions adjusted)
 - [x] Partner enquiry section made premium: shorter heading, intro line, smaller 3D visual, light-border white card, slim weights, 48px fields, shorter textarea, "Collaboration requirement", lighter consent, "Send Partner Enquiry"
 - [x] Make the enquiry form colourful
-- [x] Partner enquiry image: client chose the convergence orbits visual
+ - [x] Partner enquiry image: client chose the convergence orbits visual
+ - [x] Partner enquiry 3D visual replaced with client's brighter convergence-orbs image (background removed, CDN asset)
+ - [x] Gentle movement added to the partner enquiry 3D icon (slow float restored + soft tilt on hover; off under reduced motion)
 - [x] Footer brand line stays on a single unbroken line (name + Exafluence Inc., USA logo) at every screen width
 - [x] Deep navy for enquiry hairline, dots and button (no mixed colours); site background pure white; footer titles single colour (no gradient)
 - [x] Ecosystem centre circle: pure white interior (no tint), bold "EXAFLUENCE EDUCATION" on one line, bolder navy ring, very gentle animation
