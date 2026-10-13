@@ -46,7 +46,7 @@ const Header = () => {
           ))}
           <Button asChild size="sm" className="ml-3 bg-primary-foreground text-primary hover:bg-primary-foreground/90"><Link to="/#partner-enquiry">Partner enquiry</Link></Button>
         </nav>
-        <Button variant="ghost" size="icon" className="nav-on-navy lg:hidden" onClick={() => setOpen(!open)} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} aria-controls="mobile-navigation">
+        <Button variant="ghost" size="icon" className="nav-on-navy nav-icon-btn lg:hidden" onClick={() => setOpen(!open)} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} aria-controls="mobile-navigation">
 
           {open ? <X /> : <Menu />}
         </Button>
