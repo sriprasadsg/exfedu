@@ -24,3 +24,7 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [ ] Connect brand checker AI review + admin login via Exafluence AWS (no Lovable Cloud)
 - [x] Student programme recommender (/programme-finder) — local matching live, AI recommendations wait on Exafluence AWS endpoint
 - [ ] Connect recommender AI mode to Exafluence AWS endpoint (recommendConfig.endpoint; AI key server-side only)
+- [x] Footer brand line + Exafluence Inc., USA logo as one inline line pointer (positions adjusted)
+- [x] Partner enquiry section made premium: shorter heading, intro line, smaller 3D visual, light-border white card, slim weights, 48px fields, shorter textarea, "Collaboration requirement", lighter consent, "Send Partner Enquiry"
+- [ ] Make the enquiry form colourful
+- [ ] Client to choose the partner enquiry image — modern photo-style options (not 3D renders) to be shared
