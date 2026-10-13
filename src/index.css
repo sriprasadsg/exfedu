@@ -201,9 +201,11 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .eco-conn.is-active circle { fill: hsl(var(--primary)); stroke: hsl(var(--primary)); }
 .eco-center { position: absolute; left: 50%; top: calc((100% - 40px) * .487); transform: translate(-50%, -50%); }
 .eco-hub { position: relative; margin: 0 auto; width: 290px; height: 290px; border-radius: 50%; background: hsl(var(--background)); border: 2px solid hsl(var(--primary)); box-shadow: 0 0 0 12px hsl(var(--primary) / .05), 0 0 0 26px hsl(var(--muted-foreground) / .035); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 1.5rem; animation: eco-fade .8s ease-out both, eco-breathe 11s ease-in-out 1.2s infinite; }
+.eco-hub-mark { display: block; width: 46px; height: auto; margin: 0 auto .55rem; }
 .eco-hub-name { font-size: 1.05rem; line-height: 1.2; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; color: hsl(var(--primary)); }
 .eco-hub-tag { margin-top: .7rem; font-size: .78rem; line-height: 1.45; color: hsl(var(--muted-foreground)); max-width: 13rem; }
 .eco-hub-compact { width: 250px; height: 250px; }
+.eco-hub-compact .eco-hub-mark { width: 40px; margin-bottom: .45rem; }
 .eco-hub-compact .eco-hub-name { font-size: .92rem; }
 
 .eco-node { display: flex; align-items: flex-start; gap: .7rem; text-align: left; border-radius: 14px; padding: .7rem .9rem; background: hsl(var(--background) / .82); backdrop-filter: blur(6px); border: 1px solid transparent; border-left-color: hsl(var(--muted-foreground) / .35); transition: transform .3s ease, opacity .3s, border-color .3s, box-shadow .3s; }

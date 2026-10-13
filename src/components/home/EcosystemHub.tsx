@@ -5,6 +5,7 @@ import {
   Landmark, Network, BookOpen, FlaskConical, Briefcase, Compass,
   Lightbulb, Award, LayoutGrid, MonitorPlay, Images, type LucideIcon,
 } from "lucide-react";
+import penMark from "@/assets/pen-mark.png";
 
 type Weight = "strong" | "medium" | "light";
 export type EcoNode = {
@@ -50,6 +51,7 @@ const NodeBody = ({ n, i }: { n: EcoNode; i: number }) => (
 
 const Hub = ({ compact = false }: { compact?: boolean }) => (
   <div className={`eco-hub ${compact ? "eco-hub-compact" : ""}`}>
+    <img src={penMark} alt="" aria-hidden className="eco-hub-mark" />
     <p className="eco-hub-name">Exafluence Education</p>
     <p className="eco-hub-tag">Where Academia, Industry &amp; Technology Converge</p>
   </div>
