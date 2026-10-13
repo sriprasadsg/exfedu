@@ -61,3 +61,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Programmes page: add study areas — AI & Gen AI, Data Science, Cloud Technologies, Python, Realtime Case Studies, More Emerging Technologies
 - [x] Programmes page icons: gentle staggered animation (client 14:46 UTC)
 - [x] Programmes page: navy edge line removed, colourful books visual inserted (client 14:47 UTC)
+- [ ] Homepage hero: animate only the outer circle, keep the cap still (client 14:51 UTC)
