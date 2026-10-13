@@ -200,7 +200,7 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .eco-conn.is-active path { stroke: hsl(var(--primary)); stroke-width: 1.25; }
 .eco-conn.is-active circle { fill: hsl(var(--primary)); stroke: hsl(var(--primary)); }
 .eco-center { position: absolute; left: 50%; top: calc((100% - 40px) * .487); transform: translate(-50%, -50%); }
-.eco-hub { position: relative; margin: 0 auto; width: 290px; height: 290px; border-radius: 50%; background: hsl(var(--background)); border: 2px solid hsl(var(--primary) / .8); box-shadow: 0 0 0 12px hsl(var(--primary) / .05), 0 0 0 26px hsl(var(--muted-foreground) / .035); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 1.5rem; animation: eco-fade .8s ease-out both, eco-breathe 11s ease-in-out 1.2s infinite; }
+.eco-hub { position: relative; margin: 0 auto; width: 290px; height: 290px; border-radius: 50%; background: hsl(var(--background)); border: 2px solid hsl(var(--primary)); box-shadow: 0 0 0 12px hsl(var(--primary) / .05), 0 0 0 26px hsl(var(--muted-foreground) / .035); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 1.5rem; animation: eco-fade .8s ease-out both, eco-breathe 11s ease-in-out 1.2s infinite; }
 .eco-hub-name { font-size: 1.05rem; line-height: 1.2; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; color: hsl(var(--primary)); }
 .eco-hub-tag { margin-top: .7rem; font-size: .78rem; line-height: 1.45; color: hsl(var(--muted-foreground)); max-width: 13rem; }
 .eco-hub-compact { width: 250px; height: 250px; }
@@ -213,10 +213,10 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .eco-stage .eco-node-light { width: 210px; }
 .eco-stage.has-active .eco-node:not(.is-active) { opacity: .5; }
 .eco-node:hover, .eco-node:focus-visible, .eco-node.is-active { border-color: hsl(var(--primary) / .5); box-shadow: 0 14px 30px -20px hsl(var(--primary) / .45); outline: none; }
-.eco-edge-0 { border-left: 2px solid hsl(214 72% 46% / .55); }
-.eco-edge-1 { border-left: 2px solid hsl(174 62% 36% / .5); }
-.eco-edge-2 { border-left: 2px solid hsl(38 88% 50% / .6); }
-.eco-edge-3 { border-left: 2px solid hsl(262 58% 56% / .5); }
+.eco-edge-0 { border-left: 2px solid hsl(214 68% 14% / .8); }
+.eco-edge-1 { border-left: 2px solid hsl(214 53% 24% / .75); }
+.eco-edge-2 { border-left: 2px solid hsl(210 41% 42% / .75); }
+.eco-edge-3 { border-left: 2px solid hsl(210 36% 60% / .85); }
 .eco-stage .eco-node.is-active { transform: translate(-50%, -50%) scale(1.04); z-index: 2; }
 .eco-icon { flex: none; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 9px; color: hsl(var(--primary)); background: hsl(var(--muted)); }
 .eco-icon-3d { color: hsl(var(--primary-foreground)); background: radial-gradient(circle at 30% 25%, hsl(214 40% 45%), hsl(var(--primary)) 65%); box-shadow: inset 0 1px 1px hsl(0 0% 100% / .4), 0 4px 8px -3px hsl(var(--primary) / .5); }
