@@ -53,7 +53,7 @@ const Hub = ({ compact = false }: { compact?: boolean }) => (
   <div className={`eco-hub ${compact ? "eco-hub-compact" : ""}`}>
     <img src={penMark} alt="" aria-hidden className="eco-hub-mark" />
     <p className="eco-hub-name">Exafluence Education</p>
-    <p className="eco-hub-tag">Where Academia, Industry &amp; Technology Converge</p>
+    <p className="eco-hub-tag">Connecting Academia, Industry &amp; Technology</p>
   </div>
 );
 
@@ -69,7 +69,7 @@ const EcosystemHub = () => {
 
   return (
     <section aria-label="Education ecosystem" className="eco-section">
-      <p className="sr-only">Exafluence Education — Where Academia, Industry &amp; Technology Converge</p>
+      <p className="sr-only">Exafluence Education — Connecting Academia, Industry &amp; Technology</p>
 
       {/* Desktop: open radial composition */}
       <div className={`eco-stage hidden lg:block ${active !== null ? "has-active" : ""}`}>
