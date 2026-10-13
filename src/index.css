@@ -205,7 +205,7 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .eco-hub-compact .eco-hub-name { font-size: 1.35rem; }
 
 .eco-node { display: flex; align-items: flex-start; gap: .7rem; text-align: left; border-radius: 14px; padding: .7rem .9rem; background: hsl(var(--background) / .82); backdrop-filter: blur(6px); border: 1px solid transparent; border-left-color: hsl(var(--muted-foreground) / .35); transition: transform .3s ease, opacity .3s, border-color .3s, box-shadow .3s; }
-.eco-stage .eco-node { position: absolute; transform: translate(-50%, -50%); width: 230px; opacity: 0; animation: eco-node-in .6s ease-out both; }
+.eco-stage .eco-node { position: absolute; transform: translate(-50%, -50%); width: 210px; opacity: 0; animation: eco-node-in .6s ease-out both; }
 .eco-node-strong { border-color: hsl(var(--muted-foreground) / .22); }
 .eco-stage .eco-node-strong { width: 250px; }
 .eco-stage .eco-node-light { width: 210px; }
