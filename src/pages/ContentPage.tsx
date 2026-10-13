@@ -3,6 +3,19 @@ import Layout from "@/components/layout/Layout";
 import NotFound from "./NotFound";
 import { BlockView } from "@/components/site/Blocks";
 import { categories, findPage, navPages } from "@/data/site";
+import programmesImg from "@/assets/hero-programmes.png";
+import researchImg from "@/assets/hero-research.png";
+import ibmImg from "@/assets/hero-ibm.png";
+import successImg from "@/assets/hero-success.png";
+import skillshoneImg from "@/assets/hero-skillshone.png";
+
+const heroVisuals: Record<string, string> = {
+  "/programmes": programmesImg,
+  "/research-innovation": researchImg,
+  "/industry-collaborations/ibm": ibmImg,
+  "/student-success": successImg,
+  "/skillshone": skillshoneImg,
+};
 
 const ContentPage = () => {
   const { pathname } = useLocation();
@@ -21,13 +34,18 @@ const ContentPage = () => {
             <Link to="/" className="hover:text-primary">Exafluence Education</Link> / {cat.title}
             {parent && <> / <Link to={parent.path} className="hover:text-primary">{parent.title}</Link></>}
           </nav>
-          <div className="mt-8 flex items-start gap-5">
-            <span className="mt-1 hidden h-14 w-14 shrink-0 items-center justify-center rounded-full border sm:flex"><page.icon className="h-6 w-6 text-primary" strokeWidth={1.25} /></span>
-            <div>
-              {page.eyebrow && <p className="mb-2 text-xs uppercase tracking-[0.18em] text-muted-foreground">{page.eyebrow}</p>}
-              <h1 className="font-display text-4xl font-light tracking-tight md:text-5xl">{page.title}</h1>
-              <p className="mt-4 max-w-2xl text-lg font-light text-muted-foreground">{page.summary}</p>
+          <div className="mt-8 grid items-center gap-10 md:grid-cols-[1fr_auto]">
+            <div className="flex items-start gap-5 animate-fade-in">
+              <span className="glossy-icon mt-1 hidden h-14 w-14 shrink-0 items-center justify-center rounded-full sm:flex"><page.icon className="h-6 w-6 text-primary" strokeWidth={1.25} /></span>
+              <div>
+                {page.eyebrow && <p className="mb-2 text-xs uppercase tracking-[0.14em] text-muted-foreground">{page.eyebrow}</p>}
+                <h1 className="font-display text-4xl font-medium md:text-5xl">{page.title}</h1>
+                <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">{page.summary}</p>
+              </div>
             </div>
+            {heroVisuals[page.path] && (
+              <img src={heroVisuals[page.path]} alt="" aria-hidden="true" width={1024} height={1024} className="hero-visual mx-auto w-56 md:w-72 lg:w-80" />
+            )}
           </div>
         </div>
       </section>
