@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import heroCap from "@/assets/hero-cap-only.png";
+import heroCap from "@/assets/hero-cap-notassel.png";
+import heroTassel from "@/assets/hero-tassel.png";
 import heroRing from "@/assets/hero-ring-only.png";
 
 const Hero = () => (
@@ -26,6 +27,7 @@ const Hero = () => (
           <img src={heroRing} alt="" width={1024} height={1024} className="hero-ring" />
           <img src={heroCap} alt="" width={1024} height={1024} className="hero-cap" />
           <img src={heroRing} alt="" width={1024} height={1024} className="hero-ring hero-ring--front" />
+          <img src={heroTassel} alt="" width={1024} height={1024} className="hero-tassel" />
         </div>
       </div>
     </div>
