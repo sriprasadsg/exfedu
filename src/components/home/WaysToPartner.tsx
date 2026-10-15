@@ -61,13 +61,13 @@ const ways: Way[] = [
 
 const WaysToPartner = () => (
   <section aria-labelledby="ways-heading" className="ways-section">
-    <p className="ways-eyebrow">Partner with us</p>
+    <p className="ways-eyebrow">Collaborate with us</p>
     <h2 id="ways-heading" className="ways-heading">
-      Connecting Academia &amp; Industry for Future-Ready Learning
+      Academic Partnerships. Industry Expertise. Shared Progress.
     </h2>
     <p className="ways-intro">
-      Partner with us to develop industry-relevant programmes, advance applied research and create
-      practical learning opportunities.
+      Connect with Exafluence to co-develop programmes, advance applied research and bring real-world
+      experience into learning.
     </p>
 
     <ul className="ways-grid">
