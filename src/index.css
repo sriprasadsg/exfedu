@@ -216,15 +216,15 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .cap-lines line { stroke: hsl(214 75% 58%); stroke-width: 1.25; }
 .cap-lines circle { fill: hsl(214 75% 62%); }
 .cap-centre { display: grid; place-items: center; padding: .5rem 0; }
-.cap-circle { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .4rem; width: 220px; height: 220px; max-width: calc(100% - 40px); max-height: calc(100% - 40px); flex: none; border: 1.5px solid hsl(230 70% 40%); border-radius: 50%; background: hsl(var(--background)); box-shadow: 0 0 0 16px hsl(214 80% 96%), 0 0 0 17px hsl(214 70% 88%); text-align: center; padding: 1.5rem; margin: 20px; box-sizing: border-box; overflow: hidden; }
-.cap-company, .cap-name { margin: 0; color: hsl(var(--primary)); font-size: .9rem; font-weight: 500; line-height: 1.3; }
-.cap-pen { width: 50px; height: 50px; object-fit: contain; }
-.cap-card { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; text-align: center; padding: .9rem .9rem 1rem; border: 1px solid hsl(214 80% 60%); border-radius: 12px; background: hsl(var(--background)); color: hsl(var(--primary)); text-decoration: none; min-width: 0; transition: transform .25s ease, box-shadow .25s ease; }
+.cap-circle { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .3rem; width: 180px; height: 180px; aspect-ratio: 1 / 1; flex: none; border: 1.5px solid hsl(230 70% 40%); border-radius: 50%; background: hsl(var(--background)); box-shadow: 0 0 0 14px hsl(214 80% 96%), 0 0 0 15px hsl(214 70% 88%); text-align: center; padding: 1rem; margin: 18px; box-sizing: border-box; overflow: hidden; }
+.cap-company, .cap-name { margin: 0; color: hsl(var(--primary)); font-size: .78rem; font-weight: 500; line-height: 1.25; }
+.cap-pen { width: 40px; height: 40px; object-fit: contain; }
+.cap-card { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; text-align: center; padding: .7rem .7rem .8rem; border: 1px solid hsl(214 80% 60%); border-radius: 10px; background: hsl(var(--background)); color: hsl(var(--primary)); text-decoration: none; min-width: 0; transition: transform .25s ease, box-shadow .25s ease; }
 .cap-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px -16px hsl(214 80% 40% / .45); }
 .cap-card:focus-visible { outline: 2px solid hsl(var(--ring)); outline-offset: 3px; }
-.cap-art { width: 48px; height: 48px; object-fit: contain; margin-bottom: .4rem; }
-.cap-title { margin: 0 0 .3rem; font-size: .95rem; font-weight: 500; line-height: 1.3; color: hsl(230 70% 30%); overflow-wrap: break-word; }
-.cap-points { list-style: none; margin: 0; padding: 0; font-size: .875rem; font-weight: 400; line-height: 1.5; color: hsl(215 25% 38%); }
+.cap-art { width: 40px; height: 40px; object-fit: contain; margin-bottom: .3rem; }
+.cap-title { margin: 0 0 .25rem; font-size: .85rem; font-weight: 500; line-height: 1.25; color: hsl(230 70% 30%); overflow-wrap: break-word; }
+.cap-points { list-style: none; margin: 0; padding: 0; font-size: .78rem; font-weight: 400; line-height: 1.45; color: hsl(215 25% 38%); }
 .cap-lines line { stroke-dasharray: 5 5; animation: cap-flow 1.6s linear infinite; transition: stroke .25s, stroke-width .25s; }
 .cap-lines circle { transition: fill .25s; }
 .cap-lines g.is-active line { stroke: hsl(230 75% 20%); stroke-width: 2; stroke-dasharray: none; }
@@ -246,9 +246,9 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
   .cap-centre { grid-column: 1 / -1; }
 }
 @container cap (min-width: 800px) {
-  .cap-diagram { --cap-connect: 1; grid-template-columns: 200px 128px 128px 200px; justify-content: center; grid-template-rows: auto auto auto auto; gap: 1.75rem 2rem; align-items: center; }
+  .cap-diagram { --cap-connect: 1; grid-template-columns: 184px 116px 116px 184px; justify-content: center; grid-template-rows: auto auto auto auto; gap: 1.5rem 1.75rem; align-items: center; }
   .cap-centre { grid-column: 2 / 4; grid-row: 2 / 4; }
-  .cap-card { width: 200px; }
+  .cap-card { width: 184px; }
   .cap-card--academic   { grid-column: 1 / 3; grid-row: 1; justify-self: end; align-self: stretch; }
   .cap-card--technology { grid-column: 3 / 5; grid-row: 1; justify-self: start; align-self: stretch; }
   .cap-card--programmes { grid-column: 1; grid-row: 2; }
