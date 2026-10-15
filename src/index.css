@@ -513,31 +513,17 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .hero-cta--primary:hover { background: hsl(214 62% 22%); }
 .hero-cta--ghost { border: 1px solid hsl(var(--input)); color: hsl(var(--primary)); }
 .hero-cta--ghost:hover { border-color: hsl(var(--primary) / .6); background: hsl(var(--secondary)); }
-.hero-visual { display: none; }
+/* Hero illustration: cap + academic–technology network. Sits below the text on
+   small screens, right-hand column on large screens. */
+.hero-visual { display: block; margin-top: 2.25rem; }
+.hero-network { display: block; width: min(15rem, 72%); height: auto; margin-inline: auto; }
 @media (min-width: 1024px) {
   .hero-inner { grid-template-columns: minmax(0, 1.4fr) minmax(0, .6fr); padding-block: 4.5rem 4rem; }
-  .hero-visual { display: block; }
-}
-.hero-cap-stage { position: relative; width: min(15rem, 100%); margin-inline: auto; aspect-ratio: 1; }
-.hero-cap-stage img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
-.hero-cap { z-index: 1; }
-.hero-ring { z-index: 0; transform-origin: 52% 45%; animation: hero-ring-orbit 6s ease-in-out infinite; }
-.hero-ring--front { z-index: 2; clip-path: inset(45% 0 0 0); }
-.hero-tassel { z-index: 3; transform-origin: 69.8% 67.6%; animation: hero-tassel-swing 5s ease-in-out infinite; }
-/* The tassel is its own layer so it can swing on its own; the cap stays still. */
-@keyframes hero-tassel-swing {
-  0%, 100% { transform: rotate(-2deg); }
-  50% { transform: rotate(2deg); }
-}
-/* The ring is a separate transparent layer so only it moves; the cap stays still. */
-@keyframes hero-ring-orbit {
-  0%, 100% { transform: rotate(-1.5deg) scale(1); }
-  50% { transform: rotate(1.5deg) scale(1.07); }
+  .hero-visual { margin-top: 0; }
+  .hero-network { width: min(19rem, 100%); }
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-eyebrow, .hero-title, .hero-tagline, .hero-ctas { animation: none; }
-  .hero-ring { animation: none; }
-  .hero-tassel { animation: none; }
 }
 
 /* Programmes page: faint colourful AI / Gen AI mini-illustrations behind the header */
