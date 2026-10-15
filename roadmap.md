@@ -1,5 +1,5 @@
 # Roadmap
-- [ ] Company intro: smaller title, fully readable supporting text and transparent illustration directly on blue; verify desktop and phone.
+- [x] Company intro: smaller title, fully readable supporting text and transparent illustration directly on blue; verified 375/1062/1440px with no clipping or overlap.
 - [x] Add client-approved company, mission, vision, approach, certification scope and technology wording to the six homepage expandable items (15 October 2026).
 - [x] Arrange homepage capabilities as an eight-spoke radial diagram; verified equal radius, eight connectors, links, no card overlap or horizontal overflow at 320/375/768/1062/1440/1920px.
 - [x] Rebuild homepage capabilities as eight cards with supplied centre branding; verified 320–1920px, orientations, keyboard/touch, reduced motion and 200% zoom-equivalent CSS layouts
