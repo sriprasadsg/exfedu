@@ -48,7 +48,7 @@ export const playCoinDrop = () => {
     // Gentle low-pass filter rounds off any sharpness in the "ting".
     const lowpass = ctx.createBiquadFilter();
     lowpass.type = "lowpass";
-    lowpass.frequency.value = 3200;
+    lowpass.frequency.value = 2600;
     const t = ctx.currentTime;
     const dur = Math.min(buffer.duration, 0.6);
     gain.gain.setValueAtTime(0.0001, t);
