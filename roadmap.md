@@ -101,3 +101,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Colour rule: red "Exa" / blue "fluence" split now only on the centre-circle "Exafluence Inc.USA" line; hero title plain dark grey (client 12:00 UTC).
 - [x] Exafluence Inc. section: clicked box outline highlighted (1.5px blue ring + stronger blue border, pale-blue fill) on desktop tabs and mobile accordion; verified 375/1440, no clipping, no sideways scrolling (client 12:03 UTC).
 - [x] Exafluence Inc. section: "These are not educational accreditations." bullet removed from Quality & Standards (client 12:05 UTC); remaining four bullets unchanged.
+- [x] Exafluence Inc. section: hover (not click) shows each box content in a shared substitute box below the grid; section stays put (15 Oct 2026)
