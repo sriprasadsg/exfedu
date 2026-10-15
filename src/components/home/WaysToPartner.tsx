@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import {
-  Landmark, Network, FlaskConical, Briefcase, Compass, Lightbulb,
+  Landmark, Cpu, Lightbulb, Briefcase, Users, GraduationCap,
   type LucideIcon,
 } from "lucide-react";
 
-type Way = { title: string; line: string; body: string; path: string; icon: LucideIcon; tone: "blue" | "teal" | "amber" | "violet" };
+type Way = { title: string; line: string; body: string; path: string; icon: LucideIcon };
 
 /** Edit partnership routes here — order is also the mobile order. */
 const ways: Way[] = [
@@ -14,15 +14,13 @@ const ways: Way[] = [
     body: "Co-develop curriculum, faculty enablement and programme delivery with Exafluence Education.",
     path: "/academic-collaborations",
     icon: Landmark,
-    tone: "blue",
   },
   {
     title: "Industry & Technology",
     line: "Technology partners",
     body: "Bring industry platforms, tools and real projects into programmes and student work.",
     path: "/industry-collaborations",
-    icon: Network,
-    tone: "teal",
+    icon: Cpu,
   },
   {
     title: "Research & Innovation",
@@ -30,31 +28,27 @@ const ways: Way[] = [
     body: "Work together on publications, conferences, hackathons and applied innovation projects.",
     path: "/research-innovation",
     icon: Lightbulb,
-    tone: "violet",
   },
   {
     title: "Internships & Exposure",
     line: "Host students",
     body: "Offer internships, industry visits and open-day experiences to build your future talent pool.",
     path: "/internships",
-    icon: FlaskConical,
-    tone: "amber",
+    icon: Briefcase,
   },
   {
     title: "Career Development",
     line: "Mentoring & skills",
     body: "Mentor students, share industry skills sessions and take part in career guidance.",
     path: "/career-development",
-    icon: Compass,
-    tone: "blue",
+    icon: Users,
   },
   {
     title: "Programmes & Professional Learning",
     line: "Workforce learning",
     body: "Shape short courses and practitioner learning for your teams and for students.",
     path: "/programmes",
-    icon: Briefcase,
-    tone: "teal",
+    icon: GraduationCap,
   },
 ];
 
@@ -73,8 +67,8 @@ const WaysToPartner = () => (
       {ways.map((w) => (
         <li key={w.path}>
           <Link to={w.path} className="ways-card">
-            <span className={`ways-icon tone-${w.tone}`} aria-hidden>
-              <w.icon className="h-5 w-5" strokeWidth={1.5} />
+            <span className="ways-icon" aria-hidden>
+              <w.icon className="h-6 w-6" strokeWidth={1.5} />
             </span>
             <span className="min-w-0">
               <span className="ways-title">{w.title}</span>
