@@ -459,30 +459,35 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .site-header-panel .mobile-sublink { color: hsl(210 30% 86%); }
 .site-header-panel .mobile-sublink:hover { color: hsl(0 0% 100%); }
 
-/* Hero — compact, white, slim; one selective glossy 3D accent */
+/* Hero banner — decorative tile artwork behind, two text lines centred */
 .hero-section { background: hsl(var(--background)); }
-.hero-inner {
-  display: grid;
-  align-items: center;
-  gap: 2rem;
-  padding-block: 3.25rem 2.75rem;
+.hero-banner { position: relative; overflow: hidden; }
+.hero-banner-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
-.hero-eyebrow { font-size: .72rem; font-weight: 400; color: hsl(var(--muted-foreground)); animation: fadeInUp .55s both; }
+.hero-banner-copy {
+  position: relative;
+  text-align: center;
+  padding-block: clamp(2.75rem, 7vw, 5.5rem);
+  padding-inline: 1rem;
+}
 .brand-exa { color: hsl(var(--brand-red)); }
 .brand-fluence { color: hsl(var(--brand-blue)); }
 .hero-title {
-  margin-top: .55rem;
-  font-size: clamp(.62rem, 1.6vw, 1.05rem);
-  line-height: 1.25;
-  font-weight: 400;
+  font-size: clamp(1.35rem, 3.2vw, 2.35rem);
+  line-height: 1.2;
+  font-weight: 500;
   color: hsl(var(--navy-600));
-  text-transform: uppercase;
-  animation: fadeInUp .55s .08s both;
+  animation: fadeInUp .55s both;
 }
 .hero-tagline {
-  margin-top: .7rem;
-  max-width: none;
-  font-size: clamp(.6rem, 1.7vw, .95rem);
+  margin-top: .8rem;
+  font-size: clamp(.72rem, 1.5vw, 1.05rem);
   font-weight: 400;
   letter-spacing: .045em;
   line-height: 1.4;
@@ -490,41 +495,15 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
   white-space: nowrap;
   animation: fadeInUp .55s .16s both, hero-tagline-breathe 11s ease-in-out 1.4s infinite;
 }
-@media (max-width: 480px) {
-  .hero-tagline { font-size: .62rem; letter-spacing: .004em; }
+@media (max-width: 640px) {
+  .hero-tagline { white-space: normal; letter-spacing: .01em; }
 }
 @keyframes hero-tagline-breathe {
   0%, 100% { transform: translateY(0); opacity: .94; }
   50% { transform: translateY(-2px); opacity: 1; }
 }
-.hero-ctas { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.9rem; animation: fadeInUp .55s .24s both; }
-.hero-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: .5rem;
-  height: 3rem;
-  padding: 0 1.45rem;
-  border-radius: .55rem;
-  font-size: .95rem;
-  font-weight: 500;
-  transition: background-color .2s ease, border-color .2s ease, color .2s ease, transform .2s ease;
-}
-.hero-cta:active { transform: translateY(1px); }
-.hero-cta--primary { background: hsl(var(--primary)); color: hsl(var(--primary-foreground)); }
-.hero-cta--primary:hover { background: hsl(214 62% 22%); }
-.hero-cta--ghost { border: 1px solid hsl(var(--input)); color: hsl(var(--primary)); }
-.hero-cta--ghost:hover { border-color: hsl(var(--primary) / .6); background: hsl(var(--secondary)); }
-/* Hero illustration: cap + academic–technology network. Sits below the text on
-   small screens, right-hand column on large screens. */
-.hero-visual { display: block; margin-top: 2.25rem; }
-.hero-network { display: block; width: min(15rem, 72%); height: auto; margin-inline: auto; }
-@media (min-width: 1024px) {
-  .hero-inner { grid-template-columns: minmax(0, 1.4fr) minmax(0, .6fr); padding-block: 4.5rem 4rem; }
-  .hero-visual { margin-top: 0; }
-  .hero-network { width: min(19rem, 100%); }
-}
 @media (prefers-reduced-motion: reduce) {
-  .hero-eyebrow, .hero-title, .hero-tagline, .hero-ctas { animation: none; }
+  .hero-title, .hero-tagline { animation: none; }
 }
 
 /* Programmes page: faint colourful AI / Gen AI mini-illustrations behind the header */
