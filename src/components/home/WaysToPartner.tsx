@@ -4,7 +4,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
-type Way = { title: string; line: string; body: string; path: string; icon: LucideIcon };
+type Way = { title: string; line: string; body: string; path: string; icon: LucideIcon; color: string };
 
 /** Edit partnership routes here — order is also the mobile order. */
 const ways: Way[] = [
@@ -14,6 +14,7 @@ const ways: Way[] = [
     body: "Co-develop curriculum, faculty enablement and programme delivery with Exafluence Education.",
     path: "/academic-collaborations",
     icon: Landmark,
+    color: "214 88% 52%",
   },
   {
     title: "Industry & Technology",
@@ -21,6 +22,7 @@ const ways: Way[] = [
     body: "Bring industry platforms, tools and real projects into programmes and student work.",
     path: "/industry-collaborations",
     icon: Cpu,
+    color: "258 78% 58%",
   },
   {
     title: "Research & Innovation",
@@ -28,6 +30,7 @@ const ways: Way[] = [
     body: "Work together on publications, conferences, hackathons and applied innovation projects.",
     path: "/research-innovation",
     icon: Lightbulb,
+    color: "32 95% 47%",
   },
   {
     title: "Internships & Exposure",
@@ -35,6 +38,7 @@ const ways: Way[] = [
     body: "Offer internships, industry visits and open-day experiences to build your future talent pool.",
     path: "/internships",
     icon: Briefcase,
+    color: "172 62% 40%",
   },
   {
     title: "Career Development",
@@ -42,6 +46,7 @@ const ways: Way[] = [
     body: "Mentor students, share industry skills sessions and take part in career guidance.",
     path: "/career-development",
     icon: Users,
+    color: "342 80% 56%",
   },
   {
     title: "Programmes & Professional Learning",
@@ -49,6 +54,7 @@ const ways: Way[] = [
     body: "Shape short courses and practitioner learning for your teams and for students.",
     path: "/programmes",
     icon: GraduationCap,
+    color: "142 58% 40%",
   },
 ];
 
@@ -67,8 +73,12 @@ const WaysToPartner = () => (
       {ways.map((w) => (
         <li key={w.path}>
           <Link to={w.path} className="ways-card">
-            <span className="ways-icon" aria-hidden>
-              <w.icon className="h-6 w-6" strokeWidth={1.5} />
+            <span
+              className="ways-icon"
+              aria-hidden
+              style={{ "--icon-c": w.color } as React.CSSProperties}
+            >
+              <w.icon className="h-6 w-6" strokeWidth={1.8} />
             </span>
             <span className="min-w-0">
               <span className="ways-title">{w.title}</span>
