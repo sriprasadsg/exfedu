@@ -62,11 +62,11 @@ const WaysToPartner = () => (
   <section aria-labelledby="ways-heading" className="ways-section">
     <p className="ways-eyebrow">Partner with us</p>
     <h2 id="ways-heading" className="ways-heading">
-      Academia–Industry Collaboration for Future-Ready Learning
+      Connecting Academia &amp; Industry for Future-Ready Learning
     </h2>
     <p className="ways-intro">
-      Explore the collaboration pathway that best aligns with your institution or organisation, and
-      discover how to get started with us.
+      Partner with us to develop industry-relevant programmes, advance applied research and create
+      practical learning opportunities.
     </p>
 
     <ul className="ways-grid">
