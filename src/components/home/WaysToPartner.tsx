@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ChevronRight, CircleDashed } from "lucide-react";
 import { PENDING } from "@/data/site";
-import exiIllustration from "@/assets/exi-illustration.png";
+import exiIllustration from "@/assets/exi-illustration-transparent.png";
 
 const Illustration = () => (
   <div className="exi-illus" aria-hidden="true">
