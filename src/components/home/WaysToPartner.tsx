@@ -5,8 +5,8 @@ import exiIllustration from "@/assets/exi-illustration.png";
 
 const Illustration = () => (
   <div className="exi-illus" aria-hidden="true">
+    <span className="exi-illus-glow" />
     <img src={exiIllustration} alt="" width={1024} height={768} loading="lazy" />
-    <img src={exiIllustration} alt="" width={1024} height={768} loading="lazy" className="exi-illus-reflect" />
   </div>
 );
 
