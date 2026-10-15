@@ -220,7 +220,7 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .cap-company, .cap-name { margin: 0; color: hsl(var(--primary)); font-size: .78rem; font-weight: 500; line-height: 1.25; }
 .cap-pen { width: 40px; height: 40px; object-fit: contain; }
 .cap-card { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; text-align: center; padding: .7rem .7rem .8rem; border: 1px solid hsl(214 80% 60%); border-radius: 10px; background: hsl(var(--background)); color: hsl(var(--primary)); text-decoration: none; min-width: 0; transition: transform .25s ease, box-shadow .25s ease; }
-.cap-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px -16px hsl(214 80% 40% / .45); }
+.cap-card:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 14px 26px -16px hsl(214 80% 40% / .55); z-index: 3; }
 .cap-card:focus-visible { outline: 2px solid hsl(var(--ring)); outline-offset: 3px; }
 .cap-art { width: 40px; height: 40px; object-fit: contain; margin-bottom: .3rem; }
 .cap-title { margin: 0 0 .25rem; font-size: .85rem; font-weight: 500; line-height: 1.25; color: hsl(230 70% 30%); overflow-wrap: break-word; }
@@ -249,7 +249,7 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
   .cap-diagram { --cap-connect: 1; display: block; width: 800px; height: 800px; margin-inline: auto; }
   .cap-centre { position: absolute; inset: 0; padding: 0; }
   .cap-card { position: absolute; left: calc(50% + var(--cap-x)); top: calc(50% + var(--cap-y)); width: 184px; min-height: 174px; justify-content: center; transform: translate(-50%, -50%); }
-  .cap-card:hover { transform: translate(-50%, calc(-50% - 2px)); }
+  .cap-card:hover { transform: translate(-50%, calc(-50% - 3px)) scale(1.05); z-index: 3; }
   .cap-card--academic   { --cap-x: 0px; --cap-y: -300px; }
   .cap-card--technology { --cap-x: 212.132px; --cap-y: -212.132px; }
   .cap-card--research   { --cap-x: 300px; --cap-y: 0px; }
@@ -279,8 +279,8 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .ways-stack > *:nth-child(6) .ways-icon { animation-delay: -5.5s; }
 .ways-stack > *:nth-child(7) .ways-icon { animation-delay: -6.6s; }
 .ways-stack > *:nth-child(8) .ways-icon { animation-delay: -7.7s; }
-.ways-card { display: flex; align-items: flex-start; gap: .9rem; height: 100%; background: hsl(var(--background)); border: 1px solid hsl(var(--muted-foreground) / .2); border-top: 1px solid hsl(var(--primary) / .28); border-radius: 16px; padding: 1.5rem 1.5rem 1.4rem; box-shadow: inset 0 1px 0 hsl(var(--primary) / .06); text-decoration: none; transition: border-color .3s ease, transform .3s ease; }
-.ways-card:hover, .ways-card:focus-visible { border-color: hsl(var(--primary) / .45); border-top-color: hsl(var(--primary)); transform: translateY(-2px); outline: none; }
+.ways-card { display: flex; align-items: flex-start; gap: .9rem; height: 100%; background: hsl(var(--background)); border: 1px solid hsl(var(--muted-foreground) / .2); border-top: 1px solid hsl(var(--primary) / .28); border-radius: 16px; padding: 1.5rem 1.5rem 1.4rem; box-shadow: inset 0 1px 0 hsl(var(--primary) / .06); text-decoration: none; transition: border-color .3s ease, transform .3s ease, box-shadow .3s ease; }
+.ways-card:hover, .ways-card:focus-visible { border-color: hsl(var(--primary) / .45); border-top-color: hsl(var(--primary)); transform: translateY(-3px) scale(1.03); box-shadow: 0 14px 28px -18px hsl(214 80% 30% / .45); outline: none; }
 .ways-icon { flex: none; position: relative; display: grid; place-items: center; width: 48px; height: 48px; border-radius: 12px;
   color: hsl(var(--icon-c, 214 68% 14%));
   background: linear-gradient(145deg, hsl(var(--icon-c) / .16), hsl(var(--icon-c) / .34));
@@ -316,6 +316,7 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .ways-grid li:nth-child(6) .ways-icon { animation-delay: -3s; }
 @media (prefers-reduced-motion: reduce) {
   .ways-icon, .ways-icon::after, .ways-card:hover .ways-icon { animation: none; }
+  .ways-card:hover, .ways-card:focus-visible { transform: none; }
 }
 .ways-title { display: block; color: hsl(var(--primary)); font-weight: 500; font-size: 1rem; line-height: 1.3; }
 .ways-line { display: block; margin-top: .2rem; font-size: .74rem; letter-spacing: .04em; text-transform: uppercase; color: hsl(var(--muted-foreground) / .85); }
