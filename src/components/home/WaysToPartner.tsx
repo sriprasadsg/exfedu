@@ -114,7 +114,7 @@ const WaysToPartner = () => {
             </button>
           ))}
         </div>
-        <div id="exi-tabpanel" role="tabpanel" aria-labelledby={active === null ? undefined : `exi-tab-${active}`} className="exi-panel" tabIndex={0}>
+        <div id="exi-tabpanel" role="tabpanel" aria-labelledby={active === null ? undefined : `exi-tab-${active}`} className={`exi-panel${active === null ? "" : " exi-panel--front"}`} tabIndex={0}>
           {active === null ? <Illustration /> : <><Watermark /><div key={active} className="exi-fade"><Content item={items[active]} /></div></>}
         </div>
       </div>
