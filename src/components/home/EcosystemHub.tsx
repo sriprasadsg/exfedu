@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { homepageCapabilities } from "@/data/site";
 import penMark from "@/assets/pen-mark.png";
-import hubInfographic from "@/assets/university-industry-hub.png.asset.json";
 import academic from "@/assets/capability-academic.webp";
 import technology from "@/assets/capability-technology.webp";
 import programmes from "@/assets/capability-programmes.webp";
