@@ -234,14 +234,14 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
   .cap-diagram { --cap-connect: 1; grid-template-columns: 220px 140px 140px 220px; justify-content: center; grid-template-rows: auto auto auto auto; gap: 1.25rem 1.5rem; align-items: center; }
   .cap-centre { grid-column: 2 / 4; grid-row: 2 / 4; }
   .cap-card { width: 220px; }
-  .cap-card--academic   { grid-column: 1 / 3; grid-row: 1; justify-self: end; }
-  .cap-card--technology { grid-column: 3 / 5; grid-row: 1; justify-self: start; }
+  .cap-card--academic   { grid-column: 1 / 3; grid-row: 1; justify-self: end; align-self: stretch; }
+  .cap-card--technology { grid-column: 3 / 5; grid-row: 1; justify-self: start; align-self: stretch; }
   .cap-card--programmes { grid-column: 1; grid-row: 2; }
   .cap-card--research   { grid-column: 4; grid-row: 2; }
   .cap-card--digital    { grid-column: 1; grid-row: 3; }
   .cap-card--practical  { grid-column: 4; grid-row: 3; }
-  .cap-card--career     { grid-column: 1 / 3; grid-row: 4; justify-self: end; }
-  .cap-card--industry   { grid-column: 3 / 5; grid-row: 4; justify-self: start; }
+  .cap-card--career     { grid-column: 1 / 3; grid-row: 4; justify-self: end; align-self: stretch; }
+  .cap-card--industry   { grid-column: 3 / 5; grid-row: 4; justify-self: start; align-self: stretch; }
 }
 
 /* ===== Ways to partner (RMIT-style card grid) ===== */
