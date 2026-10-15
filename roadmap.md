@@ -96,3 +96,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Exafluence Inc. panel illustration remade in 3D glossy style (client 11:38 UTC)
 - [x] Exafluence Inc. section: 3D illustration shows a light soft shadow/glow instead of a mirrored reflection; verified no clipping, no sideways scrolling at 375/1440 (15 October 2026).
 - [x] Exafluence Inc. section: selected row keeps the 3D illustration behind its content as a very faint watermark (opacity .085 desktop, .07 mobile, fades in, reduced-motion safe); content stays clearly readable; verified 375/1440 no sideways scrolling (15 October 2026).
+- [x] Exafluence Inc. section: content panel pushes forward when an option is clicked (translateY(-6px) scale(1.015), deeper shadow, pale-blue border), content rises in on each new selection; reduced-motion safe; verified 375/1440 no sideways scrolling (15 October 2026).
