@@ -1,5 +1,6 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { playCoinDrop } from "@/lib/coinDrop";
 import { homepageCapabilities } from "@/data/site";
 import penMark from "@/assets/pen-mark.png";
 import academic from "@/assets/capability-academic.webp";
