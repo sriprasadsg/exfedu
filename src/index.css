@@ -568,6 +568,10 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .exi-chev { flex: none; display: grid; place-items: center; width: 2rem; height: 2rem; border-radius: 999px; background: hsl(205 90% 95%); color: hsl(var(--primary)); transition: transform .3s ease; }
 .exi-item.is-open .exi-chev { transform: rotate(180deg); }
 .exi-detail { padding: 0 1rem 1rem; font-size: .88rem; line-height: 1.6; color: hsl(var(--muted-foreground)); }
+.exi-list { margin: 0; padding: 0; list-style: none; }
+.exi-list li { position: relative; padding-left: 1rem; }
+.exi-list li + li { margin-top: .3rem; }
+.exi-list li::before { content: ""; position: absolute; left: 0; top: .55em; width: .35rem; height: .35rem; border-radius: 9999px; background: hsl(var(--primary) / .45); }
 .exi-nav { position: absolute; top: 50%; transform: translateY(-50%); z-index: 2; width: 44px; height: 44px; display: grid; place-items: center; border-radius: 999px; background: hsl(var(--background)); border: 1px solid hsl(var(--primary) / .18); color: hsl(var(--primary)); transition: background-color .2s ease; }
 .exi-nav:hover { background: hsl(205 90% 96%); }
 .exi-prev { left: .4rem; } .exi-next { right: .4rem; }

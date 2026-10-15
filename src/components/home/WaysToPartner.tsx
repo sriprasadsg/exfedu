@@ -88,7 +88,11 @@ const Expandable = ({ item, id, active, clicked, hovered, setClicked, setHovered
         <span className="exi-chev" aria-hidden><ChevronDown className="h-4 w-4" /></span>
       </button>
       <div id={id} className="exi-detail" hidden={!open}>
-        {item.detail ? <p className="whitespace-pre-line">{item.detail}</p> : (
+        {item.points?.length ? (
+          <ul className="exi-list">
+            {item.points.map((pt) => <li key={pt}>{pt}</li>)}
+          </ul>
+        ) : (
           <span className="inline-flex items-center gap-1.5 text-xs text-muted-foreground"><CircleDashed className="h-3 w-3" /> {PENDING}</span>
         )}
       </div>
