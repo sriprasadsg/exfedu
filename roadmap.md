@@ -99,3 +99,5 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Exafluence Inc. section: content panel pushes forward when an option is clicked (translateY(-6px) scale(1.015), deeper shadow, pale-blue border), content rises in on each new selection; reduced-motion safe; verified 375/1440 no sideways scrolling (15 October 2026).
 - [x] Hero: title and tagline now dark grey (title hsl 220 8% 28%, tagline muted grey) and the copy sits to the left, starting over the banner's cloud icon; verified 1280/375 with no sideways scrolling (client 11:59 UTC).
 - [x] Colour rule: red "Exa" / blue "fluence" split now only on the centre-circle "Exafluence Inc.USA" line; hero title plain dark grey (client 12:00 UTC).
+- [x] Exafluence Inc. section: clicked box outline highlighted (1.5px blue ring + stronger blue border, pale-blue fill) on desktop tabs and mobile accordion; verified 375/1440, no clipping, no sideways scrolling (client 12:03 UTC).
+- [x] Exafluence Inc. section: "These are not educational accreditations." bullet removed from Quality & Standards (client 12:05 UTC); remaining four bullets unchanged.
