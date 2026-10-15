@@ -585,4 +585,5 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
   .exi-desktop { display: grid; grid-template-columns: minmax(220px, 300px) 1fr; gap: 2rem; align-items: start; }
   .exi-panel { padding: 2.5rem; min-height: 100%; }
 }
-@media (prefers-reduced-motion: reduce) { .exi-tab, .exi-tab-icon { transition: none; } }
+@media (max-width: 767px) { .exi-heading, .exi-lead { white-space: normal; } }
+@media (prefers-reduced-motion: reduce) { .exi-tab, .exi-tab-icon, .exi-tab-hint { transition: none; } .exi-tab-hint { animation: none; } .exi-tab:hover { transform: none; box-shadow: none; } }
