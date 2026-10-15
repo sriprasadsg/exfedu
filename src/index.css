@@ -265,8 +265,8 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .ways-section { font-family: 'Google Sans Flex', 'Figtree', system-ui, sans-serif; max-width: 1240px; margin: 0 auto; padding: 1rem 1rem 3.5rem; }
 .ways-eyebrow { font-size: .74rem; letter-spacing: .18em; text-transform: uppercase; color: hsl(var(--primary) / .7); font-weight: 500; }
 .ways-heading { margin-top: 0; font-size: clamp(.6rem, 2.7vw, 2rem); line-height: 1.25; font-weight: 500; letter-spacing: -.01em; color: hsl(var(--primary)); white-space: nowrap; }
-.ways-intro { margin-top: .55rem; font-size: .92rem; line-height: 1.7; color: hsl(var(--muted-foreground)); max-width: 44rem; text-wrap: balance; }
-.ways-grid { list-style: none; margin: 2.25rem 0 0; padding: 0; display: grid; grid-template-columns: 1fr; gap: .9rem; }
+.ways-intro { margin-top: .5rem; font-size: .92rem; line-height: 1.6; color: hsl(var(--muted-foreground)); max-width: 71rem; text-wrap: balance; }
+.ways-grid { list-style: none; margin: 1.15rem 0 0; padding: 0; display: grid; grid-template-columns: 1fr; gap: .9rem; }
 @media (min-width: 768px) { .ways-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; } }
 @media (min-width: 1024px) { .ways-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 .area-card { display: flex; align-items: flex-start; gap: .9rem; height: 100%; background: hsl(var(--background)); border: 1px solid hsl(var(--muted-foreground) / .2); border-top: 1px solid hsl(var(--primary) / .28); border-radius: 16px; padding: 1.5rem 1.5rem 1.4rem; box-shadow: inset 0 1px 0 hsl(var(--primary) / .06); transition: border-color .3s ease, transform .3s ease, box-shadow .3s ease; }
