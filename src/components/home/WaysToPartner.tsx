@@ -64,6 +64,7 @@ const items: Item[] = [
 
 const WaysToPartner = () => {
   const [open, setOpen] = useState<number | null>(null);
+  const active = open !== null ? items[open] : null;
 
   return (
     <section aria-labelledby="exi-heading" className="exi-section">
@@ -84,30 +85,37 @@ const WaysToPartner = () => {
               return (
                 <div key={it.title} className={`exi-item${isOpen ? " exi-item--open" : ""}`}>
                   <button type="button" className="exi-box" aria-expanded={isOpen}
-                    aria-controls={`exi-detail-${i}`} onClick={() => setOpen(isOpen ? null : i)}>
+                    aria-controls="exi-substitute"
+                    onMouseEnter={() => setOpen(i)}
+                    onFocus={() => setOpen(i)}
+                    onClick={() => setOpen(i)}>
                     <span className="exi-box-title">{it.title}</span>
                     <span className="exi-box-subrow">
                       <span className="exi-box-sub">{it.sub}</span>
                       <ChevronRight className="exi-box-chev h-3.5 w-3.5" aria-hidden />
                     </span>
                   </button>
-                  <div id={`exi-detail-${i}`} className="exi-detail" hidden={!isOpen}>
-                    {isOpen && (
-                      <div className="exi-fade">
-                        <Watermark />
-                        {it.points?.length ? (
-                          <ul className="exi-list">{it.points.map((pt) => <li key={pt}>{pt}</li>)}</ul>
-                        ) : (
-                          <span className="exi-pending inline-flex items-center gap-1.5 text-xs text-muted-foreground">
-                            <CircleDashed className="h-3 w-3" /> {PENDING}
-                          </span>
-                        )}
-                      </div>
-                    )}
-                  </div>
                 </div>
               );
             })}
+          </div>
+
+          {/* Shared substitute box: hovered box's content appears here, section stays put */}
+          <div id="exi-substitute" className={`exi-substitute${active ? " exi-substitute--on" : ""}`}
+            aria-live="polite">
+            {active && (
+              <div className="exi-fade" key={active.title}>
+                <Watermark />
+                <p className="exi-substitute-title">{active.title}</p>
+                {active.points?.length ? (
+                  <ul className="exi-list">{active.points.map((pt) => <li key={pt}>{pt}</li>)}</ul>
+                ) : (
+                  <span className="exi-pending inline-flex items-center gap-1.5 text-xs text-muted-foreground">
+                    <CircleDashed className="h-3 w-3" /> {PENDING}
+                  </span>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </div>
