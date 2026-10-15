@@ -11,7 +11,7 @@ import career from "@/assets/capability-career.webp";
 import digital from "@/assets/capability-digital.webp";
 
 const illustrations = { academic, technology, programmes, research, practical, industry, career, digital };
-const positions = [[180, 135], [600, 135], [1020, 135], [180, 450], [1020, 450], [180, 765], [600, 765], [1020, 765]];
+const positions = [[180, 100], [1020, 100], [180, 330], [1020, 330], [180, 570], [1020, 570], [180, 800], [1020, 800]];
 
 const EcosystemHub = () => (
   <section aria-label="Education ecosystem" className="capabilities-section">
@@ -27,7 +27,6 @@ const EcosystemHub = () => (
           <img src={penMark} alt="" width={92} height={92} className="capabilities-pen" />
           <p className="capabilities-name">Exafluence Education</p>
         </div>
-        <img src={hubInfographic.url} alt="University to industry connection hub" loading="lazy" className="capabilities-centre-infographic" />
       </div>
       <ul className="capabilities-cards">
         {homepageCapabilities.map((card) => (
