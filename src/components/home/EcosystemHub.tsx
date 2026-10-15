@@ -67,7 +67,7 @@ const EcosystemHub = () => {
         )}
         <div className="cap-centre">
           <div className="cap-circle">
-            <p className="cap-company">Exafluence Inc.USA</p>
+            <p className="cap-company"><span className="brand-exa">Exa</span><span className="brand-fluence">fluence</span> Inc.USA</p>
             <img src={penMark} alt="" width={84} height={84} className="cap-pen" />
             <p className="cap-name">Exafluence Education</p>
           </div>
