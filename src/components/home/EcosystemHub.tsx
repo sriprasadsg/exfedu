@@ -1,16 +1,8 @@
 import { Link } from "react-router-dom";
 import { homepageCapabilities } from "@/data/site";
 import penMark from "@/assets/pen-mark.png";
-import academic from "@/assets/capability-academic.webp";
-import technology from "@/assets/capability-technology.webp";
-import programmes from "@/assets/capability-programmes.webp";
-import research from "@/assets/capability-research.webp";
-import practical from "@/assets/capability-practical.webp";
-import industry from "@/assets/capability-industry.webp";
-import career from "@/assets/capability-career.webp";
-import digital from "@/assets/capability-digital.webp";
 
-const illustrations = { academic, technology, programmes, research, practical, industry, career, digital };
+/* Anchor points for the eight arms around the centre circle (viewBox 1200x900). */
 const positions = [[180, 100], [1020, 100], [180, 330], [1020, 330], [180, 570], [1020, 570], [180, 800], [1020, 800]];
 
 const EcosystemHub = () => (
@@ -28,15 +20,12 @@ const EcosystemHub = () => (
           <p className="capabilities-name">Exafluence Education</p>
         </div>
       </div>
-      <ul className="capabilities-cards">
-        {homepageCapabilities.map((card) => (
-          <li key={card.id} className="capabilities-item">
-            <Link to={card.path} className="capabilities-card">
-              <img src={illustrations[card.id]} alt="" width={384} height={384} loading="lazy" className="capabilities-illustration" />
-              <h2>{card.title}</h2>
-              <ul className="capabilities-details">
-                {card.capabilities.map((capability) => <li key={capability}>{capability}</li>)}
-              </ul>
+      <ul className="capabilities-arms">
+        {homepageCapabilities.map((arm) => (
+          <li key={arm.id} className="capabilities-arm">
+            <Link to={arm.path} className="capabilities-arm-link">
+              <span className="capabilities-arm-dot" aria-hidden="true" />
+              <span className="capabilities-arm-title">{arm.title}</span>
             </Link>
           </li>
         ))}
