@@ -246,17 +246,19 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
   .cap-centre { grid-column: 1 / -1; }
 }
 @container cap (min-width: 800px) {
-  .cap-diagram { --cap-connect: 1; grid-template-columns: 184px 116px 116px 184px; justify-content: center; grid-template-rows: auto auto auto auto; gap: 1.5rem 1.75rem; align-items: center; }
-  .cap-centre { grid-column: 2 / 4; grid-row: 2 / 4; }
-  .cap-card { width: 184px; }
-  .cap-card--academic   { grid-column: 1 / 3; grid-row: 1; justify-self: end; align-self: stretch; }
-  .cap-card--technology { grid-column: 3 / 5; grid-row: 1; justify-self: start; align-self: stretch; }
-  .cap-card--programmes { grid-column: 1; grid-row: 2; }
-  .cap-card--research   { grid-column: 4; grid-row: 2; }
-  .cap-card--digital    { grid-column: 1; grid-row: 3; }
-  .cap-card--practical  { grid-column: 4; grid-row: 3; }
-  .cap-card--career     { grid-column: 1 / 3; grid-row: 4; justify-self: end; align-self: stretch; }
-  .cap-card--industry   { grid-column: 3 / 5; grid-row: 4; justify-self: start; align-self: stretch; }
+  .cap-diagram { --cap-connect: 1; display: block; width: 800px; height: 800px; margin-inline: auto; }
+  .cap-centre { position: absolute; inset: 0; padding: 0; }
+  .cap-card { position: absolute; left: calc(50% + var(--cap-x)); top: calc(50% + var(--cap-y)); width: 184px; min-height: 174px; justify-content: center; transform: translate(-50%, -50%); }
+  .cap-card:hover { transform: translate(-50%, calc(-50% - 2px)); }
+  .cap-card--academic   { --cap-x: 0px; --cap-y: -300px; }
+  .cap-card--technology { --cap-x: 212.132px; --cap-y: -212.132px; }
+  .cap-card--research   { --cap-x: 300px; --cap-y: 0px; }
+  .cap-card--practical  { --cap-x: 212.132px; --cap-y: 212.132px; }
+  .cap-card--industry   { --cap-x: 0px; --cap-y: 300px; }
+  .cap-card--career     { --cap-x: -212.132px; --cap-y: 212.132px; }
+  .cap-card--digital    { --cap-x: -300px; --cap-y: 0px; }
+  .cap-card--programmes { --cap-x: -212.132px; --cap-y: -212.132px; }
+  @media (prefers-reduced-motion: reduce) { .cap-card:hover { transform: translate(-50%, -50%); } }
 }
 
 /* ===== Ways to partner (RMIT-style card grid) ===== */
