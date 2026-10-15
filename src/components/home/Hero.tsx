@@ -1,4 +1,4 @@
-import heroBanner from "@/assets/hero-banner-strong.png";
+import heroBanner from "@/assets/hero-banner-3d-soft.png";
 
 const Hero = () => (
   <section aria-label="Exafluence Education introduction" className="hero-section">
@@ -7,8 +7,8 @@ const Hero = () => (
         src={heroBanner}
         alt=""
         aria-hidden="true"
-        width={1920}
-        height={640}
+        width={2064}
+        height={512}
         className="hero-banner-art"
       />
       <div className="hero-banner-copy">
