@@ -40,7 +40,7 @@ const EcosystemHub = () => {
     return () => ro.disconnect();
   }, []);
 
-  const renderCol = (items: typeof homepageCapabilities, side: "left" | "right") => (
+  const renderCol = (items: readonly (typeof homepageCapabilities)[number][], side: "left" | "right") => (
     <ul className={`cap-col cap-col--${side}`}>
       {items.map((arm) => (
         <li key={arm.id}>
