@@ -43,10 +43,10 @@ export const homepageCapabilities = [
   { id: "technology", title: "Technology Capabilities", capabilities: ["AI & Gen AI", "Data & Analytics", "Cloud Solutions"], path: "/industry-collaborations" },
   { id: "programmes", title: "Industry-Aligned Programmes", capabilities: ["Emerging Technologies", "Professional Skills", "Applied Knowledge"], path: "/programmes" },
   { id: "research", title: "Research & Innovation", capabilities: ["Applied Research", "Innovation Projects", "Hackathons"], path: "/research-innovation" },
-  { id: "practical", title: "Practical Learning", capabilities: ["Hands-on Labs", "Real-world Projects", "Capstones"], path: "/practical-learning" },
-  { id: "industry", title: "Industry Exposure", capabilities: ["Internships", "Industry Interactions", "Professional Practice"], path: "/internships" },
-  { id: "career", title: "Career Development", capabilities: ["Mentoring", "Career Readiness", "Placement Support"], path: "/career-development" },
   { id: "digital", title: "Digital Learning & Assessments", capabilities: ["Courses", "Assessments", "Certificates"], path: "/skillshone" },
+  { id: "practical", title: "Practical Learning", capabilities: ["Hands-on Labs", "Real-world Projects", "Capstones"], path: "/practical-learning" },
+  { id: "career", title: "Career Development", capabilities: ["Mentoring", "Career Readiness", "Placement Support"], path: "/career-development" },
+  { id: "industry", title: "Industry Exposure", capabilities: ["Internships", "Industry Interactions", "Professional Practice"], path: "/internships" },
 ] as const;
 
 const enquire = (label = "Enquire Now"): Block => ({ type: "cta", title: "Have a question?", text: "Speak with the Exafluence Education team.", label, to: "/contact" });
