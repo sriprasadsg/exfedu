@@ -125,7 +125,7 @@ const WaysToPartner = () => {
                 <ChevronDown className="exi-tab-icon h-4 w-4" aria-hidden />
               </button>
               <div id={`exi-acc-${i}`} role="region" aria-label={it.title} hidden={!open} className="exi-acc-panel">
-                <Content item={it} />
+                {open && <div className="exi-fade"><Content item={it} /></div>}
               </div>
             </div>
           );
