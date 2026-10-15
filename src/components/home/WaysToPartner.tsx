@@ -22,6 +22,7 @@ const ways: Way[] = [
     body: "Bring industry platforms, tools and real projects into programmes and student work.",
     path: "/industry-collaborations",
     icon: Cpu,
+    color: "hsl(258 78% 58%)",
   },
   {
     title: "Research & Innovation",
