@@ -281,16 +281,42 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .ways-stack > *:nth-child(8) .ways-icon { animation-delay: -7.7s; }
 .ways-card { display: flex; align-items: flex-start; gap: .9rem; height: 100%; background: hsl(var(--background)); border: 1px solid hsl(var(--muted-foreground) / .2); border-top: 1px solid hsl(var(--primary) / .28); border-radius: 16px; padding: 1.5rem 1.5rem 1.4rem; box-shadow: inset 0 1px 0 hsl(var(--primary) / .06); text-decoration: none; transition: border-color .3s ease, transform .3s ease; }
 .ways-card:hover, .ways-card:focus-visible { border-color: hsl(var(--primary) / .45); border-top-color: hsl(var(--primary)); transform: translateY(-2px); outline: none; }
-.ways-icon { flex: none; display: grid; place-items: center; width: 48px; height: 48px; border-radius: 12px; color: hsl(var(--primary)); background: hsl(210 60% 94%); animation: ways-icon-breathe 6.5s ease-in-out infinite; }
-@keyframes ways-icon-breathe {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-2px); }
+.ways-icon { flex: none; position: relative; display: grid; place-items: center; width: 48px; height: 48px; border-radius: 12px;
+  color: hsl(var(--icon-c, 214 68% 14%));
+  background: linear-gradient(145deg, hsl(var(--icon-c) / .16), hsl(var(--icon-c) / .34));
+  box-shadow: inset 0 0 0 1px hsl(var(--icon-c) / .28);
+  animation: ways-icon-bounce 3.6s cubic-bezier(.45, 0, .55, 1) infinite; }
+@keyframes ways-icon-bounce {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  35% { transform: translateY(-4px) rotate(-4deg); }
+  70% { transform: translateY(-1px) rotate(3deg); }
 }
-.ways-grid li:nth-child(2) .ways-icon { animation-delay: -1.2s; }
-.ways-grid li:nth-child(3) .ways-icon { animation-delay: -2.4s; }
-.ways-grid li:nth-child(4) .ways-icon { animation-delay: -3.6s; }
-.ways-grid li:nth-child(5) .ways-icon { animation-delay: -4.8s; }
-.ways-grid li:nth-child(6) .ways-icon { animation-delay: -6s; }
+.ways-card:hover .ways-icon, .ways-card:focus-visible .ways-icon {
+  animation: ways-icon-wiggle .7s ease-in-out;
+  color: hsl(var(--background));
+  background: linear-gradient(145deg, hsl(var(--icon-c) / .85), hsl(var(--icon-c)));
+  box-shadow: 0 6px 16px -6px hsl(var(--icon-c) / .55), inset 0 0 0 1px hsl(var(--icon-c) / .4);
+}
+@keyframes ways-icon-wiggle {
+  0% { transform: scale(1) rotate(0deg); }
+  25% { transform: scale(1.12) rotate(-7deg); }
+  55% { transform: scale(1.08) rotate(6deg); }
+  80% { transform: scale(1.04) rotate(-3deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+.ways-icon::after { content: ""; position: absolute; right: -2px; top: -2px; width: 8px; height: 8px; border-radius: 50%; background: hsl(var(--icon-c)); opacity: .9; animation: ways-icon-dot 3.6s ease-in-out infinite; }
+@keyframes ways-icon-dot {
+  0%, 100% { transform: scale(1); opacity: .85; }
+  50% { transform: scale(1.5); opacity: .5; }
+}
+.ways-grid li:nth-child(2) .ways-icon { animation-delay: -0.6s; }
+.ways-grid li:nth-child(3) .ways-icon { animation-delay: -1.2s; }
+.ways-grid li:nth-child(4) .ways-icon { animation-delay: -1.8s; }
+.ways-grid li:nth-child(5) .ways-icon { animation-delay: -2.4s; }
+.ways-grid li:nth-child(6) .ways-icon { animation-delay: -3s; }
+@media (prefers-reduced-motion: reduce) {
+  .ways-icon, .ways-icon::after, .ways-card:hover .ways-icon { animation: none; }
+}
 .ways-title { display: block; color: hsl(var(--primary)); font-weight: 500; font-size: 1rem; line-height: 1.3; }
 .ways-line { display: block; margin-top: .2rem; font-size: .74rem; letter-spacing: .04em; text-transform: uppercase; color: hsl(var(--muted-foreground) / .85); }
 .ways-body { display: block; margin-top: .55rem; font-size: .84rem; line-height: 1.65; color: hsl(var(--muted-foreground)); }
