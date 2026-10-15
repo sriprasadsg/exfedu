@@ -1,4 +1,5 @@
 # Roadmap
+- [ ] Rebuild homepage capabilities as eight cards with supplied centre branding; verify 320–1920px, orientations, keyboard/touch and 200% zoom
 - [x] Finish homepage infographic, accessible four-category navigation, global design and responsive rules
 - [x] Refine reusable programme, collaboration, research and gallery templates without adding unapproved content
 - [x] Verify desktop, tablet, mobile navigation and homepage enquiry states
