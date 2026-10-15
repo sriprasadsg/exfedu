@@ -75,4 +75,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Homepage hero tagline: wording replaced with "Connecting Academia, Industry & Technology" and font size reduced further (client 15:26 UTC)
 - [x] Ecosystem section aligned to client infographic (image-48.png): 2-2-2-2 card arrangement, card order Academic/Technology/Programmes/Research/Digital/Practical/Career/Industry, centre circle only (university-industry illustration removed from centre 15 Oct; asset kept at src/assets/university-industry-hub.png.asset.json, unused)
 - [ ] Custom icon set for the circle graphic's 11 arms — stopped on client request (15:50 UTC); generated files sit unused in src/assets/icons/ and are not imported anywhere. Do not wire them in unless the client asks.
-- [ ] Ecosystem section: remove capability cards; keep centre circle with 8 capability arms extending out (client 15 Oct, corrected from 3 arms to 8)
+- [x] Ecosystem section: cards removed; centre circle with 8 capability arms (dot + title links), connectors at >=1120px, stacked list on mobile (done 15 Oct)
