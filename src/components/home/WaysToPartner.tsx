@@ -70,8 +70,8 @@ const Content = ({ item, headingId }: { item: Item; headingId?: string }) => (
 );
 
 const WaysToPartner = () => {
-  const [active, setActive] = useState(0);
-  const [openMobile, setOpenMobile] = useState<number | null>(0);
+  const [active, setActive] = useState<number | null>(null);
+  const [openMobile, setOpenMobile] = useState<number | null>(null);
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
 
   const onKey = (e: React.KeyboardEvent, i: number) => {
@@ -101,7 +101,7 @@ const WaysToPartner = () => {
           {items.map((it, i) => (
             <button key={it.title} ref={(el) => (tabs.current[i] = el)} type="button" role="tab"
               id={`exi-tab-${i}`} aria-selected={active === i} aria-controls="exi-tabpanel"
-              tabIndex={active === i ? 0 : -1} className="exi-tab"
+              tabIndex={active === i || (active === null && i === 0) ? 0 : -1} className="exi-tab"
               onClick={() => setActive(i)} onKeyDown={(e) => onKey(e, i)}>
               {it.title}
             </button>
