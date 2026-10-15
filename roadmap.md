@@ -1,4 +1,5 @@
 # Roadmap
+- [ ] Reduce the overall white panel width while preserving readable content and visible blue edges.
 - [ ] Extend company section blue backdrop behind a comparatively smaller white panel; leave blue visible on every edge, reduce text and verify complete content.
 - [x] Company intro: smaller title, fully readable supporting text and transparent illustration directly on blue; verified 375/1062/1440px with no clipping or overlap.
 - [x] Add client-approved company, mission, vision, approach, certification scope and technology wording to the six homepage expandable items (15 October 2026).
