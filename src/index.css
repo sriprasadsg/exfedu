@@ -478,13 +478,13 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
   text-align: left;
   padding-block: clamp(2.75rem, 7vw, 5.5rem);
   padding-inline: 1.25rem;
-  padding-inline-start: clamp(4.5rem, 22vw, 21rem);
+  padding-inline-start: clamp(1.5rem, 6vw, 4rem);
 }
 @media (min-width: 640px) {
-  .hero-banner-copy { padding-inline-start: clamp(6rem, 26vw, 18rem); }
+  .hero-banner-copy { padding-inline-start: clamp(4rem, 9vw, 8rem); }
 }
 @media (min-width: 1024px) {
-  .hero-banner-copy { padding-inline-start: clamp(14rem, 22vw, 26rem); }
+  .hero-banner-copy { padding-inline-start: clamp(8rem, 12vw, 12rem); }
 }
 .brand-exa { color: hsl(var(--brand-red)); }
 .brand-fluence { color: hsl(var(--brand-blue)); }
@@ -492,7 +492,7 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
   font-size: clamp(1.35rem, 3.2vw, 2.35rem);
   line-height: 1.2;
   font-weight: 500;
-  color: hsl(var(--navy-600));
+  color: hsl(var(--brand-grey));
   animation: fadeInUp .55s both;
 }
 .hero-tagline {
@@ -501,7 +501,7 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
   font-weight: 400;
   letter-spacing: .045em;
   line-height: 1.4;
-  color: hsl(214 38% 42%);
+  color: hsl(var(--muted-foreground));
   white-space: nowrap;
   animation: fadeInUp .55s .16s both, hero-tagline-breathe 11s ease-in-out 1.4s infinite;
 }
