@@ -54,6 +54,7 @@ const ways: Way[] = [
     body: "Shape short courses and practitioner learning for your teams and for students.",
     path: "/programmes",
     icon: GraduationCap,
+    color: "hsl(142 58% 40%)",
   },
 ];
 
