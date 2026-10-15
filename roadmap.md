@@ -78,3 +78,7 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [ ] Custom icon set for the circle graphic's 11 arms — stopped on client request (15:50 UTC); generated files sit unused in src/assets/icons/ and are not imported anywhere. Do not wire them in unless the client asks.
 - [x] Ecosystem section: cards removed; centre circle with 8 capability arms (dot + title links), connectors at >=1120px, stacked list on mobile (done 15 Oct)
 - [x] Ways-to-partner icons: replace six card icons (university+nodes, microchip, lightbulb+network, briefcase+checklist, two people+bubble, grad cap+gear), 24px navy outline in 48px pale-blue squares, no shadows/multicolour (15 Oct)
+- [x] Homepage hero banner: only "Exafluence Education" + tagline, artwork as background, no other text or buttons (client 09:21 UTC)
+- [x] Homepage hero banner: both lines left-aligned and artwork strengthened for visibility — src/assets/hero-banner-strong.png (original kept unused); verified 320-1920px, no text/tile overlap, no horizontal scroll (client 09:21 UTC)
+- [x] "Partner with us" heading: blank space above its first line removed (margin-top 0) and intro pulled closer; verified 375/1062/1440px, heading stays on one line, no overflow (client 09:24 UTC)
+- [ ] Phone heading size: "Connecting Academia & Industry for Future-Ready Learning" renders ~10px on a 375px phone (clamp floor .6rem) — offered to raise it, awaiting client
