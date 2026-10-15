@@ -589,10 +589,10 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .exi-list li::before { content: ""; position: absolute; left: 0; top: .6em; width: 6px; height: 6px; border-radius: 9999px; background: hsl(var(--primary) / .6); }
 @media (min-width: 900px) {
   .exi-section { padding-inline: 1.75rem; }
-  .exi-layout { grid-template-columns: minmax(250px, 320px) minmax(0, 1fr); align-items: center; gap: 1rem; padding: 1.5rem 1.5rem 1.5rem 0; }
-  .exi-layout::before { inset: 0; }
+  .exi-layout { grid-template-columns: minmax(250px, 320px) minmax(0, 1fr); align-items: center; gap: 1rem; padding: 0 1.5rem 0 0; }
+  .exi-layout::before { inset: 2rem 0; }
   .exi-intro { padding: 2.5rem 1.75rem; }
-  .exi-card { width: 90%; max-width: 640px; justify-self: end; padding: 1.25rem; }
+  .exi-card { width: 90%; max-width: 640px; min-height: 540px; justify-self: end; display: flex; flex-direction: column; justify-content: center; padding: 2rem 1.25rem; }
 }
 @media (max-width: 899px) { .exi-grid { grid-template-columns: 1fr; } }
 @media (prefers-reduced-motion: reduce) {

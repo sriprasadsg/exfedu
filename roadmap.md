@@ -1,6 +1,6 @@
 # Roadmap
 - [ ] Reduce the overall white panel width while preserving readable content and visible blue edges.
-- [ ] Extend company section blue backdrop behind a comparatively smaller white panel; leave blue visible on every edge, reduce text and verify complete content.
+- [ ] Extend blue backdrop across the section; make the narrower white panel taller and protrude above/below blue only, with readable text.
 - [x] Company intro: smaller title, fully readable supporting text and transparent illustration directly on blue; verified 375/1062/1440px with no clipping or overlap.
 - [x] Add client-approved company, mission, vision, approach, certification scope and technology wording to the six homepage expandable items (15 October 2026).
 - [x] Arrange homepage capabilities as an eight-spoke radial diagram; verified equal radius, eight connectors, links, no card overlap or horizontal overflow at 320/375/768/1062/1440/1920px.
