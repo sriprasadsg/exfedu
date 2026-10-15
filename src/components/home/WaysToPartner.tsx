@@ -6,6 +6,7 @@ import exiIllustration from "@/assets/exi-illustration.png";
 const Illustration = () => (
   <div className="exi-illus" aria-hidden="true">
     <img src={exiIllustration} alt="" width={1024} height={768} loading="lazy" />
+    <img src={exiIllustration} alt="" width={1024} height={768} loading="lazy" className="exi-illus-reflect" />
   </div>
 );
 
@@ -103,7 +104,8 @@ const WaysToPartner = () => {
               id={`exi-tab-${i}`} aria-selected={active === i} aria-controls="exi-tabpanel"
               tabIndex={active === i || (active === null && i === 0) ? 0 : -1} className="exi-tab"
               onClick={() => setActive(i)} onKeyDown={(e) => onKey(e, i)}>
-              {it.title}
+              <span>{it.title}</span>
+              <ChevronDown className="exi-tab-hint h-4 w-4" aria-hidden />
             </button>
           ))}
         </div>
