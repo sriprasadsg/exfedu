@@ -1,5 +1,5 @@
 # Roadmap
-- [ ] Arrange homepage capabilities as an eight-spoke radial diagram and verify desktop/mobile.
+- [x] Arrange homepage capabilities as an eight-spoke radial diagram; verified equal radius, eight connectors, links, no card overlap or horizontal overflow at 320/375/768/1062/1440/1920px.
 - [x] Rebuild homepage capabilities as eight cards with supplied centre branding; verified 320–1920px, orientations, keyboard/touch, reduced motion and 200% zoom-equivalent CSS layouts
 - [x] Finish homepage infographic, accessible four-category navigation, global design and responsive rules
 - [x] Refine reusable programme, collaboration, research and gallery templates without adding unapproved content
