@@ -46,6 +46,7 @@ const ways: Way[] = [
     body: "Mentor students, share industry skills sessions and take part in career guidance.",
     path: "/career-development",
     icon: Users,
+    color: "hsl(342 80% 56%)",
   },
   {
     title: "Programmes & Professional Learning",
