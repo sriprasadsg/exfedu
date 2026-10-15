@@ -73,8 +73,12 @@ const WaysToPartner = () => (
       {ways.map((w) => (
         <li key={w.path}>
           <Link to={w.path} className="ways-card">
-            <span className="ways-icon" aria-hidden>
-              <w.icon className="h-6 w-6" strokeWidth={1.5} />
+            <span
+              className="ways-icon"
+              aria-hidden
+              style={{ "--icon-c": w.color } as React.CSSProperties}
+            >
+              <w.icon className="h-6 w-6" strokeWidth={1.8} />
             </span>
             <span className="min-w-0">
               <span className="ways-title">{w.title}</span>
