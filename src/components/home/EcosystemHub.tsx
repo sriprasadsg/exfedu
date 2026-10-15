@@ -19,6 +19,7 @@ const EcosystemHub = () => {
   const wrap = useRef<HTMLDivElement>(null);
   const [lines, setLines] = useState<Line[]>([]);
   const [box, setBox] = useState({ w: 0, h: 0 });
+  const [active, setActive] = useState<number | null>(null);
 
   // Connectors are measured from the real layout: card's inner edge -> circle edge.
   useLayoutEffect(() => {
@@ -55,7 +56,7 @@ const EcosystemHub = () => {
         {lines.length > 0 && (
           <svg className="cap-lines" width={box.w} height={box.h} aria-hidden="true" focusable="false">
             {lines.map((l, i) => (
-              <g key={i}>
+              <g key={i} className={active === i ? "is-active" : undefined}>
                 <line {...l} />
                 <circle cx={l.x1} cy={l.y1} r="5" />
                 <circle cx={l.x2} cy={l.y2} r="5" />
@@ -70,8 +71,9 @@ const EcosystemHub = () => {
             <p className="cap-name">Exafluence Education</p>
           </div>
         </div>
-        {homepageCapabilities.map((cap) => (
-          <Link key={cap.id} to={cap.path} className={`cap-card cap-card--${cap.id}`}>
+        {homepageCapabilities.map((cap, i) => (
+          <Link key={cap.id} to={cap.path} className={`cap-card cap-card--${cap.id}`} style={{ ["--i" as string]: i }}
+            onMouseEnter={() => setActive(i)} onMouseLeave={() => setActive(null)} onFocus={() => setActive(i)} onBlur={() => setActive(null)}>
             <img src={art[cap.id]} alt="" className="cap-art" loading="lazy" />
             <h3 className="cap-title">{cap.title}</h3>
             <ul className="cap-points">{cap.capabilities.map((p) => <li key={p}>{p}</li>)}</ul>
