@@ -90,4 +90,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Homepage hero title: "Exa" in red and "fluence" in blue (client 10:29 UTC) — --brand-blue brightened 214 84% 24% -> 214 88% 46% so it reads blue, not navy; verified 375/1062/1440px, header logo asset reachable on hosted preview (HTTP 200), no horizontal scroll
 - [x] Partner-section intro line set to two lines (wider measure) with the gap above the cards tightened
 - [x] Exafluence Inc. section content revised 15 Oct: six items now use the client-approved bullet lists (About, Mission, Vision, How We Work, Quality & Standards, Tools & Technologies) rendered as styled bullet lists; university-industry picture removed from the intro panel per client.
-- [ ] Give the six Exafluence Inc. expandable boxes the same gentle hover animations as the eight circle cards (lift/grow, soft shadow, reduced-motion safe).
+- [x] Give the six Exafluence Inc. expandable boxes the same gentle hover animations as the eight circle cards (lift/grow, soft shadow, reduced-motion safe).
