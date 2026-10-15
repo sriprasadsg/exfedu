@@ -45,12 +45,16 @@ export const playCoinDrop = () => {
     const source = ctx.createBufferSource();
     source.buffer = buffer;
     const gain = ctx.createGain();
+    // Gentle low-pass filter rounds off any sharpness in the "ting".
+    const lowpass = ctx.createBiquadFilter();
+    lowpass.type = "lowpass";
+    lowpass.frequency.value = 3200;
     const t = ctx.currentTime;
     const dur = Math.min(buffer.duration, 0.6);
     gain.gain.setValueAtTime(0.0001, t);
     gain.gain.exponentialRampToValueAtTime(MASTER_LEVEL, t + FADE_IN);
     gain.gain.exponentialRampToValueAtTime(0.0001, t + dur + FADE_OUT);
-    source.connect(gain).connect(ctx.destination);
+    source.connect(lowpass).connect(gain).connect(ctx.destination);
     source.start(t);
     source.stop(t + dur + FADE_OUT + 0.05);
   } catch {
