@@ -14,6 +14,7 @@ const ways: Way[] = [
     body: "Co-develop curriculum, faculty enablement and programme delivery with Exafluence Education.",
     path: "/academic-collaborations",
     icon: Landmark,
+    color: "hsl(214 88% 52%)",
   },
   {
     title: "Industry & Technology",
