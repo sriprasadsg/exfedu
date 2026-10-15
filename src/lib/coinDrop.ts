@@ -8,11 +8,11 @@ let buffer: AudioBuffer | null = null;
 let loading: Promise<void> | null = null;
 let lastPlayed = 0;
 
-/** Very quiet master level for the hover "ting" (out of 1.0). */
-const MASTER_LEVEL = 0.12;
+/** Extra-quiet master level for the hover "ting" (out of 1.0). */
+const MASTER_LEVEL = 0.045;
 /** Seconds of fade-in / fade-out applied around the clip. */
-const FADE_IN = 0.025;
-const FADE_OUT = 0.12;
+const FADE_IN = 0.05;
+const FADE_OUT = 0.22;
 
 const ensureBuffer = () => {
   if (buffer || loading) return;
@@ -45,12 +45,16 @@ export const playCoinDrop = () => {
     const source = ctx.createBufferSource();
     source.buffer = buffer;
     const gain = ctx.createGain();
+    // Gentle low-pass filter rounds off any sharpness in the "ting".
+    const lowpass = ctx.createBiquadFilter();
+    lowpass.type = "lowpass";
+    lowpass.frequency.value = 3200;
     const t = ctx.currentTime;
     const dur = Math.min(buffer.duration, 0.6);
     gain.gain.setValueAtTime(0.0001, t);
     gain.gain.exponentialRampToValueAtTime(MASTER_LEVEL, t + FADE_IN);
     gain.gain.exponentialRampToValueAtTime(0.0001, t + dur + FADE_OUT);
-    source.connect(gain).connect(ctx.destination);
+    source.connect(lowpass).connect(gain).connect(ctx.destination);
     source.start(t);
     source.stop(t + dur + FADE_OUT + 0.05);
   } catch {
