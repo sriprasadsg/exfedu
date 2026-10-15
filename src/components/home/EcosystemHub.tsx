@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { homepageCapabilities } from "@/data/site";
 import penMark from "@/assets/pen-mark.png";
+import hubInfographic from "@/assets/university-industry-hub.png.asset.json";
 import academic from "@/assets/capability-academic.webp";
 import technology from "@/assets/capability-technology.webp";
 import programmes from "@/assets/capability-programmes.webp";
@@ -27,6 +28,7 @@ const EcosystemHub = () => (
           <img src={penMark} alt="" width={92} height={92} className="capabilities-pen" />
           <p className="capabilities-name">Exafluence Education</p>
         </div>
+        <img src={hubInfographic.url} alt="University to industry connection hub" loading="lazy" className="capabilities-centre-infographic" />
       </div>
       <ul className="capabilities-cards">
         {homepageCapabilities.map((card) => (

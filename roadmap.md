@@ -73,5 +73,5 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Homepage partnerships heading replaced with "Academia–Industry Collaboration for Future-Ready Learning" on a single line, intro set out neatly and reworded to end "get started with us" (client 15:14/15:19 UTC)
 - [x] Homepage hero: tassel separated into its own layer and given a gentle swing; cap stays still (client 15:18 UTC)
 - [x] Homepage hero tagline: wording replaced with "Connecting Academia, Industry & Technology" and font size reduced further (client 15:26 UTC)
-- [ ] Replace the network symbol with the client's university-to-industry illustration (uploaded, 1672x941, now at src/assets/university-industry-hub.png.asset.json) — awaiting client's choice of placement (client 15:34 UTC)
+- [x] Client's university-to-industry illustration (1672x941, src/assets/university-industry-hub.png.asset.json) placed in the ecosystem section centre, directly below the central branding circle (done 15 Oct, client chose "centre")
 - [ ] Custom icon set for the circle graphic's 11 arms — stopped on client request (15:50 UTC); generated files sit unused in src/assets/icons/ and are not imported anywhere. Do not wire them in unless the client asks.
