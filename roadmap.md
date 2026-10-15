@@ -84,4 +84,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [ ] Phone heading size: "Connecting Academia & Industry for Future-Ready Learning" renders ~10px on a 375px phone (clamp floor .6rem) — offered to raise it, awaiting client
 - [x] Collaborate section wording replaced (client 09:39 UTC): label "Collaborate with us", heading "Academic Partnerships. Industry Expertise. Shared Progress.", intro "Connect with Exafluence to co-develop programmes, advance applied research and bring real-world experience into learning."; verified 375/768/1062/1440/1920px, one line, no cutoff, no horizontal scroll
 - [x] Homepage banner: flat icon tiles replaced with soft 3D tiles (client 09:40 UTC)
-- [ ] Homepage banner: remove the dotted-grid background, lighten the artwork, and shift the palette to light sky-blue mixed with white shades (client 09:42 UTC)
+- [ ] Homepage banner: dotted-grid background removed and palette shifted to light sky-blue with white shades (client 09:42 UTC); icons also faded in visual opacity (client 09:42 UTC)
