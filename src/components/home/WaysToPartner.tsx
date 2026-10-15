@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { playCoinDrop } from "@/lib/coinDrop";
 import {
   Landmark, Cpu, Lightbulb, Briefcase, Users, GraduationCap,
   type LucideIcon,
