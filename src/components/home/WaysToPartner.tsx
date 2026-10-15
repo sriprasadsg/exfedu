@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { ChevronDown, ChevronLeft, ChevronRight, CircleDashed } from "lucide-react";
+import { ChevronDown, CircleDashed } from "lucide-react";
 import { PENDING } from "@/data/site";
 
 type Item = { title: string; sub: string; points: string[] };
@@ -50,12 +50,6 @@ const items: Item[] = [
   ] },
 ];
 
-const PER_SLIDE = 3;
-const slides: Item[][] = [
-  items.slice(0, PER_SLIDE),
-  items.slice(PER_SLIDE, PER_SLIDE * 2),
-];
-
 const canHover = () => typeof window !== "undefined" && window.matchMedia("(hover: hover)").matches;
 
 const Expandable = ({ item, id, clicked, hovered, setClicked, setHovered }: {
@@ -101,12 +95,8 @@ const Expandable = ({ item, id, clicked, hovered, setClicked, setHovered }: {
 };
 
 const WaysToPartner = () => {
-  const [slide, setSlide] = useState(0);
   const [clicked, setClicked] = useState<Record<string, boolean>>({});
   const [hovered, setHovered] = useState<Record<string, boolean>>({});
-  const touchX = useRef<number | null>(null);
-
-  const go = (dir: 1 | -1) => setSlide((s) => Math.min(slides.length - 1, Math.max(0, s + dir)));
 
   return (
     <section aria-labelledby="exi-heading" className="exi-section">
@@ -117,48 +107,13 @@ const WaysToPartner = () => {
           <p className="exi-lead">Discover our company, purpose and approach to connecting academia, industry and technology.</p>
         </div>
 
-        <div
-          className="exi-panel"
-          role="region"
-          aria-label="About Exafluence Inc."
-          onTouchStart={(e) => { touchX.current = e.touches[0].clientX; }}
-          onTouchEnd={(e) => {
-            if (touchX.current === null) return;
-            const dx = e.changedTouches[0].clientX - touchX.current;
-            if (Math.abs(dx) > 48) go(dx < 0 ? 1 : -1);
-            touchX.current = null;
-          }}
-        >
-          <div className="exi-slide" key={slide}>
-            {slides[slide].map((it, i) => {
-              const idx = slide * PER_SLIDE + i;
-              return (
-                <Expandable key={it.title} item={it} id={`exi-d-${idx}`}
-                  clicked={!!clicked[idx]} hovered={!!hovered[idx]}
-                  setClicked={(v) => setClicked((c) => ({ ...c, [idx]: v }))}
-                  setHovered={(v) => setHovered((h) => ({ ...h, [idx]: v }))} />
-              );
-            })}
-          </div>
-
-          {slide > 0 && (
-            <button type="button" className="exi-arrow exi-prev" aria-label="Previous items" onClick={() => go(-1)}>
-              <ChevronLeft className="h-5 w-5" />
-            </button>
-          )}
-          {slide < slides.length - 1 && (
-            <button type="button" className="exi-arrow exi-next" aria-label="Next items" onClick={() => go(1)}>
-              <ChevronRight className="h-5 w-5" />
-            </button>
-          )}
-
-          <div className="exi-dots" role="tablist" aria-label="Item pages">
-            {slides.map((_, i) => (
-              <button key={i} type="button" role="tab" aria-selected={slide === i}
-                aria-label={`Show items ${i + 1}`} className={`exi-dot${slide === i ? " is-active" : ""}`}
-                onClick={() => setSlide(i)} />
-            ))}
-          </div>
+        <div className="exi-panel" role="region" aria-label="About Exafluence Inc.">
+          {items.map((it, i) => (
+            <Expandable key={it.title} item={it} id={`exi-d-${i}`}
+              clicked={!!clicked[i]} hovered={!!hovered[i]}
+              setClicked={(v) => setClicked((c) => ({ ...c, [i]: v }))}
+              setHovered={(v) => setHovered((h) => ({ ...h, [i]: v }))} />
+          ))}
         </div>
       </div>
     </section>
