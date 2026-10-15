@@ -1,149 +1,47 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, ArrowDown } from "lucide-react";
-import {
-  Landmark, Network, BookOpen, FlaskConical, Briefcase, Compass,
-  Lightbulb, Award, LayoutGrid, MonitorPlay, Images, type LucideIcon,
-} from "lucide-react";
+import { homepageCapabilities } from "@/data/site";
 import penMark from "@/assets/pen-mark.png";
+import academic from "@/assets/capability-academic.webp";
+import technology from "@/assets/capability-technology.webp";
+import programmes from "@/assets/capability-programmes.webp";
+import research from "@/assets/capability-research.webp";
+import practical from "@/assets/capability-practical.webp";
+import industry from "@/assets/capability-industry.webp";
+import career from "@/assets/capability-career.webp";
+import digital from "@/assets/capability-digital.webp";
 
-type Weight = "strong" | "medium" | "light";
-export type EcoNode = {
-  title: string; line: string; path: string; icon: LucideIcon; weight: Weight;
-  accent?: boolean; // subtle 3D icon accent
-  x: number; y: number; // desktop position, % of stage
-};
+const illustrations = { academic, technology, programmes, research, practical, industry, career, digital };
+const positions = [[180, 135], [600, 135], [1020, 135], [180, 450], [1020, 450], [180, 765], [600, 765], [1020, 765]];
 
-/** Edit nodes here — order is also the mobile journey order. */
-export const ecosystemNodes: EcoNode[] = [
-  { title: "Academic Collaborations", line: "SVU • XIME", path: "/academic-collaborations", icon: Landmark, weight: "strong", x: 12, y: 5 },
-  { title: "Industry & Technology", line: "IBM • Exafluence Inc.", path: "/industry-collaborations", icon: Network, weight: "strong", x: 88, y: 5 },
-  { title: "Programmes", line: "AI • Data • FinTech • Cloud • Quantum", path: "/programmes", icon: BookOpen, weight: "strong", accent: true, x: 11, y: 36 },
-  { title: "Practical Learning", line: "Labs • Projects • Capstones", path: "/practical-learning", icon: FlaskConical, weight: "strong", x: 89, y: 36 },
-  { title: "Internships & Exposure", line: "Internships • Industry Visits • ODC", path: "/internships", icon: Briefcase, weight: "medium", x: 11, y: 66 },
-  { title: "Career Development", line: "Placements • Skills • Mentoring", path: "/career-development", icon: Compass, weight: "medium", x: 89, y: 66 },
-  { title: "Research & Innovation", line: "Publications • Conferences • Hackathons", path: "/research-innovation", icon: Lightbulb, weight: "medium", accent: true, x: 37, y: 5 },
-  { title: "Student Success", line: "Achievements • Placements • Career Growth", path: "/student-success", icon: Award, weight: "medium", accent: true, x: 63, y: 5 },
-  { title: "Student’s Corner", line: "Resources • Updates • Downloads", path: "/students-corner", icon: LayoutGrid, weight: "light", x: 20, y: 96 },
-  { title: "SkillShone", line: "Courses • Assessments • Certificates", path: "/skillshone", icon: MonitorPlay, weight: "light", accent: true, x: 80, y: 96 },
-  { title: "Gallery & Highlights", line: "Events • Activities • Awards", path: "/gallery", icon: Images, weight: "light", x: 50, y: 96 },
-];
-
-const W = 1200, H = 780, CX = 600, CY = 380;
-
-const ICON_HUES = [214, 160, 262, 28, 340, 190, 45, 290, 120, 0, 230];
-const Icon = ({ n }: { n: EcoNode }) => {
-  const i = ecosystemNodes.indexOf(n);
-  const hue = ICON_HUES[(i < 0 ? 0 : i) % ICON_HUES.length];
-  return (
-    <span
-      className="eco-icon eco-icon-color"
-      style={{ "--icon-h": hue, animationDelay: `${(i % 6) * 0.6}s` } as import("react").CSSProperties}
-      aria-hidden
-    >
-      <n.icon className="h-4 w-4" strokeWidth={1.7} />
-    </span>
-  );
-};
-
-const NodeBody = ({ n, i }: { n: EcoNode; i: number }) => (
-  <>
-    <Icon n={n} />
-    <span className="min-w-0">
-      <span className={`eco-title eco-${n.weight}`}>{n.title}</span>
-      <span className="eco-line">{n.line}</span>
-      <span className="eco-explore">Explore <ArrowRight className="h-3 w-3" /></span>
-    </span>
-    <span className="sr-only">{` (${i + 1} of ${ecosystemNodes.length})`}</span>
-  </>
-);
-
-const Hub = ({ compact = false }: { compact?: boolean }) => (
-  <div className={`eco-hub ${compact ? "eco-hub-compact" : ""}`}>
-    <img src={penMark} alt="" aria-hidden className="eco-hub-mark" />
-    <p className="eco-hub-name">Exafluence Education</p>
-    <p className="eco-hub-tag">Connecting Academia, Industry &amp; Technology</p>
-  </div>
-);
-
-const EcosystemHub = () => {
-  const [active, setActive] = useState<number | null>(null);
-  // Connector path from hub to node: gentle curve
-  const path = (n: EcoNode) => {
-    const x = (n.x / 100) * W, y = (n.y / 100) * H;
-    const mx = (CX + x) / 2, my = (CY + y) / 2;
-    const bend = (x - CX) * 0.12;
-    return `M${CX},${CY} Q${mx - bend},${my + Math.abs(bend) * 0.6} ${x},${y}`;
-  };
-
-  return (
-    <section aria-label="Education ecosystem" className="eco-section">
-      <p className="sr-only">Exafluence Education — Connecting Academia, Industry &amp; Technology</p>
-
-      {/* Desktop: open radial composition */}
-      <div className={`eco-stage hidden lg:block ${active !== null ? "has-active" : ""}`}>
-        <svg viewBox={`0 0 ${W} ${H}`} className="eco-svg" aria-hidden preserveAspectRatio="none">
-          <defs>
-            <pattern id="eco-grid" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path d="M40 0H0V40" fill="none" className="eco-grid-line" />
-            </pattern>
-            <radialGradient id="eco-fade"><stop offset="0" stopColor="white" /><stop offset="1" stopColor="white" stopOpacity="0" /></radialGradient>
-            <mask id="eco-mask"><circle cx={CX} cy={CY} r="420" fill="url(#eco-fade)" /></mask>
-          </defs>
-          <rect width={W} height={H} fill="url(#eco-grid)" mask="url(#eco-mask)" />
-          {[180, 270, 370].map((r, i) => (
-            <ellipse key={r} cx={CX} cy={CY} rx={r * 1.25} ry={r} className="eco-orbit" style={{ animationDelay: `${0.3 + i * 0.15}s` }} />
-          ))}
-          {ecosystemNodes.map((n, i) => (
-            <g key={n.path} className={`eco-conn ${active === i ? "is-active" : ""}`} style={{ animationDelay: `${0.7 + i * 0.06}s` }}>
-              <path d={path(n)} pathLength={1} />
-              <circle cx={(n.x / 100) * W} cy={(n.y / 100) * H} r="3" />
-            </g>
-          ))}
-        </svg>
-
-        <div className="eco-center"><Hub /></div>
-
-        {ecosystemNodes.map((n, i) => (
-          <Link
-            key={n.path}
-            to={n.path}
-            className={`eco-node eco-node-${n.weight} eco-edge-${i % 4} ${active === i ? "is-active" : ""}`}
-            style={{ left: `${n.x}%`, top: `${n.y}%`, animationDelay: `${1 + i * 0.07}s` }}
-            onMouseEnter={() => setActive(i)} onMouseLeave={() => setActive(null)}
-            onFocus={() => setActive(i)} onBlur={() => setActive(null)}
-          >
-            <NodeBody n={n} i={i} />
-          </Link>
+const EcosystemHub = () => (
+  <section aria-label="Education ecosystem" className="capabilities-section">
+    <div className="capabilities-layout">
+      <svg viewBox="0 0 1200 900" className="capabilities-connectors" aria-hidden="true" focusable="false" preserveAspectRatio="none">
+        <ellipse cx="600" cy="450" rx="420" ry="315" className="capabilities-orbit" />
+        <ellipse cx="600" cy="450" rx="320" ry="240" className="capabilities-orbit" />
+        {positions.map(([x, y], i) => <path key={i} d={`M600 450 L${x} ${y}`} className="capabilities-spoke" />)}
+      </svg>
+      <div className="capabilities-brand">
+        <div className="capabilities-circle">
+          <p className="capabilities-company">Exafluence Inc.USA</p>
+          <img src={penMark} alt="" width={92} height={92} className="capabilities-pen" />
+          <p className="capabilities-name">Exafluence Education</p>
+        </div>
+      </div>
+      <ul className="capabilities-cards">
+        {homepageCapabilities.map((card) => (
+          <li key={card.id} className="capabilities-item">
+            <Link to={card.path} className="capabilities-card">
+              <img src={illustrations[card.id]} alt="" width={384} height={384} loading="lazy" className="capabilities-illustration" />
+              <h2>{card.title}</h2>
+              <ul className="capabilities-details">
+                {card.capabilities.map((capability) => <li key={capability}>{capability}</li>)}
+              </ul>
+            </Link>
+          </li>
         ))}
-      </div>
-
-      {/* Tablet: hub + two-column ecosystem */}
-      <div className="hidden md:block lg:hidden">
-        <Hub />
-        <ul className="mt-10 grid grid-cols-2 gap-x-6 gap-y-3">
-          {ecosystemNodes.map((n, i) => (
-            <li key={n.path}>
-              <Link to={n.path} className={`eco-node eco-flow eco-node-${n.weight} eco-edge-${i % 4}`}><NodeBody n={n} i={i} /></Link>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {/* Mobile: vertical journey */}
-      <div className="md:hidden">
-        <Hub compact />
-        <ol className="eco-journey">
-          {ecosystemNodes.map((n, i) => (
-            <li key={n.path}>
-              <ArrowDown className="eco-journey-arrow" aria-hidden strokeWidth={1.25} />
-              <Link to={n.path} className={`eco-node eco-flow eco-node-${n.weight} eco-edge-${i % 4}`}><NodeBody n={n} i={i} /></Link>
-            </li>
-          ))}
-        </ol>
-      </div>
-    </section>
-  );
-};
-
+      </ul>
+    </div>
+  </section>
+);
 export default EcosystemHub;

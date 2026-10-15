@@ -1,7 +1,13 @@
 import { describe, expect, it } from "vitest";
-import { arms, categories, pages, programmes } from "@/data/site";
+import { arms, categories, homepageCapabilities, pages, programmes } from "@/data/site";
 
 describe("approved website structure", () => {
+  it("keeps eight homepage capability cards linked to existing pages", () => {
+    expect(homepageCapabilities).toHaveLength(8);
+    for (const card of homepageCapabilities) {
+      expect(pages.some((page) => page.path === card.path)).toBe(true);
+    }
+  });
   it("keeps exactly four requested categories", () => {
     expect(categories.map((c) => c.title)).toEqual(["Core", "Academic Collaborations", "Industry & Technology Collaborations", "Learning & Student Ecosystem"]);
   });
