@@ -7,8 +7,8 @@ const Hero = () => (
         src={heroBanner}
         alt=""
         aria-hidden="true"
-        width={1920}
-        height={640}
+        width={1584}
+        height={672}
         className="hero-banner-art"
       />
       <div className="hero-banner-copy">
