@@ -94,3 +94,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Exafluence Inc. section rebuilt to match the "Discover jobs" reference: pale intro panel on the left, white card overlapping its right edge, all six dropdown boxes visible in 2 columns x 3 rows (no slides/arrows/dots); verified desktop + phone, no overflow, expansion still shows approved bullets (client "this" 11:27 UTC)
 - [x] Exafluence Inc. section: no row selected initially; right panel shows AI chip/book/data-nodes illustration until a row is clicked (fade, mobile illustration above rows)
 - [x] Exafluence Inc. panel illustration remade in 3D glossy style (client 11:38 UTC)
+- [x] Exafluence Inc. section: 3D illustration shows a light soft shadow/glow instead of a mirrored reflection; verified no clipping, no sideways scrolling at 375/1440 (15 October 2026).
