@@ -20,13 +20,8 @@ const Hero = () => (
           </a>
         </div>
       </div>
-      <div className="hero-visual" aria-hidden>
-        <div className="hero-cap-stage">
-          <img src={heroRing} alt="" width={1024} height={1024} className="hero-ring" />
-          <img src={heroCap} alt="" width={1024} height={1024} className="hero-cap" />
-          <img src={heroRing} alt="" width={1024} height={1024} className="hero-ring hero-ring--front" />
-          <img src={heroTassel} alt="" width={1024} height={1024} className="hero-tassel" />
-        </div>
+      <div className="hero-visual hero-visual--float" aria-hidden>
+        <img src={heroNetwork} alt="" width={1024} height={1024} className="hero-network" />
       </div>
     </div>
   </section>
