@@ -92,3 +92,5 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Exafluence Inc. section content revised 15 Oct: six items now use the client-approved bullet lists (About, Mission, Vision, How We Work, Quality & Standards, Tools & Technologies) rendered as styled bullet lists; university-industry picture removed from the intro panel per client.
 - [x] Give the six Exafluence Inc. expandable boxes the same gentle hover animations as the eight circle cards (lift/grow, soft shadow, reduced-motion safe).
 - [x] Exafluence Inc. section rebuilt to match the "Discover jobs" reference: pale intro panel on the left, white card overlapping its right edge, all six dropdown boxes visible in 2 columns x 3 rows (no slides/arrows/dots); verified desktop + phone, no overflow, expansion still shows approved bullets (client "this" 11:27 UTC)
+- [x] Exafluence Inc. section: no row selected initially; right panel shows AI chip/book/data-nodes illustration until a row is clicked (fade, mobile illustration above rows)
+- [ ] Exafluence Inc. panel illustration remade in 3D glossy style (client 11:38 UTC)
