@@ -1,6 +1,13 @@
 import { useRef, useState } from "react";
 import { ChevronDown, CircleDashed } from "lucide-react";
 import { PENDING } from "@/data/site";
+import exiIllustration from "@/assets/exi-illustration.png";
+
+const Illustration = () => (
+  <div className="exi-illus" aria-hidden="true">
+    <img src={exiIllustration} alt="" width={1024} height={768} loading="lazy" />
+  </div>
+);
 
 type Item = { title: string; sub: string; points: string[] };
 
@@ -63,8 +70,8 @@ const Content = ({ item, headingId }: { item: Item; headingId?: string }) => (
 );
 
 const WaysToPartner = () => {
-  const [active, setActive] = useState(0);
-  const [openMobile, setOpenMobile] = useState<number | null>(0);
+  const [active, setActive] = useState<number | null>(null);
+  const [openMobile, setOpenMobile] = useState<number | null>(null);
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
 
   const onKey = (e: React.KeyboardEvent, i: number) => {
@@ -94,19 +101,20 @@ const WaysToPartner = () => {
           {items.map((it, i) => (
             <button key={it.title} ref={(el) => (tabs.current[i] = el)} type="button" role="tab"
               id={`exi-tab-${i}`} aria-selected={active === i} aria-controls="exi-tabpanel"
-              tabIndex={active === i ? 0 : -1} className="exi-tab"
+              tabIndex={active === i || (active === null && i === 0) ? 0 : -1} className="exi-tab"
               onClick={() => setActive(i)} onKeyDown={(e) => onKey(e, i)}>
               {it.title}
             </button>
           ))}
         </div>
-        <div id="exi-tabpanel" role="tabpanel" aria-labelledby={`exi-tab-${active}`} className="exi-panel" tabIndex={0}>
-          <Content item={items[active]} />
+        <div id="exi-tabpanel" role="tabpanel" aria-labelledby={active === null ? undefined : `exi-tab-${active}`} className="exi-panel" tabIndex={0}>
+          {active === null ? <Illustration /> : <div key={active} className="exi-fade"><Content item={items[active]} /></div>}
         </div>
       </div>
 
-      {/* Mobile: accordion */}
+      {/* Mobile: illustration above rows until a row is selected, then accordion */}
       <div className="exi-mobile exi-tabs">
+        {openMobile === null && <Illustration />}
         {items.map((it, i) => {
           const open = openMobile === i;
           return (
@@ -117,7 +125,7 @@ const WaysToPartner = () => {
                 <ChevronDown className="exi-tab-icon h-4 w-4" aria-hidden />
               </button>
               <div id={`exi-acc-${i}`} role="region" aria-label={it.title} hidden={!open} className="exi-acc-panel">
-                <Content item={it} />
+                {open && <div className="exi-fade"><Content item={it} /></div>}
               </div>
             </div>
           );
