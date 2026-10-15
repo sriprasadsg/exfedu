@@ -52,7 +52,6 @@ const items: Item[] = [
     "ISO/IEC 27001:2022 — Information Security Management.",
     "ISO/IEC 42001:2023 — AI Management.",
     "Applicable to certified activities and scope.",
-    "These are not educational accreditations.",
   ] },
   { title: "Tools & Technologies", sub: "Practical Skills Across Modern Technologies", points: [
     "Python and data science libraries.",
