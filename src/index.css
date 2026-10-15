@@ -569,6 +569,7 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .exi-illus { position: relative; flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; }
 .exi-illus-glow { position: absolute; left: 50%; top: 54%; width: min(440px, 90%); height: min(260px, 70%); transform: translate(-50%, -50%); background: radial-gradient(closest-side, hsl(205 65% 74% / .28), hsl(205 60% 80% / .12) 55%, transparent 100%); filter: blur(16px); pointer-events: none; }
 .exi-illus img { position: relative; width: min(430px, 100%); height: auto; margin-bottom: -3rem; -webkit-mask-image: linear-gradient(to bottom, hsl(0 0% 0%) 0%, hsl(0 0% 0%) 58%, transparent 74%); mask-image: linear-gradient(to bottom, hsl(0 0% 0%) 0%, hsl(0 0% 0%) 58%, transparent 74%); pointer-events: none; }
+@media (max-width: 767px) { .exi-illus img { margin-top: -1.5rem; margin-bottom: -1.25rem; } }
 .exi-fade { animation: exiFade .35s ease both; }
 @keyframes exiFade { from { opacity: 0; } to { opacity: 1; } }
 @media (prefers-reduced-motion: reduce) { .exi-fade { animation: none; } }
