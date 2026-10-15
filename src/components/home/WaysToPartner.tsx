@@ -107,13 +107,14 @@ const WaysToPartner = () => {
             </button>
           ))}
         </div>
-        <div id="exi-tabpanel" role="tabpanel" aria-labelledby={`exi-tab-${active}`} className="exi-panel" tabIndex={0}>
-          <Content item={items[active]} />
+        <div id="exi-tabpanel" role="tabpanel" aria-labelledby={active === null ? undefined : `exi-tab-${active}`} className="exi-panel" tabIndex={0}>
+          {active === null ? <Illustration /> : <div key={active} className="exi-fade"><Content item={items[active]} /></div>}
         </div>
       </div>
 
-      {/* Mobile: accordion */}
+      {/* Mobile: illustration above rows until a row is selected, then accordion */}
       <div className="exi-mobile exi-tabs">
+        {openMobile === null && <Illustration />}
         {items.map((it, i) => {
           const open = openMobile === i;
           return (
