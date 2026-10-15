@@ -38,6 +38,7 @@ const ways: Way[] = [
     body: "Offer internships, industry visits and open-day experiences to build your future talent pool.",
     path: "/internships",
     icon: Briefcase,
+    color: "hsl(172 62% 40%)",
   },
   {
     title: "Career Development",
