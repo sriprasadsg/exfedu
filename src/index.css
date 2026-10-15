@@ -587,4 +587,4 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
   .exi-prev { left: -22px; } .exi-next { right: -22px; }
   .exi-section { padding-inline: 1.75rem; }
 }
-@media (prefers-reduced-motion: reduce) { .exi-chev, .exi-dot span, .exi-item { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .exi-chev, .exi-dot span, .exi-item { transition: none; } .exi-item:hover, .exi-item.is-open { transform: none; } }
