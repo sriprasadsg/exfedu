@@ -1,5 +1,5 @@
-import { useRef, useState } from "react";
-import { ChevronDown, CircleDashed } from "lucide-react";
+import { useState } from "react";
+import { ChevronRight, CircleDashed } from "lucide-react";
 import { PENDING } from "@/data/site";
 import exiIllustration from "@/assets/exi-illustration.png";
 
@@ -10,7 +10,7 @@ const Illustration = () => (
   </div>
 );
 
-/** Very faint 3D illustration kept behind a selected row's content. */
+/** Very faint 3D illustration kept behind an opened box's content. */
 const Watermark = () => (
   <img className="exi-wm" src={exiIllustration} alt="" width={1024} height={768} aria-hidden="true" />
 );
@@ -62,80 +62,54 @@ const items: Item[] = [
   ] },
 ];
 
-const Content = ({ item, headingId }: { item: Item; headingId?: string }) => (
-  <>
-    <h3 id={headingId} className="exi-p-title">{item.title}</h3>
-    <p className="exi-p-sub">{item.sub}</p>
-    {item.points?.length ? (
-      <ul className="exi-list">{item.points.map((pt) => <li key={pt}>{pt}</li>)}</ul>
-    ) : (
-      <span className="mt-4 inline-flex items-center gap-1.5 text-xs text-muted-foreground"><CircleDashed className="h-3 w-3" /> {PENDING}</span>
-    )}
-  </>
-);
-
 const WaysToPartner = () => {
-  const [active, setActive] = useState<number | null>(null);
-  const [openMobile, setOpenMobile] = useState<number | null>(null);
-  const tabs = useRef<(HTMLButtonElement | null)[]>([]);
-
-  const onKey = (e: React.KeyboardEvent, i: number) => {
-    const n = items.length;
-    let next = -1;
-    if (e.key === "ArrowDown") next = (i + 1) % n;
-    else if (e.key === "ArrowUp") next = (i - 1 + n) % n;
-    else if (e.key === "Home") next = 0;
-    else if (e.key === "End") next = n - 1;
-    if (next < 0) return;
-    e.preventDefault();
-    setActive(next);
-    tabs.current[next]?.focus();
-  };
+  const [open, setOpen] = useState<number | null>(null);
 
   return (
     <section aria-labelledby="exi-heading" className="exi-section">
-      <div className="exi-head">
-        <p className="exi-eyebrow">Exafluence Inc.</p>
-        <h2 id="exi-heading" className="exi-heading">Connecting Technology Expertise with Educational Purpose</h2>
-        <p className="exi-lead">Discover our company, purpose and approach to connecting academia, industry and technology.</p>
-      </div>
-
-      {/* Desktop / tablet: tabs left, panel right */}
-      <div className="exi-desktop">
-        <div className="exi-tabs" role="tablist" aria-orientation="vertical" aria-label="About Exafluence Inc.">
-          {items.map((it, i) => (
-            <button key={it.title} ref={(el) => (tabs.current[i] = el)} type="button" role="tab"
-              id={`exi-tab-${i}`} aria-selected={active === i} aria-controls="exi-tabpanel"
-              tabIndex={active === i || (active === null && i === 0) ? 0 : -1} className="exi-tab"
-              onClick={() => setActive(i)} onKeyDown={(e) => onKey(e, i)}>
-              <span>{it.title}</span>
-              <ChevronDown className="exi-tab-hint h-4 w-4" aria-hidden />
-            </button>
-          ))}
+      <div className="exi-layout">
+        {/* Left: pale intro panel with illustration, heading and lead */}
+        <div className="exi-intro">
+          <Illustration />
+          <p className="exi-eyebrow">Exafluence Inc.</p>
+          <h2 id="exi-heading" className="exi-heading">Connecting Technology Expertise with Educational Purpose</h2>
+          <p className="exi-lead">Discover our company, purpose and approach to connecting academia, industry and technology.</p>
         </div>
-        <div id="exi-tabpanel" role="tabpanel" aria-labelledby={active === null ? undefined : `exi-tab-${active}`} className={`exi-panel${active === null ? "" : " exi-panel--front"}`} tabIndex={0}>
-          {active === null ? <Illustration /> : <><Watermark /><div key={active} className="exi-fade"><Content item={items[active]} /></div></>}
-        </div>
-      </div>
 
-      {/* Mobile: illustration above rows until a row is selected, then accordion */}
-      <div className="exi-mobile exi-tabs">
-        {openMobile === null && <Illustration />}
-        {items.map((it, i) => {
-          const open = openMobile === i;
-          return (
-            <div key={it.title}>
-              <button type="button" className="exi-tab" aria-expanded={open} aria-controls={`exi-acc-${i}`}
-                onClick={() => setOpenMobile(open ? null : i)}>
-                <span>{it.title}</span>
-                <ChevronDown className="exi-tab-icon h-4 w-4" aria-hidden />
-              </button>
-              <div id={`exi-acc-${i}`} role="region" aria-label={it.title} hidden={!open} className="exi-acc-panel">
-                {open && <><Watermark /><div className="exi-fade"><Content item={it} /></div></>}
-              </div>
-            </div>
-          );
-        })}
+        {/* Right: white card floating over the panel, six boxes in two columns */}
+        <div className="exi-card">
+          <div className="exi-grid">
+            {items.map((it, i) => {
+              const isOpen = open === i;
+              return (
+                <div key={it.title} className={`exi-item${isOpen ? " exi-item--open" : ""}`}>
+                  <button type="button" className="exi-box" aria-expanded={isOpen}
+                    aria-controls={`exi-detail-${i}`} onClick={() => setOpen(isOpen ? null : i)}>
+                    <span className="exi-box-title">{it.title}</span>
+                    <span className="exi-box-subrow">
+                      <span className="exi-box-sub">{it.sub}</span>
+                      <ChevronRight className="exi-box-chev h-3.5 w-3.5" aria-hidden />
+                    </span>
+                  </button>
+                  <div id={`exi-detail-${i}`} className="exi-detail" hidden={!isOpen}>
+                    {isOpen && (
+                      <div className="exi-fade">
+                        <Watermark />
+                        {it.points?.length ? (
+                          <ul className="exi-list">{it.points.map((pt) => <li key={pt}>{pt}</li>)}</ul>
+                        ) : (
+                          <span className="exi-pending inline-flex items-center gap-1.5 text-xs text-muted-foreground">
+                            <CircleDashed className="h-3 w-3" /> {PENDING}
+                          </span>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </section>
   );
