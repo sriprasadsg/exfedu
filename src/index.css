@@ -469,12 +469,20 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
   height: 100%;
   object-fit: cover;
   object-position: center;
+  filter: saturate(1.12);
 }
 .hero-banner-copy {
   position: relative;
-  text-align: center;
+  text-align: left;
   padding-block: clamp(2.75rem, 7vw, 5.5rem);
-  padding-inline: 1rem;
+  padding-inline: 1.25rem;
+  padding-inline-start: clamp(4.5rem, 22vw, 21rem);
+}
+@media (min-width: 640px) {
+  .hero-banner-copy { padding-inline-start: clamp(6rem, 26vw, 18rem); }
+}
+@media (min-width: 1024px) {
+  .hero-banner-copy { padding-inline-start: clamp(14rem, 22vw, 26rem); }
 }
 .brand-exa { color: hsl(var(--brand-red)); }
 .brand-fluence { color: hsl(var(--brand-blue)); }
