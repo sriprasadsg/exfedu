@@ -8,14 +8,14 @@ type Item = { title: string; sub: string; detail?: string };
 /** Detail text renders only once approved; until then the approval placeholder shows. */
 const slides: Item[][] = [
   [
-    { title: "About Exafluence Inc.", sub: "Company Overview" },
-    { title: "Mission", sub: "Our Purpose" },
-    { title: "Vision", sub: "Our Direction" },
+    { title: "About Exafluence Inc.", sub: "Industry Expertise. Technology Innovation.", detail: "Exafluence Inc. USA delivers data, analytics and AI solutions across Financial Services, Healthcare & Pharma, Consumer Packaged Goods & Retail, Energy & Utilities, Telecommunications, and Manufacturing & Industrial IoT.\n\nThrough Exafluence Education, its EdTech division, this industry perspective connects with academic learning, practical applications and professional skill development." },
+    { title: "Mission", sub: "Connecting Knowledge with Practice", detail: "To strengthen the connection between education and industry through relevant programmes, applied learning and collaborative engagement, helping learners and organisations develop their capabilities." },
+    { title: "Vision", sub: "Advancing Learning for a Technology-Driven World", detail: "To build a connected learning ecosystem where academic knowledge, industry expertise and technological innovation support lifelong learning and professional growth." },
   ],
   [
-    { title: "How We Work", sub: "Our Approach" },
-    { title: "Quality & Standards", sub: "Our Commitment to Quality" },
-    { title: "Tools & Technologies", sub: "Our Technology Capabilities" },
+    { title: "How We Work", sub: "A Collaborative, Application-Focused Approach", detail: "We connect academic foundations with practical experience through programmes that incorporate projects, case studies, expert sessions and industry exposure.\n\nOur approach brings educators and industry practitioners together to help learners develop conceptual understanding, applied skills and professional confidence." },
+    { title: "Quality & Standards", sub: "Information Security. Responsible AI.", detail: "Exafluence Global Analytics Private Limited holds the following management-system certifications:\n\nISO/IEC 27001:2022 — Information Security Management\nCovers application development, support and maintenance within the certified scope, supporting the confidentiality, integrity and availability of information.\n\nISO/IEC 42001:2023 — Artificial Intelligence Management\nCovers the design, development, integration and operation of AI-enabled analytics products and services, supporting responsible AI governance and risk management.\n\nThese certifications apply to the named entity and certified activities; they do not constitute accreditation of educational programmes or student qualifications." },
+    { title: "Tools & Technologies", sub: "Practical Skills Across Modern Technologies", detail: "Our learning focus spans AI & Generative AI, Data Science, analytics, cloud technologies and programming.\n\nTools and technologies include Python, Jupyter Notebook, NumPy, pandas, Matplotlib, Seaborn, scikit-learn, Tableau, Power BI, SQL, PostgreSQL, MongoDB and vector databases.\n\nGenerative AI learning includes large language models, ChatGPT, Llama, Mistral, LM Studio, Ollama and multi-agent frameworks. Tool selection varies by programme and learning objectives." },
   ],
 ];
 
@@ -52,7 +52,7 @@ const Expandable = ({ item, id, active, clicked, hovered, setClicked, setHovered
         <span className="exi-chev" aria-hidden><ChevronDown className="h-4 w-4" /></span>
       </button>
       <div id={id} className="exi-detail" hidden={!open}>
-        {item.detail ? <p>{item.detail}</p> : (
+        {item.detail ? <p className="whitespace-pre-line">{item.detail}</p> : (
           <span className="inline-flex items-center gap-1.5 text-xs text-muted-foreground"><CircleDashed className="h-3 w-3" /> {PENDING}</span>
         )}
       </div>
