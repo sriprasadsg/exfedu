@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import heroCap from "@/assets/hero-cap-notassel.png";
-import heroTassel from "@/assets/hero-tassel.png";
-import heroRing from "@/assets/hero-ring-only.png";
+import heroNetwork from "@/assets/hero-network.png";
 
 const Hero = () => (
   <section aria-label="Exafluence Education introduction" className="hero-section">
