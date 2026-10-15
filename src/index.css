@@ -547,3 +547,40 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .eco-node:hover .eco-icon-color, .eco-node.is-active .eco-icon-color { transform: scale(1.12) rotate(-6deg); transition: transform .3s ease; }
 @keyframes eco-icon-bob { 0%,100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-2px) rotate(4deg); } }
 @media (prefers-reduced-motion: reduce) { .eco-icon-color { animation: none !important; } }
+
+/* Exafluence Inc. intro + overlapping carousel */
+.exi-section { font-family: 'Google Sans Flex', 'Figtree', system-ui, sans-serif; max-width: 1240px; margin: 0 auto; padding: 2.5rem 1rem 3.5rem; overflow-x: clip; }
+.exi-wrap { display: grid; gap: 1.25rem; }
+.exi-intro { background: hsl(205 90% 96%); border-radius: 20px; padding: 1.75rem 1.5rem; }
+.exi-art { width: 9.5rem; height: auto; margin-bottom: 1rem; }
+.exi-eyebrow { font-size: .74rem; letter-spacing: .18em; text-transform: uppercase; color: hsl(var(--primary) / .7); font-weight: 500; }
+.exi-heading { margin-top: .35rem; font-size: clamp(1.3rem, 2.4vw, 1.85rem); line-height: 1.25; font-weight: 500; color: hsl(var(--primary)); max-width: 26rem; }
+.exi-lead { margin-top: .6rem; font-size: .95rem; line-height: 1.6; color: hsl(var(--muted-foreground)); max-width: 28rem; }
+.exi-panel { position: relative; background: hsl(var(--background)); border: 1px solid hsl(var(--primary) / .12); border-radius: 20px; box-shadow: 0 10px 30px -18px hsl(var(--primary) / .35); padding: 1.25rem 3.5rem 1rem; }
+.exi-slide { display: grid; grid-template-columns: 1fr; gap: .75rem; align-items: start; }
+.exi-slide[hidden] { display: none; }
+.exi-item { border: 1px solid hsl(var(--primary) / .12); border-radius: 14px; background: hsl(var(--background)); transition: border-color .25s ease, background-color .25s ease; }
+.exi-item.is-open, .exi-item:hover { border-color: hsl(var(--primary) / .3); background: hsl(205 90% 98.5%); }
+.exi-trigger { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: .75rem; min-height: 44px; padding: .9rem 1rem; text-align: left; border-radius: 14px; }
+.exi-trigger:focus-visible, .exi-nav:focus-visible, .exi-dot:focus-visible { outline: 2px solid hsl(var(--primary)); outline-offset: 2px; }
+.exi-title { display: block; font-weight: 500; color: hsl(var(--primary)); font-size: .98rem; line-height: 1.3; }
+.exi-sub { display: block; margin-top: .2rem; font-size: .84rem; color: hsl(var(--muted-foreground)); }
+.exi-chev { flex: none; display: grid; place-items: center; width: 2rem; height: 2rem; border-radius: 999px; background: hsl(205 90% 95%); color: hsl(var(--primary)); transition: transform .3s ease; }
+.exi-item.is-open .exi-chev { transform: rotate(180deg); }
+.exi-detail { padding: 0 1rem 1rem; font-size: .88rem; line-height: 1.6; color: hsl(var(--muted-foreground)); }
+.exi-nav { position: absolute; top: 50%; transform: translateY(-50%); z-index: 2; width: 44px; height: 44px; display: grid; place-items: center; border-radius: 999px; background: hsl(var(--background)); border: 1px solid hsl(var(--primary) / .18); color: hsl(var(--primary)); transition: background-color .2s ease; }
+.exi-nav:hover { background: hsl(205 90% 96%); }
+.exi-prev { left: .4rem; } .exi-next { right: .4rem; }
+.exi-dots { display: flex; justify-content: center; gap: .25rem; margin-top: .75rem; }
+.exi-dot { width: 44px; height: 32px; display: grid; place-items: center; }
+.exi-dot span { width: 8px; height: 8px; border-radius: 999px; background: hsl(var(--primary) / .2); transition: width .3s ease, background-color .3s ease; }
+.exi-dot.is-active span { width: 22px; background: hsl(var(--primary)); }
+@media (min-width: 640px) { .exi-slide { grid-template-columns: 1fr 1fr; } .exi-slide > :nth-child(3) { grid-column: 1 / -1; } }
+@media (min-width: 1024px) {
+  .exi-wrap { grid-template-columns: 1fr minmax(0, 34rem); align-items: center; gap: 0; }
+  .exi-intro { padding: 2.25rem 6rem 2.25rem 2.5rem; margin-right: -4rem; }
+  .exi-panel { padding: 1.75rem 1.75rem 1rem; }
+  .exi-prev { left: -22px; } .exi-next { right: -22px; }
+  .exi-section { padding-inline: 1.75rem; }
+}
+@media (prefers-reduced-motion: reduce) { .exi-chev, .exi-dot span, .exi-item { transition: none; } }
