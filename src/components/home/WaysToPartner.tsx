@@ -4,7 +4,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
-type Way = { title: string; line: string; body: string; path: string; icon: LucideIcon };
+type Way = { title: string; line: string; body: string; path: string; icon: LucideIcon; color: string };
 
 /** Edit partnership routes here — order is also the mobile order. */
 const ways: Way[] = [
