@@ -1,6 +1,5 @@
 import { useRef, useState } from "react";
 import { ChevronDown, ChevronLeft, ChevronRight, CircleDashed } from "lucide-react";
-import hub from "@/assets/university-industry-hub.png.asset.json";
 import { PENDING } from "@/data/site";
 
 type Item = { title: string; sub: string; points: string[] };
@@ -112,7 +111,6 @@ const WaysToPartner = () => {
     <section aria-labelledby="exi-heading" className="exi-section">
       <div className="exi-wrap">
         <div className="exi-intro">
-          <img src={hub.url} alt="" aria-hidden className="exi-art" loading="lazy" />
           <p className="exi-eyebrow">Exafluence Inc.</p>
           <h2 id="exi-heading" className="exi-heading">Connecting Technology Expertise with Educational Purpose</h2>
           <p className="exi-lead">Discover our company, purpose and approach to connecting academia, industry and technology.</p>
