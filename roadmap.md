@@ -97,5 +97,5 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Exafluence Inc. section: 3D illustration shows a light soft shadow/glow instead of a mirrored reflection; verified no clipping, no sideways scrolling at 375/1440 (15 October 2026).
 - [x] Exafluence Inc. section: selected row keeps the 3D illustration behind its content as a very faint watermark (opacity .085 desktop, .07 mobile, fades in, reduced-motion safe); content stays clearly readable; verified 375/1440 no sideways scrolling (15 October 2026).
 - [x] Exafluence Inc. section: content panel pushes forward when an option is clicked (translateY(-6px) scale(1.015), deeper shadow, pale-blue border), content rises in on each new selection; reduced-motion safe; verified 375/1440 no sideways scrolling (15 October 2026).
-- [ ] Hero: tagline "Connecting Academia, Industry & Technology" in dark grey, placed to the left side over the cloud icon in the banner art (client 11:59 UTC).
-- [ ] Colour rule: red "Exa" / blue "fluence" split ONLY on the "Exafluence Inc. USA" line; hero title back to plain navy (client 12:00 UTC).
+- [x] Hero: title and tagline now dark grey (title hsl 220 8% 28%, tagline muted grey) and the copy sits to the left, starting over the banner's cloud icon; verified 1280/375 with no sideways scrolling (client 11:59 UTC).
+- [x] Colour rule: red "Exa" / blue "fluence" split now only on the centre-circle "Exafluence Inc.USA" line; hero title plain dark grey (client 12:00 UTC).
