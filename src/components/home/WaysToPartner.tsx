@@ -12,7 +12,7 @@ const ways: Way[] = [
   {
     title: "Academic Collaborations",
     line: "Universities & institutions",
-    body: "Co-develop curriculum, faculty enablement and programme delivery with Exafluence Education.",
+    body: "Collaborate on curriculum development, faculty development and programme delivery that connect academic foundations with industry practice.",
     path: "/academic-collaborations",
     icon: Landmark,
     color: "214 88% 52%",
@@ -20,7 +20,7 @@ const ways: Way[] = [
   {
     title: "Industry & Technology",
     line: "Technology partners",
-    body: "Bring industry platforms, tools and real projects into programmes and student work.",
+    body: "Bring technology expertise, industry tools and practical business challenges into learning and project development.",
     path: "/industry-collaborations",
     icon: Cpu,
     color: "258 78% 58%",
@@ -28,31 +28,31 @@ const ways: Way[] = [
   {
     title: "Research & Innovation",
     line: "Joint research",
-    body: "Work together on publications, conferences, hackathons and applied innovation projects.",
+    body: "Explore collaborative research, knowledge exchange and applied projects that address challenges in education and industry.",
     path: "/research-innovation",
     icon: Lightbulb,
     color: "32 95% 47%",
   },
   {
-    title: "Internships & Exposure",
-    line: "Host students",
-    body: "Offer internships, industry visits and open-day experiences to build your future talent pool.",
+    title: "Internships & Industry Engagement",
+    line: "Workplace experience",
+    body: "Connect learners with workplace experience through internships, industry interactions and mentored projects.",
     path: "/internships",
     icon: Briefcase,
     color: "172 62% 40%",
   },
   {
-    title: "Career Development",
+    title: "Mentoring & Career Development",
     line: "Mentoring & skills",
-    body: "Mentor students, share industry skills sessions and take part in career guidance.",
+    body: "Strengthen professional skills and career readiness through mentoring, expert sessions and industry engagement.",
     path: "/career-development",
     icon: Users,
     color: "342 80% 56%",
   },
   {
-    title: "Programmes & Professional Learning",
+    title: "Professional & Workforce Learning",
     line: "Workforce learning",
-    body: "Shape short courses and practitioner learning for your teams and for students.",
+    body: "Develop focused learning programmes that address emerging technologies, professional development and organisational skill needs.",
     path: "/programmes",
     icon: GraduationCap,
     color: "142 58% 40%",
@@ -61,13 +61,14 @@ const ways: Way[] = [
 
 const WaysToPartner = () => (
   <section aria-labelledby="ways-heading" className="ways-section">
-    <p className="ways-eyebrow">Collaborate with us</p>
+    <p className="ways-eyebrow">Exafluence Inc.</p>
     <h2 id="ways-heading" className="ways-heading">
-      Academic Partnerships. Industry Expertise. Shared Progress.
+      Connecting Academic Learning with Industry Expertise
     </h2>
     <p className="ways-intro">
-      Connect with Exafluence to co-develop programmes, advance applied research and bring real-world
-      experience into learning.
+      Through Exafluence Education, the EdTech division of Exafluence Inc. USA, we connect academic
+      collaboration, technology expertise and applied learning to support learners, institutions and
+      organisations.
     </p>
 
     <ul className="ways-grid">
@@ -86,7 +87,7 @@ const WaysToPartner = () => (
               <span className="ways-line">{w.line}</span>
               <span className="ways-body">{w.body}</span>
               <span className="ways-cta">
-                Explore <ArrowGlyph />
+                Explore More <ArrowGlyph />
               </span>
             </span>
           </Link>
