@@ -1,106 +1,124 @@
-import { Link } from "react-router-dom";
-import { playCoinDrop } from "@/lib/coinDrop";
-import {
-  Landmark, Cpu, Lightbulb, Briefcase, Users, GraduationCap,
-  type LucideIcon,
-} from "lucide-react";
+import { useRef, useState } from "react";
+import { ChevronDown, ChevronLeft, ChevronRight, CircleDashed } from "lucide-react";
+import hub from "@/assets/university-industry-hub.png.asset.json";
+import { PENDING } from "@/data/site";
 
-type Way = { title: string; line: string; body: string; path: string; icon: LucideIcon; color: string };
+type Item = { title: string; sub: string; detail?: string };
 
-/** Edit partnership routes here — order is also the mobile order. */
-const ways: Way[] = [
-  {
-    title: "Academic Collaborations",
-    line: "Universities & institutions",
-    body: "Collaborate on curriculum development, faculty development and programme delivery that connect academic foundations with industry practice.",
-    path: "/academic-collaborations",
-    icon: Landmark,
-    color: "214 88% 52%",
-  },
-  {
-    title: "Industry & Technology",
-    line: "Technology partners",
-    body: "Bring technology expertise, industry tools and practical business challenges into learning and project development.",
-    path: "/industry-collaborations",
-    icon: Cpu,
-    color: "258 78% 58%",
-  },
-  {
-    title: "Research & Innovation",
-    line: "Joint research",
-    body: "Explore collaborative research, knowledge exchange and applied projects that address challenges in education and industry.",
-    path: "/research-innovation",
-    icon: Lightbulb,
-    color: "32 95% 47%",
-  },
-  {
-    title: "Internships & Industry Engagement",
-    line: "Workplace experience",
-    body: "Connect learners with workplace experience through internships, industry interactions and mentored projects.",
-    path: "/internships",
-    icon: Briefcase,
-    color: "172 62% 40%",
-  },
-  {
-    title: "Mentoring & Career Development",
-    line: "Mentoring & skills",
-    body: "Strengthen professional skills and career readiness through mentoring, expert sessions and industry engagement.",
-    path: "/career-development",
-    icon: Users,
-    color: "342 80% 56%",
-  },
-  {
-    title: "Professional & Workforce Learning",
-    line: "Workforce learning",
-    body: "Develop focused learning programmes that address emerging technologies, professional development and organisational skill needs.",
-    path: "/programmes",
-    icon: GraduationCap,
-    color: "142 58% 40%",
-  },
+/** Detail text renders only once approved; until then the approval placeholder shows. */
+const slides: Item[][] = [
+  [
+    { title: "About Exafluence Inc.", sub: "Company Overview" },
+    { title: "Mission", sub: "Our Purpose" },
+    { title: "Vision", sub: "Our Direction" },
+  ],
+  [
+    { title: "How We Work", sub: "Our Approach" },
+    { title: "Quality & Standards", sub: "Our Commitment to Quality" },
+    { title: "Tools & Technologies", sub: "Our Technology Capabilities" },
+  ],
 ];
 
-const WaysToPartner = () => (
-  <section aria-labelledby="ways-heading" className="ways-section">
-    <p className="ways-eyebrow">Exafluence Inc.</p>
-    <h2 id="ways-heading" className="ways-heading">
-      Connecting Academic Learning with Industry Expertise
-    </h2>
-    <p className="ways-intro">
-      Through Exafluence Education, the EdTech division of Exafluence Inc. USA, we connect academic
-      collaboration, technology expertise and applied learning to support learners, institutions and
-      organisations.
-    </p>
+const canHover = () => typeof window !== "undefined" && window.matchMedia("(hover: hover)").matches;
 
-    <ul className="ways-grid">
-      {ways.map((w) => (
-        <li key={w.path}>
-          <Link to={w.path} className="ways-card" onMouseEnter={playCoinDrop}>
-            <span
-              className="ways-icon"
-              aria-hidden
-              style={{ "--icon-c": w.color } as React.CSSProperties}
-            >
-              <w.icon className="h-6 w-6" strokeWidth={1.8} />
-            </span>
-            <span className="min-w-0">
-              <span className="ways-title">{w.title}</span>
-              <span className="ways-line">{w.line}</span>
-              <span className="ways-body">{w.body}</span>
-              <span className="ways-cta">
-                Explore More <ArrowGlyph />
-              </span>
-            </span>
-          </Link>
-        </li>
-      ))}
-    </ul>
-  </section>
-);
+const Expandable = ({ item, id, active, clicked, hovered, setClicked, setHovered }: {
+  item: Item; id: string; active: boolean; clicked: boolean; hovered: boolean;
+  setClicked: (v: boolean) => void; setHovered: (v: boolean) => void;
+}) => {
+  const open = clicked || hovered;
+  const ref = useRef<HTMLDivElement>(null);
+  return (
+    <div
+      ref={ref}
+      className={`exi-item${open ? " is-open" : ""}`}
+      onMouseEnter={() => canHover() && setHovered(true)}
+      onMouseLeave={() => { if (!ref.current?.contains(document.activeElement)) setHovered(false); }}
+      onBlur={(e) => { if (!ref.current?.contains(e.relatedTarget as Node) && !ref.current?.matches(":hover")) setHovered(false); }}
+      onKeyDown={(e) => { if (e.key === "Escape" && open) { setClicked(false); setHovered(false); } }}
+    >
+      <button
+        type="button"
+        className="exi-trigger"
+        aria-expanded={open}
+        aria-controls={id}
+        tabIndex={active ? 0 : -1}
+        aria-label={`${item.title} — ${item.sub}. ${open ? "Hide" : "Show"} details`}
+        onClick={() => { const next = !open; setClicked(next); if (!next) setHovered(false); }}
+      >
+        <span className="min-w-0">
+          <span className="exi-title">{item.title}</span>
+          <span className="exi-sub">{item.sub}</span>
+        </span>
+        <span className="exi-chev" aria-hidden><ChevronDown className="h-4 w-4" /></span>
+      </button>
+      <div id={id} className="exi-detail" hidden={!open}>
+        {item.detail ? <p>{item.detail}</p> : (
+          <span className="inline-flex items-center gap-1.5 text-xs text-muted-foreground"><CircleDashed className="h-3 w-3" /> {PENDING}</span>
+        )}
+      </div>
+    </div>
+  );
+};
 
-const ArrowGlyph = () => (
-  <svg viewBox="0 0 16 16" className="ways-arrow" aria-hidden>
-    <path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
+const WaysToPartner = () => {
+  const [slide, setSlide] = useState(0);
+  const [clicked, setClicked] = useState<Record<string, boolean>>({});
+  const [hovered, setHovered] = useState<Record<string, boolean>>({});
+  const touch = useRef<{ x: number; y: number } | null>(null);
+
+  const go = (n: number) => { setSlide((n + slides.length) % slides.length); setClicked({}); setHovered({}); };
+
+  return (
+    <section aria-labelledby="exi-heading" className="exi-section">
+      <div className="exi-wrap">
+        <div className="exi-intro">
+          <img src={hub.url} alt="" aria-hidden className="exi-art" loading="lazy" />
+          <p className="exi-eyebrow">Exafluence Inc.</p>
+          <h2 id="exi-heading" className="exi-heading">Connecting Technology Expertise with Educational Purpose</h2>
+          <p className="exi-lead">Discover our company, purpose and approach to connecting academia, industry and technology.</p>
+        </div>
+
+        <div
+          className="exi-panel"
+          role="region"
+          aria-roledescription="carousel"
+          aria-label="About Exafluence Inc."
+          onTouchStart={(e) => { touch.current = { x: e.touches[0].clientX, y: e.touches[0].clientY }; }}
+          onTouchEnd={(e) => {
+            if (!touch.current) return;
+            const dx = e.changedTouches[0].clientX - touch.current.x;
+            const dy = e.changedTouches[0].clientY - touch.current.y;
+            touch.current = null;
+            if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) go(slide + (dx < 0 ? 1 : -1));
+          }}
+        >
+          <button type="button" className="exi-nav exi-prev" aria-label="Previous slide" onClick={() => go(slide - 1)}><ChevronLeft className="h-5 w-5" /></button>
+          <button type="button" className="exi-nav exi-next" aria-label="Next slide" onClick={() => go(slide + 1)}><ChevronRight className="h-5 w-5" /></button>
+
+          {slides.map((items, s) => (
+            <div key={s} className="exi-slide" hidden={s !== slide} role="group" aria-roledescription="slide" aria-label={`Slide ${s + 1} of ${slides.length}`}>
+              {items.map((it, i) => {
+                const k = `${s}-${i}`;
+                return (
+                  <Expandable key={k} item={it} id={`exi-d-${k}`} active={s === slide}
+                    clicked={!!clicked[k]} hovered={!!hovered[k]}
+                    setClicked={(v) => setClicked((c) => ({ ...c, [k]: v }))}
+                    setHovered={(v) => setHovered((h) => ({ ...h, [k]: v }))} />
+                );
+              })}
+            </div>
+          ))}
+
+          <div className="exi-dots">
+            {slides.map((_, s) => (
+              <button key={s} type="button" className={`exi-dot${s === slide ? " is-active" : ""}`}
+                aria-label={`Go to slide ${s + 1}`} aria-current={s === slide} onClick={() => go(s)}><span /></button>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 export default WaysToPartner;
