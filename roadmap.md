@@ -105,3 +105,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Exafluence Inc. section: clicked box outline highlighted (1.5px blue ring + stronger blue border, pale-blue fill) on desktop tabs and mobile accordion; verified 375/1440, no clipping, no sideways scrolling (client 12:03 UTC).
 - [x] Exafluence Inc. section: "These are not educational accreditations." bullet removed from Quality & Standards (client 12:05 UTC); remaining four bullets unchanged.
 - [x] Exafluence Inc. section: hover (not click) shows each box content in a shared substitute box below the grid; section stays put (15 Oct 2026)
+- [x] Company intro 3D illustration enlarged width and height (desktop 384x126 -> 488x161, phone 279x92 -> 319x105); verified 375/1280px, no clipping, overlap or horizontal overflow (client 12:44 UTC)
