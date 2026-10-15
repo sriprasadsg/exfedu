@@ -1,36 +1,77 @@
+import { useLayoutEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { homepageCapabilities } from "@/data/site";
 import penMark from "@/assets/pen-mark.png";
 
-/* Anchor points for the eight arms around the centre circle (viewBox 1200x900). */
-const positions = [[180, 100], [1020, 100], [180, 330], [1020, 330], [180, 570], [1020, 570], [180, 800], [1020, 800]];
+type Line = { x1: number; y1: number; x2: number; y2: number };
 
-const EcosystemHub = () => (
-  <section aria-label="Education ecosystem" className="capabilities-section">
-    <div className="capabilities-layout">
-      <svg viewBox="0 0 1200 900" className="capabilities-connectors" aria-hidden="true" focusable="false" preserveAspectRatio="none">
-        <ellipse cx="600" cy="450" rx="420" ry="315" className="capabilities-orbit" />
-        <ellipse cx="600" cy="450" rx="320" ry="240" className="capabilities-orbit" />
-        {positions.map(([x, y], i) => <path key={i} d={`M600 450 L${x} ${y}`} className="capabilities-spoke" />)}
-      </svg>
-      <div className="capabilities-brand">
-        <div className="capabilities-circle">
-          <p className="capabilities-company">Exafluence Inc.USA</p>
-          <img src={penMark} alt="" width={92} height={92} className="capabilities-pen" />
-          <p className="capabilities-name">Exafluence Education</p>
+// Data order alternates left/right, so even indexes go left and odd go right.
+const left = homepageCapabilities.filter((_, i) => i % 2 === 0);
+const right = homepageCapabilities.filter((_, i) => i % 2 === 1);
+
+const EcosystemHub = () => {
+  const wrap = useRef<HTMLDivElement>(null);
+  const [lines, setLines] = useState<Line[]>([]);
+  const [box, setBox] = useState({ w: 0, h: 0 });
+
+  // Measure real positions so every connector starts on the circle edge and ends at its dot.
+  useLayoutEffect(() => {
+    const el = wrap.current;
+    if (!el) return;
+    const measure = () => {
+      const root = el.getBoundingClientRect();
+      const circle = el.querySelector(".cap-circle") as HTMLElement | null;
+      if (!circle || getComputedStyle(el).getPropertyValue("--cap-connect").trim() !== "1") { setLines([]); return; }
+      const c = circle.getBoundingClientRect();
+      const cx = c.left + c.width / 2 - root.left, cy = c.top + c.height / 2 - root.top, r = c.width / 2;
+      const next: Line[] = [];
+      el.querySelectorAll<HTMLElement>(".cap-dot").forEach((d) => {
+        const b = d.getBoundingClientRect();
+        const x2 = b.left + b.width / 2 - root.left, y2 = b.top + b.height / 2 - root.top;
+        const a = Math.atan2(y2 - cy, x2 - cx);
+        next.push({ x1: cx + r * Math.cos(a), y1: cy + r * Math.sin(a), x2, y2 });
+      });
+      setBox({ w: root.width, h: root.height });
+      setLines(next);
+    };
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
+  const renderCol = (items: readonly (typeof homepageCapabilities)[number][], side: "left" | "right") => (
+    <ul className={`cap-col cap-col--${side}`}>
+      {items.map((arm) => (
+        <li key={arm.id}>
+          <Link to={arm.path} className="cap-link">
+            <span className="cap-title">{arm.title}</span>
+            <span className="cap-dot" aria-hidden="true" />
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
+
+  return (
+    <section aria-label="Education ecosystem" className="cap-section">
+      <div ref={wrap} className="cap-diagram">
+        {lines.length > 0 && (
+          <svg className="cap-lines" width={box.w} height={box.h} aria-hidden="true" focusable="false">
+            {lines.map((l, i) => <line key={i} {...l} />)}
+          </svg>
+        )}
+        <div className="cap-centre">
+          <div className="cap-circle">
+            <p className="cap-company">Exafluence Inc.USA</p>
+            <img src={penMark} alt="" width={84} height={84} className="cap-pen" />
+            <p className="cap-name">Exafluence Education</p>
+          </div>
         </div>
+        {renderCol(left, "left")}
+        {renderCol(right, "right")}
       </div>
-      <ul className="capabilities-arms">
-        {homepageCapabilities.map((arm) => (
-          <li key={arm.id} className="capabilities-arm">
-            <Link to={arm.path} className="capabilities-arm-link">
-              <span className="capabilities-arm-dot" aria-hidden="true" />
-              <span className="capabilities-arm-title">{arm.title}</span>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 export default EcosystemHub;
