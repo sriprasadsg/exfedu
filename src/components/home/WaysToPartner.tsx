@@ -10,6 +10,11 @@ const Illustration = () => (
   </div>
 );
 
+/** Very faint 3D illustration kept behind a selected row's content. */
+const Watermark = () => (
+  <img className="exi-wm" src={exiIllustration} alt="" width={1024} height={768} aria-hidden="true" />
+);
+
 type Item = { title: string; sub: string; points: string[] };
 
 /** Detail bullets render only once approved; until then the approval placeholder shows. */
@@ -110,7 +115,7 @@ const WaysToPartner = () => {
           ))}
         </div>
         <div id="exi-tabpanel" role="tabpanel" aria-labelledby={active === null ? undefined : `exi-tab-${active}`} className="exi-panel" tabIndex={0}>
-          {active === null ? <Illustration /> : <div key={active} className="exi-fade"><Content item={items[active]} /></div>}
+          {active === null ? <Illustration /> : <><Watermark /><div key={active} className="exi-fade"><Content item={items[active]} /></div></>}
         </div>
       </div>
 
@@ -127,7 +132,7 @@ const WaysToPartner = () => {
                 <ChevronDown className="exi-tab-icon h-4 w-4" aria-hidden />
               </button>
               <div id={`exi-acc-${i}`} role="region" aria-label={it.title} hidden={!open} className="exi-acc-panel">
-                {open && <div className="exi-fade"><Content item={it} /></div>}
+                {open && <><Watermark /><div className="exi-fade"><Content item={it} /></div></>}
               </div>
             </div>
           );
