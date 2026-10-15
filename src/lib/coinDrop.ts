@@ -8,8 +8,8 @@ let buffer: AudioBuffer | null = null;
 let loading: Promise<void> | null = null;
 let lastPlayed = 0;
 
-/** Very quiet master level for the hover "ting" (out of 1.0). */
-const MASTER_LEVEL = 0.016;
+/** Barely-there master level for the hover "ting" (out of 1.0). */
+const MASTER_LEVEL = 0.0053;
 /** Seconds of fade-in / fade-out applied around the clip. */
 const FADE_IN = 0.07;
 const FADE_OUT = 0.3;
