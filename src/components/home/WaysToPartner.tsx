@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { playCoinDrop } from "@/lib/coinDrop";
 import {
   Landmark, Cpu, Lightbulb, Briefcase, Users, GraduationCap,
   type LucideIcon,
@@ -72,7 +73,7 @@ const WaysToPartner = () => (
     <ul className="ways-grid">
       {ways.map((w) => (
         <li key={w.path}>
-          <Link to={w.path} className="ways-card">
+          <Link to={w.path} className="ways-card" onMouseEnter={playCoinDrop}>
             <span
               className="ways-icon"
               aria-hidden
