@@ -34,10 +34,10 @@ const EcosystemHub = () => {
       const next: Line[] = [];
       el.querySelectorAll<HTMLElement>(".cap-card").forEach((card) => {
         const b = card.getBoundingClientRect();
-        let x: number, y: number;
-        if (b.bottom < c.top + 10) { x = b.left + b.width / 2 + (cx - (b.left + b.width / 2)) * 0.45; y = b.bottom; }
-        else if (b.top > c.bottom - 10) { x = b.left + b.width / 2 + (cx - (b.left + b.width / 2)) * 0.45; y = b.top; }
-        else { x = b.right < cx ? b.right : b.left; y = b.top + b.height / 2; }
+        const bx = b.left + b.width / 2, by = b.top + b.height / 2;
+        const dx = cx - bx, dy = cy - by;
+        const reach = Math.min(dx === 0 ? Infinity : b.width / 2 / Math.abs(dx), dy === 0 ? Infinity : b.height / 2 / Math.abs(dy));
+        const x = bx + dx * reach, y = by + dy * reach;
         const a = Math.atan2(y - cy, x - cx);
         next.push({ x1: x - root.left, y1: y - root.top, x2: cx + r * Math.cos(a) - root.left, y2: cy + r * Math.sin(a) - root.top });
       });
@@ -47,6 +47,7 @@ const EcosystemHub = () => {
     measure();
     const ro = new ResizeObserver(measure);
     ro.observe(el);
+    el.querySelectorAll(".cap-card, .cap-circle").forEach((node) => ro.observe(node));
     return () => ro.disconnect();
   }, []);
 
