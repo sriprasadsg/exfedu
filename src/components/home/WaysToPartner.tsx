@@ -3,19 +3,55 @@ import { ChevronDown, ChevronLeft, ChevronRight, CircleDashed } from "lucide-rea
 import hub from "@/assets/university-industry-hub.png.asset.json";
 import { PENDING } from "@/data/site";
 
-type Item = { title: string; sub: string; detail?: string };
+type Item = { title: string; sub: string; points: string[] };
 
-/** Detail text renders only once approved; until then the approval placeholder shows. */
+/** Detail bullets render only once approved; until then the approval placeholder shows. */
 const slides: Item[][] = [
   [
-    { title: "About Exafluence Inc.", sub: "Industry Expertise. Technology Innovation.", detail: "Exafluence Inc. USA delivers data, analytics and AI solutions across Financial Services, Healthcare & Pharma, Consumer Packaged Goods & Retail, Energy & Utilities, Telecommunications, and Manufacturing & Industrial IoT.\n\nThrough Exafluence Education, its EdTech division, this industry perspective connects with academic learning, practical applications and professional skill development." },
-    { title: "Mission", sub: "Connecting Knowledge with Practice", detail: "To strengthen the connection between education and industry through relevant programmes, applied learning and collaborative engagement, helping learners and organisations develop their capabilities." },
-    { title: "Vision", sub: "Advancing Learning for a Technology-Driven World", detail: "To build a connected learning ecosystem where academic knowledge, industry expertise and technological innovation support lifelong learning and professional growth." },
+    { title: "About Exafluence Inc.", sub: "Industry Expertise. Technology Innovation.", points: [
+      "Data, analytics and AI solutions.",
+      "Financial Services and Telecommunications.",
+      "Healthcare, Pharma and Retail.",
+      "Energy, Utilities and Industrial IoT.",
+      "Education through Exafluence Education.",
+    ] },
+    { title: "Mission", sub: "Connecting Knowledge with Practice", points: [
+      "Connect education with industry.",
+      "Deliver relevant technology learning.",
+      "Strengthen practical skills.",
+      "Encourage academic collaboration.",
+      "Support continuous professional growth.",
+    ] },
+    { title: "Vision", sub: "Advancing Learning for a Technology-Driven World", points: [
+      "Connect academia, industry and technology.",
+      "Make learning relevant to practice.",
+      "Encourage responsible innovation.",
+      "Develop confident, capable learners.",
+      "Support lifelong skill development.",
+    ] },
   ],
   [
-    { title: "How We Work", sub: "A Collaborative, Application-Focused Approach", detail: "We connect academic foundations with practical experience through programmes that incorporate projects, case studies, expert sessions and industry exposure.\n\nOur approach brings educators and industry practitioners together to help learners develop conceptual understanding, applied skills and professional confidence." },
-    { title: "Quality & Standards", sub: "Information Security. Responsible AI.", detail: "Exafluence Global Analytics Private Limited holds the following management-system certifications:\n\nISO/IEC 27001:2022 — Information Security Management\nCovers application development, support and maintenance within the certified scope, supporting the confidentiality, integrity and availability of information.\n\nISO/IEC 42001:2023 — Artificial Intelligence Management\nCovers the design, development, integration and operation of AI-enabled analytics products and services, supporting responsible AI governance and risk management.\n\nThese certifications apply to the named entity and certified activities; they do not constitute accreditation of educational programmes or student qualifications." },
-    { title: "Tools & Technologies", sub: "Practical Skills Across Modern Technologies", detail: "Our learning focus spans AI & Generative AI, Data Science, analytics, cloud technologies and programming.\n\nTools and technologies include Python, Jupyter Notebook, NumPy, pandas, Matplotlib, Seaborn, scikit-learn, Tableau, Power BI, SQL, PostgreSQL, MongoDB and vector databases.\n\nGenerative AI learning includes large language models, ChatGPT, Llama, Mistral, LM Studio, Ollama and multi-agent frameworks. Tool selection varies by programme and learning objectives." },
+    { title: "How We Work", sub: "A Collaborative, Application-Focused Approach", points: [
+      "Build strong conceptual foundations.",
+      "Apply learning through projects.",
+      "Explore real-world case studies.",
+      "Connect with industry experts.",
+      "Integrate practical industry exposure.",
+    ] },
+    { title: "Quality & Standards", sub: "Information Security. Responsible AI.", points: [
+      "Certified entity: Exafluence Global Analytics Private Limited.",
+      "ISO/IEC 27001:2022 — Information Security Management.",
+      "ISO/IEC 42001:2023 — AI Management.",
+      "Applicable to certified activities and scope.",
+      "These are not educational accreditations.",
+    ] },
+    { title: "Tools & Technologies", sub: "Practical Skills Across Modern Technologies", points: [
+      "Python and data science libraries.",
+      "SQL, PostgreSQL and MongoDB.",
+      "Tableau and Power BI.",
+      "Generative AI and language models.",
+      "Vector databases and agent frameworks.",
+    ] },
   ],
 ];
 
