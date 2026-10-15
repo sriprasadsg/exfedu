@@ -1,6 +1,13 @@
 import { useRef, useState } from "react";
 import { ChevronDown, CircleDashed } from "lucide-react";
 import { PENDING } from "@/data/site";
+import exiIllustration from "@/assets/exi-illustration.png";
+
+const Illustration = () => (
+  <div className="exi-illus" aria-hidden="true">
+    <img src={exiIllustration} alt="" width={1024} height={768} loading="lazy" />
+  </div>
+);
 
 type Item = { title: string; sub: string; points: string[] };
 
