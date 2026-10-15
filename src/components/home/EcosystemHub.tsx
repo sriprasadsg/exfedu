@@ -1,6 +1,5 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { playCoinDrop } from "@/lib/coinDrop";
 import { homepageCapabilities } from "@/data/site";
 import penMark from "@/assets/pen-mark.png";
 import academic from "@/assets/capability-academic.webp";
@@ -75,7 +74,7 @@ const EcosystemHub = () => {
         </div>
         {homepageCapabilities.map((cap, i) => (
           <Link key={cap.id} to={cap.path} className={`cap-card cap-card--${cap.id}`} style={{ ["--i" as string]: i }}
-            onMouseEnter={() => { setActive(i); playCoinDrop(); }} onMouseLeave={() => setActive(null)} onFocus={() => setActive(i)} onBlur={() => setActive(null)}>
+            onMouseEnter={() => setActive(i)} onMouseLeave={() => setActive(null)} onFocus={() => setActive(i)} onBlur={() => setActive(null)}>
             <img src={art[cap.id]} alt="" className="cap-art" loading="lazy" />
             <h3 className="cap-title">{cap.title}</h3>
             <ul className="cap-points">{cap.capabilities.map((p) => <li key={p}>{p}</li>)}</ul>
