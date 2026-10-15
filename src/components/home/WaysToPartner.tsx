@@ -108,12 +108,14 @@ const WaysToPartner = () => {
         </div>
 
         <div className="exi-panel" role="region" aria-label="About Exafluence Inc.">
-          {items.map((it, i) => (
-            <Expandable key={it.title} item={it} id={`exi-d-${i}`}
-              clicked={!!clicked[i]} hovered={!!hovered[i]}
-              setClicked={(v) => setClicked((c) => ({ ...c, [i]: v }))}
-              setHovered={(v) => setHovered((h) => ({ ...h, [i]: v }))} />
-          ))}
+          <div className="exi-grid">
+            {items.map((it, i) => (
+              <Expandable key={it.title} item={it} id={`exi-d-${i}`}
+                clicked={!!clicked[i]} hovered={!!hovered[i]}
+                setClicked={(v) => setClicked((c) => ({ ...c, [i]: v }))}
+                setHovered={(v) => setHovered((h) => ({ ...h, [i]: v }))} />
+            ))}
+          </div>
         </div>
       </div>
     </section>
