@@ -30,6 +30,7 @@ const ways: Way[] = [
     body: "Work together on publications, conferences, hackathons and applied innovation projects.",
     path: "/research-innovation",
     icon: Lightbulb,
+    color: "hsl(32 95% 47%)",
   },
   {
     title: "Internships & Exposure",
