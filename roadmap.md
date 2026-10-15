@@ -95,3 +95,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Exafluence Inc. section: no row selected initially; right panel shows AI chip/book/data-nodes illustration until a row is clicked (fade, mobile illustration above rows)
 - [x] Exafluence Inc. panel illustration remade in 3D glossy style (client 11:38 UTC)
 - [x] Exafluence Inc. section: 3D illustration shows a light soft shadow/glow instead of a mirrored reflection; verified no clipping, no sideways scrolling at 375/1440 (15 October 2026).
+- [x] Exafluence Inc. section: selected row keeps the 3D illustration behind its content as a very faint watermark (opacity .085 desktop, .07 mobile, fades in, reduced-motion safe); content stays clearly readable; verified 375/1440 no sideways scrolling (15 October 2026).
