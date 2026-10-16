@@ -1,7 +1,7 @@
 import {
   Building2, Landmark, Network, BookOpen, FlaskConical, Briefcase, Compass, Lightbulb, Award,
   LayoutGrid, MonitorPlay, Images, Newspaper, Info, Mail, GraduationCap,
-  Code2, BarChart3, Cloud, Sparkles, Database, Terminal, Presentation, Rocket, Cpu, type LucideIcon,
+  Code2, BarChart3, Cloud, Sparkles, Database, Terminal, Presentation, Rocket, Cpu, Layers, PieChart, type LucideIcon,
 } from "lucide-react";
 import type { AboutStoryData } from "@/components/site/AboutStory";
 import type { AcademicOverviewData } from "@/components/site/AcademicOverview";
@@ -9,6 +9,20 @@ import type { EnquiryIntro } from "@/components/home/PartnerEnquiry";
 import skillshoneLogo from "@/assets/skillshone-logo.png.asset.json";
 import svuLogo from "@/assets/svu-logo.png.asset.json";
 import ximeLogo from "@/assets/xime-logo.png.asset.json";
+
+/** Shared technical skill tags shown on every academic partner card. */
+const collaborationSkills: { label: string; icon: LucideIcon }[] = [
+  { label: "Data Science", icon: FlaskConical },
+  { label: "Artificial Intelligence", icon: Cpu },
+  { label: "Machine Learning", icon: Network },
+  { label: "Deep Learning", icon: Layers },
+  { label: "Generative AI", icon: Sparkles },
+  { label: "Python", icon: Code2 },
+  { label: "Big Data Analytics", icon: Database },
+  { label: "Data Visualization", icon: BarChart3 },
+  { label: "Cloud Computing", icon: Cloud },
+  { label: "Business Intelligence", icon: PieChart },
+];
 
 /** Content is data-only: add approved pages, partners or programmes here without touching layouts. */
 export type Offering = { name: string; significance: string[]; benefits: string };
@@ -128,8 +142,8 @@ export const pages: Page[] = [
       partnersTitle: "Our Academic Partners",
       introduction: "Explore how each collaboration connects academic knowledge with technical learning and professional applications.",
       partners: [
-        { logo: { src: svuLogo.url, alt: "Sri Venkateswara University" }, name: "Sri Venkateswara University", label: "Data Science & Computing", description: "Connecting statistics and computing with practical learning in data analysis, machine learning and visualisation, supported by project work.", skills: [{ label: "Programming", icon: Code2 }, { label: "Data Analysis", icon: Database }, { label: "Machine Learning", icon: Network }], linkLabel: "Explore SVU Collaboration", to: "/academic-collaborations/svu" },
-        { logo: { src: ximeLogo.url, alt: "XIME" }, name: "XIME, Chennai", label: "Finance & Technology", description: "Connecting financial knowledge with data analytics and AI applications to explore financial services, business insights and technology-led decision-making.", skills: [{ label: "Finance", icon: BarChart3 }, { label: "Analytics", icon: Presentation }, { label: "AI Applications", icon: Cpu }], linkLabel: "Explore XIME Collaboration", to: "/academic-collaborations/xime" },
+        { logo: { src: svuLogo.url, alt: "Sri Venkateswara University" }, name: "Sri Venkateswara University", label: "Data Science & Computing", description: "Connecting statistics and computing with practical learning in data analysis, machine learning and visualisation, supported by project work.", skills: collaborationSkills, linkLabel: "Explore SVU Collaboration", to: "/academic-collaborations/svu" },
+        { logo: { src: ximeLogo.url, alt: "XIME" }, name: "XIME, Chennai", label: "Finance & Technology", description: "Connecting financial knowledge with data analytics and AI applications to explore financial services, business insights and technology-led decision-making.", skills: collaborationSkills, linkLabel: "Explore XIME Collaboration", to: "/academic-collaborations/xime" },
       ],
       invitation: { title: "Build an Academic Partnership", description: "Discuss curriculum enrichment, technical workshops, faculty development and applied learning opportunities for your institution.", label: "Discuss a Partnership", to: "/contact" },
     } }] },
