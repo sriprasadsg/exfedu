@@ -1,4 +1,4 @@
-import { useRef, useState, type KeyboardEvent } from "react";
+import { useRef, useState, type CSSProperties, type KeyboardEvent } from "react";
 import { Building2, Cpu, Globe2, Layers3, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import enterprise from "@/assets/about-enterprise.png";
