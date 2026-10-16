@@ -10,11 +10,10 @@ import internshipsBanner from "@/assets/internships-banner.jpg.asset.json";
 import researchBanner from "@/assets/research-hero-banner.jpg.asset.json";
 import careerBanner from "@/assets/career-hero-banner.jpg.asset.json";
 import skillshoneBanner from "@/assets/skillshone-hero-banner.png.asset.json";
-import ibmImg from "@/assets/hero-ibm.png";
 import successImg from "@/assets/hero-success.png";
+import ibmBanner from "@/assets/ibm-hero-banner.jpg.asset.json";
 
 const heroVisuals: Record<string, string> = {
-  "/industry-collaborations/ibm": ibmImg,
   "/student-success": successImg,
 };
 
@@ -174,6 +173,29 @@ const ContentPage = () => {
               alt=""
               width={1942}
               height={809}
+              className="page-hero-banner-art"
+            />
+          </div>
+        </section>
+        <main>{body}</main>
+      </Layout>
+    );
+  }
+
+  if (page.path === "/industry-collaborations/ibm") {
+    return (
+      <Layout>
+        <section className="page-hero-banner page-hero-banner--ibm" aria-label="IBM Collaboration introduction">
+          <div className="container relative">
+            {breadcrumb}
+            <div className="mt-8">{heading}</div>
+          </div>
+          <div className="page-hero-banner-art-mask" aria-hidden="true">
+            <img
+              src={ibmBanner.url}
+              alt=""
+              width={1080}
+              height={1920}
               className="page-hero-banner-art"
             />
           </div>
