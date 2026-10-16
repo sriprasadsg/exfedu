@@ -111,3 +111,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Company intro 3D illustration enlarged width and height (desktop 384x126 -> 488x161, phone 279x92 -> 319x105); verified 375/1280px, no clipping, overlap or horizontal overflow (client 12:44 UTC)
 - [x] Wordmark colour rule: red "Exa" / blue "fluence" now on every Exafluence wordmark — hero title, Exafluence Inc. eyebrow, centre circle and footer division line (lighter tints on navy); verified live colours at 1280px (client 04:50 UTC)
 - [x] Hero banner title: removed the red "Exa" / blue "fluence" split, back to plain dark grey (client 04:52 UTC)
+- [x] Exafluence Inc. section: "EXAFLUENCE INC." eyebrow line removed from the intro panel (client 04:53 UTC)
