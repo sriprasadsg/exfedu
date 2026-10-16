@@ -22,6 +22,9 @@ const illustrations = [
   { src: education, alt: "Open silver book connected to a navy AI processor for industry-informed learning" },
 ];
 
+// Where each illustration's artwork rests inside its square canvas, measured from the PNG alpha channel.
+const artBases = [0.857, 0.818, 0.896, 0.898, 0.825];
+
 function TopicCopy({ title, lines }: { title: string; lines: string[] }) {
   const paragraphs = lines.join(" ").split(/Our (mission|vision):\s*/i);
   return <>
@@ -53,7 +56,7 @@ export default function AboutStory({ data }: { data: AboutStoryData }) {
 
   return (
     <section className="about-explorer" aria-label="About Exafluence Education">
-      <figure className="about-explorer-art">
+      <figure className="about-explorer-art" style={{ "--art-base": artBases[artworkIndex] } as CSSProperties}>
         {illustrations.map((image, i) => <img key={image.src} src={image.src}
           alt={i === artworkIndex ? image.alt : ""} aria-hidden={i !== artworkIndex}
           className={i === artworkIndex ? "about-illustration-active" : ""} width={1024} height={1024} />)}
