@@ -615,10 +615,10 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
   padding-inline-start: clamp(1.5rem, 6vw, 4rem);
 }
 @media (min-width: 640px) {
-  .hero-banner-copy { padding-inline-start: clamp(4rem, 9vw, 8rem); }
+  .hero-banner-copy { padding-inline-start: clamp(2.5rem, 5vw, 4.5rem); }
 }
 @media (min-width: 1024px) {
-  .hero-banner-copy { padding-inline-start: clamp(8rem, 12vw, 12rem); }
+  .hero-banner-copy { padding-inline-start: clamp(3.5rem, 6vw, 6.5rem); }
 }
 .brand-exa { color: hsl(var(--brand-red)); }
 .brand-fluence { color: hsl(var(--brand-blue)); }
