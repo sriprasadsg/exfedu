@@ -65,7 +65,10 @@
   .academic-banner-copy h1 { font-size: 28px; }
   .academic-subtitle { font-size: 16px; }
   .academic-banner-photo { height: auto; }
-  .academic-banner-photo img { width: 100%; height: auto; max-height: 320px; }
+  .academic-banner-photo img { width: 100%; height: auto; max-height: 320px;
+    /* feather the artwork's own top and bottom so its white backdrop never meets the page with a seam */
+    -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 6%, #000 92%, transparent 100%);
+    mask-image: linear-gradient(180deg, transparent 0, #000 6%, #000 92%, transparent 100%); }
   .academic-body { padding-block: 22px 32px; }
   .academic-local-nav { gap: 2px 18px; margin-bottom: 24px; }
   .academic-local-nav a { min-height: 40px; display: flex; align-items: center; }
