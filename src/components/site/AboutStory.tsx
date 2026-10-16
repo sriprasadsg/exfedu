@@ -5,7 +5,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { Tone } from "@/data/site";
-import industryEditorial from "@/assets/industry-editorial.jpg";
+import industryEditorial from "@/assets/industry-technology.jpg";
 
 export type AboutStoryData = {
   intro: { title: string; text: string };
@@ -62,7 +62,7 @@ export default function AboutStory({ data }: { data: AboutStoryData }) {
               <p className="about-card-text">{data.sectorsNote}</p>
             </div>
             <figure className="about-domains-image">
-              <img src={industryEditorial} alt="Illustrative industrial engineering workspace" width={1200} height={800} loading="lazy" />
+              <img src={industryEditorial} alt="Illustrative technology workstation with CAD diagrams and industrial robotics" width={1200} height={800} loading="lazy" />
               <figcaption>Data · Digital · AI</figcaption>
             </figure>
           </div>
