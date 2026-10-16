@@ -7,7 +7,7 @@ import programmesArray from "@/assets/programmes-glass-array.png.asset.json";
 import aboutBanner from "@/assets/about-hero-banner-v2.png.asset.json";
 import industryBanner from "@/assets/industry-hero-cube-tower.png.asset.json";
 import internshipsBanner from "@/assets/internships-banner.jpg.asset.json";
-import researchBanner from "@/assets/research-hero-banner.jpg.asset.json";
+import researchBanner from "@/assets/research-search-key.png.asset.json";
 import careerBanner from "@/assets/career-hero-banner.jpg.asset.json";
 import skillshoneBanner from "@/assets/skillshone-hero-banner.png.asset.json";
 import successImg from "@/assets/hero-success.png";
@@ -125,8 +125,8 @@ const ContentPage = () => {
             <img
               src={researchBanner.url}
               alt=""
-              width={1920}
-              height={1920}
+              width={1517}
+              height={1037}
               className="page-hero-banner-art"
             />
           </div>
