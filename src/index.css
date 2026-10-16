@@ -61,10 +61,11 @@
   .academic-invitation > div { min-width: 60%; }
 }
 @media (max-width: 639px) {
-  .academic-banner-inner { grid-template-columns: minmax(0, 1fr); gap: 18px; max-height: none; padding-block: 12px 24px; }
+  .academic-banner-inner { grid-template-columns: minmax(0, 1fr); gap: 18px; min-height: 0; padding-block: 12px 24px; }
   .academic-banner-copy h1 { font-size: 28px; }
   .academic-subtitle { font-size: 16px; }
-  .academic-banner-photo { max-height: 220px; }
+  .academic-banner-photo { height: auto; }
+  .academic-banner-photo img { width: 100%; height: auto; max-height: 320px; }
   .academic-body { padding-block: 22px 32px; }
   .academic-local-nav { gap: 2px 18px; margin-bottom: 24px; }
   .academic-local-nav a { min-height: 40px; display: flex; align-items: center; }
