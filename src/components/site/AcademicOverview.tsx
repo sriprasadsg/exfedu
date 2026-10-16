@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, FlaskConical, GraduationCap, MessageCircle, type LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import bannerPhoto from "@/assets/academic-collaboration-lab.jpg.asset.json";
+import bannerDiagram from "@/assets/academic-collaboration-stack.jpg.asset.json";
 
 export type AcademicOverviewData = {
   title: string; subtitle: string; description: string;
@@ -23,7 +23,7 @@ export default function AcademicOverview({ data }: { data: AcademicOverviewData 
             <p className="academic-banner-description">{data.description}</p>
           </div>
           <div className="academic-banner-photo">
-            <img src={bannerPhoto.url} alt="Students collaborating around a laptop in a modern learning space" width={1260} height={750} />
+            <img src={bannerDiagram.url} alt="Layered diagram of universities, research, innovation, industry and knowledge exchange resting on a shared foundation" width={1264} height={1264} />
           </div>
         </div>
       </div>
