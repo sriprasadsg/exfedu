@@ -11,7 +11,7 @@ import researchBanner from "@/assets/research-hero-banner.jpg.asset.json";
 import careerBanner from "@/assets/career-hero-banner.jpg.asset.json";
 import skillshoneBanner from "@/assets/skillshone-hero-banner.png.asset.json";
 import successImg from "@/assets/hero-success.png";
-import ibmBanner from "@/assets/ibm-hero-banner.jpg.asset.json";
+import ibmBanner from "@/assets/ibm-hero-banner-v2.png.asset.json";
 
 const heroVisuals: Record<string, string> = {
   "/student-success": successImg,
@@ -194,8 +194,8 @@ const ContentPage = () => {
             <img
               src={ibmBanner.url}
               alt=""
-              width={1080}
-              height={1920}
+              width={941}
+              height={1672}
               className="page-hero-banner-art"
             />
           </div>
