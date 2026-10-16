@@ -646,6 +646,9 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
   .hero-tagline { white-space: normal; letter-spacing: .01em; }
   /* the copy spans nearly the full width on phones, so widen the wash */
   .hero-banner::after { background: linear-gradient(90deg, hsl(var(--background)) 0%, hsl(var(--background)) 62%, hsl(var(--background) / 0) 100%); }
+  /* no room to offset the artwork on a narrow screen — let it sit full width behind */
+  .hero-banner { min-height: 268px; }
+  .hero-banner-art { left: 0; width: 100%; -webkit-mask-image: none; mask-image: none; }
 }
 @keyframes hero-tagline-breathe {
   0%, 100% { transform: translateY(0); opacity: .94; }
