@@ -3,6 +3,7 @@ import {
   LayoutGrid, MonitorPlay, Images, Newspaper, Info, Mail, GraduationCap,
   Code2, BarChart3, Cloud, Sparkles, Database, Terminal, Presentation, Rocket, type LucideIcon,
 } from "lucide-react";
+import type { AboutStoryData } from "@/components/site/AboutStory";
 import type { EnquiryIntro } from "@/components/home/PartnerEnquiry";
 import skillshoneLogo from "@/assets/skillshone-logo.png.asset.json";
 
@@ -21,6 +22,7 @@ export type Block =
   | { type: "gallery"; filters: string[] }
   | { type: "children"; title: string }
   | { type: "enquiry-form"; title: string; intro?: EnquiryIntro }
+  | { type: "about-story"; data: AboutStoryData }
   | { type: "logo"; src: string; alt: string }
   | { type: "cta"; title: string; text: string; label: string; to?: string };
 
@@ -90,16 +92,21 @@ export const pages: Page[] = [
   // Core
   { path: "/about", title: "About Us", category: "core", icon: Info, eyebrow: "A Division of Exafluence Inc., USA", hideInNav: true,
     summary: "Discover the industry foundation behind Exafluence Education.",
-    blocks: [{ type: "enquiry-form", title: "Partner enquiry", intro: {
+    blocks: [{ type: "about-story", data: {
       title: "Industry Expertise. Strategic Partnerships. Applied Learning.",
       description: "Drawing on Exafluence Inc.’s technology expertise, we connect education with business applications in AI, Generative AI and Data Science.",
-      globe: true,
-      points: [
-        { label: "Our Mission", text: "Build practical capabilities through industry-aligned learning, expert mentorship and collaborative projects." },
-        { label: "Our Vision", text: "Create a connected ecosystem where academia and industry advance talent development, innovation and lifelong learning." },
-        { label: "Collaborate With Us", text: "Explore academic partnerships, corporate upskilling and tailored technology training aligned with your organisation’s goals." },
+      mission: "Build practical capabilities through industry-aligned learning, expert mentorship and collaborative projects.",
+      vision: "Create a connected ecosystem where academia and industry advance talent development, innovation and lifelong learning.",
+      collaborate: "Explore academic partnerships, corporate upskilling and tailored technology training aligned with your organisation’s goals.",
+      action: { label: "Discuss a Partnership", href: "#partner-enquiry-form" },
+      topics: [
+        { title: "Exafluence Inc.", lines: ["With 10+ years of technology experience,", "Exafluence Inc. helps organisations use", "data, analytics and Artificial Intelligence", "to address complex business challenges.", "Its industry expertise provides a practical", "foundation for technology-focused learning."] },
+        { title: "Core Expertise", lines: ["Data Engineering and Advanced Analytics", "turn complex information into useful insights.", "AI and Generative AI support intelligent", "applications and business innovation.", "Digital Transformation connects these", "capabilities with evolving organisational needs."] },
+        { title: "Global Presence", lines: ["USA: Frisco, Texas, and Princeton, New Jersey.", "India: Tirupati, Bengaluru and Chennai.", "Overseas development centres:", "Dubai, UAE, and Muscat, Oman.", "This international presence brings broader", "business perspectives to our industry foundation."] },
+        { title: "Industry Domains", lines: ["Financial Services and Insurance.", "Healthcare and Pharmaceuticals.", "Consumer Goods and Retail.", "Energy and Utilities.", "Telecommunications.", "Manufacturing and Industrial IoT.", "These sectors provide context for applied learning."] },
+        { title: "Exafluence Education", lines: ["Connecting industry insight with education", "in AI, Generative AI and Data Science.", "Our mission: build practical capabilities", "through projects and expert mentorship.", "Our vision: prepare learners for evolving", "careers through innovation, collaboration", "and continuous learning."] },
       ],
-    } }],
+    } }, { type: "enquiry-form", title: "Partner enquiry" }],
   },
   { path: "/contact", title: "Contact / Enquiry", category: "core", icon: Mail, summary: "Ask about programmes, collaborations or admissions.", blocks: [] },
 
