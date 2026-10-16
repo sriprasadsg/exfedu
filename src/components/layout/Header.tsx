@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import logo from "@/assets/exf-education-logo.png.asset.json";
 import { Menu, X, ChevronDown } from "lucide-react";
-import { categories, navPages } from "@/data/site";
+import { menuCategories, navPages } from "@/data/site";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@/components/ui/dropdown-menu";
@@ -29,7 +29,7 @@ const Header = () => {
         <nav aria-label="Main navigation" className="hidden items-center gap-1 lg:flex">
           <Button asChild variant="ghost" className="nav-on-navy"><Link to="/" aria-current={pathname === "/" ? "page" : undefined}>Home</Link></Button>
           <Button asChild variant="ghost" className="nav-on-navy"><Link to="/about" aria-current={pathname === "/about" ? "page" : undefined}>About Us</Link></Button>
-          {categories.map((c) => (
+          {menuCategories.map((c) => (
             <DropdownMenu key={c.slug}>
               <DropdownMenuTrigger asChild><Button variant="ghost" className={`nav-on-navy ${c.accent}`}><img src={catIcons[c.slug]} alt="" aria-hidden className="menu-cat-icon" loading="lazy" />{c.short}<ChevronDown className="h-3.5 w-3.5" /></Button></DropdownMenuTrigger>
               <DropdownMenuContent align="end" className={c.slug === "learning" ? "grid w-[520px] grid-cols-2 p-2 shadow-sm" : "w-72 p-2 shadow-sm"}>
@@ -59,7 +59,7 @@ const Header = () => {
             <Button asChild variant="ghost" className="nav-on-navy h-11 w-full justify-start"><Link to="/about" onClick={() => setOpen(false)}>About Us</Link></Button>
 
             <Accordion type="single" collapsible>
-              {categories.map((c) => (
+              {menuCategories.map((c) => (
                 <AccordionItem key={c.slug} value={c.slug}>
                   <AccordionTrigger className={`nav-on-navy text-left font-normal ${c.accent}`}><span className="flex items-center gap-2.5"><img src={catIcons[c.slug]} alt="" aria-hidden className="menu-cat-icon" loading="lazy" />{c.title}</span></AccordionTrigger>
                   <AccordionContent>
