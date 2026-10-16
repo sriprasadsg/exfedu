@@ -116,7 +116,6 @@ export const pages: Page[] = [
       ] },
       { type: "features", title: "Domains Exafluence Inc. serves", note: "Industry expertise of Exafluence Inc., USA.", items: ["Financial Services", "Healthcare & Pharma", "Consumer Packaged Goods & Retail", "Energy & Utilities", "Telecommunications", "Manufacturing & Industrial IoT"] },
       { type: "text", title: "What this brings to Exafluence Education", text: "This working technology expertise is what shapes the education vertical: programmes are built on the same tools, platforms and practices Exafluence Inc. uses on client work, learning is anchored to real industry domains rather than abstract syllabi, and students see how data, analytics and AI are applied in the fields they will work in — so an academic collaboration with Exafluence Education carries genuine industry depth into the classroom." },
-      { type: "children", title: "Current collaborations" },
       enquire("Become an academic partner"),
     ] },
   { path: "/academic-collaborations/svu", parent: "/academic-collaborations", title: "SVU Collaboration", category: "academic", icon: GraduationCap,
