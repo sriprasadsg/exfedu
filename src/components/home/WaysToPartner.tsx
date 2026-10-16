@@ -72,7 +72,7 @@ const WaysToPartner = () => {
         {/* Left: pale intro panel with illustration, heading and lead */}
         <div className="exi-intro">
           <Illustration />
-          <p className="exi-eyebrow">Exafluence Inc.</p>
+          <p className="exi-eyebrow"><span className="brand-exa">Exa</span><span className="brand-fluence">fluence</span> Inc.</p>
           <h2 id="exi-heading" className="exi-heading">Connecting Technology Expertise with Educational Purpose</h2>
           <p className="exi-lead">Discover our company, purpose and approach to connecting academia, industry and technology.</p>
         </div>

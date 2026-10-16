@@ -13,7 +13,7 @@ const Hero = () => (
       />
       <div className="hero-banner-copy">
         <h1 className="hero-title">
-          Exafluence Education
+          <span className="brand-exa">Exa</span><span className="brand-fluence">fluence</span> Education
         </h1>
         <p className="hero-tagline">Connecting Academia, Industry &amp; Technology</p>
       </div>
