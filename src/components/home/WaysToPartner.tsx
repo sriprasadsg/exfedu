@@ -79,7 +79,7 @@ const WaysToPartner = () => {
 
         {/* Right: white card floating over the panel, six boxes in two columns */}
         <div className="exi-card">
-          <div className="exi-grid">
+          <div className="exi-grid" onMouseLeave={() => setOpen(null)}>
             {items.map((it, i) => {
               const isOpen = open === i;
               return (
