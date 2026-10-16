@@ -1,4 +1,4 @@
-import { useRef, useState, type KeyboardEvent } from "react";
+import { useRef, useState, type CSSProperties, type KeyboardEvent } from "react";
 import { Building2, Cpu, Globe2, Layers3, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import enterprise from "@/assets/about-enterprise.png";
@@ -21,6 +21,9 @@ const illustrations = [
   { src: industries, alt: "Connected finance, healthcare, retail, energy, telecommunications and manufacturing symbols" },
   { src: education, alt: "Open silver book connected to a navy AI processor for industry-informed learning" },
 ];
+
+// Where each illustration's artwork rests inside its square canvas, measured from the PNG alpha channel.
+const artBases = [0.857, 0.818, 0.896, 0.898, 0.825];
 
 function TopicCopy({ title, lines }: { title: string; lines: string[] }) {
   const paragraphs = lines.join(" ").split(/Our (mission|vision):\s*/i);
@@ -53,7 +56,7 @@ export default function AboutStory({ data }: { data: AboutStoryData }) {
 
   return (
     <section className="about-explorer" aria-label="About Exafluence Education">
-      <figure className="about-explorer-art">
+      <figure className="about-explorer-art" style={{ "--art-base": artBases[artworkIndex] } as CSSProperties}>
         {illustrations.map((image, i) => <img key={image.src} src={image.src}
           alt={i === artworkIndex ? image.alt : ""} aria-hidden={i !== artworkIndex}
           className={i === artworkIndex ? "about-illustration-active" : ""} width={1024} height={1024} />)}
