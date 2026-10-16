@@ -99,14 +99,15 @@ const ContentPage = () => {
             {breadcrumb}
             <div className="mt-8">{heading}</div>
           </div>
-          <img
-            src={industryBanner.url}
-            alt=""
-            aria-hidden="true"
-            width={1920}
-            height={1080}
-            className="page-hero-banner-art"
-          />
+          <div className="page-hero-banner-art-mask" aria-hidden="true">
+            <img
+              src={industryBanner.url}
+              alt=""
+              width={1920}
+              height={1080}
+              className="page-hero-banner-art"
+            />
+          </div>
         </section>
         <main>{body}</main>
       </Layout>
