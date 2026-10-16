@@ -7,13 +7,13 @@ const exiIllustration = exiArt.url;
 const Illustration = () => (
   <div className="exi-illus" aria-hidden="true">
     <span className="exi-illus-glow" />
-    <img src={exiIllustration} alt="" width={1024} height={768} loading="lazy" />
+    <img src={exiIllustration} alt="" width={1322} height={425} loading="lazy" />
   </div>
 );
 
 /** Very faint 3D illustration kept behind an opened box's content. */
 const Watermark = () => (
-  <img className="exi-wm" src={exiIllustration} alt="" width={1024} height={768} aria-hidden="true" />
+  <img className="exi-wm" src={exiIllustration} alt="" width={1322} height={425} aria-hidden="true" />
 );
 
 /** Splits the brand word so "Exa" renders red and "fluence" blue. */
