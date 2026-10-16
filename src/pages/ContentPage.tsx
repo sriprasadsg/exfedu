@@ -198,8 +198,8 @@ const ContentPage = () => {
             src={page.path === "/programmes" ? programmesBanner.url : internshipsBanner.url}
             alt=""
             aria-hidden="true"
-            width={page.path === "/programmes" ? 1920 : 1765}
-            height={page.path === "/programmes" ? 1080 : 891}
+            width={page.path === "/programmes" ? 1920 : 1536}
+            height={page.path === "/programmes" ? 1080 : 1920}
             className="page-hero-banner-art"
           />
         </section>
