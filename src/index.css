@@ -836,10 +836,7 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 }
 
 /* ===== About Us page ===== */
-.about-page { max-width: 1168px; padding-block: 2.5rem 4rem; }
-.about-page-heading { margin-bottom: 1.75rem; }
-.about-page-heading nav { font-size: .75rem; color: hsl(var(--muted-foreground)); }
-.about-page-heading h1 { margin-top: 1rem; font-size: 1.75rem; font-weight: 400; color: hsl(var(--navy-900)); }
+.about-page { max-width: 1168px; padding-block: 0.75rem 4rem; }
 .about-page .partner-enquiry-section { border-top: 0; }
 .about-page .partner-enquiry-section > .container { padding-block: 1.5rem; }
 .about-page .enquiry-compact-layout { gap: 2rem; }
