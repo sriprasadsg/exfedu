@@ -8,6 +8,7 @@ import aboutBanner from "@/assets/about-hero-banner.jpg.asset.json";
 import industryBanner from "@/assets/industry-hero-banner.jpg.asset.json";
 import internshipsBanner from "@/assets/internships-banner.jpg.asset.json";
 import researchBanner from "@/assets/research-hero-banner.jpg.asset.json";
+import careerBanner from "@/assets/career-hero-banner.jpg.asset.json";
 import ibmImg from "@/assets/hero-ibm.png";
 import successImg from "@/assets/hero-success.png";
 import skillshoneImg from "@/assets/hero-skillshone.png";
@@ -127,6 +128,29 @@ const ContentPage = () => {
               src={researchBanner.url}
               alt=""
               width={1920}
+              height={1920}
+              className="page-hero-banner-art"
+            />
+          </div>
+        </section>
+        <main>{body}</main>
+      </Layout>
+    );
+  }
+
+  if (page.path === "/career-development") {
+    return (
+      <Layout>
+        <section className="page-hero-banner page-hero-banner--career" aria-label={`${page.title} introduction`}>
+          <div className="container relative">
+            {breadcrumb}
+            <div className="mt-8">{heading}</div>
+          </div>
+          <div className="page-hero-banner-art-mask" aria-hidden="true">
+            <img
+              src={careerBanner.url}
+              alt=""
+              width={1013}
               height={1920}
               className="page-hero-banner-art"
             />
