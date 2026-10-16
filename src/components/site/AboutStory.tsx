@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import {
   ArrowRight, Users, Building2, Eye, Target, Wrench, Handshake, TrendingUp, Lightbulb, Rocket,
-  Landmark, HeartPulse, ShoppingBag, Zap, RadioTower, Factory, Globe2, Sparkles, type LucideIcon,
+  Landmark, HeartPulse, ShoppingBag, Zap, Factory, Globe2, Sparkles, Cpu as CpuIcon, type LucideIcon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { Tone } from "@/data/site";
@@ -10,6 +10,7 @@ export type AboutStoryData = {
   intro: { title: string; text: string };
   who: { title: string; text: string };
   foundation: { title: string; text: string };
+  capabilities: { title: string; text: string }[];
   vision: string; mission: string;
   values: { title: string; text: string }[];
   sectorsNote: string;
@@ -19,7 +20,7 @@ export type AboutStoryData = {
 };
 
 const valueIcons: LucideIcon[] = [Wrench, Handshake, TrendingUp, Lightbulb, Rocket];
-const sectorIcons: LucideIcon[] = [Landmark, HeartPulse, ShoppingBag, Zap, RadioTower, Factory];
+const sectorIcons: LucideIcon[] = [Landmark, HeartPulse, ShoppingBag, Zap, Factory];
 const tones: Tone[] = ["blue", "teal", "amber", "violet"];
 
 const Icon3D = ({ icon: I, tone, i = 0, size = "md" }: { icon: LucideIcon; tone: Tone; i?: number; size?: "md" | "lg" }) => (
@@ -31,25 +32,41 @@ const Icon3D = ({ icon: I, tone, i = 0, size = "md" }: { icon: LucideIcon; tone:
 export default function AboutStory({ data }: { data: AboutStoryData }) {
   return (
     <div className="about-story">
-      {/* Intro: feature panel + who/foundation cards */}
-      <section className="about-intro">
+      <section className="about-industry" aria-labelledby="industry-expertise-title">
         <div className="about-intro-feature">
-          <Icon3D icon={Sparkles} tone="blue" size="lg" />
-          <p className="about-kicker">Exafluence Education</p>
-          <h2 className="about-feature-title">{data.intro.title}</h2>
+          <Icon3D icon={Building2} tone="blue" size="lg" />
+          <p className="about-kicker">Exafluence Inc.</p>
+          <h2 id="industry-expertise-title" className="about-feature-title">Industry Expertise</h2>
+          <h3 className="about-industry-subtitle">{data.intro.title}</h3>
           <p className="about-feature-text">{data.intro.text}</p>
+          <a className="about-industry-source" href="https://www.exafluence.com/industries" target="_blank" rel="noopener noreferrer">Explore Exafluence’s industry solutions <ArrowRight size={16} aria-hidden /></a>
         </div>
-        <div className="about-intro-cards">
-          {[{ ...data.who, icon: Users, tone: "teal" as Tone }, { ...data.foundation, icon: Building2, tone: "violet" as Tone }].map((c, i) => (
-            <article key={c.title} className="about-card about-rise" style={{ animationDelay: `${i * 0.12}s` }}>
-              <Icon3D icon={c.icon} tone={c.tone} i={i + 1} />
-              <p className="about-kicker">0{i + 1}</p>
-              <h3 className="about-card-title">{c.title}</h3>
-              <p className="about-card-text">{c.text}</p>
-            </article>
-          ))}
+        <div className="about-industry-detail">
+          <h3 className="about-card-title">{data.foundation.title}</h3>
+          <p className="about-card-text">{data.foundation.text}</p>
+          <div className="about-capability-list">
+            {data.capabilities.map((c, i) => (
+              <article key={c.title} className="about-capability-row">
+                <Icon3D icon={[Lightbulb, TrendingUp, CpuIcon][i] ?? Wrench} tone={tones[i % 4]} i={i} />
+                <div><h4 className="about-card-title">{c.title}</h4><p className="about-card-text">{c.text}</p></div>
+              </article>
+            ))}
+          </div>
+        </div>
+        <div className="about-industry-domains">
+          <h3 className="about-card-title">Industries We Serve</h3>
+          <p className="about-card-text">{data.sectorsNote}</p>
+          <div className="about-industry-domain-grid">
+            {data.sectors.map((s, i) => (
+              <article key={s.title} className="about-industry-domain">
+                <Icon3D icon={sectorIcons[i] ?? Globe2} tone={tones[i % 4]} i={i} />
+                <div><h4 className="about-card-title">{s.title}</h4><p className="about-card-text">{s.text}</p></div>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
+      <section className="about-who"><Icon3D icon={Users} tone="teal" /><div><h2 className="site-section-title font-display font-normal">{data.who.title}</h2><p className="about-card-text">{data.who.text}</p></div></section>
 
       {/* Vision & mission */}
       <section className="about-vm">
@@ -72,20 +89,6 @@ export default function AboutStory({ data }: { data: AboutStoryData }) {
               <Icon3D icon={valueIcons[i] ?? Sparkles} tone={tones[i % 4]} i={i} />
               <h3 className="about-card-title">{v.title}</h3>
               <p className="about-card-text">{v.text}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      {/* Sectors */}
-      <section>
-        <h2 className="site-section-title font-display font-normal">Industry Perspectives Across Sectors</h2>
-        <p className="mt-2 max-w-3xl text-muted-foreground">{data.sectorsNote}</p>
-        <div className="about-sectors">
-          {data.sectors.map((s, i) => (
-            <article key={s.title} className="about-sector">
-              <Icon3D icon={sectorIcons[i] ?? Globe2} tone={tones[i % 4]} i={i} />
-              <div><h3 className="about-card-title">{s.title}</h3><p className="about-card-text">{s.text}</p></div>
             </article>
           ))}
         </div>

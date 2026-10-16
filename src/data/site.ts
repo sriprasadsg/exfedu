@@ -93,9 +93,14 @@ export const pages: Page[] = [
     summary: "Industry Expertise. Educational Purpose. Future Possibilities.",
     blocks: [
       { type: "about-story", data: {
-        intro: { title: "Industry Expertise. Educational Purpose. Future Possibilities.", text: "Exafluence Education connects technology expertise with applied learning. As the learning division of Exafluence Inc., we bring industry perspectives into education, helping learners and institutions build capabilities in Artificial Intelligence, Generative AI, Data Science and emerging technologies." },
+        intro: { title: "Tailored AI-driven solutions across industries", text: "Exafluence helps organisations leverage data, digital technologies and AI within their business context to streamline operations, improve efficiencies and drive growth." },
         who: { title: "Who We Are", text: "We connect academic knowledge with the skills used in professional practice. Our approach combines structured learning, practical projects and expert guidance to help students and working professionals understand technology, apply it effectively and continue developing their expertise. Through collaboration with academic institutions and industry, we aim to make technology education relevant, accessible and responsive to changing business needs." },
-        foundation: { title: "Our Industry Foundation", text: "Exafluence Inc. works across data engineering, advanced analytics, Artificial Intelligence and digital transformation. This industry foundation informs our educational approach, bringing practical perspectives on how organisations use technology to solve problems and create value. For learners, this means connecting technical concepts with their applications. For institutions and organisations, it creates opportunities to align learning with professional capabilities." },
+        foundation: { title: "Data. Digital. AI.", text: "Exafluence combines digital transformation advisory, analytics-powered insights and technology-driven engineering to address business challenges." },
+        capabilities: [
+          { title: "Digital Transformation Advisory", text: "Current landscape assessment, digital transformation roadmaps and use-case definition." },
+          { title: "Analytics & Artificial Intelligence", text: "ML and AI models, data visualisation and insights that support business decisions and customer experience." },
+          { title: "Data Engineering", text: "Data pipelines, legacy modernisation, data migration and data lake or warehouse implementation." },
+        ],
         vision: "To connect education, industry and innovation—equipping people and organisations to participate confidently in a technology-driven future.",
         mission: "To develop practical technology capabilities through industry-relevant education, expert mentorship and collaborative learning.",
         values: [
@@ -105,14 +110,13 @@ export const pages: Page[] = [
           { title: "Research & Innovation", text: "Encourage inquiry, experimentation and the development of ideas with practical relevance." },
           { title: "Career Readiness", text: "Build technical understanding alongside communication, collaboration and professional skills." },
         ],
-        sectorsNote: "Technology creates different opportunities in every industry. Exafluence Inc.’s domain experience provides context for exploring applications across:",
+        sectorsNote: "Domain-focused data and analytics solutions from Exafluence.",
         sectors: [
-          { title: "Financial Services", text: "Data, analytics and intelligent business processes." },
-          { title: "Healthcare & Pharmaceuticals", text: "Information management and analytical applications." },
-          { title: "Consumer Goods & Retail", text: "Customer insights and operational decision-making." },
-          { title: "Energy & Utilities", text: "Data-informed operations and resource management." },
-          { title: "Telecommunications", text: "Connected systems and service analytics." },
-          { title: "Manufacturing & Industrial IoT", text: "Industrial data and connected operations." },
+          { title: "Financial Services", text: "Data mastering, front-office consolidation, accounting conversion and client reporting." },
+          { title: "Healthcare & Pharma", text: "Interoperability, care gaps, revenue cycle management and clinical trial acceleration." },
+          { title: "CPG & Retail", text: "Consumer insights, digital marketing and ecommerce." },
+          { title: "Energy & Utilities", text: "Operational transformation, new technologies and decarbonisation with grid reliability." },
+          { title: "Manufacturing & Industrial IoT", text: "Equipment condition monitoring, sensor health monitoring and supply chain tracking." },
         ],
         global: { title: "Global Perspectives. Practical Relevance.", text: "Drawing on Exafluence Inc.’s international presence, we connect technology education with broader industry perspectives. Our focus is on helping learners understand how technical knowledge translates across business environments, professional roles and emerging applications." },
         next: { title: "Building Capabilities for What Comes Next", text: "As AI and digital technologies reshape how organisations work, learning must evolve alongside them. Our direction is to deepen the connection between education and industry through academic partnerships, professional upskilling and collaborative innovation. We aim to support individuals, institutions and organisations as they prepare for new technologies and changing capability needs." },
