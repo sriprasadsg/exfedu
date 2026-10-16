@@ -74,7 +74,8 @@ export default function AboutStory({ data }: { data: AboutStoryData }) {
             const Icon = icons[i] ?? Cpu;
             return (
               <Button key={item.title} ref={(element) => { controls.current[i] = element; }}
-                variant="outline" aria-pressed={selected === i} onClick={() => setSelected(i)} onKeyDown={(event) => navigate(event, i)}
+                variant="outline" aria-pressed={selected === i} onMouseEnter={() => setSelected(i)} onFocus={() => setSelected(i)}
+                onClick={() => setSelected(i)} onKeyDown={(event) => navigate(event, i)}
                 className={`about-topic${i === data.topics.length - 1 ? " about-topic--education" : ""}`}>
                 <span className="about-topic-number">{String(i + 1).padStart(2, "0")}</span>
                 <Icon size={15} strokeWidth={1.5} aria-hidden="true" />
