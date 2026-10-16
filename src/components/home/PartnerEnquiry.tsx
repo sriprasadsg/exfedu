@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { z } from "zod";
-import { ArrowUpRight, ArrowLeft, CheckCircle2, AlertCircle } from "lucide-react";
+import { ArrowUpRight, ArrowLeft, CheckCircle2, AlertCircle, Handshake, GraduationCap, Building2, Cpu } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -66,6 +66,12 @@ const labels: Record<Field, string> = {
   phone: "Phone number", type: "Collaboration type", message: "Collaboration requirement", consent: "Contact permission",
 };
 const emptyAnswers: Record<Field, string> = { name: "", organisation: "", email: "", phone: "", type: "", message: "", consent: "" };
+const connectionNodes = [
+  { label: "Partner", Icon: Handshake, tone: "blue" },
+  { label: "Academic", Icon: GraduationCap, tone: "teal" },
+  { label: "Industry", Icon: Building2, tone: "amber" },
+  { label: "Technology", Icon: Cpu, tone: "violet" },
+];
 
 const PartnerEnquiry = () => {
   const [status, setStatus] = useState<Status>({ kind: "idle" });
@@ -127,9 +133,9 @@ const PartnerEnquiry = () => {
     <section id="partner-enquiry" className="border-t bg-background scroll-mt-24">
       <div className="container py-12">
         <div className="enquiry-connected" role="img" aria-label="Partner connected to Academic, Industry and Technology">
-          {["Partner", "Academic", "Industry", "Technology"].map((label, index) => (
-            <div className="enquiry-node" key={label}>
-              <span className="enquiry-node-number">{index + 1}</span>
+          {connectionNodes.map(({ label, Icon, tone }) => (
+            <div className={`enquiry-node enquiry-node--${tone}`} key={label}>
+              <span className="enquiry-node-number"><Icon size={24} strokeWidth={1.7} aria-hidden="true" /></span>
               <span className="enquiry-node-label">{label}</span>
             </div>
           ))}

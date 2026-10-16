@@ -49,6 +49,10 @@
     --company-panel: 205 80% 94%;
     --company-panel-light: 205 95% 97%;
     --company-panel-edge: 205 70% 92%;
+    --connection-blue: 214 78% 47%;
+    --connection-teal: 172 65% 30%;
+    --connection-amber: 34 85% 36%;
+    --connection-violet: 270 57% 48%;
 
 
     --sidebar-background: 0 0% 98%;
@@ -332,8 +336,17 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 /* Partner enquiry 3D presentation */
 .enquiry-connected { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); max-width: 850px; margin: 0 auto 3rem; }
 .enquiry-node { position: relative; display: flex; flex-direction: column; align-items: center; gap: 1rem; text-align: center; }
-.enquiry-node:not(:last-child)::after { content: ""; position: absolute; top: 20px; left: calc(50% + 20px); width: calc(100% - 40px); height: 1px; background: hsl(var(--border)); }
-.enquiry-node-number { display: grid; place-items: center; width: 40px; height: 40px; border: 1px solid hsl(var(--primary) / .7); border-radius: 50%; font-size: .8125rem; color: hsl(var(--primary)); }
+.enquiry-node--blue { --node-tone: var(--connection-blue); --node-delay: 0s; }
+.enquiry-node--teal { --node-tone: var(--connection-teal); --node-delay: -1.5s; }
+.enquiry-node--amber { --node-tone: var(--connection-amber); --node-delay: -3s; }
+.enquiry-node--violet { --node-tone: var(--connection-violet); --node-delay: -4.5s; }
+.enquiry-node:not(:last-child)::after { content: ""; position: absolute; top: 24px; left: calc(50% + 24px); width: calc(100% - 48px); height: 1px; background: hsl(var(--node-tone) / .25); }
+.enquiry-node:not(:last-child)::before { content: ""; position: absolute; z-index: 1; top: 21.5px; left: calc(50% + 24px); width: 5px; height: 5px; border-radius: 50%; background: hsl(var(--node-tone) / .65); animation: enquiry-connection-travel 6s ease-in-out infinite; animation-delay: var(--node-delay); }
+.enquiry-node-number { display: grid; place-items: center; width: 48px; height: 48px; border: 1px solid hsl(var(--node-tone) / .3); border-radius: 50%; color: hsl(var(--node-tone)); background: hsl(var(--node-tone) / .08); box-shadow: 0 3px 8px hsl(var(--node-tone) / .07); }
+.enquiry-node-number svg { animation: enquiry-icon-drift 6s ease-in-out infinite; animation-delay: var(--node-delay); }
+@keyframes enquiry-icon-drift { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-2px) rotate(3deg); } }
+@keyframes enquiry-connection-travel { 0% { left: calc(50% + 24px); opacity: 0; } 15%, 80% { opacity: .65; } 100% { left: calc(150% - 29px); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .enquiry-node-number svg, .enquiry-node:not(:last-child)::before { animation: none; } }
 .enquiry-node-label { font-size: .875rem; color: hsl(var(--foreground)); overflow-wrap: anywhere; }
 .enquiry-compact-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 420px); align-items: center; gap: 3rem; max-width: 960px; margin: 0 auto; }
 .partner-3d-card.enquiry-step-card { min-height: 285px; width: 100%; border-radius: var(--radius); padding: 1.5rem; }
