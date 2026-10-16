@@ -39,6 +39,10 @@ export const categories = [
 ] as const;
 export type CategorySlug = (typeof categories)[number]["slug"];
 
+/** Categories shown in the site menus. Core is not a menu: its Contact page is
+ * reached from the calls to action on the pages instead. */
+export const menuCategories = categories.filter((c) => c.slug !== "core");
+
 export const PENDING = "Approved Content Required";
 
 /** Approved homepage capabilities; independent of the wider site navigation. */
