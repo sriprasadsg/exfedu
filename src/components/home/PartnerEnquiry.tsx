@@ -1,7 +1,7 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { z } from "zod";
 import partner3d from "@/assets/partner-3d-orbs.png.asset.json";
-import { ArrowUpRight, CheckCircle2, AlertCircle } from "lucide-react";
+import { ArrowUpRight, ArrowLeft, CheckCircle2, AlertCircle } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -62,34 +62,59 @@ const submitTestEnquiry = async (_data: EnquiryData): Promise<void> => {
 
 const fields: Field[] = ["name", "organisation", "email", "phone", "type", "message", "consent"];
 
+const labels: Record<Field, string> = {
+  name: "Contact name", organisation: "Organisation / Institution", email: "Work email",
+  phone: "Phone number", type: "Collaboration type", message: "Collaboration requirement", consent: "Contact permission",
+};
+const emptyAnswers: Record<Field, string> = { name: "", organisation: "", email: "", phone: "", type: "", message: "", consent: "" };
+
 const PartnerEnquiry = () => {
   const [status, setStatus] = useState<Status>({ kind: "idle" });
-  const [errors, setErrors] = useState<Partial<Record<Field, string>>>({});
+  const [error, setError] = useState("");
+  const [step, setStep] = useState(0);
+  const [answers, setAnswers] = useState({ ...emptyAnswers });
   const inFlight = useRef(false);
+  const formRef = useRef<HTMLFormElement>(null);
+  const field = fields[step];
+  const submitting = status.kind === "submitting";
+  const completed = status.kind === "success";
+
+  useEffect(() => {
+    if (step > 0) (formRef.current?.elements.namedItem(fields[step]) as HTMLElement | null)?.focus();
+  }, [step]);
+
+  const update = (value: string) => {
+    setAnswers((previous) => ({ ...previous, [field]: value }));
+    setError("");
+    if (status.kind === "error") setStatus({ kind: "idle" });
+  };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (inFlight.current) return;
-    const form = event.currentTarget;
-    const raw = Object.fromEntries(new FormData(form).entries());
-    const parsed = enquirySchema.safeParse({ ...raw, consent: raw.consent ?? "" });
-
-    if (!parsed.success) {
-      const next: Partial<Record<Field, string>> = {};
-      for (const f of fields) next[f] = parsed.error.issues.find((i) => i.path[0] === f)?.message;
-      setErrors(next);
-      setStatus({ kind: "error", message: "Please correct the highlighted fields." });
-      const first = fields.find((f) => next[f]);
-      if (first) (form.elements.namedItem(first) as HTMLElement | null)?.focus();
+    const current = enquirySchema.shape[field].safeParse(answers[field]);
+    if (!current.success) {
+      setError(current.error.issues[0]?.message ?? "Please check this field.");
+      (formRef.current?.elements.namedItem(field) as HTMLElement | null)?.focus();
       return;
     }
-
+    setError("");
+    if (step < fields.length - 1) {
+      setStep((previous) => previous + 1);
+      return;
+    }
+    const parsed = enquirySchema.safeParse(answers);
+    if (!parsed.success) {
+      const invalid = fields.findIndex((f) => parsed.error.issues.some((issue) => issue.path[0] === f));
+      setStep(Math.max(0, invalid));
+      setError(parsed.error.issues[0]?.message ?? "Please check your answers.");
+      return;
+    }
     inFlight.current = true;
-    setErrors({});
     setStatus({ kind: "submitting" });
     try {
       await submitTestEnquiry(parsed.data);
-      form.reset();
+      setAnswers({ ...emptyAnswers });
       setStatus({ kind: "success" });
     } catch {
       setStatus({ kind: "error", message: "Test submission failed — simulated network error. Your details are kept; please try again." });
@@ -98,82 +123,73 @@ const PartnerEnquiry = () => {
     }
   };
 
-  const err = (field: Field) =>
-    errors[field] ? <p id={`${field}-error`} className="break-words text-sm font-normal text-destructive">{errors[field]}</p> : null;
-  const aria = (field: Field) => ({ "aria-invalid": !!errors[field], "aria-describedby": errors[field] ? `${field}-error` : undefined });
-  const submitting = status.kind === "submitting";
-
+  const aria = { "aria-invalid": !!error, "aria-describedby": error ? "enquiry-field-error" : undefined };
   return (
     <section id="partner-enquiry" className="border-t bg-background scroll-mt-24">
-      <div className="container grid gap-8 py-14 lg:grid-cols-[0.85fr_1.5fr] lg:gap-16">
-        <div className="min-w-0">
-          <p className="mb-3 text-sm font-normal text-accent">Partner enquiry</p>
-          <h2 className="site-section-title enquiry-title-gradient font-display leading-snug">Partner with<br />Exafluence Education</h2>
-          <p className="mt-4 max-w-[38ch] text-sm font-normal leading-relaxed text-muted-foreground">
-            Become a collaboration partner with Exafluence Education, integrating industry into programmes, projects, research and student opportunities.
-          </p>
-          <div className="partner-3d-stage">
-            <img src={partner3d.url} alt="" aria-hidden loading="lazy" width={313} height={293} className="partner-3d-object" />
-          </div>
+      <div className="container py-12">
+        <div className="enquiry-connected" role="img" aria-label="Partner connected to Academic, Industry and Technology">
+          {["Partner", "Academic", "Industry", "Technology"].map((label, index) => (
+            <div className="enquiry-node" key={label}>
+              <span className="enquiry-node-number">{index + 1}</span>
+              <span className="enquiry-node-label">{label}</span>
+            </div>
+          ))}
         </div>
-        <form className="partner-3d-card grid min-w-0 gap-5 sm:grid-cols-2" noValidate onSubmit={handleSubmit} aria-busy={submitting}>
-          <label className="min-w-0 space-y-2 text-sm font-normal"><span className="block"><i aria-hidden className="enq-dot enq-dot--blue" />Contact name</span>
-            <Input name="name" autoComplete="name" maxLength={100} {...aria("name")} />
-            {err("name")}
-          </label>
-          <label className="min-w-0 space-y-2 text-sm font-normal"><span className="block"><i aria-hidden className="enq-dot enq-dot--teal" />Organisation / Institution</span>
-            <Input name="organisation" autoComplete="organization" maxLength={150} {...aria("organisation")} />
-            {err("organisation")}
-          </label>
-          <label className="min-w-0 space-y-2 text-sm font-normal"><span className="block"><i aria-hidden className="enq-dot enq-dot--amber" />Work email</span>
-            <Input name="email" type="email" inputMode="email" autoComplete="email" maxLength={255} {...aria("email")} />
-            {err("email")}
-          </label>
-          <label className="min-w-0 space-y-2 text-sm font-normal"><span className="block"><i aria-hidden className="enq-dot enq-dot--violet" />Phone number <span className="font-normal text-muted-foreground">(optional)</span></span>
-            <Input name="phone" type="tel" inputMode="tel" autoComplete="tel" maxLength={20} {...aria("phone")} />
-            {err("phone")}
-          </label>
-          <label className="min-w-0 space-y-2 text-sm font-normal sm:col-span-2"><span className="block"><i aria-hidden className="enq-dot enq-dot--blue" />Collaboration type</span>
-            <select
-              name="type"
-              defaultValue=""
-              {...aria("type")}
-              className="flex h-12 w-full min-w-0 rounded-md border border-input bg-background px-3 text-base ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring aria-[invalid=true]:border-destructive"
-            >
-              <option value="" disabled>Select a collaboration type</option>
-              {collaborationTypes.map((t) => <option key={t} value={t}>{t}</option>)}
-            </select>
-            {err("type")}
-          </label>
-          <label className="min-w-0 space-y-2 text-sm font-normal sm:col-span-2"><span className="block"><i aria-hidden className="enq-dot enq-dot--teal" />Collaboration requirement</span>
-            <Textarea name="message" rows={3} maxLength={1000} className="break-words" {...aria("message")} />
-            {err("message")}
-          </label>
-          <div className="min-w-0 sm:col-span-2">
-            <label className="flex cursor-pointer items-start gap-3 py-2 text-xs font-normal leading-relaxed text-muted-foreground">
-              <input type="checkbox" name="consent" className="mt-0.5 h-6 w-6 shrink-0 cursor-pointer accent-primary" {...aria("consent")} />
-              <span>I agree to be contacted by Exafluence Education about this enquiry.</span>
-            </label>
-            {err("consent")}
-          </div>
-          <div className="min-w-0 sm:col-span-2">
-            <Button type="submit" disabled={submitting} className="enquiry-cta h-12 w-full text-sm font-medium sm:w-auto">
-              {submitting ? "Sending…" : "Send Partner Enquiry"}<ArrowUpRight />
-            </Button>
-            <div aria-live="polite">
-              {status.kind === "success" && (
-                <p role="status" className="mt-3 flex items-start gap-2 text-sm text-accent">
-                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0" /> Test submission received. Delivery is not connected yet — this confirms the form workflow only.
-                </p>
-              )}
-              {status.kind === "error" && (
-                <p role="alert" className="mt-3 flex items-start gap-2 text-sm text-destructive">
-                  <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" /> {status.message}
-                </p>
-              )}
+        <div className="enquiry-compact-layout">
+          <div className="min-w-0">
+            <p className="mb-3 text-sm font-normal text-accent">Partner enquiry</p>
+            <h2 className="font-display text-xl font-medium leading-snug">Partner with<br />Exafluence Education</h2>
+            <p className="mt-3 max-w-[38ch] text-sm font-normal leading-relaxed text-muted-foreground">
+              Become a collaboration partner with Exafluence Education, integrating industry into programmes, projects, research and student opportunities.
+            </p>
+            <div className="partner-3d-stage">
+              <img src={partner3d.url} alt="" aria-hidden loading="lazy" width={313} height={293} className="partner-3d-object" />
             </div>
           </div>
-        </form>
+          <form ref={formRef} className="partner-3d-card enquiry-step-card" noValidate onSubmit={handleSubmit} aria-busy={submitting} aria-label="Partner enquiry">
+            {completed ? (
+              <div className="space-y-4">
+                <CheckCircle2 className="h-7 w-7 text-accent" />
+                <p role="status" className="text-sm leading-relaxed">Test submission received. Delivery is not connected yet — this confirms the form workflow only.</p>
+                <Button variant="outline" type="button" onClick={() => { setStep(0); setStatus({ kind: "idle" }); }}>New enquiry</Button>
+              </div>
+            ) : (
+              <>
+                <div className="mb-5 flex items-center justify-between text-xs text-muted-foreground">
+                  <span>Partner enquiry</span><span aria-live="polite">{step + 1} / {fields.length}</span>
+                </div>
+                <div className="enquiry-step-body" key={field}>
+                  <label htmlFor={`enquiry-${field}`} className="mb-3 block text-sm font-medium">
+                    {labels[field]}{field === "phone" && <span className="ml-2 font-normal text-muted-foreground">(optional)</span>}
+                  </label>
+                  {field === "type" ? (
+                    <select id={`enquiry-${field}`} name={field} value={answers[field]} disabled={submitting} onChange={(e) => update(e.target.value)} {...aria} className="h-12 w-full rounded-md border border-input bg-background px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+                      <option value="" disabled>Select a collaboration type</option>
+                      {collaborationTypes.map((t) => <option key={t} value={t}>{t}</option>)}
+                    </select>
+                  ) : field === "message" ? (
+                    <Textarea id={`enquiry-${field}`} name={field} rows={3} maxLength={1000} value={answers[field]} disabled={submitting} onChange={(e) => update(e.target.value)} {...aria} />
+                  ) : field === "consent" ? (
+                    <label className="flex cursor-pointer items-start gap-3 text-sm leading-relaxed text-muted-foreground">
+                      <input id={`enquiry-${field}`} name={field} type="checkbox" checked={answers.consent === "on"} disabled={submitting} onChange={(e) => update(e.target.checked ? "on" : "")} {...aria} className="mt-0.5 h-5 w-5 shrink-0 accent-primary" />
+                      <span>I agree to be contacted by Exafluence Education about this enquiry.</span>
+                    </label>
+                  ) : (
+                    <Input id={`enquiry-${field}`} name={field} type={field === "email" ? "email" : field === "phone" ? "tel" : "text"} autoComplete={field === "organisation" ? "organization" : field === "phone" ? "tel" : field} maxLength={field === "name" ? 100 : field === "organisation" ? 150 : field === "email" ? 255 : 20} value={answers[field]} disabled={submitting} onChange={(e) => update(e.target.value)} {...aria} />
+                  )}
+                  {error && <p id="enquiry-field-error" role="alert" className="mt-2 text-sm text-destructive">{error}</p>}
+                </div>
+                <div className="mt-5 flex items-center justify-between gap-3">
+                  <Button type="button" variant="ghost" size="icon" aria-label="Previous field" disabled={step === 0 || submitting} onClick={() => { setError(""); setStatus({ kind: "idle" }); setStep((previous) => previous - 1); }}><ArrowLeft /></Button>
+                  <Button type="submit" disabled={submitting} className="enquiry-cta text-sm font-medium">
+                    {submitting ? "Sending…" : step === fields.length - 1 ? "Send Partner Enquiry" : field === "phone" && !answers.phone ? "Skip" : "Continue"}<ArrowUpRight />
+                  </Button>
+                </div>
+                {status.kind === "error" && <p role="alert" className="mt-3 flex gap-2 text-sm text-destructive"><AlertCircle className="h-4 w-4 shrink-0" />{status.message}</p>}
+              </>
+            )}
+          </form>
+        </div>
       </div>
     </section>
   );
