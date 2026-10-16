@@ -845,6 +845,13 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
     mask-image: linear-gradient(180deg, transparent 0, #000 10%, #000 84%, transparent 100%);
   }
 }
+/* About Us hero banner — feather the right edge too, so no tile is cut off by the viewport */
+@media (min-width: 1024px) {
+  .page-hero-banner--about .page-hero-banner-art {
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 24%, #000 86%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, #000 24%, #000 86%, transparent 100%);
+  }
+}
 .about-page { max-width: 1168px; padding-block: 0.75rem 4rem; }
 .about-page .partner-enquiry-section { border-top: 0; }
 .about-page .partner-enquiry-section > .container { padding-block: 1.5rem; }
