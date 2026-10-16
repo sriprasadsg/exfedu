@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { z } from "zod";
-import { ArrowUpRight, ArrowLeft, CheckCircle2, AlertCircle, Handshake, GraduationCap, Building2, Cpu, RotateCcw } from "lucide-react";
+import { ArrowUpRight, ArrowLeft, CheckCircle2, AlertCircle, RotateCcw } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -66,14 +66,14 @@ const labels: Record<Field, string> = {
   phone: "Phone number", type: "Collaboration type", message: "Collaboration requirement", consent: "Contact permission",
 };
 const emptyAnswers: Record<Field, string> = { name: "", organisation: "", email: "", phone: "", type: "", message: "", consent: "" };
-const connectionNodes = [
-  { label: "Partner", Icon: Handshake, tone: "blue" },
-  { label: "Academic", Icon: GraduationCap, tone: "teal" },
-  { label: "Industry", Icon: Building2, tone: "amber" },
-  { label: "Technology", Icon: Cpu, tone: "violet" },
-];
+export type EnquiryIntro = { title: string; description: string; points?: { label: string; text: string }[] };
 
-const PartnerEnquiry = () => {
+const defaultIntro: EnquiryIntro = {
+  title: "Partner with Exafluence Education",
+  description: "Become a collaboration partner with Exafluence Education, integrating industry into programmes, projects, research and student opportunities.",
+};
+
+const PartnerEnquiry = ({ intro = defaultIntro }: { intro?: EnquiryIntro }) => {
   const [status, setStatus] = useState<Status>({ kind: "idle" });
   const [error, setError] = useState("");
   const [step, setStep] = useState(0);
@@ -130,23 +130,16 @@ const PartnerEnquiry = () => {
 
   const aria = { "aria-invalid": !!error, "aria-describedby": error ? "enquiry-field-error" : undefined };
   return (
-    <section id="partner-enquiry" className="border-t bg-background scroll-mt-24">
+    <section id="partner-enquiry" className="partner-enquiry-section border-t bg-background scroll-mt-24">
       <div className="container py-12">
-        <div className="enquiry-connected" role="img" aria-label="Partner connected to Academic, Industry and Technology">
-          {connectionNodes.map(({ label, Icon, tone }) => (
-            <div className={`enquiry-node enquiry-node--${tone}`} key={label}>
-              <span className="enquiry-node-number"><Icon size={24} strokeWidth={1.7} aria-hidden="true" /></span>
-              <span className="enquiry-node-label">{label}</span>
-            </div>
-          ))}
-        </div>
         <div className="enquiry-compact-layout">
-          <div className="min-w-0">
-            <p className="mb-3 text-sm font-normal text-accent">Partner enquiry</p>
-            <h2 className="font-display text-xl font-medium leading-snug">Partner with<br />Exafluence Education</h2>
-            <p className="mt-3 max-w-[38ch] text-sm font-normal leading-relaxed text-muted-foreground">
-              Become a collaboration partner with Exafluence Education, integrating industry into programmes, projects, research and student opportunities.
-            </p>
+          <div className="enquiry-intro">
+            <p className="enquiry-intro-eyebrow">Partner enquiry</p>
+            <h2 className="enquiry-intro-title font-display">{intro.title}</h2>
+            <p className="enquiry-intro-lead">{intro.description}</p>
+            {intro.points?.map((point) => (
+              <p className="enquiry-intro-point" key={point.label}><span className="enquiry-intro-label">{point.label}</span>{point.text}</p>
+            ))}
           </div>
           <form ref={formRef} className="partner-3d-card enquiry-step-card" noValidate onSubmit={handleSubmit} aria-busy={submitting} aria-label="Partner enquiry">
             {completed ? (
