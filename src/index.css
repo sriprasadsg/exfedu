@@ -744,8 +744,8 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .page-hero-banner-art {
   position: absolute;
   top: 0;
-  left: 46%;
-  width: 54%;
+  left: 48%;
+  width: 52%;
   height: 100%;
   object-fit: cover;
   object-position: 50% 55%;
@@ -758,28 +758,20 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
   z-index: 1;
   padding-block: clamp(3rem, 6vw, 4.5rem);
 }
-.page-hero-banner .hero-summary { max-width: 36rem; }
+/* keep the copy clear of the artwork's visible area */
+.page-hero-banner .hero-summary { max-width: 32rem; }
 @media (max-width: 1023px) {
-  .page-hero-banner { min-height: 26rem; }
-  .page-hero-banner > .container { padding-block: 1.75rem 0; }
-  /* on a narrow screen the copy sits above the artwork so both stay readable */
-  .page-hero-banner::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--background)) 34%, hsl(var(--background) / 0) 62%);
-  }
+  .page-hero-banner > .container { padding-block: 1.75rem 1.25rem; }
+  /* below the desktop breakpoint the artwork sits under the copy, full width */
   .page-hero-banner-art {
-    top: auto;
-    bottom: 0;
-    left: 0;
+    position: relative;
     width: 100%;
-    height: 62%;
+    height: 15rem;
+    object-fit: cover;
     object-position: center;
     /* fade the artwork's own top and bottom so no grey backdrop edge meets the page */
-    -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 22%, #000 66%, transparent 96%);
-    mask-image: linear-gradient(180deg, transparent 0, #000 22%, #000 66%, transparent 96%);
+    -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 26%, #000 72%, transparent 98%);
+    mask-image: linear-gradient(180deg, transparent 0, #000 26%, #000 72%, transparent 98%);
   }
 }
 

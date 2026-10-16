@@ -65,6 +65,10 @@ const ContentPage = () => {
     <Layout>
       {page.path === "/programmes" ? (
         <section className="page-hero-banner" aria-label="Programmes introduction">
+          <div className="container relative">
+            {breadcrumb}
+            <div className="mt-8">{heading}</div>
+          </div>
           <img
             src={programmesBanner.url}
             alt=""
@@ -73,10 +77,6 @@ const ContentPage = () => {
             height={1080}
             className="page-hero-banner-art"
           />
-          <div className="container relative">
-            {breadcrumb}
-            <div className="mt-8">{heading}</div>
-          </div>
         </section>
       ) : (
         <section className="relative overflow-hidden border-b">
