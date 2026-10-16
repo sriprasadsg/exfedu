@@ -2,6 +2,13 @@ import { describe, expect, it } from "vitest";
 import { arms, categories, homepageCapabilities, pages, programmes } from "@/data/site";
 
 describe("approved website structure", () => {
+  it("keeps academic partner and enquiry destinations on their existing pages", () => {
+    const overview = pages.find((page) => page.path === "/academic-collaborations")?.blocks.find((block) => block.type === "academic-overview");
+    if (!overview || overview.type !== "academic-overview") throw new Error("Academic overview missing");
+    expect(overview.data.partners.map((partner) => partner.to)).toEqual(["/academic-collaborations/svu", "/academic-collaborations/xime"]);
+    expect(overview.data.invitation.to).toBe("/contact");
+    for (const partner of overview.data.partners) expect(pages.some((page) => page.path === partner.to)).toBe(true);
+  });
   it("keeps eight homepage capability cards linked to existing pages", () => {
     expect(homepageCapabilities).toHaveLength(8);
     for (const card of homepageCapabilities) {
