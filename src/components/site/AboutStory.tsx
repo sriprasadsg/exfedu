@@ -1,7 +1,11 @@
 import { useRef, useState, type KeyboardEvent } from "react";
 import { Building2, Cpu, Globe2, Layers3, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import aiBook from "@/assets/about-ai-book.png";
+import enterprise from "@/assets/about-enterprise.png";
+import expertise from "@/assets/about-expertise.png";
+import global from "@/assets/about-global.png";
+import industries from "@/assets/about-industries.png";
+import education from "@/assets/about-education.png";
 
 export type AboutStoryData = {
   title: string;
@@ -10,12 +14,31 @@ export type AboutStoryData = {
 };
 
 const icons = [Building2, Cpu, Globe2, Layers3, GraduationCap];
+const illustrations = [
+  { src: enterprise, alt: "Silver enterprise server connected to an established technology network" },
+  { src: expertise, alt: "AI processor connected to data pipelines, databases and analytics nodes" },
+  { src: global, alt: "Silver and sky-blue globe with markers for USA, India, Dubai and Muscat offices" },
+  { src: industries, alt: "Connected finance, healthcare, retail, energy, telecommunications and manufacturing symbols" },
+  { src: education, alt: "Open silver book connected to a navy AI processor for industry-informed learning" },
+];
+
+function TopicCopy({ title, lines }: { title: string; lines: string[] }) {
+  const paragraphs = lines.join(" ").split(/Our (mission|vision):\s*/i);
+  return <>
+    <h2>{title}</h2>
+    <div className="about-explorer-lines">
+      <p>{paragraphs[0]}</p>
+      {paragraphs.slice(1).map((text, i) => i % 2 === 0 ? (
+        <p key={text}><span className="about-explorer-label">Our {text === "mission" ? "Mission" : "Vision"}</span>{" "}{paragraphs[i + 2]}</p>
+      ) : null)}
+    </div>
+  </>;
+}
 
 export default function AboutStory({ data }: { data: AboutStoryData }) {
   const [selected, setSelected] = useState<number | null>(null);
   const controls = useRef<(HTMLButtonElement | null)[]>([]);
-  const topic = selected === null ? undefined : data.topics[selected];
-  const paragraphs = topic?.lines.join(" ").split(/Our (mission|vision):\s*/i);
+  const artworkIndex = selected ?? illustrations.length - 1;
 
   const navigate = (event: KeyboardEvent<HTMLButtonElement>, index: number) => {
     const last = data.topics.length - 1;
@@ -31,20 +54,20 @@ export default function AboutStory({ data }: { data: AboutStoryData }) {
   return (
     <section className="about-explorer" aria-label="About Exafluence Education">
       <figure className="about-explorer-art">
-        <img src={aiBook} alt="Silver and blue AI processor connected to an open book" width={1024} height={1024} />
+        {illustrations.map((image, i) => <img key={image.src} src={image.src}
+          alt={i === artworkIndex ? image.alt : ""} aria-hidden={i !== artworkIndex}
+          className={i === artworkIndex ? "about-illustration-active" : ""} width={1024} height={1024} />)}
       </figure>
       <div className="about-explorer-main">
         <div className="about-explorer-stage" aria-live="polite" aria-atomic="true">
-          <div className="about-explorer-copy" key={selected ?? "intro"}>
-            <h2>{topic?.title ?? data.title}</h2>
-            {paragraphs ? <div className="about-explorer-lines">
-              <p>{paragraphs[0]}</p>
-              {paragraphs.length > 1 && paragraphs.slice(1).map((text, i) => i % 2 === 0 ? (
-                <p key={text}><span className="about-explorer-label">Our {text === "mission" ? "Mission" : "Vision"}</span>{" "}{paragraphs[i + 2]}</p>
-              ) : null)}
-            </div>
-              : <p className="about-explorer-description">{data.description}</p>}
+          <div className={`about-explorer-copy${selected === null ? " about-explorer-copy--active" : ""}`} aria-hidden={selected !== null}>
+            <h2>{data.title}</h2>
+            <p className="about-explorer-description">{data.description}</p>
           </div>
+          {data.topics.map((topic, i) => <div key={topic.title}
+            className={`about-explorer-copy${selected === i ? " about-explorer-copy--active" : ""}`} aria-hidden={selected !== i}>
+            <TopicCopy {...topic} />
+          </div>)}
         </div>
         <div className="about-explorer-topics" role="group" aria-label="About Us topics">
           {data.topics.map((item, i) => {
