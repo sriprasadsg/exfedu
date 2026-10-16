@@ -4,7 +4,7 @@ import NotFound from "./NotFound";
 import { BlockView } from "@/components/site/Blocks";
 import { categories, findPage, navPages } from "@/data/site";
 import programmesBanner from "@/assets/programmes-cube-banner.jpg.asset.json";
-import aboutBanner from "@/assets/about-connected-panels.jpg";
+import aboutBanner from "@/assets/about-hero-banner.jpg.asset.json";
 import researchImg from "@/assets/hero-research.png";
 import ibmImg from "@/assets/hero-ibm.png";
 import successImg from "@/assets/hero-success.png";
@@ -43,11 +43,11 @@ const ContentPage = () => {
             </div>
           </div>
           <img
-            src={aboutBanner}
+            src={aboutBanner.url}
             alt=""
             aria-hidden="true"
             width={1920}
-            height={1088}
+            height={1080}
             className="page-hero-banner-art"
           />
         </section>
