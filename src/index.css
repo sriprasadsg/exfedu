@@ -589,14 +589,14 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .hero-banner-art {
   position: absolute;
   top: 0;
-  left: 16%;
-  width: 84%;
+  left: 12%;
+  width: 88%;
   height: 100%;
   object-fit: cover;
   object-position: center;
   /* feather the artwork's left edge so it melts into the copy side */
-  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 18%);
-  mask-image: linear-gradient(90deg, transparent 0, #000 18%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 11%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 11%);
 }
 /* pale wash on the copy side so the title and tagline stay readable */
 .hero-banner::after {
@@ -644,11 +644,20 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 }
 @media (max-width: 640px) {
   .hero-tagline { white-space: normal; letter-spacing: .01em; }
-  /* the copy spans nearly the full width on phones, so widen the wash */
-  .hero-banner::after { background: linear-gradient(90deg, hsl(var(--background)) 0%, hsl(var(--background)) 62%, hsl(var(--background) / 0) 100%); }
-  /* no room to offset the artwork on a narrow screen — let it sit full width behind */
-  .hero-banner { min-height: 268px; }
-  .hero-banner-art { left: 0; width: 100%; -webkit-mask-image: none; mask-image: none; }
+  /* on a narrow screen the copy sits above the artwork so both stay readable */
+  .hero-banner { min-height: 306px; align-items: flex-start; }
+  .hero-banner-copy { padding-block: 1.7rem 0; }
+  .hero-banner::after { background: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--background)) 42%, hsl(var(--background) / 0) 80%); }
+  .hero-banner-art {
+    top: auto;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 68%;
+    object-fit: contain;
+    -webkit-mask-image: radial-gradient(82% 122% at 50% 62%, #000 60%, transparent 96%);
+    mask-image: radial-gradient(82% 122% at 50% 62%, #000 60%, transparent 96%);
+  }
 }
 @keyframes hero-tagline-breathe {
   0%, 100% { transform: translateY(0); opacity: .94; }
