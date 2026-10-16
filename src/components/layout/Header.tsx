@@ -28,6 +28,7 @@ const Header = () => {
         </Link>
         <nav aria-label="Main navigation" className="hidden items-center gap-1 lg:flex">
           <Button asChild variant="ghost" className="nav-on-navy"><Link to="/" aria-current={pathname === "/" ? "page" : undefined}>Home</Link></Button>
+          <Button asChild variant="ghost" className="nav-on-navy"><Link to="/about" aria-current={pathname === "/about" ? "page" : undefined}>About Us</Link></Button>
           {categories.map((c) => (
             <DropdownMenu key={c.slug}>
               <DropdownMenuTrigger asChild><Button variant="ghost" className={`nav-on-navy ${c.accent}`}><img src={catIcons[c.slug]} alt="" aria-hidden className="menu-cat-icon" loading="lazy" />{c.short}<ChevronDown className="h-3.5 w-3.5" /></Button></DropdownMenuTrigger>
@@ -55,6 +56,7 @@ const Header = () => {
         <nav id="mobile-navigation" aria-label="Mobile navigation" className="site-header-panel max-h-[calc(100dvh-5rem)] overflow-y-auto border-t lg:hidden">
           <div className="container py-4">
             <Button asChild variant="ghost" className="nav-on-navy h-11 w-full justify-start"><Link to="/" onClick={() => setOpen(false)}>Home</Link></Button>
+            <Button asChild variant="ghost" className="nav-on-navy h-11 w-full justify-start"><Link to="/about" onClick={() => setOpen(false)}>About Us</Link></Button>
 
             <Accordion type="single" collapsible>
               {categories.map((c) => (

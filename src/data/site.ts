@@ -29,7 +29,7 @@ export type Page = {
 };
 
 export const categories = [
-  { slug: "core", title: "Core", short: "About", accent: "cat-core" },
+  { slug: "core", title: "Core", short: "Contact", accent: "cat-core" },
   { slug: "academic", title: "Academic Collaborations", short: "Academic", accent: "cat-academic" },
   { slug: "industry", title: "Industry & Technology Collaborations", short: "Industry", accent: "cat-industry" },
   { slug: "learning", title: "Learning & Student Ecosystem", short: "Learning & Students", accent: "cat-learning" },
@@ -87,17 +87,33 @@ const ibmOfferings: Offering[] = [
 
 export const pages: Page[] = [
   // Core
-  { path: "/about", title: "About Exafluence Education", category: "core", icon: Info, eyebrow: "A Division of Exafluence Inc., USA",
-    summary: "The education arm connecting academia with industry and technology.",
+  { path: "/about", title: "About Us", category: "core", icon: Info, eyebrow: "A Division of Exafluence Inc., USA", hideInNav: true,
+    summary: "Industry Expertise. Educational Purpose. Future Possibilities.",
     blocks: [
-      { type: "text", title: "Connecting Technology Expertise with Educational Purpose", text: "Exafluence Education is the EdTech division of Exafluence Inc., USA. We bring the technology expertise of Exafluence Inc. — data, analytics and AI solutions delivered across industries — into education, connecting academia, industry and technology so learning stays relevant to real-world practice." },
-      { type: "features", title: "Technology expertise across industries", note: "Industry expertise of Exafluence Inc., USA.", items: ["Financial Services", "Healthcare & Pharma", "Consumer Packaged Goods & Retail", "Energy & Utilities", "Telecommunications", "Manufacturing & Industrial IoT"] },
-      { type: "features", title: "Exafluence Inc. at a glance", note: "Key facts published on www.exafluence.com. Certifications apply to the certified Exafluence entity and activities; they do not accredit educational programmes.", items: ["250+ Global Associates", "6 Locations in 3 Countries", "20+ Global Partnerships", "ExfDigital Studio — GCC enablement", "ISO/IEC 42001:2023 — Artificial Intelligence Management"] },
-      { type: "features", title: "Technology platform suite", note: "Platforms of Exafluence Inc., USA.", items: ["ExfHarmonize — Data Harmonization", "ExfDQ — Data Quality", "ExfAnalytics — Advanced Analytics", "ExfSmartAccess — Data Access", "ExfExtract — Data Extraction", "Data Engineering & Analytics", "GenAI"] },
-      { type: "pending", title: "Who we are", items: ["About Exafluence Education", "Connection with Exafluence Inc.", "Vision", "Mission"] },
-      { type: "pathway", title: "Academic–Industry–Technology Ecosystem", steps: ["Academia", "Exafluence Education", "Industry", "Technology"] },
-      { type: "pending", title: "How we work", items: ["Industry-Integrated Learning Approach", "Quality / Standards", "Tools & Technologies"] },
-      { type: "enquiry-form", title: "Partner enquiry" },
+      { type: "text", title: "Industry Expertise. Educational Purpose. Future Possibilities.", text: "Exafluence Education connects technology expertise with applied learning. As the learning division of Exafluence Inc., we bring industry perspectives into education, helping learners and institutions build capabilities in Artificial Intelligence, Generative AI, Data Science and emerging technologies." },
+      { type: "text", title: "Who We Are", text: "We connect academic knowledge with the skills used in professional practice. Our approach combines structured learning, practical projects and expert guidance to help students and working professionals understand technology, apply it effectively and continue developing their expertise. Through collaboration with academic institutions and industry, we aim to make technology education relevant, accessible and responsive to changing business needs." },
+      { type: "text", title: "Our Industry Foundation — Built on Technology Expertise", text: "Exafluence Inc. works across data engineering, advanced analytics, Artificial Intelligence and digital transformation. This industry foundation informs our educational approach, bringing practical perspectives on how organisations use technology to solve problems and create value. For learners, this means connecting technical concepts with their applications. For institutions and organisations, it creates opportunities to align learning with professional capabilities." },
+      { type: "text", title: "Our Vision", text: "To connect education, industry and innovation—equipping people and organisations to participate confidently in a technology-driven future." },
+      { type: "text", title: "Our Mission", text: "To develop practical technology capabilities through industry-relevant education, expert mentorship and collaborative learning." },
+      { type: "features", title: "How We Create Value", items: [
+        "Applied Technology Learning — Connect concepts with tools, projects and practical problem-solving.",
+        "Academic Partnerships — Work with institutions to enrich learning through industry perspectives and technical engagement.",
+        "Professional Development — Support continuous learning as technologies, roles and workplace expectations evolve.",
+        "Research & Innovation — Encourage inquiry, experimentation and the development of ideas with practical relevance.",
+        "Career Readiness — Build technical understanding alongside communication, collaboration and professional skills.",
+      ] },
+      { type: "features", title: "Industry Perspectives Across Sectors", note: "Technology creates different opportunities in every industry. Exafluence Inc.’s domain experience provides context for exploring applications across these sectors.", items: [
+        "Financial Services — Data, analytics and intelligent business processes.",
+        "Healthcare & Pharmaceuticals — Information management and analytical applications.",
+        "Consumer Goods & Retail — Customer insights and operational decision-making.",
+        "Energy & Utilities — Data-informed operations and resource management.",
+        "Telecommunications — Connected systems and service analytics.",
+        "Manufacturing & Industrial IoT — Industrial data and connected operations.",
+      ] },
+      { type: "text", title: "Global Perspectives. Practical Relevance.", text: "Drawing on Exafluence Inc.’s international presence, we connect technology education with broader industry perspectives. Our focus is on helping learners understand how technical knowledge translates across business environments, professional roles and emerging applications." },
+      { type: "text", title: "Building Capabilities for What Comes Next", text: "As AI and digital technologies reshape how organisations work, learning must evolve alongside them. Our direction is to deepen the connection between education and industry through academic partnerships, professional upskilling and collaborative innovation. We aim to support individuals, institutions and organisations as they prepare for new technologies and changing capability needs." },
+      { type: "cta", title: "Let’s Build What Comes Next", text: "Explore opportunities in academic collaboration, institutional training, workforce development and applied technology learning.", label: "Explore Programmes", to: "/programmes" },
+      { type: "enquiry-form", title: "Discuss a Partnership" },
     ] },
   { path: "/contact", title: "Contact / Enquiry", category: "core", icon: Mail, summary: "Ask about programmes, collaborations or admissions.", blocks: [] },
 
@@ -105,17 +121,7 @@ export const pages: Page[] = [
   { path: "/academic-collaborations", title: "Academic Collaborations", category: "academic", icon: Landmark,
     summary: "University partners delivering industry-integrated programmes with Exafluence Education.",
     blocks: [
-      { type: "text", title: "Tailored AI-driven solutions across industries", text: "Exafluence Inc., USA delivers data, analytics and AI solutions to enterprises worldwide — from data engineering and advanced analytics to GenAI, built on the Exf platform suite (ExfHarmonize, ExfDQ, ExfAnalytics, ExfSmartAccess, ExfExtract) alongside Data Engineering & Analytics, GenAI and GCC enablement through ExfDigital Studio." },
-      { type: "features", title: "Capability with a global footprint", note: "Locations published on www.exafluence.com.", items: [
-        "Headquarters — Frisco, Texas, USA",
-        "Princeton, New Jersey, USA",
-        "Tirupati, India",
-        "Bangalore, India",
-        "Chennai, India",
-        "Overseas Development Centres — Dubai, UAE and Muscat, Oman",
-      ] },
-      { type: "features", title: "Domains Exafluence Inc. serves", note: "Industry expertise of Exafluence Inc., USA.", items: ["Financial Services", "Healthcare & Pharma", "Consumer Packaged Goods & Retail", "Energy & Utilities", "Telecommunications", "Manufacturing & Industrial IoT"] },
-      { type: "text", title: "What this brings to Exafluence Education", text: "This working technology expertise is what shapes the education vertical: programmes are built on the same tools, platforms and practices Exafluence Inc. uses on client work, learning is anchored to real industry domains rather than abstract syllabi, and students see how data, analytics and AI are applied in the fields they will work in — so an academic collaboration with Exafluence Education carries genuine industry depth into the classroom." },
+      { type: "children", title: "Our academic collaborations" },
       enquire("Become an academic partner"),
     ] },
   { path: "/academic-collaborations/svu", parent: "/academic-collaborations", title: "SVU Collaboration", category: "academic", icon: GraduationCap,
