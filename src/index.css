@@ -647,18 +647,19 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
   /* on a narrow screen the copy sits above the artwork so both stay readable */
   .hero-banner { min-height: 306px; align-items: flex-start; }
   .hero-banner-copy { padding-block: 1.7rem 0; }
-  .hero-banner::after { background: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--background)) 26%, hsl(var(--background) / 0) 55%); }
+  .hero-banner::after {
+    background:
+      linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--background)) 20%, hsl(var(--background) / 0) 40%),
+      linear-gradient(0deg, hsl(var(--background)) 0%, hsl(var(--background)) 20%, hsl(var(--background) / 0) 46%);
+  }
   .hero-banner-art {
     top: auto;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 66%;
+    height: 74%;
     object-fit: cover;
     object-position: center;
-    /* feather every edge so the off-white studio backdrop melts into the page */
-    -webkit-mask-image: radial-gradient(ellipse 80% 88% at 50% 50%, #000 52%, transparent 92%);
-    mask-image: radial-gradient(ellipse 80% 88% at 50% 50%, #000 52%, transparent 92%);
   }
 }
 @keyframes hero-tagline-breathe {
