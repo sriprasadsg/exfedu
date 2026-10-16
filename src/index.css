@@ -36,14 +36,22 @@
 .academic-partner-card h3 { font-size: 21px; line-height: 1.35; font-weight: 500; color: hsl(var(--foreground)); margin-top: 6px; }
 .academic-partner-description { font-size: 14px; line-height: 1.7; margin-top: 12px; flex: 1; }
 .academic-skills { display: flex; flex-wrap: wrap; gap: 8px; margin-block: 16px; }
-.academic-skills li { display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; line-height: 1; color: hsl(var(--navy-700)); padding: 8px 13px; border: 1px solid hsl(var(--academic-edge)); border-radius: 999px; background: hsl(var(--background)); transition: border-color 200ms ease; animation: academic-logo-in 500ms ease-out backwards; }
-.academic-skills li:hover { border-color: hsl(var(--connection-blue) / .6); }
+.academic-skills li { display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; line-height: 1; color: hsl(var(--navy-700)); padding: 8px 13px; border: 1px solid hsl(var(--academic-edge)); border-radius: 999px; background: hsl(var(--background)); transition: border-color 200ms ease, transform 200ms ease; animation: academic-logo-in 500ms ease-out backwards; }
+.academic-skills li:hover { border-color: hsl(var(--connection-blue) / .6); transform: translateY(-1px); }
+.academic-skills li:nth-child(3n+2) svg { color: hsl(var(--connection-teal)); }
+.academic-skills li:nth-child(3n) svg { color: hsl(var(--connection-amber)); }
 .academic-skills svg { color: hsl(var(--connection-blue)); flex-shrink: 0; }
 .academic-partner-link { justify-content: flex-start; align-self: flex-start; padding: 0; height: auto; min-height: 40px; font-weight: 400; gap: 8px; white-space: normal; text-align: left; }
 .academic-partner-link svg { transition: transform 200ms ease; flex-shrink: 0; }
 .academic-partner-card:hover .academic-partner-link svg, .academic-partner-link:hover svg { transform: translateX(3px); }
 .academic-invitation { margin-top: 34px; display: flex; align-items: center; gap: 20px; padding: 22px 26px; border-radius: var(--radius); background: hsl(var(--academic-surface)); border: 1px solid hsl(var(--academic-edge)); }
 .academic-invitation > div { flex: 1; }
+.academic-invitation-icons { display: flex; flex-shrink: 0; padding-right: 4px; }
+.academic-invitation-chip { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 12px; border: 1px solid hsl(var(--academic-edge)); background: hsl(var(--card)); box-shadow: inset 0 1px 0 hsl(var(--background)); animation: academic-partner-drift 6s ease-in-out infinite; }
+.academic-invitation-chip + .academic-invitation-chip { margin-left: -10px; }
+.academic-invitation-chip.is-blue { color: hsl(var(--connection-blue)); background: hsl(var(--connection-blue) / .08); }
+.academic-invitation-chip.is-teal { color: hsl(var(--connection-teal)); background: hsl(var(--connection-teal) / .1); animation-delay: -2s; }
+.academic-invitation-chip.is-amber { color: hsl(var(--connection-amber)); background: hsl(var(--connection-amber) / .12); animation-delay: -4s; }
 .academic-invitation h2 { font-size: 20px; line-height: 1.4; font-weight: 500; color: hsl(var(--foreground)); }
 .academic-invitation p { max-width: 640px; margin-top: 6px; font-size: 14px; line-height: 1.65; }
 .academic-invitation-button { flex-shrink: 0; font-weight: 400; min-height: 44px; gap: 10px; white-space: normal; }

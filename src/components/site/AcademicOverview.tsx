@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, type LucideIcon } from "lucide-react";
+import { ArrowRight, FlaskConical, GraduationCap, MessageCircle, type LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import bannerPhoto from "@/assets/academic-collaboration-lab.jpg.asset.json";
 
@@ -48,6 +48,11 @@ export default function AcademicOverview({ data }: { data: AcademicOverviewData 
         </div>
       </section>
       <section className="academic-invitation" aria-labelledby="academic-invitation-title">
+        <span className="academic-invitation-icons" aria-hidden="true">
+          <span className="academic-invitation-chip is-blue"><GraduationCap size={20} strokeWidth={1.6} /></span>
+          <span className="academic-invitation-chip is-teal"><FlaskConical size={20} strokeWidth={1.6} /></span>
+          <span className="academic-invitation-chip is-amber"><MessageCircle size={20} strokeWidth={1.6} /></span>
+        </span>
         <div><h2 id="academic-invitation-title">{data.invitation.title}</h2><p>{data.invitation.description}</p></div>
         <Button asChild className="academic-invitation-button"><Link to={data.invitation.to}>{data.invitation.label}<ArrowRight size={16} aria-hidden="true" /></Link></Button>
       </section>
