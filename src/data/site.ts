@@ -29,7 +29,7 @@ export type Page = {
 };
 
 export const categories = [
-  { slug: "core", title: "Contact", short: "Contact", accent: "cat-core" },
+  { slug: "core", title: "Core", short: "Contact", accent: "cat-core" },
   { slug: "academic", title: "Academic Collaborations", short: "Academic", accent: "cat-academic" },
   { slug: "industry", title: "Industry & Technology Collaborations", short: "Industry", accent: "cat-industry" },
   { slug: "learning", title: "Learning & Student Ecosystem", short: "Learning & Students", accent: "cat-learning" },
