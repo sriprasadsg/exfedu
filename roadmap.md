@@ -1,6 +1,7 @@
 - [x] About page: connecting-technology details (approved Exafluence Inc. industry scope) + embedded partner enquiry form; verified 1280/375px, FAQs route now 404
 - [x] FAQs removed from the About Us (Core) menu; /faqs removed from site data
 # Roadmap
+- [ ] Add five coordinated topic illustrations with synchronized fades, stable block dimensions and centered fully visible artwork; verify every pill on desktop/phone.
 - [x] Refine About Us text width, natural wrapping, mission/vision labels, artwork alignment and balanced pills; eight tests pass, all five topics verified at 1280/1062/375px without overflow, balanced 5-wide / 3+2 / 2+2+1 pills.
 - [x] Replace the entire About Us content with the supplied compact five-topic selector and AI/book illustration; eight targeted tests pass, all five topics verified in browser, desktop height stable and 1062/375px layouts fit.
 - [x] Replace the Industries We Serve human image with technology-only imagery; verified the robotics/CAD picture loads with no humans and build passes.
