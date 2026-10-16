@@ -23,7 +23,7 @@
 .academic-partner-card:hover, .academic-partner-card:focus-within { border-color: hsl(var(--connection-blue) / .6); }
 .academic-logo { height: 64px; display: flex; align-items: center; margin-bottom: 18px; }
 .academic-logo img {
-  max-width: 200px;
+  max-width: 225px;
   height: 56px;
   object-fit: contain;
   object-position: left center;
