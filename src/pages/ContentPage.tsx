@@ -4,6 +4,7 @@ import NotFound from "./NotFound";
 import { BlockView } from "@/components/site/Blocks";
 import { categories, findPage, navPages } from "@/data/site";
 import programmesBanner from "@/assets/programmes-cube-banner.jpg.asset.json";
+import aboutBanner from "@/assets/about-connected-panels.jpg";
 import researchImg from "@/assets/hero-research.png";
 import ibmImg from "@/assets/hero-ibm.png";
 import successImg from "@/assets/hero-success.png";
