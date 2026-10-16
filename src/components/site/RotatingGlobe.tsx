@@ -3,8 +3,6 @@ import globeTexture from "@/assets/globe-texture.png";
 
 /** Seconds for one full revolution — a slow, continuous turn. */
 export const GLOBE_REVOLUTION_SECONDS = 40;
-/** The pole leans by this many radians so the sphere sits at a natural angle. */
-const LEAN = 0.2;
 
 const unit = (v: number[]) => {
   const length = Math.hypot(v[0], v[1], v[2]);
@@ -13,11 +11,12 @@ const unit = (v: number[]) => {
 
 /**
  * A rotating globe drawn as an orthographic projection of an equirectangular
- * texture: continents curve and compress at the limbs the way they do on a real
- * sphere, and one revolution takes GLOBE_REVOLUTION_SECONDS. Size, position and
- * the soft shadow (drawn in CSS) stay steady; reduced-motion draws one frame.
+ * texture: the sphere turns around its vertical axis, so continents curve and
+ * compress at the limbs the way they do on a real globe, and one revolution
+ * takes GLOBE_REVOLUTION_SECONDS. CSS controls the displayed size, so the
+ * artwork and its shadow stay steady; reduced-motion draws a single frame.
  */
-export default function RotatingGlobe({ size = 168, className = "", label = "Slowly rotating globe of the Earth" }: {
+export default function RotatingGlobe({ size = 180, className = "", label = "Slowly rotating globe of the Earth" }: {
   size?: number; className?: string; label?: string;
 }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -48,13 +47,11 @@ export default function RotatingGlobe({ size = 168, className = "", label = "Slo
       const height = surface.height;
 
       const centre = dim / 2;
-      const cosL = Math.cos(LEAN);
-      const sinL = Math.sin(LEAN);
       const light = unit([-0.5, 0.62, 0.62]);
       const pixels = dim * dim;
 
       // Where each screen pixel looks on the sphere: fixed latitude, longitude
-      // offset and lighting, so a frame only needs one lookup per pixel.
+      // offset and lighting, so drawing a frame needs one lookup per pixel.
       const column = new Float32Array(pixels);
       const row = new Int32Array(pixels);
       const cover = new Float32Array(pixels);
@@ -71,10 +68,8 @@ export default function RotatingGlobe({ size = 168, className = "", label = "Slo
           const z = Math.sqrt(1 - d * d);
           const up = -sy;
           cover[i] = Math.min(1, Math.max(0, (1 - d) * centre + 0.5));
-          const lx = sx * cosL + up * sinL;
-          const ly = Math.max(-1, Math.min(1, -sx * sinL + up * cosL));
-          column[i] = (Math.atan2(lx, z) / (2 * Math.PI) + 0.5) * width;
-          row[i] = Math.min(height - 1, Math.max(0, Math.round((0.5 - Math.asin(ly) / Math.PI) * height)));
+          column[i] = (Math.atan2(sx, z) / (2 * Math.PI) + 0.5) * width;
+          row[i] = Math.min(height - 1, Math.max(0, Math.round((0.5 - Math.asin(Math.max(-1, Math.min(1, up))) / Math.PI) * height)));
           const facing = Math.max(0, sx * light[0] + up * light[1] + z * light[2]);
           shade[i] = (0.34 + 0.76 * facing) * (0.66 + 0.34 * z);
           gloss[i] = Math.pow(facing, 26) * 52;
@@ -114,7 +109,7 @@ export default function RotatingGlobe({ size = 168, className = "", label = "Slo
   }, [size]);
 
   return (
-    <span className={`globe${className ? ` ${className}` : ""}`} style={{ width: size }} role="img" aria-label={label}>
+    <span className={`globe${className ? ` ${className}` : ""}`} role="img" aria-label={label}>
       <canvas ref={canvasRef} />
     </span>
   );
