@@ -28,6 +28,7 @@ const Header = () => {
         </Link>
         <nav aria-label="Main navigation" className="hidden items-center gap-1 lg:flex">
           <Button asChild variant="ghost" className="nav-on-navy"><Link to="/" aria-current={pathname === "/" ? "page" : undefined}>Home</Link></Button>
+          <Button asChild variant="ghost" className="nav-on-navy"><Link to="/about" aria-current={pathname === "/about" ? "page" : undefined}>About Us</Link></Button>
           {categories.map((c) => (
             <DropdownMenu key={c.slug}>
               <DropdownMenuTrigger asChild><Button variant="ghost" className={`nav-on-navy ${c.accent}`}><img src={catIcons[c.slug]} alt="" aria-hidden className="menu-cat-icon" loading="lazy" />{c.short}<ChevronDown className="h-3.5 w-3.5" /></Button></DropdownMenuTrigger>
