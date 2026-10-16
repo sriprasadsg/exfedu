@@ -357,7 +357,7 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 @keyframes enquiry-success-pop { from { opacity: 0; transform: scale(.6); } to { opacity: 1; transform: scale(1); } }
 @keyframes enquiry-success-glow { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }
 .enquiry-restart { border-color: hsl(var(--connection-blue) / .4); color: hsl(var(--connection-blue)); gap: .45rem; transition: border-color .18s ease, background-color .18s ease, transform .18s ease, box-shadow .18s ease; }
-.enquiry-restart:hover { border-color: hsl(var(--connection-teal) / .55); color: hsl(var(--connection-teal)); background: hsl(var(--connection-teal) / .08); transform: translateY(-1px); box-shadow: 0 3px 8px hsl(var(--connection-teal) / .15); }
+.partner-3d-card .enquiry-restart:hover { border-color: hsl(var(--connection-teal) / .55); color: hsl(var(--connection-teal)); background: hsl(var(--connection-teal) / .08); transform: translateY(-1px); box-shadow: 0 3px 8px hsl(var(--connection-teal) / .15); }
 .enquiry-restart svg { transition: transform .3s ease; }
 .enquiry-restart:hover svg { transform: rotate(-90deg); }
 @media (prefers-reduced-motion: reduce) { .enquiry-success-icon, .enquiry-success-icon svg, .enquiry-restart svg { animation: none; transition: none; } }
