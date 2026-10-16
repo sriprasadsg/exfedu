@@ -6,7 +6,7 @@ import { categories, findPage, navPages } from "@/data/site";
 import programmesBanner from "@/assets/programmes-cube-banner.jpg.asset.json";
 import aboutBanner from "@/assets/about-hero-banner.jpg.asset.json";
 import industryBanner from "@/assets/industry-hero-banner.jpg.asset.json";
-import internshipsBanner from "@/assets/internships-network-banner.png.asset.json";
+import internshipsBanner from "@/assets/internships-banner.jpg.asset.json";
 import researchBanner from "@/assets/research-hero-banner.jpg.asset.json";
 import careerBanner from "@/assets/career-hero-banner.jpg.asset.json";
 import skillshoneBanner from "@/assets/skillshone-hero-banner.png.asset.json";
@@ -198,8 +198,8 @@ const ContentPage = () => {
             src={page.path === "/programmes" ? programmesBanner.url : internshipsBanner.url}
             alt=""
             aria-hidden="true"
-            width={page.path === "/programmes" ? 1920 : 1765}
-            height={page.path === "/programmes" ? 1080 : 891}
+            width={page.path === "/programmes" ? 1920 : 1536}
+            height={page.path === "/programmes" ? 1080 : 1920}
             className="page-hero-banner-art"
           />
         </section>
