@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,300..1000&display=swap');
+/* Google Sans is loaded by the document font link. */
 
 
 @tailwind base;
@@ -7,6 +7,10 @@
 
 @layer base {
   :root {
+    --academic-edge: 207 58% 88%;
+    --academic-sky: 203 86% 59%;
+    --academic-surface: 205 82% 97%;
+    --academic-shadow: 214 40% 26%;
     --background: 0 0% 100%;
     --foreground: 214 68% 14%;
 

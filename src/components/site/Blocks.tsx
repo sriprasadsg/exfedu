@@ -7,6 +7,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { PENDING, pages, programmes, programmeAreas, galleryItems, type Block, type Page, type Tone } from "@/data/site";
 import PartnerEnquiry from "@/components/home/PartnerEnquiry";
 import AboutStory from "@/components/site/AboutStory";
+import AcademicOverview from "@/components/site/AcademicOverview";
 
 const H2 = ({ children }: { children: React.ReactNode }) => <h2 className="site-section-title font-display font-normal">{children}</h2>;
 
@@ -86,6 +87,8 @@ const Gallery = ({ filters }: { filters: string[] }) => {
 
 export const BlockView = ({ block, page }: { block: Block; page: Page }) => {
   switch (block.type) {
+    case "academic-overview":
+      return <AcademicOverview data={block.data} />;
     case "text":
       return <div className="max-w-3xl">{block.title && <H2>{block.title}</H2>}<p className="mt-4 text-lg font-light leading-relaxed text-muted-foreground">{block.text}</p></div>;
     case "features":
