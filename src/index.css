@@ -35,8 +35,9 @@
 .academic-partner-label { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: hsl(var(--connection-blue)); }
 .academic-partner-card h3 { font-size: 21px; line-height: 1.35; font-weight: 500; color: hsl(var(--foreground)); margin-top: 6px; }
 .academic-partner-description { font-size: 14px; line-height: 1.7; margin-top: 12px; flex: 1; }
-.academic-skills { display: flex; flex-wrap: wrap; gap: 10px 18px; margin-block: 18px; }
-.academic-skills li { display: flex; align-items: center; gap: 6px; font-size: 12.5px; color: hsl(var(--navy-700)); }
+.academic-skills { display: flex; flex-wrap: wrap; gap: 8px; margin-block: 16px; }
+.academic-skills li { display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; line-height: 1; color: hsl(var(--navy-700)); padding: 8px 13px; border: 1px solid hsl(var(--academic-edge)); border-radius: 999px; background: hsl(var(--background)); transition: border-color 200ms ease; animation: academic-logo-in 500ms ease-out backwards; }
+.academic-skills li:hover { border-color: hsl(var(--connection-blue) / .6); }
 .academic-skills svg { color: hsl(var(--connection-blue)); flex-shrink: 0; }
 .academic-partner-link { justify-content: flex-start; align-self: flex-start; padding: 0; height: auto; min-height: 40px; font-weight: 400; gap: 8px; white-space: normal; text-align: left; }
 .academic-partner-link svg { transition: transform 200ms ease; flex-shrink: 0; }
