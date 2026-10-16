@@ -1,5 +1,5 @@
 # Architecture rules
-- AboutStory renders its data-driven company capabilities and industry domains together in an independent section, keeping the education narrative separate to prevent mixing company claims with educational outcomes.
+- AboutStory renders approved topic data from site.ts in one persistent single-selection panel, and the About route omits the shared sidebar and large banner so the compact experience uses the full content width.
 - Render homepage capabilities from site.ts as eight linked cards at equal 45-degree intervals around a centre circle, with DOM-measured radial connectors meeting card edges; container queries switch to stacked two/one-column grids when the radial canvas cannot fit, preserving readable content.
 - Partner enquiry runs in test mode: validate with zod, simulate submission, show success/error, never persist or send. Production delivery will be Exafluence AWS Cloud (not Lovable Cloud); keep endpoint, storage, email routing and env vars configurable via enquiryConfig in PartnerEnquiry.tsx.
 - Partner enquiry keeps in-memory answers while rendering only its current step, validating that step before advancing and the full schema before simulated delivery; this preserves answers without exposing completed fields.

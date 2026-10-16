@@ -1,6 +1,7 @@
 - [x] About page: connecting-technology details (approved Exafluence Inc. industry scope) + embedded partner enquiry form; verified 1280/375px, FAQs route now 404
 - [x] FAQs removed from the About Us (Core) menu; /faqs removed from site data
 # Roadmap
+- [x] Replace the entire About Us content with the supplied compact five-topic selector and AI/book illustration; eight targeted tests pass, all five topics verified in browser, desktop height stable and 1062/375px layouts fit.
 - [x] Replace the Industries We Serve human image with technology-only imagery; verified the robotics/CAD picture loads with no humans and build passes.
 - [x] Apply the supplied editorial template to Industries We Serve only; preserved verified domain wording and homepage colours, checked image loading and desktop/phone layout without horizontal overflow; site tests and build pass.
 - [x] Renovate the About Us opening as an independent Industry Expertise section using exafluence.com content and the existing navy/white, colourful-icon design; desktop/phone checks show three capabilities, five published domains, no overflow or runtime errors; site tests and build pass.
