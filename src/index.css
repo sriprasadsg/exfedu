@@ -603,8 +603,9 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
   position: absolute;
   inset: 0 0 auto;
   height: 1px;
-  background: linear-gradient(90deg, hsl(var(--nav-sheen) / 0), hsl(var(--nav-sheen) / .28) 45%, hsl(var(--nav-sheen) / .14) 72%, hsl(var(--nav-sheen) / 0));
+  background: linear-gradient(90deg, hsl(var(--nav-sheen) / 0), hsl(var(--nav-sheen) / .5) 40%, hsl(var(--nav-sheen) / .3) 70%, hsl(var(--nav-sheen) / 0));
   pointer-events: none;
+  z-index: 1;
 }
 .site-header-panel .border-b { border-bottom-color: hsl(210 40% 98% / .14); }
 .site-header-panel .mobile-sublink { color: hsl(210 30% 86%); border-radius: .5rem; padding-inline: .6rem; transition: background-color 200ms ease, color 200ms ease; }
