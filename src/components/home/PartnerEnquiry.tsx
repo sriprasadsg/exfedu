@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { z } from "zod";
-import { ArrowUpRight, ArrowLeft, CheckCircle2, AlertCircle, Handshake, GraduationCap, Building2, Cpu } from "lucide-react";
+import { ArrowUpRight, ArrowLeft, CheckCircle2, AlertCircle, Handshake, GraduationCap, Building2, Cpu, RotateCcw } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -151,9 +151,11 @@ const PartnerEnquiry = () => {
           <form ref={formRef} className="partner-3d-card enquiry-step-card" noValidate onSubmit={handleSubmit} aria-busy={submitting} aria-label="Partner enquiry">
             {completed ? (
               <div className="space-y-4">
-                <CheckCircle2 className="h-7 w-7 text-accent" />
+                <span className="enquiry-success-icon"><CheckCircle2 size={26} strokeWidth={1.7} aria-hidden="true" /></span>
                 <p role="status" className="text-sm leading-relaxed">Test submission received. Delivery is not connected yet — this confirms the form workflow only.</p>
-                <Button variant="outline" type="button" onClick={() => { setStep(0); setStatus({ kind: "idle" }); }}>New enquiry</Button>
+                <Button variant="outline" type="button" className="enquiry-restart" onClick={() => { setStep(0); setStatus({ kind: "idle" }); }}>
+                  <RotateCcw size={15} strokeWidth={1.9} aria-hidden="true" />New enquiry
+                </Button>
               </div>
             ) : (
               <>
