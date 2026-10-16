@@ -577,24 +577,26 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .site-header-panel .mobile-sublink { color: hsl(210 30% 86%); }
 .site-header-panel .mobile-sublink:hover { color: hsl(0 0% 100%); }
 
-/* Hero banner — decorative tile artwork behind, two text lines centred */
+/* Hero banner — learning & innovation artwork on the right, two text lines on the left */
 .hero-section { background: hsl(var(--background)); }
 .hero-banner {
   position: relative;
   overflow: hidden;
   display: flex;
   align-items: center;
-  min-height: clamp(300px, 33vw, 470px);
+  min-height: clamp(310px, 38vw, 520px);
 }
 .hero-banner-art {
   position: absolute;
-  inset: 0;
-  width: 100%;
+  top: 0;
+  left: 12%;
+  width: 88%;
   height: 100%;
   object-fit: cover;
-  object-position: 68% center;
-  opacity: .62;
-  filter: saturate(.92);
+  object-position: center;
+  /* feather the artwork's left edge so it melts into the copy side */
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 11%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 11%);
 }
 /* pale wash on the copy side so the title and tagline stay readable */
 .hero-banner::after {
@@ -602,7 +604,7 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(90deg, hsl(var(--background)) 0%, hsl(var(--background)) 30%, hsl(var(--background) / 0) 68%);
+  background: linear-gradient(90deg, hsl(var(--background)) 0%, hsl(var(--background)) 22%, hsl(var(--background) / 0) 46%);
 }
 .hero-banner-copy {
   position: relative;
@@ -642,8 +644,20 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 }
 @media (max-width: 640px) {
   .hero-tagline { white-space: normal; letter-spacing: .01em; }
-  /* the copy spans nearly the full width on phones, so widen the wash */
-  .hero-banner::after { background: linear-gradient(90deg, hsl(var(--background)) 0%, hsl(var(--background)) 62%, hsl(var(--background) / 0) 100%); }
+  /* on a narrow screen the copy sits above the artwork so both stay readable */
+  .hero-banner { min-height: 306px; align-items: flex-start; }
+  .hero-banner-copy { padding-block: 1.7rem 0; }
+  .hero-banner::after { background: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--background)) 26%, hsl(var(--background) / 0) 55%); }
+  .hero-banner-art {
+    top: auto;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 68%;
+    object-fit: contain;
+    -webkit-mask-image: radial-gradient(94% 132% at 50% 56%, #000 74%, transparent 100%);
+    mask-image: radial-gradient(94% 132% at 50% 56%, #000 74%, transparent 100%);
+  }
 }
 @keyframes hero-tagline-breathe {
   0%, 100% { transform: translateY(0); opacity: .94; }
