@@ -1,6 +1,6 @@
 import {
   Building2, Landmark, Network, BookOpen, FlaskConical, Briefcase, Compass, Lightbulb, Award,
-  LayoutGrid, MonitorPlay, Images, Newspaper, Info, Users, Mail, HelpCircle, GraduationCap,
+  LayoutGrid, MonitorPlay, Images, Newspaper, Info, Users, Mail, GraduationCap,
   Code2, BarChart3, Cloud, Sparkles, Database, Terminal, Presentation, Rocket, type LucideIcon,
 } from "lucide-react";
 import skillshoneLogo from "@/assets/skillshone-logo.png.asset.json";
@@ -101,8 +101,6 @@ export const pages: Page[] = [
     summary: "Faculty and industry practitioners who guide every learner.",
     blocks: [{ type: "team", title: "Our team", groups: ["Core Faculty", "Guest & Visiting Faculty"] }] },
   { path: "/contact", title: "Contact / Enquiry", category: "core", icon: Mail, summary: "Ask about programmes, collaborations or admissions.", blocks: [] },
-  { path: "/faqs", title: "FAQs", category: "core", icon: HelpCircle, summary: "Answers to common questions from students, parents and partners.",
-    blocks: [{ type: "faq", title: "Frequently asked questions" }, enquire("Ask a question")] },
 
   // Academic
   { path: "/academic-collaborations", title: "Academic Collaborations", category: "academic", icon: Landmark,
