@@ -93,6 +93,7 @@ export const pages: Page[] = [
     blocks: [{ type: "enquiry-form", title: "Partner enquiry", intro: {
       title: "Industry Expertise. Strategic Partnerships. Applied Learning.",
       description: "Drawing on Exafluence Inc.’s technology expertise, we connect education with business applications in AI, Generative AI and Data Science.",
+      globe: true,
       points: [
         { label: "Our Mission", text: "Build practical capabilities through industry-aligned learning, expert mentorship and collaborative projects." },
         { label: "Our Vision", text: "Create a connected ecosystem where academia and industry advance talent development, innovation and lifelong learning." },
