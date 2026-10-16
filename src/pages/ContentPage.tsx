@@ -3,7 +3,7 @@ import Layout from "@/components/layout/Layout";
 import NotFound from "./NotFound";
 import { BlockView } from "@/components/site/Blocks";
 import { categories, findPage, navPages } from "@/data/site";
-import programmesBanner from "@/assets/programmes-cube-banner.jpg.asset.json";
+import programmesArray from "@/assets/programmes-glass-array.png.asset.json";
 import aboutBanner from "@/assets/about-hero-banner.jpg.asset.json";
 import industryBanner from "@/assets/industry-hero-banner.jpg.asset.json";
 import internshipsBanner from "@/assets/internships-banner.jpg.asset.json";
@@ -209,7 +209,11 @@ const ContentPage = () => {
     <Layout>
       {page.path === "/programmes" || page.path === "/internships" ? (
         <section
-          className="page-hero-banner"
+          className={
+            page.path === "/programmes"
+              ? "page-hero-banner page-hero-banner--programmes"
+              : "page-hero-banner"
+          }
           aria-label={page.path === "/programmes" ? "Programmes introduction" : "Internships & Industry Exposure introduction"}
         >
           <div className="container relative">
@@ -217,11 +221,11 @@ const ContentPage = () => {
             <div className="mt-8">{heading}</div>
           </div>
           <img
-            src={page.path === "/programmes" ? programmesBanner.url : internshipsBanner.url}
+            src={page.path === "/programmes" ? programmesArray.url : internshipsBanner.url}
             alt=""
             aria-hidden="true"
-            width={page.path === "/programmes" ? 1920 : 1536}
-            height={page.path === "/programmes" ? 1080 : 1920}
+            width={page.path === "/programmes" ? 1723 : 1536}
+            height={page.path === "/programmes" ? 913 : 1920}
             className="page-hero-banner-art"
           />
         </section>
