@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import exafluence from "@/assets/exafluence-footer.png.asset.json";
-import { categories, navPages } from "@/data/site";
+import { menuCategories, navPages } from "@/data/site";
 
 const Footer = () => (
   <footer className="border-t bg-primary text-primary-foreground">
@@ -11,8 +11,8 @@ const Footer = () => (
         <img src={exafluence.url} alt="Exafluence — Data Driven Influence" className="footer-brand-logo w-auto" />
       </span>
     </div>
-    <div className="container grid gap-10 pb-14 md:grid-cols-2 lg:grid-cols-4">
-      {categories.map((c) => {
+    <div className="container grid gap-10 pb-14 md:grid-cols-2 lg:grid-cols-3">
+      {menuCategories.map((c) => {
         const pages = navPages(c.slug);
         const featured = pages.filter((s) => s.path === "/skillshone");
         const rest = pages.filter((s) => s.path !== "/skillshone");
