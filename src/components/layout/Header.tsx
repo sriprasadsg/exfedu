@@ -56,6 +56,7 @@ const Header = () => {
         <nav id="mobile-navigation" aria-label="Mobile navigation" className="site-header-panel max-h-[calc(100dvh-5rem)] overflow-y-auto border-t lg:hidden">
           <div className="container py-4">
             <Button asChild variant="ghost" className="nav-on-navy h-11 w-full justify-start"><Link to="/" onClick={() => setOpen(false)}>Home</Link></Button>
+            <Button asChild variant="ghost" className="nav-on-navy h-11 w-full justify-start"><Link to="/about" onClick={() => setOpen(false)}>About Us</Link></Button>
 
             <Accordion type="single" collapsible>
               {categories.map((c) => (
