@@ -6,7 +6,7 @@ import { categories, findPage, navPages } from "@/data/site";
 import programmesBanner from "@/assets/programmes-cube-banner.jpg.asset.json";
 import aboutBanner from "@/assets/about-hero-banner.jpg.asset.json";
 import industryBanner from "@/assets/industry-hero-banner.jpg.asset.json";
-import internshipsBanner from "@/assets/internships-network-banner.png.asset.json";
+import internshipsBanner from "@/assets/internships-banner.jpg.asset.json";
 import researchBanner from "@/assets/research-hero-banner.jpg.asset.json";
 import careerBanner from "@/assets/career-hero-banner.jpg.asset.json";
 import skillshoneBanner from "@/assets/skillshone-hero-banner.png.asset.json";
