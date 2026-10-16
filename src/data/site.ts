@@ -1,9 +1,10 @@
 import {
   Building2, Landmark, Network, BookOpen, FlaskConical, Briefcase, Compass, Lightbulb, Award,
   LayoutGrid, MonitorPlay, Images, Newspaper, Info, Mail, GraduationCap,
-  Code2, BarChart3, Cloud, Sparkles, Database, Terminal, Presentation, Rocket, type LucideIcon,
+  Code2, BarChart3, Cloud, Sparkles, Database, Terminal, Presentation, Rocket, Cpu, type LucideIcon,
 } from "lucide-react";
 import type { AboutStoryData } from "@/components/site/AboutStory";
+import type { AcademicOverviewData } from "@/components/site/AcademicOverview";
 import type { EnquiryIntro } from "@/components/home/PartnerEnquiry";
 import skillshoneLogo from "@/assets/skillshone-logo.png.asset.json";
 
@@ -23,6 +24,7 @@ export type Block =
   | { type: "children"; title: string }
   | { type: "enquiry-form"; title: string; intro?: EnquiryIntro }
   | { type: "about-story"; data: AboutStoryData }
+  | { type: "academic-overview"; data: AcademicOverviewData }
   | { type: "logo"; src: string; alt: string }
   | { type: "cta"; title: string; text: string; label: string; to?: string; appearance?: "academic-partner" };
 
@@ -116,11 +118,19 @@ export const pages: Page[] = [
 
   // Academic
   { path: "/academic-collaborations", title: "Academic Collaborations", category: "academic", icon: Landmark,
-    summary: "University partners delivering industry-integrated programmes with Exafluence Education.",
-    blocks: [
-      { type: "children", title: "Our academic collaborations" },
-      enquire("Become an academic partner"),
-    ] },
+    summary: "Connecting academic foundations with applied AI, data and financial technologies.",
+    blocks: [{ type: "academic-overview", data: {
+      title: "Academic Collaborations",
+      subtitle: "Connecting academic foundations with applied AI, data and financial technologies.",
+      description: "Explore our institutional partnerships and their approach to practical technical learning.",
+      partnersTitle: "Our Academic Partners",
+      introduction: "Exafluence Education collaborates with academic institutions to develop capabilities in Data Science, Artificial Intelligence, Machine Learning and Generative AI through programming, analytical workflows and project-based learning.",
+      partners: [
+        { name: "Sri Venkateswara University", label: "SVU Collaboration", description: "Connecting foundations in statistics and computing with data preparation, machine learning, visualisation and capstone projects.", skills: [{ label: "Programming", icon: Code2 }, { label: "Data", icon: Database }, { label: "Machine Learning", icon: Network }], linkLabel: "Explore SVU Collaboration", to: "/academic-collaborations/svu" },
+        { name: "XIME, Chennai", label: "FinTech Collaboration", description: "Connecting financial knowledge with data analytics and AI applications to explore technology-driven financial services and business decisions.", skills: [{ label: "Finance", icon: BarChart3 }, { label: "Analytics", icon: Presentation }, { label: "AI", icon: Cpu }], linkLabel: "Explore XIME Collaboration", to: "/academic-collaborations/xime" },
+      ],
+      invitation: { title: "Collaborate on Technical Education", description: "Explore curriculum enrichment, technical workshops, faculty development and applied projects aligned with your institution’s learning objectives.", label: "Discuss a Technical Collaboration", to: "/contact" },
+    } }] },
   { path: "/academic-collaborations/svu", parent: "/academic-collaborations", title: "SVU Collaboration", category: "academic", icon: GraduationCap,
     summary: "Exafluence Education × SVU.",
     blocks: [

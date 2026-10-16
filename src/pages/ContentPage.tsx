@@ -29,6 +29,10 @@ const ContentPage = () => {
   const parent = page.parent ? findPage(page.parent) : undefined;
   const siblings = navPages(page.category);
 
+  if (page.path === "/academic-collaborations") {
+    return <Layout>{page.blocks.map((block, i) => <BlockView key={i} block={block} page={page} />)}</Layout>;
+  }
+
   if (page.path === "/about") {
     return (
       <Layout>

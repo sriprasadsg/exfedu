@@ -1,4 +1,5 @@
 # Architecture rules
+- The Academic Collaborations overview uses a data-driven academic-overview block with its own compact banner and local navigation, isolating its layout from partner detail pages and other routes.
 - The About route renders the interactive about-story explorer plus a data-driven academic-partner CTA linking to the existing enquiry page, keeping the form separate and the explorer intact. The route omits the shared sidebar and large banner to use the full content width.
 - Render homepage capabilities from site.ts as eight linked cards at equal 45-degree intervals around a centre circle, with DOM-measured radial connectors meeting card edges; container queries switch to stacked two/one-column grids when the radial canvas cannot fit, preserving readable content.
 - Partner enquiry runs in test mode: validate with zod, simulate submission, show success/error, never persist or send. Production delivery will be Exafluence AWS Cloud (not Lovable Cloud); keep endpoint, storage, email routing and env vars configurable via enquiryConfig in PartnerEnquiry.tsx.
