@@ -1,5 +1,5 @@
 import { useRef, useState, type CSSProperties, type KeyboardEvent } from "react";
-import { Building2, Cpu, Globe2, Layers3, GraduationCap } from "lucide-react";
+import { ArrowUpRight, Building2, Cpu, Globe2, Layers3, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import enterprise from "@/assets/about-enterprise.png";
 import expertise from "@/assets/about-expertise.png";
@@ -10,6 +10,10 @@ import education from "@/assets/about-education.png";
 export type AboutStoryData = {
   title: string;
   description: string;
+  mission?: string;
+  vision?: string;
+  collaborate?: string;
+  action?: { label: string; href: string };
   topics: { title: string; lines: string[] }[];
 };
 
@@ -65,7 +69,13 @@ export default function AboutStory({ data }: { data: AboutStoryData }) {
         <div className="about-explorer-stage" aria-live="polite" aria-atomic="true">
           <div className={`about-explorer-copy${selected === null ? " about-explorer-copy--active" : ""}`} aria-hidden={selected !== null}>
             <h2>{data.title}</h2>
-            <p className="about-explorer-description">{data.description}</p>
+            <div className="about-explorer-lines">
+              <p className="about-explorer-description">{data.description}</p>
+              {data.mission && <p><span className="about-explorer-label">Our Mission</span> {data.mission}</p>}
+              {data.vision && <p><span className="about-explorer-label">Our Vision</span> {data.vision}</p>}
+              {data.collaborate && <p><span className="about-explorer-label">Collaborate With Us</span> {data.collaborate}</p>}
+            </div>
+            {data.action && <Button asChild className="about-explorer-cta"><a href={data.action.href}>{data.action.label}<ArrowUpRight size={16} strokeWidth={1.75} aria-hidden="true" /></a></Button>}
           </div>
           {data.topics.map((topic, i) => <div key={topic.title}
             className={`about-explorer-copy${selected === i ? " about-explorer-copy--active" : ""}`} aria-hidden={selected !== i}>
@@ -80,7 +90,6 @@ export default function AboutStory({ data }: { data: AboutStoryData }) {
                 variant="outline" aria-pressed={selected === i} onMouseEnter={() => setSelected(i)} onFocus={() => setSelected(i)}
                 onClick={() => setSelected(i)} onKeyDown={(event) => navigate(event, i)}
                 className={`about-topic${i === data.topics.length - 1 ? " about-topic--education" : ""}`}>
-                <span className="about-topic-number">{String(i + 1).padStart(2, "0")}</span>
                 <Icon size={15} strokeWidth={1.5} aria-hidden="true" />
                 <span>{item.title}</span>
               </Button>
