@@ -1,3 +1,5 @@
+- [ ] About page: show connecting-technology details + embedded partner enquiry form (in progress)
+- [ ] Remove FAQs from the About Us (Core) menu (in progress)
 # Roadmap
 - [x] Compact sequential partner enquiry with connected Partner–Academic–Industry–Technology diagram; validated previous-field hiding, retained answers, optional phone, success/error test delivery, and 375/1063px layouts.
 - [x] Reduce the overall white panel width while preserving readable content and visible blue edges; verified 1062/1440px.
