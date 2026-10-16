@@ -21,8 +21,17 @@
 .academic-partner-card { position: relative; display: flex; flex-direction: column; padding: 26px; border: 1px solid hsl(var(--academic-edge)); border-radius: var(--radius); background: hsl(var(--card)); transition: border-color 200ms ease; }
 .academic-partner-card::before { content: ''; position: absolute; top: -1px; left: 24px; right: 24px; height: 3px; border-radius: 0 0 3px 3px; background: hsl(var(--connection-blue)); }
 .academic-partner-card:hover, .academic-partner-card:focus-within { border-color: hsl(var(--connection-blue) / .6); }
-.academic-logo { height: 64px; display: flex; align-items: center; margin-bottom: 18px; }
-.academic-logo img { max-width: 155px; height: 64px; object-fit: contain; object-position: left center; }
+.academic-logo { height: 72px; display: flex; align-items: center; margin-bottom: 16px; }
+.academic-logo img {
+  max-width: 280px;
+  height: 64px;
+  object-fit: contain;
+  object-position: left center;
+  transition: transform 260ms ease;
+  animation: academic-logo-in 600ms ease-out backwards;
+}
+.academic-partner-card:hover .academic-logo img, .academic-partner-card:focus-within .academic-logo img { transform: translateY(-2px); }
+@keyframes academic-logo-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 .academic-partner-label { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: hsl(var(--connection-blue)); }
 .academic-partner-card h3 { font-size: 21px; line-height: 1.35; font-weight: 500; color: hsl(var(--foreground)); margin-top: 6px; }
 .academic-partner-description { font-size: 14px; line-height: 1.7; margin-top: 12px; flex: 1; }
@@ -560,21 +569,36 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 
 /* Hero banner — decorative tile artwork behind, two text lines centred */
 .hero-section { background: hsl(var(--background)); }
-.hero-banner { position: relative; overflow: hidden; }
+.hero-banner {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  min-height: clamp(300px, 33vw, 470px);
+}
 .hero-banner-art {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
-  opacity: .5;
+  object-position: 68% center;
+  opacity: .62;
   filter: saturate(.92);
+}
+/* pale wash on the copy side so the title and tagline stay readable */
+.hero-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, hsl(var(--background)) 0%, hsl(var(--background)) 30%, hsl(var(--background) / 0) 68%);
 }
 .hero-banner-copy {
   position: relative;
+  z-index: 1;
   text-align: left;
-  padding-block: clamp(2.75rem, 7vw, 5.5rem);
+  padding-block: clamp(2rem, 5vw, 3.5rem);
   padding-inline: 1.25rem;
   padding-inline-start: clamp(1.5rem, 6vw, 4rem);
 }
@@ -608,6 +632,8 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 }
 @media (max-width: 640px) {
   .hero-tagline { white-space: normal; letter-spacing: .01em; }
+  /* the copy spans nearly the full width on phones, so widen the wash */
+  .hero-banner::after { background: linear-gradient(90deg, hsl(var(--background)) 0%, hsl(var(--background)) 62%, hsl(var(--background) / 0) 100%); }
 }
 @keyframes hero-tagline-breathe {
   0%, 100% { transform: translateY(0); opacity: .94; }

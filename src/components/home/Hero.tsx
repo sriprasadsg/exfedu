@@ -1,14 +1,14 @@
-import heroBanner from "@/assets/hero-banner-3d-plus.png";
+import heroBanner from "@/assets/hero-banner-tiles.jpg.asset.json";
 
 const Hero = () => (
   <section aria-label="Exafluence Education introduction" className="hero-section">
     <div className="hero-banner">
       <img
-        src={heroBanner}
+        src={heroBanner.url}
         alt=""
         aria-hidden="true"
-        width={2064}
-        height={512}
+        width={1920}
+        height={1080}
         className="hero-banner-art"
       />
       <div className="hero-banner-copy">
