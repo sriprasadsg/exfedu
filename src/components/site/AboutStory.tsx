@@ -40,7 +40,7 @@ export default function AboutStory({ data }: { data: AboutStoryData }) {
             {paragraphs ? <div className="about-explorer-lines">
               <p>{paragraphs[0]}</p>
               {paragraphs.length > 1 && paragraphs.slice(1).map((text, i) => i % 2 === 0 ? (
-                <p key={text}><span className="about-explorer-label">Our {text === "mission" ? "Mission" : "Vision"}</span>{paragraphs[i + 2]}</p>
+                <p key={text}><span className="about-explorer-label">Our {text === "mission" ? "Mission" : "Vision"}</span>{" "}{paragraphs[i + 2]}</p>
               ) : null)}
             </div>
               : <p className="about-explorer-description">{data.description}</p>}
