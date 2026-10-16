@@ -7,13 +7,12 @@ import programmesBanner from "@/assets/programmes-cube-banner.jpg.asset.json";
 import aboutBanner from "@/assets/about-hero-banner.jpg.asset.json";
 import industryBanner from "@/assets/industry-hero-banner.jpg.asset.json";
 import internshipsBanner from "@/assets/internships-banner.jpg.asset.json";
-import researchImg from "@/assets/hero-research.png";
+import researchBanner from "@/assets/research-hero-banner.jpg.asset.json";
 import ibmImg from "@/assets/hero-ibm.png";
 import successImg from "@/assets/hero-success.png";
 import skillshoneImg from "@/assets/hero-skillshone.png";
 
 const heroVisuals: Record<string, string> = {
-  "/research-innovation": researchImg,
   "/industry-collaborations/ibm": ibmImg,
   "/student-success": successImg,
   "/skillshone": skillshoneImg,
@@ -106,6 +105,29 @@ const ContentPage = () => {
               alt=""
               width={1920}
               height={1080}
+              className="page-hero-banner-art"
+            />
+          </div>
+        </section>
+        <main>{body}</main>
+      </Layout>
+    );
+  }
+
+  if (page.path === "/research-innovation") {
+    return (
+      <Layout>
+        <section className="page-hero-banner page-hero-banner--research" aria-label={`${page.title} introduction`}>
+          <div className="container relative">
+            {breadcrumb}
+            <div className="mt-8">{heading}</div>
+          </div>
+          <div className="page-hero-banner-art-mask" aria-hidden="true">
+            <img
+              src={researchBanner.url}
+              alt=""
+              width={1920}
+              height={1920}
               className="page-hero-banner-art"
             />
           </div>
