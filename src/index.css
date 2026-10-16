@@ -592,13 +592,49 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .site-header-panel .nav-on-navy:not([class*="cat-"]):hover,
 .site-header-panel .nav-on-navy:not([class*="cat-"])[data-state="open"] { color: hsl(210 80% 82%); }
 .site-header-panel {
-  background: linear-gradient(180deg, hsl(var(--nav-bottom)), hsl(216 62% 8%));
+  background:
+    linear-gradient(180deg, hsl(var(--nav-sheen) / .10) 0%, hsl(var(--nav-sheen) / .03) 30%, hsl(var(--nav-sheen) / 0) 55%),
+    linear-gradient(180deg, hsl(var(--nav-top)), hsl(var(--nav-bottom)));
   border-top-color: hsl(214 45% 34% / .5);
+}
+.site-header-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 1px;
+  background: linear-gradient(90deg, hsl(var(--nav-sheen) / 0), hsl(var(--nav-sheen) / .28) 45%, hsl(var(--nav-sheen) / .14) 72%, hsl(var(--nav-sheen) / 0));
+  pointer-events: none;
 }
 .site-header-panel .border-b { border-bottom-color: hsl(210 40% 98% / .14); }
 .site-header-panel .mobile-sublink { color: hsl(210 30% 86%); border-radius: .5rem; padding-inline: .6rem; transition: background-color 200ms ease, color 200ms ease; }
 .site-header-panel .mobile-sublink:hover,
 .site-header-panel .mobile-sublink:focus-visible { color: hsl(0 0% 100%); background-color: hsl(var(--nav-tint) / .14); }
+
+/* Dropdown option panels — same restrained gloss as the menu bar */
+.nav-menu-panel {
+  border-color: hsl(210 38% 84%);
+  background:
+    linear-gradient(180deg, hsl(var(--nav-sheen) / .5) 0%, hsl(var(--nav-sheen) / .16) 34%, hsl(var(--nav-sheen) / 0) 62%),
+    linear-gradient(180deg, hsl(0 0% 100%), hsl(210 42% 97%));
+  box-shadow: 0 16px 34px -20px hsl(var(--nav-shadow) / .42);
+}
+.nav-menu-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 1px;
+  background: linear-gradient(90deg, hsl(var(--nav-tint) / 0), hsl(var(--nav-tint) / .45) 45%, hsl(var(--nav-tint) / .26) 72%, hsl(var(--nav-tint) / 0));
+  pointer-events: none;
+}
+.nav-menu-panel .border-b { border-bottom-color: hsl(210 38% 88%); }
+.nav-menu-item { color: hsl(var(--popover-foreground)); transition: background-color 200ms ease, color 200ms ease; }
+.nav-menu-item:hover,
+.nav-menu-item:focus,
+.nav-menu-item[data-highlighted] { color: hsl(var(--foreground)); background-color: hsl(var(--nav-tint) / .14); }
+@media (prefers-reduced-motion: reduce) {
+  .nav-menu-item, .site-header-panel .mobile-sublink { transition: none; }
+}
+
 
 /* Hero banner — learning & innovation artwork on the right, two text lines on the left */
 .hero-section { background: hsl(var(--background)); }

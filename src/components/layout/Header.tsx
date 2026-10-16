@@ -32,13 +32,13 @@ const Header = () => {
           {menuCategories.map((c) => (
             <DropdownMenu key={c.slug}>
               <DropdownMenuTrigger asChild><Button variant="ghost" className={`nav-on-navy ${c.accent}`}><img src={catIcons[c.slug]} alt="" aria-hidden className="menu-cat-icon" loading="lazy" />{c.short}<ChevronDown className="h-3.5 w-3.5" /></Button></DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className={c.slug === "learning" ? "grid w-[520px] grid-cols-2 p-2 shadow-sm" : "w-72 p-2 shadow-sm"}>
+              <DropdownMenuContent align="end" className={`nav-menu-panel ${c.slug === "learning" ? "grid w-[520px] grid-cols-2 p-2" : "w-72 p-2"}`}>
                 <div className={c.slug === "learning" ? "col-span-2 mb-1 flex items-center gap-3 border-b px-2 pb-2" : "mb-1 flex items-center gap-3 border-b px-2 pb-2"}>
                   <img src={catIcons[c.slug]} alt="" aria-hidden className="menu-cat-hero" loading="lazy" />
                   <span className={`text-sm font-medium ${c.accent}`}>{c.title}</span>
                 </div>
                 {navPages(c.slug).map((s) => (
-                  <DropdownMenuItem key={s.path} asChild className="min-h-11 cursor-pointer gap-2.5">
+                  <DropdownMenuItem key={s.path} asChild className="nav-menu-item min-h-11 cursor-pointer gap-2.5">
                     <Link to={s.path} aria-current={pathname === s.path ? "page" : undefined}><s.icon className="h-4 w-4 shrink-0" strokeWidth={1.5} />{s.title}</Link>
                   </DropdownMenuItem>
                 ))}
