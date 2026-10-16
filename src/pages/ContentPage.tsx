@@ -33,7 +33,7 @@ const ContentPage = () => {
   if (page.path === "/about") {
     return (
       <Layout>
-        <section className="page-hero-banner" aria-label="About Us introduction">
+        <section className="page-hero-banner page-hero-banner--about" aria-label="About Us introduction">
           <div className="container relative">
             <nav className="text-sm text-muted-foreground" aria-label="Breadcrumb"><Link to="/" className="hover:text-primary">Exafluence Education</Link> / About Us</nav>
             <div className="mt-8">
