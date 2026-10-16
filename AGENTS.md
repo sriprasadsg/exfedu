@@ -1,5 +1,5 @@
 # Architecture rules
-- The About route renders only the enquiry-form block, passing its approved short introduction through the block's intro field so the copy renders beside the form; it omits the shared sidebar and large banner to use the full content width, and repeats no home-page content or partnership diagram.
+- The About route renders the interactive about-story explorer (illustration and copy change together on hover/focus/tap, five fixed topic pills) plus a separate enquiry-form block carrying only the brief partnership introduction; the form must never replace the explorer. The route omits the shared sidebar and large banner to use the full content width.
 - Render homepage capabilities from site.ts as eight linked cards at equal 45-degree intervals around a centre circle, with DOM-measured radial connectors meeting card edges; container queries switch to stacked two/one-column grids when the radial canvas cannot fit, preserving readable content.
 - Partner enquiry runs in test mode: validate with zod, simulate submission, show success/error, never persist or send. Production delivery will be Exafluence AWS Cloud (not Lovable Cloud); keep endpoint, storage, email routing and env vars configurable via enquiryConfig in PartnerEnquiry.tsx.
 - Partner enquiry keeps in-memory answers while rendering only its current step, validating that step before advancing and the full schema before simulated delivery; this preserves answers without exposing completed fields.
@@ -7,3 +7,4 @@
 - Unconfirmed claims render as "Approved Content Required" placeholders; never invent partnership, placement, ranking or certification content.
 - Brand-wording checker rules live in src/lib/brandCheck.ts; AI review only via brandCheckConfig.endpoint on Exafluence AWS so the AI key never reaches the browser.
 - Website AI features call a project-hosted server function that holds the key; the browser never carries a key. Keep each feature's endpoint override in one config object so the same request can later be repointed to Exafluence-hosted delivery without touching UI code.
+- Site menus (header, mobile panel, footer) render only the categories in menuCategories; the core category and its Contact page stay reachable through page calls to action, never as a menu entry.
