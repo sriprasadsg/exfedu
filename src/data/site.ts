@@ -24,7 +24,7 @@ export type Block =
   | { type: "enquiry-form"; title: string; intro?: EnquiryIntro }
   | { type: "about-story"; data: AboutStoryData }
   | { type: "logo"; src: string; alt: string }
-  | { type: "cta"; title: string; text: string; label: string; to?: string };
+  | { type: "cta"; title: string; text: string; label: string; to?: string; appearance?: "academic-partner" };
 
 export type Page = {
   path: string; title: string; category: CategorySlug; icon: LucideIcon;
@@ -110,7 +110,7 @@ export const pages: Page[] = [
         { title: "Industry Domains", lines: ["Financial Services and Insurance.", "Healthcare and Pharmaceuticals.", "Consumer Goods and Retail.", "Energy and Utilities.", "Telecommunications.", "Manufacturing and Industrial IoT.", "These sectors provide context for applied learning."] },
         { title: "Exafluence Education", lines: ["Connecting industry insight with education", "in AI, Generative AI and Data Science.", "Our mission: build practical capabilities", "through projects and expert mentorship.", "Our vision: prepare learners for evolving", "careers through innovation, collaboration", "and continuous learning."] },
       ],
-    } }, { type: "enquiry-form", title: "Partner enquiry" }],
+    } }, { type: "cta", title: "Have a question?", text: "Enquire to become our academic partner.", label: "Become an academic partner", to: "/contact", appearance: "academic-partner" }],
   },
   { path: "/contact", title: "Contact / Enquiry", category: "core", icon: Mail, summary: "Ask about programmes, collaborations or admissions.", blocks: [] },
 

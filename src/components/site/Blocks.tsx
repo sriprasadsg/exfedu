@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Check, CircleDashed, ImageOff, type LucideIcon } from "lucide-react";
+import { ArrowRight, Check, CircleDashed, ImageOff, MessageCircle, GraduationCap, type LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -172,6 +172,17 @@ export const BlockView = ({ block, page }: { block: Block; page: Page }) => {
     case "logo":
       return <img src={block.src} alt={block.alt} className="h-20 w-auto" />;
     case "cta":
+      if (block.appearance === "academic-partner") {
+        return (
+          <section id="partner-enquiry-form" className="academic-partner-strip" aria-label="Academic partnership enquiry">
+            <div className="academic-partner-copy">
+              <span className="academic-partner-icon" aria-hidden="true"><MessageCircle size={23} strokeWidth={1.7} /></span>
+              <div><h2 className="font-display text-xl font-normal">{block.title}</h2><p className="mt-1 text-sm text-muted-foreground">{block.text}</p></div>
+            </div>
+            {block.to && <Button asChild className="academic-partner-action"><Link to={block.to}><GraduationCap className="academic-partner-cap" aria-hidden="true" />{block.label}<ArrowRight aria-hidden="true" /></Link></Button>}
+          </section>
+        );
+      }
       return (
         <div className="flex flex-col items-start justify-between gap-4 border-y py-8 md:flex-row md:items-center">
           <div><p className="font-display text-xl">{block.title}</p><p className="mt-1 text-muted-foreground">{block.text}</p></div>
