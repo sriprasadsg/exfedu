@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { z } from "zod";
-import partner3d from "@/assets/partner-3d-orbs.png.asset.json";
 import { ArrowUpRight, ArrowLeft, CheckCircle2, AlertCircle } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -142,9 +141,6 @@ const PartnerEnquiry = () => {
             <p className="mt-3 max-w-[38ch] text-sm font-normal leading-relaxed text-muted-foreground">
               Become a collaboration partner with Exafluence Education, integrating industry into programmes, projects, research and student opportunities.
             </p>
-            <div className="partner-3d-stage">
-              <img src={partner3d.url} alt="" aria-hidden loading="lazy" width={313} height={293} className="partner-3d-object" />
-            </div>
           </div>
           <form ref={formRef} className="partner-3d-card enquiry-step-card" noValidate onSubmit={handleSubmit} aria-busy={submitting} aria-label="Partner enquiry">
             {completed ? (

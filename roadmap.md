@@ -1,5 +1,5 @@
 # Roadmap
-- [ ] Compact sequential partner enquiry with connected Partner–Academic–Industry–Technology diagram; verify validation, previous-field hiding, back navigation, and simulated delivery.
+- [x] Compact sequential partner enquiry with connected Partner–Academic–Industry–Technology diagram; validated previous-field hiding, retained answers, optional phone, success/error test delivery, and 375/1063px layouts.
 - [x] Reduce the overall white panel width while preserving readable content and visible blue edges; verified 1062/1440px.
 - [x] Extend blue backdrop across the section; narrower white panel is taller and protrudes above/below blue only; verified desktop layout and phone text wrapping.
 - [x] Company intro: smaller title, fully readable supporting text and transparent illustration directly on blue; verified 375/1062/1440px with no clipping or overlap.
