@@ -105,6 +105,17 @@ export const pages: Page[] = [
   { path: "/academic-collaborations", title: "Academic Collaborations", category: "academic", icon: Landmark,
     summary: "University partners delivering industry-integrated programmes with Exafluence Education.",
     blocks: [
+      { type: "text", title: "Tailored AI-driven solutions across industries", text: "Exafluence Inc., USA delivers data, analytics and AI solutions to enterprises worldwide — from data engineering and advanced analytics to GenAI, built on the Exf platform suite (ExfHarmonize, ExfDQ, ExfAnalytics, ExfSmartAccess, ExfExtract) alongside Data Engineering & Analytics, GenAI and GCC enablement through ExfDigital Studio." },
+      { type: "features", title: "Capability with a global footprint", note: "Locations published on www.exafluence.com.", items: [
+        "Headquarters — Frisco, Texas, USA",
+        "Princeton, New Jersey, USA",
+        "Tirupati, India",
+        "Bangalore, India",
+        "Chennai, India",
+        "Overseas Development Centres — Dubai, UAE and Muscat, Oman",
+      ] },
+      { type: "features", title: "Domains Exafluence Inc. serves", note: "Industry expertise of Exafluence Inc., USA.", items: ["Financial Services", "Healthcare & Pharma", "Consumer Packaged Goods & Retail", "Energy & Utilities", "Telecommunications", "Manufacturing & Industrial IoT"] },
+      { type: "text", title: "What this brings to Exafluence Education", text: "This working technology expertise is what shapes the education vertical: programmes are built on the same tools, platforms and practices Exafluence Inc. uses on client work, learning is anchored to real industry domains rather than abstract syllabi, and students see how data, analytics and AI are applied in the fields they will work in — so an academic collaboration with Exafluence Education carries genuine industry depth into the classroom." },
       { type: "children", title: "Current collaborations" },
       enquire("Become an academic partner"),
     ] },
