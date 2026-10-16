@@ -330,6 +330,23 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .ways-card:hover .ways-arrow, .ways-card:focus-visible .ways-arrow { transform: translateX(3px); }
 
 /* Partner enquiry 3D presentation */
+.enquiry-connected { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); max-width: 850px; margin: 0 auto 3rem; }
+.enquiry-node { position: relative; display: flex; flex-direction: column; align-items: center; gap: 1rem; text-align: center; }
+.enquiry-node:not(:last-child)::after { content: ""; position: absolute; top: 20px; left: calc(50% + 20px); width: calc(100% - 40px); height: 1px; background: hsl(var(--border)); }
+.enquiry-node-number { display: grid; place-items: center; width: 40px; height: 40px; border: 1px solid hsl(var(--primary) / .7); border-radius: 50%; font-size: .8125rem; color: hsl(var(--primary)); }
+.enquiry-node-label { font-size: .875rem; color: hsl(var(--foreground)); overflow-wrap: anywhere; }
+.enquiry-compact-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 420px); align-items: center; gap: 3rem; max-width: 960px; margin: 0 auto; }
+.partner-3d-card.enquiry-step-card { min-height: 285px; width: 100%; border-radius: var(--radius); padding: 1.5rem; }
+.enquiry-step-body { min-height: 130px; animation: enquiry-step-in .2s ease-out; }
+@keyframes enquiry-step-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 700px) {
+  .enquiry-compact-layout { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+  .enquiry-compact-layout .partner-3d-stage { max-width: 135px; }
+  .enquiry-node-label { font-size: .75rem; }
+  .enquiry-connected { margin-bottom: 2rem; }
+  .enquiry-step-card { max-width: 420px; justify-self: center; }
+}
+@media (prefers-reduced-motion: reduce) { .enquiry-step-body { animation: none; } }
 .partner-3d-stage { position: relative; max-width: 210px; margin: .75rem auto 0; transform: translateX(-16px); perspective: 900px; }
 .partner-3d-stage::after { content: ""; position: absolute; left: 18%; right: 18%; bottom: -4px; height: 18px; border-radius: 50%; background: hsl(var(--primary) / .06); filter: blur(11px); animation: partner-float-shadow 8s ease-in-out infinite; }
 .partner-3d-object { position: relative; z-index: 1; width: 100%; height: auto; filter: drop-shadow(0 12px 18px hsl(var(--primary) / .09)); animation: partner-float 8s ease-in-out infinite; }
