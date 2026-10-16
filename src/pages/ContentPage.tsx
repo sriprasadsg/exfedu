@@ -29,6 +29,20 @@ const ContentPage = () => {
   const parent = page.parent ? findPage(page.parent) : undefined;
   const siblings = navPages(page.category);
 
+  if (page.path === "/about") {
+    return (
+      <Layout>
+        <main className="container about-page">
+          <header className="about-page-heading">
+            <nav aria-label="Breadcrumb"><Link to="/" className="hover:text-primary">Exafluence Education</Link> / About Us</nav>
+            <h1>{page.title}</h1>
+          </header>
+          {page.blocks.map((block, i) => <BlockView key={i} block={block} page={page} />)}
+        </main>
+      </Layout>
+    );
+  }
+
   return (
     <Layout>
       <section className={`relative overflow-hidden border-b${page.path === "/programmes" ? " pb-24 lg:pb-0" : ""}`}>
