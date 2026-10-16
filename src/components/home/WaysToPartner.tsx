@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { ChevronRight, CircleDashed } from "lucide-react";
 import { PENDING } from "@/data/site";
-import exiIllustration from "@/assets/exi-illustration-transparent.png";
+import exiArt from "@/assets/exi-book-chip-network.png.asset.json";
+const exiIllustration = exiArt.url;
 
 const Illustration = () => (
   <div className="exi-illus" aria-hidden="true">
