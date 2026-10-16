@@ -1,7 +1,7 @@
 import {
   Building2, Landmark, Network, BookOpen, FlaskConical, Briefcase, Compass, Lightbulb, Award,
   LayoutGrid, MonitorPlay, Images, Newspaper, Info, Mail, GraduationCap,
-  Code2, BarChart3, Cloud, Sparkles, Database, Terminal, Presentation, Rocket, Cpu, type LucideIcon,
+  Code2, BarChart3, Cloud, Sparkles, Database, Terminal, Presentation, Rocket, Cpu, Layers, PieChart, type LucideIcon,
 } from "lucide-react";
 import type { AboutStoryData } from "@/components/site/AboutStory";
 import type { AcademicOverviewData } from "@/components/site/AcademicOverview";
@@ -9,6 +9,20 @@ import type { EnquiryIntro } from "@/components/home/PartnerEnquiry";
 import skillshoneLogo from "@/assets/skillshone-logo.png.asset.json";
 import svuLogo from "@/assets/svu-logo.png.asset.json";
 import ximeLogo from "@/assets/xime-logo.png.asset.json";
+
+/** Shared technical skill tags shown on every academic partner card. */
+const collaborationSkills: { label: string; icon: LucideIcon }[] = [
+  { label: "Data Science", icon: FlaskConical },
+  { label: "Artificial Intelligence", icon: Cpu },
+  { label: "Machine Learning", icon: Network },
+  { label: "Deep Learning", icon: Layers },
+  { label: "Generative AI", icon: Sparkles },
+  { label: "Python", icon: Code2 },
+  { label: "Big Data Analytics", icon: Database },
+  { label: "Data Visualization", icon: BarChart3 },
+  { label: "Cloud Computing", icon: Cloud },
+  { label: "Business Intelligence", icon: PieChart },
+];
 
 /** Content is data-only: add approved pages, partners or programmes here without touching layouts. */
 export type Offering = { name: string; significance: string[]; benefits: string };
