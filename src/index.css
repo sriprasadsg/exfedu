@@ -613,18 +613,18 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 
 /* Dropdown option panels — same restrained gloss as the menu bar */
 .nav-menu-panel {
-  border-color: hsl(210 38% 84%);
+  border-color: hsl(210 36% 80%);
   background:
-    linear-gradient(180deg, hsl(var(--nav-sheen) / .5) 0%, hsl(var(--nav-sheen) / .16) 34%, hsl(var(--nav-sheen) / 0) 62%),
-    linear-gradient(180deg, hsl(0 0% 100%), hsl(210 42% 97%));
-  box-shadow: 0 16px 34px -20px hsl(var(--nav-shadow) / .42);
+    linear-gradient(180deg, hsl(0 0% 100% / .96) 0%, hsl(0 0% 100% / .5) 30%, hsl(0 0% 100% / 0) 58%),
+    linear-gradient(180deg, hsl(210 44% 95%), hsl(212 38% 90%));
+  box-shadow: 0 18px 36px -20px hsl(var(--nav-shadow) / .45);
 }
 .nav-menu-panel::before {
   content: "";
   position: absolute;
   inset: 0 0 auto;
   height: 1px;
-  background: linear-gradient(90deg, hsl(var(--nav-tint) / 0), hsl(var(--nav-tint) / .45) 45%, hsl(var(--nav-tint) / .26) 72%, hsl(var(--nav-tint) / 0));
+  background: linear-gradient(90deg, hsl(0 0% 100% / 0), hsl(0 0% 100% / .95) 40%, hsl(0 0% 100% / .7) 70%, hsl(0 0% 100% / 0));
   pointer-events: none;
 }
 .nav-menu-panel .border-b { border-bottom-color: hsl(210 38% 88%); }
