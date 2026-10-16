@@ -15,6 +15,7 @@ export default function AboutStory({ data }: { data: AboutStoryData }) {
   const [selected, setSelected] = useState<number | null>(null);
   const controls = useRef<(HTMLButtonElement | null)[]>([]);
   const topic = selected === null ? undefined : data.topics[selected];
+  const paragraphs = topic?.lines.join(" ").split(/Our (mission|vision):\s*/i);
 
   const navigate = (event: KeyboardEvent<HTMLButtonElement>, index: number) => {
     const last = data.topics.length - 1;
@@ -36,7 +37,12 @@ export default function AboutStory({ data }: { data: AboutStoryData }) {
         <div className="about-explorer-stage" aria-live="polite" aria-atomic="true">
           <div className="about-explorer-copy" key={selected ?? "intro"}>
             <h2>{topic?.title ?? data.title}</h2>
-            {topic ? <p className="about-explorer-lines">{topic.lines.map((line) => <span key={line}>{line}</span>)}</p>
+            {paragraphs ? <div className="about-explorer-lines">
+              <p>{paragraphs[0]}</p>
+              {paragraphs.length > 1 && paragraphs.slice(1).map((text, i) => i % 2 === 0 ? (
+                <p key={text}><span className="about-explorer-label">Our {text === "mission" ? "Mission" : "Vision"}</span>{" "}{paragraphs[i + 2]}</p>
+              ) : null)}
+            </div>
               : <p className="about-explorer-description">{data.description}</p>}
           </div>
         </div>
