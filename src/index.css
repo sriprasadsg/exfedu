@@ -352,6 +352,15 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .partner-3d-card.enquiry-step-card { min-height: 285px; width: 100%; border-radius: var(--radius); padding: 1.5rem; }
 .enquiry-step-body { min-height: 130px; animation: enquiry-step-in .2s ease-out; }
 @keyframes enquiry-step-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+.enquiry-success-icon { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; color: hsl(var(--connection-teal)); background: linear-gradient(135deg, hsl(var(--connection-blue) / .12), hsl(var(--connection-teal) / .16)); border: 1px solid hsl(var(--connection-teal) / .35); box-shadow: 0 4px 12px hsl(var(--connection-teal) / .15); animation: enquiry-success-pop .45s cubic-bezier(.34,1.4,.64,1); }
+.enquiry-success-icon svg { animation: enquiry-success-glow 3s ease-in-out infinite .5s; }
+@keyframes enquiry-success-pop { from { opacity: 0; transform: scale(.6); } to { opacity: 1; transform: scale(1); } }
+@keyframes enquiry-success-glow { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+.enquiry-restart { border-color: hsl(var(--connection-blue) / .4); color: hsl(var(--connection-blue)); gap: .45rem; transition: border-color .18s ease, background-color .18s ease, transform .18s ease, box-shadow .18s ease; }
+.partner-3d-card .enquiry-restart:hover { border-color: hsl(var(--connection-teal) / .55); color: hsl(var(--connection-teal)); background: hsl(var(--connection-teal) / .08); transform: translateY(-1px); box-shadow: 0 3px 8px hsl(var(--connection-teal) / .15); }
+.enquiry-restart svg { transition: transform .3s ease; }
+.enquiry-restart:hover svg { transform: rotate(-90deg); }
+@media (prefers-reduced-motion: reduce) { .enquiry-success-icon, .enquiry-success-icon svg, .enquiry-restart svg { animation: none; transition: none; } }
 @media (max-width: 700px) {
   .enquiry-compact-layout { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
   .enquiry-compact-layout .partner-3d-stage { max-width: 135px; }
