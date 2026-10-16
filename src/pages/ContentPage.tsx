@@ -6,6 +6,7 @@ import { categories, findPage, navPages } from "@/data/site";
 import programmesBanner from "@/assets/programmes-cube-banner.jpg.asset.json";
 import aboutBanner from "@/assets/about-hero-banner.jpg.asset.json";
 import industryBanner from "@/assets/industry-hero-banner.jpg.asset.json";
+import internshipsBanner from "@/assets/internships-banner.jpg.asset.json";
 import researchImg from "@/assets/hero-research.png";
 import ibmImg from "@/assets/hero-ibm.png";
 import successImg from "@/assets/hero-success.png";
@@ -116,18 +117,21 @@ const ContentPage = () => {
 
   return (
     <Layout>
-      {page.path === "/programmes" ? (
-        <section className="page-hero-banner" aria-label="Programmes introduction">
+      {page.path === "/programmes" || page.path === "/internships" ? (
+        <section
+          className="page-hero-banner"
+          aria-label={page.path === "/programmes" ? "Programmes introduction" : "Internships & Industry Exposure introduction"}
+        >
           <div className="container relative">
             {breadcrumb}
             <div className="mt-8">{heading}</div>
           </div>
           <img
-            src={programmesBanner.url}
+            src={page.path === "/programmes" ? programmesBanner.url : internshipsBanner.url}
             alt=""
             aria-hidden="true"
-            width={1920}
-            height={1080}
+            width={page.path === "/programmes" ? 1920 : 1536}
+            height={page.path === "/programmes" ? 1080 : 1920}
             className="page-hero-banner-art"
           />
         </section>
