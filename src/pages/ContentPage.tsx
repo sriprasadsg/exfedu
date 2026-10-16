@@ -3,17 +3,13 @@ import Layout from "@/components/layout/Layout";
 import NotFound from "./NotFound";
 import { BlockView } from "@/components/site/Blocks";
 import { categories, findPage, navPages } from "@/data/site";
-import programmesImg from "@/assets/books-3d-open.png";
+import programmesBanner from "@/assets/programmes-cube-banner.jpg.asset.json";
 import researchImg from "@/assets/hero-research.png";
 import ibmImg from "@/assets/hero-ibm.png";
 import successImg from "@/assets/hero-success.png";
 import skillshoneImg from "@/assets/hero-skillshone.png";
-import techChip from "@/assets/tech-chip.png";
-import techNeural from "@/assets/tech-neural.png";
-import techCloud from "@/assets/tech-cloud.png";
 
 const heroVisuals: Record<string, string> = {
-  "/programmes": programmesImg,
   "/research-innovation": researchImg,
   "/industry-collaborations/ibm": ibmImg,
   "/student-success": successImg,
@@ -47,36 +43,54 @@ const ContentPage = () => {
     );
   }
 
+  const breadcrumb = (
+    <nav className="text-sm text-muted-foreground" aria-label="Breadcrumb">
+      <Link to="/" className="hover:text-primary">Exafluence Education</Link> / {cat.title}
+      {parent && <> / <Link to={parent.path} className="hover:text-primary">{parent.title}</Link></>}
+    </nav>
+  );
+
+  const heading = (
+    <div className="flex items-start gap-5 animate-fade-in">
+      <span className="glossy-icon mt-1 hidden h-14 w-14 shrink-0 items-center justify-center rounded-full sm:flex"><page.icon className="h-6 w-6 text-primary" strokeWidth={1.25} /></span>
+      <div>
+        {page.eyebrow && <p className="mb-2 text-xs uppercase tracking-[0.14em] text-muted-foreground">{page.eyebrow}</p>}
+        <h1 className="font-display text-4xl font-medium md:text-5xl">{page.title}</h1>
+        <p className="hero-summary mt-4 text-lg leading-relaxed text-muted-foreground">{page.summary}</p>
+      </div>
+    </div>
+  );
+
   return (
     <Layout>
-      <section className={`relative overflow-hidden border-b${page.path === "/programmes" ? " pb-24 lg:pb-0" : ""}`}>
-        {page.path === "/programmes" && (
-          <div className="page-decor" aria-hidden="true">
-            <img src={techChip} alt="" loading="lazy" width={816} height={816} className="page-decor__item page-decor__item--chip" />
-            <img src={techNeural} alt="" loading="lazy" width={816} height={816} className="page-decor__item page-decor__item--net" />
-            <img src={techCloud} alt="" loading="lazy" width={816} height={816} className="page-decor__item page-decor__item--cloud" />
+      {page.path === "/programmes" ? (
+        <section className="page-hero-banner" aria-label="Programmes introduction">
+          <img
+            src={programmesBanner.url}
+            alt=""
+            aria-hidden="true"
+            width={1920}
+            height={1080}
+            className="page-hero-banner-art"
+          />
+          <div className="container relative">
+            {breadcrumb}
+            <div className="mt-8">{heading}</div>
           </div>
-        )}
-        <div className="container relative py-14 md:py-20">
-          <nav className="text-sm text-muted-foreground" aria-label="Breadcrumb">
-            <Link to="/" className="hover:text-primary">Exafluence Education</Link> / {cat.title}
-            {parent && <> / <Link to={parent.path} className="hover:text-primary">{parent.title}</Link></>}
-          </nav>
-          <div className="mt-8 grid items-center gap-10 md:grid-cols-[1fr_auto]">
-            <div className="flex items-start gap-5 animate-fade-in">
-              <span className="glossy-icon mt-1 hidden h-14 w-14 shrink-0 items-center justify-center rounded-full sm:flex"><page.icon className="h-6 w-6 text-primary" strokeWidth={1.25} /></span>
-              <div>
-                {page.eyebrow && <p className="mb-2 text-xs uppercase tracking-[0.14em] text-muted-foreground">{page.eyebrow}</p>}
-                <h1 className="font-display text-4xl font-medium md:text-5xl">{page.title}</h1>
-                <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">{page.summary}</p>
-              </div>
+        </section>
+      ) : (
+        <section className="relative overflow-hidden border-b">
+          <div className="container relative py-14 md:py-20">
+            {breadcrumb}
+            <div className="mt-8 grid items-center gap-10 md:grid-cols-[1fr_auto]">
+              {heading}
+              {heroVisuals[page.path] && (
+                <img src={heroVisuals[page.path]} alt="" aria-hidden="true" width={1024} height={1024} className="hero-visual hero-visual--float mx-auto w-56 md:w-72 lg:w-80" />
+              )}
             </div>
-            {heroVisuals[page.path] && (
-              <img src={heroVisuals[page.path]} alt="" aria-hidden="true" width={1024} height={1024} className={`hero-visual mx-auto w-56 md:w-72 lg:w-80${page.path === "/programmes" ? "" : " hero-visual--float"}`} />
-            )}
           </div>
-        </div>
-      </section>
+        </section>
+      )}
       <div className="container grid gap-12 py-14 lg:grid-cols-[1fr_240px]">
         <div className="min-w-0 space-y-16">{page.blocks.map((b, i) => <BlockView key={i} block={b} page={page} />)}</div>
         <aside className="hidden lg:block">
