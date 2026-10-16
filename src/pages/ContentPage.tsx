@@ -4,7 +4,7 @@ import NotFound from "./NotFound";
 import { BlockView } from "@/components/site/Blocks";
 import { categories, findPage, navPages } from "@/data/site";
 import programmesBanner from "@/assets/programmes-cube-banner.jpg.asset.json";
-import aboutBanner from "@/assets/about-connected-panels.jpg";
+import aboutBanner from "@/assets/about-hero-banner.jpg.asset.json";
 import researchImg from "@/assets/hero-research.png";
 import ibmImg from "@/assets/hero-ibm.png";
 import successImg from "@/assets/hero-success.png";
@@ -33,7 +33,7 @@ const ContentPage = () => {
   if (page.path === "/about") {
     return (
       <Layout>
-        <section className="page-hero-banner" aria-label="About Us introduction">
+        <section className="page-hero-banner page-hero-banner--about" aria-label="About Us introduction">
           <div className="container relative">
             <nav className="text-sm text-muted-foreground" aria-label="Breadcrumb"><Link to="/" className="hover:text-primary">Exafluence Education</Link> / About Us</nav>
             <div className="mt-8">
@@ -43,11 +43,11 @@ const ContentPage = () => {
             </div>
           </div>
           <img
-            src={aboutBanner}
+            src={aboutBanner.url}
             alt=""
             aria-hidden="true"
             width={1920}
-            height={1088}
+            height={1080}
             className="page-hero-banner-art"
           />
         </section>
