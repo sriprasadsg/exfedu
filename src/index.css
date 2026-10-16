@@ -567,14 +567,22 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
-  opacity: .5;
+  object-position: 68% center;
+  opacity: .62;
   filter: saturate(.92);
+}
+/* pale wash on the copy side so the title and tagline stay readable */
+.hero-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, hsl(var(--background)) 0%, hsl(var(--background) / .9) 34%, hsl(var(--background) / 0) 76%);
 }
 .hero-banner-copy {
   position: relative;
   text-align: left;
-  padding-block: clamp(2.75rem, 7vw, 5.5rem);
+  padding-block: clamp(3.25rem, 8vw, 6.25rem);
   padding-inline: 1.25rem;
   padding-inline-start: clamp(1.5rem, 6vw, 4rem);
 }
