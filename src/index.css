@@ -589,14 +589,14 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .hero-banner-art {
   position: absolute;
   top: 0;
-  left: 12%;
-  width: 88%;
+  left: 22%;
+  width: 78%;
   height: 100%;
   object-fit: cover;
   object-position: center;
   /* feather the artwork's left edge so it melts into the copy side */
-  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 11%);
-  mask-image: linear-gradient(90deg, transparent 0, #000 11%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 24%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 24%);
 }
 /* pale wash on the copy side so the title and tagline stay readable */
 .hero-banner::after {
@@ -604,7 +604,7 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(90deg, hsl(var(--background)) 0%, hsl(var(--background)) 22%, hsl(var(--background) / 0) 46%);
+  background: linear-gradient(90deg, hsl(var(--background)) 0%, hsl(var(--background)) 26%, hsl(var(--background) / 0) 52%);
 }
 .hero-banner-copy {
   position: relative;
@@ -647,16 +647,22 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
   /* on a narrow screen the copy sits above the artwork so both stay readable */
   .hero-banner { min-height: 306px; align-items: flex-start; }
   .hero-banner-copy { padding-block: 1.7rem 0; }
-  .hero-banner::after { background: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--background)) 26%, hsl(var(--background) / 0) 55%); }
+  .hero-banner::after {
+    background:
+      linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--background)) 20%, hsl(var(--background) / 0) 40%),
+      linear-gradient(0deg, hsl(var(--background)) 0%, hsl(var(--background)) 20%, hsl(var(--background) / 0) 46%);
+  }
   .hero-banner-art {
     top: auto;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 68%;
-    object-fit: contain;
-    -webkit-mask-image: radial-gradient(94% 132% at 50% 56%, #000 74%, transparent 100%);
-    mask-image: radial-gradient(94% 132% at 50% 56%, #000 74%, transparent 100%);
+    height: 74%;
+    object-fit: cover;
+    object-position: center;
+    /* fade the artwork's own top and bottom so no grey backdrop edge meets the page */
+    -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 26%, #000 58%, transparent 94%);
+    mask-image: linear-gradient(180deg, transparent 0, #000 26%, #000 58%, transparent 94%);
   }
 }
 @keyframes hero-tagline-breathe {
