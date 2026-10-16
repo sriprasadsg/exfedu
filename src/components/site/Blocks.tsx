@@ -6,6 +6,7 @@ import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { PENDING, pages, programmes, programmeAreas, galleryItems, type Block, type Page, type Tone } from "@/data/site";
 import PartnerEnquiry from "@/components/home/PartnerEnquiry";
+import AboutStory from "@/components/site/AboutStory";
 
 const H2 = ({ children }: { children: React.ReactNode }) => <h2 className="site-section-title font-display font-normal">{children}</h2>;
 
@@ -162,6 +163,8 @@ export const BlockView = ({ block, page }: { block: Block; page: Page }) => {
           </div>
         ))}</div>
       );
+    case "about-story":
+      return <AboutStory data={block.data} />;
     case "enquiry-form":
       return <div id="partner-enquiry-form"><PartnerEnquiry intro={block.intro} /></div>;
     case "gallery":
