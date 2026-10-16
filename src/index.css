@@ -619,7 +619,6 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .exi-substitute--on { border-color: hsl(205 88% 58%); box-shadow: 0 10px 24px -14px hsl(205 70% 45% / .35); }
 .exi-substitute .exi-wm { width: min(380px, 100%); --wm-op: .07; }
 .exi-substitute-idle { display: flex; align-items: center; justify-content: center; min-height: 7rem; }
-.exi-substitute-idle .exi-wm { position: absolute; inset: 0; margin: auto; width: min(380px, 100%); height: auto; opacity: .5; }
 .exi-substitute-idle .exi-substitute-title { margin: 0; }
 .exi-substitute-title { margin: 0 0 .6rem; font-size: .95rem; font-weight: 600; color: hsl(var(--primary)); }
 .exi-fade { position: relative; z-index: 1; animation: exiRise .35s ease both; }
