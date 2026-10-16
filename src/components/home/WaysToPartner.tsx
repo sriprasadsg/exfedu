@@ -15,6 +15,19 @@ const Watermark = () => (
   <img className="exi-wm" src={exiIllustration} alt="" width={1024} height={768} aria-hidden="true" />
 );
 
+/** Splits the brand word so "Exa" renders red and "fluence" blue. */
+const brandWord = (text: string) =>
+  text.split(/(Exafluence)/g).map((part, i) =>
+    part === "Exafluence" ? (
+      <span key={i}>
+        <span className="brand-exa">Exa</span>
+        <span className="brand-fluence">fluence</span>
+      </span>
+    ) : (
+      part
+    )
+  );
+
 type Item = { title: string; sub: string; points: string[] };
 
 /** Detail bullets render only once approved; until then the approval placeholder shows. */
@@ -89,7 +102,7 @@ const WaysToPartner = () => {
                     onMouseEnter={() => setOpen(i)}
                     onFocus={() => setOpen(i)}
                     onClick={() => setOpen(i)}>
-                    <span className="exi-box-title">{it.title}</span>
+                    <span className="exi-box-title">{brandWord(it.title)}</span>
                     <span className="exi-box-subrow">
                       <span className="exi-box-sub">{it.sub}</span>
                       <ChevronRight className="exi-box-chev h-3.5 w-3.5" aria-hidden />
@@ -106,7 +119,7 @@ const WaysToPartner = () => {
             {active ? (
               <div className="exi-fade" key={active.title}>
                 <Watermark />
-                <p className="exi-substitute-title">{active.title}</p>
+                <p className="exi-substitute-title">{brandWord(active.title)}</p>
                 {active.points?.length ? (
                   <ul className="exi-list">{active.points.map((pt) => <li key={pt}>{pt}</li>)}</ul>
                 ) : (
@@ -118,7 +131,7 @@ const WaysToPartner = () => {
             ) : (
               <div className="exi-substitute-idle">
                 <Watermark />
-                <p className="exi-substitute-title">Discover the Exafluence Approach</p>
+                <p className="exi-substitute-title">{brandWord("Discover the Exafluence Approach")}</p>
               </div>
             )}
           </div>
