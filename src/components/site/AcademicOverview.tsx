@@ -23,7 +23,7 @@ export default function AcademicOverview({ data }: { data: AcademicOverviewData 
             <p className="academic-banner-description">{data.description}</p>
           </div>
           <div className="academic-banner-photo">
-            <img src={bannerStack.url} alt="Sky-blue glass panels floating above a shared base" width={1600} height={1350} />
+            <img src={bannerStack.url} alt="Sky-blue glass panels floating above a shared base" width={1384} height={1136} />
           </div>
         </div>
       </div>
