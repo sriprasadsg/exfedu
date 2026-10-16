@@ -560,7 +560,13 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 
 /* Hero banner — decorative tile artwork behind, two text lines centred */
 .hero-section { background: hsl(var(--background)); }
-.hero-banner { position: relative; overflow: hidden; }
+.hero-banner {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  min-height: clamp(300px, 33vw, 470px);
+}
 .hero-banner-art {
   position: absolute;
   inset: 0;
@@ -581,8 +587,9 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 }
 .hero-banner-copy {
   position: relative;
+  z-index: 1;
   text-align: left;
-  padding-block: clamp(3.25rem, 8vw, 6.25rem);
+  padding-block: clamp(2rem, 5vw, 3.5rem);
   padding-inline: 1.25rem;
   padding-inline-start: clamp(1.5rem, 6vw, 4rem);
 }
