@@ -22,7 +22,16 @@
 .academic-partner-card::before { content: ''; position: absolute; top: -1px; left: 24px; right: 24px; height: 3px; border-radius: 0 0 3px 3px; background: hsl(var(--connection-blue)); }
 .academic-partner-card:hover, .academic-partner-card:focus-within { border-color: hsl(var(--connection-blue) / .6); }
 .academic-logo { height: 64px; display: flex; align-items: center; margin-bottom: 18px; }
-.academic-logo img { max-width: 155px; height: 64px; object-fit: contain; object-position: left center; }
+.academic-logo img {
+  max-width: 200px;
+  height: 56px;
+  object-fit: contain;
+  object-position: left center;
+  transition: transform 260ms ease;
+  animation: academic-logo-in 600ms ease-out backwards;
+}
+.academic-partner-card:hover .academic-logo img, .academic-partner-card:focus-within .academic-logo img { transform: translateY(-2px); }
+@keyframes academic-logo-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 .academic-partner-label { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: hsl(var(--connection-blue)); }
 .academic-partner-card h3 { font-size: 21px; line-height: 1.35; font-weight: 500; color: hsl(var(--foreground)); margin-top: 6px; }
 .academic-partner-description { font-size: 14px; line-height: 1.7; margin-top: 12px; flex: 1; }
