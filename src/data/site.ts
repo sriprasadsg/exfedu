@@ -1,6 +1,6 @@
 import {
   Building2, Landmark, Network, BookOpen, FlaskConical, Briefcase, Compass, Lightbulb, Award,
-  LayoutGrid, MonitorPlay, Images, Newspaper, Info, Users, Mail, HelpCircle, GraduationCap,
+  LayoutGrid, MonitorPlay, Images, Newspaper, Info, Users, Mail, GraduationCap,
   Code2, BarChart3, Cloud, Sparkles, Database, Terminal, Presentation, Rocket, type LucideIcon,
 } from "lucide-react";
 import skillshoneLogo from "@/assets/skillshone-logo.png.asset.json";
@@ -19,6 +19,7 @@ export type Block =
   | { type: "team"; title: string; groups: string[] }
   | { type: "gallery"; filters: string[] }
   | { type: "children"; title: string }
+  | { type: "enquiry-form"; title: string }
   | { type: "logo"; src: string; alt: string }
   | { type: "cta"; title: string; text: string; label: string; to?: string };
 
@@ -89,17 +90,17 @@ export const pages: Page[] = [
   { path: "/about", title: "About Exafluence Education", category: "core", icon: Info, eyebrow: "A Division of Exafluence Inc., USA",
     summary: "The education arm connecting academia with industry and technology.",
     blocks: [
+      { type: "text", title: "Connecting Technology Expertise with Educational Purpose", text: "Exafluence Education is the EdTech division of Exafluence Inc., USA. We bring the technology expertise of Exafluence Inc. — data, analytics and AI solutions delivered across industries — into education, connecting academia, industry and technology so learning stays relevant to real-world practice." },
+      { type: "features", title: "Technology expertise across industries", note: "Industry expertise of Exafluence Inc., USA.", items: ["Financial Services", "Healthcare & Pharma", "Consumer Packaged Goods & Retail", "Energy & Utilities", "Telecommunications", "Manufacturing & Industrial IoT"] },
       { type: "pending", title: "Who we are", items: ["About Exafluence Education", "Connection with Exafluence Inc.", "Vision", "Mission"] },
       { type: "pathway", title: "Academic–Industry–Technology Ecosystem", steps: ["Academia", "Exafluence Education", "Industry", "Technology"] },
       { type: "pending", title: "How we work", items: ["Industry-Integrated Learning Approach", "Quality / Standards", "Tools & Technologies"] },
-      enquire(),
+      { type: "enquiry-form", title: "Partner enquiry" },
     ] },
   { path: "/team", title: "Academic & Technical Team", category: "core", icon: Users,
     summary: "Faculty and industry practitioners who guide every learner.",
     blocks: [{ type: "team", title: "Our team", groups: ["Core Faculty", "Guest & Visiting Faculty"] }] },
   { path: "/contact", title: "Contact / Enquiry", category: "core", icon: Mail, summary: "Ask about programmes, collaborations or admissions.", blocks: [] },
-  { path: "/faqs", title: "FAQs", category: "core", icon: HelpCircle, summary: "Answers to common questions from students, parents and partners.",
-    blocks: [{ type: "faq", title: "Frequently asked questions" }, enquire("Ask a question")] },
 
   // Academic
   { path: "/academic-collaborations", title: "Academic Collaborations", category: "academic", icon: Landmark,
