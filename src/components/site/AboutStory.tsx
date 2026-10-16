@@ -5,6 +5,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { Tone } from "@/data/site";
+import industryEditorial from "@/assets/industry-editorial.jpg";
 
 export type AboutStoryData = {
   intro: { title: string; text: string };
@@ -53,13 +54,22 @@ export default function AboutStory({ data }: { data: AboutStoryData }) {
             ))}
           </div>
         </div>
-        <div className="about-industry-domains">
-          <h3 className="about-card-title">Industries We Serve</h3>
-          <p className="about-card-text">{data.sectorsNote}</p>
+        <div className="about-industry-domains" aria-labelledby="industries-we-serve-title">
+          <div className="about-domains-editorial">
+            <div className="about-domains-heading">
+              <span className="about-domains-index" aria-hidden>02 / INDUSTRY DOMAINS</span>
+              <h3 id="industries-we-serve-title">Industries<br />We Serve</h3>
+              <p className="about-card-text">{data.sectorsNote}</p>
+            </div>
+            <figure className="about-domains-image">
+              <img src={industryEditorial} alt="Illustrative industrial engineering workspace" width={1200} height={800} loading="lazy" />
+              <figcaption>Data · Digital · AI</figcaption>
+            </figure>
+          </div>
           <div className="about-industry-domain-grid">
             {data.sectors.map((s, i) => (
-              <article key={s.title} className="about-industry-domain">
-                <Icon3D icon={sectorIcons[i] ?? Globe2} tone={tones[i % 4]} i={i} />
+              <article key={s.title} className={`about-industry-domain tone-edge--${tones[i % 4]}`}>
+                <div className="about-domain-top"><span className="about-domain-number">0{i + 1}</span><Icon3D icon={sectorIcons[i] ?? Globe2} tone={tones[i % 4]} i={i} /></div>
                 <div><h4 className="about-card-title">{s.title}</h4><p className="about-card-text">{s.text}</p></div>
               </article>
             ))}

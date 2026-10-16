@@ -1,6 +1,7 @@
 - [x] About page: connecting-technology details (approved Exafluence Inc. industry scope) + embedded partner enquiry form; verified 1280/375px, FAQs route now 404
 - [x] FAQs removed from the About Us (Core) menu; /faqs removed from site data
 # Roadmap
+- [ ] Apply the supplied editorial template to Industries We Serve only; preserve verified domain wording and homepage colours.
 - [x] Renovate the About Us opening as an independent Industry Expertise section using exafluence.com content and the existing navy/white, colourful-icon design; desktop/phone checks show three capabilities, five published domains, no overflow or runtime errors; site tests and build pass.
 - [x] Compact sequential partner enquiry with connected Partner–Academic–Industry–Technology diagram; validated previous-field hiding, retained answers, optional phone, success/error test delivery, and 375/1063px layouts.
 - [x] Reduce the overall white panel width while preserving readable content and visible blue edges; verified 1062/1440px.
