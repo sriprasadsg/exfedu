@@ -592,6 +592,7 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .site-header-panel .nav-on-navy:not([class*="cat-"]):hover,
 .site-header-panel .nav-on-navy:not([class*="cat-"])[data-state="open"] { color: hsl(210 80% 82%); }
 .site-header-panel {
+  position: relative;
   background:
     linear-gradient(180deg, hsl(var(--nav-sheen) / .10) 0%, hsl(var(--nav-sheen) / .03) 30%, hsl(var(--nav-sheen) / 0) 55%),
     linear-gradient(180deg, hsl(var(--nav-top)), hsl(var(--nav-bottom)));
