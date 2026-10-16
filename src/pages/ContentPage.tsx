@@ -33,11 +33,25 @@ const ContentPage = () => {
   if (page.path === "/about") {
     return (
       <Layout>
+        <section className="page-hero-banner" aria-label="About Us introduction">
+          <div className="container relative">
+            <nav className="text-sm text-muted-foreground" aria-label="Breadcrumb"><Link to="/" className="hover:text-primary">Exafluence Education</Link> / About Us</nav>
+            <div className="mt-8">
+              {page.eyebrow && <p className="mb-2 text-xs uppercase tracking-[0.14em] text-muted-foreground">{page.eyebrow}</p>}
+              <h1 className="font-display text-4xl font-medium md:text-5xl">{page.title}</h1>
+              <p className="hero-summary mt-4 text-lg leading-relaxed text-muted-foreground">{page.summary}</p>
+            </div>
+          </div>
+          <img
+            src={aboutBanner}
+            alt=""
+            aria-hidden="true"
+            width={1920}
+            height={1088}
+            className="page-hero-banner-art"
+          />
+        </section>
         <main className="container about-page">
-          <header className="about-page-heading">
-            <nav aria-label="Breadcrumb"><Link to="/" className="hover:text-primary">Exafluence Education</Link> / About Us</nav>
-            <h1>{page.title}</h1>
-          </header>
           {page.blocks.map((block, i) => <BlockView key={i} block={block} page={page} />)}
         </main>
       </Layout>
