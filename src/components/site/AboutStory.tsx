@@ -90,7 +90,6 @@ export default function AboutStory({ data }: { data: AboutStoryData }) {
                 variant="outline" aria-pressed={selected === i} onMouseEnter={() => setSelected(i)} onFocus={() => setSelected(i)}
                 onClick={() => setSelected(i)} onKeyDown={(event) => navigate(event, i)}
                 className={`about-topic${i === data.topics.length - 1 ? " about-topic--education" : ""}`}>
-                <span className="about-topic-number">{String(i + 1).padStart(2, "0")}</span>
                 <Icon size={15} strokeWidth={1.5} aria-hidden="true" />
                 <span>{item.title}</span>
               </Button>
