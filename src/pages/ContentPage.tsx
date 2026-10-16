@@ -8,7 +8,7 @@ import aboutBanner from "@/assets/about-hero-banner-v2.png.asset.json";
 import industryBanner from "@/assets/industry-hero-cube-tower.png.asset.json";
 import internshipsBanner from "@/assets/internships-banner.jpg.asset.json";
 import researchBanner from "@/assets/research-search-key.png.asset.json";
-import careerBanner from "@/assets/career-hero-banner.jpg.asset.json";
+import careerBanner from "@/assets/career-glass-spheres.png.asset.json";
 import skillshoneBanner from "@/assets/skillshone-hero-banner.png.asset.json";
 import successImg from "@/assets/hero-success.png";
 import ibmBanner from "@/assets/ibm-hero-banner-v2.png.asset.json";
@@ -148,8 +148,8 @@ const ContentPage = () => {
             <img
               src={careerBanner.url}
               alt=""
-              width={1013}
-              height={1920}
+              width={1117}
+              height={1408}
               className="page-hero-banner-art"
             />
           </div>
