@@ -79,7 +79,7 @@ const WaysToPartner = () => {
 
         {/* Right: white card floating over the panel, six boxes in two columns */}
         <div className="exi-card">
-          <div className="exi-grid">
+          <div className="exi-grid" onMouseLeave={() => setOpen(null)}>
             {items.map((it, i) => {
               const isOpen = open === i;
               return (
@@ -103,7 +103,7 @@ const WaysToPartner = () => {
           {/* Shared substitute box: hovered box's content appears here, section stays put */}
           <div id="exi-substitute" className={`exi-substitute${active ? " exi-substitute--on" : ""}`}
             aria-live="polite">
-            {active && (
+            {active ? (
               <div className="exi-fade" key={active.title}>
                 <Watermark />
                 <p className="exi-substitute-title">{active.title}</p>
@@ -114,6 +114,11 @@ const WaysToPartner = () => {
                     <CircleDashed className="h-3 w-3" /> {PENDING}
                   </span>
                 )}
+              </div>
+            ) : (
+              <div className="exi-substitute-idle">
+                <Watermark />
+                <p className="exi-substitute-title">Discover the Exafluence Approach</p>
               </div>
             )}
           </div>

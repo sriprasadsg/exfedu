@@ -4,7 +4,7 @@ import { ArrowRight, Check, CircleDashed, ImageOff, type LucideIcon } from "luci
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { PENDING, PendingTag, pages, programmes, programmeAreas, galleryItems, type Block, type Page, type Tone } from "@/data/site";
+import { PENDING, pages, programmes, programmeAreas, galleryItems, type Block, type Page, type Tone } from "@/data/site";
 import PartnerEnquiry from "@/components/home/PartnerEnquiry";
 
 const H2 = ({ children }: { children: React.ReactNode }) => <h2 className="site-section-title font-display font-normal">{children}</h2>;
