@@ -892,9 +892,10 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 }
 
 /* ===== Career Development page ===== */
-/* Career hero banner — the balancing sculpture stays whole inside a tall panel at the right.
-   The panel's width follows its height so the same slice of the artwork is framed at every
-   screen width; the studio backdrop is feathered on all four edges. */
+/* Career hero banner — the circular career network sits whole at the right of the copy.
+   Its backdrop was normalised to pure white, so no feathering is needed: the artwork
+   melts into the page instead of meeting it with a seam. On phones it drops below the
+   copy and is still shown in full. */
 @media (min-width: 1024px) {
   .page-hero-banner--career > .container {
     min-height: 30rem;
@@ -907,37 +908,34 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
     top: 0;
     right: 0;
     bottom: 0;
-    left: auto;
-    width: auto;
-    aspect-ratio: 1117 / 1408;
+    left: 45%;
+    width: 55%;
     z-index: 0;
     pointer-events: none;
     overflow: hidden;
-    -webkit-mask-image: linear-gradient(180deg, transparent 0, rgba(0, 0, 0, .6) 16%, #000 40%, #000 84%, transparent 100%);
-    mask-image: linear-gradient(180deg, transparent 0, rgba(0, 0, 0, .6) 16%, #000 40%, #000 84%, transparent 100%);
   }
   .page-hero-banner--career .page-hero-banner-art {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    /* the panel carries the render's own ratio, so the whole stack stays in frame */
-    object-position: center center;
-    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 22%, #000 88%, transparent 100%);
-    mask-image: linear-gradient(90deg, transparent 0, #000 22%, #000 88%, transparent 100%);
+    object-fit: contain;
+    object-position: center right;
+    -webkit-mask-image: none;
+    mask-image: none;
   }
   /* the page title wraps well clear of the artwork */
   .page-hero-banner--career > .container > div { max-width: 30rem; }
 }
-/* Career hero banner — on phones show the whole sculpture instead of cropping it */
+/* Career hero banner — on phones show the whole network instead of cropping it */
 @media (max-width: 1023px) {
   .page-hero-banner--career .page-hero-banner-art {
     position: relative;
     height: auto;
     object-fit: contain;
-    -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 10%, #000 86%, transparent 100%);
-    mask-image: linear-gradient(180deg, transparent 0, #000 10%, #000 86%, transparent 100%);
+    object-position: center;
+    -webkit-mask-image: none;
+    mask-image: none;
   }
 }
 
