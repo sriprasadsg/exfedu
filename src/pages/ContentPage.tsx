@@ -4,7 +4,6 @@ import NotFound from "./NotFound";
 import { BlockView } from "@/components/site/Blocks";
 import { categories, findPage, navPages } from "@/data/site";
 import programmesArray from "@/assets/programmes-floating-glass.png.asset.json";
-import aboutBanner from "@/assets/about-flash-cards-banner.png.asset.json";
 import internshipsBanner from "@/assets/internships-banner.jpg.asset.json";
 import skillshoneBanner from "@/assets/skillshone-hero-banner.png.asset.json";
 import successImg from "@/assets/hero-success.png";
@@ -62,27 +61,7 @@ const ContentPage = () => {
   if (page.path === "/about") {
     return (
       <Layout>
-        <section className="page-hero-banner page-hero-banner--about" aria-label="About Us introduction">
-          <div className="container relative">
-            {breadcrumb}
-            <div className="mt-8">
-              {page.eyebrow && <p className="mb-2 text-xs uppercase tracking-[0.14em] text-muted-foreground">{page.eyebrow}</p>}
-              <h1 className="font-display text-4xl font-medium md:text-5xl">{page.title}</h1>
-              <p className="hero-summary mt-4 text-lg leading-relaxed text-muted-foreground">{page.summary}</p>
-            </div>
-          </div>
-          <img
-            src={aboutBanner.url}
-            alt=""
-            aria-hidden="true"
-            width={1658}
-            height={949}
-            className="page-hero-banner-art"
-          />
-        </section>
-        <main className="container about-page">
-          {page.blocks.map((block, i) => <BlockView key={i} block={block} page={page} />)}
-        </main>
+        {page.blocks.map((block, i) => <BlockView key={i} block={block} page={page} />)}
       </Layout>
     );
   }

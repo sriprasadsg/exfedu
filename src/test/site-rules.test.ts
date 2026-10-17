@@ -2,6 +2,20 @@ import { describe, expect, it } from "vitest";
 import { arms, categories, homepageCapabilities, pages, programmes } from "@/data/site";
 
 describe("approved website structure", () => {
+  it("attributes dated corporate recognitions to Exafluence Inc., not Exfedu", () => {
+    const overview = pages.find((page) => page.path === "/about")?.blocks.find((block) => block.type === "about-overview");
+    if (!overview || overview.type !== "about-overview") throw new Error("About overview missing");
+    expect(overview.data.milestones.recognitions.map(({ year, company }) => ({ year, company }))).toEqual([
+      { year: 2022, company: "Exafluence Inc." },
+      { year: 2023, company: "Exafluence Inc." },
+    ]);
+  });
+  it("links About programme and contact actions to the existing destinations", () => {
+    const overview = pages.find((page) => page.path === "/about")?.blocks.find((block) => block.type === "about-overview");
+    if (!overview || overview.type !== "about-overview") throw new Error("About overview missing");
+    expect(overview.data.explore.actions.map((action) => action.to)).toEqual(["/programmes", "/contact"]);
+    for (const action of overview.data.explore.actions) expect(pages.some((page) => page.path === action.to)).toBe(true);
+  });
   it("keeps academic partner and enquiry destinations on their existing pages", () => {
     const overview = pages.find((page) => page.path === "/academic-collaborations")?.blocks.find((block) => block.type === "academic-overview");
     if (!overview || overview.type !== "academic-overview") throw new Error("Academic overview missing");
