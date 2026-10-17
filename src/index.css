@@ -1013,26 +1013,38 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 }
 
 /* ===== About Us page ===== */
-/* About Us hero banner — the education-ecosystem chain runs the full width of the
-   render (book, chip, data platform, people, institution), so the copy sits above it
-   and the whole panorama shows as a band instead of being pushed into a side panel.
-   Its backdrop was normalised to pure white, so it meets the page with no seam and
-   needs no feather. On phones the band simply drops to its natural height. */
-.page-hero-banner--about > .container { padding-bottom: 0.75rem; }
-.page-hero-banner--about .page-hero-banner-art {
-  position: relative;
-  inset: auto;
-  width: 100%;
-  height: clamp(15rem, 30vw, 26rem);
-  object-fit: contain;
-  object-position: center;
-  -webkit-mask-image: none;
-  mask-image: none;
+/* About Us hero banner — the glass-panel chain with the silver tube sits whole on the
+   right of the copy on its own pure-white backdrop, so it meets the page with no seam
+   and needs no feather. On phones the artwork drops below the copy, shown in full. */
+@media (min-width: 1024px) {
+  .page-hero-banner--about > .container {
+    min-height: 30rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .page-hero-banner--about .page-hero-banner-art {
+    left: 49%;
+    width: 51%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center right;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  /* the copy wraps well clear of the artwork */
+  .page-hero-banner--about > .container > div { max-width: 30rem; }
 }
 @media (max-width: 1023px) {
   .page-hero-banner--about .page-hero-banner-art {
+    position: relative;
+    inset: auto;
+    width: 100%;
     height: auto;
     object-fit: contain;
+    object-position: center;
+    -webkit-mask-image: none;
+    mask-image: none;
   }
 }
 /* ===== IBM Collaboration page ===== */
