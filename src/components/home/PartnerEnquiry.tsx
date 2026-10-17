@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { z } from "zod";
-import { ArrowUpRight, ArrowLeft, CheckCircle2, AlertCircle, RotateCcw } from "lucide-react";
+import { ArrowUpRight, ArrowLeft, CheckCircle2, AlertCircle, RotateCcw, User, Building2, Mail, Phone, Network, MessageSquare } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -66,6 +66,7 @@ const labels: Record<Field, string> = {
   phone: "Phone number", type: "Collaboration type", message: "Collaboration requirement", consent: "Contact permission",
 };
 const emptyAnswers: Record<Field, string> = { name: "", organisation: "", email: "", phone: "", type: "", message: "", consent: "" };
+const fieldIcons: Partial<Record<Field, typeof User>> = { name: User, organisation: Building2, email: Mail, phone: Phone, type: Network, message: MessageSquare };
 export type EnquiryIntro = { title: string; description: string; points?: { label: string; text: string }[] };
 
 const defaultIntro: EnquiryIntro = {
@@ -160,19 +161,28 @@ const PartnerEnquiry = ({ intro = defaultIntro }: { intro?: EnquiryIntro }) => {
                     {labels[field]}{field === "phone" && <span className="ml-2 font-normal text-muted-foreground">(optional)</span>}
                   </label>
                   {field === "type" ? (
-                    <select id={`enquiry-${field}`} name={field} value={answers[field]} disabled={submitting} onChange={(e) => update(e.target.value)} {...aria} className="h-12 w-full rounded-md border border-input bg-background px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
-                      <option value="" disabled>Select a collaboration type</option>
-                      {collaborationTypes.map((t) => <option key={t} value={t}>{t}</option>)}
-                    </select>
+                    <div className={`enquiry-field enquiry-field--${field}`}>
+                      <span className="enquiry-field-icon" aria-hidden="true"><Network size={17} strokeWidth={1.8} /></span>
+                      <select id={`enquiry-${field}`} name={field} value={answers[field]} disabled={submitting} onChange={(e) => update(e.target.value)} {...aria} className="h-12 w-full rounded-md border border-input bg-background px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+                        <option value="" disabled>Select a collaboration type</option>
+                        {collaborationTypes.map((t) => <option key={t} value={t}>{t}</option>)}
+                      </select>
+                    </div>
                   ) : field === "message" ? (
-                    <Textarea id={`enquiry-${field}`} name={field} rows={3} maxLength={1000} value={answers[field]} disabled={submitting} onChange={(e) => update(e.target.value)} {...aria} />
+                    <div className={`enquiry-field enquiry-field--${field}`}>
+                      <span className="enquiry-field-icon" aria-hidden="true"><MessageSquare size={17} strokeWidth={1.8} /></span>
+                      <Textarea id={`enquiry-${field}`} name={field} rows={3} maxLength={1000} value={answers[field]} disabled={submitting} onChange={(e) => update(e.target.value)} {...aria} />
+                    </div>
                   ) : field === "consent" ? (
                     <label className="flex cursor-pointer items-start gap-3 text-sm leading-relaxed text-muted-foreground">
                       <input id={`enquiry-${field}`} name={field} type="checkbox" checked={answers.consent === "on"} disabled={submitting} onChange={(e) => update(e.target.checked ? "on" : "")} {...aria} className="mt-0.5 h-5 w-5 shrink-0 accent-primary" />
                       <span>I agree to be contacted by Exafluence Education about this enquiry.</span>
                     </label>
                   ) : (
-                    <Input id={`enquiry-${field}`} name={field} type={field === "email" ? "email" : field === "phone" ? "tel" : "text"} autoComplete={field === "organisation" ? "organization" : field === "phone" ? "tel" : field} maxLength={field === "name" ? 100 : field === "organisation" ? 150 : field === "email" ? 255 : 20} value={answers[field]} disabled={submitting} onChange={(e) => update(e.target.value)} {...aria} />
+                    <div className={`enquiry-field enquiry-field--${field}`}>
+                      <span className="enquiry-field-icon" aria-hidden="true">{(() => { const FIcon = fieldIcons[field] ?? User; return <FIcon size={17} strokeWidth={1.8} />; })()}</span>
+                      <Input id={`enquiry-${field}`} name={field} type={field === "email" ? "email" : field === "phone" ? "tel" : "text"} autoComplete={field === "organisation" ? "organization" : field === "phone" ? "tel" : field} maxLength={field === "name" ? 100 : field === "organisation" ? 150 : field === "email" ? 255 : 20} value={answers[field]} disabled={submitting} onChange={(e) => update(e.target.value)} {...aria} />
+                    </div>
                   )}
                   {error && <p id="enquiry-field-error" role="alert" className="mt-2 text-sm text-destructive">{error}</p>}
                 </div>
