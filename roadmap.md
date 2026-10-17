@@ -1,6 +1,7 @@
 - [x] About page: connecting-technology details (approved Exafluence Inc. industry scope) + embedded partner enquiry form; verified 1280/375px, FAQs route now 404
 - [x] FAQs removed from the About Us (Core) menu; /faqs removed from site data
 # Roadmap
+- [x] Restore the uploaded menu logo's original deep navy–red–deep navy colours without recolouring; neatly crop surrounding space and refresh the matching favicon.
 - [x] Refine only the Academic Collaborations overview per supplied brief; 251px desktop banner, balanced cards, approved wording, subtle connectors and compact navigation; verified 1280/1062/375px without overflow, partner/enquiry links, reduced motion and 13 regression tests. Approved partner logos unavailable, institution names retained as requested.
 - [x] Add persistent hover and keyboard-focus topic selection while retaining click/tap; ten tests pass and browser verifies matched image/content updates, persistent selection and reduced motion.
 - [x] Add five coordinated topic illustrations with synchronized fades, stable block dimensions and centered fully visible artwork; all five verified at 1280/1062/375px, descriptions at most seven lines, no overflow or runtime errors.
