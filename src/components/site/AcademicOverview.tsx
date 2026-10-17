@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, FlaskConical, GraduationCap, MessageCircle, type LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import bannerStack from "@/assets/academic-collab-network-2.png.asset.json";
 
 export type AcademicOverviewData = {
   title: string; subtitle: string; description: string;
@@ -15,16 +14,11 @@ export default function AcademicOverview({ data }: { data: AcademicOverviewData 
     <header className="academic-banner border-b">
       <div className="container">
         <nav aria-label="Breadcrumb" className="academic-breadcrumb"><Link to="/">Exafluence Education</Link><span aria-hidden="true"> / </span><span>{data.title}</span></nav>
-        <div className="academic-banner-inner">
-          <div className="academic-banner-copy">
-            <p className="academic-eyebrow">Academic Partnerships</p>
-            <h1>{data.title}</h1>
-            <p className="academic-subtitle">{data.subtitle}</p>
-            <p className="academic-banner-description">{data.description}</p>
-          </div>
-          <div className="academic-banner-photo">
-            <img src={bannerStack.url} alt="A columned university building at the centre of a light-blue network, linked to a molecule with bar charts, a globe, an open book and a group of people" width={1448} height={1086} />
-          </div>
+        <div className="academic-banner-copy">
+          <p className="academic-eyebrow">Academic Partnerships</p>
+          <h1>{data.title}</h1>
+          <p className="academic-subtitle">{data.subtitle}</p>
+          <p className="academic-banner-description">{data.description}</p>
         </div>
       </div>
     </header>
