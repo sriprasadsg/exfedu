@@ -975,47 +975,10 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
   }
 }
 
-/* ===== Industry & Technology page ===== */
-/* Industry hero banner — the whole cube structure on desktop, feathered at every edge */
-@media (min-width: 1024px) {
-  .page-hero-banner--industry > .container {
-    min-height: 30rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  /* the landscape pastel network sits whole at the right on its own pure-white
-     backdrop — contained, so every disc and link stays visible with no feather */
-  .page-hero-banner--industry .page-hero-banner-art {
-    left: 49%;
-    width: 51%;
-    height: 100%;
-    object-fit: contain;
-    object-position: center right;
-    -webkit-mask-image: none;
-    mask-image: none;
-  }
-  /* the long page title wraps well clear of the artwork */
-  .page-hero-banner--industry > .container > div { max-width: 30rem; }
-}
-/* Industry hero banner — on phones the whole network shows below the copy */
-@media (max-width: 1023px) {
-  .page-hero-banner--industry .page-hero-banner-art {
-    position: relative;
-    inset: auto;
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    object-position: center;
-    -webkit-mask-image: none;
-    mask-image: none;
-  }
-}
-
 /* ===== About Us page ===== */
-/* About Us hero banner — the five glossy flash cards sit whole on the LEFT of the copy
+/* About Us hero banner — the five glossy flash cards sit whole on the RIGHT of the copy
    on their own pure-white backdrop, so they meet the page with no seam and need no
-   feather. The copy keeps its natural left-aligned text but sits on the right side.
+   feather. The copy keeps its natural left-aligned text and sits on the left side.
    On phones the artwork drops below the copy, shown in full. */
 @media (min-width: 1024px) {
   .page-hero-banner--about > .container {
