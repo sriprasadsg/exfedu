@@ -5,7 +5,7 @@ import { BlockView } from "@/components/site/Blocks";
 import { categories, findPage, navPages } from "@/data/site";
 import programmesArray from "@/assets/programmes-glass-array.png.asset.json";
 import aboutBanner from "@/assets/about-hero-education-ecosystem.png.asset.json";
-import industryBanner from "@/assets/industry-hero-cube-tower.png.asset.json";
+import industryBanner from "@/assets/industry-collab-network.png.asset.json";
 import internshipsBanner from "@/assets/internships-banner.jpg.asset.json";
 import researchBanner from "@/assets/research-search-key.png.asset.json";
 import careerBanner from "@/assets/career-glass-spheres.png.asset.json";
@@ -98,15 +98,14 @@ const ContentPage = () => {
             {breadcrumb}
             <div className="mt-8">{heading}</div>
           </div>
-          <div className="page-hero-banner-art-mask" aria-hidden="true">
-            <img
-              src={industryBanner.url}
-              alt=""
-              width={1059}
-              height={1486}
-              className="page-hero-banner-art"
-            />
-          </div>
+          <img
+            src={industryBanner.url}
+            alt=""
+            aria-hidden="true"
+            width={1448}
+            height={1086}
+            className="page-hero-banner-art"
+          />
         </section>
         <main>{body}</main>
       </Layout>
