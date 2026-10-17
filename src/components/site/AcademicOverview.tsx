@@ -23,7 +23,7 @@ export default function AcademicOverview({ data }: { data: AcademicOverviewData 
             <p className="academic-banner-description">{data.description}</p>
           </div>
           <div className="academic-banner-photo">
-            <img src={bannerStack.url} alt="Miniature data-science network beside a university — a columned institution linked to a globe, an open book, charts and people" width={1448} height={1086} />
+            <img src={bannerStack.url} alt="A columned university building at the centre of a light-blue network, linked to a molecule with bar charts, a globe, an open book and a group of people" width={1448} height={1086} />
           </div>
         </div>
       </div>
