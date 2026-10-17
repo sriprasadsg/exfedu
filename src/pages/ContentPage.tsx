@@ -4,7 +4,7 @@ import NotFound from "./NotFound";
 import { BlockView } from "@/components/site/Blocks";
 import { categories, findPage, navPages } from "@/data/site";
 import programmesArray from "@/assets/programmes-glass-array.png.asset.json";
-import aboutBanner from "@/assets/about-hero-banner-v2.png.asset.json";
+import aboutBanner from "@/assets/about-hero-education-ecosystem.png.asset.json";
 import industryBanner from "@/assets/industry-hero-cube-tower.png.asset.json";
 import internshipsBanner from "@/assets/internships-banner.jpg.asset.json";
 import researchBanner from "@/assets/research-search-key.png.asset.json";
@@ -78,8 +78,8 @@ const ContentPage = () => {
             src={aboutBanner.url}
             alt=""
             aria-hidden="true"
-            width={1658}
-            height={949}
+            width={1942}
+            height={809}
             className="page-hero-banner-art"
           />
         </section>
