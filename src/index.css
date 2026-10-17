@@ -22,14 +22,20 @@
 .about-editorial-section + .about-editorial-section { border-top: 1px solid hsl(var(--academic-edge)); }
 .about-editorial-industries { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 26px; margin-top: 32px; padding-top: 24px; border-top: 1px solid hsl(var(--academic-edge)); }
 .about-editorial-industries li { display: flex; gap: 12px; align-items: center; font-size: 14px; line-height: 1.6; }
-.about-editorial-industries svg { flex-shrink: 0; color: hsl(var(--connection-blue)); }
+.about-editorial-industries svg { flex-shrink: 0; color: hsl(var(--connection-blue)); animation: about-icon-drift 6s ease-in-out infinite; }
+.about-editorial-industries li:nth-child(4n+2) svg { color: hsl(var(--connection-teal)); animation-delay: -1.5s; }
+.about-editorial-industries li:nth-child(4n+3) svg { color: hsl(var(--connection-amber)); animation-delay: -3s; }
+.about-editorial-industries li:nth-child(4n) svg { color: hsl(var(--brand-red)); animation-delay: -4.5s; }
 .about-editorial-columns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px; margin-top: 24px; }
 .about-editorial-columns p + p { margin-top: 0; }
 .about-editorial-lead { margin-top: 20px; max-width: 900px; }
 .about-editorial-solutions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; margin-top: 30px; }
 .about-editorial-solutions > div { border-top: 2px solid hsl(var(--academic-edge)); padding-top: 22px; }
 .about-editorial-solutions dt { display: flex; align-items: center; gap: 12px; font-size: 19px; font-weight: 500; color: hsl(var(--foreground)); }
-.about-editorial-solutions svg { color: hsl(var(--connection-blue)); flex-shrink: 0; }
+.about-editorial-solutions svg { color: hsl(var(--connection-blue)); flex-shrink: 0; animation: about-icon-drift 6s ease-in-out infinite; }
+.about-editorial-solutions div:nth-child(2) svg { color: hsl(var(--connection-teal)); animation-delay: -2s; }
+.about-editorial-solutions div:nth-child(3) svg { color: hsl(var(--connection-amber)); animation-delay: -4s; }
+@keyframes about-icon-drift { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
 .about-editorial-solutions dd { font-size: 15px; margin-top: 12px; }
 .about-editorial-closing { margin-top: 28px; font-size: 15px; }
 .about-editorial-milestones { margin-top: 30px; }
