@@ -179,7 +179,10 @@ const PartnerEnquiry = ({ intro = defaultIntro }: { intro?: EnquiryIntro }) => {
                       <span>I agree to be contacted by Exafluence Education about this enquiry.</span>
                     </label>
                   ) : (
-                    <Input id={`enquiry-${field}`} name={field} type={field === "email" ? "email" : field === "phone" ? "tel" : "text"} autoComplete={field === "organisation" ? "organization" : field === "phone" ? "tel" : field} maxLength={field === "name" ? 100 : field === "organisation" ? 150 : field === "email" ? 255 : 20} value={answers[field]} disabled={submitting} onChange={(e) => update(e.target.value)} {...aria} />
+                    <div className={`enquiry-field enquiry-field--${field}`}>
+                      <span className="enquiry-field-icon" aria-hidden="true">{(() => { const FIcon = fieldIcons[field] ?? User; return <FIcon size={17} strokeWidth={1.8} />; })()}</span>
+                      <Input id={`enquiry-${field}`} name={field} type={field === "email" ? "email" : field === "phone" ? "tel" : "text"} autoComplete={field === "organisation" ? "organization" : field === "phone" ? "tel" : field} maxLength={field === "name" ? 100 : field === "organisation" ? 150 : field === "email" ? 255 : 20} value={answers[field]} disabled={submitting} onChange={(e) => update(e.target.value)} {...aria} />
+                    </div>
                   )}
                   {error && <p id="enquiry-field-error" role="alert" className="mt-2 text-sm text-destructive">{error}</p>}
                 </div>
