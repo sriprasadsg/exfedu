@@ -853,43 +853,6 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
   .exi-fade, .exi-wm { animation: none; }
 }
 
-/* ===== Research & Innovation page ===== */
-/* Research hero banner — the square tile artwork bleeds in from the right,
-   feathered at every edge so its off-white backdrop never shows a seam */
-@media (min-width: 1024px) {
-  .page-hero-banner--research > .container {
-    min-height: 28rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  /* one fade for top and bottom on the frame, a second for left and right on the image */
-  .page-hero-banner--research > .page-hero-banner-art-mask {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    -webkit-mask-image: linear-gradient(180deg, transparent 0, rgba(0, 0, 0, .55) 20%, #000 48%, #000 86%, transparent 100%);
-    mask-image: linear-gradient(180deg, transparent 0, rgba(0, 0, 0, .55) 20%, #000 48%, #000 86%, transparent 100%);
-  }
-  .page-hero-banner--research .page-hero-banner-art {
-    object-fit: cover;
-    object-position: center;
-    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 24%, #000 92%, transparent 100%);
-    mask-image: linear-gradient(90deg, transparent 0, #000 24%, #000 92%, transparent 100%);
-  }
-  /* the page title wraps well clear of the artwork */
-  .page-hero-banner--research > .container > div { max-width: 30rem; }
-}
-/* Research hero banner — on phones show the whole artwork instead of cropping it */
-@media (max-width: 1023px) {
-  .page-hero-banner--research .page-hero-banner-art {
-    height: auto;
-    object-fit: contain;
-    -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 12%, #000 84%, transparent 100%);
-    mask-image: linear-gradient(180deg, transparent 0, #000 12%, #000 84%, transparent 100%);
-  }
-}
 
 
 /* ===== SkillShone page ===== */
