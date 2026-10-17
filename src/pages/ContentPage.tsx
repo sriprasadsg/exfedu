@@ -93,19 +93,11 @@ const ContentPage = () => {
   if (page.path === "/industry-collaborations") {
     return (
       <Layout>
-        <section className="page-hero-banner page-hero-banner--industry" aria-label="Industry & Technology Collaborations introduction">
+        <section className="page-hero-banner" aria-label="Industry & Technology Collaborations introduction">
           <div className="container relative">
             {breadcrumb}
             <div className="mt-8">{heading}</div>
           </div>
-          <img
-            src={industryBanner.url}
-            alt=""
-            aria-hidden="true"
-            width={1448}
-            height={1086}
-            className="page-hero-banner-art"
-          />
         </section>
         <main>{body}</main>
       </Layout>
