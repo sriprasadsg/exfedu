@@ -3,7 +3,7 @@ import Layout from "@/components/layout/Layout";
 import NotFound from "./NotFound";
 import { BlockView } from "@/components/site/Blocks";
 import { categories, findPage, navPages } from "@/data/site";
-import programmesArray from "@/assets/programmes-pyramid-banner.png.asset.json";
+import programmesArray from "@/assets/programmes-floating-glass.png.asset.json";
 import aboutBanner from "@/assets/about-flash-cards-banner.png.asset.json";
 import internshipsBanner from "@/assets/internships-banner.jpg.asset.json";
 import researchBanner from "@/assets/research-search-key.png.asset.json";
@@ -214,8 +214,8 @@ const ContentPage = () => {
             src={page.path === "/programmes" ? programmesArray.url : internshipsBanner.url}
             alt=""
             aria-hidden="true"
-            width={page.path === "/programmes" ? 1448 : 1536}
-            height={page.path === "/programmes" ? 1086 : 1920}
+            width={page.path === "/programmes" ? 1694 : 1536}
+            height={page.path === "/programmes" ? 928 : 1920}
             className="page-hero-banner-art"
           />
         </section>
