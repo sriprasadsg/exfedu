@@ -4,7 +4,7 @@ import NotFound from "./NotFound";
 import { BlockView } from "@/components/site/Blocks";
 import { categories, findPage, navPages } from "@/data/site";
 import programmesArray from "@/assets/programmes-pyramid-banner.png.asset.json";
-import aboutBanner from "@/assets/about-glass-tube-banner.png.asset.json";
+import aboutBanner from "@/assets/about-flash-cards-banner.png.asset.json";
 import industryBanner from "@/assets/industry-collab-network.png.asset.json";
 import internshipsBanner from "@/assets/internships-banner.jpg.asset.json";
 import researchBanner from "@/assets/research-search-key.png.asset.json";

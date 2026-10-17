@@ -1013,22 +1013,24 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 }
 
 /* ===== About Us page ===== */
-/* About Us hero banner — the glass-panel chain with the silver tube sits whole on the
-   right of the copy on its own pure-white backdrop, so it meets the page with no seam
-   and needs no feather. On phones the artwork drops below the copy, shown in full. */
+/* About Us hero banner — the five glossy flash cards sit whole on the LEFT of the copy
+   on their own pure-white backdrop, so they meet the page with no seam and need no
+   feather. The copy keeps its natural left-aligned text but sits on the right side.
+   On phones the artwork drops below the copy, shown in full. */
 @media (min-width: 1024px) {
   .page-hero-banner--about > .container {
     min-height: 30rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: flex-end;
   }
   .page-hero-banner--about .page-hero-banner-art {
-    left: 49%;
+    left: 0;
     width: 51%;
     height: 100%;
     object-fit: contain;
-    object-position: center right;
+    object-position: center left;
     -webkit-mask-image: none;
     mask-image: none;
   }
