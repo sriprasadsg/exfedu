@@ -1023,14 +1023,14 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-end;
+    align-items: flex-start;
   }
   .page-hero-banner--about .page-hero-banner-art {
-    left: 0;
+    left: 49%;
     width: 51%;
     height: 100%;
     object-fit: contain;
-    object-position: center left;
+    object-position: center right;
     -webkit-mask-image: none;
     mask-image: none;
   }
