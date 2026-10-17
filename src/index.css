@@ -515,6 +515,21 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .globe canvas { display: block; width: 100%; height: 100%; }
 .partner-3d-card.enquiry-step-card { min-height: 285px; width: 100%; border-radius: var(--radius); padding: 1.5rem; }
 .enquiry-step-body { min-height: 130px; animation: enquiry-step-in .2s ease-out; }
+.enquiry-field { position: relative; animation: enquiry-field-in .22s ease-out; }
+.enquiry-field-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); display: grid; place-items: center; width: 28px; height: 28px; border-radius: 9px; pointer-events: none; z-index: 1; animation: enquiry-icon-in .3s cubic-bezier(.34,1.3,.64,1) backwards; transition: transform .18s ease; }
+.enquiry-field--message .enquiry-field-icon { top: 11px; animation-name: enquiry-icon-in-top; }
+.enquiry-field:focus-within .enquiry-field-icon { transform: translateY(-50%) scale(1.1); }
+.enquiry-field--message:focus-within .enquiry-field-icon { transform: scale(1.1); }
+.partner-3d-card .enquiry-field input:not([type="checkbox"]), .partner-3d-card .enquiry-field select, .partner-3d-card .enquiry-field textarea { padding-left: 3rem; }
+.enquiry-field--name .enquiry-field-icon { color: hsl(var(--connection-blue)); background: hsl(var(--connection-blue) / .1); }
+.enquiry-field--organisation .enquiry-field-icon { color: hsl(var(--connection-teal)); background: hsl(var(--connection-teal) / .12); }
+.enquiry-field--email .enquiry-field-icon { color: hsl(var(--connection-amber)); background: hsl(var(--connection-amber) / .14); }
+.enquiry-field--phone .enquiry-field-icon { color: hsl(var(--navy-800)); background: hsl(var(--navy-800) / .08); }
+.enquiry-field--type .enquiry-field-icon { color: hsl(var(--connection-blue)); background: hsl(var(--connection-blue) / .1); }
+.enquiry-field--message .enquiry-field-icon { color: hsl(var(--connection-teal)); background: hsl(var(--connection-teal) / .12); }
+@keyframes enquiry-field-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes enquiry-icon-in { from { opacity: 0; transform: translateY(-50%) scale(.5); } to { opacity: 1; transform: translateY(-50%) scale(1); } }
+@keyframes enquiry-icon-in-top { from { opacity: 0; transform: scale(.5); } to { opacity: 1; transform: scale(1); } }
 @keyframes enquiry-step-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
 .enquiry-success-icon { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; color: hsl(var(--connection-teal)); background: linear-gradient(135deg, hsl(var(--connection-blue) / .12), hsl(var(--connection-teal) / .16)); border: 1px solid hsl(var(--connection-teal) / .35); box-shadow: 0 4px 12px hsl(var(--connection-teal) / .15); animation: enquiry-success-pop .45s cubic-bezier(.34,1.4,.64,1); }
 .enquiry-success-icon svg { animation: enquiry-success-glow 3s ease-in-out infinite .5s; }
@@ -530,7 +545,7 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
   .enquiry-compact-layout .partner-3d-stage { max-width: 135px; }
   .enquiry-step-card { max-width: 420px; justify-self: center; }
 }
-@media (prefers-reduced-motion: reduce) { .enquiry-step-body { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .enquiry-step-body, .enquiry-field, .enquiry-field-icon { animation: none; } .enquiry-field-icon { transition: none; } }
 .partner-3d-stage { position: relative; max-width: 210px; margin: .75rem auto 0; transform: translateX(-16px); perspective: 900px; }
 .partner-3d-stage::after { content: ""; position: absolute; left: 18%; right: 18%; bottom: -4px; height: 18px; border-radius: 50%; background: hsl(var(--primary) / .06); filter: blur(11px); animation: partner-float-shadow 8s ease-in-out infinite; }
 .partner-3d-object { position: relative; z-index: 1; width: 100%; height: auto; filter: drop-shadow(0 12px 18px hsl(var(--primary) / .09)); animation: partner-float 8s ease-in-out infinite; }
