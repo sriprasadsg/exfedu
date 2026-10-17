@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import logo from "@/assets/exf-education-logo.png.asset.json";
+import logo from "@/assets/exf-education-logo-transparent.png.asset.json";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { menuCategories, navPages } from "@/data/site";
 import { Button } from "@/components/ui/button";
