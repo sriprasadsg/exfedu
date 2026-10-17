@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, FlaskConical, GraduationCap, MessageCircle, type LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import bannerStack from "@/assets/academic-network-banner.png.asset.json";
+import bannerStack from "@/assets/academic-collab-network-2.png.asset.json";
 
 export type AcademicOverviewData = {
   title: string; subtitle: string; description: string;
