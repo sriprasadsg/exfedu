@@ -6,7 +6,6 @@ import { categories, findPage, navPages } from "@/data/site";
 import programmesArray from "@/assets/programmes-floating-glass.png.asset.json";
 import aboutBanner from "@/assets/about-flash-cards-banner.png.asset.json";
 import internshipsBanner from "@/assets/internships-banner.jpg.asset.json";
-import researchBanner from "@/assets/research-search-key.png.asset.json";
 import skillshoneBanner from "@/assets/skillshone-hero-banner.png.asset.json";
 import successImg from "@/assets/hero-success.png";
 import ibmBanner from "@/assets/ibm-hero-banner-v2.png.asset.json";
@@ -105,19 +104,10 @@ const ContentPage = () => {
   if (page.path === "/research-innovation") {
     return (
       <Layout>
-        <section className="page-hero-banner page-hero-banner--research" aria-label={`${page.title} introduction`}>
+        <section className="page-hero-banner" aria-label={`${page.title} introduction`}>
           <div className="container relative">
             {breadcrumb}
             <div className="mt-8">{heading}</div>
-          </div>
-          <div className="page-hero-banner-art-mask" aria-hidden="true">
-            <img
-              src={researchBanner.url}
-              alt=""
-              width={1517}
-              height={1037}
-              className="page-hero-banner-art"
-            />
           </div>
         </section>
         <main>{body}</main>
