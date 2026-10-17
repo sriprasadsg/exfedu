@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import logo from "@/assets/exf-education-logo-navy.png.asset.json";
+import logo from "@/assets/exfedu-logo-navy.png.asset.json";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { menuCategories, navPages } from "@/data/site";
 import { Button } from "@/components/ui/button";
@@ -21,7 +21,7 @@ const Header = () => {
     <header className="site-header sticky top-0 z-50 border-b">
       <div className="container flex h-20 items-center justify-between gap-4">
         <Link to="/" className="flex min-w-0 items-center" aria-label="Exafluence Education home">
-          <img src={logo.url} alt="Exafluence Education — A Division of Exafluence Inc., USA" className="h-10 w-auto max-w-[200px] object-contain" />
+          <img src={logo.url} alt="Exafluence Education — An EdTech unit of Exafluence Inc., USA" className="h-12 w-auto max-w-[220px] object-contain" />
 
         </Link>
         <nav aria-label="Main navigation" className="hidden items-center gap-1 lg:flex">
