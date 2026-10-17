@@ -1,4 +1,4 @@
-import heroBanner from "@/assets/home-hero-learning-network.png.asset.json";
+import heroBanner from "@/assets/home-hero-learning-ecosystem.png.asset.json";
 
 const Hero = () => (
   <section aria-label="Exafluence Education introduction" className="hero-section">
