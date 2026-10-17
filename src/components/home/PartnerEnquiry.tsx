@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { z } from "zod";
-import { ArrowUpRight, ArrowLeft, CheckCircle2, AlertCircle, RotateCcw } from "lucide-react";
+import { ArrowUpRight, ArrowLeft, CheckCircle2, AlertCircle, RotateCcw, User, Building2, Mail, Phone, Network, MessageSquare } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
