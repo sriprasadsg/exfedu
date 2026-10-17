@@ -74,7 +74,10 @@
   .about-editorial-columns, .about-editorial-solutions { grid-template-columns: minmax(0, 1fr); gap: 22px; }
   .about-editorial-industries { gap: 20px 14px; }
   .about-editorial-industries li { align-items: flex-start; }
-  .about-editorial-milestones li { grid-template-columns: 62px minmax(0, 1fr); gap: 14px; }
+  .about-editorial-milestones li { grid-template-columns: minmax(56px, max-content) minmax(0, 1fr); gap: 14px; }
+  .about-editorial-year { padding: 8px 12px; font-size: 16px; border-radius: 10px; }
+  .about-editorial-badge { font-size: 15px; padding: 9px 16px 9px 10px; gap: 10px; }
+  .about-editorial-badge-medal { width: 28px; height: 28px; }
   .about-editorial-milestones h3 { align-items: flex-start; font-size: 17px; }
 }
 @media (prefers-reduced-motion: reduce) {
