@@ -7,6 +7,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { PENDING, pages, programmes, programmeAreas, galleryItems, type Block, type Page, type Tone } from "@/data/site";
 import PartnerEnquiry from "@/components/home/PartnerEnquiry";
 import AboutStory from "@/components/site/AboutStory";
+import AboutOverview from "@/components/site/AboutOverview";
 import AcademicOverview from "@/components/site/AcademicOverview";
 
 const H2 = ({ children }: { children: React.ReactNode }) => <h2 className="site-section-title font-display font-normal">{children}</h2>;
@@ -168,6 +169,8 @@ export const BlockView = ({ block, page }: { block: Block; page: Page }) => {
       );
     case "about-story":
       return <AboutStory data={block.data} />;
+    case "about-overview":
+      return <AboutOverview data={block.data} />;
     case "enquiry-form":
       return <div id="partner-enquiry-form"><PartnerEnquiry intro={block.intro} /></div>;
     case "gallery":

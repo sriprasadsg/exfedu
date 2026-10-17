@@ -4,6 +4,7 @@ import {
   Code2, BarChart3, Cloud, Sparkles, Database, Terminal, Presentation, Rocket, Cpu, Layers, PieChart, type LucideIcon,
 } from "lucide-react";
 import type { AboutStoryData } from "@/components/site/AboutStory";
+import type { AboutOverviewData } from "@/components/site/AboutOverview";
 import type { AcademicOverviewData } from "@/components/site/AcademicOverview";
 import type { EnquiryIntro } from "@/components/home/PartnerEnquiry";
 import skillshoneLogo from "@/assets/skillshone-logo.png.asset.json";
@@ -40,6 +41,7 @@ export type Block =
   | { type: "children"; title: string }
   | { type: "enquiry-form"; title: string; intro?: EnquiryIntro }
   | { type: "about-story"; data: AboutStoryData }
+  | { type: "about-overview"; data: AboutOverviewData }
   | { type: "academic-overview"; data: AcademicOverviewData }
   | { type: "logo"; src: string; alt: string }
   | { type: "cta"; title: string; text: string; label: string; to?: string; appearance?: "academic-partner" };
@@ -113,22 +115,48 @@ const ibmOfferings: Offering[] = [
 export const pages: Page[] = [
   // Core
   { path: "/about", title: "About Us", category: "core", icon: Info, eyebrow: "A Division of Exafluence Inc., USA", hideInNav: true,
-    summary: "Discover the industry foundation behind Exafluence Education.",
-    blocks: [{ type: "about-story", data: {
-      title: "Industry Expertise. Strategic Partnerships. Applied Learning.",
-      description: "Drawing on Exafluence Inc.’s technology expertise, we connect education with business applications in AI, Generative AI and Data Science.",
-      mission: "Build practical capabilities through industry-aligned learning, expert mentorship and collaborative projects.",
-      vision: "Create a connected ecosystem where academia and industry advance talent development, innovation and lifelong learning.",
-      collaborate: "Explore academic partnerships, corporate upskilling and tailored technology training aligned with your organisation’s goals.",
-      action: { label: "Discuss a Partnership", href: "#partner-enquiry-form" },
-      topics: [
-        { title: "Exafluence Inc.", lines: ["With 10+ years of technology experience,", "Exafluence Inc. helps organisations use", "data, analytics and Artificial Intelligence", "to address complex business challenges.", "Its industry expertise provides a practical", "foundation for technology-focused learning."] },
-        { title: "Core Expertise", lines: ["Data Engineering and Advanced Analytics", "turn complex information into useful insights.", "AI and Generative AI support intelligent", "applications and business innovation.", "Digital Transformation connects these", "capabilities with evolving organisational needs."] },
-        { title: "Global Presence", lines: ["USA: Frisco, Texas, and Princeton, New Jersey.", "India: Tirupati, Bengaluru and Chennai.", "Overseas development centres:", "Dubai, UAE, and Muscat, Oman.", "This international presence brings broader", "business perspectives to our industry foundation."] },
-        { title: "Industry Domains", lines: ["Financial Services and Insurance.", "Healthcare and Pharmaceuticals.", "Consumer Goods and Retail.", "Energy and Utilities.", "Telecommunications.", "Manufacturing and Industrial IoT.", "These sectors provide context for applied learning."] },
-        { title: "Exafluence Education", lines: ["Connecting industry insight with education", "in AI, Generative AI and Data Science.", "Our mission: build practical capabilities", "through projects and expert mentorship.", "Our vision: prepare learners for evolving", "careers through innovation, collaboration", "and continuous learning."] },
-      ],
-    } }, { type: "cta", title: "Have a question?", text: "Enquire to become our academic partner.", label: "Become an academic partner", to: "/contact", appearance: "academic-partner" }],
+    summary: "Technology education informed by industry experience",
+    blocks: [{ type: "about-overview", data: {
+      title: "About Exafluence Education",
+      subtitle: "Technology education informed by industry experience",
+      introduction: "Exafluence Education (Exfedu) is the education division of Exafluence Inc., helping students and professionals develop knowledge and practical skills in emerging technologies. Our programmes focus on data science, artificial intelligence, generative AI and cloud computing, connecting technical concepts with their applications in the workplace.",
+      purpose: { title: "Our Purpose", text: "We aim to make technology education relevant, accessible and applicable. Our focus is to help learners build strong foundations, develop confidence with technical tools and understand how to apply their knowledge to practical challenges." },
+      foundation: {
+        title: "Our Industry Foundation", founded: 2015,
+        paragraphs: [
+          "Exfedu draws on the enterprise technology experience of Exafluence Inc. Founded in 2015, Exafluence provides software services and solutions in data, analytics and digital transformation, with a presence across the United States, Canada, Europe, Dubai and India.",
+          "Exafluence’s industry experience spans financial services, healthcare and pharmaceuticals, consumer goods and retail, and manufacturing and IoT. This background provides valuable context for understanding how technology addresses different business needs.",
+        ],
+        industries: ["Financial Services", "Healthcare & Pharmaceuticals", "Consumer Goods & Retail", "Manufacturing & IoT"],
+      },
+      approach: { title: "Our Learning Approach", paragraphs: [
+        "Our approach connects clear explanations with practical application. We focus on helping learners understand underlying concepts, explore relevant tools and develop structured approaches to solving problems.",
+        "By connecting technical learning with business contexts, we aim to help learners explain their decisions, assess results and use technology responsibly.",
+      ] },
+      innovation: {
+        title: "Applied AI and Data Innovation",
+        introduction: "Exafluence’s capabilities include data engineering, analytics, document intelligence, conversational AI and the analysis of text, images and video. Its ExfDigital Studio brings together modular applications designed to address enterprise requirements.",
+        solutions: [
+          { name: "ResearchAI", text: "Uses natural-language questions to retrieve and visualise information from structured business databases." },
+          { name: "ExfAutoDQ", text: "Generates SQL test cases and descriptions to support data quality testing." },
+          { name: "ExfParse", text: "Extracts and transforms information from documents and scanned files into structured formats." },
+        ],
+        closing: "These capabilities illustrate the practical technology environment that informs Exfedu’s educational direction.",
+      },
+      milestones: {
+        title: "Technology Collaboration and Recognition", company: "Exafluence Inc.",
+        introduction: "Exafluence Inc.’s company milestones include collaboration with FIS Global on an Investment Data Platform and participation as a Snowflake Native Apps launch partner.",
+        recognitions: [
+          { year: 2022, title: "MongoDB ISV Partner of the Year, Healthcare", company: "Exafluence Inc." },
+          { year: 2023, title: "MongoDB Solutions Partner of the Year", company: "Exafluence Inc." },
+        ],
+      },
+      explore: {
+        title: "Explore Our Programmes",
+        text: "Discover learning opportunities in data science, AI, generative AI and cloud computing. Explore our programmes or contact our team to discuss your learning goals.",
+        actions: [{ label: "Explore Programmes", to: "/programmes" }, { label: "Contact Us", to: "/contact" }],
+      },
+    } }],
   },
   { path: "/contact", title: "Contact / Enquiry", category: "core", icon: Mail, summary: "Ask about programmes, collaborations or admissions.", blocks: [] },
 
