@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Banknote, HeartPulse, ShoppingBag, Factory, Database, Code2, FileText, Medal, Trophy } from "lucide-react";
+import { ArrowRight, Banknote, HeartPulse, ShoppingBag, Factory, Database, Code2, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import sculpture from "@/assets/about-icon-sculpture.png.asset.json";
 
@@ -62,11 +62,10 @@ export default function AboutOverview({ data }: { data: AboutOverviewData }) {
     <section className="container about-editorial-section" aria-labelledby="about-milestones">
       <div className="about-editorial-split"><h2 id="about-milestones">{data.milestones.title}</h2><p>{data.milestones.introduction}</p></div>
       <ul className="about-editorial-milestones">{data.milestones.recognitions.map((recognition, i) => {
-        const BadgeIcon = i % 2 === 0 ? Medal : Trophy;
         return <li key={recognition.year}>
           <span className="about-editorial-year">{recognition.year}</span>
           <div><span className="about-editorial-company">{recognition.company}</span>
-            <h3><span className={`about-editorial-badge ${i % 2 === 0 ? "is-maroon" : "is-gold"}`}><span className="about-editorial-badge-medal" aria-hidden="true"><BadgeIcon size={17} strokeWidth={2} /></span>{recognition.title}</span></h3>
+            <h3><span className={`about-editorial-badge ${i % 2 === 0 ? "is-maroon" : "is-gold"}`}>{recognition.title}</span></h3>
           </div>
         </li>;
       })}</ul>
