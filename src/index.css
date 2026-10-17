@@ -975,11 +975,10 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
   }
 }
 
-
 /* ===== About Us page ===== */
-/* About Us hero banner — the five glossy flash cards sit whole on the LEFT of the copy
+/* About Us hero banner — the five glossy flash cards sit whole on the RIGHT of the copy
    on their own pure-white backdrop, so they meet the page with no seam and need no
-   feather. The copy keeps its natural left-aligned text but sits on the right side.
+   feather. The copy keeps its natural left-aligned text and sits on the left side.
    On phones the artwork drops below the copy, shown in full. */
 @media (min-width: 1024px) {
   .page-hero-banner--about > .container {
