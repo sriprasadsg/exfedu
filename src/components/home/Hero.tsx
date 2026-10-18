@@ -1,16 +1,20 @@
 import heroBanner from "@/assets/home-hero-academic-network.png.asset.json";
+import heroBannerNarrow from "@/assets/home-hero-academic-network-mobile.png.asset.json";
 
 const Hero = () => (
   <section aria-label="Exafluence Education introduction" className="hero-section">
     <div className="hero-banner">
-      <img
-        src={heroBanner.url}
-        alt=""
-        aria-hidden="true"
-        width={1920}
-        height={395}
-        className="hero-banner-art"
-      />
+      <picture>
+        <source media="(max-width: 640px)" srcSet={heroBannerNarrow.url} />
+        <img
+          src={heroBanner.url}
+          alt=""
+          aria-hidden="true"
+          width={1920}
+          height={395}
+          className="hero-banner-art"
+        />
+      </picture>
       <div className="hero-banner-copy">
         <h1 className="hero-title">
           Exafluence Education
