@@ -823,6 +823,8 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
      the bottom of a tall band (that left a void between the two) */
   .hero-banner { display: flex; flex-direction: column; min-height: 0; }
   .hero-banner-copy { order: 1; padding-block: 1.7rem 0; }
+  /* nothing overlaps on a narrow screen, so the copy-side wash is dropped */
+  .hero-banner::after { background: none; }
   .hero-banner-art {
     order: 2;
     position: static;
