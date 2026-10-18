@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Banknote, HeartPulse, ShoppingBag, Factory, Database, Code2, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import sculpture from "@/assets/about-icon-sculpture.png.asset.json";
+import sculpture from "@/assets/about-icon-relief.png.asset.json";
 
 export type AboutOverviewData = {
   title: string;
@@ -29,7 +29,7 @@ export default function AboutOverview({ data }: { data: AboutOverviewData }) {
           <p className="about-editorial-subtitle">{data.subtitle}</p>
           <p>{data.introduction}</p>
         </div>
-        <figure><img src={sculpture.url} width={761} height={1301} alt="Tall stack of sky-blue spheres and pebbles carrying silver icons of a factory and gear, a rising chart, a processor, a cloud, a starred document and people reading, linked by a glowing blue thread" /></figure>
+        <figure><img src={sculpture.url} width={878} height={1545} alt="Tall stack of matte sky-blue spheres and tilted discs carrying icons of a factory and gear, a rising chart, a processor, a cloud, a starred document and people reading a book, linked by a beaded thread" /></figure>
       </div>
     </header>
 
