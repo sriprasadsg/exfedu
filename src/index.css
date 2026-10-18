@@ -970,6 +970,18 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .exi-wm { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(520px, 92%); height: auto; opacity: var(--wm-op, .085); filter: saturate(.9); pointer-events: none; user-select: none; -webkit-mask-image: radial-gradient(ellipse 72% 62% at 50% 50%, hsl(0 0% 0%) 52%, transparent 100%); mask-image: radial-gradient(ellipse 72% 62% at 50% 50%, hsl(0 0% 0%) 52%, transparent 100%); animation: exiWmFade .35s ease both, exiWmBreathe 9s ease-in-out 1s infinite; }
 @keyframes exiWmFade { from { opacity: 0; } to { opacity: var(--wm-op, .085); } }
 @keyframes exiRise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+/* gentle idle motion in the partnership panel: the artwork floats, its glow
+   breathes, and a closed box's arrow eases sideways as an "open me" hint */
+@keyframes exiGlowBreathe { 0%, 100% { opacity: .7; } 50% { opacity: 1; } }
+@keyframes exiArtFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+@keyframes exiWmBreathe { 0%, 100% { opacity: var(--wm-op, .085); } 50% { opacity: calc(var(--wm-op, .085) * 1.7); } }
+@keyframes exiChevNudge { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(3px); } }
+.exi-box[aria-expanded="false"] .exi-box-chev { animation: exiChevNudge 3.4s ease-in-out infinite; }
+.exi-item:nth-child(2) .exi-box-chev { animation-delay: -.6s; }
+.exi-item:nth-child(3) .exi-box-chev { animation-delay: -1.2s; }
+.exi-item:nth-child(4) .exi-box-chev { animation-delay: -1.8s; }
+.exi-item:nth-child(5) .exi-box-chev { animation-delay: -2.4s; }
+.exi-item:nth-child(6) .exi-box-chev { animation-delay: -3s; }
 .exi-list { display: grid; gap: .5rem; }
 .exi-list li { position: relative; padding-left: 1.1rem; font-size: .88rem; line-height: 1.5; color: hsl(var(--foreground)); overflow-wrap: anywhere; }
 .exi-list li::before { content: ""; position: absolute; left: 0; top: .6em; width: 6px; height: 6px; border-radius: 9999px; background: hsl(var(--primary) / .6); }
