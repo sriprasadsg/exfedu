@@ -825,11 +825,14 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
   .hero-banner-copy { order: 1; padding-block: 1.7rem 0; }
   /* nothing overlaps on a narrow screen, so the copy-side wash is dropped */
   .hero-banner::after { background: none; }
+  /* the phone crop keeps its own proportions and fills the column */
+  .hero-banner > picture { order: 2; display: block; width: 100%; }
   .hero-banner-art {
     order: 2;
     position: static;
     width: 100%;
     height: auto;
+    aspect-ratio: auto;
     margin-top: .9rem;
     object-fit: contain;
     /* the artwork's own backdrop is pure white, so no fade is needed */
