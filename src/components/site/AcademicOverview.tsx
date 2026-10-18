@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, FlaskConical, GraduationCap, MessageCircle, type LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import loopsArt from "@/assets/academic-loops.png.asset.json";
 
 export type AcademicOverviewData = {
   title: string; subtitle: string; description: string;
@@ -15,10 +16,15 @@ export default function AcademicOverview({ data }: { data: AcademicOverviewData 
       <div className="container">
         <nav aria-label="Breadcrumb" className="academic-breadcrumb"><Link to="/">Exafluence Education</Link><span aria-hidden="true"> / </span><span>{data.title}</span></nav>
         <div className="academic-banner-copy">
-          <p className="academic-eyebrow">Academic Partnerships</p>
-          <h1>{data.title}</h1>
-          <p className="academic-subtitle">{data.subtitle}</p>
-          <p className="academic-banner-description">{data.description}</p>
+          <div className="academic-banner-text">
+            <p className="academic-eyebrow">Academic Partnerships</p>
+            <h1>{data.title}</h1>
+            <p className="academic-subtitle">{data.subtitle}</p>
+            <p className="academic-banner-description">{data.description}</p>
+          </div>
+          <figure className="academic-banner-art" aria-hidden="true">
+            <img src={loopsArt.url} alt="" width={679} height={1404} />
+          </figure>
         </div>
       </div>
     </header>
