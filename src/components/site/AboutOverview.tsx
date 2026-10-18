@@ -16,6 +16,7 @@ export type AboutOverviewData = {
 };
 
 const industryIcons = [Banknote, HeartPulse, ShoppingBag, Factory];
+const industryTones = ["blue", "teal", "amber", "red"];
 const solutionIcons = [Database, Code2, FileText];
 
 export default function AboutOverview({ data }: { data: AboutOverviewData }) {
@@ -40,7 +41,7 @@ export default function AboutOverview({ data }: { data: AboutOverviewData }) {
       <div className="about-editorial-split"><h2 id="about-foundation">{data.foundation.title}</h2><div>{data.foundation.paragraphs.map((text) => <p key={text}>{text}</p>)}</div></div>
       <ul className="about-editorial-industries">{data.foundation.industries.map((industry, i) => {
         const Icon = industryIcons[i] ?? Factory;
-        return <li key={industry}><Icon size={22} strokeWidth={1.5} aria-hidden="true" /><span>{industry}</span></li>;
+        return <li key={industry}><span className={`about-editorial-industry-icon tone-${industryTones[i % industryTones.length]}`} aria-hidden="true"><Icon size={21} strokeWidth={1.6} /></span><span>{industry}</span></li>;
       })}</ul>
     </section>
 
