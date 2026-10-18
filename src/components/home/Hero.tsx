@@ -8,7 +8,7 @@ const Hero = () => (
         alt=""
         aria-hidden="true"
         width={1920}
-        height={640}
+        height={395}
         className="hero-banner-art"
       />
       <div className="hero-banner-copy">
