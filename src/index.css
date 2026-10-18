@@ -101,8 +101,8 @@
 .academic-overview { background: hsl(var(--background)); color: hsl(var(--muted-foreground)); }
 .academic-banner { border-color: hsl(var(--academic-edge)); }
 .academic-breadcrumb { font-size: 12px; padding-top: 18px; }
-.academic-banner-copy { padding-block: 18px 30px; display: grid; grid-template-columns: minmax(0, 1fr) clamp(112px, 11vw, 126px); gap: 56px; align-items: center; }
-.academic-banner-art { width: 100%; animation: academic-art-in 700ms ease-out both; }
+.academic-banner-copy { padding-block: 18px 30px; display: grid; grid-template-columns: minmax(0, 1fr) clamp(128px, 12.5vw, 144px); gap: 44px; align-items: center; }
+.academic-banner-art { width: 100%; margin-right: -16px; animation: academic-art-in 700ms ease-out both; }
 .academic-banner-art img { display: block; width: 100%; height: auto; object-fit: contain; }
 @keyframes academic-art-in { from { opacity: 0; } to { opacity: 1; } }
 .academic-eyebrow { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: hsl(var(--connection-blue)); margin-bottom: 12px; }
