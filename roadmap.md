@@ -175,3 +175,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Academic Collaborations page: nudged the loop artwork further right (overhanging the text column's padding by 16px, 8px from the page edge) and increased it to 133x274 on desktop; phones unchanged at 100x207 centred below the text; no clipping, no overlap, no sideways scrolling; 27 tests pass, build OK (client 11:21 UTC 18 Oct)
 - [ ] Home banner: replace with the client's pastel four-circle academic icon network render (wide band, copy-left/artwork-right on desktop, whole below the copy on phones); earlier learning-ecosystem banner stays saved, unreferenced.
 - [ ] Home banner: reduce the colour shade further at the client's request (softer, paler artwork) and re-verify desktop/phone.
+- [ ] Home banner: reduce the too-large gap in between the copy and the artwork so the band reads as one fitted unit (client screenshot image-102.png); accommodate the best spacing.
