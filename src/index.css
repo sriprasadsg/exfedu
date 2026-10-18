@@ -101,7 +101,10 @@
 .academic-overview { background: hsl(var(--background)); color: hsl(var(--muted-foreground)); }
 .academic-banner { border-color: hsl(var(--academic-edge)); }
 .academic-breadcrumb { font-size: 12px; padding-top: 18px; }
-.academic-banner-copy { padding-block: 18px 30px; }
+.academic-banner-copy { padding-block: 18px 30px; display: grid; grid-template-columns: minmax(0, 1fr) clamp(112px, 11vw, 126px); gap: 56px; align-items: center; }
+.academic-banner-art { width: 100%; animation: academic-art-in 700ms ease-out both; }
+.academic-banner-art img { display: block; width: 100%; height: auto; object-fit: contain; }
+@keyframes academic-art-in { from { opacity: 0; } to { opacity: 1; } }
 .academic-eyebrow { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: hsl(var(--connection-blue)); margin-bottom: 12px; }
 .academic-banner-copy h1 { font-size: 34px; line-height: 1.2; font-weight: 500; color: hsl(var(--foreground)); }
 .academic-subtitle { font-size: 17px; line-height: 1.55; max-width: 560px; margin-top: 14px; color: hsl(var(--navy-700)); }
@@ -156,7 +159,8 @@
   .academic-invitation > div { min-width: 60%; }
 }
 @media (max-width: 639px) {
-  .academic-banner-copy { padding-block: 12px 24px; }
+  .academic-banner-copy { padding-block: 12px 24px; grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .academic-banner-art { width: 100px; margin-inline: auto; }
   .academic-banner-copy h1 { font-size: 28px; }
   .academic-subtitle { font-size: 16px; }
   .academic-body { padding-block: 22px 32px; }
