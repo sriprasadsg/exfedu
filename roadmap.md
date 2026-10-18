@@ -178,3 +178,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Home banner: gap above the cards reduced — band now hugs the artwork (min-height max(228px, 16.05vw+24px)), copy padding trimmed, capabilities top padding 2.5rem to 1.5rem; verified 1062/1280/1920/390px, artwork whole and unclipped.
 - [x] Home banner: gentle animation applied — one-time fade-in plus a 3px/14s drift; prefers-reduced-motion gets none (verified in the preview).
 - [x] Home banner: sky-blue matched to the shade behind the centre wheel in image-103.png (#E4F0FC family); 27 tests pass, build OK (client 12:25 UTC 18 Oct)
+- [ ] Make yellow match the client's attached image image-104.png (scope to be read from the image).
