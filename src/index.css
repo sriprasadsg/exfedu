@@ -818,22 +818,18 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 }
 @media (max-width: 640px) {
   .hero-tagline { white-space: normal; letter-spacing: .01em; }
-  /* on a narrow screen the copy sits above the artwork so both stay readable */
-  /* the new render is a wide band, so it needs far less vertical room */
-  .hero-banner { min-height: calc(48vw + 9rem); align-items: flex-start; }
-  .hero-banner-copy { padding-block: 1.7rem 0; }
-  .hero-banner::after {
-    background:
-      linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--background)) 20%, hsl(var(--background) / 0) 40%);
-  }
+  /* on a narrow screen the copy sits above the artwork: the wide render is a
+     short band, so it flows straight under the text instead of being pinned to
+     the bottom of a tall band (that left a void between the two) */
+  .hero-banner { display: flex; flex-direction: column; min-height: 0; }
+  .hero-banner-copy { order: 1; padding-block: 1.7rem 0; }
   .hero-banner-art {
-    top: auto;
-    bottom: 0;
-    left: 0;
+    order: 2;
+    position: static;
     width: 100%;
     height: auto;
+    margin-top: .9rem;
     object-fit: contain;
-    object-position: bottom center;
     /* the artwork's own backdrop is pure white, so no fade is needed */
     -webkit-mask-image: none;
     mask-image: none;
