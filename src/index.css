@@ -609,7 +609,6 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
   box-shadow:
     0 0 10px 2px hsl(210 60% 70% / 0.35),
     0 0 24px 4px hsl(210 60% 65% / 0.18);
-  animation: footer-glow 4s ease-in-out infinite;
 }
 @keyframes footer-glow {
   0%, 100% {
