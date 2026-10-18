@@ -177,3 +177,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [ ] Home banner: reduce the colour shade further at the client's request (softer, paler artwork) and re-verify desktop/phone.
 - [ ] Home banner: reduce the too-large gap in between the copy and the artwork so the band reads as one fitted unit (client screenshot image-102.png); accommodate the best spacing.
 - [ ] Home banner: tint the artwork a light sky-blue shade (client: "it should be light sky blue shade") and apply a gentle animation (calm, no spinning/flashing, reduced-motion respected).
+- [ ] Home banner: match the artwork's sky-blue to the shade the client pointed at in image-103.png ("the wheel backside shade").
