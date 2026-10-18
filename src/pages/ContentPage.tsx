@@ -3,7 +3,7 @@ import Layout from "@/components/layout/Layout";
 import NotFound from "./NotFound";
 import { BlockView } from "@/components/site/Blocks";
 import { categories, findPage, navPages } from "@/data/site";
-import programmesArray from "@/assets/programmes-floating-glass.png.asset.json";
+import programmesCap from "@/assets/programmes-cap.png.asset.json";
 import internshipsBanner from "@/assets/internships-banner.jpg.asset.json";
 import skillshoneBanner from "@/assets/skillshone-hero-banner.png.asset.json";
 import successImg from "@/assets/hero-success.png";
@@ -170,11 +170,11 @@ const ContentPage = () => {
             <div className="mt-8">{heading}</div>
           </div>
           <img
-            src={page.path === "/programmes" ? programmesArray.url : internshipsBanner.url}
+            src={page.path === "/programmes" ? programmesCap.url : internshipsBanner.url}
             alt=""
             aria-hidden="true"
-            width={page.path === "/programmes" ? 1694 : 1536}
-            height={page.path === "/programmes" ? 928 : 1920}
+            width={page.path === "/programmes" ? 914 : 1536}
+            height={page.path === "/programmes" ? 593 : 1920}
             className="page-hero-banner-art"
           />
         </section>
