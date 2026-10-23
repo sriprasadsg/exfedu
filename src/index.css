@@ -834,11 +834,13 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 @media (min-width: 1024px) {
   .hero-banner-copy { padding-inline-start: clamp(3.5rem, 6vw, 6.5rem); }
 }
-.brand-exa { color: hsl(var(--brand-red)); }
-.brand-fluence { color: hsl(var(--brand-blue)); }
-/* lighter pair so the split stays readable on the dark navy footer */
-.footer-brand-line .brand-exa { color: hsl(358 85% 52%); }
-.footer-brand-line .brand-fluence { color: hsl(214 88% 46%); }
+/* The written Exafluence name follows the logo artwork: navy "Exa", red "fluence". */
+.brand-exa { color: hsl(var(--primary)); }
+.brand-fluence { color: hsl(var(--brand-red)); }
+/* same pairing on the pale sky-blue footer, deepened so both parts stay readable */
+.footer-brand-line .brand-exa { color: hsl(214 68% 16%); }
+.footer-brand-line .brand-fluence { color: hsl(356 88% 42%); }
+
 .hero-title {
   font-size: clamp(1.35rem, 3.2vw, 2.35rem);
   line-height: 1.2;
