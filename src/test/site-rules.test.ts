@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { arms, categories, homepageCapabilities, pages, programmes } from "@/data/site";
+import { arms, categories, homepageCapabilities, pages, programmes, retiredPageDestinations, navPages } from "@/data/site";
 
 describe("approved website structure", () => {
   it("presents FIS Global, Snowflake and MongoDB together without award years", () => {
@@ -23,12 +23,13 @@ describe("approved website structure", () => {
     expect(about.blocks.some((block) => block.type === "cta")).toBe(false);
     expect("explore" in overview.data).toBe(false);
   });
-  it("keeps academic partner and enquiry destinations on their existing pages", () => {
-    const overview = pages.find((page) => page.path === "/academic-collaborations")?.blocks.find((block) => block.type === "academic-overview");
-    if (!overview || overview.type !== "academic-overview") throw new Error("Academic overview missing");
-    expect(overview.data.partners.map((partner) => partner.to)).toEqual(["/academic-collaborations/svu", "/academic-collaborations/xime"]);
-    expect(overview.data.invitation.to).toBe("/contact");
-    for (const partner of overview.data.partners) expect(pages.some((page) => page.path === partner.to)).toBe(true);
+  it("replaces Academic pages with one dedicated collaboration network", () => {
+    expect(navPages("academic").map(p => p.path)).toEqual(["/collaboration-network"]);
+    expect(pages.some(p => p.path.startsWith("/academic-collaborations"))).toBe(false);
+    expect(pages.find(p => p.path === "/collaboration-network")?.blocks).toEqual([{ type: "collaboration-network" }]);
+  });
+  it("redirects retired academic URLs without duplicate content pages", () => {
+    expect(retiredPageDestinations).toEqual({ "/academic-collaborations": "/collaboration-network", "/academic-collaborations/svu": "/programmes?organisation=SVU", "/academic-collaborations/xime": "/programmes?organisation=XIME" });
   });
   it("keeps eight homepage capability cards linked to existing pages", () => {
     expect(homepageCapabilities).toHaveLength(8);
@@ -37,7 +38,7 @@ describe("approved website structure", () => {
     }
   });
   it("keeps exactly four requested categories", () => {
-    expect(categories.map((c) => c.title)).toEqual(["Core", "Academic Collaborations", "Industry & Technology Collaborations", "Learning & Student Ecosystem"]);
+    expect(categories.map((c) => c.title)).toEqual(["Core", "Our Collaboration Network", "Industry & Technology Collaborations", "Learning & Student Ecosystem"]);
   });
   it("does not display unconfirmed future partners or industry networks", () => {
     const blocks = pages.flatMap((p) => p.blocks);

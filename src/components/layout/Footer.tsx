@@ -15,14 +15,14 @@ const Footer = () => (
           const rest = pages.filter((s) => s.path !== "/skillshone");
           return (
             <div key={c.slug}>
-              <p className="footer-title-gradient mb-3 text-base font-medium">{c.title}</p>
+              {c.slug === "academic" ? <Link to="/collaboration-network" className="footer-title-gradient mb-3 block text-base font-medium">{c.title}</Link> : <p className="footer-title-gradient mb-3 text-base font-medium">{c.title}</p>}
               {featured.map((s) => (
                 <Link key={s.path} to={s.path} className="footer-featured" aria-label={s.title}>
                   <img src={skillshoneLogo.url} alt="" className="footer-featured-logo" />
                   <ArrowUpRight className="h-3 w-3" strokeWidth={1.75} aria-hidden />
                 </Link>
               ))}
-              {rest.map((s) => (
+              {rest.filter(s => c.slug !== "academic").map((s) => (
                 <Link key={s.path} to={s.path} className="footer-option block py-1.5 text-sm">{s.title}</Link>
               ))}
             </div>
