@@ -86,16 +86,18 @@ export default function AboutOverview({ data }: { data: AboutOverviewData }) {
 
     <div className="about-editorial-main">
       <section className="container about-editorial-section" aria-labelledby="about-foundation">
-        <h2 id="about-foundation">{data.foundation.title}</h2>
+        <SectionHeading id="about-foundation" title={data.foundation.title} icon={sectionIcons[0]} />
+
         <div className="about-editorial-foundation-head">
           <h3>{brandHeading(data.foundation.heading)}</h3>
           <p className="about-editorial-foundation-note">{data.foundation.headingNote}</p>
         </div>
         <div className="about-editorial-copy">{data.foundation.paragraphs.map((text) => <p key={text}>{text}</p>)}</div>
         <ul className="about-editorial-industries">{data.foundation.industries.map((industry, i) => {
-          const Icon = industryIcons[i] ?? Factory;
+          const Icon = (industryIcons[i] ?? industryIcons[0]).icon;
           return <li key={industry.name}>
-            <span className="about-editorial-industry-icon" aria-hidden="true"><Icon size={22} strokeWidth={1.6} /></span>
+            <span className={`about-editorial-industry-icon ${(industryIcons[i] ?? industryIcons[0]).tint}`} aria-hidden="true"><Icon size={22} strokeWidth={1.6} /></span>
+
             <span className="about-editorial-industry-name">{industry.name}</span>
             <p>{industry.text}</p>
           </li>;
@@ -104,19 +106,22 @@ export default function AboutOverview({ data }: { data: AboutOverviewData }) {
       </section>
 
       <section className="container about-editorial-section" aria-labelledby="about-approach">
-        <h2 id="about-approach">{data.approach.title}</h2>
+        <SectionHeading id="about-approach" title={data.approach.title} icon={sectionIcons[1]} />
+
         <p className="about-editorial-tagline">{data.approach.tagline}</p>
         <div className="about-editorial-copy">{data.approach.paragraphs.map((text) => <p key={text}>{text}</p>)}</div>
       </section>
 
       <section className="container about-editorial-section" aria-labelledby="about-innovation">
-        <h2 id="about-innovation">{data.innovation.title}</h2>
+        <SectionHeading id="about-innovation" title={data.innovation.title} icon={sectionIcons[2]} />
         <p className="about-editorial-foundation-note">{data.innovation.subtitle}</p>
+
         <p className="about-editorial-lead">{data.innovation.introduction}</p>
         <dl className="about-editorial-solutions">{data.innovation.solutions.map((solution, i) => {
-          const Icon = solutionIcons[i] ?? Database;
+          const Icon = (solutionIcons[i] ?? solutionIcons[0]).icon;
           return <div key={solution.name}>
-            <dt><Icon size={23} strokeWidth={1.5} aria-hidden="true" />{solution.name}</dt>
+            <dt><span className={`about-editorial-solution-icon ${(solutionIcons[i] ?? solutionIcons[0]).tint}`} aria-hidden="true"><Icon size={20} strokeWidth={1.7} /></span>{solution.name}</dt>
+
             <dd className="about-editorial-solution-sub">{solution.subtitle}</dd>
             <dd>{solution.text}</dd>
           </div>;
@@ -124,7 +129,8 @@ export default function AboutOverview({ data }: { data: AboutOverviewData }) {
       </section>
 
       <section className="container about-editorial-section" aria-labelledby="about-collaborations">
-        <h2 id="about-collaborations">{data.collaborations.title}</h2>
+        <SectionHeading id="about-collaborations" title={data.collaborations.title} icon={sectionIcons[3]} />
+
         <div className="about-editorial-copy">{data.collaborations.paragraphs.map((text) => <p key={text}>{text}</p>)}</div>
       </section>
     </div>
