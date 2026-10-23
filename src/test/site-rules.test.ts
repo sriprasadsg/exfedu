@@ -50,7 +50,8 @@ describe("approved website structure", () => {
   it("keeps unspecified certification and brochure claims pending", () => {
     for (const programme of programmes) {
       expect(programme.brochure).toBeUndefined();
-      if (programme.slug !== "ibm-semester-industry-learning") expect(programme.recognition).toBeUndefined();
+      if (programme.organisation === "XIME") expect(programme.recognition).toMatch(/jointly issued by XIME Chennai and Exafluence Education/);
+      else if (programme.slug !== "ibm-semester-industry-learning") expect(programme.recognition).toBeUndefined();
     }
   });
   it("connects all eleven ecosystem arms to existing pages", () => {
