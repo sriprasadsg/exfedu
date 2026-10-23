@@ -200,4 +200,6 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Footer: the small logo placeholder at the end of the brand line removed — only the Exafluence Inc. mark below the Academic Collaborations links remains; its dead styles cleared (client 09:14 UTC 23 Oct 2026).
 - [x] Footer Inc USA logo now carries exactly the wordmark's shades — navy rgb(7,43,90) and red rgb(204,0,0); its black "ISO 27001: 2022 Certified" line recoloured to the same navy (client 09:15 UTC 23 Oct 2026).
 - [x] Footer: the whole "Exafluence Education / An Edtech Division of Exafluence Inc., USA / Contact Us" strip removed — the footer now opens with the three link columns, then the copyright line and back-to-top button; its dead .footer-brand-line and .footer-sep styles cleared (client 09:22 UTC 23 Oct 2026).
+- [x] About Us "Technology Collaboration and Recognition" section set to the client's approved wording — FIS Global Investment Data Platform and Snowflake Native Apps launch partner line, the 2022/2023 MongoDB award rows kept, and a new closing sentence on MongoDB's recognition of Exafluence Inc.'s work across enterprise data and application ecosystems; verified rendered on /about, 27 tests pass (client 09:25 UTC 23 Oct 2026).
+
 
