@@ -11,7 +11,7 @@ describe("XIME source and internal destination", () => {
     expect(ximeProgrammeContent.duration).toBe("6 months");
     expect(ximeProgrammeContent.delivery).toMatch(/^Online/);
   });
-  it("does not invent an admission process or a brochure", () => {
+  it("has no admission section or brochure", () => {
     expect(ximeProgrammeContent.admissions).toBeUndefined();
     expect(ximeProgrammeContent.brochure).toBeUndefined();
   });
