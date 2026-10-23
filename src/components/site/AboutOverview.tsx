@@ -11,7 +11,7 @@ export type AboutOverviewData = {
   foundation: { title: string; paragraphs: string[]; industries: string[]; founded: number };
   approach: { title: string; paragraphs: string[] };
   innovation: { title: string; introduction: string; solutions: { name: string; text: string }[]; closing: string };
-  milestones: { title: string; company: string; introduction: string; recognitions: { year: number; title: string; company: string }[] };
+  milestones: { title: string; company: string; introduction: string; recognitions: { year: number; title: string; company: string }[]; closing?: string };
   explore: { title: string; text: string; actions: { label: string; to: string }[] };
 };
 

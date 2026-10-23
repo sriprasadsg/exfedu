@@ -145,12 +145,14 @@ export const pages: Page[] = [
       },
       milestones: {
         title: "Technology Collaboration and Recognition", company: "Exafluence Inc.",
-        introduction: "Exafluence Inc.’s company milestones include collaboration with FIS Global on an Investment Data Platform and participation as a Snowflake Native Apps launch partner.",
+        introduction: "Exafluence Inc.’s collaborations include FIS Global on an Investment Data Platform and participation as a Snowflake Native Apps launch partner.",
         recognitions: [
           { year: 2022, title: "MongoDB ISV Partner of the Year, Healthcare", company: "Exafluence Inc." },
           { year: 2023, title: "MongoDB Solutions Partner of the Year", company: "Exafluence Inc." },
         ],
+        closing: "MongoDB has recognised Exafluence Inc. as ISV Partner of the Year for Healthcare and Solutions Partner of the Year, acknowledging its work across enterprise data and application ecosystems.",
       },
+
       explore: {
         title: "Explore Our Programmes",
         text: "Discover learning opportunities in data science, AI, generative AI and cloud computing. Explore our programmes or contact our team to discuss your learning goals.",
