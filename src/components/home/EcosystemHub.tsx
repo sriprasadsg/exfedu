@@ -2,16 +2,9 @@ import { useLayoutEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { homepageCapabilities } from "@/data/site";
 import penMark from "@/assets/pen-mark.png";
-import academic from "@/assets/capability-academic.webp";
-import technology from "@/assets/capability-technology.webp";
-import programmes from "@/assets/capability-programmes.webp";
-import research from "@/assets/capability-research.webp";
-import digital from "@/assets/capability-digital.webp";
-import practical from "@/assets/capability-practical.webp";
-import career from "@/assets/capability-career.webp";
-import industry from "@/assets/capability-industry.webp";
+import { GraduationCap, Cpu, BookOpenCheck, FlaskConical, MonitorSmartphone, Wrench, BriefcaseBusiness, Factory, type LucideIcon } from "lucide-react";
 
-const art: Record<string, string> = { academic, technology, programmes, research, digital, practical, career, industry };
+const art: Record<string, LucideIcon> = { academic: GraduationCap, technology: Cpu, programmes: BookOpenCheck, research: FlaskConical, digital: MonitorSmartphone, practical: Wrench, career: BriefcaseBusiness, industry: Factory };
 
 type Line = { x1: number; y1: number; x2: number; y2: number };
 
@@ -75,7 +68,7 @@ const EcosystemHub = () => {
         {homepageCapabilities.map((cap, i) => (
           <Link key={cap.id} to={cap.path} className={`cap-card cap-card--${cap.id}`} style={{ ["--i" as string]: i }}
             onMouseEnter={() => setActive(i)} onMouseLeave={() => setActive(null)} onFocus={() => setActive(i)} onBlur={() => setActive(null)}>
-            <img src={art[cap.id]} alt="" className="cap-art" loading="lazy" />
+            {(() => { const Icon = art[cap.id] ?? GraduationCap; return <span className="cap-art" aria-hidden="true"><Icon strokeWidth={1.75} /></span>; })()}
             <h3 className="cap-title">{cap.title}</h3>
             <ul className="cap-points">{cap.capabilities.map((p) => <li key={p}>{p}</li>)}</ul>
           </Link>
