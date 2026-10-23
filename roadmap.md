@@ -203,3 +203,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] About Us "Technology Collaboration and Recognition" section set to the client's approved wording — FIS Global Investment Data Platform and Snowflake Native Apps launch partner line, the 2022/2023 MongoDB award rows kept, and a new closing sentence on MongoDB's recognition of Exafluence Inc.'s work across enterprise data and application ecosystems; verified rendered on /about, 27 tests pass (client 09:25 UTC 23 Oct 2026).
 
 
+- [x] About Us rebuilt from the client's 23 October master brief: exact approved wording (no award years, no closing CTA buttons, FIS Global/Snowflake/MongoDB together), compact four-item industry row, three aligned technology items, one consistent medium-blue icon shade, white content areas on soft sky-blue, page-scoped "Exa red / fluence blue" inside "Exafluence Inc. USA", SEO title + meta description set; 28 tests pass, build OK, verified 1280/390px.
