@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { collaborationSlides, organisations, programmes, PENDING, type Organisation } from "@/data/site";
 import { organisationPath, programmePath } from "@/lib/programmeNavigation";
 import ProgrammeDetail from "./ProgrammeDetail";
+import XimeProgramme from "./XimeProgramme";
 import { useProgrammeSeo } from "./ProgrammeDirectory";
 
 const OrganisationProgrammes = ({ organisation }: { organisation: Organisation }) => {
@@ -12,6 +13,7 @@ const OrganisationProgrammes = ({ organisation }: { organisation: Organisation }
   const slide = collaborationSlides.find(s => s.organisation === organisation);
   useProgrammeSeo(`${org.name} Programmes | Exafluence Education`, slide?.text ?? `Explore ${org.name} programmes with Exafluence Education.`);
   if (organisation === "XIME" && shown.length === 1) return <ProgrammeDetail programme={shown[0]} organisationOverview />;
+  if (organisation === "XIME" && shown.length === 0) return <XimeProgramme />;
   return <main className="programme-experience organisation-programmes">
     <header className="programme-intro"><div className="container">
       <nav aria-label="Breadcrumb"><Link to="/">Home</Link><span aria-hidden="true">/</span><Link to="/collaboration-network">Our Collaboration Network</Link><span aria-hidden="true">/</span><span aria-current="page">{org.name}</span></nav>

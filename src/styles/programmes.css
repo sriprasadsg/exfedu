@@ -96,6 +96,11 @@
 .organisation-links { display: flex; flex-direction: column; }
 .organisation-links a { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 14px; padding-block: 14px; border-bottom: 1px solid hsl(var(--academic-edge)); }
 .organisation-links a[aria-current=page] { color: hsl(var(--connection-blue)); font-weight: 500; }
+.xime-review { border-left: 2px solid hsl(var(--academic-edge)); padding-left: 16px; margin-block: 12px; }
+.xime-review p { margin-top: 5px; color: hsl(var(--muted-foreground)); }
+.xime-duration { display: flex; flex-wrap: wrap; gap: 24px 64px; }
+.xime-duration dt { font-size: 13px; color: hsl(var(--muted-foreground)); }
+.xime-duration dd { margin-top: 6px; font-size: 15px; }
 .organisation-programmes .programme-actions > a { white-space: normal; height: auto; min-height: 44px; line-height: 1.5; }
 @media (max-width: 1050px) { .organisation-programme-body { gap: 32px; grid-template-columns: minmax(0, 1fr) 240px; } }
 @media (max-width: 767px) { .organisation-programme-body { grid-template-columns: minmax(0, 1fr); } .organisation-list-heading { flex-wrap: wrap; font-size: 22px; } .organisation-programme-item { gap: 14px; } .organisation-programme-item h2 { font-size: 20px; } }
