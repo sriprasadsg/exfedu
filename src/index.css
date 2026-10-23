@@ -606,7 +606,7 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 
 /* Footer — pale sky-blue bar with navy text */
 .site-footer {
-  background: linear-gradient(180deg, hsl(205 85% 96%), hsl(205 80% 92%));
+  background: linear-gradient(180deg, hsl(205 80% 95%), hsl(205 80% 93%));
   color: hsl(214 68% 16%);
   border-top-color: hsl(205 55% 74% / .6);
 }
@@ -807,8 +807,8 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .brand-exa { color: hsl(var(--brand-red)); }
 .brand-fluence { color: hsl(var(--brand-blue)); }
 /* lighter pair so the split stays readable on the dark navy footer */
-.footer-brand-line .brand-exa { color: hsl(358 90% 68%); }
-.footer-brand-line .brand-fluence { color: hsl(214 92% 72%); }
+.footer-brand-line .brand-exa { color: hsl(358 85% 52%); }
+.footer-brand-line .brand-fluence { color: hsl(214 88% 46%); }
 .hero-title {
   font-size: clamp(1.35rem, 3.2vw, 2.35rem);
   line-height: 1.2;
