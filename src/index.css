@@ -222,6 +222,11 @@
     --navy-700: 216 33% 27%;
     --navy-600: 216 30% 34%;
 
+    /* Royal navy — the Partner enquiry button background (client, 23 Oct 2026) */
+    --navy-royal: 226 70% 36%;
+    --navy-royal-light: 226 74% 45%;
+    --navy-royal-deep: 226 72% 27%;
+
     /* Menu bar gloss: restrained vertical gradient, sheen, top highlight, depth shadow, hover tint */
     --nav-top: 205 85% 96%;
     --nav-bottom: 205 80% 92%;
@@ -642,6 +647,24 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .cat-learning { color: hsl(262 68% 55%); }
 .menu-cat-icon { height: 1.6rem; width: 1.6rem; object-fit: contain; filter: drop-shadow(0 2px 4px hsl(220 30% 20% / .25)); }
 .menu-cat-hero { height: 3.2rem; width: 3.2rem; object-fit: contain; filter: drop-shadow(0 4px 8px hsl(220 30% 20% / .3)); }
+
+/* Partner enquiry button — royal navy background, white lettering */
+.enquiry-cta {
+  background: linear-gradient(180deg, hsl(var(--navy-royal-light)), hsl(var(--navy-royal)));
+  color: hsl(var(--primary-foreground));
+  box-shadow: 0 8px 18px -10px hsl(var(--navy-royal-deep) / .85), inset 0 1px 0 hsl(0 0% 100% / .18);
+  transition: box-shadow 200ms ease, transform 200ms ease;
+}
+.enquiry-cta:hover,
+.enquiry-cta:focus-visible {
+  background: linear-gradient(180deg, hsl(var(--navy-royal)), hsl(var(--navy-royal-deep)));
+  box-shadow: 0 12px 24px -10px hsl(var(--navy-royal-deep) / .95), inset 0 1px 0 hsl(0 0% 100% / .14);
+}
+.enquiry-cta:active { transform: translateY(1px); }
+@media (prefers-reduced-motion: reduce) {
+  .enquiry-cta { transition: none; }
+  .enquiry-cta:active { transform: none; }
+}
 
 /* Navy menu bar (desktop + mobile panel) */
 .site-header {

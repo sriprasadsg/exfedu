@@ -43,7 +43,7 @@ const Header = () => {
               </DropdownMenuContent>
             </DropdownMenu>
           ))}
-          <Button asChild size="sm" className="ml-3 bg-primary text-primary-foreground hover:bg-primary/90"><Link to="/#partner-enquiry">Partner enquiry</Link></Button>
+          <Button asChild size="sm" className="ml-3 enquiry-cta"><Link to="/#partner-enquiry">Partner enquiry</Link></Button>
         </nav>
         <Button variant="ghost" size="icon" className="nav-on-navy nav-icon-btn lg:hidden" onClick={() => setOpen(!open)} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} aria-controls="mobile-navigation">
 
@@ -66,7 +66,7 @@ const Header = () => {
                 </AccordionItem>
               ))}
             </Accordion>
-            <Button asChild className="mt-5 bg-primary text-primary-foreground hover:bg-primary/90"><Link to="/#partner-enquiry" onClick={() => setOpen(false)}>Partner enquiry</Link></Button>
+            <Button asChild className="mt-5 enquiry-cta"><Link to="/#partner-enquiry" onClick={() => setOpen(false)}>Partner enquiry</Link></Button>
           </div>
         </nav>
       )}
