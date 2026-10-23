@@ -70,7 +70,9 @@ export default function AboutOverview({ data }: { data: AboutOverviewData }) {
           </div>
         </li>;
       })}</ul>
+      {data.milestones.closing && <p className="about-editorial-closing">{data.milestones.closing}</p>}
     </section>
+
 
     <section className="about-editorial-explore" aria-labelledby="about-explore">
       <div className="container"><h2 id="about-explore">{data.explore.title}</h2><p>{data.explore.text}</p>
