@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import logo from "@/assets/exfedu-logo-darker.png.asset.json";
-import { Menu, X, ChevronDown, House, Info, MessageCircle } from "lucide-react";
+import { Menu, X, ChevronDown, House, Info, MessageCircle, Search, Plus, Minus } from "lucide-react";
 import { menuCategories, navPages } from "@/data/site";
 import { Button } from "@/components/ui/button";
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@/components/ui/dropdown-menu";
 import catCore from "@/assets/cat-core.png";
 import catAcademic from "@/assets/cat-academic.png";
@@ -15,8 +14,12 @@ const catIcons: Record<string, string> = { core: catCore, academic: catAcademic,
 
 const Header = () => {
   const [open, setOpen] = useState(false);
+  const [query, setQuery] = useState("");
+  const [expanded, setExpanded] = useState<string | null>(null);
   const { pathname } = useLocation();
-  useEffect(() => setOpen(false), [pathname]);
+  useEffect(() => { setOpen(false); setQuery(""); }, [pathname]);
+  const q = query.trim().toLowerCase();
+  const searchResults = q ? menuCategories.flatMap((c) => navPages(c.slug)).filter((s) => s.title.toLowerCase().includes(q)) : [];
   return (
     <header className="site-header sticky top-0 z-50 border-b">
       <div className="container flex h-20 items-center justify-between gap-4">
@@ -52,25 +55,44 @@ const Header = () => {
         </Button>
       </div>
       {open && (
-        <nav id="mobile-navigation" aria-label="Mobile navigation" className="site-header-panel max-h-[calc(100dvh-5rem)] overflow-y-auto border-t min-[900px]:hidden">
-          <div className="container py-4">
-            <Button asChild variant="ghost" className="nav-on-navy h-11 w-full justify-start"><Link to="/" onClick={() => setOpen(false)}><House className="h-4 w-4" aria-hidden="true" />Home</Link></Button>
-            <Button asChild variant="ghost" className="nav-on-navy h-11 w-full justify-start"><Link to="/about" onClick={() => setOpen(false)}><Info className="h-4 w-4" aria-hidden="true" />About Us</Link></Button>
-            <Button asChild variant="ghost" className="nav-on-navy cat-academic h-11 w-full justify-start"><Link to="/collaboration-network" onClick={() => setOpen(false)}><img src={catIcons.academic} alt="" aria-hidden="true" className="menu-cat-icon" />Our Collaboration Network</Link></Button>
-
-            <Accordion type="single" collapsible>
-              {menuCategories.filter(c => c.slug !== "academic").map((c) => (
-                <AccordionItem key={c.slug} value={c.slug}>
-                  <AccordionTrigger className={`nav-on-navy text-left font-normal ${c.accent}`}><span className="flex items-center gap-2.5"><img src={catIcons[c.slug]} alt="" aria-hidden className="menu-cat-icon" loading="lazy" />{c.title}</span></AccordionTrigger>
-                  <AccordionContent>
-                    {navPages(c.slug).map((s) => <Link key={s.path} to={s.path} onClick={() => setOpen(false)} className="mobile-sublink flex min-h-11 items-center gap-3 py-2 text-base"><s.icon className="h-4 w-4 shrink-0 text-muted-foreground" />{s.title}</Link>)}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-            <Button asChild className="mt-5 nav-cta"><Link to="/#partner-enquiry" onClick={() => setOpen(false)}><MessageCircle className="h-4 w-4" aria-hidden="true" />Partner enquiry</Link></Button>
-          </div>
-        </nav>
+        <div className="fixed inset-0 z-50 min-[900px]:hidden">
+          <button type="button" aria-label="Close menu" className="absolute inset-0 bg-foreground/50" onClick={() => setOpen(false)} />
+          <nav id="mobile-navigation" aria-label="Mobile navigation" className="relative flex h-full w-[min(92vw,420px)] flex-col overflow-y-auto bg-background shadow-2xl animate-in slide-in-from-left duration-300 border-b-4 border-primary">
+            <button type="button" onClick={() => setOpen(false)} className="flex h-24 w-28 shrink-0 items-center justify-center bg-primary text-primary-foreground font-medium underline underline-offset-4">Close</button>
+            <div className="px-8 py-8">
+              <form role="search" onSubmit={(e) => e.preventDefault()} className="mb-4 flex items-center bg-muted p-1.5">
+                <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search Exafluence Education" aria-label="Search the site" className="min-w-0 flex-1 bg-transparent px-2.5 py-2 text-sm italic outline-none" />
+                <span className="flex h-10 w-10 items-center justify-center bg-primary text-primary-foreground"><Search className="h-5 w-5" aria-hidden="true" /></span>
+              </form>
+              {query.trim() ? (
+                <ul className="divide-y border-b">
+                  {searchResults.length ? searchResults.map((s) => <li key={s.path}><Link to={s.path} onClick={() => setOpen(false)} className="flex min-h-12 items-center gap-3 py-2 text-primary"><s.icon className="h-4 w-4 shrink-0" />{s.title}</Link></li>) : <li className="py-4 text-sm text-muted-foreground">No matching pages.</li>}
+                </ul>
+              ) : (
+                <ul className="border-b">
+                  <li className="border-t first:border-t-0"><Link to="/about" onClick={() => setOpen(false)} className="flex min-h-16 items-center text-2xl font-medium text-primary">About Us</Link></li>
+                  <li className="border-t"><Link to="/collaboration-network" onClick={() => setOpen(false)} className="flex min-h-16 items-center text-2xl font-medium text-primary">Our Collaboration Network</Link></li>
+                  {menuCategories.filter((c) => c.slug !== "academic").map((c) => {
+                    const isOpen = expanded === c.slug;
+                    return (
+                      <li key={c.slug} className="border-t">
+                        <button type="button" onClick={() => setExpanded(isOpen ? null : c.slug)} aria-expanded={isOpen} className="flex min-h-16 w-full items-center justify-between gap-4 text-left text-2xl font-medium text-primary">
+                          {c.title}{isOpen ? <Minus className="h-6 w-6 shrink-0" /> : <Plus className="h-6 w-6 shrink-0" />}
+                        </button>
+                        {isOpen && <div className="pb-3">{navPages(c.slug).map((s) => <Link key={s.path} to={s.path} onClick={() => setOpen(false)} className="flex min-h-11 items-center gap-3 py-1.5 pl-1 text-base text-foreground hover:text-primary"><s.icon className="h-4 w-4 shrink-0 text-muted-foreground" />{s.title}</Link>)}</div>}
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+              <div className="mt-6 flex flex-col gap-4 text-sm font-medium text-foreground">
+                <Link to="/" onClick={() => setOpen(false)}>Home</Link>
+                <Link to="/contact" onClick={() => setOpen(false)}>Contact</Link>
+                <Link to="/#partner-enquiry" onClick={() => setOpen(false)}>Partner enquiry</Link>
+              </div>
+            </div>
+          </nav>
+        </div>
       )}
     </header>
   );
