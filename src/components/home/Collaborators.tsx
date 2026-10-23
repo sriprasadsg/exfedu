@@ -2,11 +2,12 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import svu from "@/assets/svu-logo.png.asset.json";
 import xime from "@/assets/xime-logo.png.asset.json";
+import ibm from "@/assets/ibm-partner-badge.png.asset.json";
 
 const items = [
   { name: "Sri Venkateswara University", logo: svu.url, kind: "Academic Collaboration", to: "/academic-collaborations/svu" },
   { name: "XIME", logo: xime.url, kind: "Academic Collaboration", to: "/academic-collaborations/xime" },
-  { name: "IBM", logo: null, kind: "Technology Collaboration", to: "/industry-collaborations/ibm" },
+  { name: "IBM", logo: ibm.url, kind: "Technology Collaboration", to: "/industry-collaborations/ibm" },
 ];
 
 const Collaborators = () => (
