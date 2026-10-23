@@ -849,8 +849,21 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .hero-dot-layer--narrow { display: none; }
 @keyframes hero-dot-pulse {
   0%, 100% { transform: scale(1); opacity: 0; }
-  50% { transform: scale(1.48); opacity: 1; filter: brightness(1.12); }
+  45%, 55% { transform: scale(1.85); opacity: 1; filter: saturate(1.35); }
 }
+@keyframes hub-dot-pulse {
+  0%, 100% { transform: scale(1); opacity: .7; }
+  50% { transform: scale(1.8); opacity: 1; }
+}
+@keyframes magnifying-glass-search {
+  0%, 100% { transform: translate(0, 0) rotate(0); }
+  25% { transform: translate(12px, -8px) rotate(8deg); }
+  50% { transform: translate(0, -12px) rotate(0); }
+  75% { transform: translate(-12px, -4px) rotate(-8deg); }
+}
+.exi-tile-art { position: relative; width: min(100%, 469px); aspect-ratio: 1283 / 875; }
+.exi-tile-art img { display: block; width: 100%; height: auto; }
+.exi-glass-layer { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 /* Scope all stillness to Home, including menus rendered outside its wrapper. */
 body:has(.homepage-static) *, body:has(.homepage-static) *::before, body:has(.homepage-static) *::after {
   animation: none !important;
@@ -868,8 +881,21 @@ body:has(.homepage-static) *, body:has(.homepage-static) *::before, body:has(.ho
 .homepage-static .hero-dot {
   transform-box: fill-box;
   transform-origin: center;
-  animation: hero-dot-pulse 3.6s ease-in-out infinite !important;
+  animation: hero-dot-pulse 2.8s ease-in-out infinite !important;
   animation-delay: var(--dot-delay, 0s) !important;
+}
+.homepage-static .cap-connector-dot {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation-name: hub-dot-pulse !important;
+  animation-duration: 2.4s !important;
+  animation-timing-function: ease-in-out !important;
+  animation-iteration-count: infinite !important;
+}
+.homepage-static .exi-glass-symbol {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: magnifying-glass-search 3.2s ease-in-out infinite !important;
 }
 @container cap (min-width: 800px) {
   .homepage-static .cap-card:hover { transform: translate(-50%, -50%); }
@@ -880,7 +906,7 @@ body:has(.homepage-static) *, body:has(.homepage-static) *::before, body:has(.ho
   .hero-dot-layer--narrow { display: block; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .homepage-static .hero-dot { animation: none !important; }
+  .homepage-static .hero-dot, .homepage-static .cap-connector-dot, .homepage-static .exi-glass-symbol { animation: none !important; }
   .hero-title, .hero-tagline, .hero-banner-art { animation: none; }
 }
 
