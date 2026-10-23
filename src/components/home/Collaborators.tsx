@@ -1,31 +1,34 @@
+import { useCallback, useEffect, useState } from "react";
+import useEmblaCarousel from "embla-carousel-react";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
-import svu from "@/assets/svu-logo.png.asset.json";
-import xime from "@/assets/xime-logo.png.asset.json";
-import ibm from "@/assets/ibm-partner-badge.png.asset.json";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { collaborationSlides, organisations } from "@/data/site";
 
-const items = [
-  { name: "Sri Venkateswara University", logo: svu.url, kind: "Academic Collaboration", to: "/academic-collaborations/svu" },
-  { name: "XIME", logo: xime.url, kind: "Academic Collaboration", to: "/academic-collaborations/xime" },
-  { name: "IBM", logo: ibm.url, kind: "Technology Collaboration", to: "/industry-collaborations/ibm" },
-];
-
-const Collaborators = () => (
-  <section aria-labelledby="collab-title" className="collab2">
+const Collaborators = () => {
+  const [viewport, carousel] = useEmblaCarousel({ loop: true, duration: 25 });
+  const [active, setActive] = useState(0);
+  const select = useCallback(() => setActive(carousel?.selectedScrollSnap() ?? 0), [carousel]);
+  useEffect(() => { if (!carousel) return; select(); carousel.on("select", select); return () => { carousel.off("select", select); }; }, [carousel, select]);
+  return <section aria-labelledby="collab-title" className="network-section">
     <div className="container">
-      <h2 id="collab-title" className="collab2-title">Academic &amp; Technology Collaborations</h2>
-      <div className="collab2-grid">
-        {items.map((c) => (
-          <article key={c.name} className="collab2-item">
-            <div className="collab2-logo">
-              {c.logo ? <img src={c.logo} alt={`${c.name} logo`} loading="lazy" /> : <span className="collab2-name">{c.name}</span>}
+      <div className="network-heading"><h2 id="collab-title">Our Collaboration Network</h2><span aria-hidden="true">0{active + 1} / 03</span></div>
+      <div className="network-carousel" role="region" aria-roledescription="carousel" aria-label="Collaboration network" tabIndex={0}
+        onKeyDown={(e) => { if (e.key === "ArrowLeft") { e.preventDefault(); carousel?.scrollPrev(); } if (e.key === "ArrowRight") { e.preventDefault(); carousel?.scrollNext(); } }}>
+        <div ref={viewport} className="network-viewport"><div className="network-track">
+          {collaborationSlides.map((slide, i) => <article key={slide.organisation} className="network-slide" aria-label={`${i + 1} of 3: ${organisations[slide.organisation].name}`} aria-hidden={active !== i}>
+            <div className="network-image"><img src={slide.image} alt={slide.alt} loading="lazy" /><div className="network-tech" aria-hidden="true">{slide.icons.map((Icon, n) => <span key={n}><Icon size={23} /></span>)}</div></div>
+            <div className="network-panel"><img className="network-logo" src={organisations[slide.organisation].logo} alt={`${organisations[slide.organisation].name} logo`} loading="lazy" />
+              <h3>{slide.heading}</h3><p>{slide.text}</p><Button asChild><Link tabIndex={active === i ? 0 : -1} to={`/programmes?organisation=${slide.organisation}`}>{slide.label}<ArrowRight aria-hidden="true" /></Link></Button>
             </div>
-            <p className="collab2-kind">{c.kind}</p>
-            <Link to={c.to} className="collab2-link">View Details <ArrowRight size={16} aria-hidden="true" /></Link>
-          </article>
-        ))}
+          </article>)}
+        </div></div>
+        <div className="network-controls"><Button variant="outline" size="icon" aria-label="Previous collaboration" onClick={() => carousel?.scrollPrev()}><ArrowLeft /></Button>
+          <div className="network-dots">{collaborationSlides.map((s, i) => <Button variant="ghost" size="icon" key={s.organisation} aria-label={`Show ${organisations[s.organisation].name}`} aria-pressed={active === i} onClick={() => carousel?.scrollTo(i)}><span /></Button>)}</div>
+          <Button variant="outline" size="icon" aria-label="Next collaboration" onClick={() => carousel?.scrollNext()}><ArrowRight /></Button></div>
+        <span className="sr-only" aria-live="polite">{organisations[collaborationSlides[active].organisation].name}</span>
       </div>
     </div>
-  </section>
-);
+  </section>;
+};
 export default Collaborators;

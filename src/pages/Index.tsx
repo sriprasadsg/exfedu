@@ -4,6 +4,7 @@ import Collaborators from "@/components/home/Collaborators";
 import EcosystemHub from "@/components/home/EcosystemHub";
 import WaysToPartner from "@/components/home/WaysToPartner";
 import PartnerEnquiry from "@/components/home/PartnerEnquiry";
+import "@/styles/programmes.css";
 
 const Index = () => (
   <Layout className="homepage-static">

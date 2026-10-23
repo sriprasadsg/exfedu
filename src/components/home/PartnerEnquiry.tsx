@@ -74,11 +74,11 @@ const defaultIntro: EnquiryIntro = {
   description: "Become a collaboration partner with Exafluence Education, integrating industry into programmes, projects, research and student opportunities.",
 };
 
-const PartnerEnquiry = ({ intro = defaultIntro }: { intro?: EnquiryIntro }) => {
+const PartnerEnquiry = ({ intro = defaultIntro, programme, onSuccess }: { intro?: EnquiryIntro; programme?: string; onSuccess?: () => void }) => {
   const [status, setStatus] = useState<Status>({ kind: "idle" });
   const [error, setError] = useState("");
   const [step, setStep] = useState(0);
-  const [answers, setAnswers] = useState({ ...emptyAnswers });
+  const [answers, setAnswers] = useState({ ...emptyAnswers, type: programme ? "Programme Partnership" : "", message: programme ? `Programme enquiry: ${programme}` : "" });
   const inFlight = useRef(false);
   const formRef = useRef<HTMLFormElement>(null);
   const field = fields[step];
@@ -122,6 +122,7 @@ const PartnerEnquiry = ({ intro = defaultIntro }: { intro?: EnquiryIntro }) => {
       await submitTestEnquiry(parsed.data);
       setAnswers({ ...emptyAnswers });
       setStatus({ kind: "success" });
+      onSuccess?.();
     } catch {
       setStatus({ kind: "error", message: "Test submission failed — simulated network error. Your details are kept; please try again." });
     } finally {
@@ -135,6 +136,7 @@ const PartnerEnquiry = ({ intro = defaultIntro }: { intro?: EnquiryIntro }) => {
       <div className="container py-12">
         <div className="enquiry-compact-layout">
           <div className="enquiry-intro">
+            {programme && <p className="mb-3 text-sm font-medium text-primary">Selected programme: {programme}</p>}
             <p className="enquiry-intro-eyebrow">Partner enquiry</p>
             <h2 className="enquiry-intro-title font-display">{intro.title}</h2>
             <p className="enquiry-intro-lead">{intro.description}</p>
