@@ -1,6 +1,6 @@
 # Architecture rules
 - Homepage motion uses coordinate-aligned SVG sprites for banner dots, isolated SVG connector endpoint dots, and an extracted magnifying-glass sprite over a glyph-free tile image; route-scoped CSS disables every other animation without changing other pages.
-- The Academic Collaborations overview uses a data-driven academic-overview block with its own compact banner and local navigation, isolating its layout from partner detail pages and other routes.
+- The dedicated collaboration-network block renders the shared manual carousel only on its own catch-all page; retired Academic URLs redirect to the replacement network or organisation-filtered directory to avoid duplicate pages.
 - The About route renders a data-driven about-overview editorial block with its own compact introduction and existing programme/contact destinations, omitting the shared sidebar and large banner to preserve a coherent full-width reading order.
 - Render homepage capabilities from site.ts as eight linked cards at equal 45-degree intervals around a centre circle, with DOM-measured radial connectors meeting card edges; container queries switch to stacked two/one-column grids when the radial canvas cannot fit, preserving readable content.
 - Partner enquiry runs in test mode: validate with zod, simulate submission, show success/error, never persist or send. Production delivery will be Exafluence AWS Cloud (not Lovable Cloud); keep endpoint, storage, email routing and env vars configurable via enquiryConfig in PartnerEnquiry.tsx.

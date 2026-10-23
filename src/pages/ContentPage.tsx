@@ -1,8 +1,8 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, Navigate, useLocation } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import NotFound from "./NotFound";
 import { BlockView } from "@/components/site/Blocks";
-import { categories, findPage, navPages } from "@/data/site";
+import { categories, findPage, navPages, retiredPageDestinations } from "@/data/site";
 import programmesCap from "@/assets/programmes-cap.png.asset.json";
 import internshipsBanner from "@/assets/internships-banner.jpg.asset.json";
 import skillshoneBanner from "@/assets/skillshone-hero-banner.png.asset.json";
@@ -19,6 +19,8 @@ const heroVisuals: Record<string, string> = {
 
 const ContentPage = () => {
   const { pathname } = useLocation();
+  const retiredDestination = retiredPageDestinations[pathname.replace(/\/$/, "")];
+  if (retiredDestination) return <Navigate to={retiredDestination} replace />;
   if (pathname.replace(/\/$/, "") === "/programmes") return <Layout><ProgrammeDirectory /></Layout>;
   const programme = programmes.find(p => pathname.replace(/\/$/, "") === `/programmes/${p.slug}`);
   if (programme) return <Layout><ProgrammeDetail key={programme.slug} programme={programme} /></Layout>;
@@ -29,7 +31,7 @@ const ContentPage = () => {
   const parent = page.parent ? findPage(page.parent) : undefined;
   const siblings = navPages(page.category);
 
-  if (page.path === "/academic-collaborations") {
+  if (page.path === "/collaboration-network") {
     return <Layout>{page.blocks.map((block, i) => <BlockView key={i} block={block} page={page} />)}</Layout>;
   }
 

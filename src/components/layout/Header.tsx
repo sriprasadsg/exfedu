@@ -28,6 +28,7 @@ const Header = () => {
           <Button asChild variant="ghost" className="nav-on-navy"><Link to="/" aria-current={pathname === "/" ? "page" : undefined}>Home</Link></Button>
           <Button asChild variant="ghost" className="nav-on-navy"><Link to="/about" aria-current={pathname === "/about" ? "page" : undefined}>About Us</Link></Button>
           {menuCategories.map((c) => (
+            c.slug === "academic" ? <Button key={c.slug} asChild variant="ghost" className={`nav-on-navy ${c.accent}`}><Link to="/collaboration-network" aria-current={pathname === "/collaboration-network" ? "page" : undefined}>{c.title}</Link></Button> :
             <DropdownMenu key={c.slug}>
               <DropdownMenuTrigger asChild><Button variant="ghost" className={`nav-on-navy ${c.accent}`}><img src={catIcons[c.slug]} alt="" aria-hidden className="menu-cat-icon" loading="lazy" />{c.short}<ChevronDown className="h-3.5 w-3.5" /></Button></DropdownMenuTrigger>
               <DropdownMenuContent align="end" className={`nav-menu-panel ${c.slug === "learning" ? "grid w-[520px] grid-cols-2 p-2" : "w-72 p-2"}`}>
@@ -55,9 +56,10 @@ const Header = () => {
           <div className="container py-4">
             <Button asChild variant="ghost" className="nav-on-navy h-11 w-full justify-start"><Link to="/" onClick={() => setOpen(false)}>Home</Link></Button>
             <Button asChild variant="ghost" className="nav-on-navy h-11 w-full justify-start"><Link to="/about" onClick={() => setOpen(false)}>About Us</Link></Button>
+            <Button asChild variant="ghost" className="nav-on-navy cat-academic h-11 w-full justify-start"><Link to="/collaboration-network" onClick={() => setOpen(false)}>Our Collaboration Network</Link></Button>
 
             <Accordion type="single" collapsible>
-              {menuCategories.map((c) => (
+              {menuCategories.filter(c => c.slug !== "academic").map((c) => (
                 <AccordionItem key={c.slug} value={c.slug}>
                   <AccordionTrigger className={`nav-on-navy text-left font-normal ${c.accent}`}><span className="flex items-center gap-2.5"><img src={catIcons[c.slug]} alt="" aria-hidden className="menu-cat-icon" loading="lazy" />{c.title}</span></AccordionTrigger>
                   <AccordionContent>
