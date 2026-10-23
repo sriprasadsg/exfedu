@@ -205,8 +205,9 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 
 - [x] About Us rebuilt from the client's 23 October master brief: exact approved wording (no award years, no closing CTA buttons, FIS Global/Snowflake/MongoDB together), compact four-item industry row, three aligned technology items, one consistent medium-blue icon shade, white content areas on soft sky-blue, page-scoped "Exa red / fluence blue" inside "Exafluence Inc. USA", SEO title + meta description set; 28 tests pass, build OK, verified 1280/390px.
 - [x] SkillShone: original logo everywhere, coloured box border, gentle animation
-- [ ] Collaboration network: manual SVU/XIME/IBM carousel linked to organisation-filtered directory
-- [ ] Programme directory and shareable details: approved facts, search/filters, contextual enquiry and brochure gating
-- [ ] Verify programme interactions at desktop/tablet/mobile; flag missing leaflets, brochures and notifications
+- [x] Collaboration network: manual SVU/XIME/IBM carousel linked to organisation-filtered directory; keyboard controls and mobile drag verified
+- [x] Programme directory and nine shareable details: verified SVU facts, brief-specific IBM facts, search/filters, contextual test enquiry and brochure gating
+- [x] Verify programme interactions at desktop/tablet/mobile: carousel, search, organisation/subject filters, reset, filter-preserving return and full test brochure enquiry passed
+- [ ] Complete source-dependent details: XIME source unavailable; four IBM leaflets, approved brochures and dated admission notifications needed before publication
 - [x] About: added "Quantum Computing" to the subtitle, reduced its font size
 - [x] Ecosystem icons: motion made modest and gently visible — the eight capability icons now drift 2px vertically over 8s, evenly staggered, with no scale or rotation, and no longer freeze or snap when a card is hovered (client 09:52 UTC 23 Oct 2026: "currently it's like jumping, alter it modestly"). Verified in the preview: all eight run cap-drift 8s at -1s stagger, hover keeps them running; 28 tests pass, build OK.
