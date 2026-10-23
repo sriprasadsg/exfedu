@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import logo from "@/assets/exfedu-logo-darker.png.asset.json";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, House, Info, MessageCircle } from "lucide-react";
 import { menuCategories, navPages } from "@/data/site";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
@@ -25,12 +25,12 @@ const Header = () => {
 
         </Link>
         <nav aria-label="Main navigation" className="hidden items-center gap-0 md:flex">
-          <Button asChild variant="ghost" className="nav-on-navy"><Link to="/" aria-current={pathname === "/" ? "page" : undefined}>Home</Link></Button>
-          <Button asChild variant="ghost" className="nav-on-navy"><Link to="/about" aria-current={pathname === "/about" ? "page" : undefined}>About Us</Link></Button>
+          <Button asChild variant="ghost" className="nav-on-navy gap-1.5 px-2 lg:px-4"><Link to="/" aria-current={pathname === "/" ? "page" : undefined}><House className="h-4 w-4 shrink-0" aria-hidden="true" />Home</Link></Button>
+          <Button asChild variant="ghost" className="nav-on-navy gap-1.5 px-2 lg:px-4"><Link to="/about" aria-current={pathname === "/about" ? "page" : undefined}><Info className="h-4 w-4 shrink-0" aria-hidden="true" />About Us</Link></Button>
           {menuCategories.map((c) => (
-            c.slug === "academic" ? <Button key={c.slug} asChild variant="ghost" className={`nav-on-navy ${c.accent}`}><Link to="/collaboration-network" aria-current={pathname === "/collaboration-network" ? "page" : undefined}>{c.title}</Link></Button> :
+            c.slug === "academic" ? <Button key={c.slug} asChild variant="ghost" className={`nav-on-navy gap-1.5 px-2 lg:px-4 ${c.accent}`}><Link to="/collaboration-network" aria-current={pathname.startsWith("/collaboration-network") ? "page" : undefined}><img src={catIcons.academic} alt="" aria-hidden="true" className="menu-cat-icon" />{c.title}</Link></Button> :
             <DropdownMenu key={c.slug}>
-              <DropdownMenuTrigger asChild><Button variant="ghost" className={`nav-on-navy ${c.accent}`}><img src={catIcons[c.slug]} alt="" aria-hidden className="menu-cat-icon" loading="lazy" />{c.short}<ChevronDown className="h-3.5 w-3.5" /></Button></DropdownMenuTrigger>
+              <DropdownMenuTrigger asChild><Button variant="ghost" className={`nav-on-navy gap-1.5 px-2 lg:px-4 ${c.accent}`}><img src={catIcons[c.slug]} alt="" aria-hidden className="menu-cat-icon" loading="lazy" />{c.short}<ChevronDown className="h-3.5 w-3.5" /></Button></DropdownMenuTrigger>
               <DropdownMenuContent align="end" className={`nav-menu-panel ${c.slug === "learning" ? "grid w-[520px] grid-cols-2 p-2" : "w-72 p-2"}`}>
                 <div className={c.slug === "learning" ? "col-span-2 mb-1 flex items-center gap-3 border-b px-2 pb-2" : "mb-1 flex items-center gap-3 border-b px-2 pb-2"}>
                   <img src={catIcons[c.slug]} alt="" aria-hidden className="menu-cat-hero" loading="lazy" />
@@ -44,7 +44,7 @@ const Header = () => {
               </DropdownMenuContent>
             </DropdownMenu>
           ))}
-          <Button asChild size="sm" className="ml-3 nav-cta"><Link to="/#partner-enquiry">Partner enquiry</Link></Button>
+          <Button asChild size="sm" className="ml-2 nav-cta gap-1.5"><Link to="/#partner-enquiry"><MessageCircle className="h-4 w-4" aria-hidden="true" />Partner enquiry</Link></Button>
         </nav>
         <Button variant="ghost" size="icon" className="nav-on-navy nav-icon-btn md:hidden" onClick={() => setOpen(!open)} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} aria-controls="mobile-navigation">
 
@@ -54,9 +54,9 @@ const Header = () => {
       {open && (
         <nav id="mobile-navigation" aria-label="Mobile navigation" className="site-header-panel max-h-[calc(100dvh-5rem)] overflow-y-auto border-t md:hidden">
           <div className="container py-4">
-            <Button asChild variant="ghost" className="nav-on-navy h-11 w-full justify-start"><Link to="/" onClick={() => setOpen(false)}>Home</Link></Button>
-            <Button asChild variant="ghost" className="nav-on-navy h-11 w-full justify-start"><Link to="/about" onClick={() => setOpen(false)}>About Us</Link></Button>
-            <Button asChild variant="ghost" className="nav-on-navy cat-academic h-11 w-full justify-start"><Link to="/collaboration-network" onClick={() => setOpen(false)}>Our Collaboration Network</Link></Button>
+            <Button asChild variant="ghost" className="nav-on-navy h-11 w-full justify-start"><Link to="/" onClick={() => setOpen(false)}><House className="h-4 w-4" aria-hidden="true" />Home</Link></Button>
+            <Button asChild variant="ghost" className="nav-on-navy h-11 w-full justify-start"><Link to="/about" onClick={() => setOpen(false)}><Info className="h-4 w-4" aria-hidden="true" />About Us</Link></Button>
+            <Button asChild variant="ghost" className="nav-on-navy cat-academic h-11 w-full justify-start"><Link to="/collaboration-network" onClick={() => setOpen(false)}><img src={catIcons.academic} alt="" aria-hidden="true" className="menu-cat-icon" />Our Collaboration Network</Link></Button>
 
             <Accordion type="single" collapsible>
               {menuCategories.filter(c => c.slug !== "academic").map((c) => (
@@ -68,7 +68,7 @@ const Header = () => {
                 </AccordionItem>
               ))}
             </Accordion>
-            <Button asChild className="mt-5 nav-cta"><Link to="/#partner-enquiry" onClick={() => setOpen(false)}>Partner enquiry</Link></Button>
+            <Button asChild className="mt-5 nav-cta"><Link to="/#partner-enquiry" onClick={() => setOpen(false)}><MessageCircle className="h-4 w-4" aria-hidden="true" />Partner enquiry</Link></Button>
           </div>
         </nav>
       )}
