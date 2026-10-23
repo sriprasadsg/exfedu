@@ -773,8 +773,7 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
      so the artwork can sit whole without a feathered edge */
   -webkit-mask-image: none;
   mask-image: none;
-  /* the artwork eases in once, then drifts very gently — no spin, no bounce */
-  animation: hero-art-in .9s ease-out both, hero-art-drift 8s ease-in-out 1.2s infinite;
+  /* Circles and icon artwork stay still; only separate dot sprites pulse. */
 }
 /* pale wash on the copy side so the title and tagline stay readable */
 .hero-banner::after {
@@ -830,32 +829,58 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
   /* nothing overlaps on a narrow screen, so the copy-side wash is dropped */
   .hero-banner::after { background: none; }
   /* the phone crop keeps its own proportions and fills the column */
-  .hero-banner > picture { order: 2; display: block; width: 100%; }
+  .hero-banner-media { order: 2; position: relative; display: block; width: 100%; margin-top: .9rem; }
+  .hero-banner-media picture { display: block; }
   .hero-banner-art {
     order: 2;
     position: static;
     width: 100%;
     height: auto;
     aspect-ratio: auto;
-    margin-top: .9rem;
+    margin-top: 0;
     object-fit: contain;
     /* the artwork's own backdrop is pure white, so no fade is needed */
     -webkit-mask-image: none;
     mask-image: none;
   }
 }
-/* the banner artwork eases in once, then drifts a few pixels — no spin, no bounce */
-@keyframes hero-art-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+.hero-dot-layers { pointer-events: none; }
+.hero-dot-layer { position: absolute; top: 0; left: 22%; width: 78%; height: 100%; overflow: visible; }
+.hero-dot-layer--narrow { display: none; }
+@keyframes hero-dot-pulse {
+  0%, 100% { transform: scale(1); opacity: 0; }
+  50% { transform: scale(1.32); opacity: .95; }
 }
-@keyframes hero-art-drift {
-  /* gentle but clearly visible: 8px of rise and fall over 8s, with a slow
-     breathing zoom and opacity so the artwork never sits dead still */
-  0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: .96; }
-  50% { transform: translate3d(0, -8px, 0) scale(1.008); opacity: 1; }
+/* Scope all stillness to Home, including menus rendered outside its wrapper. */
+body:has(.homepage-static) *, body:has(.homepage-static) *::before, body:has(.homepage-static) *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+.homepage-static .cap-card:hover { transform: none; }
+.homepage-static .cap-art, .homepage-static .exi-box:hover, .homepage-static .enquiry-restart:hover,
+.homepage-static .enquiry-restart:hover svg, .homepage-static .partner-3d-card input:hover,
+.homepage-static .partner-3d-card input:focus-visible, .homepage-static .partner-3d-card select:hover,
+.homepage-static .partner-3d-card select:focus-visible, .homepage-static .partner-3d-card textarea:hover,
+.homepage-static .partner-3d-card textarea:focus-visible { transform: none; }
+.homepage-static .enquiry-field-icon { transform: translateY(-50%); }
+.homepage-static .enquiry-field--message .enquiry-field-icon { transform: none; }
+.homepage-static .hero-dot {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: hero-dot-pulse 3.6s ease-in-out infinite !important;
+  animation-delay: var(--dot-delay, 0s) !important;
+}
+@container cap (min-width: 800px) {
+  .homepage-static .cap-card:hover { transform: translate(-50%, -50%); }
+}
+@media (max-width: 640px) {
+  .hero-dot-layer { inset: 0; width: 100%; height: 100%; }
+  .hero-dot-layer--wide { display: none; }
+  .hero-dot-layer--narrow { display: block; }
 }
 @media (prefers-reduced-motion: reduce) {
+  .homepage-static .hero-dot { animation: none !important; }
   .hero-title, .hero-tagline, .hero-banner-art { animation: none; }
 }
 
