@@ -20,7 +20,9 @@ const Footer = () => (
             <div key={c.slug}>
               {c.slug === "academic" ? <Link to="/collaboration-network" className="footer-title-gradient mb-3 block text-base font-medium">{c.title}</Link> : <p className="footer-title-gradient mb-3 text-base font-medium">{c.title}</p>}
               {c.slug === "academic" && partners.map((p) => (
-                <Link key={p} to={organisationPath(p)} className="footer-option block py-1.5 text-sm">{organisations[p].name}</Link>
+                <Link key={p} to={organisationPath(p)} aria-label={organisations[p].name} className="footer-partner block py-2">
+                  <img src={organisations[p].logo} alt={`${organisations[p].name} logo`} loading="lazy" className="footer-partner-logo" />
+                </Link>
               ))}
               {featured.map((s) => (
                 <Link key={s.path} to={s.path} className="footer-featured" aria-label={s.title}>
