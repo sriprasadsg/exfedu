@@ -11,7 +11,7 @@ export type AboutOverviewData = {
   foundation: { title: string; paragraphs: string[]; industries: string[]; founded: number };
   approach: { title: string; paragraphs: string[] };
   innovation: { title: string; introduction: string; solutions: { name: string; text: string }[]; closing: string };
-  milestones: { title: string; company: string; introduction: string; recognitions: { year: number; title: string; company: string }[] };
+  milestones: { title: string; company: string; introduction: string; recognitions: { year: number; title: string; company: string }[]; closing?: string };
   explore: { title: string; text: string; actions: { label: string; to: string }[] };
 };
 
@@ -70,7 +70,9 @@ export default function AboutOverview({ data }: { data: AboutOverviewData }) {
           </div>
         </li>;
       })}</ul>
+      {data.milestones.closing && <p className="about-editorial-closing">{data.milestones.closing}</p>}
     </section>
+
 
     <section className="about-editorial-explore" aria-labelledby="about-explore">
       <div className="container"><h2 id="about-explore">{data.explore.title}</h2><p>{data.explore.text}</p>
