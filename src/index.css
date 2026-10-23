@@ -861,8 +861,8 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
   50% { transform: translate(0, -12px) rotate(0); }
   75% { transform: translate(-12px, -4px) rotate(-8deg); }
 }
-.exi-tile-art { position: relative; width: min(100%, 469px); aspect-ratio: 1283 / 875; }
-.exi-tile-art img { display: block; width: 100%; height: auto; }
+.exi-tile-art { position: relative; width: min(100%, clamp(278px, 44vw, 469px)); aspect-ratio: 1283 / 875; }
+.exi-illus .exi-tile-art img { display: block; width: 100%; height: auto; }
 .exi-glass-layer { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 /* Scope all stillness to Home, including menus rendered outside its wrapper. */
 body:has(.homepage-static) *, body:has(.homepage-static) *::before, body:has(.homepage-static) *::after {
