@@ -10,6 +10,10 @@ import type { EnquiryIntro } from "@/components/home/PartnerEnquiry";
 import skillshoneLogo from "@/assets/skillshone-original.png.asset.json";
 import svuLogo from "@/assets/svu-logo.png.asset.json";
 import ximeLogo from "@/assets/xime-logo.png.asset.json";
+import ibmLogo from "@/assets/ibm-partner-badge.png.asset.json";
+import academicVisual from "@/assets/academic-collab-network-2.png.asset.json";
+import industryVisual from "@/assets/industry-collab-network.png.asset.json";
+import technologyVisual from "@/assets/home-hero-ai-cloud.png.asset.json";
 
 /** Shared technical skill tags shown on every academic partner card. */
 const collaborationSkills: { label: string; icon: LucideIcon }[] = [
@@ -81,13 +85,36 @@ const enquire = (label = "Enquire Now"): Block => ({ type: "cta", title: "Have a
 
 export type Tone = "blue" | "teal" | "amber" | "violet";
 
-export const programmes: { slug: string; title: string; level: string; icon: LucideIcon; tone: Tone }[] = [
-  { slug: "masters-data-science", title: "Master's in Data Science", level: "Master's & PG", icon: GraduationCap, tone: "blue" },
-  { slug: "pg-diploma-data-science", title: "PG Diploma in Data Science", level: "Master's & PG", icon: Award, tone: "teal" },
-  { slug: "python-ai-ml-genai", title: "Python for AI, ML & Generative AI", level: "Diplomas & Certifications", icon: Code2, tone: "violet" },
-  { slug: "data-visualization", title: "Data Visualization", level: "Diplomas & Certifications", icon: BarChart3, tone: "amber" },
-  { slug: "cloud-technologies", title: "Cloud Technologies", level: "Diplomas & Certifications", icon: Cloud, tone: "blue" },
+export const organisations = { SVU: { name: "Sri Venkateswara University", logo: svuLogo.url }, XIME: { name: "XIME Chennai", logo: ximeLogo.url }, IBM: { name: "IBM", logo: ibmLogo.url } };
+export type Organisation = keyof typeof organisations;
+export type Programme = {
+  slug: string; title: string; level: string; organisation: Organisation; subjects: string[]; icon: LucideIcon; tone: Tone;
+  duration: string; delivery: string; intake: string; overview: string; eligibility?: string; features: string[];
+  curriculum?: string[]; tools?: string[]; practical?: string; recognition?: string; admissions?: string; source?: string; brochure?: string;
+};
+const svuIntake = "January and July";
+const svuAdmissions = "January and July intakes. Application windows and entrance-test dates await approved university notifications.";
+export const programmes: Programme[] = [
+  { slug: "masters-data-science", title: "M.S. Data Science", level: "Master's", organisation: "SVU", subjects: ["Data Science"], icon: GraduationCap, tone: "blue", duration: "2 years", delivery: "Regular, full-time hybrid", intake: "University admission cycle", overview: "Study Data Science through academic learning and practical application at Sri Venkateswara University in collaboration with Exafluence Education.", features: ["Two-year programme", "Regular, full-time hybrid learning"], admissions: "M.S. admissions are separate from diploma intakes. Review APPGCET and the university Directorate of Admissions entrance route against the official requirements and current notification.", source: "https://www.svudatascience.in" },
+  { slug: "pg-diploma-data-science", title: "PG Diploma in Data Science", level: "PG Diploma", organisation: "SVU", subjects: ["Data Science"], icon: Award, tone: "teal", duration: "1 year", delivery: "Part-time hybrid", intake: svuIntake, overview: "Explore Data Science through a one-year part-time hybrid learning pathway.", features: ["One-year programme", "Part-time hybrid learning"], admissions: svuAdmissions, source: "https://www.svudatascience.in" },
+  { slug: "python-ai-ml-genai", title: "Diploma in Python for AI, ML & Generative AI", level: "Diploma", organisation: "SVU", subjects: ["AI & Gen AI", "Python"], icon: Code2, tone: "violet", duration: "6 months", delivery: "Part-time hybrid", intake: svuIntake, overview: "Develop knowledge in Python for Artificial Intelligence, Machine Learning and Generative AI.", features: ["Six-month programme", "Part-time hybrid learning"], admissions: svuAdmissions, source: "https://www.svudatascience.in" },
+  { slug: "data-visualization", title: "Diploma in Data Visualisation — Power BI, Tableau & SQL", level: "Diploma", organisation: "SVU", subjects: ["Data Visualisation"], icon: BarChart3, tone: "amber", duration: "6 months", delivery: "Part-time hybrid", intake: svuIntake, overview: "Explore data visualisation using Power BI, Tableau and SQL.", features: ["Six-month programme", "Part-time hybrid learning"], admissions: svuAdmissions, source: "https://www.svudatascience.in" },
+  { slug: "cloud-technologies", title: "Diploma in Cloud Technologies", level: "Diploma", organisation: "SVU", subjects: ["Cloud Technologies"], icon: Cloud, tone: "blue", duration: "6 months", delivery: "Part-time hybrid", intake: svuIntake, overview: "Develop knowledge in Cloud Technologies through academic learning and practical application.", features: ["Six-month programme", "Part-time hybrid learning"], admissions: svuAdmissions, source: "https://www.svudatascience.in" },
+  { slug: "ibm-semester-industry-learning", title: "Semester-Based Industry Learning", level: "Semester course", organisation: "IBM", subjects: ["Emerging Technologies"], icon: Cpu, tone: "blue", duration: "45 hours", delivery: "On-campus", intake: "Institution-selected", overview: "Industry-integrated semester learning with institution-aligned course selection.", features: ["One course per semester", "Institution-aligned course selection", "60% practical learning and 40% theory"], practical: "60% practical learning and 40% theory.", recognition: "3 academic credits, as stated in the supplied brief. Course-specific certification wording awaits leaflet confirmation." },
+  { slug: "ibm-value-added-courses", title: "Value-Added Courses", level: "Value-added course", organisation: "IBM", subjects: ["Emerging Technologies"], icon: Layers, tone: "teal", duration: "45 hours", delivery: "On-campus", intake: "Institution-selected", overview: "Institution-selected courses connecting practical exercises with relevant technology exposure.", eligibility: "Undergraduate and postgraduate learners across disciplines.", features: ["Institution-selected courses", "Practical exercises and relevant technology exposure"], curriculum: ["Curriculum based on the selected course and institutional requirements."], practical: "Practical exercises tailored to the selected course." },
+  { slug: "ibm-quantum-computing", title: "Certificate Programme in Quantum Computing", level: "Certificate programme", organisation: "IBM", subjects: ["Quantum Computing"], icon: Sparkles, tone: "violet", duration: "60 hours", delivery: "On-campus", intake: "Institution-selected", overview: "Explore Quantum Computing concepts and applications using IBM-provided curriculum and learning content.", eligibility: "B.Tech third- and fourth-year students, and degree second- and third-year students, across streams.", features: ["IBM-provided curriculum and learning content", "60 hours, including 33 practical hours", "Quantum Computing concepts and applications"], curriculum: ["Quantum Computing concepts and applications", "Qiskit and technologies specified in the curriculum"], tools: ["Qiskit"], practical: "33 practical hours within the 60-hour programme." },
+  { slug: "ibm-pbel", title: "Project-Based Experiential Learning — PBEL", level: "Experiential learning", organisation: "IBM", subjects: ["Emerging Technologies"], icon: Presentation, tone: "amber", duration: "90 hours", delivery: PENDING, intake: "Institution-selected", overview: "Instructor-led technical training, hands-on labs and team-based projects using industry problem statements and datasets.", eligibility: "Graduates from technical and non-technical disciplines.", features: ["Instructor-led technical training", "Hands-on labs", "Team-based project development", "Industry problem statements and datasets", "Industry mentorship", "Project presentation and evaluation"], curriculum: ["Orientation", "Training and Labs", "Project Development", "Presentation and Evaluation", "Certification"], practical: "Team-based project development, industry mentorship, presentation and evaluation." },
 ];
+
+export const collaborationSlides = [
+  { organisation: "SVU" as Organisation, heading: "Industry-Integrated University Programmes", text: "Explore programmes offered through the collaboration between Sri Venkateswara University and Exafluence Education. Develop knowledge in Data Science, Python for AI, ML and Gen AI, Data Visualisation and Cloud Technologies through academic learning and practical application.", label: "Explore Programmes & Admissions", image: academicVisual.url, alt: "University and technology learning network", icons: [Code2, Database, Cloud] },
+  { organisation: "XIME" as Organisation, heading: "Technology Learning with a Business Perspective", text: "Explore the programme offered through XIME Chennai and Exafluence Education, connecting technical learning with business applications and analytical thinking.", label: "Explore Programme Details", image: industryVisual.url, alt: "Business analytics and technology collaboration network", icons: [BarChart3, Briefcase, Database] },
+  { organisation: "IBM" as Organisation, heading: "Industry-Integrated Learning in Emerging Technologies", text: "Explore IBM programmes offered in collaboration with Exafluence Education, including semester-based courses, value-added learning, Quantum Computing and Project-Based Experiential Learning. Review practical learning opportunities tailored to the selected course and institutional requirements.", label: "Explore IBM Programmes", image: technologyVisual.url, alt: "AI processor, cloud, database and graduation cap", icons: [Cpu, Cloud, Code2] },
+];
+
+export const filterProgrammes = (filters: { organisation?: string; subject?: string; type?: string; q?: string }) => programmes.filter((p) =>
+  (!filters.organisation || p.organisation === filters.organisation) && (!filters.subject || p.subjects.includes(filters.subject)) &&
+  (!filters.type || p.level === filters.type) && (!filters.q || `${p.title} ${organisations[p.organisation].name} ${p.subjects.join(" ")}`.toLowerCase().includes(filters.q.trim().toLowerCase())));
 
 /** Study areas the programme range covers. Neutral wording only — no unapproved claims. */
 export const programmeAreas: { title: string; text: string; icon: LucideIcon; tone: Tone }[] = [
