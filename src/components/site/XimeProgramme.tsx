@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, ArrowRight, BookOpen, Clock3, GraduationCap, Award, Cpu, FlaskConical, CalendarDays, Download, MessageCircle, type LucideIcon } from "lucide-react";
+import { ArrowLeft, ArrowRight, BookOpen, Clock3, GraduationCap, Award, Cpu, FlaskConical, CalendarDays, MessageCircle, type LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import PartnerEnquiry from "@/components/home/PartnerEnquiry";
@@ -10,7 +10,7 @@ import { useProgrammeSeo } from "./ProgrammeDirectory";
 
 type Section = { title: string; icon: LucideIcon; tone: Tone; text?: string; items?: string[]; missing: string };
 const XimeProgramme = () => {
-  const [request, setRequest] = useState<"brochure" | "enquiry" | null>(null);
+  const [requestOpen, setRequestOpen] = useState(false);
   const [complete, setComplete] = useState(false);
   const reading = useRef<HTMLDivElement>(null);
   useProgrammeSeo("XIME Chennai Programme | Exafluence Education", "Review XIME Chennai programme information, eligibility, curriculum and admissions within Exafluence Education. Unverified details are flagged for review.");
@@ -34,7 +34,7 @@ const XimeProgramme = () => {
     { title: "Certification", icon: Award, tone: "amber", text: content.certification, missing: "Awarding body, certificate title and completion requirements require source confirmation." },
     { title: "Admission Process", icon: CalendarDays, tone: "blue", text: content.admissions, missing: "Application steps, selection requirements and admission dates require source confirmation." },
   ];
-  const openRequest = (value: "brochure" | "enquiry") => { setComplete(false); setRequest(value); };
+  const openRequest = () => { setComplete(false); setRequestOpen(true); };
   const pending = (text: string) => <div className="xime-review"><span className="programme-org">Details under review</span><p>{text}</p></div>;
   const list = (items: string[]) => <ul>{items.map(item => <li key={item}>{item}</li>)}</ul>;
   return <main className="programme-experience">
@@ -51,18 +51,16 @@ const XimeProgramme = () => {
           : section.title === "Curriculum and Learning Outcomes" ? <>{content.curriculum?.length ? <><h3 className="font-medium mb-3">Curriculum</h3>{list(content.curriculum)}</> : pending("Curriculum modules require source confirmation.")}{content.outcomes?.length ? <><h3 className="font-medium mt-5 mb-3">Learning Outcomes</h3>{list(content.outcomes)}</> : pending("Learning outcomes require source confirmation.")}</>
           : section.text ? <p>{section.text}</p> : section.items?.length ? list(section.items) : pending(section.missing)}
       </section>)}
-      <section className="programme-detail-section programme-reveal"><h2><span className="programme-section-icon tone-teal"><MessageCircle size={22} aria-hidden="true" /></span>Brochure and Enquiry</h2>
-        <p>{content.brochure ? "Request access to the approved programme brochure." : "The approved programme brochure is not yet available. No download is offered until an approved file is supplied."}</p>
-        <div className="flex flex-wrap gap-3 mt-5"><Button variant="outline" onClick={() => openRequest("brochure")}><Download />{content.brochure ? "Download Brochure" : "Request Brochure"}</Button><Button onClick={() => openRequest("enquiry")}>Enquire Now<ArrowRight /></Button></div>
+      <section className="programme-detail-section programme-reveal"><h2><span className="programme-section-icon tone-teal"><MessageCircle size={22} aria-hidden="true" /></span>Programme Enquiry</h2>
+        <Button onClick={openRequest}>Enquire Now<ArrowRight /></Button>
       </section>
     </div><aside className="programme-actions"><span className="programme-org">XIME Chennai</span><h2>Programme Enquiry</h2>
-      <Button onClick={() => openRequest("enquiry")}>Enquire Now<ArrowRight /></Button><Button variant="outline" onClick={() => openRequest("brochure")}><Download />{content.brochure ? "Download Brochure" : "Request Brochure"}</Button>
-      {!content.brochure && <p>Approved brochure pending review.</p>}
+      <Button onClick={openRequest}>Enquire Now<ArrowRight /></Button>
       <Link to="/collaboration-network"><ArrowLeft size={16} />Back to Our Collaboration Network</Link>
     </aside></div>
-    <Dialog open={request !== null} onOpenChange={open => { if (!open) setRequest(null); }}><DialogContent className="programme-brochure-dialog"><DialogTitle>{request === "brochure" ? "XIME Chennai Brochure Request" : "XIME Chennai Programme Enquiry"}</DialogTitle>
-      {complete ? <div role="status"><p>Test enquiry completed. No details have been sent.{request === "brochure" && !content.brochure ? " The approved brochure is not available yet." : ""}</p>{request === "brochure" && content.brochure && <Button asChild><a href={content.brochure} download><Download />Download Brochure</a></Button>}</div>
-        : <PartnerEnquiry programme={content.title ?? "XIME Chennai Programme"} onSuccess={() => setComplete(true)} intro={{ title: "Contact details", description: request === "brochure" ? "Brochure requests are in test mode. Downloads require an approved brochure." : "Programme enquiries are currently in test mode; no details will be sent." }} />}
+    <Dialog open={requestOpen} onOpenChange={setRequestOpen}><DialogContent className="programme-brochure-dialog"><DialogTitle>XIME Chennai Programme Enquiry</DialogTitle>
+      {complete ? <div role="status"><p>Test enquiry completed. No details have been sent.</p></div>
+        : <PartnerEnquiry programme={content.title ?? "XIME Chennai Programme"} onSuccess={() => setComplete(true)} intro={{ title: "Contact details", description: "Programme enquiries are currently in test mode; no details will be sent." }} />}
     </DialogContent></Dialog>
   </main>;
 };
