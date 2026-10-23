@@ -2,7 +2,10 @@ import { Link } from "react-router-dom";
 import { ArrowUp, ArrowUpRight } from "lucide-react";
 import exafluence from "@/assets/exafluence-footer-exact.png.asset.json";
 import skillshoneLogo from "@/assets/skillshone-original.png.asset.json";
-import { menuCategories, navPages } from "@/data/site";
+import { menuCategories, navPages, organisations, type Organisation } from "@/data/site";
+import { organisationPath } from "@/lib/programmeNavigation";
+
+const partners: Organisation[] = ["SVU", "XIME", "IBM"];
 
 const Footer = () => (
   <footer className="site-footer border-t">
@@ -16,6 +19,9 @@ const Footer = () => (
           return (
             <div key={c.slug}>
               {c.slug === "academic" ? <Link to="/collaboration-network" className="footer-title-gradient mb-3 block text-base font-medium">{c.title}</Link> : <p className="footer-title-gradient mb-3 text-base font-medium">{c.title}</p>}
+              {c.slug === "academic" && partners.map((p) => (
+                <Link key={p} to={organisationPath(p)} className="footer-option block py-1.5 text-sm">{organisations[p].name}</Link>
+              ))}
               {featured.map((s) => (
                 <Link key={s.path} to={s.path} className="footer-featured" aria-label={s.title}>
                   <img src={skillshoneLogo.url} alt="" className="footer-featured-logo" />
