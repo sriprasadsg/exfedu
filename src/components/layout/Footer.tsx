@@ -5,11 +5,8 @@ import { menuCategories, navPages } from "@/data/site";
 
 const Footer = () => (
   <footer className="site-footer border-t">
-    <div className="container flex flex-nowrap items-center gap-x-2 pt-14 pb-8 sm:gap-x-4">
+    <div className="container pt-14 pb-8">
       <p className="footer-brand-line min-w-0 whitespace-nowrap font-display"><span className="footer-title-gradient">Exafluence Education</span> <span className="opacity-80">— An Edtech Division of <span className="brand-exa">Exa</span><span className="brand-fluence">fluence</span> Inc., USA</span></p>
-      <span className="footer-logo-glow inline-flex shrink-0 items-center">
-        <img src={exafluence.url} alt="Exafluence — Data Driven Influence" className="footer-brand-logo w-auto" />
-      </span>
     </div>
     <div className="container grid gap-10 pb-14 md:grid-cols-2 lg:grid-cols-3">
       {menuCategories.map((c) => {
