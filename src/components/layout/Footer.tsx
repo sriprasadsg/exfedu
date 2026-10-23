@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import exafluence from "@/assets/exafluence-footer-darker.png.asset.json";
-import exfedu from "@/assets/exfedu-footer-logo.png.asset.json";
 import { menuCategories, navPages } from "@/data/site";
 
 const Footer = () => (
@@ -30,8 +29,8 @@ const Footer = () => (
               <Link key={s.path} to={s.path} className="footer-option block py-2 text-sm font-light">{s.title}</Link>
             ))}
             {c.slug === "academic" && (
-              <span className="footer-exfedu-logo mt-6 inline-flex">
-                <img src={exfedu.url} alt="Exafluence Education" className="w-auto" />
+              <span className="footer-company-mark mt-6 inline-flex">
+                <img src={exafluence.url} alt="Exafluence — Data Driven Influence" className="w-auto" />
               </span>
             )}
           </div>

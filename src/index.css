@@ -631,12 +631,13 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
   .footer-logo-glow img, .footer-logo-glow:hover img { transition: none; }
 }
 
-/* Footer — Exafluence Education logo in the open area below the Academic column */
-.footer-exfedu-logo img {
+/* Footer — Exafluence Inc. logo in the open area below the Academic column */
+.footer-company-mark img {
   width: clamp(150px, 21vw, 232px);
   height: auto;
   filter: drop-shadow(0 3px 5px hsl(214 58% 16% / .16));
 }
+
 
 .footer-option { color: hsl(214 28% 36%); transition: color .2s; }
 .footer-option:hover { color: hsl(214 68% 16%); }
