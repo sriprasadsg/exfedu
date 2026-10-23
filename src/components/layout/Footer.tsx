@@ -5,18 +5,9 @@ import { menuCategories, navPages } from "@/data/site";
 
 const Footer = () => (
   <footer className="site-footer border-t">
-    <div className="container pt-12 pb-10">
-      <div className="flex flex-wrap items-center justify-between gap-6">
-        <p className="footer-brand-line min-w-0 font-display">
-          <span className="footer-title-gradient">Exafluence Education</span>
-          <span className="footer-sep" aria-hidden>/</span>
-          <span className="opacity-80">An Edtech Division of <span className="brand-exa">Exa</span><span className="brand-fluence">fluence</span> Inc., USA</span>
-          <span className="footer-sep" aria-hidden>/</span>
-          <Link to="/contact" className="footer-option">Contact Us</Link>
-        </p>
-      </div>
+    <div className="container pt-14 pb-10">
+      <div className="grid gap-10 md:grid-cols-[1fr_1fr_1fr_auto]">
 
-      <div className="mt-8 grid gap-10 md:grid-cols-[1fr_1fr_1fr_auto]">
         {menuCategories.map((c) => {
           const pages = navPages(c.slug);
           const featured = pages.filter((s) => s.path === "/skillshone");
