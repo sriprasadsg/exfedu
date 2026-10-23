@@ -22,7 +22,7 @@ const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { progr
     sections.forEach(section => observer.observe(section));
     return () => observer.disconnect();
   }, [p.slug]);
-  useProgrammeSeo(`${p.title} | ${organisations[p.organisation].name} | Exafluence Education`, `${p.overview} Duration: ${p.duration}. Review eligibility, curriculum and admissions.`);
+  useProgrammeSeo(`${p.title} | ${organisations[p.organisation].name} | Exafluence Education`, `${p.overview} Duration: ${p.duration}. Review features, technologies and certification.`);
   const enquiryUrl = `/contact?programme=${encodeURIComponent(p.slug)}`;
   const split = p.practical?.match(/\d+% practical[^.]*theor\w*/i)?.[0];
   const sections = [

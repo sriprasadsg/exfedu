@@ -13,7 +13,7 @@ const XimeProgramme = () => {
   const [requestOpen, setRequestOpen] = useState(false);
   const [complete, setComplete] = useState(false);
   const reading = useRef<HTMLDivElement>(null);
-  useProgrammeSeo("XIME Chennai Programme | Exafluence Education", "Review XIME Chennai programme information, eligibility, curriculum and admissions within Exafluence Education. Unverified details are flagged for review.");
+  useProgrammeSeo("XIME Chennai Programme | Exafluence Education", "Review XIME Chennai programme information, curriculum, technologies and certification within Exafluence Education. Unverified details are flagged for review.");
   useEffect(() => {
     const sections = reading.current?.querySelectorAll(".programme-reveal");
     if (!sections) return;
