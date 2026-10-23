@@ -11,6 +11,8 @@ import ibmBanner from "@/assets/ibm-hero-banner-v2.png.asset.json";
 import { programmes } from "@/data/site";
 import ProgrammeDirectory from "@/components/site/ProgrammeDirectory";
 import ProgrammeDetail from "@/components/site/ProgrammeDetail";
+import OrganisationProgrammes from "@/components/site/OrganisationProgrammes";
+import { organisationFromPath, programmePath } from "@/lib/programmeNavigation";
 import "@/styles/programmes.css";
 
 const heroVisuals: Record<string, string> = {
@@ -22,7 +24,11 @@ const ContentPage = () => {
   const retiredDestination = retiredPageDestinations[pathname.replace(/\/$/, "")];
   if (retiredDestination) return <Navigate to={retiredDestination} replace />;
   if (pathname.replace(/\/$/, "") === "/programmes") return <Layout><ProgrammeDirectory /></Layout>;
-  const programme = programmes.find(p => pathname.replace(/\/$/, "") === `/programmes/${p.slug}`);
+  const organisation = organisationFromPath(pathname);
+  if (organisation) return <Layout><OrganisationProgrammes organisation={organisation} /></Layout>;
+  const legacyProgramme = programmes.find(p => pathname.replace(/\/$/, "") === `/programmes/${p.slug}`);
+  if (legacyProgramme) return <Navigate to={programmePath(legacyProgramme)} replace />;
+  const programme = programmes.find(p => pathname.replace(/\/$/, "") === programmePath(p));
   if (programme) return <Layout><ProgrammeDetail key={programme.slug} programme={programme} /></Layout>;
   const page = findPage(pathname);
   if (!page) return <NotFound />;

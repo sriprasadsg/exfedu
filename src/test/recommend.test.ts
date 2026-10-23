@@ -10,7 +10,7 @@ describe("programme recommender", () => {
 
   it("matches AI interests to the Python AI/ML programme", () => {
     const r = recommendLocal("curious about artificial intelligence and python", "build machine learning models");
-    expect(r.some((x) => x.path === "/programmes/python-ai-ml-genai")).toBe(true);
+    expect(r.some((x) => x.path === "/collaboration-network/svu/python-ai-ml-genai")).toBe(true);
   });
 
   it("matches career goals to ecosystem areas", () => {

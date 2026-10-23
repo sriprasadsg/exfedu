@@ -9,6 +9,7 @@ import PartnerEnquiry from "@/components/home/PartnerEnquiry";
 import AboutStory from "@/components/site/AboutStory";
 import AboutOverview from "@/components/site/AboutOverview";
 import CollaborationNetwork from "@/components/site/CollaborationNetwork";
+import { programmePath } from "@/lib/programmeNavigation";
 
 const H2 = ({ children }: { children: React.ReactNode }) => <h2 className="site-section-title font-display font-normal">{children}</h2>;
 
@@ -142,7 +143,7 @@ export const BlockView = ({ block, page }: { block: Block; page: Page }) => {
     case "areas":
       return <div><H2>{block.title}</H2><div className="ways-stack mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">{programmeAreas.map((a) => <AreaCard key={a.title} {...a} />)}</div></div>;
     case "programmes":
-      return <div><H2>{block.title}</H2><div className="ways-stack mt-6 grid gap-3 md:grid-cols-2">{programmes.map((p) => <LinkCard key={p.slug} to={`/programmes/${p.slug}`} title={p.title} meta={p.level} icon={p.icon} tone={p.tone} />)}</div></div>;
+      return <div><H2>{block.title}</H2><div className="ways-stack mt-6 grid gap-3 md:grid-cols-2">{programmes.map((p) => <LinkCard key={p.slug} to={programmePath(p)} title={p.title} meta={p.level} icon={p.icon} tone={p.tone} />)}</div></div>;
     case "children": {
       const kids = pages.filter((p) => p.parent === page.path);
       return <div><H2>{block.title}</H2><div className="ways-stack mt-6 grid gap-3 md:grid-cols-2">{kids.map((k) => <LinkCard key={k.path} to={k.path} title={k.title} meta="View Collaboration" icon={k.icon} tone={categoryTone[k.category] ?? "blue"} />)}</div></div>;

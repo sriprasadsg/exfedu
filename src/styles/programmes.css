@@ -82,6 +82,23 @@
 .programme-brochure-dialog .container { padding-inline: 0; padding-block: 20px; }
 .programme-brochure-dialog .enquiry-compact-layout { gap: 26px; }
 .programme-brochure-dialog .enquiry-intro-title { font-size: 23px; }
+.organisation-programme-body { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 60px; padding-block: 42px 64px; }
+.organisation-list-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; font-size: 24px; font-weight: 500; padding-bottom: 22px; border-bottom: 1px solid hsl(var(--academic-edge)); }
+.organisation-list-heading > span { font-size: 13px; font-weight: 400; color: hsl(var(--muted-foreground)); white-space: nowrap; }
+.organisation-programme-item { display: grid; grid-template-columns: 42px minmax(0, 1fr); gap: 20px; padding-block: 28px; border-bottom: 1px solid hsl(var(--academic-edge)); }
+.organisation-programme-item h2 { font-size: 22px; font-weight: 500; line-height: 1.4; margin-top: 5px; }
+.organisation-programme-item h2 a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.organisation-programme-item p { font-size: 14px; line-height: 1.8; margin-top: 12px; color: hsl(var(--muted-foreground)); }
+.organisation-course-facts { display: flex; flex-wrap: wrap; gap: 20px 32px; margin-block: 18px 10px; }
+.organisation-course-facts dt { display: flex; align-items: center; gap: 7px; font-size: 12px; color: hsl(var(--muted-foreground)); }
+.organisation-course-facts dd { font-size: 14px; margin-top: 6px; }
+.organisation-programme-item a[data-slot], .organisation-programme-item a.inline-flex { padding-left: 0; }
+.organisation-links { display: flex; flex-direction: column; }
+.organisation-links a { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 14px; padding-block: 14px; border-bottom: 1px solid hsl(var(--academic-edge)); }
+.organisation-links a[aria-current=page] { color: hsl(var(--connection-blue)); font-weight: 500; }
+.organisation-programmes .programme-actions > a { white-space: normal; height: auto; min-height: 44px; line-height: 1.5; }
+@media (max-width: 1050px) { .organisation-programme-body { gap: 32px; grid-template-columns: minmax(0, 1fr) 240px; } }
+@media (max-width: 767px) { .organisation-programme-body { grid-template-columns: minmax(0, 1fr); } .organisation-list-heading { flex-wrap: wrap; font-size: 22px; } .organisation-programme-item { gap: 14px; } .organisation-programme-item h2 { font-size: 20px; } }
 @media (max-width: 1050px) { .programme-filters { grid-template-columns: repeat(2, minmax(0, 1fr)); } .programme-filters > button { justify-self: start; } .programme-table-head, .programme-row { gap: 15px; grid-template-columns: minmax(0, 2fr) .7fr 1fr 1fr 45px; } .programme-detail-body { gap: 35px; } }
 @media (max-width: 767px) {
  .network-section { padding-top: 30px; } .network-heading h1 { font-size: 25px; } .network-image { height: 260px; } .network-image > img { object-position: center; }

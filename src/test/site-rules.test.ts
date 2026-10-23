@@ -29,7 +29,7 @@ describe("approved website structure", () => {
     expect(pages.find(p => p.path === "/collaboration-network")?.blocks).toEqual([{ type: "collaboration-network" }]);
   });
   it("redirects retired academic URLs without duplicate content pages", () => {
-    expect(retiredPageDestinations).toEqual({ "/academic-collaborations": "/collaboration-network", "/academic-collaborations/svu": "/programmes?organisation=SVU", "/academic-collaborations/xime": "/programmes?organisation=XIME" });
+    expect(retiredPageDestinations).toEqual({ "/academic-collaborations": "/collaboration-network", "/academic-collaborations/svu": "/collaboration-network/svu", "/academic-collaborations/xime": "/collaboration-network/xime" });
   });
   it("keeps eight homepage capability cards linked to existing pages", () => {
     expect(homepageCapabilities).toHaveLength(8);
