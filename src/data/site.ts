@@ -7,7 +7,7 @@ import type { AboutStoryData } from "@/components/site/AboutStory";
 import type { AboutOverviewData } from "@/components/site/AboutOverview";
 import type { AcademicOverviewData } from "@/components/site/AcademicOverview";
 import type { EnquiryIntro } from "@/components/home/PartnerEnquiry";
-import skillshoneLogo from "@/assets/skillshone-logo.png.asset.json";
+import skillshoneLogo from "@/assets/skillshone-original.png.asset.json";
 import svuLogo from "@/assets/svu-logo.png.asset.json";
 import ximeLogo from "@/assets/xime-logo.png.asset.json";
 

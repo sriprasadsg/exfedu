@@ -16,8 +16,8 @@ const Footer = () => (
             <div key={c.slug}>
               <p className="footer-title-gradient mb-3 text-base font-medium">{c.title}</p>
               {featured.map((s) => (
-                <Link key={s.path} to={s.path} className="footer-featured">
-                  {s.title}
+                <Link key={s.path} to={s.path} className="footer-featured" aria-label={s.title}>
+                  <img src={skillshoneLogo.url} alt="" className="footer-featured-logo" />
                   <ArrowUpRight className="h-3 w-3" strokeWidth={1.75} aria-hidden />
                 </Link>
               ))}
