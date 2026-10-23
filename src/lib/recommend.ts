@@ -9,6 +9,7 @@
  */
 import { supabase } from "@/integrations/supabase/client";
 import { programmes, arms } from "@/data/site";
+import { programmePath } from "@/lib/programmeNavigation";
 
 export const recommendConfig = {
   mode: "ai" as "ai" | "off",
@@ -59,7 +60,7 @@ const armKeywords: Record<string, string[]> = {
 export const catalog: CatalogEntry[] = [
   ...programmes.map((p) => ({
     title: p.title,
-    path: `/programmes/${p.slug}`,
+    path: programmePath(p),
     kind: "programme" as const,
     keywords: programmeKeywords[p.slug] ?? [],
     why: `${p.level} programme`,
