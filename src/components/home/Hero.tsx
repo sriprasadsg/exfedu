@@ -1,30 +1,21 @@
-import heroBanner from "@/assets/home-hero-academic-network.png.asset.json";
-import heroBannerNarrow from "@/assets/home-hero-academic-network-mobile.png.asset.json";
-import HeroDots from "./HeroDots";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import heroArt from "@/assets/home-hero-edtech.png";
 
 const Hero = () => (
-  <section aria-label="Exafluence Education introduction" className="hero-section">
-    <div className="hero-banner">
-      <div className="hero-banner-media">
-        <picture>
-        <source media="(max-width: 640px)" srcSet={heroBannerNarrow.url} />
-        <img
-          src={heroBanner.url}
-          alt=""
-          aria-hidden="true"
-          width={1920}
-          height={395}
-          className="hero-banner-art"
-        />
-        </picture>
-        <HeroDots />
+  <section aria-label="Exafluence Education introduction" className="hero2">
+    <div className="container hero2-inner">
+      <div className="hero2-copy">
+        <h1 className="hero2-title">Exafluence Education</h1>
+        <p className="hero2-sub">An EdTech Division of <span className="brand-exa">Exa</span><span className="brand-fluence">fluence</span> <span className="brand-fluence">Inc. USA</span></p>
+        <ul className="hero2-lines">
+          <li className="hero2-nowrap">AI, Gen AI, Data Science</li>
+          <li>Cloud Technologies</li>
+          <li>Quantum Computing</li>
+        </ul>
+        <Button asChild size="lg" className="hero2-cta"><Link to="/programmes">Explore Programmes</Link></Button>
       </div>
-      <div className="hero-banner-copy">
-        <h1 className="hero-title">
-          Exafluence Education
-        </h1>
-        <p className="hero-tagline">Connecting Academia, Industry &amp; Technology</p>
-      </div>
+      <img src={heroArt} alt="" aria-hidden="true" width={1200} height={960} className="hero2-art" fetchPriority="high" />
     </div>
   </section>
 );

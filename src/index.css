@@ -1276,3 +1276,35 @@ html body .academic-partner-icon svg, html body .academic-invitation-icons svg {
   .about-explorer .about-topic:hover svg, .about-explorer .about-topic:focus-visible svg { transform: none; }
 }
 
+
+/* Homepage redesign (client reference, 23 Oct 2026) */
+.hero2 { background: linear-gradient(180deg, hsl(207 78% 94%), hsl(207 70% 97%)); }
+.hero2-inner { display: grid; grid-template-columns: 1.05fr 1fr; align-items: center; gap: 2rem; padding-block: clamp(2rem, 5vw, 4rem); }
+.hero2-title { font-size: clamp(2rem, 4.2vw, 3.2rem); font-weight: 500; line-height: 1.1; color: hsl(var(--primary)); }
+.hero2-sub { margin-top: .5rem; font-size: clamp(1rem, 1.6vw, 1.2rem); color: hsl(var(--primary)); }
+.hero2-lines { margin-top: 1.25rem; display: grid; gap: .2rem; font-size: clamp(1.15rem, 2vw, 1.6rem); font-weight: 500; color: hsl(var(--primary)); }
+.hero2-nowrap { white-space: nowrap; }
+.hero2-cta { margin-top: 1.75rem; background: hsl(var(--navy-royal)); color: hsl(0 0% 100%); }
+.hero2-cta:hover { background: hsl(var(--navy-royal-deep)); }
+.hero2-art { width: 100%; max-width: 520px; height: auto; justify-self: end; }
+@media (max-width: 767px) {
+  .hero2-inner { grid-template-columns: 1fr; }
+  .hero2-nowrap { white-space: normal; }
+  .hero2-art { justify-self: center; max-width: 340px; }
+}
+.collab2 { background: hsl(var(--background)); padding-block: clamp(2rem, 4vw, 3rem); }
+.collab2-title, .eco2-title { text-align: center; font-size: clamp(1.4rem, 2.6vw, 2rem); font-weight: 500; color: hsl(var(--primary)); }
+.eco2-title { padding-top: 2.5rem; background: hsl(207 70% 97%); margin: 0; }
+.collab2-grid { margin-top: 2rem; display: grid; grid-template-columns: repeat(3, 1fr); }
+.collab2-item { display: flex; flex-direction: column; align-items: center; gap: .6rem; padding: 1rem; text-align: center; }
+.collab2-item + .collab2-item { border-left: 1px solid hsl(207 60% 88%); }
+.collab2-logo { height: 96px; display: flex; align-items: center; justify-content: center; }
+.collab2-logo img { max-height: 96px; max-width: 100%; width: auto; object-fit: contain; }
+.collab2-name { font-size: 2.4rem; font-weight: 700; letter-spacing: .06em; color: hsl(214 70% 45%); }
+.collab2-kind { color: hsl(var(--primary)); }
+.collab2-link { display: inline-flex; align-items: center; gap: .3rem; color: hsl(var(--navy-royal)); }
+.collab2-link:hover { text-decoration: underline; }
+@media (max-width: 767px) {
+  .collab2-grid { grid-template-columns: 1fr; }
+  .collab2-item + .collab2-item { border-left: 0; border-top: 1px solid hsl(207 60% 88%); }
+}
