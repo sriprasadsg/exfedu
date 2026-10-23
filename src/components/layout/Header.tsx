@@ -21,10 +21,10 @@ const Header = () => {
     <header className="site-header sticky top-0 z-50 border-b">
       <div className="container flex h-20 items-center justify-between gap-4">
         <Link to="/" className="flex min-w-0 items-center" aria-label="Exafluence Education home">
-          <img src={logo.url} alt="Exafluence Education — An EdTech unit of Exafluence Inc., USA" className="h-12 w-auto max-w-[220px] object-contain" />
+          <img src={logo.url} alt="Exafluence Education — An EdTech unit of Exafluence Inc., USA" className="h-12 w-auto max-w-[150px] lg:max-w-[220px] object-contain" />
 
         </Link>
-        <nav aria-label="Main navigation" className="hidden items-center gap-1 lg:flex">
+        <nav aria-label="Main navigation" className="hidden items-center gap-0 md:flex">
           <Button asChild variant="ghost" className="nav-on-navy"><Link to="/" aria-current={pathname === "/" ? "page" : undefined}>Home</Link></Button>
           <Button asChild variant="ghost" className="nav-on-navy"><Link to="/about" aria-current={pathname === "/about" ? "page" : undefined}>About Us</Link></Button>
           {menuCategories.map((c) => (
@@ -45,13 +45,13 @@ const Header = () => {
           ))}
           <Button asChild size="sm" className="ml-3 nav-cta"><Link to="/#partner-enquiry">Partner enquiry</Link></Button>
         </nav>
-        <Button variant="ghost" size="icon" className="nav-on-navy nav-icon-btn lg:hidden" onClick={() => setOpen(!open)} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} aria-controls="mobile-navigation">
+        <Button variant="ghost" size="icon" className="nav-on-navy nav-icon-btn md:hidden" onClick={() => setOpen(!open)} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} aria-controls="mobile-navigation">
 
           {open ? <X /> : <Menu />}
         </Button>
       </div>
       {open && (
-        <nav id="mobile-navigation" aria-label="Mobile navigation" className="site-header-panel max-h-[calc(100dvh-5rem)] overflow-y-auto border-t lg:hidden">
+        <nav id="mobile-navigation" aria-label="Mobile navigation" className="site-header-panel max-h-[calc(100dvh-5rem)] overflow-y-auto border-t md:hidden">
           <div className="container py-4">
             <Button asChild variant="ghost" className="nav-on-navy h-11 w-full justify-start"><Link to="/" onClick={() => setOpen(false)}>Home</Link></Button>
             <Button asChild variant="ghost" className="nav-on-navy h-11 w-full justify-start"><Link to="/about" onClick={() => setOpen(false)}>About Us</Link></Button>

@@ -1273,3 +1273,4 @@ html body .academic-partner-icon svg, html body .academic-invitation-icons svg {
   .collab2-grid { grid-template-columns: 1fr; }
   .collab2-item + .collab2-item { border-left: 0; border-top: 1px solid hsl(207 60% 88%); }
 }
+@media (min-width:768px) and (max-width:1279px){.site-header nav[aria-label="Main navigation"] .nav-on-navy{padding-left:.4rem;padding-right:.4rem;font-size:.82rem}.site-header nav[aria-label="Main navigation"] .menu-cat-icon{height:1.2rem;width:1.2rem}}
