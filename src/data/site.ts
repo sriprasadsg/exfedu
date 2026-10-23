@@ -5,7 +5,6 @@ import {
 } from "lucide-react";
 import type { AboutStoryData } from "@/components/site/AboutStory";
 import type { AboutOverviewData } from "@/components/site/AboutOverview";
-import type { AcademicOverviewData } from "@/components/site/AcademicOverview";
 import type { EnquiryIntro } from "@/components/home/PartnerEnquiry";
 import skillshoneLogo from "@/assets/skillshone-original.png.asset.json";
 import svuLogo from "@/assets/svu-logo.png.asset.json";
@@ -14,20 +13,6 @@ import ibmLogo from "@/assets/ibm-partner-badge.png.asset.json";
 import academicVisual from "@/assets/academic-collab-network-2.png.asset.json";
 import industryVisual from "@/assets/industry-collab-network.png.asset.json";
 import technologyVisual from "@/assets/home-hero-ai-cloud.png.asset.json";
-
-/** Shared technical skill tags shown on every academic partner card. */
-const collaborationSkills: { label: string; icon: LucideIcon }[] = [
-  { label: "Data Science", icon: FlaskConical },
-  { label: "Artificial Intelligence", icon: Cpu },
-  { label: "Machine Learning", icon: Network },
-  { label: "Deep Learning", icon: Layers },
-  { label: "Generative AI", icon: Sparkles },
-  { label: "Python", icon: Code2 },
-  { label: "Big Data Analytics", icon: Database },
-  { label: "Data Visualization", icon: BarChart3 },
-  { label: "Cloud Computing", icon: Cloud },
-  { label: "Business Intelligence", icon: PieChart },
-];
 
 /** Content is data-only: add approved pages, partners or programmes here without touching layouts. */
 export type Offering = { name: string; significance: string[]; benefits: string };
@@ -46,7 +31,7 @@ export type Block =
   | { type: "enquiry-form"; title: string; intro?: EnquiryIntro }
   | { type: "about-story"; data: AboutStoryData }
   | { type: "about-overview"; data: AboutOverviewData }
-  | { type: "academic-overview"; data: AcademicOverviewData }
+  | { type: "collaboration-network" }
   | { type: "logo"; src: string; alt: string }
   | { type: "cta"; title: string; text: string; label: string; to?: string; appearance?: "academic-partner" };
 
@@ -57,7 +42,7 @@ export type Page = {
 
 export const categories = [
   { slug: "core", title: "Core", short: "Contact", accent: "cat-core" },
-  { slug: "academic", title: "Academic Collaborations", short: "Academic", accent: "cat-academic" },
+  { slug: "academic", title: "Our Collaboration Network", short: "Our Collaboration Network", accent: "cat-academic" },
   { slug: "industry", title: "Industry & Technology Collaborations", short: "Industry", accent: "cat-industry" },
   { slug: "learning", title: "Learning & Student Ecosystem", short: "Learning & Students", accent: "cat-learning" },
 ] as const;
@@ -71,7 +56,7 @@ export const PENDING = "Approved Content Required";
 
 /** Approved homepage capabilities; independent of the wider site navigation. */
 export const homepageCapabilities = [
-  { id: "academic", title: "Academic Collaborations", capabilities: ["Programme Development", "Curriculum Alignment", "Academic Engagement"], path: "/academic-collaborations" },
+  { id: "academic", title: "Academic Collaborations", capabilities: ["Programme Development", "Curriculum Alignment", "Academic Engagement"], path: "/collaboration-network" },
   { id: "technology", title: "Technology Capabilities", capabilities: ["AI & Gen AI", "Data & Analytics", "Cloud Solutions"], path: "/industry-collaborations" },
   { id: "programmes", title: "Industry-Aligned Programmes", capabilities: ["Emerging Technologies", "Professional Skills", "Applied Knowledge"], path: "/programmes" },
   { id: "research", title: "Research & Innovation", capabilities: ["Applied Research", "Innovation Projects", "Hackathons"], path: "/research-innovation" },
@@ -209,34 +194,9 @@ export const pages: Page[] = [
   },
   { path: "/contact", title: "Contact / Enquiry", category: "core", icon: Mail, summary: "Ask about programmes, collaborations or admissions.", blocks: [] },
 
-  // Academic
-  { path: "/academic-collaborations", title: "Academic Collaborations", category: "academic", icon: Landmark,
-    summary: "Connecting academic foundations with applied AI, data and financial technologies.",
-    blocks: [{ type: "academic-overview", data: {
-      title: "Academic Collaborations",
-      subtitle: "Academic depth. Applied technology. Shared opportunity.",
-      description: "Connecting institutional learning with practical expertise in data, AI and financial technologies.",
-      partnersTitle: "Our Academic Partners",
-      introduction: "Explore how each collaboration connects academic knowledge with technical learning and professional applications.",
-      partners: [
-        { logo: { src: svuLogo.url, alt: "Sri Venkateswara University" }, name: "Sri Venkateswara University", label: "Data Science & Computing", description: "Connecting statistics and computing with practical learning in data analysis, machine learning and visualisation, supported by project work.", skills: collaborationSkills, linkLabel: "Explore SVU Collaboration", to: "/academic-collaborations/svu" },
-        { logo: { src: ximeLogo.url, alt: "XIME" }, name: "XIME, Chennai", label: "Finance & Technology", description: "Connecting financial knowledge with data analytics and AI applications to explore financial services, business insights and technology-led decision-making.", skills: collaborationSkills, linkLabel: "Explore XIME Collaboration", to: "/academic-collaborations/xime" },
-      ],
-      invitation: { title: "Build an Academic Partnership", description: "Discuss curriculum enrichment, technical workshops, faculty development and applied learning opportunities for your institution.", label: "Discuss a Partnership", to: "/contact" },
-    } }] },
-  { path: "/academic-collaborations/svu", parent: "/academic-collaborations", title: "SVU Collaboration", category: "academic", icon: GraduationCap,
-    summary: "Exafluence Education × SVU.",
-    blocks: [
-      { type: "pending", title: "The collaboration", items: ["About the Collaboration", "Collaboration Significance", "Programmes Offered", "Programme Significance", "Student Benefits", "Eligibility"] },
-      { type: "pending", title: "Learning & outcomes", items: ["Practical Learning", "Projects", "Internships", "Industry Exposure", "Career Development", "Research & Publications", "Innovation & Achievements", "Student Outcomes", "Gallery"] },
-      enquire("Enquire about SVU programmes"),
-    ] },
-  { path: "/academic-collaborations/xime", parent: "/academic-collaborations", title: "XIME Collaboration", category: "academic", icon: GraduationCap,
-    summary: "Exafluence Education × XIME.",
-    blocks: [
-      { type: "pending", title: "The collaboration", items: ["About the Collaboration", "Programmes Offered", "Student Benefits", "Eligibility"] },
-      enquire("Enquire about XIME programmes"),
-    ] },
+  // Replaces the retired Academic overview and partner subpages.
+  { path: "/collaboration-network", title: "Our Collaboration Network", category: "academic", icon: Landmark,
+    summary: "Explore programmes with Sri Venkateswara University, XIME Chennai and IBM.", blocks: [{ type: "collaboration-network" }] },
 
   // Industry
   { path: "/industry-collaborations", title: "Industry & Technology Collaborations", category: "industry", icon: Network,
@@ -308,11 +268,16 @@ export const pages: Page[] = [
 ];
 
 export const findPage = (path: string) => pages.find((p) => p.path === path.replace(/\/$/, "") );
+export const retiredPageDestinations: Record<string, string> = {
+  "/academic-collaborations": "/collaboration-network",
+  "/academic-collaborations/svu": "/programmes?organisation=SVU",
+  "/academic-collaborations/xime": "/programmes?organisation=XIME",
+};
 export const navPages = (cat: CategorySlug) => pages.filter((p) => p.category === cat && !p.hideInNav);
 
 /** Hub arms: every arm is subordinate to the central Exafluence Education brand. */
 export const arms: { title: string; path: string; icon: LucideIcon; subtitle: string; priority: "institutional" | "learning" | "student" }[] = [
-  { title: "Academic Collaborations", path: "/academic-collaborations", icon: Landmark, subtitle: "SVU · XIME", priority: "institutional" },
+  { title: "Our Collaboration Network", path: "/collaboration-network", icon: Landmark, subtitle: "SVU · XIME · IBM", priority: "institutional" },
   { title: "Industry & Technology", path: "/industry-collaborations", icon: Network, subtitle: "IBM · Exafluence Inc.", priority: "institutional" },
   { title: "Programmes", path: "/programmes", icon: BookOpen, subtitle: "AI · Data · Cloud", priority: "learning" },
   { title: "Practical Learning", path: "/practical-learning", icon: FlaskConical, subtitle: "Labs · Projects · Capstones", priority: "learning" },
