@@ -2,7 +2,10 @@ import { Link } from "react-router-dom";
 import { ArrowUp, ArrowUpRight } from "lucide-react";
 import exafluence from "@/assets/exafluence-footer-exact.png.asset.json";
 import skillshoneLogo from "@/assets/skillshone-original.png.asset.json";
-import { menuCategories, navPages } from "@/data/site";
+import { menuCategories, navPages, organisations, type Organisation } from "@/data/site";
+import { organisationPath } from "@/lib/programmeNavigation";
+
+const partners: Organisation[] = ["SVU", "XIME", "IBM"];
 
 const Footer = () => (
   <footer className="site-footer border-t">
