@@ -869,6 +869,7 @@ body:has(.homepage-static) *, body:has(.homepage-static) *::before, body:has(.ho
   transform-box: fill-box;
   transform-origin: center;
   animation: hero-dot-pulse 3.6s ease-in-out infinite !important;
+  animation-delay: var(--dot-delay, 0s) !important;
 }
 @container cap (min-width: 800px) {
   .homepage-static .cap-card:hover { transform: translate(-50%, -50%); }
