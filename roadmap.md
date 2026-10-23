@@ -194,6 +194,6 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Hero banner artwork replaced with the client's ceramic tile cluster — the same transparent "educational purpose" panel illustration, whole on the right of the copy on desktop and centred below on phones; the retired AI cap/chip composite moved to storage unreferenced; 27 tests pass, build OK (client 08:34 UTC 23 Oct 2026).
 - [ ] Hero banner artwork: use the client's enclosed AI-education render (stepped plinth, navy mortarboard, "AI" chip, database stack, cloud) presented in the educational-purpose panel's style — a clean transparent cut-out on the pale blue, whole, no rectangle edge (client 08:38 UTC 23 Oct 2026).
 - [x] Footer: the empty space the client's second picture marked, below the Academic Collaborations links, now carries the Exafluence Inc. logo — not the Education lockup (client 08:48 UTC 23 Oct 2026).
-- [ ] Use one Exafluence logo colour combination everywhere that logo's placeholder appears across the site (client 08:50 UTC 23 Oct 2026).
+- [x] One Exafluence logo colour combination now used wherever that logo's placeholder appears: navy "Exa" / red "fluence" matching the logo artwork (client 08:50 UTC 23 Oct 2026).
 
 
