@@ -49,13 +49,13 @@ const Header = () => {
           ))}
           <Button asChild size="sm" className="ml-2 nav-cta gap-1.5"><Link to="/#partner-enquiry"><MessageCircle className="h-4 w-4" aria-hidden="true" />Partner enquiry</Link></Button>
         </nav>
-        <Button variant="ghost" size="icon" className="nav-on-navy nav-icon-btn min-[900px]:hidden" onClick={() => setOpen(!open)} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} aria-controls="mobile-navigation">
+        <Button variant="ghost" size="icon" className="nav-on-navy nav-icon-btn" onClick={() => setOpen(!open)} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} aria-controls="mobile-navigation">
 
           {open ? <X /> : <Menu />}
         </Button>
       </div>
       {open && (
-        <div className="fixed inset-0 z-50 min-[900px]:hidden">
+        <div className="fixed inset-0 z-50">
           <button type="button" aria-label="Close menu" className="absolute inset-0 bg-foreground/50" onClick={() => setOpen(false)} />
           <nav id="mobile-navigation" aria-label="Mobile navigation" className="relative flex h-full w-[min(92vw,420px)] flex-col overflow-y-auto bg-background shadow-2xl animate-in slide-in-from-left duration-300 border-b-4 border-primary">
             <button type="button" onClick={() => setOpen(false)} className="flex h-24 w-28 shrink-0 items-center justify-center bg-primary text-primary-foreground font-medium underline underline-offset-4">Close</button>
