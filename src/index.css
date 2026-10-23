@@ -1,4 +1,5 @@
 /* Google Sans is loaded by the document font link. */
+:root { --programme-practical: 172 62% 30%; --programme-innovation: 258 52% 45%; --programme-achievement: 28 72% 41%; }
 
 /* About's editorial layout is isolated from shared page banners and explorers. */
 .about-editorial { color: hsl(214 45% 33%); background: hsl(var(--academic-surface)); font-size: 16px; line-height: 1.8; }
