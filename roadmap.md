@@ -197,3 +197,5 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] One Exafluence logo colour combination now used wherever that logo's placeholder appears: navy "Exa" / red "fluence" matching the logo artwork (client 08:50 UTC 23 Oct 2026).
 
 
+- [x] Footer: the small logo placeholder at the end of the brand line removed — only the Exafluence Inc. mark below the Academic Collaborations links remains; its dead styles cleared (client 09:14 UTC 23 Oct 2026).
+- [x] Footer Inc USA logo now carries exactly the wordmark's shades — navy rgb(7,43,90) and red rgb(204,0,0); its black "ISO 27001: 2022 Certified" line recoloured to the same navy (client 09:15 UTC 23 Oct 2026).
