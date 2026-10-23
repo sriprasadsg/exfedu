@@ -8,6 +8,10 @@ import internshipsBanner from "@/assets/internships-banner.jpg.asset.json";
 import skillshoneBanner from "@/assets/skillshone-hero-banner.png.asset.json";
 import successImg from "@/assets/hero-success.png";
 import ibmBanner from "@/assets/ibm-hero-banner-v2.png.asset.json";
+import { programmes } from "@/data/site";
+import ProgrammeDirectory from "@/components/site/ProgrammeDirectory";
+import ProgrammeDetail from "@/components/site/ProgrammeDetail";
+import "@/styles/programmes.css";
 
 const heroVisuals: Record<string, string> = {
   "/student-success": successImg,
@@ -15,6 +19,9 @@ const heroVisuals: Record<string, string> = {
 
 const ContentPage = () => {
   const { pathname } = useLocation();
+  if (pathname.replace(/\/$/, "") === "/programmes") return <Layout><ProgrammeDirectory /></Layout>;
+  const programme = programmes.find(p => pathname.replace(/\/$/, "") === `/programmes/${p.slug}`);
+  if (programme) return <Layout><ProgrammeDetail key={programme.slug} programme={programme} /></Layout>;
   const page = findPage(pathname);
   if (!page) return <NotFound />;
   const cat = categories.find((c) => c.slug === page.category);

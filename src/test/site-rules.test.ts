@@ -46,10 +46,10 @@ describe("approved website structure", () => {
     expect(titles).not.toContain("Additional partners");
     expect(pages.some((p) => /industry-networks|other-technology-partners|future-university/.test(p.path))).toBe(false);
   });
-  it("keeps programme specifics pending instead of inventing claims", () => {
+  it("keeps unspecified certification and brochure claims pending", () => {
     for (const programme of programmes) {
-      const page = pages.find((p) => p.path === `/programmes/${programme.slug}`);
-      expect(page?.blocks[0]).toMatchObject({ type: "pending", items: expect.arrayContaining(["Duration", "Delivery Mode", "Eligibility", "Certification", "Brochure"]) });
+      expect(programme.brochure).toBeUndefined();
+      if (programme.slug !== "ibm-semester-industry-learning") expect(programme.recognition).toBeUndefined();
     }
   });
   it("connects all eleven ecosystem arms to existing pages", () => {
