@@ -2,19 +2,26 @@ import { describe, expect, it } from "vitest";
 import { arms, categories, homepageCapabilities, pages, programmes } from "@/data/site";
 
 describe("approved website structure", () => {
-  it("attributes dated corporate recognitions to Exafluence Inc., not Exfedu", () => {
+  it("presents FIS Global, Snowflake and MongoDB together without award years", () => {
     const overview = pages.find((page) => page.path === "/about")?.blocks.find((block) => block.type === "about-overview");
     if (!overview || overview.type !== "about-overview") throw new Error("About overview missing");
-    expect(overview.data.milestones.recognitions.map(({ year, company }) => ({ year, company }))).toEqual([
-      { year: 2022, company: "Exafluence Inc." },
-      { year: 2023, company: "Exafluence Inc." },
-    ]);
+    const paragraphs = overview.data.collaborations.paragraphs.join(" ");
+    expect(paragraphs).toContain("FIS Global");
+    expect(paragraphs).toContain("Snowflake Native Apps launch partner");
+    expect(paragraphs).toContain("MongoDB");
+    expect(JSON.stringify(overview.data.collaborations)).not.toMatch(/20(22|23)/);
   });
-  it("links About programme and contact actions to the existing destinations", () => {
+  it("keeps the founding year 2015 on the About industry foundation", () => {
     const overview = pages.find((page) => page.path === "/about")?.blocks.find((block) => block.type === "about-overview");
     if (!overview || overview.type !== "about-overview") throw new Error("About overview missing");
-    expect(overview.data.explore.actions.map((action) => action.to)).toEqual(["/programmes", "/contact"]);
-    for (const action of overview.data.explore.actions) expect(pages.some((page) => page.path === action.to)).toBe(true);
+    expect(overview.data.foundation.paragraphs.join(" ")).toContain("Founded in 2015");
+  });
+  it("shows no About closing call-to-action section or buttons", () => {
+    const about = pages.find((page) => page.path === "/about");
+    const overview = about?.blocks.find((block) => block.type === "about-overview");
+    if (!about || !overview || overview.type !== "about-overview") throw new Error("About overview missing");
+    expect(about.blocks.some((block) => block.type === "cta")).toBe(false);
+    expect("explore" in overview.data).toBe(false);
   });
   it("keeps academic partner and enquiry destinations on their existing pages", () => {
     const overview = pages.find((page) => page.path === "/academic-collaborations")?.blocks.find((block) => block.type === "academic-overview");

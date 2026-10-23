@@ -118,45 +118,51 @@ export const pages: Page[] = [
     summary: "Technology education informed by industry experience",
     blocks: [{ type: "about-overview", data: {
       title: "About Exafluence Education",
-      subtitle: "Technology education informed by industry experience",
-      introduction: "Exafluence Education (Exfedu) is the education division of Exafluence Inc., helping students and professionals develop knowledge and practical skills in emerging technologies. Our programmes focus on data science, artificial intelligence, generative AI and cloud computing, connecting technical concepts with their applications in the workplace.",
-      purpose: { title: "Our Purpose", text: "We aim to make technology education relevant, accessible and applicable. Our focus is to help learners build strong foundations, develop confidence with technical tools and understand how to apply their knowledge to practical challenges." },
+      subtitle: "Industry-Aligned Education in AI, Gen AI, Data Science and Cloud Technologies",
+      introduction: [
+        "Exafluence Education (Exfedu) is the education division of Exafluence Inc., helping students and professionals develop knowledge and practical skills in Artificial Intelligence (AI), Generative AI (Gen AI), Data Science and Cloud Technologies.",
+        "Our educational direction draws on Exafluence’s enterprise delivery experience, industry expertise and development of working technology solutions, connecting technical foundations with business applications.",
+      ],
       foundation: {
-        title: "Our Industry Foundation", founded: 2015,
+        title: "Our Industry Foundation",
+        heading: "Exafluence Inc. USA",
+        headingNote: "Enterprise Expertise in AI, Gen AI, Data Engineering and Digital Transformation",
         paragraphs: [
-          "Exfedu draws on the enterprise technology experience of Exafluence Inc. Founded in 2015, Exafluence provides software services and solutions in data, analytics and digital transformation, with a presence across the United States, Canada, Europe, Dubai and India.",
-          "Exafluence’s industry experience spans financial services, healthcare and pharmaceuticals, consumer goods and retail, and manufacturing and IoT. This background provides valuable context for understanding how technology addresses different business needs.",
+          "Founded in 2015, Exafluence provides software services and enterprise technology solutions, with a presence across the United States, Canada, Europe, Dubai and India.",
+          "The company combines data engineering, analytics and application development with expertise across four industry areas:",
         ],
-        industries: ["Financial Services", "Healthcare & Pharmaceuticals", "Consumer Goods & Retail", "Manufacturing & IoT"],
+        industries: [
+          { name: "Financial Services", text: "Investment data management, financial analytics and reporting." },
+          { name: "Healthcare & Pharmaceuticals", text: "Healthcare data interoperability, document intelligence and information management." },
+          { name: "Consumer Goods & Retail", text: "Consumer insights, marketing analytics and digital commerce applications." },
+          { name: "Manufacturing & IoT", text: "Connected systems, equipment monitoring and operational analytics." },
+        ],
+        closing: "This experience provides industry context for understanding how technologies address different organisational needs.",
       },
-      approach: { title: "Our Learning Approach", paragraphs: [
-        "Our approach connects clear explanations with practical application. We focus on helping learners understand underlying concepts, explore relevant tools and develop structured approaches to solving problems.",
-        "By connecting technical learning with business contexts, we aim to help learners explain their decisions, assess results and use technology responsibly.",
-      ] },
+      approach: {
+        title: "Our Purpose and Learning Approach",
+        tagline: "Strong Foundations. Practical Understanding. Responsible Application.",
+        paragraphs: [
+          "We aim to make technology education clear, accessible and relevant. Our approach helps learners understand core principles, explore technical tools through practical workflows and develop structured problem-solving skills.",
+          "Learning connects concepts with their applications while encouraging careful evaluation of results, attention to data quality and privacy, and informed human judgement.",
+        ],
+      },
       innovation: {
-        title: "Applied AI and Data Innovation",
-        introduction: "Exafluence’s capabilities include data engineering, analytics, document intelligence, conversational AI and the analysis of text, images and video. Its ExfDigital Studio brings together modular applications designed to address enterprise requirements.",
+        title: "Applied AI and Gen AI Innovation",
+        subtitle: "Exafluence’s Applied Technology Capabilities",
+        introduction: "ExfDigital Studio brings together modular applications designed for enterprise requirements. Its capabilities demonstrate practical uses of conversational AI, data quality automation and intelligent document processing.",
         solutions: [
-          { name: "ResearchAI", text: "Uses natural-language questions to retrieve and visualise information from structured business databases." },
-          { name: "ExfAutoDQ", text: "Generates SQL test cases and descriptions to support data quality testing." },
-          { name: "ExfParse", text: "Extracts and transforms information from documents and scanned files into structured formats." },
+          { name: "ResearchAI", subtitle: "Conversational Analytics", text: "Enables natural-language queries to retrieve and visualise information from structured business databases." },
+          { name: "ExfAutoDQ", subtitle: "Automated Data Quality Testing", text: "Generates SQL test cases and descriptions to support data validation." },
+          { name: "ExfParse", subtitle: "Intelligent Document Processing", text: "Extracts and transforms information from documents and scanned files into structured formats." },
         ],
-        closing: "These capabilities illustrate the practical technology environment that informs Exfedu’s educational direction.",
       },
-      milestones: {
-        title: "Technology Collaboration and Recognition", company: "Exafluence Inc.",
-        introduction: "Exafluence Inc.’s collaborations include FIS Global on an Investment Data Platform and participation as a Snowflake Native Apps launch partner.",
-        recognitions: [
-          { year: 2022, title: "MongoDB ISV Partner of the Year, Healthcare", company: "Exafluence Inc." },
-          { year: 2023, title: "MongoDB Solutions Partner of the Year", company: "Exafluence Inc." },
+      collaborations: {
+        title: "Technology Collaboration and Recognition",
+        paragraphs: [
+          "Exafluence’s collaborations include FIS Global on an Investment Data Platform and participation as a Snowflake Native Apps launch partner.",
+          "MongoDB has recognised Exafluence as ISV Partner of the Year for Healthcare and Solutions Partner of the Year, acknowledging its work across enterprise data and application ecosystems.",
         ],
-        closing: "MongoDB has recognised Exafluence Inc. as ISV Partner of the Year for Healthcare and Solutions Partner of the Year, acknowledging its work across enterprise data and application ecosystems.",
-      },
-
-      explore: {
-        title: "Explore Our Programmes",
-        text: "Discover learning opportunities in data science, AI, generative AI and cloud computing. Explore our programmes or contact our team to discuss your learning goals.",
-        actions: [{ label: "Explore Programmes", to: "/programmes" }, { label: "Contact Us", to: "/contact" }],
       },
     } }],
   },
