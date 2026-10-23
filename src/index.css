@@ -425,11 +425,9 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 @keyframes cap-breathe { 0%,100% { box-shadow: 0 0 0 14px hsl(214 80% 96%), 0 0 0 15px hsl(214 70% 88%); } 50% { box-shadow: 0 0 0 22px hsl(214 82% 94%), 0 0 0 23px hsl(214 72% 80%); } }
 .cap-pen { animation: cap-pen 4s ease-in-out infinite; }
 @keyframes cap-pen { 0%,100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-7px) rotate(-6deg); } }
-.cap-art { margin-bottom: .7rem; animation: cap-art 5s ease-in-out infinite; animation-delay: calc(var(--i, 0) * -.6s); transition: transform .3s; }
-@keyframes cap-art { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+.cap-art { margin-bottom: .7rem; }
 .cap-card { transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
 .cap-card:hover, .cap-card:focus-visible { border-color: hsl(230 75% 20%); }
-.cap-card:hover .cap-art, .cap-card:focus-visible .cap-art { animation-play-state: paused; transform: scale(1.1); }
 @media (prefers-reduced-motion: reduce) { .cap-lines line, .cap-circle, .cap-pen, .cap-art { animation: none; } }
 @media (prefers-reduced-motion: reduce) { .cap-card { transition: none; } .cap-card:hover { transform: none; } }
 @container cap (min-width: 500px) {
@@ -926,11 +924,18 @@ html body .academic-partner-icon svg, html body .academic-invitation-icons svg {
   animation: icon-gentle-float 4.2s ease-in-out infinite !important;
   animation-delay: calc(var(--i, 0) * -.5s) !important;
 }
+/* Ecosystem icons: one calm vertical drift only — no scale, no rotation (client 23 Oct 2026: "currently it's like jumping, alter it modestly"). */
+@keyframes cap-drift { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
+html body .cap-diagram .cap-art {
+  animation: cap-drift 8s ease-in-out infinite !important;
+  animation-delay: calc(var(--i, 0) * -1s) !important;
+}
 @media (prefers-reduced-motion: reduce) {
   .homepage-static .hero-dot, .homepage-static .cap-connector-dot, .homepage-static .exi-glass-symbol { animation: none !important; }
   .hero-title, .hero-tagline, .hero-banner-art { animation: none; }
   html body .cap-art, html body .cap-pen, html body .menu-cat-icon, html body .menu-cat-hero, html body .enquiry-field-icon svg,
   html body .enquiry-success-icon svg, html body .academic-partner-icon svg, html body .academic-invitation-icons svg { animation: none !important; }
+  html body .cap-diagram .cap-art { animation: none !important; }
 }
 
 /* Programmes page hero banner — cube-grid artwork bleeding in from the right */
