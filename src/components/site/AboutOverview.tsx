@@ -1,6 +1,9 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Banknote, HeartPulse, ShoppingBag, Factory, Database, MessagesSquare, FileText } from "lucide-react";
+import {
+  Banknote, HeartPulse, ShoppingBag, Factory, Database, MessagesSquare, FileText,
+  Landmark, Compass, Sparkles, Handshake,
+} from "lucide-react";
 import sculpture from "@/assets/about-icon-relief.png.asset.json";
 
 export type AboutOverviewData = {
