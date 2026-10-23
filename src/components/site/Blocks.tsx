@@ -179,8 +179,9 @@ export const BlockView = ({ block, page }: { block: Block; page: Page }) => {
     case "logo":
       return (
         <div className="skillshone-logo-box">
-          <img src={block.src} alt={block.alt} className="h-16 w-auto md:h-20" />
+          <img src={block.src} alt={block.alt} className="h-9 w-auto md:h-11" />
         </div>
+
       );
     case "cta":
       if (block.appearance === "academic-partner") {
