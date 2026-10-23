@@ -1,25 +1,48 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Banknote, HeartPulse, ShoppingBag, Factory, Database, Code2, FileText } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Banknote, HeartPulse, ShoppingBag, Factory, Database, MessagesSquare, FileText } from "lucide-react";
 import sculpture from "@/assets/about-icon-relief.png.asset.json";
 
 export type AboutOverviewData = {
   title: string;
   subtitle: string;
-  introduction: string;
-  purpose: { title: string; text: string };
-  foundation: { title: string; paragraphs: string[]; industries: string[]; founded: number };
-  approach: { title: string; paragraphs: string[] };
-  innovation: { title: string; introduction: string; solutions: { name: string; text: string }[]; closing: string };
-  milestones: { title: string; company: string; introduction: string; recognitions: { year: number; title: string; company: string }[]; closing?: string };
-  explore: { title: string; text: string; actions: { label: string; to: string }[] };
+  introduction: string[];
+  foundation: {
+    title: string;
+    heading: string;
+    headingNote: string;
+    paragraphs: string[];
+    industries: { name: string; text: string }[];
+    closing: string;
+  };
+  approach: { title: string; tagline: string; paragraphs: string[] };
+  innovation: { title: string; subtitle: string; introduction: string; solutions: { name: string; subtitle: string; text: string }[] };
+  collaborations: { title: string; paragraphs: string[] };
 };
 
 const industryIcons = [Banknote, HeartPulse, ShoppingBag, Factory];
-const industryTones = ["blue", "teal", "amber", "red"];
-const solutionIcons = [Database, Code2, FileText];
+const solutionIcons = [MessagesSquare, Database, FileText];
+
+// Approved branding: "Exafluence Education" stays entirely blue; only inside
+// "Exafluence Inc. USA" does "Exa" turn red and "fluence" turn medium blue.
+const brandHeading = (text: string) => {
+  if (text !== "Exafluence Inc. USA") return text;
+  return <><span className="about-brand-exa">Exa</span><span className="about-brand-fluence">fluence</span> Inc. USA</>;
+};
 
 export default function AboutOverview({ data }: { data: AboutOverviewData }) {
+  useEffect(() => {
+    const meta = document.querySelector<HTMLMetaElement>('meta[name="description"]');
+    const previousTitle = document.title;
+    const previousDescription = meta?.getAttribute("content") ?? "";
+    document.title = "About Exfedu | AI, Gen AI & Data Science Education";
+    meta?.setAttribute("content", "Discover Exafluence Education, a division of Exafluence Inc., focused on industry-aligned learning in AI, Gen AI, data science and cloud technologies.");
+    return () => {
+      document.title = previousTitle;
+      if (meta && previousDescription) meta.setAttribute("content", previousDescription);
+    };
+  }, []);
+
   return <article className="about-editorial">
     <header className="container about-editorial-opening">
       <nav aria-label="Breadcrumb" className="about-editorial-breadcrumb"><Link to="/">Exafluence Education</Link><span aria-hidden="true">/</span><span>About Us</span></nav>
@@ -27,57 +50,55 @@ export default function AboutOverview({ data }: { data: AboutOverviewData }) {
         <div>
           <h1>{data.title}</h1>
           <p className="about-editorial-subtitle">{data.subtitle}</p>
-          <p>{data.introduction}</p>
+          {data.introduction.map((text) => <p key={text}>{text}</p>)}
         </div>
         <figure><img src={sculpture.url} width={878} height={1545} alt="Tall stack of matte sky-blue spheres and tilted discs carrying icons of a factory and gear, a rising chart, a processor, a cloud, a starred document and people reading a book, linked by a beaded thread" /></figure>
       </div>
     </header>
 
-    <section className="about-editorial-purpose" aria-labelledby="about-purpose">
-      <div className="container about-editorial-split"><h2 id="about-purpose">{data.purpose.title}</h2><p>{data.purpose.text}</p></div>
-    </section>
+    <div className="about-editorial-main">
+      <section className="container about-editorial-section" aria-labelledby="about-foundation">
+        <h2 id="about-foundation">{data.foundation.title}</h2>
+        <div className="about-editorial-foundation-head">
+          <h3>{brandHeading(data.foundation.heading)}</h3>
+          <p className="about-editorial-foundation-note">{data.foundation.headingNote}</p>
+        </div>
+        <div className="about-editorial-copy">{data.foundation.paragraphs.map((text) => <p key={text}>{text}</p>)}</div>
+        <ul className="about-editorial-industries">{data.foundation.industries.map((industry, i) => {
+          const Icon = industryIcons[i] ?? Factory;
+          return <li key={industry.name}>
+            <span className="about-editorial-industry-icon" aria-hidden="true"><Icon size={22} strokeWidth={1.6} /></span>
+            <span className="about-editorial-industry-name">{industry.name}</span>
+            <p>{industry.text}</p>
+          </li>;
+        })}</ul>
+        <p className="about-editorial-closing">{data.foundation.closing}</p>
+      </section>
 
-    <section className="container about-editorial-section" aria-labelledby="about-foundation">
-      <div className="about-editorial-split"><h2 id="about-foundation">{data.foundation.title}</h2><div>{data.foundation.paragraphs.map((text) => <p key={text}>{text}</p>)}</div></div>
-      <ul className="about-editorial-industries">{data.foundation.industries.map((industry, i) => {
-        const Icon = industryIcons[i] ?? Factory;
-        return <li key={industry}><span className={`about-editorial-industry-icon tone-${industryTones[i % industryTones.length]}`} aria-hidden="true"><Icon size={21} strokeWidth={1.6} /></span><span>{industry}</span></li>;
-      })}</ul>
-    </section>
+      <section className="container about-editorial-section" aria-labelledby="about-approach">
+        <h2 id="about-approach">{data.approach.title}</h2>
+        <p className="about-editorial-tagline">{data.approach.tagline}</p>
+        <div className="about-editorial-copy">{data.approach.paragraphs.map((text) => <p key={text}>{text}</p>)}</div>
+      </section>
 
-    <section className="container about-editorial-section about-editorial-approach" aria-labelledby="about-approach">
-      <h2 id="about-approach">{data.approach.title}</h2>
-      <div className="about-editorial-columns">{data.approach.paragraphs.map((text) => <p key={text}>{text}</p>)}</div>
-    </section>
+      <section className="container about-editorial-section" aria-labelledby="about-innovation">
+        <h2 id="about-innovation">{data.innovation.title}</h2>
+        <p className="about-editorial-foundation-note">{data.innovation.subtitle}</p>
+        <p className="about-editorial-lead">{data.innovation.introduction}</p>
+        <dl className="about-editorial-solutions">{data.innovation.solutions.map((solution, i) => {
+          const Icon = solutionIcons[i] ?? Database;
+          return <div key={solution.name}>
+            <dt><Icon size={23} strokeWidth={1.5} aria-hidden="true" />{solution.name}</dt>
+            <dd className="about-editorial-solution-sub">{solution.subtitle}</dd>
+            <dd>{solution.text}</dd>
+          </div>;
+        })}</dl>
+      </section>
 
-    <section className="container about-editorial-section" aria-labelledby="about-innovation">
-      <h2 id="about-innovation">{data.innovation.title}</h2>
-      <p className="about-editorial-lead">{data.innovation.introduction}</p>
-      <dl className="about-editorial-solutions">{data.innovation.solutions.map((solution, i) => {
-        const Icon = solutionIcons[i] ?? Database;
-        return <div key={solution.name}><dt><Icon size={23} strokeWidth={1.5} aria-hidden="true" />{solution.name}</dt><dd>{solution.text}</dd></div>;
-      })}</dl>
-      <p className="about-editorial-closing">{data.innovation.closing}</p>
-    </section>
-
-    <section className="container about-editorial-section" aria-labelledby="about-milestones">
-      <div className="about-editorial-split"><h2 id="about-milestones">{data.milestones.title}</h2><p>{data.milestones.introduction}</p></div>
-      <ul className="about-editorial-milestones">{data.milestones.recognitions.map((recognition, i) => {
-        return <li key={recognition.year}>
-          <span className="about-editorial-year">{recognition.year}</span>
-          <div><span className="about-editorial-company">{recognition.company}</span>
-            <h3><span className={`about-editorial-badge ${i % 2 === 0 ? "is-maroon" : "is-gold"}`}>{recognition.title}</span></h3>
-          </div>
-        </li>;
-      })}</ul>
-      {data.milestones.closing && <p className="about-editorial-closing">{data.milestones.closing}</p>}
-    </section>
-
-
-    <section className="about-editorial-explore" aria-labelledby="about-explore">
-      <div className="container"><h2 id="about-explore">{data.explore.title}</h2><p>{data.explore.text}</p>
-        <div className="about-editorial-actions">{data.explore.actions.map((action, i) => <Button asChild key={action.to} variant={i === 0 ? "default" : "outline"}><Link to={action.to}>{action.label}<ArrowRight size={16} aria-hidden="true" /></Link></Button>)}</div>
-      </div>
-    </section>
+      <section className="container about-editorial-section" aria-labelledby="about-collaborations">
+        <h2 id="about-collaborations">{data.collaborations.title}</h2>
+        <div className="about-editorial-copy">{data.collaborations.paragraphs.map((text) => <p key={text}>{text}</p>)}</div>
+      </section>
+    </div>
   </article>;
 }
