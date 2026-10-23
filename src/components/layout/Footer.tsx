@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowUp, ArrowUpRight } from "lucide-react";
 import exafluence from "@/assets/exafluence-footer-exact.png.asset.json";
+import skillshoneLogo from "@/assets/skillshone-original.png.asset.json";
 import { menuCategories, navPages } from "@/data/site";
 
 const Footer = () => (

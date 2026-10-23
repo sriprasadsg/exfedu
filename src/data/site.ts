@@ -118,7 +118,7 @@ export const pages: Page[] = [
     summary: "Technology education informed by industry experience",
     blocks: [{ type: "about-overview", data: {
       title: "About Exafluence Education",
-      subtitle: "Industry-Aligned Education in AI, Gen AI, Data Science and Cloud Technologies",
+      subtitle: "Industry-Aligned Education in AI, Gen AI, Data Science, Cloud Technologies and Quantum Computing",
       introduction: [
         "Exafluence Education (Exfedu) is the education division of Exafluence Inc., helping students and professionals develop knowledge and practical skills in Artificial Intelligence (AI), Generative AI (Gen AI), Data Science and Cloud Technologies.",
         "Our educational direction draws on Exafluence’s enterprise delivery experience, industry expertise and development of working technology solutions, connecting technical foundations with business applications.",
