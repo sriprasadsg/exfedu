@@ -5,7 +5,7 @@ import WaysToPartner from "@/components/home/WaysToPartner";
 import PartnerEnquiry from "@/components/home/PartnerEnquiry";
 
 const Index = () => (
-  <Layout>
+  <Layout className="homepage-static">
     <Hero />
     <EcosystemHub />
     <WaysToPartner />
