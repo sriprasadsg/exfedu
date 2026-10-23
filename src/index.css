@@ -606,7 +606,6 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 
 /* Footer */
 .footer-brand-line { font-size: clamp(8px, 2.1vw, 1.35rem); }
-.footer-brand-logo { height: clamp(13px, 1.8vw, 31px); }
 .footer-title-gradient { background: none; -webkit-background-clip: initial; background-clip: initial; color: hsl(214 68% 16%); }
 
 /* Footer — pale sky-blue bar with navy text */
@@ -616,20 +615,6 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
   border-top-color: hsl(205 55% 74% / .6);
 }
 
-/* Footer logo raised off the bar — the shadow follows the letterforms, no chip */
-.footer-logo-glow { transition: transform 200ms ease; }
-.footer-logo-glow img {
-  filter: drop-shadow(0 4px 6px hsl(214 58% 16% / .34)) drop-shadow(0 1px 2px hsl(214 58% 16% / .26));
-  transition: filter 200ms ease;
-}
-.footer-logo-glow:hover { transform: translateY(-3px); }
-.footer-logo-glow:hover img {
-  filter: drop-shadow(0 10px 14px hsl(214 58% 14% / .38)) drop-shadow(0 2px 4px hsl(214 58% 16% / .28));
-}
-@media (prefers-reduced-motion: reduce) {
-  .footer-logo-glow, .footer-logo-glow:hover { transition: none; transform: none; }
-  .footer-logo-glow img, .footer-logo-glow:hover img { transition: none; }
-}
 
 /* Footer — Exafluence Inc. logo in the open area below the Academic column */
 .footer-company-mark img {

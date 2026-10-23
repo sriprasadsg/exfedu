@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
-import exafluence from "@/assets/exafluence-footer-darker.png.asset.json";
+import exafluence from "@/assets/exafluence-footer-matched.png.asset.json";
 import { menuCategories, navPages } from "@/data/site";
 
 const Footer = () => (
