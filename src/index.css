@@ -924,11 +924,18 @@ html body .academic-partner-icon svg, html body .academic-invitation-icons svg {
   animation: icon-gentle-float 4.2s ease-in-out infinite !important;
   animation-delay: calc(var(--i, 0) * -.5s) !important;
 }
+/* Ecosystem icons: one calm vertical drift only — no scale, no rotation (client 23 Oct 2026: "currently it's like jumping, alter it modestly"). */
+@keyframes cap-drift { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
+html body .cap-diagram .cap-art {
+  animation: cap-drift 8s ease-in-out infinite !important;
+  animation-delay: calc(var(--i, 0) * -1s) !important;
+}
 @media (prefers-reduced-motion: reduce) {
   .homepage-static .hero-dot, .homepage-static .cap-connector-dot, .homepage-static .exi-glass-symbol { animation: none !important; }
   .hero-title, .hero-tagline, .hero-banner-art { animation: none; }
   html body .cap-art, html body .cap-pen, html body .menu-cat-icon, html body .menu-cat-hero, html body .enquiry-field-icon svg,
   html body .enquiry-success-icon svg, html body .academic-partner-icon svg, html body .academic-invitation-icons svg { animation: none !important; }
+  html body .cap-diagram .cap-art { animation: none !important; }
 }
 
 /* Programmes page hero banner — cube-grid artwork bleeding in from the right */
