@@ -605,8 +605,6 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 }
 
 /* Footer */
-.footer-brand-line { font-size: .95rem; display: flex; flex-wrap: wrap; align-items: center; gap: .25rem .9rem; }
-.footer-sep { opacity: .35; font-weight: 300; }
 .footer-top-btn { display: inline-flex; align-items: center; justify-content: center; width: 3rem; height: 3rem; border-radius: 999px; background: hsl(0 0% 100%); color: hsl(214 68% 16%); box-shadow: 0 6px 16px -6px hsl(214 58% 16% / .3); transition: transform .25s ease; }
 .footer-top-btn:hover, .footer-top-btn:focus-visible { transform: translateY(-2px); }
 .footer-title-gradient { background: none; -webkit-background-clip: initial; background-clip: initial; color: hsl(214 68% 16%); }
