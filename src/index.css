@@ -223,8 +223,8 @@
     --navy-600: 216 30% 34%;
 
     /* Menu bar gloss: restrained vertical gradient, sheen, top highlight, depth shadow, hover tint */
-    --nav-top: 218 60% 20%;
-    --nav-bottom: 218 68% 11%;
+    --nav-top: 205 85% 96%;
+    --nav-bottom: 205 80% 92%;
     --nav-sheen: 210 60% 96%;
     --nav-tint: 208 90% 72%;
     --nav-shadow: 218 62% 7%;
@@ -402,8 +402,8 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .card-premium:hover { transform: translateY(-3px); box-shadow: 0 14px 30px -18px hsl(var(--primary) / 0.25); }
 @media (prefers-reduced-motion: reduce) { .hero-visual--float { animation: none; } }
 
-.footer-featured { display: inline-flex; align-items: center; gap: .3rem; margin-bottom: .8rem; padding: .38rem .8rem; border-radius: 999px; border: 1px solid hsl(var(--primary-foreground) / .5); font-size: .8rem; font-weight: 500; letter-spacing: .02em; color: hsl(var(--primary-foreground)); text-decoration: none; transition: background-color .3s ease, border-color .3s ease; }
-.footer-featured:hover, .footer-featured:focus-visible { background: hsl(var(--primary-foreground) / .12); border-color: hsl(var(--primary-foreground) / .8); outline: none; }
+.footer-featured { display: inline-flex; align-items: center; gap: .3rem; margin-bottom: .8rem; padding: .38rem .8rem; border-radius: 999px; border: 1px solid hsl(214 68% 16% / .45); font-size: .8rem; font-weight: 500; letter-spacing: .02em; color: hsl(214 68% 16%); text-decoration: none; transition: background-color .3s ease, border-color .3s ease; }
+.footer-featured:hover, .footer-featured:focus-visible { background: hsl(214 68% 16% / .08); border-color: hsl(214 68% 16% / .75); outline: none; }
 
 /* ===== Homepage capabilities: centre circle + eight cards (matches client infographic) ===== */
 .cap-section { container: cap / inline-size; max-width: 1280px; margin: 0 auto; padding: 1.5rem 1.5rem 3rem; background: hsl(var(--background)); font-family: 'Google Sans Flex', 'Google Sans', system-ui, sans-serif; }
@@ -602,7 +602,14 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 /* Footer */
 .footer-brand-line { font-size: clamp(8px, 2.1vw, 1.35rem); }
 .footer-brand-logo { height: clamp(13px, 1.8vw, 31px); }
-.footer-title-gradient { background: none; -webkit-background-clip: initial; background-clip: initial; color: hsl(var(--primary-foreground)); }
+.footer-title-gradient { background: none; -webkit-background-clip: initial; background-clip: initial; color: hsl(214 68% 16%); }
+
+/* Footer — pale sky-blue bar with navy text */
+.site-footer {
+  background: linear-gradient(180deg, hsl(205 85% 96%), hsl(205 80% 92%));
+  color: hsl(214 68% 16%);
+  border-top-color: hsl(205 55% 74% / .6);
+}
 
 /* Gentle focused light around the Exafluence Inc. logo badge */
 .footer-logo-glow {
@@ -625,8 +632,8 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 @media (prefers-reduced-motion: reduce) {
   .footer-logo-glow { animation: none; }
 }
-.footer-option { color: hsl(210 20% 82%); transition: color .2s; }
-.footer-option:hover { color: hsl(var(--primary-foreground)); }
+.footer-option { color: hsl(214 28% 36%); transition: color .2s; }
+.footer-option:hover { color: hsl(214 68% 16%); }
 
 /* Colourful menu category accents */
 .cat-core { color: hsl(214 84% 48%); }
@@ -641,7 +648,7 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
   background:
     linear-gradient(180deg, hsl(var(--nav-sheen) / .12) 0%, hsl(var(--nav-sheen) / .04) 34%, hsl(var(--nav-sheen) / 0) 62%),
     linear-gradient(180deg, hsl(var(--nav-top)), hsl(var(--nav-bottom)));
-  border-bottom-color: hsl(214 45% 34% / .55);
+  border-bottom-color: hsl(205 55% 74% / .6);
   box-shadow: 0 12px 28px -16px hsl(var(--nav-shadow) / .6);
 }
 /* Thin translucent top highlight — the only gloss edge; no glare, no animation */
@@ -654,13 +661,13 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
   pointer-events: none;
 }
 .site-header .nav-on-navy,
-.site-header-panel .nav-on-navy { color: hsl(210 40% 98%); }
+.site-header-panel .nav-on-navy { color: hsl(214 68% 16%); }
 
 /* Menu labels: white by default; category accent only on hover/open (one treatment: colour + soft underline) */
 .site-header .nav-on-navy { position: relative; transition: color 200ms ease, background-color 200ms ease; }
 .site-header .nav-icon-btn::after { content: none; }
 /* Active page takes the same accent as hover */
-.site-header .nav-on-navy:has([aria-current="page"]) { color: hsl(210 80% 82%); }
+.site-header .nav-on-navy:has([aria-current="page"]) { color: hsl(210 85% 34%); }
 .site-header .nav-on-navy:has([aria-current="page"])::after { opacity: .85; transform: scaleX(1); }
 .site-header .nav-on-navy::after {
   content: "";
@@ -681,7 +688,7 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .site-header-panel .nav-on-navy:hover,
 .site-header-panel .nav-on-navy:focus-visible,
 .site-header-panel .nav-on-navy[data-state="open"] {
-  background-color: hsl(var(--nav-tint) / .14);
+  background-color: hsl(var(--nav-tint) / .28);
 }
 .site-header .nav-on-navy:hover::after,
 .site-header .nav-on-navy[data-state="open"]::after {
@@ -690,24 +697,24 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 }
 /* Category accents apply only on hover/open; labels stay white otherwise */
 .site-header .nav-on-navy.cat-core:hover, .site-header .nav-on-navy.cat-core[data-state="open"],
-.site-header-panel .nav-on-navy.cat-core:hover, .site-header-panel .nav-on-navy.cat-core[data-state="open"] { color: hsl(214 95% 74%); }
+.site-header-panel .nav-on-navy.cat-core:hover, .site-header-panel .nav-on-navy.cat-core[data-state="open"] { color: hsl(214 90% 38%); }
 .site-header .nav-on-navy.cat-academic:hover, .site-header .nav-on-navy.cat-academic[data-state="open"],
-.site-header-panel .nav-on-navy.cat-academic:hover, .site-header-panel .nav-on-navy.cat-academic[data-state="open"] { color: hsl(172 60% 62%); }
+.site-header-panel .nav-on-navy.cat-academic:hover, .site-header-panel .nav-on-navy.cat-academic[data-state="open"] { color: hsl(172 65% 28%); }
 .site-header .nav-on-navy.cat-industry:hover, .site-header .nav-on-navy.cat-industry[data-state="open"],
-.site-header-panel .nav-on-navy.cat-industry:hover, .site-header-panel .nav-on-navy.cat-industry[data-state="open"] { color: hsl(38 96% 68%); }
+.site-header-panel .nav-on-navy.cat-industry:hover, .site-header-panel .nav-on-navy.cat-industry[data-state="open"] { color: hsl(32 90% 34%); }
 .site-header .nav-on-navy.cat-learning:hover, .site-header .nav-on-navy.cat-learning[data-state="open"],
-.site-header-panel .nav-on-navy.cat-learning:hover, .site-header-panel .nav-on-navy.cat-learning[data-state="open"] { color: hsl(262 84% 78%); }
+.site-header-panel .nav-on-navy.cat-learning:hover, .site-header-panel .nav-on-navy.cat-learning[data-state="open"] { color: hsl(262 70% 42%); }
 /* Home has no category colour: gentle light-blue accent on hover */
 .site-header .nav-on-navy:not([class*="cat-"]):hover,
 .site-header .nav-on-navy:not([class*="cat-"])[data-state="open"],
 .site-header-panel .nav-on-navy:not([class*="cat-"]):hover,
-.site-header-panel .nav-on-navy:not([class*="cat-"])[data-state="open"] { color: hsl(210 80% 82%); }
+.site-header-panel .nav-on-navy:not([class*="cat-"])[data-state="open"] { color: hsl(210 85% 34%); }
 .site-header-panel {
   position: relative;
   background:
     linear-gradient(180deg, hsl(var(--nav-sheen) / .10) 0%, hsl(var(--nav-sheen) / .03) 30%, hsl(var(--nav-sheen) / 0) 55%),
     linear-gradient(180deg, hsl(var(--nav-top)), hsl(var(--nav-bottom)));
-  border-top-color: hsl(214 45% 34% / .5);
+  border-top-color: hsl(205 55% 74% / .6);
 }
 .site-header-panel::before {
   content: "";
@@ -718,10 +725,10 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
   pointer-events: none;
   z-index: 1;
 }
-.site-header-panel .border-b { border-bottom-color: hsl(210 40% 98% / .14); }
-.site-header-panel .mobile-sublink { color: hsl(210 30% 86%); border-radius: .5rem; padding-inline: .6rem; transition: background-color 200ms ease, color 200ms ease; }
+.site-header-panel .border-b { border-bottom-color: hsl(214 40% 20% / .12); }
+.site-header-panel .mobile-sublink { color: hsl(214 30% 30%); border-radius: .5rem; padding-inline: .6rem; transition: background-color 200ms ease, color 200ms ease; }
 .site-header-panel .mobile-sublink:hover,
-.site-header-panel .mobile-sublink:focus-visible { color: hsl(0 0% 100%); background-color: hsl(var(--nav-tint) / .14); }
+.site-header-panel .mobile-sublink:focus-visible { color: hsl(214 68% 16%); background-color: hsl(var(--nav-tint) / .28); }
 
 /* Dropdown option panels — same restrained gloss as the menu bar */
 .nav-menu-panel {
