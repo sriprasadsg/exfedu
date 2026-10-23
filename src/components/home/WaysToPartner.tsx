@@ -2,12 +2,19 @@ import { useState } from "react";
 import { ChevronRight, CircleDashed } from "lucide-react";
 import { PENDING } from "@/data/site";
 import exiArt from "@/assets/exi-ceramic-tiles.png.asset.json";
+import stillTiles from "@/assets/exi-tiles-still.png.asset.json";
+import magnifyingGlass from "@/assets/exi-magnifying-glass.png.asset.json";
 const exiIllustration = exiArt.url;
 
 const Illustration = () => (
   <div className="exi-illus" aria-hidden="true">
     <span className="exi-illus-glow" />
-    <img src={exiIllustration} alt="" width={1283} height={875} loading="lazy" />
+    <div className="exi-tile-art">
+      <img src={stillTiles.url} alt="" width={1283} height={875} loading="lazy" />
+      <svg className="exi-glass-layer" viewBox="0 0 1283 875" focusable="false">
+        <image className="exi-glass-symbol" href={magnifyingGlass.url} x="529" y="385" width="116" height="98" />
+      </svg>
+    </div>
   </div>
 );
 
