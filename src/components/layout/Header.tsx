@@ -24,7 +24,7 @@ const Header = () => {
           <img src={logo.url} alt="Exafluence Education — An EdTech unit of Exafluence Inc., USA" className="h-12 w-auto max-w-[150px] lg:max-w-[220px] object-contain" />
 
         </Link>
-        <nav aria-label="Main navigation" className="hidden items-center gap-0 md:flex">
+        <nav aria-label="Main navigation" className="hidden items-center gap-0 min-[900px]:flex">
           <Button asChild variant="ghost" className="nav-on-navy gap-1.5 px-2 lg:px-4"><Link to="/" aria-current={pathname === "/" ? "page" : undefined}><House className="h-4 w-4 shrink-0" aria-hidden="true" />Home</Link></Button>
           <Button asChild variant="ghost" className="nav-on-navy gap-1.5 px-2 lg:px-4"><Link to="/about" aria-current={pathname === "/about" ? "page" : undefined}><Info className="h-4 w-4 shrink-0" aria-hidden="true" />About Us</Link></Button>
           {menuCategories.map((c) => (
@@ -46,13 +46,13 @@ const Header = () => {
           ))}
           <Button asChild size="sm" className="ml-2 nav-cta gap-1.5"><Link to="/#partner-enquiry"><MessageCircle className="h-4 w-4" aria-hidden="true" />Partner enquiry</Link></Button>
         </nav>
-        <Button variant="ghost" size="icon" className="nav-on-navy nav-icon-btn md:hidden" onClick={() => setOpen(!open)} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} aria-controls="mobile-navigation">
+        <Button variant="ghost" size="icon" className="nav-on-navy nav-icon-btn min-[900px]:hidden" onClick={() => setOpen(!open)} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} aria-controls="mobile-navigation">
 
           {open ? <X /> : <Menu />}
         </Button>
       </div>
       {open && (
-        <nav id="mobile-navigation" aria-label="Mobile navigation" className="site-header-panel max-h-[calc(100dvh-5rem)] overflow-y-auto border-t md:hidden">
+        <nav id="mobile-navigation" aria-label="Mobile navigation" className="site-header-panel max-h-[calc(100dvh-5rem)] overflow-y-auto border-t min-[900px]:hidden">
           <div className="container py-4">
             <Button asChild variant="ghost" className="nav-on-navy h-11 w-full justify-start"><Link to="/" onClick={() => setOpen(false)}><House className="h-4 w-4" aria-hidden="true" />Home</Link></Button>
             <Button asChild variant="ghost" className="nav-on-navy h-11 w-full justify-start"><Link to="/about" onClick={() => setOpen(false)}><Info className="h-4 w-4" aria-hidden="true" />About Us</Link></Button>
