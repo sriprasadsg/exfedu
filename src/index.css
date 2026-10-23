@@ -932,9 +932,19 @@ body:has(.homepage-static) *, body:has(.homepage-static) *::before, body:has(.ho
   .hero-dot-layer--wide { display: none; }
   .hero-dot-layer--narrow { display: block; }
 }
+/* Gentle icon float across the site (client 23 Oct 2026): icons only, never blocks or text. */
+@keyframes icon-gentle-float { 0%,100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-3px) scale(1.04); } }
+html body .cap-art, html body .cap-pen, html body .menu-cat-icon, html body .menu-cat-hero,
+html body .enquiry-field-icon svg, html body .enquiry-success-icon svg,
+html body .academic-partner-icon svg, html body .academic-invitation-icons svg {
+  animation: icon-gentle-float 4.2s ease-in-out infinite !important;
+  animation-delay: calc(var(--i, 0) * -.5s) !important;
+}
 @media (prefers-reduced-motion: reduce) {
   .homepage-static .hero-dot, .homepage-static .cap-connector-dot, .homepage-static .exi-glass-symbol { animation: none !important; }
   .hero-title, .hero-tagline, .hero-banner-art { animation: none; }
+  html body .cap-art, html body .cap-pen, html body .menu-cat-icon, html body .menu-cat-hero, html body .enquiry-field-icon svg,
+  html body .enquiry-success-icon svg, html body .academic-partner-icon svg, html body .academic-invitation-icons svg { animation: none !important; }
 }
 
 /* Programmes page hero banner — cube-grid artwork bleeding in from the right */
