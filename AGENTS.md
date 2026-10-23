@@ -8,7 +8,7 @@
 - All pages, programmes, hub arms and gallery photos are data in src/data/site.ts rendered by shared block components via one catch-all route, so approved content can be added without new layouts.
 - Programme templates read course-specific data from site.ts through the catch-all route; programmeNavigation.ts supplies canonical organisation/detail paths so carousel, directory, breadcrumbs and back links share one hierarchy; approved brochure access is gated by the existing test-only contact workflow.
 - Unconfirmed claims render as "Approved Content Required" placeholders; never invent partnership, placement, ranking or certification content.
-- XIME's internal programme overview reads source-verified fields from xime.ts, rendering missing fields as individual review flags without inventing a catalogue entry; brochure and enquiry dialogs reuse the test-only contact workflow.
+- XIME's internal programme overview reads source-verified fields from xime.ts, rendering missing fields as individual review flags without inventing a catalogue entry; its enquiry dialog reuses the test-only contact workflow.
 - Brand-wording checker rules live in src/lib/brandCheck.ts; AI review only via brandCheckConfig.endpoint on Exafluence AWS so the AI key never reaches the browser.
 - Website AI features call a project-hosted server function that holds the key; the browser never carries a key. Keep each feature's endpoint override in one config object so the same request can later be repointed to Exafluence-hosted delivery without touching UI code.
 - Site menus (header, mobile panel, footer) render only the categories in menuCategories; the core category and its Contact page stay reachable through page calls to action, never as a menu entry.
