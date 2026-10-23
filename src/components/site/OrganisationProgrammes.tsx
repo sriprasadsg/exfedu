@@ -22,14 +22,14 @@ const OrganisationProgrammes = ({ organisation }: { organisation: Organisation }
     </div></header>
     <div className="container organisation-programme-body">
       <section aria-label={`${org.name} programmes`}>
-        {shown.length > 0 ? <><h2 className="organisation-list-heading">Programmes &amp; Admissions <span>{shown.length} programmes</span></h2>
+        {shown.length > 0 ? <><h2 className="organisation-list-heading">Programmes <span>{shown.length} programmes</span></h2>
           <div className="organisation-programme-list">{shown.map(p => <article key={p.slug} className="organisation-programme-item">
             <span className={`programme-section-icon tone-${p.tone}`}><p.icon size={23} aria-hidden="true" /></span>
             <div><span className="programme-org">{p.level}</span><h2><Link to={programmePath(p)}>{p.title}</Link></h2><p>{p.overview}</p>
-              <dl className="organisation-course-facts"><div><dt><Clock3 size={15} aria-hidden="true" />Duration</dt><dd>{p.duration}</dd></div><div><dt><Monitor size={15} aria-hidden="true" />Delivery</dt><dd>{p.delivery}</dd></div><div><dt>Admission Spell</dt><dd>{p.intake}</dd></div></dl>
+              <dl className="organisation-course-facts"><div><dt><Clock3 size={15} aria-hidden="true" />Duration</dt><dd>{p.duration}</dd></div><div><dt><Monitor size={15} aria-hidden="true" />Delivery</dt><dd>{p.delivery}</dd></div></dl>
               <Button variant="link" asChild><Link to={programmePath(p)}>View Programme<ArrowRight size={16} /></Link></Button>
             </div>
-          </article>)}</div></> : <div className="programme-empty"><BookOpen size={30} aria-hidden="true" /><h2>{PENDING}</h2><p>XIME Chennai programme title, duration, delivery mode, eligibility, curriculum, certification and admission information await verified source content.</p><a href="https://www.ximecexfedu.com" target="_blank" rel="noopener noreferrer">XIME Chennai programme source <ArrowRight size={15} className="inline" /></a></div>}
+          </article>)}</div></> : <div className="programme-empty"><BookOpen size={30} aria-hidden="true" /><h2>{PENDING}</h2><p>XIME Chennai programme title, duration, delivery mode, eligibility, curriculumand certification information await verified source content.</p><a href="https://www.ximecexfedu.com" target="_blank" rel="noopener noreferrer">XIME Chennai programme source <ArrowRight size={15} className="inline" /></a></div>}
       </section>
       <aside className="programme-actions"><h2>Our Collaboration Network</h2><nav aria-label="Collaboration organisations" className="organisation-links">{(Object.keys(organisations) as Organisation[]).map(key => <Link key={key} to={organisationPath(key)} aria-current={key === organisation ? "page" : undefined}>{organisations[key].name}<ArrowRight size={15} /></Link>)}</nav><Button variant="outline" asChild><Link to="/collaboration-network"><ArrowLeft size={16} />Back to Our Collaboration Network</Link></Button></aside>
     </div>

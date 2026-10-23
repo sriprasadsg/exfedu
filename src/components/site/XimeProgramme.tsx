@@ -13,7 +13,7 @@ const XimeProgramme = () => {
   const [requestOpen, setRequestOpen] = useState(false);
   const [complete, setComplete] = useState(false);
   const reading = useRef<HTMLDivElement>(null);
-  useProgrammeSeo("XIME Chennai Programme | Exafluence Education", "Review XIME Chennai programme information, eligibility, curriculum and admissions within Exafluence Education. Unverified details are flagged for review.");
+  useProgrammeSeo("XIME Chennai Programme | Exafluence Education", "Review XIME Chennai programme information, curriculum, technologies and certification within Exafluence Education. Unverified details are flagged for review.");
   useEffect(() => {
     const sections = reading.current?.querySelectorAll(".programme-reveal");
     if (!sections) return;
@@ -24,15 +24,13 @@ const XimeProgramme = () => {
     return () => observer.disconnect();
   }, []);
   const sections: Section[] = [
-    { title: "Programme Overview", icon: BookOpen, tone: "blue", text: content.overview, missing: "Programme title and overview require verification from the XIME Chennai programme source." },
+    { title: "Programme Title & Features", icon: Award, tone: "amber", items: content.features, missing: "Programme features require source confirmation." },
     { title: "Duration and Delivery Mode", icon: Clock3, tone: "teal", missing: "Programme duration and delivery mode require source confirmation." },
-    { title: "Eligibility", icon: GraduationCap, tone: "blue", text: content.eligibility, missing: "Academic qualifications, experience requirements and other eligibility conditions require source confirmation." },
-    { title: "Programme Features", icon: Award, tone: "amber", items: content.features, missing: "Programme features require source confirmation." },
-    { title: "Curriculum and Learning Outcomes", icon: BookOpen, tone: "violet", missing: "Curriculum modules and learning outcomes require source confirmation." },
-    { title: "Tools and Technologies", icon: Cpu, tone: "blue", items: content.tools, missing: "Programme-specific tools and technologies require source confirmation." },
-    { title: "Practical Learning", icon: FlaskConical, tone: "teal", text: content.practical, missing: "Labs, projects, case studies and practical learning arrangements require source confirmation." },
-    { title: "Certification", icon: Award, tone: "amber", text: content.certification, missing: "Awarding body, certificate title and completion requirements require source confirmation." },
-    { title: "Admission Process", icon: CalendarDays, tone: "blue", text: content.admissions, missing: "Application steps, selection requirements and admission dates require source confirmation." },
+    { title: "Industry-Integrated Programme", icon: BookOpen, tone: "violet", text: content.overview, missing: "Programme overview requires source confirmation." },
+    { title: "Curriculum and Learning Outcomes", icon: GraduationCap, tone: "blue", missing: "Curriculum modules and learning outcomes require source confirmation." },
+    { title: "Technology Specification", icon: Cpu, tone: "blue", items: content.tools, missing: "Programme-specific tools and technologies require source confirmation." },
+    { title: "Practical & Theory", icon: FlaskConical, tone: "teal", text: content.practical, missing: "The practical and theory split requires source confirmation." },
+    { title: "Joint Certification on Completion", icon: Award, tone: "amber", text: content.certification, missing: "Awarding body and certificate title require source confirmation." },
   ];
   const openRequest = () => { setComplete(false); setRequestOpen(true); };
   const pending = (text: string) => <div className="xime-review"><span className="programme-org">Details under review</span><p>{text}</p></div>;
