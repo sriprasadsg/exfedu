@@ -176,7 +176,11 @@ export const BlockView = ({ block, page }: { block: Block; page: Page }) => {
     case "gallery":
       return <Gallery filters={block.filters} />;
     case "logo":
-      return <img src={block.src} alt={block.alt} className="h-20 w-auto" />;
+      return (
+        <div className="skillshone-logo-box">
+          <img src={block.src} alt={block.alt} className="h-16 w-auto md:h-20" />
+        </div>
+      );
     case "cta":
       if (block.appearance === "academic-partner") {
         return (
