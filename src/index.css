@@ -608,8 +608,9 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 
 /* Footer — Exafluence Inc. logo in the open area below the Academic column */
 .footer-company-mark img {
-  width: 188px;
+  width: 158px;
   height: auto;
+
   filter: drop-shadow(0 3px 5px hsl(214 58% 16% / .16));
 }
 
@@ -1331,7 +1332,7 @@ html body .cap-diagram .cap-art {
   background-origin: border-box; background-clip: padding-box, border-box;
   animation: skillshone-box-drift 7s ease-in-out infinite;
 }
-.footer-featured-name { font-size: .74rem; font-weight: 600; letter-spacing: .02em; }
+.footer-featured-logo { height: .8rem; width: auto; display: block; }
 .footer-featured:hover, .footer-featured:focus-visible { background-color: hsl(204 100% 97%); }
 
 /* About subtitle — smaller, calmer line */

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowUp, ArrowUpRight } from "lucide-react";
 import exafluence from "@/assets/exafluence-footer-exact.png.asset.json";
+import skillshoneLogo from "@/assets/skillshone-original.png.asset.json";
 import { menuCategories, navPages, organisations, type Organisation } from "@/data/site";
 import { organisationPath } from "@/lib/programmeNavigation";
 
@@ -25,7 +26,7 @@ const Footer = () => (
               ))}
               {featured.map((s) => (
                 <Link key={s.path} to={s.path} className="footer-featured" aria-label={s.title}>
-                  <span className="footer-featured-name">{s.title}</span>
+                  <img src={skillshoneLogo.url} alt={s.title} loading="lazy" className="footer-featured-logo" />
                   <ArrowUpRight className="h-3 w-3" strokeWidth={1.75} aria-hidden />
                 </Link>
               ))}
