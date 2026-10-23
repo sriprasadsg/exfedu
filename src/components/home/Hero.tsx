@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import heroArt from "@/assets/exi-ceramic-tiles.png.asset.json";
+import heroArt from "@/assets/home-hero-ai-education.png.asset.json";
 
 const Hero = () => (
   <section aria-label="Exafluence Education introduction" className="hero2">
@@ -15,7 +15,7 @@ const Hero = () => (
         </ul>
         <Button asChild size="lg" className="hero2-cta"><Link to="/programmes">Explore Programmes</Link></Button>
       </div>
-      <img src={heroArt.url} alt="" aria-hidden="true" width={1283} height={875} className="hero2-art" fetchPriority="high" />
+      <img src={heroArt.url} alt="" aria-hidden="true" width={978} height={799} className="hero2-art" fetchPriority="high" />
     </div>
   </section>
 );
