@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
-import exafluence from "@/assets/exafluence-footer.png.asset.json";
+import exafluence from "@/assets/exafluence-footer-darker.png.asset.json";
 import { menuCategories, navPages } from "@/data/site";
 
 const Footer = () => (
-  <footer className="border-t bg-primary text-primary-foreground">
+  <footer className="site-footer border-t">
     <div className="container flex flex-nowrap items-center gap-x-2 pt-14 pb-8 sm:gap-x-4">
       <p className="footer-brand-line min-w-0 whitespace-nowrap font-display"><span className="footer-title-gradient">Exafluence Education</span> <span className="opacity-80">— An Edtech Division of <span className="brand-exa">Exa</span><span className="brand-fluence">fluence</span> Inc., USA</span></p>
-      <span className="footer-logo-glow inline-flex shrink-0 items-center rounded-md bg-background px-0.5 py-0.5 sm:px-2 sm:py-1">
+      <span className="footer-logo-glow inline-flex shrink-0 items-center">
         <img src={exafluence.url} alt="Exafluence — Data Driven Influence" className="footer-brand-logo w-auto" />
       </span>
     </div>
@@ -32,7 +32,7 @@ const Footer = () => (
         );
       })}
     </div>
-    <div className="border-t border-primary-foreground/10 py-5 text-center text-xs font-light opacity-60">
+    <div className="border-t border-primary/15 py-5 text-center text-xs font-light opacity-60">
       © {new Date().getFullYear()} Exafluence Education · An Edtech Division of Exafluence Inc., USA
     </div>
   </footer>

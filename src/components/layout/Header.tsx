@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import logo from "@/assets/exfedu-logo-original.png.asset.json";
+import logo from "@/assets/exfedu-logo-darker.png.asset.json";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { menuCategories, navPages } from "@/data/site";
 import { Button } from "@/components/ui/button";
@@ -43,7 +43,7 @@ const Header = () => {
               </DropdownMenuContent>
             </DropdownMenu>
           ))}
-          <Button asChild size="sm" className="ml-3 bg-primary-foreground text-primary hover:bg-primary-foreground/90"><Link to="/#partner-enquiry">Partner enquiry</Link></Button>
+          <Button asChild size="sm" className="ml-3 bg-primary text-primary-foreground hover:bg-primary/90"><Link to="/#partner-enquiry">Partner enquiry</Link></Button>
         </nav>
         <Button variant="ghost" size="icon" className="nav-on-navy nav-icon-btn lg:hidden" onClick={() => setOpen(!open)} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} aria-controls="mobile-navigation">
 
@@ -66,7 +66,7 @@ const Header = () => {
                 </AccordionItem>
               ))}
             </Accordion>
-            <Button asChild className="mt-5 bg-primary-foreground text-primary hover:bg-primary-foreground/90"><Link to="/#partner-enquiry" onClick={() => setOpen(false)}>Partner enquiry</Link></Button>
+            <Button asChild className="mt-5 bg-primary text-primary-foreground hover:bg-primary/90"><Link to="/#partner-enquiry" onClick={() => setOpen(false)}>Partner enquiry</Link></Button>
           </div>
         </nav>
       )}
