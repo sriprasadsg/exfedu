@@ -849,7 +849,7 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .hero-dot-layer--narrow { display: none; }
 @keyframes hero-dot-pulse {
   0%, 100% { transform: scale(1); opacity: 0; }
-  50% { transform: scale(1.32); opacity: .95; }
+  50% { transform: scale(1.48); opacity: 1; filter: brightness(1.12); }
 }
 /* Scope all stillness to Home, including menus rendered outside its wrapper. */
 body:has(.homepage-static) *, body:has(.homepage-static) *::before, body:has(.homepage-static) *::after {
