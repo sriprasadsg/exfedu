@@ -270,8 +270,8 @@ export const pages: Page[] = [
 export const findPage = (path: string) => pages.find((p) => p.path === path.replace(/\/$/, "") );
 export const retiredPageDestinations: Record<string, string> = {
   "/academic-collaborations": "/collaboration-network",
-  "/academic-collaborations/svu": "/programmes?organisation=SVU",
-  "/academic-collaborations/xime": "/programmes?organisation=XIME",
+  "/academic-collaborations/svu": "/collaboration-network/svu",
+  "/academic-collaborations/xime": "/collaboration-network/xime",
 };
 export const navPages = (cat: CategorySlug) => pages.filter((p) => p.category === cat && !p.hideInNav);
 

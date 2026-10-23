@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { collaborationSlides, organisations } from "@/data/site";
+import { organisationPath } from "@/lib/programmeNavigation";
 
 const Collaborators = () => {
   const [viewport, carousel] = useEmblaCarousel({ loop: true, duration: 25 });
@@ -19,7 +20,7 @@ const Collaborators = () => {
           {collaborationSlides.map((slide, i) => <article key={slide.organisation} className="network-slide" aria-label={`${i + 1} of 3: ${organisations[slide.organisation].name}`} aria-hidden={active !== i}>
             <div className="network-image"><img src={slide.image} alt={slide.alt} loading="lazy" /><div className="network-tech" aria-hidden="true">{slide.icons.map((Icon, n) => <span key={n}><Icon size={23} /></span>)}</div></div>
             <div className="network-panel"><img className="network-logo" src={organisations[slide.organisation].logo} alt={`${organisations[slide.organisation].name} logo`} loading="lazy" />
-              <h3>{slide.heading}</h3><p>{slide.text}</p><Button asChild><Link tabIndex={active === i ? 0 : -1} to={`/programmes?organisation=${slide.organisation}`}>{slide.label}<ArrowRight aria-hidden="true" /></Link></Button>
+              <h3>{slide.heading}</h3><p>{slide.text}</p><Button asChild><Link tabIndex={active === i ? 0 : -1} to={organisationPath(slide.organisation)}>{slide.label}<ArrowRight aria-hidden="true" /></Link></Button>
             </div>
           </article>)}
         </div></div>

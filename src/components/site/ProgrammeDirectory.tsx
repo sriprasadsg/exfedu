@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { programmes, organisations, filterProgrammes } from "@/data/site";
+import { programmePath } from "@/lib/programmeNavigation";
 
 export const useProgrammeSeo = (title: string, description: string) => {
   useEffect(() => {
@@ -37,7 +38,7 @@ const ProgrammeDirectory = () => {
         <Button variant="ghost" onClick={() => setParams({})}><RotateCcw size={16} />Reset filters</Button></div>
       <p className="programme-count" aria-live="polite">{shown.length} {shown.length === 1 ? "programme" : "programmes"}</p>
       <div className="programme-table"><div className="programme-table-head" aria-hidden="true"><span>Programme</span><span>Duration</span><span>Delivery Mode</span><span>Admission Spell</span><span>View Details</span></div>
-        {shown.map(p => <article key={p.slug} className="programme-row"><div><span className="programme-org">{organisations[p.organisation].name}</span><h2><Link to={`/programmes/${p.slug}${params.size ? `?${params}` : ""}`}>{p.title}</Link></h2></div><p><span className="programme-mobile-label">Duration</span>{p.duration}</p><p><span className="programme-mobile-label">Delivery Mode</span>{p.delivery}</p><p><span className="programme-mobile-label">Admission Spell</span>{p.intake}</p><Button variant="ghost" size="icon" asChild><Link aria-label={`View ${p.title}`} to={`/programmes/${p.slug}${params.size ? `?${params}` : ""}`}><ArrowRight /></Link></Button></article>)}
+        {shown.map(p => <article key={p.slug} className="programme-row"><div><span className="programme-org">{organisations[p.organisation].name}</span><h2><Link to={programmePath(p)}>{p.title}</Link></h2></div><p><span className="programme-mobile-label">Duration</span>{p.duration}</p><p><span className="programme-mobile-label">Delivery Mode</span>{p.delivery}</p><p><span className="programme-mobile-label">Admission Spell</span>{p.intake}</p><Button variant="ghost" size="icon" asChild><Link aria-label={`View ${p.title}`} to={programmePath(p)}><ArrowRight /></Link></Button></article>)}
       </div>
       {!shown.length && <div className="programme-empty"><BookOpen size={30} /><h2>{params.get("organisation") === "XIME" ? "XIME Chennai programme details await review" : "No matching programmes"}</h2><p>{params.get("organisation") === "XIME" ? "Connecting financial knowledge with data analytics and AI applications. Programme title, eligibility, duration, curriculum and certification require approved source materials." : "Try another subject or reset your filters."}</p><Button variant="outline" onClick={() => setParams({})}><RotateCcw size={16} />Reset filters</Button></div>}
       <p className="programme-review-note">Dates appear only after approved university or institution notifications. Programme-specific details awaiting approval are identified on each page.</p>
