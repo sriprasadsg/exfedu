@@ -1,6 +1,7 @@
 - [x] About page: connecting-technology details (approved Exafluence Inc. industry scope) + embedded partner enquiry form; verified 1280/375px, FAQs route now 404
 - [x] FAQs removed from the About Us (Core) menu; /faqs removed from site data
 # Roadmap
+- [ ] Add matching icons to menu-bar items, keeping navigation destinations unchanged.
 - [ ] Expand the internal XIME Chennai page into all requested programme sections with individual review flags, brochure request and test-only enquiry; verify the source and visitor journey.
 - [x] Rework collaboration flow into dedicated SVU/XIME/IBM pages, nested programme details, complete breadcrumbs and organisation-specific back links; approved facts retained, 32 tests pass, browser journeys/redirects verified at desktop/tablet/phone with no runtime errors or overflow.
 - [ ] Verify XIME programme facts and exact Lincoln reference presentation — supplied websites could not be retrieved; XIME remains an approval placeholder rather than an invented programme.
