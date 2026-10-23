@@ -59,8 +59,8 @@ const EcosystemHub = () => {
             {lines.map((l, i) => (
               <g key={i} className={active === i ? "is-active" : undefined}>
                 <line {...l} />
-                <circle cx={l.x1} cy={l.y1} r="5" />
-                <circle cx={l.x2} cy={l.y2} r="5" />
+                <circle className="cap-connector-dot" cx={l.x1} cy={l.y1} r="5" style={{ animationDelay: `${-i * 0.27}s` }} />
+                <circle className="cap-connector-dot" cx={l.x2} cy={l.y2} r="5" style={{ animationDelay: `${-i * 0.27 - 0.8}s` }} />
               </g>
             ))}
           </svg>
