@@ -204,5 +204,5 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 
 
 - [x] About Us rebuilt from the client's 23 October master brief: exact approved wording (no award years, no closing CTA buttons, FIS Global/Snowflake/MongoDB together), compact four-item industry row, three aligned technology items, one consistent medium-blue icon shade, white content areas on soft sky-blue, page-scoped "Exa red / fluence blue" inside "Exafluence Inc. USA", SEO title + meta description set; 28 tests pass, build OK, verified 1280/390px.
-- [ ] SkillShone: original logo everywhere, coloured box border, gentle animation
-- [ ] About: add "Quantum Computing" line, reduce font size
+- [x] SkillShone: original logo everywhere, coloured box border, gentle animation
+- [x] About: added "Quantum Computing" to the subtitle, reduced its font size
