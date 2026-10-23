@@ -1,7 +1,7 @@
 - [x] About page: connecting-technology details (approved Exafluence Inc. industry scope) + embedded partner enquiry form; verified 1280/375px, FAQs route now 404
 - [x] FAQs removed from the About Us (Core) menu; /faqs removed from site data
 # Roadmap
-- [ ] Make hero dots visibly pulse, animate existing hub connector dots only, and animate only the central magnifying-glass glyph on the company tile artwork; keep everything else still.
+- [x] Make hero dots visibly pulse (1.85×), animate existing hub connector dots only (1.8×), and animate only the central magnifying-glass glyph on the company tile artwork; everything else stays still. Verified 1280/1062/390px, aligned glyph, no overflow/runtime errors, 49 desktop animations restricted to these details, zero reduced-motion animations; 27 tests pass, build OK.
 - [x] Pulse only hero banner decorative dots; circles/artwork and every other homepage element stay still. Verified wide/phone alignment, 32 isolated dot animations only (continuous outlines excluded), no overflow, zero reduced-motion animations; 27 tests pass.
 - [x] Restore the uploaded menu logo's original deep navy–red–deep navy colours without recolouring; neatly crop surrounding space and refresh the matching favicon.
 - [x] Refine only the Academic Collaborations overview per supplied brief; 251px desktop banner, balanced cards, approved wording, subtle connectors and compact navigation; verified 1280/1062/375px without overflow, partner/enquiry links, reduced motion and 13 regression tests. Approved partner logos unavailable, institution names retained as requested.
