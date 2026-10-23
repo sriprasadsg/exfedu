@@ -7,7 +7,7 @@ const Hero = () => (
     <div className="container hero2-inner">
       <div className="hero2-copy">
         <h1 className="hero2-title">Exafluence Education</h1>
-        <p className="hero2-sub">An EdTech Division of <span className="brand-exa">Exa</span><span className="brand-fluence">fluence</span> <span className="brand-fluence">Inc. USA</span></p>
+        <p className="hero2-sub">An EdTech Division of <span className="brand-exa">Exa</span><span className="brand-fluence">fluence</span> Inc. USA</p>
         <ul className="hero2-lines">
           <li className="hero2-nowrap">AI, Gen AI, Data Science</li>
           <li>Cloud Technologies</li>
