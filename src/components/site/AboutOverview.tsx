@@ -23,8 +23,33 @@ export type AboutOverviewData = {
   collaborations: { title: string; paragraphs: string[] };
 };
 
-const industryIcons = [Banknote, HeartPulse, ShoppingBag, Factory];
-const solutionIcons = [MessagesSquare, Database, FileText];
+// Each icon carries its own colour tint class so every block, industry and
+// solution reads as a colourful, easily recognisable icon.
+const sectionIcons = [
+  { icon: Landmark, tint: "about-tint-sky" },
+  { icon: Compass, tint: "about-tint-teal" },
+  { icon: Sparkles, tint: "about-tint-violet" },
+  { icon: Handshake, tint: "about-tint-amber" },
+];
+const industryIcons = [
+  { icon: Banknote, tint: "about-tint-teal" },
+  { icon: HeartPulse, tint: "about-tint-rose" },
+  { icon: ShoppingBag, tint: "about-tint-amber" },
+  { icon: Factory, tint: "about-tint-violet" },
+];
+const solutionIcons = [
+  { icon: MessagesSquare, tint: "about-tint-sky" },
+  { icon: Database, tint: "about-tint-teal" },
+  { icon: FileText, tint: "about-tint-indigo" },
+];
+
+function SectionHeading({ id, title, icon }: { id: string; title: string; icon: (typeof sectionIcons)[number] }) {
+  const Icon = icon.icon;
+  return <div className="about-editorial-section-head">
+    <span className={`about-editorial-section-icon ${icon.tint}`} aria-hidden="true"><Icon size={21} strokeWidth={1.7} /></span>
+    <h2 id={id}>{title}</h2>
+  </div>;
+}
 
 // Approved branding: "Exafluence Education" stays entirely blue; only inside
 // "Exafluence Inc. USA" does "Exa" turn red and "fluence" turn medium blue.
