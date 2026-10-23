@@ -19,6 +19,9 @@ const Footer = () => (
           return (
             <div key={c.slug}>
               {c.slug === "academic" ? <Link to="/collaboration-network" className="footer-title-gradient mb-3 block text-base font-medium">{c.title}</Link> : <p className="footer-title-gradient mb-3 text-base font-medium">{c.title}</p>}
+              {c.slug === "academic" && partners.map((p) => (
+                <Link key={p} to={organisationPath(p)} className="footer-option block py-1.5 text-sm">{organisations[p].name}</Link>
+              ))}
               {featured.map((s) => (
                 <Link key={s.path} to={s.path} className="footer-featured" aria-label={s.title}>
                   <img src={skillshoneLogo.url} alt="" className="footer-featured-logo" />
