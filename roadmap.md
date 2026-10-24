@@ -220,3 +220,5 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Footer "Our Collaboration Network": SVU, XIME Chennai, IBM logos one after another, each hyperlinked; crisp user-supplied SVU/XIME logos replace the smudged ones site-wide.
 - [x] Footer shows partner names as plain text links (no logos); SkillShone footer pill is text-only; SkillShone page logo and its bordered box reduced in size.
 - [x] Footer SkillShone pill restored to the original logo image at a reduced size; Exafluence footer mark reduced from 188px to 158px wide; partner names stay plain text links.
+
+- [ ] Arrange desktop About Us, Our Collaboration Network, Learning Ecosystem and Enquire Now; omit Programmes per latest request; group five learning links and keep four resources in sidebar.
