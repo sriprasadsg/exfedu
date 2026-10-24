@@ -23,10 +23,10 @@ const Header = () => {
   }, [open]);
   const q = query.trim().toLowerCase();
   const searchResults = q ? [
-    ...(Object.keys(organisations) as Organisation[]).map((o) => ({ path: organisationPath(o), title: `${organisations[o].name} — Our Collaboration Network`, icon: Building2 })),
+    ...(Object.keys(organisations) as Organisation[]).map((o) => ({ path: organisationPath(o), title: `${organisations[o].name} — Our Collaboration Network`, icon: Building2, searchKeywords: o })),
     ...programmes.map((p) => ({ path: programmePath(p), title: `${p.title} (${organisations[p.organisation].name})`, icon: BookOpen })),
     ...menuCategories.flatMap((c) => navPages(c.slug)),
-  ].filter((s) => s.title.toLowerCase().includes(q)) : [];
+  ].filter((s) => `${s.title} ${"searchKeywords" in s ? s.searchKeywords : ""}`.toLowerCase().includes(q)) : [];
   return (
     <header className="site-header sticky top-0 z-50 border-b">
       <div className="container flex h-20 items-center justify-between gap-2">
