@@ -44,7 +44,7 @@ export const categories = [
   { slug: "core", title: "Core", short: "Contact", accent: "cat-core" },
   { slug: "academic", title: "Our Collaboration Network", short: "Our Collaboration Network", accent: "cat-academic" },
   { slug: "industry", title: "Industry & Technology Collaborations", short: "Industry", accent: "cat-industry" },
-  { slug: "learning", title: "Learning & Student Ecosystem", short: "Learning & Students", accent: "cat-learning" },
+  { slug: "learning", title: "Learning Ecosystem", short: "Learning Ecosystem", accent: "cat-learning" },
 ] as const;
 export type CategorySlug = (typeof categories)[number]["slug"];
 
@@ -278,6 +278,19 @@ export const retiredPageDestinations: Record<string, string> = {
   "/academic-collaborations/xime": "/collaboration-network/xime",
 };
 export const navPages = (cat: CategorySlug) => pages.filter((p) => p.category === cat && !p.hideInNav);
+
+/** Primary and sidebar destinations are separate from the page categories. */
+export const primaryNavigation = [
+  { path: "/about", title: "About Us", icon: Info },
+  { path: "/collaboration-network", title: "Our Collaboration Network", icon: Network },
+  { path: "/programmes", title: "Programmes", icon: BookOpen },
+  { path: null, title: "Learning Ecosystem", icon: GraduationCap },
+  { path: "/#partner-enquiry", title: "Enquire Now", icon: Mail },
+] as const;
+const learningPaths = ["/practical-learning", "/internships", "/career-development", "/research-innovation", "/student-success"];
+const sidebarPaths = ["/students-corner", "/skillshone", "/gallery", "/events-news"];
+export const learningEcosystemPages = learningPaths.flatMap(path => pages.filter(page => page.path === path));
+export const sidebarPages = sidebarPaths.flatMap(path => pages.filter(page => page.path === path));
 
 /** Hub arms: every arm is subordinate to the central Exafluence Education brand. */
 export const arms: { title: string; path: string; icon: LucideIcon; subtitle: string; priority: "institutional" | "learning" | "student" }[] = [

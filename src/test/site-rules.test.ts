@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { arms, categories, homepageCapabilities, pages, programmes, retiredPageDestinations, navPages } from "@/data/site";
+import { arms, categories, homepageCapabilities, pages, programmes, retiredPageDestinations, navPages, primaryNavigation, learningEcosystemPages, sidebarPages } from "@/data/site";
 
 describe("approved website structure", () => {
   it("presents FIS Global, Snowflake and MongoDB together without award years", () => {
@@ -38,7 +38,17 @@ describe("approved website structure", () => {
     }
   });
   it("keeps exactly four requested categories", () => {
-    expect(categories.map((c) => c.title)).toEqual(["Core", "Our Collaboration Network", "Industry & Technology Collaborations", "Learning & Student Ecosystem"]);
+    expect(categories.map((c) => c.title)).toEqual(["Core", "Our Collaboration Network", "Industry & Technology Collaborations", "Learning Ecosystem"]);
+  });
+  it("keeps Programmes as a primary destination alongside About, collaborations and enquiry", () => {
+    expect(primaryNavigation.map(item => item.path)).toEqual(["/about", "/collaboration-network", "/programmes", null, "/#partner-enquiry"]);
+  });
+  it("groups exactly five learning destinations in the primary dropdown", () => {
+    expect(learningEcosystemPages.map(page => page.path)).toEqual(["/practical-learning", "/internships", "/career-development", "/research-innovation", "/student-success"]);
+  });
+  it("keeps the four student resources in the sidebar, outside the primary learning group", () => {
+    expect(sidebarPages.map(page => page.path)).toEqual(["/students-corner", "/skillshone", "/gallery", "/events-news"]);
+    expect(learningEcosystemPages.some(page => sidebarPages.some(resource => resource.path === page.path))).toBe(false);
   });
   it("does not display unconfirmed future partners or industry networks", () => {
     const blocks = pages.flatMap((p) => p.blocks);
