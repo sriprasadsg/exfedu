@@ -1,59 +1,62 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import logo from "@/assets/exfedu-logo-darker.png.asset.json";
-import { Menu, X, ChevronDown, House, Info, MessageCircle, Search, Plus, Minus } from "lucide-react";
-import { menuCategories, navPages, organisations, programmes, type Organisation } from "@/data/site";
+import { Menu, X, ChevronDown, Search, Plus, Minus } from "lucide-react";
+import { menuCategories, navPages, primaryNavigation, learningEcosystemPages, sidebarPages, organisations, programmes, type Organisation } from "@/data/site";
 import { organisationPath, programmePath } from "@/lib/programmeNavigation";
 import { Building2, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@/components/ui/dropdown-menu";
-import catCore from "@/assets/cat-core.png";
-import catAcademic from "@/assets/cat-academic.png";
-import catIndustry from "@/assets/cat-industry.png";
-import catLearning from "@/assets/cat-learning.png";
-
-const catIcons: Record<string, string> = { core: catCore, academic: catAcademic, industry: catIndustry, learning: catLearning };
-
 const Header = () => {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [expanded, setExpanded] = useState<string | null>(null);
   const { pathname } = useLocation();
-  useEffect(() => { setOpen(false); setQuery(""); }, [pathname]);
+  useEffect(() => { setOpen(false); setQuery(""); setExpanded(null); }, [pathname]);
+  useEffect(() => {
+    if (!open) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKeyDown = (event: KeyboardEvent) => { if (event.key === "Escape") setOpen(false); };
+    document.addEventListener("keydown", onKeyDown);
+    return () => { document.body.style.overflow = previousOverflow; document.removeEventListener("keydown", onKeyDown); };
+  }, [open]);
   const q = query.trim().toLowerCase();
   const searchResults = q ? [
-    ...(Object.keys(organisations) as Organisation[]).map((o) => ({ path: organisationPath(o), title: `${organisations[o].name} — Our Collaboration Network`, icon: Building2 })),
+    ...(Object.keys(organisations) as Organisation[]).map((o) => ({ path: organisationPath(o), title: `${organisations[o].name} — Our Collaboration Network`, icon: Building2, searchKeywords: o })),
     ...programmes.map((p) => ({ path: programmePath(p), title: `${p.title} (${organisations[p.organisation].name})`, icon: BookOpen })),
     ...menuCategories.flatMap((c) => navPages(c.slug)),
-  ].filter((s) => s.title.toLowerCase().includes(q)) : [];
+  ].filter((s) => `${s.title} ${"searchKeywords" in s ? s.searchKeywords : ""}`.toLowerCase().includes(q)) : [];
   return (
     <header className="site-header sticky top-0 z-50 border-b">
-      <div className="container flex h-20 items-center justify-between gap-4">
+      <div className="container flex h-20 items-center justify-between gap-2">
         <Link to="/" className="flex min-w-0 items-center" aria-label="Exafluence Education home">
           <img src={logo.url} alt="Exafluence Education — An EdTech unit of Exafluence Inc., USA" className="h-12 w-auto max-w-[150px] lg:max-w-[220px] object-contain" />
 
         </Link>
         <nav aria-label="Main navigation" className="hidden items-center gap-0 min-[900px]:flex">
-          <Button asChild variant="ghost" className="nav-on-navy gap-1.5 px-2 lg:px-4"><Link to="/" aria-current={pathname === "/" ? "page" : undefined}><House className="h-4 w-4 shrink-0" aria-hidden="true" />Home</Link></Button>
-          <Button asChild variant="ghost" className="nav-on-navy gap-1.5 px-2 lg:px-4"><Link to="/about" aria-current={pathname === "/about" ? "page" : undefined}><Info className="h-4 w-4 shrink-0" aria-hidden="true" />About Us</Link></Button>
-          {menuCategories.filter((c) => c.slug === "academic").map((c) => (
-            c.slug === "academic" ? <Button key={c.slug} asChild variant="ghost" className={`nav-on-navy gap-1.5 px-2 lg:px-4 ${c.accent}`}><Link to="/collaboration-network" aria-current={pathname.startsWith("/collaboration-network") ? "page" : undefined}><img src={catIcons.academic} alt="" aria-hidden="true" className="menu-cat-icon" />{c.title}</Link></Button> :
-            <DropdownMenu key={c.slug}>
-              <DropdownMenuTrigger asChild><Button variant="ghost" className={`nav-on-navy gap-1.5 px-2 lg:px-4 ${c.accent}`}><img src={catIcons[c.slug]} alt="" aria-hidden className="menu-cat-icon" loading="lazy" />{c.short}<ChevronDown className="h-3.5 w-3.5" /></Button></DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className={`nav-menu-panel ${c.slug === "learning" ? "grid w-[520px] grid-cols-2 p-2" : "w-72 p-2"}`}>
-                <div className={c.slug === "learning" ? "col-span-2 mb-1 flex items-center gap-3 border-b px-2 pb-2" : "mb-1 flex items-center gap-3 border-b px-2 pb-2"}>
-                  <img src={catIcons[c.slug]} alt="" aria-hidden className="menu-cat-hero" loading="lazy" />
-                  <span className={`text-sm font-medium ${c.accent}`}>{c.title}</span>
-                </div>
-                {navPages(c.slug).map((s) => (
-                  <DropdownMenuItem key={s.path} asChild className="nav-menu-item min-h-11 cursor-pointer gap-2.5">
-                    <Link to={s.path} aria-current={pathname === s.path ? "page" : undefined}><s.icon className="h-4 w-4 shrink-0" strokeWidth={1.5} />{s.title}</Link>
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
+          {primaryNavigation.map((item) => (
+            item.path === null ? (
+              <DropdownMenu key={item.title}>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" className="nav-on-navy cat-learning gap-1.5 px-2 lg:px-3" aria-current={learningEcosystemPages.some(page => page.path === pathname) ? "page" : undefined}>
+                    <item.icon aria-hidden="true" />{item.title}<ChevronDown aria-hidden="true" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="nav-menu-panel w-80 max-w-[calc(100vw-2rem)] p-2">
+                  {learningEcosystemPages.map(page => (
+                    <DropdownMenuItem key={page.path} asChild className="nav-menu-item min-h-11 cursor-pointer gap-2.5">
+                      <Link to={page.path} aria-current={pathname === page.path ? "page" : undefined}><page.icon className="h-4 w-4 shrink-0" aria-hidden="true" /><span className="whitespace-normal">{page.title}</span></Link>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <Button key={item.path} asChild variant={item.path.includes("#") ? "default" : "ghost"} size={item.path.includes("#") ? "sm" : "default"} className={item.path.includes("#") ? "ml-2 nav-cta gap-1.5" : "nav-on-navy gap-1.5 px-2 lg:px-3"}>
+                <Link to={item.path} aria-current={!item.path.includes("#") && pathname.startsWith(item.path) ? "page" : undefined}><item.icon aria-hidden="true" />{item.title}</Link>
+              </Button>
+            )
           ))}
-          <Button asChild size="sm" className="ml-2 nav-cta gap-1.5"><Link to="/#partner-enquiry"><MessageCircle className="h-4 w-4" aria-hidden="true" />Partner enquiry</Link></Button>
         </nav>
         <Button variant="ghost" size="icon" className="nav-on-navy nav-icon-btn" onClick={() => setOpen(!open)} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} aria-controls="mobile-navigation">
 
@@ -62,9 +65,9 @@ const Header = () => {
       </div>
       {open && (
         <div className="fixed inset-0 z-50">
-          <button type="button" aria-label="Close menu" className="absolute inset-0 bg-foreground/50" onClick={() => setOpen(false)} />
-          <nav id="mobile-navigation" aria-label="Mobile navigation" className="relative flex h-full w-[min(92vw,420px)] flex-col overflow-y-auto bg-background shadow-2xl animate-in slide-in-from-left duration-300 border-b-4 border-primary">
-            <button type="button" onClick={() => setOpen(false)} className="flex h-24 w-28 shrink-0 items-center justify-center bg-primary text-primary-foreground font-medium underline underline-offset-4">Close</button>
+          <Button type="button" variant="ghost" aria-label="Dismiss menu" className="absolute inset-0 h-full w-full rounded-none bg-foreground/50 hover:bg-foreground/50" onClick={() => setOpen(false)} />
+          <nav id="mobile-navigation" aria-label="Mobile navigation" className="site-header-panel relative flex h-full w-[min(92vw,420px)] flex-col overflow-y-auto shadow-2xl animate-in slide-in-from-left duration-300 motion-reduce:animate-none border-b-4 border-primary">
+            <Button type="button" onClick={() => setOpen(false)} className="flex h-24 w-28 shrink-0 rounded-none items-center justify-center bg-primary text-primary-foreground font-medium underline underline-offset-4">Close</Button>
             <div className="px-8 py-8">
               <form role="search" onSubmit={(e) => e.preventDefault()} className="mb-4 flex items-center bg-muted p-1.5">
                 <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search collaborators, programmes, pages" aria-label="Search the site" className="min-w-0 flex-1 bg-transparent px-2.5 py-2 text-sm italic outline-none" />
@@ -76,25 +79,24 @@ const Header = () => {
                 </ul>
               ) : (
                 <ul className="border-b">
-                  <li className="border-t first:border-t-0"><Link to="/about" onClick={() => setOpen(false)} className="flex min-h-12 items-center text-lg font-medium text-primary">About Us</Link></li>
-                  <li className="border-t"><Link to="/collaboration-network" onClick={() => setOpen(false)} className="flex min-h-12 items-center text-lg font-medium text-primary">Our Collaboration Network</Link></li>
-                  {menuCategories.filter((c) => c.slug !== "academic").map((c) => {
-                    const isOpen = expanded === c.slug;
-                    return (
-                      <li key={c.slug} className="border-t">
-                        <button type="button" onClick={() => setExpanded(isOpen ? null : c.slug)} aria-expanded={isOpen} className="flex min-h-12 w-full items-center justify-between gap-4 text-left text-lg font-medium text-primary">
-                          {c.title}{isOpen ? <Minus className="h-6 w-6 shrink-0" /> : <Plus className="h-6 w-6 shrink-0" />}
-                        </button>
-                        {isOpen && <div className="pb-3">{navPages(c.slug).map((s) => <Link key={s.path} to={s.path} onClick={() => setOpen(false)} className="flex min-h-10 items-center gap-3 py-1 pl-1 text-sm text-foreground hover:text-primary"><s.icon className="h-4 w-4 shrink-0 text-muted-foreground" />{s.title}</Link>)}</div>}
-                      </li>
-                    );
-                  })}
+                  {primaryNavigation.filter(item => item.path !== null && !item.path.includes("#")).map(item => (
+                    <li key={item.path} className="border-t first:border-t-0"><Link to={item.path ?? "/"} onClick={() => setOpen(false)} className="flex min-h-12 items-center gap-3 text-base font-medium text-primary"><item.icon className="h-4 w-4 shrink-0" aria-hidden="true" />{item.title}</Link></li>
+                  ))}
+                  <li className="border-t">
+                    <Button variant="ghost" onClick={() => setExpanded(expanded ? null : "learning")} aria-expanded={expanded === "learning"} aria-controls="sidebar-learning" className="h-auto min-h-12 w-full justify-between gap-4 rounded-none px-0 text-left text-base font-medium text-primary whitespace-normal">
+                      Learning Ecosystem{expanded ? <Minus aria-hidden="true" /> : <Plus aria-hidden="true" />}
+                    </Button>
+                    {expanded && <div id="sidebar-learning" className="pb-3">{learningEcosystemPages.map(page => <Link key={page.path} to={page.path} onClick={() => setOpen(false)} className="flex min-h-10 items-center gap-3 py-1 text-sm text-foreground hover:text-primary"><page.icon className="h-4 w-4 shrink-0" aria-hidden="true" />{page.title}</Link>)}</div>}
+                  </li>
+                  {sidebarPages.map(page => (
+                    <li key={page.path} className="border-t"><Link to={page.path} onClick={() => setOpen(false)} className="flex min-h-11 items-center gap-3 py-2 text-sm font-medium text-primary"><page.icon className="h-4 w-4 shrink-0" aria-hidden="true" />{page.title}</Link></li>
+                  ))}
                 </ul>
               )}
               <div className="mt-6 flex flex-col gap-4 text-sm font-medium text-foreground">
                 <Link to="/" onClick={() => setOpen(false)}>Home</Link>
-                <Link to="/contact" onClick={() => setOpen(false)}>Contact</Link>
-                <Link to="/#partner-enquiry" onClick={() => setOpen(false)}>Partner enquiry</Link>
+                <Link to="/programmes" onClick={() => setOpen(false)}>Programmes</Link>
+                <Link to="/#partner-enquiry" onClick={() => setOpen(false)}>Enquire Now</Link>
               </div>
             </div>
           </nav>
