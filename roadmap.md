@@ -221,4 +221,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Footer shows partner names as plain text links (no logos); SkillShone footer pill is text-only; SkillShone page logo and its bordered box reduced in size.
 - [x] Footer SkillShone pill restored to the original logo image at a reduced size; Exafluence footer mark reduced from 188px to 158px wide; partner names stay plain text links.
 
-- [ ] Arrange desktop About Us, Our Collaboration Network, Learning Ecosystem and Enquire Now; omit Programmes per latest request; group five learning links and keep four resources in sidebar.
+- [x] Arrange desktop About Us, Our Collaboration Network, Learning Ecosystem and Enquire Now; omit Programmes per latest request; group five learning links and keep four resources in sidebar. Verified dropdown, sidebar, destinations and collaborator search at desktop/current-window/phone sizes; 19 targeted tests pass, build OK.
