@@ -1,6 +1,6 @@
 import {
-  Building2, Landmark, Network, BookOpen, FlaskConical, Briefcase, Compass, Lightbulb, Award,
-  LayoutGrid, MonitorPlay, Images, Newspaper, Info, Mail, GraduationCap,
+  Building, Building2, Landmark, Network, BookOpen, FlaskConical, Briefcase, Compass, Lightbulb, Award,
+  LayoutGrid, MonitorPlay, Images, Newspaper, Mail, GraduationCap,
   Code2, BarChart3, Cloud, Sparkles, Database, Terminal, Presentation, Rocket, Cpu, Layers, PieChart, type LucideIcon,
 } from "lucide-react";
 import type { AboutStoryData } from "@/components/site/AboutStory";
@@ -144,7 +144,7 @@ const ibmOfferings: Offering[] = [
 
 export const pages: Page[] = [
   // Core
-  { path: "/about", title: "About Us", category: "core", icon: Info, eyebrow: "A Division of Exafluence Inc., USA", hideInNav: true,
+  { path: "/about", title: "About Us", category: "core", icon: Building, eyebrow: "A Division of Exafluence Inc., USA", hideInNav: true,
     summary: "Technology education informed by industry experience",
     blocks: [{ type: "about-overview", data: {
       title: "About Exafluence Education",
@@ -281,7 +281,7 @@ export const navPages = (cat: CategorySlug) => pages.filter((p) => p.category ==
 
 /** Primary and sidebar destinations are separate from the page categories. */
 export const primaryNavigation = [
-  { path: "/about", title: "About Us", icon: Info },
+  { path: "/about", title: "About Us", icon: Building },
   { path: "/collaboration-network", title: "Our Collaboration Network", icon: Network },
   { path: null, title: "Learning Ecosystem", icon: GraduationCap },
   { path: "/#partner-enquiry", title: "Enquire Now", icon: Mail },
