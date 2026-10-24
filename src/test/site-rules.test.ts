@@ -40,8 +40,8 @@ describe("approved website structure", () => {
   it("keeps exactly four requested categories", () => {
     expect(categories.map((c) => c.title)).toEqual(["Core", "Our Collaboration Network", "Industry & Technology Collaborations", "Learning Ecosystem"]);
   });
-  it("keeps Programmes as a primary destination alongside About, collaborations and enquiry", () => {
-    expect(primaryNavigation.map(item => item.path)).toEqual(["/about", "/collaboration-network", "/programmes", null, "/#partner-enquiry"]);
+  it("omits Programmes from the desktop while preserving the other primary destinations", () => {
+    expect(primaryNavigation.map(item => item.path)).toEqual(["/about", "/collaboration-network", null, "/#partner-enquiry"]);
   });
   it("groups exactly five learning destinations in the primary dropdown", () => {
     expect(learningEcosystemPages.map(page => page.path)).toEqual(["/practical-learning", "/internships", "/career-development", "/research-innovation", "/student-success"]);

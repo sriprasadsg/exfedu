@@ -283,7 +283,6 @@ export const navPages = (cat: CategorySlug) => pages.filter((p) => p.category ==
 export const primaryNavigation = [
   { path: "/about", title: "About Us", icon: Info },
   { path: "/collaboration-network", title: "Our Collaboration Network", icon: Network },
-  { path: "/programmes", title: "Programmes", icon: BookOpen },
   { path: null, title: "Learning Ecosystem", icon: GraduationCap },
   { path: "/#partner-enquiry", title: "Enquire Now", icon: Mail },
 ] as const;
