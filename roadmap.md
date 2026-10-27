@@ -242,3 +242,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 
 - [x] SkillShone closing button recoloured with the wordmark's navy-to-red blend; verified in preview.
 - [x] SkillShone "What You Get" timeline: gentle wavy movement for the alternating flag-like cards; staggered, slow, off under reduced motion.
+- [x] SkillShone page: removed the closing "Visit SkillShone" button (heading and contact text retained); hero button pair recoloured to the wordmark navy-to-red blend and pale sky-blue outline, logo colours untouched.
