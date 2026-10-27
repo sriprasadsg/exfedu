@@ -233,3 +233,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [ ] SkillShone logo box: glowing edges and visible gentle movement (off under reduced motion).
 - [ ] SkillShone: move content into flash cards with colourful icons and animations; reduce content; smaller title font; colourful animated box edges.
 - [ ] SkillShone: replace the flagged blocks with prompt-based generated artwork matching the supplied references.
+- [ ] SkillShone: apply mini colourful icons and boxes with gentle animation per 27 Oct interjection.
