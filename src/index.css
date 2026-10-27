@@ -1344,6 +1344,10 @@ html body .cap-diagram .cap-art {
 .ss-btn { border: 1px solid hsl(var(--border)); border-radius: 999px; padding: .6rem 1.4rem; font-size: .85rem; font-weight: 500; transition: transform .3s; }
 .ss-btn:hover { transform: translateY(-2px); }
 .ss-btn--solid { background: hsl(var(--foreground)); color: hsl(var(--background)); border-color: transparent; }
+/* SkillShone's closing call to action carries the wordmark's own navy-to-red blend. */
+.ss-cta-btn { border: 0; border-radius: 999px; padding: .72rem 1.55rem; color: hsl(0 0% 100%); background-color: hsl(var(--primary)); background-image: linear-gradient(100deg, hsl(var(--primary)) 0%, hsl(214 72% 32%) 42%, hsl(var(--brand-red)) 100%); box-shadow: 0 10px 24px -16px hsl(var(--primary) / .6); transition: transform .3s ease, box-shadow .3s ease; }
+.ss-cta-btn:hover, .ss-cta-btn:focus-visible { color: hsl(0 0% 100%); transform: translateY(-2px); box-shadow: 0 14px 28px -14px hsl(var(--brand-red) / .55); outline: none; }
+@media (prefers-reduced-motion: reduce) { .ss-cta-btn, .ss-cta-btn:hover, .ss-cta-btn:focus-visible { transform: none; } }
 .ss-hero-art { position: relative; animation: ss-card-float 7s ease-in-out infinite; }
 .ss-hero-art::before { content: ""; position: absolute; inset: 10% 7%; z-index: 0; border-radius: 999px; background: radial-gradient(closest-side, hsl(var(--connection-blue) / .55), hsl(var(--primary) / .2) 62%, transparent); filter: blur(26px); animation: ss-halo 6s ease-in-out infinite; }
 .ss-hero-card { position: relative; z-index: 1; aspect-ratio: 4/3; border-radius: 1rem; display: grid; place-items: center; padding: 2rem; background: hsl(var(--secondary)); border: 1px solid hsl(var(--border)); box-shadow: 0 22px 50px -30px hsl(var(--primary) / .5); transition: transform .35s ease, box-shadow .35s ease; }
@@ -1519,7 +1523,7 @@ html body .cap-diagram .cap-art {
 .ss-tl::before { content: ""; position: absolute; left: 50%; top: .4rem; bottom: .4rem; width: 2px; transform: translateX(-50%); background: linear-gradient(180deg, transparent, hsl(var(--primary) / .45) 6%, hsl(var(--primary) / .45) 94%, transparent); }
 .ss-tl-row { position: relative; display: grid; grid-template-columns: 1fr 1fr; align-items: center; animation: ss-tl-in .65s ease-out backwards; }
 .ss-tl-node { position: absolute; left: 50%; top: 50%; z-index: 1; width: .78rem; height: .78rem; border-radius: 999px; background: currentColor; border: 2px solid hsl(var(--background)); box-shadow: 0 0 0 1px currentColor, 0 0 16px -3px currentColor; transform: translate(-50%, -50%); animation: ss-node-pulse 4.5s ease-in-out infinite; }
-.ss-tl-card { position: relative; max-width: 23rem; padding: 1.15rem 1.4rem; border-radius: .75rem; background: hsl(var(--background)); border: 1px solid hsl(var(--border)); box-shadow: 0 6px 18px -14px hsl(var(--primary) / .35); transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease; }
+.ss-tl-card { position: relative; max-width: 23rem; padding: 1.15rem 1.4rem; border-radius: .75rem; background: hsl(var(--background)); border: 1px solid hsl(var(--border)); box-shadow: 0 6px 18px -14px hsl(var(--primary) / .35); transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease; animation: ss-flag-wave 8s ease-in-out infinite; }
 .ss-tl-card h3 { font-size: .95rem; font-weight: 500; color: hsl(var(--primary)); }
 .ss-tl-card p { margin-top: .35rem; font-size: .83rem; line-height: 1.6; color: hsl(var(--muted-foreground)); }
 .ss-tl-card:hover { transform: translateY(-4px); border-color: hsl(var(--primary) / .3); box-shadow: 0 18px 32px -18px hsl(var(--primary) / .4); }
@@ -1529,12 +1533,20 @@ html body .cap-diagram .cap-art {
 .ss-tl-tile svg { width: 1.75rem; height: 1.75rem; color: currentColor; animation: ss-art-float 6s ease-in-out infinite; }
 .ss-tl-tile img { width: 3.4rem; height: 3.4rem; object-fit: contain; animation: ss-art-float 6s ease-in-out infinite; }
 .ss-tl-row:hover .ss-tl-tile { transform: translateY(-3px) scale(1.04); box-shadow: 0 24px 38px -20px currentColor; }
-.ss-tl-row:nth-child(odd) .ss-tl-card { order: 2; justify-self: start; margin-left: 1rem; }
+.ss-tl-row:nth-child(odd) .ss-tl-card { order: 2; justify-self: start; margin-left: 1rem; transform-origin: left center; }
 .ss-tl-row:nth-child(odd) .ss-tl-art { order: 1; justify-self: center; }
-.ss-tl-row:nth-child(even) .ss-tl-card { order: 1; justify-self: end; margin-right: 1rem; }
+.ss-tl-row:nth-child(even) .ss-tl-card { order: 1; justify-self: end; margin-right: 1rem; transform-origin: right center; }
 .ss-tl-row:nth-child(even) .ss-tl-art { order: 2; justify-self: center; }
+/* Each card flutters from the edge it meets the spine on, rows softly out of step. */
+.ss-tl-row:nth-child(1) .ss-tl-card { animation-delay: -.2s; }
+.ss-tl-row:nth-child(2) .ss-tl-card { animation-delay: -1.6s; }
+.ss-tl-row:nth-child(3) .ss-tl-card { animation-delay: -3s; }
+.ss-tl-row:nth-child(4) .ss-tl-card { animation-delay: -4.4s; }
+.ss-tl-row:nth-child(5) .ss-tl-card { animation-delay: -5.8s; }
+.ss-tl-row:nth-child(6) .ss-tl-card { animation-delay: -7.2s; }
 @keyframes ss-tl-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 @keyframes ss-node-pulse { 0%, 100% { box-shadow: 0 0 0 1px currentColor, 0 0 12px -4px currentColor; } 50% { box-shadow: 0 0 0 1px currentColor, 0 0 20px -1px currentColor; } }
+@keyframes ss-flag-wave { 0%, 100% { rotate: -.5deg; translate: 0 2px; } 50% { rotate: .5deg; translate: 0 -2px; } }
 @media (max-width: 767px) {
   .ss-tl { gap: 1.35rem; margin-top: 2.2rem; }
   .ss-tl::before { left: .5rem; }
@@ -1545,7 +1557,8 @@ html body .cap-diagram .cap-art {
   .ss-tl-tile { width: 3.6rem; height: 3.6rem; border-radius: .85rem; }
   .ss-tl-tile img { width: 2.5rem; height: 2.5rem; }
   .ss-tl-tile svg { width: 1.5rem; height: 1.5rem; }
+  .ss-tl-card { animation: none; }
 }
-@media (prefers-reduced-motion: reduce) { .ss-tl-row, .ss-tl-node, .ss-tl-tile svg, .ss-tl-tile img { animation: none; } .ss-tl-card, .ss-tl-card:hover, .ss-tl-row:hover .ss-tl-tile { transform: none; } }
+@media (prefers-reduced-motion: reduce) { .ss-tl-row, .ss-tl-node, .ss-tl-card, .ss-tl-tile svg, .ss-tl-tile img { animation: none; } .ss-tl-card, .ss-tl-card:hover, .ss-tl-row:hover .ss-tl-tile { transform: none; } }
 
 

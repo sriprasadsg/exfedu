@@ -240,3 +240,5 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] SkillShone: both six-item two-row blocks replaced by the shared centre-line timeline appearance (node on the spine, wording card butting against it, icon/illustration facing it from the opposite side, sides swapping each row). Verified 1062/390px, no overflow, 58 tests pass.
 - [x] SkillShone: timeline boxes restyled to the earlier used box design (white card, pale border, 12px corners, soft navy shadow, tinted squircle icon tile) per 27 Oct reference. Verified 1062/390px, hover lift, reduced motion, 58 tests pass.
 
+- [x] SkillShone closing button recoloured with the wordmark's navy-to-red blend; verified in preview.
+- [x] SkillShone "What You Get" timeline: gentle wavy movement for the alternating flag-like cards; staggered, slow, off under reduced motion.
