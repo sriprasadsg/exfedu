@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowUpRight, ArrowRight, GraduationCap, Landmark, Search, Database, Code2, GitPullRequest, FileText, MessageSquareText, Sparkles, Factory, Bot, UserCheck, Award, type LucideIcon } from "lucide-react";
+import { ArrowUpRight, ArrowRight, GraduationCap, Landmark, Search, Database, Code2, GitPullRequest, FileText, MessageSquareText, Sparkles, Factory, Bot, UserCheck, Award, BrainCircuit, MessageSquare, Terminal, FlaskConical, type LucideIcon } from "lucide-react";
 import type { Page, Tone } from "@/data/site";
 import { BlockView } from "@/components/site/Blocks";
 import skillshoneLogo from "@/assets/skillshone-original.png.asset.json";
@@ -38,7 +38,14 @@ const features: Feature[] = [
 ];
 const audiences = ["Undergraduate & postgraduate students", "Final-year project teams", "Graduates & job aspirants", "Professionals & career switchers"];
 const institutions = ["Coursework integration", "Independent evaluation", "Guided development", "Project documentation", "Student portfolios", "Academic–industry engagement"];
-const tools = ["Generative AI", "AI & Machine Learning", "Open-source LLMs", "Python", "Databases", "Data Science"];
+const tools: { icon: LucideIcon; t: string; tone: Tone }[] = [
+  { icon: Sparkles, t: "Generative AI", tone: "amber" },
+  { icon: BrainCircuit, t: "AI & Machine Learning", tone: "violet" },
+  { icon: MessageSquare, t: "Open-source LLMs", tone: "blue" },
+  { icon: Terminal, t: "Python", tone: "teal" },
+  { icon: Database, t: "Databases", tone: "amber" },
+  { icon: FlaskConical, t: "Data Science", tone: "violet" },
+];
 
 const Eyebrow = ({ children }: { children: string }) => (
   <p className="ss-eyebrow"><span aria-hidden="true" />{children}</p>
@@ -115,7 +122,13 @@ export default function SkillShonePage({ page, breadcrumb }: { page: Page; bread
         </div>
         <h2 className="ss-h2 mt-5">From Learning to <em>Practical Application</em></h2>
         <p className="mx-auto mt-3 max-w-2xl text-muted-foreground">Understand a problem, explore data, write code and explain results — one guided journey through professional workflows.</p>
-        <ul className="ss-tools">{tools.map((t) => <li key={t}>{t}</li>)}</ul>
+        <ul className="ss-tools">
+          {tools.map(({ icon: Icon, t, tone }, i) => (
+            <li key={t} className={`ss-tone-${tone} ss-tool`} style={{ animationDelay: `${i * 80}ms` }}>
+              <Icon className="h-3.5 w-3.5" strokeWidth={2} aria-hidden="true" />{t}
+            </li>
+          ))}
+        </ul>
       </section>
 
       {/* Who it's for / institutions — split capsule */}

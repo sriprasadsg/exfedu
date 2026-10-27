@@ -1387,7 +1387,12 @@ html body .cap-diagram .cap-art {
 .ss-faq-sign::before, .ss-faq-sign::after { content: ""; position: absolute; left: 0; top: 50%; height: 1.5px; width: 100%; background: hsl(var(--primary)); transform: translateY(-50%); transition: transform .3s, background .3s; }
 .ss-faq-sign::after { transform: translateY(-50%) rotate(90deg); }
 .ss-tools { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; margin-top: 1.5rem; }
-.ss-tools li { border: 1px solid hsl(var(--border)); border-radius: 999px; padding: .35rem .9rem; font-size: .8rem; }
+.ss-tools li { display: inline-flex; align-items: center; gap: .45rem; border: 1px solid hsl(var(--border)); border-radius: 999px; padding: .35rem .9rem; font-size: .8rem; }
+.ss-tool { animation: ss-card-in .55s ease-out backwards; transition: transform .3s ease, box-shadow .3s ease; }
+.ss-tool:hover { transform: translateY(-3px); box-shadow: 0 10px 22px -14px hsl(var(--primary) / .5); }
+.ss-tool svg { animation: ss-tool-bob 6s ease-in-out infinite; }
+@keyframes ss-tool-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-1.5px); } }
+@media (prefers-reduced-motion: reduce) { .ss-tool, .ss-tool svg { animation: none; } .ss-tool:hover { transform: none; } }
 /* Figures band: compact — no tall blank band above or below the numbers. */
 .ss-list { margin-top: 1.2rem; border-top: 1px solid hsl(var(--border)); }
 .ss-list li { padding: .7rem 0; border-bottom: 1px solid hsl(var(--border)); font-size: .9rem; }
