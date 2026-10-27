@@ -1430,3 +1430,4 @@ html body .cap-diagram .cap-art {
 }
 @media (max-width: 560px) { .ss-split-head, .ss-split-foot { grid-template-columns: 1fr; } .ss-split-head > div:last-child, .ss-split-foot p:last-child { text-align: left; } }
 @media (prefers-reduced-motion: reduce) { .ss-cap, .ss-cap li, .ss-cap-badge, .ss-cap-core::before { animation: none; } }
+.ss-split-head > div:last-child .ss-eyebrow { justify-content: flex-end; }
