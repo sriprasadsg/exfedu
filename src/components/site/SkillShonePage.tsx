@@ -69,14 +69,17 @@ const Timeline = ({ items }: { items: TimelineItem[] }) => (
     {items.map(({ t, d, tone, icon: Icon, img }, i) => (
       <li key={t} className="ss-tl-row" style={{ animationDelay: `${i * 110}ms` }}>
         <span className={`ss-tl-node ss-tone-${tone}`} aria-hidden="true" />
-        <div className={`ss-tl-card ss-tone-${tone}`}>
+        <div className="ss-tl-card">
           <h3>{t}</h3>
           <p>{d}</p>
         </div>
-        <div className={`ss-tl-art ss-tone-${tone}`} aria-hidden="true">
-          {Icon ? <Icon className="h-9 w-9" strokeWidth={1.25} /> : null}
-          {img ? <img src={img} alt="" width={816} height={816} loading="lazy" /> : null}
+        <div className="ss-tl-art" aria-hidden="true">
+          <span className={`ss-tl-tile ss-tone-${tone}`}>
+            {Icon ? <Icon className="h-7 w-7" strokeWidth={1.5} /> : null}
+            {img ? <img src={img} alt="" width={816} height={816} loading="lazy" /> : null}
+          </span>
         </div>
+
       </li>
     ))}
   </ol>

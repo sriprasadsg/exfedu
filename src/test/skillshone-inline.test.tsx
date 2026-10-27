@@ -27,22 +27,27 @@ describe("SkillShone inline detail", () => {
     const rows = Array.from(document.querySelectorAll(".ss-tl-row"));
     expect(rows.length).toBe(12);
     rows.slice(0, 6).forEach((row) => {
-      const art = row.querySelector(".ss-tl-art")!;
-      expect(art.className).toMatch(/ss-tone-(blue|teal|violet|amber)/);
-      expect(art.querySelector("svg")).not.toBeNull();
-      expect(row.querySelector(".ss-tl-card h3")).not.toBeNull();
+      const tile = row.querySelector(".ss-tl-tile")!;
+      expect(tile.className).toMatch(/ss-tone-(blue|teal|violet|amber)/);
+      expect(tile.querySelector("svg")).not.toBeNull();
+      const card = row.querySelector(".ss-tl-card")!;
+      expect(card.querySelector("h3")).not.toBeNull();
+      expect(card.className).not.toMatch(/ss-tone-/);
       expect(row.querySelector(".ss-tl-node")).not.toBeNull();
     });
     const featureRows = rows.slice(6);
     expect(featureRows.length).toBe(6);
     featureRows.forEach((row) => {
-      const art = row.querySelector(".ss-tl-art")!;
-      expect(art.className).toMatch(/ss-tone-(blue|teal|violet|amber)/);
-      const img = art.querySelector("img")!;
+      const tile = row.querySelector(".ss-tl-tile")!;
+      expect(tile.className).toMatch(/ss-tone-(blue|teal|violet|amber)/);
+      const img = tile.querySelector("img")!;
       expect(img.getAttribute("src")).toMatch(/ss-feat-(problems|datasets|llm|mentor|review|certificate)/);
-      expect(row.querySelector(".ss-tl-card h3")).not.toBeNull();
+      const card = row.querySelector(".ss-tl-card")!;
+      expect(card.querySelector("h3")).not.toBeNull();
+      expect(card.className).not.toMatch(/ss-tone-/);
     });
   });
+
 
 
 
