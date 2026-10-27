@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowUpRight, ChevronDown, Search, Database, Code2, GitPullRequest, FileText, MessageSquareText, Sparkles } from "lucide-react";
-import type { Page } from "@/data/site";
+import { ArrowUpRight, ChevronDown, Search, Database, Code2, GitPullRequest, FileText, MessageSquareText, Sparkles, Factory, Bot, UserCheck, Award, type LucideIcon } from "lucide-react";
+import type { Page, Tone } from "@/data/site";
 import { BlockView } from "@/components/site/Blocks";
 import skillshoneLogo from "@/assets/skillshone-original.png.asset.json";
 
@@ -17,10 +17,18 @@ const steps = [
   { icon: MessageSquareText, t: "Expert Feedback", d: "Practise with mentors and mock interviews." },
 ];
 const stats = [
-  { v: "1,000+", l: "Problem statements" },
-  { v: "48", l: "Industry verticals" },
-  { v: "6", l: "Guided project steps" },
-  { v: "AI", l: "Project-aware assistance" },
+  { v: "1,200+", l: "Problem statements" },
+  { v: "1,200+", l: "Curated datasets" },
+  { v: "48", l: "Industry domains" },
+  { v: "11", l: "Business functions" },
+];
+const features: { icon: LucideIcon; t: string; d: string; tone: Tone }[] = [
+  { icon: Factory, t: "Industry Problem Statements", d: "Curated real-world challenges, complete with datasets and context.", tone: "blue" },
+  { icon: Database, t: "Curated Datasets", d: "1,200+ realistic datasets across 48 domains and 11 business functions.", tone: "teal" },
+  { icon: Bot, t: "Free LLM Access", d: "A free LLM API key in your programme, with a project-aware chat assistant.", tone: "violet" },
+  { icon: UserCheck, t: "Expert Mentor Guidance", d: "A mentor reviews your work, gives feedback and guides you to completion.", tone: "amber" },
+  { icon: GitPullRequest, t: "Code Reviews & Mock Interviews", d: "Industry experts review your code and run mock interviews with feedback.", tone: "teal" },
+  { icon: Award, t: "Verifiable Certificate", d: "A certificate issued by Exafluence on successful project completion.", tone: "blue" },
 ];
 const audiences = ["Undergraduate & postgraduate students", "Final-year project teams", "Graduates & job aspirants", "Professionals & career switchers"];
 const tools = ["Generative AI", "AI & Machine Learning", "Open-source LLMs", "Python", "Databases", "Data Science"];
