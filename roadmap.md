@@ -229,3 +229,5 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Remove the SkillShone bottom pop-up strip: feature text, journey steps and FAQ answers render inline (answers one at a time under their question), Enquire Now links to the contact page; 57 tests pass, build OK, verified in preview.
 - [x] SkillShone split footer: icon cards, icons in navy/sky-blue theme
 - [x] SkillShone split headings: softer text colour
+- [ ] SkillShone hero title fits two lines at every width; font sizes reduced.
+- [ ] SkillShone logo box: glowing edges and visible gentle movement (off under reduced motion).
