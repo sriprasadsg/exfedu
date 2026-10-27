@@ -107,12 +107,6 @@ export default function SkillShonePage({ page, breadcrumb }: { page: Page; bread
         <ul className="ss-tools">{tools.map((t) => <li key={t}>{t}</li>)}</ul>
       </section>
 
-      {/* Stats strip */}
-      <section className="ss-stats">
-        <div className="container grid grid-cols-2 gap-8 md:grid-cols-4">
-          {stats.map((s) => <div key={s.l}><span aria-hidden="true">•</span><strong>{s.v}</strong><p>{s.l}</p></div>)}
-        </div>
-      </section>
 
       {/* Who it's for / institutions */}
       <section className="container grid gap-10 py-16 md:grid-cols-2">
