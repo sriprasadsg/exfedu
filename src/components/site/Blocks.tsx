@@ -198,8 +198,8 @@ export const BlockView = ({ block, page }: { block: Block; page: Page }) => {
       return (
         <div className="flex flex-col items-start justify-between gap-4 border-y py-8 md:flex-row md:items-center">
           <div><p className="font-display text-xl">{block.title}</p><p className="mt-1 text-muted-foreground">{block.text}</p></div>
-          {block.to?.startsWith("http") ? <Button asChild><a href={block.to} target="_blank" rel="noopener noreferrer">{block.label}<ArrowRight /></a></Button>
-            : block.to ? <Button asChild><Link to={block.to}>{block.label}<ArrowRight /></Link></Button> : <Button disabled>{block.label}</Button>}
+          {block.to?.startsWith("http") ? <Button asChild className={block.appearance === "skillshone" ? "ss-cta-btn" : undefined}><a href={block.to} target="_blank" rel="noopener noreferrer">{block.label}<ArrowRight /></a></Button>
+            : block.to ? <Button asChild className={block.appearance === "skillshone" ? "ss-cta-btn" : undefined}><Link to={block.to}>{block.label}<ArrowRight /></Link></Button> : <Button disabled>{block.label}</Button>}
         </div>
       );
   }
