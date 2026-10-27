@@ -1386,7 +1386,7 @@ html body .cap-diagram .cap-art {
 
 /* ===== SkillShone detail sits on the page, not in a bottom panel ===== */
 .ss-step-more, .ss-feature-more-text { margin-top: .55rem; font-size: .8rem; line-height: 1.6; color: hsl(var(--muted-foreground)); }
-.ss-faq-list li.is-open .ss-faq-sign::before, .ss-faq-list li.is-open .ss-faq-sign::after { background: hsl(var(--destructive)); }
+.ss-faq-list li.is-open .ss-faq-sign::before, .ss-faq-list li.is-open .ss-faq-sign::after { background: hsl(var(--brand-red)); }
 .ss-faq-list li.is-open .ss-faq-sign::after { transform: translateY(-50%) rotate(0deg); }
 .ss-faq-a { padding: 0 1.75rem 1.25rem 3.85rem; font-size: .86rem; line-height: 1.65; color: hsl(var(--muted-foreground)); }
 .ss-faq-a[hidden] { display: none; }
