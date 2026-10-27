@@ -22,7 +22,7 @@ describe("SkillShone inline detail", () => {
     expect(screen.queryByLabelText("Contact name")).not.toBeInTheDocument();
   });
 
-  it("presents each journey step and feature as a card with its own coloured icon", () => {
+  it("presents each journey step with a coloured icon and each feature with its own artwork", () => {
     open();
     const steps = Array.from(document.querySelectorAll(".ss-step.ss-glow-card"));
     expect(steps.length).toBe(6);
@@ -30,8 +30,17 @@ describe("SkillShone inline detail", () => {
       const tile = card.querySelector(".ss-feature-icon")!;
       expect(tile.className).toMatch(/ss-tone-(blue|teal|violet|amber)/);
     });
-    expect(document.querySelectorAll(".ss-feature.ss-glow-card").length).toBe(6);
+    const features = Array.from(document.querySelectorAll(".ss-feature"));
+    expect(features.length).toBe(6);
+    features.forEach((card) => {
+      const art = card.querySelector(".ss-feature-art")!;
+      expect(art.className).toMatch(/ss-tone-(blue|teal|violet|amber)/);
+      const img = art.querySelector("img")!;
+      expect(img.getAttribute("src")).toMatch(/ss-feat-(problems|datasets|llm|mentor|review|certificate)/);
+      expect(card.querySelector("h3")).not.toBeNull();
+    });
   });
+
 
   it("keeps a FAQ answer closed until its own question is clicked", () => {
     open();

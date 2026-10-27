@@ -1,10 +1,17 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowUpRight, ArrowRight, GraduationCap, Landmark, Search, Database, Code2, GitPullRequest, FileText, MessageSquareText, Sparkles, Factory, Bot, UserCheck, Award, BrainCircuit, MessageSquare, Terminal, FlaskConical, type LucideIcon } from "lucide-react";
+import { ArrowUpRight, ArrowRight, GraduationCap, Landmark, Search, Database, Code2, GitPullRequest, FileText, MessageSquareText, Sparkles, BrainCircuit, MessageSquare, Terminal, FlaskConical, type LucideIcon } from "lucide-react";
 import type { Page, Tone } from "@/data/site";
 import { BlockView } from "@/components/site/Blocks";
 import skillshoneLogo from "@/assets/skillshone-original.png.asset.json";
 import aiGenArt from "@/assets/ss-ai-gen.png";
+import featProblems from "@/assets/ss-feat-problems.png";
+import featDatasets from "@/assets/ss-feat-datasets.png";
+import featLlm from "@/assets/ss-feat-llm.png";
+import featMentor from "@/assets/ss-feat-mentor.png";
+import featReview from "@/assets/ss-feat-review.png";
+import featCertificate from "@/assets/ss-feat-certificate.png";
+
 
 /** Arcado-style editorial layout for SkillShone: minimal hero with stats, step
  *  row, rotating badge and split "who it is for" section. Every detail — feature
@@ -12,7 +19,7 @@ import aiGenArt from "@/assets/ss-ai-gen.png";
  *  hidden behind a click or a panel that covers the bottom of the screen. */
 
 type Step = { icon: LucideIcon; t: string; d: string; tone: Tone };
-type Feature = { icon: LucideIcon; t: string; d: string; tone: Tone };
+type Feature = { img: string; t: string; d: string; tone: Tone };
 
 const steps: Step[] = [
   { icon: Search, t: "Choose a Problem", d: "Pick an industry-grade problem statement.", tone: "blue" },
@@ -29,13 +36,14 @@ const stats = [
   { v: "11", l: "Business functions" },
 ];
 const features: Feature[] = [
-  { icon: Factory, t: "Industry Problem Statements", d: "Curated real-world challenges, complete with datasets and context.", tone: "blue" },
-  { icon: Database, t: "Curated Datasets", d: "1,200+ realistic datasets across 48 domains and 11 business functions.", tone: "teal" },
-  { icon: Bot, t: "Free LLM Access", d: "A free LLM API key in your programme, with a project-aware chat assistant.", tone: "violet" },
-  { icon: UserCheck, t: "Expert Mentor Guidance", d: "A mentor reviews your work, gives feedback and guides you to completion.", tone: "amber" },
-  { icon: GitPullRequest, t: "Code Reviews & Mock Interviews", d: "Industry experts review your code and run mock interviews with feedback.", tone: "teal" },
-  { icon: Award, t: "Verifiable Certificate", d: "A certificate issued by Exafluence on successful project completion.", tone: "blue" },
+  { img: featProblems, t: "Industry Problem Statements", d: "Curated real-world challenges, complete with datasets and context.", tone: "blue" },
+  { img: featDatasets, t: "Curated Datasets", d: "1,200+ realistic datasets across 48 domains and 11 business functions.", tone: "teal" },
+  { img: featLlm, t: "Free LLM Access", d: "A free LLM API key in your programme, with a project-aware chat assistant.", tone: "violet" },
+  { img: featMentor, t: "Expert Mentor Guidance", d: "A mentor reviews your work, gives feedback and guides you to completion.", tone: "amber" },
+  { img: featReview, t: "Code Reviews & Mock Interviews", d: "Industry experts review your code and run mock interviews with feedback.", tone: "teal" },
+  { img: featCertificate, t: "Verifiable Certificate", d: "A certificate issued by Exafluence on successful project completion.", tone: "blue" },
 ];
+
 const audiences = ["Undergraduate & postgraduate students", "Final-year project teams", "Graduates & job aspirants", "Professionals & career switchers"];
 const institutions = ["Coursework integration", "Independent evaluation", "Guided development", "Project documentation", "Student portfolios", "Academic–industry engagement"];
 const tools: { icon: LucideIcon; t: string; tone: Tone }[] = [
@@ -103,10 +111,11 @@ export default function SkillShonePage({ page, breadcrumb }: { page: Page; bread
         <h2 className="ss-h2">Everything You Need to <em>Become AI-Ready</em></h2>
         <p className="mt-3 max-w-2xl text-muted-foreground">From real-world datasets to expert mentors, all in one place.</p>
         <ul className="ss-features">
-          {features.map(({ icon: Icon, t, d, tone }, i) => (
-            <li key={t} className="ss-feature ss-glow-card" style={{ animationDelay: `${i * 90}ms` }}>
-              <span className={`ss-feature-icon ss-tone-${tone}`} aria-hidden="true"><Icon className="h-5 w-5" strokeWidth={1.5} /></span>
+          {features.map(({ img, t, d, tone }, i) => (
+            <li key={t} className="ss-feature" style={{ animationDelay: `${i * 90}ms` }}>
+              <span className={`ss-feature-art ss-tone-${tone}`} aria-hidden="true"><img src={img} alt="" width={816} height={816} loading="lazy" /></span>
               <h3>{t}</h3>
+
               <p>{d}</p>
             </li>
           ))}

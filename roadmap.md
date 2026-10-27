@@ -236,3 +236,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] SkillShone: apply mini colourful icons and boxes with gentle animation per 27 Oct interjection.
 - [x] SkillShone: recolour the star to the SkillShone logo's navy/red combination.
 - [x] SkillShone: cap & institution badges tinted to capsule colours; heading sizes and title spacing reduced (27 Oct).
+- [x] SkillShone: replaced the six-card "Everything You Need to Become AI-Ready" block with prompt-generated 3D artwork in the supplied reference style (centred illustration above title and description, tinted halo, staggered entrance, gentle float, hover lift); approved copy retained, no prices invented. Verified 1062/390px, reduced motion, 58 tests pass.

@@ -1357,15 +1357,23 @@ html body .cap-diagram .cap-art {
 @keyframes ss-halo { 0%, 100% { opacity: .55; transform: scale(1); } 50% { opacity: .95; transform: scale(1.06); } }
 @keyframes ss-edge-glow { 0%, 100% { opacity: .38; } 50% { opacity: .95; } }
 @media (prefers-reduced-motion: reduce) { .ss-hero-art, .ss-hero-art::before, .ss-hero-card::before, .ss-hero-card::after { animation: none; } .ss-hero-card, .ss-hero-card:hover { transform: none; } }
-.ss-features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 2.5rem; }
-.ss-feature { border: 1px solid hsl(var(--border)); border-radius: 1rem; padding: 1.5rem; background: hsl(var(--background)); }
-.ss-feature h3 { margin-top: 1rem; font-weight: 500; }
-.ss-feature p { margin-top: .4rem; font-size: .85rem; color: hsl(var(--muted-foreground)); }
-.ss-feature-icon { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; border-radius: .75rem; }
+.ss-features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.75rem 1.5rem; margin-top: 2.75rem; }
+.ss-feature { text-align: center; padding: .5rem .75rem; animation: ss-card-in .6s ease-out backwards; transition: transform .35s ease; }
+.ss-feature h3 { margin-top: 1rem; font-weight: 500; font-size: .95rem; color: hsl(var(--primary)); }
+.ss-feature p { margin: .45rem auto 0; max-width: 19rem; font-size: .83rem; line-height: 1.6; color: hsl(var(--muted-foreground)); }
+.ss-feature-art { position: relative; display: grid; place-items: center; width: 6.75rem; height: 6.75rem; margin: 0 auto; border-radius: 50%; box-shadow: 0 22px 38px -26px currentColor; transition: transform .35s ease, box-shadow .35s ease; }
+.ss-feature-art img { width: 5.5rem; height: 5.5rem; object-fit: contain; animation: ss-art-float 6s ease-in-out infinite; }
+.ss-feature:hover { transform: translateY(-5px); }
+.ss-feature:hover .ss-feature-art { transform: scale(1.06); box-shadow: 0 26px 44px -22px currentColor; }
+@keyframes ss-art-float { 0%,100% { translate: 0 0; } 50% { translate: 0 -6px; } }
+@media (prefers-reduced-motion: reduce) { .ss-feature, .ss-feature-art img { animation: none; } .ss-feature, .ss-feature:hover { transform: none; } .ss-feature:hover .ss-feature-art { transform: none; } }
+
 .ss-tone-blue { color: hsl(var(--connection-blue)); background: hsl(var(--connection-blue) / .1); }
 .ss-tone-teal { color: hsl(var(--programme-practical)); background: hsl(var(--programme-practical) / .1); }
 .ss-tone-violet { color: hsl(var(--programme-innovation)); background: hsl(var(--programme-innovation) / .1); }
 .ss-tone-amber { color: hsl(var(--programme-achievement)); background: hsl(var(--programme-achievement) / .1); }
+.ss-feature-icon { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; border-radius: .75rem; }
+
 @media (max-width: 1023px) { .ss-features { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 639px) { .ss-features { grid-template-columns: 1fr; } }
 .ss-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem 2.5rem; margin-top: 2.5rem; }
@@ -1426,6 +1434,9 @@ html body .cap-diagram .cap-art {
 /* ===== SkillShone split capsule (learners vs institutions) ===== */
 .ss-split-head, .ss-split-foot { display: grid; grid-template-columns: 1fr 1fr; gap: 9rem; }
 .ss-split-head > div:last-child, .ss-split-foot p:last-child { text-align: right; }
+/* Pull the institutions heading a bit inward from the page edge */
+.ss-split-headtxt:last-child { padding-right: 3rem; }
+
 .ss-split-head .ss-eyebrow { justify-content: inherit; }
 .ss-split-foot { margin-top: 1.4rem; font-size: .85rem; line-height: 1.6; color: hsl(var(--muted-foreground)); }
 .ss-capsule { position: relative; display: grid; grid-template-columns: 1fr 1fr; margin-top: 1.8rem; }
@@ -1460,7 +1471,7 @@ html body .cap-diagram .cap-art {
   .ss-cap--left .ss-cap-badge { left: 1.25rem; }
   .ss-cap--right .ss-cap-badge { right: 1.25rem; }
 }
-@media (max-width: 560px) { .ss-split-head, .ss-split-foot { grid-template-columns: 1fr; } .ss-split-head > div:last-child, .ss-split-foot p:last-child { text-align: left; } }
+@media (max-width: 560px) { .ss-split-head, .ss-split-foot { grid-template-columns: 1fr; } .ss-split-head > div:last-child, .ss-split-foot p:last-child { text-align: left; } .ss-split-headtxt:last-child { padding-right: 0; } }
 @media (prefers-reduced-motion: reduce) { .ss-cap, .ss-cap li, .ss-cap-badge, .ss-cap-core::before { animation: none; } }
 .ss-split-head > div:last-child .ss-eyebrow { justify-content: flex-end; }
 
