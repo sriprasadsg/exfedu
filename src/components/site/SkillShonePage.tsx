@@ -121,8 +121,8 @@ export default function SkillShonePage({ page, breadcrumb }: { page: Page; bread
       {/* Who it's for / institutions — split capsule */}
       <section className="container py-16">
         <div className="ss-split-head">
-          <div><Eyebrow>Who it is for</Eyebrow><h2 className="ss-h2">Build a Portfolio, <em>Gain Confidence</em></h2></div>
-          <div><Eyebrow>For institutions</Eyebrow><h2 className="ss-h2">Colleges <em>&amp; Universities</em></h2></div>
+          <div className="ss-split-headtxt"><Eyebrow>Who it is for</Eyebrow><h2 className="ss-h2">Build a Portfolio, <em>Gain Confidence</em></h2></div>
+          <div className="ss-split-headtxt"><Eyebrow>For institutions</Eyebrow><h2 className="ss-h2">Colleges <em>&amp; Universities</em></h2></div>
         </div>
         <div className="ss-capsule">
           <div className="ss-cap ss-cap--left">
@@ -137,9 +137,15 @@ export default function SkillShonePage({ page, breadcrumb }: { page: Page; bread
             <ul>{institutions.map((a, i) => <li key={a} style={{ animationDelay: `${i * 120}ms` }}><ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />{a}</li>)}</ul>
           </div>
         </div>
-        <div className="ss-split-foot">
-          <p>Strengthen coding, analytical and problem-solving skills, and practise explaining technical decisions for presentations and interviews.</p>
-          <p>Structured, application-based learning through industry problems, AI tools and guided project development.</p>
+        <div className="ss-split-foot ss-foot-cards">
+          <div className="ss-foot-card ss-foot-card--blue">
+            <span className="ss-foot-icon"><GraduationCap className="h-5 w-5" strokeWidth={1.5} aria-hidden="true" /></span>
+            <div><h4>For students</h4><p>Strengthen coding, analytical and problem-solving skills, and practise explaining technical decisions for presentations and interviews.</p></div>
+          </div>
+          <div className="ss-foot-card ss-foot-card--red">
+            <span className="ss-foot-icon"><Landmark className="h-5 w-5" strokeWidth={1.5} aria-hidden="true" /></span>
+            <div><h4>For institutions</h4><p>Structured, application-based learning through industry problems, AI tools and guided project development.</p></div>
+          </div>
         </div>
       </section>
 
