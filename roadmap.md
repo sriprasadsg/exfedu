@@ -225,3 +225,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] About Us menu icon changed from the info symbol to a building outline in desktop and phone menus; destinations unchanged, 15 site/footer tests pass, build OK.
 - [ ] SkillShone: apply the newly supplied reference design to the existing section; FAQs show answers one at a time like stacked layers (questions hidden until opened).
 - [ ] SkillShone: lay the FAQ/features model out as a grid and add more features sourced from skillshone.com.
+- [x] SkillShone: FAQ rebuilt as one-at-a-time layered accordion (all closed by default, chevron toggles, verified in browser); new 'Everything You Need to Become AI-Ready' six-card features grid with colourful icons, facts sourced from skillshone.com (1,200+ statements, 1,200+ datasets, 48 domains, 11 functions, free LLM access, verifiable Exafluence certificate); 53 tests pass.
