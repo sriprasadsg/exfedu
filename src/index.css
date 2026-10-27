@@ -1427,6 +1427,8 @@ html body .cap-diagram .cap-art {
   .ss-cap, .ss-cap--right { border-radius: 2.5rem; padding: 3rem 1.5rem 2rem; justify-content: center; min-height: 0; }
   .ss-cap-side { display: none; }
   .ss-cap-core { width: 6.5rem; height: 6.5rem; padding: .8rem; }
+  .ss-cap--left .ss-cap-badge { left: 1.25rem; }
+  .ss-cap--right .ss-cap-badge { right: 1.25rem; }
 }
 @media (max-width: 560px) { .ss-split-head, .ss-split-foot { grid-template-columns: 1fr; } .ss-split-head > div:last-child, .ss-split-foot p:last-child { text-align: left; } }
 @media (prefers-reduced-motion: reduce) { .ss-cap, .ss-cap li, .ss-cap-badge, .ss-cap-core::before { animation: none; } }
