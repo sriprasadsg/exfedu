@@ -1332,12 +1332,12 @@ html body .cap-diagram .cap-art {
 /* ===== SkillShone editorial layout (Arcado reference) ===== */
 .ss-page { overflow-x: clip; }
 .ss-page em { font-style: italic; font-weight: 400; color: hsl(var(--primary)); }
-.ss-eyebrow { display: flex; align-items: center; gap: .5rem; font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: hsl(var(--muted-foreground)); margin-bottom: .6rem; }
+.ss-eyebrow { display: flex; align-items: center; gap: .5rem; font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: hsl(var(--muted-foreground)); margin-bottom: .35rem; }
 .ss-eyebrow span { width: .45rem; height: .45rem; border-radius: 999px; background: hsl(var(--primary)); }
 .ss-hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 3rem; align-items: center; padding-block: 2.5rem 1rem; }
 .ss-title { font-size: clamp(1.15rem, 2.6vw, 2.1rem); line-height: 1.22; font-weight: 500; color: hsl(var(--foreground)); letter-spacing: -.005em; }
 .ss-title em { display: block; font-size: .92em; }
-.ss-h2 { font-size: clamp(1.2rem, 2vw, 1.6rem); font-weight: 500; line-height: 1.25; }
+.ss-h2 { font-size: clamp(1.05rem, 1.6vw, 1.35rem); font-weight: 500; line-height: 1.25; }
 .ss-mini-stats { display: flex; gap: 2rem; margin-top: 1.6rem; }
 .ss-mini-stats dt { font-weight: 500; font-size: .92rem; }
 .ss-mini-stats dd { font-size: .7rem; color: hsl(var(--muted-foreground)); }
@@ -1428,7 +1428,7 @@ html body .cap-diagram .cap-art {
 .ss-split-head > div:last-child, .ss-split-foot p:last-child { text-align: right; }
 .ss-split-head .ss-eyebrow { justify-content: inherit; }
 .ss-split-foot { margin-top: 1.4rem; font-size: .85rem; line-height: 1.6; color: hsl(var(--muted-foreground)); }
-.ss-capsule { position: relative; display: grid; grid-template-columns: 1fr 1fr; margin-top: 3.2rem; }
+.ss-capsule { position: relative; display: grid; grid-template-columns: 1fr 1fr; margin-top: 1.8rem; }
 .ss-cap { position: relative; padding: 2.6rem 5.5rem 2.2rem 4.2rem; min-height: 19rem; display: flex; align-items: center; animation: ss-cap-in .8s ease-out both; }
 .ss-cap--left { border-radius: 999px 0 0 999px; background: linear-gradient(135deg, hsl(var(--primary) / .16), hsl(var(--primary) / .05)); }
 .ss-cap--right { border-radius: 0 999px 999px 0; padding: 2.6rem 4.2rem 2.2rem 5.5rem; justify-content: flex-end; background: linear-gradient(225deg, hsl(var(--brand-red) / .16), hsl(var(--brand-red) / .05)); animation-delay: .15s; }
@@ -1439,8 +1439,8 @@ html body .cap-diagram .cap-art {
 .ss-cap--left li:hover { transform: translateX(6px); }
 .ss-cap--right li:hover { transform: translateX(-6px); }
 .ss-cap-badge { position: absolute; top: -1.6rem; display: grid; place-items: center; width: 3.2rem; height: 3.2rem; border-radius: 50%; border: 2px solid hsl(var(--background)); color: hsl(var(--background)); box-shadow: 0 0 0 4px hsl(var(--background) / .5); animation: ss-bob 4s ease-in-out infinite; }
-.ss-cap--left .ss-cap-badge { left: 30%; background: hsl(var(--primary)); }
-.ss-cap--right .ss-cap-badge { right: 30%; background: hsl(var(--brand-red)); animation-delay: 1s; }
+.ss-cap--left .ss-cap-badge { left: 30%; background: hsl(var(--primary) / .18); color: hsl(var(--primary)); border-color: hsl(var(--primary) / .25); }
+.ss-cap--right .ss-cap-badge { right: 30%; background: hsl(var(--brand-red) / .18); color: hsl(var(--brand-red)); border-color: hsl(var(--brand-red) / .25); animation-delay: 1s; }
 .ss-cap-side { position: absolute; top: 50%; font-weight: 700; font-size: 1.3rem; letter-spacing: .12em; text-transform: uppercase; opacity: .8; }
 .ss-cap--left .ss-cap-side { left: -2.8rem; transform: translate(-50%, -50%) rotate(-90deg); color: hsl(var(--primary)); }
 .ss-cap--right .ss-cap-side { right: -2.8rem; transform: translate(50%, -50%) rotate(90deg); color: hsl(var(--brand-red)); }
