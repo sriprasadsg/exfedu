@@ -1458,10 +1458,10 @@ html body .cap-diagram .cap-art {
 .ss-split-head .ss-eyebrow { justify-content: inherit; }
 .ss-split-foot { margin-top: 1.4rem; font-size: .85rem; line-height: 1.6; color: hsl(var(--muted-foreground)); }
 .ss-capsule { position: relative; display: grid; grid-template-columns: 1fr 1fr; margin-top: 1.8rem; }
-.ss-cap { position: relative; padding: 2.6rem 5.5rem 2.2rem 4.2rem; min-height: 19rem; display: flex; align-items: center; animation: ss-cap-in .8s ease-out both; }
+.ss-cap { position: relative; padding: 2.6rem 5.5rem 2.2rem 2.4rem; min-height: 19rem; display: flex; align-items: center; animation: ss-cap-in .8s ease-out both; }
 .ss-cap--left { border-radius: 999px 0 0 999px; background: linear-gradient(135deg, hsl(var(--primary) / .16), hsl(var(--primary) / .05)); }
-.ss-cap--right { border-radius: 0 999px 999px 0; padding: 2.6rem 4.2rem 2.2rem 5.5rem; justify-content: flex-end; background: linear-gradient(225deg, hsl(var(--connection-blue) / .16), hsl(var(--connection-blue) / .05)); animation-delay: .15s; }
-.ss-cap ul { display: grid; gap: .55rem; width: 100%; max-width: 19rem; }
+.ss-cap--right { border-radius: 0 999px 999px 0; padding: 2.6rem 2.4rem 2.2rem 5.5rem; justify-content: flex-end; background: linear-gradient(225deg, hsl(var(--connection-blue) / .16), hsl(var(--connection-blue) / .05)); animation-delay: .15s; }
+.ss-cap ul { display: grid; gap: .55rem; width: 100%; max-width: 22rem; }
 .ss-cap li { display: flex; align-items: center; gap: .55rem; padding: .55rem 1rem; border-radius: 999px; background: hsl(var(--background)); color: hsl(var(--foreground)); font-size: .82rem; font-weight: 500; border: 1px solid hsl(var(--foreground) / .08); box-shadow: 0 6px 14px -10px hsl(var(--foreground) / .3); animation: ss-pill-in .6s ease-out both; transition: transform .3s; }
 .ss-cap--left li svg { color: hsl(var(--primary)); flex: none; }
 .ss-cap--right li svg { color: hsl(var(--connection-blue)); flex: none; }
