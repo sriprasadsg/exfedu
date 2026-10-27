@@ -4,6 +4,7 @@ import { ArrowUpRight, ArrowRight, GraduationCap, Landmark, Search, Database, Co
 import type { Page, Tone } from "@/data/site";
 import { BlockView } from "@/components/site/Blocks";
 import skillshoneLogo from "@/assets/skillshone-original.png.asset.json";
+import aiGenArt from "@/assets/ss-ai-gen.png";
 
 /** Arcado-style editorial layout for SkillShone: minimal hero with stats, step
  *  row, rotating badge and split "who it is for" section. Every detail — feature
@@ -129,7 +130,7 @@ export default function SkillShonePage({ page, breadcrumb }: { page: Page; bread
             <span className="ss-cap-side" aria-hidden="true">Learners</span>
             <ul>{audiences.map((a, i) => <li key={a} style={{ animationDelay: `${i * 120}ms` }}><ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />{a}</li>)}</ul>
           </div>
-          <div className="ss-cap-core" aria-hidden="true"><img src={skillshoneLogo.url} alt="" /></div>
+          <div className="ss-cap-core" aria-hidden="true"><img src={aiGenArt} alt="" width={1024} height={1024} loading="lazy" /></div>
           <div className="ss-cap ss-cap--right">
             <span className="ss-cap-badge" aria-hidden="true"><Landmark className="h-6 w-6" strokeWidth={1.5} /></span>
             <span className="ss-cap-side" aria-hidden="true">Institutions</span>

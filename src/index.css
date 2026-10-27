@@ -1400,23 +1400,23 @@ html body .cap-diagram .cap-art {
 .ss-split-foot { margin-top: 1.4rem; font-size: .85rem; line-height: 1.6; color: hsl(var(--muted-foreground)); }
 .ss-capsule { position: relative; display: grid; grid-template-columns: 1fr 1fr; margin-top: 3.2rem; }
 .ss-cap { position: relative; padding: 2.6rem 5.5rem 2.2rem 4.2rem; min-height: 19rem; display: flex; align-items: center; animation: ss-cap-in .8s ease-out both; }
-.ss-cap--left { border-radius: 999px 0 0 999px; background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary) / .82)); }
-.ss-cap--right { border-radius: 0 999px 999px 0; padding: 2.6rem 4.2rem 2.2rem 5.5rem; justify-content: flex-end; background: linear-gradient(225deg, hsl(var(--brand-red)), hsl(var(--brand-red) / .82)); animation-delay: .15s; }
+.ss-cap--left { border-radius: 999px 0 0 999px; background: linear-gradient(135deg, hsl(var(--primary) / .16), hsl(var(--primary) / .05)); }
+.ss-cap--right { border-radius: 0 999px 999px 0; padding: 2.6rem 4.2rem 2.2rem 5.5rem; justify-content: flex-end; background: linear-gradient(225deg, hsl(var(--brand-red) / .16), hsl(var(--brand-red) / .05)); animation-delay: .15s; }
 .ss-cap ul { display: grid; gap: .55rem; width: 100%; max-width: 19rem; }
-.ss-cap li { display: flex; align-items: center; gap: .55rem; padding: .55rem 1rem; border-radius: 999px; background: hsl(var(--background)); color: hsl(var(--foreground)); font-size: .82rem; font-weight: 500; box-shadow: 0 6px 14px -10px hsl(var(--foreground) / .5); animation: ss-pill-in .6s ease-out both; transition: transform .3s; }
+.ss-cap li { display: flex; align-items: center; gap: .55rem; padding: .55rem 1rem; border-radius: 999px; background: hsl(var(--background)); color: hsl(var(--foreground)); font-size: .82rem; font-weight: 500; border: 1px solid hsl(var(--foreground) / .08); box-shadow: 0 6px 14px -10px hsl(var(--foreground) / .3); animation: ss-pill-in .6s ease-out both; transition: transform .3s; }
 .ss-cap--left li svg { color: hsl(var(--primary)); flex: none; }
 .ss-cap--right li svg { color: hsl(var(--brand-red)); flex: none; }
 .ss-cap--left li:hover { transform: translateX(6px); }
 .ss-cap--right li:hover { transform: translateX(-6px); }
-.ss-cap-badge { position: absolute; top: -1.6rem; display: grid; place-items: center; width: 3.2rem; height: 3.2rem; border-radius: 50%; border: 2px solid hsl(var(--background)); background: inherit; color: hsl(var(--background)); box-shadow: 0 0 0 4px hsl(var(--background)); animation: ss-bob 4s ease-in-out infinite; }
+.ss-cap-badge { position: absolute; top: -1.6rem; display: grid; place-items: center; width: 3.2rem; height: 3.2rem; border-radius: 50%; border: 2px solid hsl(var(--background)); color: hsl(var(--background)); box-shadow: 0 0 0 4px hsl(var(--background) / .5); animation: ss-bob 4s ease-in-out infinite; }
 .ss-cap--left .ss-cap-badge { left: 30%; background: hsl(var(--primary)); }
 .ss-cap--right .ss-cap-badge { right: 30%; background: hsl(var(--brand-red)); animation-delay: 1s; }
-.ss-cap-side { position: absolute; top: 50%; font-weight: 700; font-size: 1.3rem; letter-spacing: .12em; text-transform: uppercase; opacity: .55; }
+.ss-cap-side { position: absolute; top: 50%; font-weight: 700; font-size: 1.3rem; letter-spacing: .12em; text-transform: uppercase; opacity: .8; }
 .ss-cap--left .ss-cap-side { left: -2.8rem; transform: translate(-50%, -50%) rotate(-90deg); color: hsl(var(--primary)); }
 .ss-cap--right .ss-cap-side { right: -2.8rem; transform: translate(50%, -50%) rotate(90deg); color: hsl(var(--brand-red)); }
-.ss-cap-core { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 9.5rem; height: 9.5rem; border-radius: 50%; display: grid; place-items: center; padding: 1.3rem; background: hsl(var(--background)); box-shadow: 0 0 0 10px hsl(var(--background) / .25), 0 0 0 11px hsl(var(--background) / .8), 0 18px 34px -16px hsl(var(--foreground) / .5); z-index: 1; }
+.ss-cap-core { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 9.5rem; height: 9.5rem; border-radius: 50%; display: grid; place-items: center; padding: 1rem; background: hsl(var(--background)); box-shadow: 0 0 0 10px hsl(var(--background) / .3), 0 0 0 11px hsl(var(--foreground) / .1), 0 18px 34px -16px hsl(var(--foreground) / .35); z-index: 1; }
 .ss-cap-core img { width: 100%; height: auto; }
-.ss-cap-core::before { content: ""; position: absolute; inset: -18px; border-radius: 50%; border: 1px dashed hsl(var(--background) / .7); animation: ss-spin 24s linear infinite; }
+.ss-cap-core::before { content: ""; position: absolute; inset: -18px; border-radius: 50%; border: 1px dashed hsl(var(--foreground) / .25); animation: ss-spin 24s linear infinite; }
 @keyframes ss-cap-in { from { opacity: 0; transform: scaleX(.94); } to { opacity: 1; transform: none; } }
 @keyframes ss-pill-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 @keyframes ss-bob { 0%,100% { translate: 0 0; } 50% { translate: 0 -4px; } }
@@ -1427,6 +1427,8 @@ html body .cap-diagram .cap-art {
   .ss-cap, .ss-cap--right { border-radius: 2.5rem; padding: 3rem 1.5rem 2rem; justify-content: center; min-height: 0; }
   .ss-cap-side { display: none; }
   .ss-cap-core { width: 6.5rem; height: 6.5rem; padding: .8rem; }
+  .ss-cap--left .ss-cap-badge { left: 1.25rem; }
+  .ss-cap--right .ss-cap-badge { right: 1.25rem; }
 }
 @media (max-width: 560px) { .ss-split-head, .ss-split-foot { grid-template-columns: 1fr; } .ss-split-head > div:last-child, .ss-split-foot p:last-child { text-align: left; } }
 @media (prefers-reduced-motion: reduce) { .ss-cap, .ss-cap li, .ss-cap-badge, .ss-cap-core::before { animation: none; } }
