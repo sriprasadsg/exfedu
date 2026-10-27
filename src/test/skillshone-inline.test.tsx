@@ -16,7 +16,7 @@ describe("SkillShone inline detail", () => {
   it("shows feature and journey detail on the page with nothing clicked", () => {
     open();
     expect(screen.getByText(/toy tutorials/)).toBeInTheDocument();
-    expect(screen.getByText(/assistant trained on your own project/)).toBeInTheDocument();
+    expect(screen.getByText(/assistant trained on your own project available/)).toBeInTheDocument();
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
     expect(document.querySelector(".ss-sheet")).toBeNull();
     expect(screen.queryByLabelText("Contact name")).not.toBeInTheDocument();
