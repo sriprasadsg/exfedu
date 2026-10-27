@@ -1494,3 +1494,41 @@ html body .cap-diagram .cap-art {
 .ss-split-headtxt .ss-h2 { color: hsl(var(--primary) / .72); }
 .ss-split-headtxt .ss-h2 em { color: hsl(var(--primary) / .55); }
 .ss-split-headtxt .ss-eyebrow { color: hsl(var(--muted-foreground) / .8); }
+
+/* ===== SkillShone centre-line timeline (client reference, 27 Oct 2026) ===== */
+/* A node sits on the spine, the wording card butts against it on one side and the
+   icon or illustration faces it from the other, swapping sides row by row. */
+.ss-tl { position: relative; display: grid; gap: 1.6rem; margin-top: 2.9rem; }
+.ss-tl::before { content: ""; position: absolute; left: 50%; top: .4rem; bottom: .4rem; width: 2px; transform: translateX(-50%); background: linear-gradient(180deg, transparent, hsl(var(--primary) / .45) 6%, hsl(var(--primary) / .45) 94%, transparent); }
+.ss-tl-row { position: relative; display: grid; grid-template-columns: 1fr 1fr; align-items: center; animation: ss-tl-in .65s ease-out backwards; }
+.ss-tl-node { position: absolute; left: 50%; top: 50%; z-index: 1; width: .78rem; height: .78rem; border-radius: 999px; background: currentColor; border: 2px solid hsl(var(--background)); box-shadow: 0 0 0 1px currentColor, 0 0 16px -3px currentColor; transform: translate(-50%, -50%); animation: ss-node-pulse 4.5s ease-in-out infinite; }
+.ss-tl-card { position: relative; max-width: 23rem; padding: 1.15rem 1.4rem; border-radius: .75rem; background: hsl(var(--background)); border: 1px solid hsl(var(--border)); box-shadow: 0 6px 18px -14px hsl(var(--primary) / .35); transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease; }
+.ss-tl-card h3 { font-size: .95rem; font-weight: 500; color: hsl(var(--primary)); }
+.ss-tl-card p { margin-top: .35rem; font-size: .83rem; line-height: 1.6; color: hsl(var(--muted-foreground)); }
+.ss-tl-card:hover { transform: translateY(-4px); border-color: hsl(var(--primary) / .3); box-shadow: 0 18px 32px -18px hsl(var(--primary) / .4); }
+.ss-tl-art { display: grid; place-items: center; }
+/* Icon/illustration sits in the same tinted squircle tile used elsewhere on this page. */
+.ss-tl-tile { display: grid; place-items: center; width: 5.1rem; height: 5.1rem; border-radius: 1.1rem; box-shadow: 0 18px 30px -24px currentColor; transition: transform .35s ease, box-shadow .35s ease; }
+.ss-tl-tile svg { width: 1.75rem; height: 1.75rem; color: currentColor; animation: ss-art-float 6s ease-in-out infinite; }
+.ss-tl-tile img { width: 3.4rem; height: 3.4rem; object-fit: contain; animation: ss-art-float 6s ease-in-out infinite; }
+.ss-tl-row:hover .ss-tl-tile { transform: translateY(-3px) scale(1.04); box-shadow: 0 24px 38px -20px currentColor; }
+.ss-tl-row:nth-child(odd) .ss-tl-card { order: 2; justify-self: start; margin-left: 1rem; }
+.ss-tl-row:nth-child(odd) .ss-tl-art { order: 1; justify-self: center; }
+.ss-tl-row:nth-child(even) .ss-tl-card { order: 1; justify-self: end; margin-right: 1rem; }
+.ss-tl-row:nth-child(even) .ss-tl-art { order: 2; justify-self: center; }
+@keyframes ss-tl-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes ss-node-pulse { 0%, 100% { box-shadow: 0 0 0 1px currentColor, 0 0 12px -4px currentColor; } 50% { box-shadow: 0 0 0 1px currentColor, 0 0 20px -1px currentColor; } }
+@media (max-width: 767px) {
+  .ss-tl { gap: 1.35rem; margin-top: 2.2rem; }
+  .ss-tl::before { left: .5rem; }
+  .ss-tl-row { grid-template-columns: 1fr; gap: .8rem; padding-left: 1.9rem; }
+  .ss-tl-node { left: .5rem; top: 1.8rem; transform: translate(-50%, 0); }
+  .ss-tl-row .ss-tl-card, .ss-tl-row:nth-child(odd) .ss-tl-card, .ss-tl-row:nth-child(even) .ss-tl-card { order: 2; justify-self: stretch; margin: 0; max-width: none; }
+  .ss-tl-row .ss-tl-art, .ss-tl-row:nth-child(odd) .ss-tl-art, .ss-tl-row:nth-child(even) .ss-tl-art { order: 1; justify-self: start; }
+  .ss-tl-tile { width: 3.6rem; height: 3.6rem; border-radius: .85rem; }
+  .ss-tl-tile img { width: 2.5rem; height: 2.5rem; }
+  .ss-tl-tile svg { width: 1.5rem; height: 1.5rem; }
+}
+@media (prefers-reduced-motion: reduce) { .ss-tl-row, .ss-tl-node, .ss-tl-tile svg, .ss-tl-tile img { animation: none; } .ss-tl-card, .ss-tl-card:hover, .ss-tl-row:hover .ss-tl-tile { transform: none; } }
+
+

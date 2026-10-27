@@ -22,24 +22,33 @@ describe("SkillShone inline detail", () => {
     expect(screen.queryByLabelText("Contact name")).not.toBeInTheDocument();
   });
 
-  it("presents each journey step with a coloured icon and each feature with its own artwork", () => {
+  it("presents each journey step and feature on the centre-line timeline with its own artwork", () => {
     open();
-    const steps = Array.from(document.querySelectorAll(".ss-step.ss-glow-card"));
-    expect(steps.length).toBe(6);
-    steps.forEach((card) => {
-      const tile = card.querySelector(".ss-feature-icon")!;
+    const rows = Array.from(document.querySelectorAll(".ss-tl-row"));
+    expect(rows.length).toBe(12);
+    rows.slice(0, 6).forEach((row) => {
+      const tile = row.querySelector(".ss-tl-tile")!;
       expect(tile.className).toMatch(/ss-tone-(blue|teal|violet|amber)/);
-    });
-    const features = Array.from(document.querySelectorAll(".ss-feature"));
-    expect(features.length).toBe(6);
-    features.forEach((card) => {
-      const art = card.querySelector(".ss-feature-art")!;
-      expect(art.className).toMatch(/ss-tone-(blue|teal|violet|amber)/);
-      const img = art.querySelector("img")!;
-      expect(img.getAttribute("src")).toMatch(/ss-feat-(problems|datasets|llm|mentor|review|certificate)/);
+      expect(tile.querySelector("svg")).not.toBeNull();
+      const card = row.querySelector(".ss-tl-card")!;
       expect(card.querySelector("h3")).not.toBeNull();
+      expect(card.className).not.toMatch(/ss-tone-/);
+      expect(row.querySelector(".ss-tl-node")).not.toBeNull();
+    });
+    const featureRows = rows.slice(6);
+    expect(featureRows.length).toBe(6);
+    featureRows.forEach((row) => {
+      const tile = row.querySelector(".ss-tl-tile")!;
+      expect(tile.className).toMatch(/ss-tone-(blue|teal|violet|amber)/);
+      const img = tile.querySelector("img")!;
+      expect(img.getAttribute("src")).toMatch(/ss-feat-(problems|datasets|llm|mentor|review|certificate)/);
+      const card = row.querySelector(".ss-tl-card")!;
+      expect(card.querySelector("h3")).not.toBeNull();
+      expect(card.className).not.toMatch(/ss-tone-/);
     });
   });
+
+
 
 
   it("keeps a FAQ answer closed until its own question is clicked", () => {

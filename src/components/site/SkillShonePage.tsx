@@ -59,6 +59,33 @@ const Eyebrow = ({ children }: { children: string }) => (
   <p className="ss-eyebrow"><span aria-hidden="true" />{children}</p>
 );
 
+type TimelineItem = { t: string; d: string; tone: Tone; icon?: LucideIcon; img?: string };
+
+/** Alternating centre-line timeline (client reference, 27 Oct 2026): a node sits on
+ *  the spine, the wording card butts against it on one side and the icon or
+ *  illustration faces it from the other, swapping sides row by row. */
+const Timeline = ({ items }: { items: TimelineItem[] }) => (
+  <ol className="ss-tl">
+    {items.map(({ t, d, tone, icon: Icon, img }, i) => (
+      <li key={t} className="ss-tl-row" style={{ animationDelay: `${i * 110}ms` }}>
+        <span className={`ss-tl-node ss-tone-${tone}`} aria-hidden="true" />
+        <div className="ss-tl-card">
+          <h3>{t}</h3>
+          <p>{d}</p>
+        </div>
+        <div className="ss-tl-art" aria-hidden="true">
+          <span className={`ss-tl-tile ss-tone-${tone}`}>
+            {Icon ? <Icon className="h-7 w-7" strokeWidth={1.5} /> : null}
+            {img ? <img src={img} alt="" width={816} height={816} loading="lazy" /> : null}
+          </span>
+        </div>
+
+      </li>
+    ))}
+  </ol>
+);
+
+
 export default function SkillShonePage({ page, breadcrumb }: { page: Page; breadcrumb: React.ReactNode }) {
   const faq = page.blocks.find((b): b is Extract<Page["blocks"][number], { type: "faq" }> => b.type === "faq");
   const cta = page.blocks.find((b) => b.type === "cta");
@@ -95,32 +122,18 @@ export default function SkillShonePage({ page, breadcrumb }: { page: Page; bread
           <div><Eyebrow>How it works</Eyebrow><h2 className="ss-h2">Your Project <em>Learning Journey</em></h2></div>
           <ArrowUpRight className="h-7 w-7 text-muted-foreground" strokeWidth={1.25} aria-hidden="true" />
         </div>
-        <ol className="ss-steps">
-          {steps.map(({ icon: Icon, t, d, tone }, i) => (
-            <li key={t} className="ss-step ss-glow-card" style={{ animationDelay: `${i * 90}ms` }}>
-              <span className={`ss-feature-icon ss-tone-${tone}`} aria-hidden="true"><Icon className="h-5 w-5" strokeWidth={1.5} /></span>
-              <h3>{t}</h3><p>{d}</p>
-            </li>
-          ))}
-        </ol>
+        <Timeline items={steps} />
       </section>
+
 
       {/* What you get — features sourced from skillshone.com */}
       <section className="container border-t py-14">
         <Eyebrow>What you get</Eyebrow>
         <h2 className="ss-h2">Everything You Need to <em>Become AI-Ready</em></h2>
         <p className="mt-3 max-w-2xl text-muted-foreground">From real-world datasets to expert mentors, all in one place.</p>
-        <ul className="ss-features">
-          {features.map(({ img, t, d, tone }, i) => (
-            <li key={t} className="ss-feature" style={{ animationDelay: `${i * 90}ms` }}>
-              <span className={`ss-feature-art ss-tone-${tone}`} aria-hidden="true"><img src={img} alt="" width={816} height={816} loading="lazy" /></span>
-              <h3>{t}</h3>
-
-              <p>{d}</p>
-            </li>
-          ))}
-        </ul>
+        <Timeline items={features} />
       </section>
+
 
       {/* Badge */}
       <section className="container border-t py-14 text-center">
