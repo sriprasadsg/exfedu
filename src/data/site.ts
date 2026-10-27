@@ -297,7 +297,7 @@ export const pages: Page[] = [
         { q: "Does SkillShone provide project reports?", a: "The platform supports project report generation and customisation to college templates. Learners should review the report for accuracy and compliance with submission requirements." },
         { q: "How does SkillShone support interview preparation?", a: "Project discussions, technical presentations and mock interviews help learners practise explaining their work and answering questions about their solutions." },
       ] },
-      { type: "cta", title: "Start Building with SkillShone", text: "Explore practical AI project learning for your own development, or discuss how SkillShone can support your institution — contact@skillshone.com.", label: "Visit SkillShone", to: "https://skillshone.com/", appearance: "skillshone" },
+      { type: "cta", title: "Start Building with SkillShone", text: "Explore practical AI project learning for your own development, or discuss how SkillShone can support your institution — contact@skillshone.com.", label: "Visit SkillShone" },
     ] },
   { path: "/gallery", title: "Gallery & Highlights", category: "learning", icon: Images,
     summary: "Moments from events, visits and achievements.",
