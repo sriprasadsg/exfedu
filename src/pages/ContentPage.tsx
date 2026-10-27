@@ -5,7 +5,7 @@ import { BlockView } from "@/components/site/Blocks";
 import { categories, findPage, navPages, retiredPageDestinations } from "@/data/site";
 import programmesCap from "@/assets/programmes-cap.png.asset.json";
 import internshipsBanner from "@/assets/internships-banner.jpg.asset.json";
-import skillshoneLogo from "@/assets/skillshone-original.png.asset.json";
+import SkillShonePage from "@/components/site/SkillShonePage";
 import successImg from "@/assets/hero-success.png";
 import ibmBanner from "@/assets/ibm-hero-banner-v2.png.asset.json";
 import { programmes } from "@/data/site";
@@ -125,24 +125,7 @@ const ContentPage = () => {
   }
 
   if (page.path === "/skillshone") {
-    return (
-      <Layout>
-        <section className="page-hero-banner page-hero-banner--skillshone" aria-label={`${page.title} introduction`}>
-          <div className="container relative">
-            {breadcrumb}
-            <div className="skillshone-head">
-              <div className="skillshone-head-copy">
-                <h1 className="sr-only">{page.title}</h1>
-                {page.eyebrow && <p className="mb-2 text-xs uppercase tracking-[0.14em] text-muted-foreground">{page.eyebrow}</p>}
-                {page.tagline && <p className="mt-3 whitespace-pre-line text-xl font-medium leading-snug text-foreground md:text-2xl">{page.tagline}</p>}
-              </div>
-              <img src={skillshoneLogo.url} alt="" width={392} height={48} className="skillshone-head-logo" />
-            </div>
-          </div>
-        </section>
-        <main>{body}</main>
-      </Layout>
-    );
+    return <Layout><SkillShonePage page={page} breadcrumb={breadcrumb} /></Layout>;
   }
 
 

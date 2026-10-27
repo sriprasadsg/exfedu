@@ -1328,3 +1328,45 @@ html body .cap-diagram .cap-art {
 @media (prefers-reduced-motion: reduce) {
   .skillshone-logo-box, .footer-featured { animation: none; }
 }
+
+/* ===== SkillShone editorial layout (Arcado reference) ===== */
+.ss-page em { font-style: italic; font-weight: 400; color: hsl(var(--primary)); }
+.ss-eyebrow { display: flex; align-items: center; gap: .5rem; font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: hsl(var(--muted-foreground)); margin-bottom: .6rem; }
+.ss-eyebrow span { width: .45rem; height: .45rem; border-radius: 999px; background: hsl(var(--primary)); }
+.ss-hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 3rem; align-items: center; padding-block: 2.5rem 1rem; }
+.ss-title { font-size: clamp(2rem, 4vw, 3.1rem); line-height: 1.12; font-weight: 500; color: hsl(var(--foreground)); }
+.ss-title em { display: block; }
+.ss-h2 { font-size: clamp(1.5rem, 2.6vw, 2rem); font-weight: 500; line-height: 1.2; }
+.ss-mini-stats { display: flex; gap: 2rem; margin-top: 1.6rem; }
+.ss-mini-stats dt { font-weight: 500; font-size: 1.05rem; }
+.ss-mini-stats dd { font-size: .75rem; color: hsl(var(--muted-foreground)); }
+.ss-btn { border: 1px solid hsl(var(--border)); border-radius: 999px; padding: .6rem 1.4rem; font-size: .85rem; font-weight: 500; transition: transform .3s; }
+.ss-btn:hover { transform: translateY(-2px); }
+.ss-btn--solid { background: hsl(var(--foreground)); color: hsl(var(--background)); border-color: transparent; }
+.ss-hero-art { position: relative; }
+.ss-hero-card { aspect-ratio: 4/3; border-radius: 1rem; display: grid; place-items: center; padding: 2rem; background: hsl(var(--secondary)); border: 1px solid hsl(var(--border)); }
+.ss-hero-card img { width: 85%; height: auto; }
+.ss-burst { position: absolute; left: -2.5rem; bottom: 1.5rem; width: 7rem; height: 7rem; display: grid; place-items: center; text-align: center; background: hsl(var(--foreground)); color: hsl(var(--background)); font-size: .65rem; text-transform: uppercase; letter-spacing: .08em;
+  clip-path: polygon(50% 0,61% 20%,82% 10%,80% 33%,100% 40%,85% 57%,98% 77%,75% 78%,70% 100%,50% 86%,30% 100%,25% 78%,2% 77%,15% 57%,0 40%,20% 33%,18% 10%,39% 20%); }
+.ss-watermark { overflow: hidden; white-space: nowrap; text-align: center; font-size: clamp(4rem, 13vw, 11rem); font-weight: 500; line-height: 1; letter-spacing: .05em; color: transparent; -webkit-text-stroke: 1px hsl(var(--border)); user-select: none; }
+.ss-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem 2.5rem; margin-top: 2.5rem; }
+.ss-steps h3 { margin-top: .9rem; font-weight: 500; }
+.ss-steps p { margin-top: .3rem; font-size: .85rem; color: hsl(var(--muted-foreground)); }
+.ss-badge { position: relative; width: 7rem; height: 7rem; margin: 0 auto; }
+.ss-badge > svg:first-child { width: 100%; height: 100%; animation: ss-spin 24s linear infinite; font-size: 7px; letter-spacing: .12em; fill: hsl(var(--foreground)); }
+.ss-badge-core { position: absolute; inset: 0; margin: auto; width: 1.6rem; height: 1.6rem; color: hsl(var(--primary)); }
+@keyframes ss-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .ss-badge > svg:first-child { animation: none; } }
+.ss-tools { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; margin-top: 1.5rem; }
+.ss-tools li { border: 1px solid hsl(var(--border)); border-radius: 999px; padding: .35rem .9rem; font-size: .8rem; }
+.ss-stats { background: hsl(var(--secondary)); padding-block: 3rem; text-align: center; }
+.ss-stats span { display: block; color: hsl(var(--primary)); }
+.ss-stats strong { display: block; font-size: 2rem; font-weight: 500; }
+.ss-stats p { font-size: .75rem; color: hsl(var(--muted-foreground)); }
+.ss-list { margin-top: 1.2rem; border-top: 1px solid hsl(var(--border)); }
+.ss-list li { padding: .7rem 0; border-bottom: 1px solid hsl(var(--border)); font-size: .9rem; }
+@media (max-width: 767px) {
+  .ss-hero { grid-template-columns: 1fr; }
+  .ss-burst { left: auto; right: -.5rem; bottom: -1.5rem; width: 5.5rem; height: 5.5rem; }
+  .ss-steps { grid-template-columns: 1fr 1fr; }
+}
