@@ -50,10 +50,11 @@ const ContentPage = () => {
 
   const heading = (
     <div className="flex items-start gap-5 animate-fade-in">
-      <span className="glossy-icon mt-1 hidden h-14 w-14 shrink-0 items-center justify-center rounded-full sm:flex"><page.icon className="h-6 w-6 text-primary" strokeWidth={1.25} /></span>
+      {!page.hideIcon && <span className="glossy-icon mt-1 hidden h-14 w-14 shrink-0 items-center justify-center rounded-full sm:flex"><page.icon className="h-6 w-6 text-primary" strokeWidth={1.25} /></span>}
       <div>
         {page.eyebrow && <p className="mb-2 text-xs uppercase tracking-[0.14em] text-muted-foreground">{page.eyebrow}</p>}
         <h1 className="font-display text-4xl font-medium md:text-5xl">{page.title}</h1>
+        {page.tagline && <p className="mt-3 whitespace-pre-line text-xl font-medium leading-snug text-foreground md:text-2xl">{page.tagline}</p>}
         <p className="hero-summary mt-4 text-lg leading-relaxed text-muted-foreground">{page.summary}</p>
       </div>
     </div>
