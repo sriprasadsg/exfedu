@@ -234,3 +234,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [ ] SkillShone: move content into flash cards with colourful icons and animations; reduce content; smaller title font; colourful animated box edges.
 - [ ] SkillShone: replace the flagged blocks with prompt-based generated artwork matching the supplied references.
 - [ ] SkillShone: apply mini colourful icons and boxes with gentle animation per 27 Oct interjection.
+- [ ] SkillShone: recolour the star to the SkillShone logo's navy/red combination.
