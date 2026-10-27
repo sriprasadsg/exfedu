@@ -228,3 +228,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] SkillShone: FAQ rebuilt as one-at-a-time layered accordion (all closed by default, chevron toggles, verified in browser); new 'Everything You Need to Become AI-Ready' six-card features grid with colourful icons, facts sourced from skillshone.com (1,200+ statements, 1,200+ datasets, 48 domains, 11 functions, free LLM access, verifiable Exafluence certificate); 53 tests pass.
 - [x] Remove the SkillShone bottom pop-up strip: feature text, journey steps and FAQ answers render inline (answers one at a time under their question), Enquire Now links to the contact page; 57 tests pass, build OK, verified in preview.
 - [x] SkillShone split footer: icon cards, icons in navy/sky-blue theme
+- [x] SkillShone split headings: softer text colour
