@@ -79,6 +79,22 @@ export default function SkillShonePage({ page, breadcrumb }: { page: Page; bread
         </ol>
       </section>
 
+      {/* What you get — features sourced from skillshone.com */}
+      <section className="container border-t py-14">
+        <Eyebrow>What you get</Eyebrow>
+        <h2 className="ss-h2">Everything You Need to <em>Become AI-Ready</em></h2>
+        <p className="mt-3 max-w-2xl text-muted-foreground">From real-world datasets to expert mentors, all in one place.</p>
+        <ul className="ss-features">
+          {features.map(({ icon: Icon, t, d, tone }) => (
+            <li key={t} className="ss-feature">
+              <span className={`ss-feature-icon ss-tone-${tone}`} aria-hidden="true"><Icon className="h-5 w-5" strokeWidth={1.5} /></span>
+              <h3>{t}</h3>
+              <p>{d}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+
       {/* Badge */}
       <section className="container border-t py-14 text-center">
         <div className="ss-badge" aria-hidden="true">

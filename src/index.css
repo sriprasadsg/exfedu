@@ -1346,6 +1346,17 @@ html body .cap-diagram .cap-art {
 .ss-hero-art { position: relative; }
 .ss-hero-card { aspect-ratio: 4/3; border-radius: 1rem; display: grid; place-items: center; padding: 2rem; background: hsl(var(--secondary)); border: 1px solid hsl(var(--border)); }
 .ss-hero-card img { width: 85%; height: auto; }
+.ss-features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 2.5rem; }
+.ss-feature { border: 1px solid hsl(var(--border)); border-radius: 1rem; padding: 1.5rem; background: hsl(var(--background)); }
+.ss-feature h3 { margin-top: 1rem; font-weight: 500; }
+.ss-feature p { margin-top: .4rem; font-size: .85rem; color: hsl(var(--muted-foreground)); }
+.ss-feature-icon { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; border-radius: .75rem; }
+.ss-tone-blue { color: hsl(var(--connection-blue)); background: hsl(var(--connection-blue) / .1); }
+.ss-tone-teal { color: hsl(var(--programme-practical)); background: hsl(var(--programme-practical) / .1); }
+.ss-tone-violet { color: hsl(var(--programme-innovation)); background: hsl(var(--programme-innovation) / .1); }
+.ss-tone-amber { color: hsl(var(--programme-achievement)); background: hsl(var(--programme-achievement) / .1); }
+@media (max-width: 1023px) { .ss-features { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 639px) { .ss-features { grid-template-columns: 1fr; } }
 .ss-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem 2.5rem; margin-top: 2.5rem; }
 .ss-steps h3 { margin-top: .9rem; font-weight: 500; }
 .ss-steps p { margin-top: .3rem; font-size: .85rem; color: hsl(var(--muted-foreground)); }
