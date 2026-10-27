@@ -22,24 +22,28 @@ describe("SkillShone inline detail", () => {
     expect(screen.queryByLabelText("Contact name")).not.toBeInTheDocument();
   });
 
-  it("presents each journey step with a coloured icon and each feature with its own artwork", () => {
+  it("presents each journey step and feature on the centre-line timeline with its own artwork", () => {
     open();
-    const steps = Array.from(document.querySelectorAll(".ss-step.ss-glow-card"));
-    expect(steps.length).toBe(6);
-    steps.forEach((card) => {
-      const tile = card.querySelector(".ss-feature-icon")!;
-      expect(tile.className).toMatch(/ss-tone-(blue|teal|violet|amber)/);
+    const rows = Array.from(document.querySelectorAll(".ss-tl-row"));
+    expect(rows.length).toBe(12);
+    rows.slice(0, 6).forEach((row) => {
+      const art = row.querySelector(".ss-tl-art")!;
+      expect(art.className).toMatch(/ss-tone-(blue|teal|violet|amber)/);
+      expect(art.querySelector("svg")).not.toBeNull();
+      expect(row.querySelector(".ss-tl-card h3")).not.toBeNull();
+      expect(row.querySelector(".ss-tl-node")).not.toBeNull();
     });
-    const features = Array.from(document.querySelectorAll(".ss-feature"));
-    expect(features.length).toBe(6);
-    features.forEach((card) => {
-      const art = card.querySelector(".ss-feature-art")!;
+    const featureRows = rows.slice(6);
+    expect(featureRows.length).toBe(6);
+    featureRows.forEach((row) => {
+      const art = row.querySelector(".ss-tl-art")!;
       expect(art.className).toMatch(/ss-tone-(blue|teal|violet|amber)/);
       const img = art.querySelector("img")!;
       expect(img.getAttribute("src")).toMatch(/ss-feat-(problems|datasets|llm|mentor|review|certificate)/);
-      expect(card.querySelector("h3")).not.toBeNull();
+      expect(row.querySelector(".ss-tl-card h3")).not.toBeNull();
     });
   });
+
 
 
   it("keeps a FAQ answer closed until its own question is clicked", () => {
