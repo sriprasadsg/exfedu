@@ -224,3 +224,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Arrange desktop About Us, Our Collaboration Network, Learning Ecosystem and Enquire Now; omit Programmes per latest request; group five learning links and keep four resources in sidebar. Verified dropdown, sidebar, destinations and collaborator search at desktop/current-window/phone sizes; 19 targeted tests pass, build OK.
 - [x] About Us menu icon changed from the info symbol to a building outline in desktop and phone menus; destinations unchanged, 15 site/footer tests pass, build OK.
 - [ ] SkillShone: apply the newly supplied reference design to the existing section; FAQs show answers one at a time like stacked layers (questions hidden until opened).
+- [ ] SkillShone: lay the FAQ/features model out as a grid and add more features sourced from skillshone.com.
