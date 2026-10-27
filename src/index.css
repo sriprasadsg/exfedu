@@ -1468,7 +1468,8 @@ html body .cap-diagram .cap-art {
 .ss-cap--left .ss-cap-side { left: -2.8rem; transform: translate(-50%, -50%) rotate(-90deg); color: hsl(var(--primary)); }
 .ss-cap--right .ss-cap-side { right: -2.8rem; transform: translate(50%, -50%) rotate(90deg); color: hsl(var(--connection-blue)); }
 .ss-cap-core { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 9.5rem; height: 9.5rem; border-radius: 50%; display: grid; place-items: center; padding: 1rem; background: hsl(var(--background)); box-shadow: 0 0 0 10px hsl(var(--background) / .3), 0 0 0 11px hsl(var(--foreground) / .1), 0 18px 34px -16px hsl(var(--foreground) / .35); z-index: 1; }
-.ss-cap-core img { width: 100%; height: auto; }
+.ss-cap-core img { width: 100%; height: auto; animation: ss-cap-core-float 8s ease-in-out infinite; }
+@keyframes ss-cap-core-float { 0%, 100% { translate: 0 0; } 50% { translate: 0 -5px; } }
 .ss-cap-core::before { content: ""; position: absolute; inset: -18px; border-radius: 50%; border: 1px dashed hsl(var(--foreground) / .25); animation: ss-spin 24s linear infinite; }
 @keyframes ss-cap-in { from { opacity: 0; transform: scaleX(.94); } to { opacity: 1; transform: none; } }
 @keyframes ss-pill-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
@@ -1484,7 +1485,7 @@ html body .cap-diagram .cap-art {
   .ss-cap--right .ss-cap-badge { right: 1.25rem; }
 }
 @media (max-width: 560px) { .ss-split-head, .ss-split-foot { grid-template-columns: 1fr; } .ss-split-head > div:last-child, .ss-split-foot p:last-child { text-align: left; } .ss-split-headtxt:last-child { padding-right: 0; } }
-@media (prefers-reduced-motion: reduce) { .ss-cap, .ss-cap li, .ss-cap-badge, .ss-cap-core::before { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .ss-cap, .ss-cap li, .ss-cap-badge, .ss-cap-core::before, .ss-cap-core img { animation: none; } }
 .ss-split-head > div:last-child .ss-eyebrow { justify-content: flex-end; }
 
 /* ===== SkillShone split footer: rectangular hover cards ===== */
