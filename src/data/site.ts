@@ -6,7 +6,6 @@ import {
 import type { AboutStoryData } from "@/components/site/AboutStory";
 import type { AboutOverviewData } from "@/components/site/AboutOverview";
 import type { EnquiryIntro } from "@/components/home/PartnerEnquiry";
-import skillshoneLogo from "@/assets/skillshone-original.png.asset.json";
 import svuLogo from "@/assets/svu-logo.png.asset.json";
 import ximeLogo from "@/assets/xime-logo.png.asset.json";
 import ibmLogo from "@/assets/ibm-partner-badge.png.asset.json";
