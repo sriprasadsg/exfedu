@@ -79,10 +79,25 @@ const Timeline = ({ items }: { items: TimelineItem[] }) => (
             {img ? <img src={img} alt="" width={816} height={816} loading="lazy" /> : null}
           </span>
         </div>
-
       </li>
     ))}
   </ol>
+);
+
+/** Learning journey keeps the earlier square flash-card grid (client request,
+ *  27 Oct 2026): six equal boxes with a tinted icon tile and glowing edges. */
+const JourneyGrid = () => (
+  <ul className="ss-journey">
+    {steps.map(({ icon: Icon, t, d, tone }, i) => (
+      <li key={t} className="ss-journey-card ss-glow-card" style={{ animationDelay: `${i * 90}ms` }}>
+        <span className={`ss-journey-tile ss-tone-${tone}`} aria-hidden="true">
+          <Icon className="h-6 w-6" strokeWidth={1.5} />
+        </span>
+        <h3>{t}</h3>
+        <p>{d}</p>
+      </li>
+    ))}
+  </ul>
 );
 
 
@@ -122,7 +137,7 @@ export default function SkillShonePage({ page, breadcrumb }: { page: Page; bread
           <div><Eyebrow>How it works</Eyebrow><h2 className="ss-h2">Your Project <em>Learning Journey</em></h2></div>
           <ArrowUpRight className="h-7 w-7 text-muted-foreground" strokeWidth={1.25} aria-hidden="true" />
         </div>
-        <Timeline items={steps} />
+        <JourneyGrid />
       </section>
 
 

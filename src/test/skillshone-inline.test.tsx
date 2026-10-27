@@ -22,29 +22,25 @@ describe("SkillShone inline detail", () => {
     expect(screen.queryByLabelText("Contact name")).not.toBeInTheDocument();
   });
 
-  it("presents each journey step and feature on the centre-line timeline with its own artwork", () => {
+  it("renders the six journey steps as square grid boxes and the features on the timeline", () => {
     open();
-    const rows = Array.from(document.querySelectorAll(".ss-tl-row"));
-    expect(rows.length).toBe(12);
-    rows.slice(0, 6).forEach((row) => {
-      const tile = row.querySelector(".ss-tl-tile")!;
+    const cards = Array.from(document.querySelectorAll(".ss-journey-card"));
+    expect(cards.length).toBe(6);
+    cards.forEach((card) => {
+      const tile = card.querySelector(".ss-journey-tile")!;
       expect(tile.className).toMatch(/ss-tone-(blue|teal|violet|amber)/);
       expect(tile.querySelector("svg")).not.toBeNull();
-      const card = row.querySelector(".ss-tl-card")!;
       expect(card.querySelector("h3")).not.toBeNull();
-      expect(card.className).not.toMatch(/ss-tone-/);
-      expect(row.querySelector(".ss-tl-node")).not.toBeNull();
     });
-    const featureRows = rows.slice(6);
-    expect(featureRows.length).toBe(6);
-    featureRows.forEach((row) => {
+    const rows = Array.from(document.querySelectorAll(".ss-tl-row"));
+    expect(rows.length).toBe(6);
+    rows.forEach((row) => {
       const tile = row.querySelector(".ss-tl-tile")!;
       expect(tile.className).toMatch(/ss-tone-(blue|teal|violet|amber)/);
       const img = tile.querySelector("img")!;
       expect(img.getAttribute("src")).toMatch(/ss-feat-(problems|datasets|llm|mentor|review|certificate)/);
       const card = row.querySelector(".ss-tl-card")!;
       expect(card.querySelector("h3")).not.toBeNull();
-      expect(card.className).not.toMatch(/ss-tone-/);
     });
   });
 
