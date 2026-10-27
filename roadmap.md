@@ -232,3 +232,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [ ] SkillShone hero title fits two lines at every width; font sizes reduced.
 - [ ] SkillShone logo box: glowing edges and visible gentle movement (off under reduced motion).
 - [ ] SkillShone: move content into flash cards with colourful icons and animations; reduce content; smaller title font; colourful animated box edges.
+- [ ] SkillShone: replace the flagged blocks with prompt-based generated artwork matching the supplied references.
