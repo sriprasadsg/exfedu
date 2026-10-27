@@ -37,7 +37,7 @@ export type Block =
 
 export type Page = {
   path: string; title: string; category: CategorySlug; icon: LucideIcon;
-  summary: string; eyebrow?: string; parent?: string; blocks: Block[]; hideInNav?: boolean;
+  summary: string; eyebrow?: string; tagline?: string; hideIcon?: boolean; parent?: string; blocks: Block[]; hideInNav?: boolean;
 };
 
 export const categories = [
@@ -256,7 +256,7 @@ export const pages: Page[] = [
   { path: "/students-corner", title: "Student's Corner", category: "learning", icon: LayoutGrid,
     summary: "One hub for resources, updates and support.",
     blocks: [{ type: "features", title: "Resources", note: "Links and updates will appear here as they are published.", items: ["Academic Resources", "Projects & Capstones", "Opportunities", "Announcements", "Internship Updates", "Placement Updates", "Research Opportunities", "Student Achievements", "Downloads", "Support"] }] },
-  { path: "/skillshone", title: "SkillShone", eyebrow: "AI-Powered Industry Project Learning Platform", category: "learning", icon: MonitorPlay,
+  { path: "/skillshone", title: "SkillShone", eyebrow: "AI-Powered Industry Project Learning Platform", tagline: "Solve Industry-Grade Problems\nUsing AI & Gen AI", hideIcon: true, category: "learning", icon: MonitorPlay,
     summary: "Build practical AI skills through industry projects — industry-grade problem statements, realistic datasets and guided project development, with project-aware AI assistance, mentor guidance and code reviews.",
     blocks: [
       { type: "logo", src: skillshoneLogo.url, alt: "SkillShone" },
