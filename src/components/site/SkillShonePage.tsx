@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowUpRight, Search, Database, Code2, GitPullRequest, FileText, MessageSquareText, Sparkles, Factory, Bot, UserCheck, Award, type LucideIcon } from "lucide-react";
+import { ArrowUpRight, ArrowRight, GraduationCap, Landmark, Search, Database, Code2, GitPullRequest, FileText, MessageSquareText, Sparkles, Factory, Bot, UserCheck, Award, type LucideIcon } from "lucide-react";
 import type { Page, Tone } from "@/data/site";
 import { BlockView } from "@/components/site/Blocks";
 import skillshoneLogo from "@/assets/skillshone-original.png.asset.json";
@@ -36,6 +36,7 @@ const features: Feature[] = [
   { icon: Award, t: "Verifiable Certificate", d: "A certificate issued by Exafluence on successful project completion.", tone: "blue", more: "On successful completion of the project you receive a verifiable certificate issued by Exafluence, ready to add to a portfolio or CV." },
 ];
 const audiences = ["Undergraduate & postgraduate students", "Final-year project teams", "Graduates & job aspirants", "Professionals & career switchers"];
+const institutions = ["Coursework integration", "Independent evaluation", "Guided development", "Project documentation", "Student portfolios", "Academic–industry engagement"];
 const tools = ["Generative AI", "AI & Machine Learning", "Open-source LLMs", "Python", "Databases", "Data Science"];
 
 const Eyebrow = ({ children }: { children: string }) => (
@@ -116,21 +117,31 @@ export default function SkillShonePage({ page, breadcrumb }: { page: Page; bread
         <ul className="ss-tools">{tools.map((t) => <li key={t}>{t}</li>)}</ul>
       </section>
 
-      {/* Who it's for / institutions */}
-      <section className="container grid gap-10 py-16 md:grid-cols-2">
-        <div>
-          <Eyebrow>Who it is for</Eyebrow>
-          <h2 className="ss-h2">Build a Portfolio, <em>Gain Confidence</em></h2>
-          <p className="mt-3 text-muted-foreground">Strengthen coding, analytical and problem-solving skills, and practise explaining technical decisions for presentations and interviews.</p>
-          <ul className="ss-list">{audiences.map((a) => <li key={a}>{a}</li>)}</ul>
+      {/* Who it's for / institutions — split capsule */}
+      <section className="container py-16">
+        <div className="ss-split-head">
+          <div><Eyebrow>Who it is for</Eyebrow><h2 className="ss-h2">Build a Portfolio, <em>Gain Confidence</em></h2></div>
+          <div><Eyebrow>For institutions</Eyebrow><h2 className="ss-h2">Colleges <em>&amp; Universities</em></h2></div>
         </div>
-        <div>
-          <Eyebrow>For institutions</Eyebrow>
-          <h2 className="ss-h2">Colleges <em>&amp; Universities</em></h2>
-          <p className="mt-3 text-muted-foreground">Structured, application-based learning through industry problems, AI tools and guided project development.</p>
-          <ul className="ss-list">{["Coursework integration", "Independent evaluation", "Guided development", "Project documentation", "Student portfolios", "Academic–industry engagement"].map((a) => <li key={a}>{a}</li>)}</ul>
+        <div className="ss-capsule">
+          <div className="ss-cap ss-cap--left">
+            <span className="ss-cap-badge" aria-hidden="true"><GraduationCap className="h-6 w-6" strokeWidth={1.5} /></span>
+            <span className="ss-cap-side" aria-hidden="true">Learners</span>
+            <ul>{audiences.map((a, i) => <li key={a} style={{ animationDelay: `${i * 120}ms` }}><ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />{a}</li>)}</ul>
+          </div>
+          <div className="ss-cap-core" aria-hidden="true"><img src={skillshoneLogo.url} alt="" /></div>
+          <div className="ss-cap ss-cap--right">
+            <span className="ss-cap-badge" aria-hidden="true"><Landmark className="h-6 w-6" strokeWidth={1.5} /></span>
+            <span className="ss-cap-side" aria-hidden="true">Institutions</span>
+            <ul>{institutions.map((a, i) => <li key={a} style={{ animationDelay: `${i * 120}ms` }}><ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />{a}</li>)}</ul>
+          </div>
+        </div>
+        <div className="ss-split-foot">
+          <p>Strengthen coding, analytical and problem-solving skills, and practise explaining technical decisions for presentations and interviews.</p>
+          <p>Structured, application-based learning through industry problems, AI tools and guided project development.</p>
         </div>
       </section>
+
 
       <div className="container space-y-16 pb-16">
         {faq && (
