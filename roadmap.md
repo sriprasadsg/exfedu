@@ -238,5 +238,5 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] SkillShone: cap & institution badges tinted to capsule colours; heading sizes and title spacing reduced (27 Oct).
 - [x] SkillShone: replaced the six-card "Everything You Need to Become AI-Ready" block with prompt-generated 3D artwork in the supplied reference style (centred illustration above title and description, tinted halo, staggered entrance, gentle float, hover lift); approved copy retained, no prices invented. Verified 1062/390px, reduced motion, 58 tests pass.
 - [x] SkillShone: both six-item two-row blocks replaced by the shared centre-line timeline appearance (node on the spine, wording card butting against it, icon/illustration facing it from the opposite side, sides swapping each row). Verified 1062/390px, no overflow, 58 tests pass.
-- [ ] SkillShone: timeline boxes restyled to the earlier used box design (white card, pale border, rounded corners, soft shadow, tinted squircle icon tile) per 27 Oct reference.
+- [x] SkillShone: timeline boxes restyled to the earlier used box design (white card, pale border, 12px corners, soft navy shadow, tinted squircle icon tile) per 27 Oct reference. Verified 1062/390px, hover lift, reduced motion, 58 tests pass.
 
