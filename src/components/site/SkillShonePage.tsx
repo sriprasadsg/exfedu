@@ -137,7 +137,7 @@ export default function SkillShonePage({ page, breadcrumb }: { page: Page; bread
           <div><Eyebrow>How it works</Eyebrow><h2 className="ss-h2">Your Project <em>Learning Journey</em></h2></div>
           <ArrowUpRight className="h-7 w-7 text-muted-foreground" strokeWidth={1.25} aria-hidden="true" />
         </div>
-        <Timeline items={steps} />
+        <JourneyGrid />
       </section>
 
 
