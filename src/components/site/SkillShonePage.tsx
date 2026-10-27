@@ -4,8 +4,9 @@ import type { Page } from "@/data/site";
 import { BlockView } from "@/components/site/Blocks";
 import skillshoneLogo from "@/assets/skillshone-original.png.asset.json";
 
-/** Arcado-style editorial layout for SkillShone: minimal hero with stats, outlined watermark,
+/** Arcado-style editorial layout for SkillShone: minimal hero with stats,
  *  step row, rotating badge, stats strip and split "who it is for" section. Facts come from the approved brief. */
+
 const steps = [
   { icon: Search, t: "Choose a Problem", d: "Pick from industry-grade problem statements." },
   { icon: Database, t: "Explore the Data", d: "Work with realistic project datasets." },
@@ -50,11 +51,10 @@ export default function SkillShonePage({ page, breadcrumb }: { page: Page; bread
           </div>
           <div className="ss-hero-art">
             <div className="ss-hero-card"><img src={skillshoneLogo.url} alt="SkillShone" width={392} height={48} /></div>
-            <div className="ss-burst" aria-hidden="true"><span>AI-powered<br />projects</span></div>
           </div>
         </div>
       </section>
-      <div className="ss-watermark" aria-hidden="true">SKILLSHONE</div>
+
 
       {/* How it works */}
       <section className="container py-14">

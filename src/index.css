@@ -1346,9 +1346,6 @@ html body .cap-diagram .cap-art {
 .ss-hero-art { position: relative; }
 .ss-hero-card { aspect-ratio: 4/3; border-radius: 1rem; display: grid; place-items: center; padding: 2rem; background: hsl(var(--secondary)); border: 1px solid hsl(var(--border)); }
 .ss-hero-card img { width: 85%; height: auto; }
-.ss-burst { position: absolute; left: -2.5rem; bottom: 1.5rem; width: 7rem; height: 7rem; display: grid; place-items: center; text-align: center; background: hsl(var(--foreground)); color: hsl(var(--background)); font-size: .65rem; text-transform: uppercase; letter-spacing: .08em;
-  clip-path: polygon(50% 0,61% 20%,82% 10%,80% 33%,100% 40%,85% 57%,98% 77%,75% 78%,70% 100%,50% 86%,30% 100%,25% 78%,2% 77%,15% 57%,0 40%,20% 33%,18% 10%,39% 20%); }
-.ss-watermark { overflow: hidden; white-space: nowrap; text-align: center; font-size: clamp(4rem, 13vw, 11rem); font-weight: 500; line-height: 1; letter-spacing: .05em; color: transparent; -webkit-text-stroke: 1px hsl(var(--border)); user-select: none; }
 .ss-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem 2.5rem; margin-top: 2.5rem; }
 .ss-steps h3 { margin-top: .9rem; font-weight: 500; }
 .ss-steps p { margin-top: .3rem; font-size: .85rem; color: hsl(var(--muted-foreground)); }
@@ -1367,6 +1364,5 @@ html body .cap-diagram .cap-art {
 .ss-list li { padding: .7rem 0; border-bottom: 1px solid hsl(var(--border)); font-size: .9rem; }
 @media (max-width: 767px) {
   .ss-hero { grid-template-columns: 1fr; }
-  .ss-burst { left: auto; right: -.5rem; bottom: -1.5rem; width: 5.5rem; height: 5.5rem; }
   .ss-steps { grid-template-columns: 1fr 1fr; }
 }
