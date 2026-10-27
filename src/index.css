@@ -1489,18 +1489,22 @@ html body .cap-diagram .cap-art {
 
 /* ===== SkillShone split footer: rectangular hover cards ===== */
 .ss-foot-cards { display: grid !important; grid-template-columns: 1fr 1fr; gap: 1.25rem; text-align: left !important; }
-.ss-foot-card { display: flex; gap: .9rem; align-items: flex-start; padding: 1.1rem 1.25rem; border-radius: .6rem; background: hsl(var(--background)); border: 1px solid hsl(var(--border)); box-shadow: 0 6px 18px -14px hsl(var(--primary) / .35); transition: transform .3s, box-shadow .3s, border-color .3s; animation: ss-foot-in .6s ease-out both; }
-.ss-foot-card--red { animation-delay: .15s; }
+/* Colourful themed cards (27 Oct 2026): tinted fill, hairline theme border and a
+   pop-up lift on hover — students in the navy theme, institutions in sky blue. */
+.ss-foot-card { display: flex; gap: .9rem; align-items: flex-start; padding: 1.1rem 1.25rem; border-radius: .8rem; background: hsl(var(--background)); border: 1px solid hsl(var(--border)); box-shadow: 0 6px 18px -14px hsl(var(--primary) / .35); transition: transform .3s, box-shadow .3s, border-color .3s; animation: ss-foot-in .6s ease-out both; }
+.ss-foot-card--blue { background: linear-gradient(135deg, hsl(var(--primary) / .09), hsl(var(--primary) / .03)); border-color: hsl(var(--primary) / .18); }
+.ss-foot-card--red { background: linear-gradient(135deg, hsl(var(--connection-blue) / .14), hsl(var(--connection-blue) / .04)); border-color: hsl(var(--connection-blue) / .2); animation-delay: .15s; }
 .ss-foot-card p { margin: .25rem 0 0 !important; text-align: left !important; font-size: .86rem; line-height: 1.6; color: hsl(var(--muted-foreground)); }
 .ss-foot-card h4 { font-size: .92rem; font-weight: 500; color: hsl(var(--primary)); }
-.ss-foot-icon { flex: none; display: grid; place-items: center; width: 2.4rem; height: 2.4rem; border-radius: .5rem; transition: transform .3s; }
-.ss-foot-card--blue .ss-foot-icon { background: hsl(var(--primary) / .1); color: hsl(var(--primary)); }
-.ss-foot-card--red .ss-foot-icon { background: hsl(var(--primary) / .1); color: hsl(var(--primary)); }
-.ss-foot-card:hover { transform: translateY(-4px); box-shadow: 0 18px 32px -18px hsl(var(--primary) / .4); }
-.ss-foot-card--blue:hover { border-color: hsl(var(--primary) / .4); }
-.ss-foot-card--red:hover { border-color: hsl(var(--primary) / .4); }
-.ss-foot-card:hover .ss-foot-icon { transform: scale(1.08) rotate(-4deg); }
-@keyframes ss-foot-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+.ss-foot-icon { flex: none; display: grid; place-items: center; width: 2.4rem; height: 2.4rem; border-radius: .6rem; box-shadow: 0 10px 18px -12px currentColor; transition: transform .3s; }
+.ss-foot-card--blue .ss-foot-icon { background: hsl(var(--primary) / .14); color: hsl(var(--primary)); }
+.ss-foot-card--red .ss-foot-icon { background: hsl(var(--connection-blue) / .16); color: hsl(var(--connection-blue)); }
+.ss-foot-card--red h4 { color: hsl(var(--connection-blue)); }
+.ss-foot-card:hover { transform: translateY(-6px) scale(1.015); }
+.ss-foot-card--blue:hover { border-color: hsl(var(--primary) / .45); box-shadow: 0 24px 40px -20px hsl(var(--primary) / .55), 0 0 18px -6px hsl(var(--connection-blue) / .4); }
+.ss-foot-card--red:hover { border-color: hsl(var(--connection-blue) / .45); box-shadow: 0 24px 40px -20px hsl(var(--connection-blue) / .55), 0 0 18px -6px hsl(var(--connection-blue) / .45); }
+.ss-foot-card:hover .ss-foot-icon { transform: scale(1.12) rotate(-5deg); }
+@keyframes ss-foot-in { from { opacity: 0; transform: translateY(14px) scale(.97); } to { opacity: 1; transform: none; } }
 @media (max-width: 700px) { .ss-foot-cards { grid-template-columns: 1fr; } }
 @media (prefers-reduced-motion: reduce) { .ss-foot-card, .ss-foot-icon { animation: none; transition: none; } .ss-foot-card:hover { transform: none; } }
 .ss-split-headtxt .ss-h2 { color: hsl(var(--primary) / .72); }
