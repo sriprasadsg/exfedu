@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowUpRight, ArrowRight, GraduationCap, Landmark, Search, Database, Code2, GitPullRequest, FileText, MessageSquareText, Sparkles, Factory, Bot, UserCheck, Award, type LucideIcon } from "lucide-react";
+import { ArrowUpRight, ArrowRight, GraduationCap, Landmark, Search, Database, Code2, GitPullRequest, FileText, MessageSquareText, Sparkles, Factory, Bot, UserCheck, Award, BrainCircuit, MessageSquare, Terminal, FlaskConical, type LucideIcon } from "lucide-react";
 import type { Page, Tone } from "@/data/site";
 import { BlockView } from "@/components/site/Blocks";
 import skillshoneLogo from "@/assets/skillshone-original.png.asset.json";
@@ -38,7 +38,14 @@ const features: Feature[] = [
 ];
 const audiences = ["Undergraduate & postgraduate students", "Final-year project teams", "Graduates & job aspirants", "Professionals & career switchers"];
 const institutions = ["Coursework integration", "Independent evaluation", "Guided development", "Project documentation", "Student portfolios", "Academic–industry engagement"];
-const tools = ["Generative AI", "AI & Machine Learning", "Open-source LLMs", "Python", "Databases", "Data Science"];
+const tools: { icon: LucideIcon; t: string; tone: Tone }[] = [
+  { icon: Sparkles, t: "Generative AI", tone: "amber" },
+  { icon: BrainCircuit, t: "AI & Machine Learning", tone: "violet" },
+  { icon: MessageSquare, t: "Open-source LLMs", tone: "blue" },
+  { icon: Terminal, t: "Python", tone: "teal" },
+  { icon: Database, t: "Databases", tone: "amber" },
+  { icon: FlaskConical, t: "Data Science", tone: "violet" },
+];
 
 const Eyebrow = ({ children }: { children: string }) => (
   <p className="ss-eyebrow"><span aria-hidden="true" />{children}</p>
@@ -111,11 +118,21 @@ export default function SkillShonePage({ page, breadcrumb }: { page: Page; bread
         <div className="ss-badge" aria-hidden="true">
           <svg viewBox="0 0 100 100"><defs><path id="ss-circle" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0" /></defs>
             <text><textPath href="#ss-circle">• LEARN • BUILD • REVIEW • PRESENT • LEARN • BUILD • REVIEW •</textPath></text></svg>
-          <Sparkles className="ss-badge-core" strokeWidth={1.25} />
+          <svg className="ss-badge-core" viewBox="0 0 24 24">
+            <defs><linearGradient id="ss-star-navy-red" x1="0" y1="0" x2="1" y2="1"><stop offset="0" className="ss-star-navy" /><stop offset="1" className="ss-star-red" /></linearGradient></defs>
+            <path d="M11 3 C11.7 8.2 14.3 10.8 19.5 11.5 C14.3 12.2 11.7 14.8 11 20 C10.3 14.8 7.7 12.2 2.5 11.5 C7.7 10.8 10.3 8.2 11 3 Z" fill="url(#ss-star-navy-red)" />
+            <path className="ss-star-redfill" d="M18.6 3.2 L19.05 4.75 L20.6 5.2 L19.05 5.65 L18.6 7.2 L18.15 5.65 L16.6 5.2 L18.15 4.75 Z" />
+          </svg>
         </div>
         <h2 className="ss-h2 mt-5">From Learning to <em>Practical Application</em></h2>
         <p className="mx-auto mt-3 max-w-2xl text-muted-foreground">Understand a problem, explore data, write code and explain results — one guided journey through professional workflows.</p>
-        <ul className="ss-tools">{tools.map((t) => <li key={t}>{t}</li>)}</ul>
+        <ul className="ss-tools">
+          {tools.map(({ icon: Icon, t, tone }, i) => (
+            <li key={t} className={`ss-tone-${tone} ss-tool`} style={{ animationDelay: `${i * 80}ms` }}>
+              <Icon className="h-3.5 w-3.5" strokeWidth={2} aria-hidden="true" />{t}
+            </li>
+          ))}
+        </ul>
       </section>
 
       {/* Who it's for / institutions — split capsule */}

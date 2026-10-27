@@ -223,13 +223,15 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 
 - [x] Arrange desktop About Us, Our Collaboration Network, Learning Ecosystem and Enquire Now; omit Programmes per latest request; group five learning links and keep four resources in sidebar. Verified dropdown, sidebar, destinations and collaborator search at desktop/current-window/phone sizes; 19 targeted tests pass, build OK.
 - [x] About Us menu icon changed from the info symbol to a building outline in desktop and phone menus; destinations unchanged, 15 site/footer tests pass, build OK.
-- [ ] SkillShone: apply the newly supplied reference design to the existing section; FAQs show answers one at a time like stacked layers (questions hidden until opened).
-- [ ] SkillShone: lay the FAQ/features model out as a grid and add more features sourced from skillshone.com.
+- [x] SkillShone: apply the newly supplied reference design to the existing section; FAQs show answers one at a time like stacked layers (questions hidden until opened).
+- [x] SkillShone: lay the FAQ/features model out as a grid and add more features sourced from skillshone.com.
 - [x] SkillShone: FAQ rebuilt as one-at-a-time layered accordion (all closed by default, chevron toggles, verified in browser); new 'Everything You Need to Become AI-Ready' six-card features grid with colourful icons, facts sourced from skillshone.com (1,200+ statements, 1,200+ datasets, 48 domains, 11 functions, free LLM access, verifiable Exafluence certificate); 53 tests pass.
 - [x] Remove the SkillShone bottom pop-up strip: feature text, journey steps and FAQ answers render inline (answers one at a time under their question), Enquire Now links to the contact page; 57 tests pass, build OK, verified in preview.
 - [x] SkillShone split footer: icon cards, icons in navy/sky-blue theme
 - [x] SkillShone split headings: softer text colour
-- [ ] SkillShone hero title fits two lines at every width; font sizes reduced.
-- [ ] SkillShone logo box: glowing edges and visible gentle movement (off under reduced motion).
-- [ ] SkillShone: move content into flash cards with colourful icons and animations; reduce content; smaller title font; colourful animated box edges.
-- [ ] SkillShone: replace the flagged blocks with prompt-based generated artwork matching the supplied references.
+- [x] SkillShone hero title fits two lines at every width; font sizes reduced.
+- [x] SkillShone logo box: glowing edges and visible gentle movement (off under reduced motion).
+- [x] SkillShone: move content into flash cards with colourful icons and animations; reduce content; smaller title font; colourful animated box edges.
+- [x] SkillShone: replace the flagged blocks with prompt-based generated artwork matching the supplied references.
+- [x] SkillShone: apply mini colourful icons and boxes with gentle animation per 27 Oct interjection.
+- [x] SkillShone: recolour the star to the SkillShone logo's navy/red combination.
