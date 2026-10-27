@@ -1353,10 +1353,10 @@ html body .cap-diagram .cap-art {
 .ss-steps h3 { margin-top: .9rem; font-weight: 500; }
 .ss-steps p { margin-top: .3rem; font-size: .85rem; color: hsl(var(--muted-foreground)); }
 .ss-badge { position: relative; width: 7rem; height: 7rem; margin: 0 auto; }
-.ss-badge svg { width: 100%; height: 100%; animation: ss-spin 24s linear infinite; font-size: 7px; letter-spacing: .12em; fill: hsl(var(--foreground)); }
+.ss-badge > svg:first-child { width: 100%; height: 100%; animation: ss-spin 24s linear infinite; font-size: 7px; letter-spacing: .12em; fill: hsl(var(--foreground)); }
 .ss-badge-core { position: absolute; inset: 0; margin: auto; width: 1.6rem; height: 1.6rem; color: hsl(var(--primary)); }
 @keyframes ss-spin { to { transform: rotate(360deg); } }
-@media (prefers-reduced-motion: reduce) { .ss-badge svg { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .ss-badge > svg:first-child { animation: none; } }
 .ss-tools { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; margin-top: 1.5rem; }
 .ss-tools li { border: 1px solid hsl(var(--border)); border-radius: 999px; padding: .35rem .9rem; font-size: .8rem; }
 .ss-stats { background: hsl(var(--secondary)); padding-block: 3rem; text-align: center; }
