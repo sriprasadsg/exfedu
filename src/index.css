@@ -1372,6 +1372,8 @@ html body .cap-diagram .cap-art {
 .ss-tone-teal { color: hsl(var(--programme-practical)); background: hsl(var(--programme-practical) / .1); }
 .ss-tone-violet { color: hsl(var(--programme-innovation)); background: hsl(var(--programme-innovation) / .1); }
 .ss-tone-amber { color: hsl(var(--programme-achievement)); background: hsl(var(--programme-achievement) / .1); }
+.ss-feature-icon { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; border-radius: .75rem; }
+
 @media (max-width: 1023px) { .ss-features { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 639px) { .ss-features { grid-template-columns: 1fr; } }
 .ss-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem 2.5rem; margin-top: 2.5rem; }
