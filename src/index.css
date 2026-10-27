@@ -1442,10 +1442,10 @@ html body .cap-diagram .cap-art {
 .ss-foot-card h4 { font-size: .92rem; font-weight: 500; color: hsl(var(--primary)); }
 .ss-foot-icon { flex: none; display: grid; place-items: center; width: 2.4rem; height: 2.4rem; border-radius: .5rem; transition: transform .3s; }
 .ss-foot-card--blue .ss-foot-icon { background: hsl(var(--primary) / .1); color: hsl(var(--primary)); }
-.ss-foot-card--red .ss-foot-icon { background: hsl(var(--brand-red) / .1); color: hsl(var(--brand-red)); }
+.ss-foot-card--red .ss-foot-icon { background: hsl(var(--primary) / .1); color: hsl(var(--primary)); }
 .ss-foot-card:hover { transform: translateY(-4px); box-shadow: 0 18px 32px -18px hsl(var(--primary) / .4); }
 .ss-foot-card--blue:hover { border-color: hsl(var(--primary) / .4); }
-.ss-foot-card--red:hover { border-color: hsl(var(--brand-red) / .4); }
+.ss-foot-card--red:hover { border-color: hsl(var(--primary) / .4); }
 .ss-foot-card:hover .ss-foot-icon { transform: scale(1.08) rotate(-4deg); }
 @keyframes ss-foot-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
 @media (max-width: 700px) { .ss-foot-cards { grid-template-columns: 1fr; } }
