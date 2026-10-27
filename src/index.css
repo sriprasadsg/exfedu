@@ -1374,10 +1374,6 @@ html body .cap-diagram .cap-art {
 .ss-tools { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; margin-top: 1.5rem; }
 .ss-tools li { border: 1px solid hsl(var(--border)); border-radius: 999px; padding: .35rem .9rem; font-size: .8rem; }
 /* Figures band: compact — no tall blank band above or below the numbers. */
-.ss-stats { background: hsl(var(--secondary)); padding-block: 1.1rem; text-align: center; }
-.ss-stats span { display: block; color: hsl(var(--primary)); font-size: .7rem; line-height: .55; }
-.ss-stats strong { display: block; font-size: 2rem; font-weight: 500; line-height: 1.15; }
-.ss-stats p { font-size: .75rem; color: hsl(var(--muted-foreground)); margin-top: .1rem; }
 .ss-list { margin-top: 1.2rem; border-top: 1px solid hsl(var(--border)); }
 .ss-list li { padding: .7rem 0; border-bottom: 1px solid hsl(var(--border)); font-size: .9rem; }
 @media (max-width: 767px) {
