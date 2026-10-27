@@ -6,7 +6,6 @@ import {
 import type { AboutStoryData } from "@/components/site/AboutStory";
 import type { AboutOverviewData } from "@/components/site/AboutOverview";
 import type { EnquiryIntro } from "@/components/home/PartnerEnquiry";
-import skillshoneLogo from "@/assets/skillshone-original.png.asset.json";
 import svuLogo from "@/assets/svu-logo.png.asset.json";
 import ximeLogo from "@/assets/xime-logo.png.asset.json";
 import ibmLogo from "@/assets/ibm-partner-badge.png.asset.json";
@@ -37,7 +36,7 @@ export type Block =
 
 export type Page = {
   path: string; title: string; category: CategorySlug; icon: LucideIcon;
-  summary: string; eyebrow?: string; tagline?: string; hideIcon?: boolean; parent?: string; blocks: Block[]; hideInNav?: boolean;
+  summary: string; eyebrow?: string; tagline?: string; hideIcon?: boolean; hideSummary?: boolean; parent?: string; blocks: Block[]; hideInNav?: boolean;
 };
 
 export const categories = [
@@ -256,10 +255,9 @@ export const pages: Page[] = [
   { path: "/students-corner", title: "Student's Corner", category: "learning", icon: LayoutGrid,
     summary: "One hub for resources, updates and support.",
     blocks: [{ type: "features", title: "Resources", note: "Links and updates will appear here as they are published.", items: ["Academic Resources", "Projects & Capstones", "Opportunities", "Announcements", "Internship Updates", "Placement Updates", "Research Opportunities", "Student Achievements", "Downloads", "Support"] }] },
-  { path: "/skillshone", title: "SkillShone", eyebrow: "AI-Powered Industry Project Learning Platform", tagline: "Solve Industry-Grade Problems\nUsing AI & Gen AI", hideIcon: true, category: "learning", icon: MonitorPlay,
+  { path: "/skillshone", title: "SkillShone", eyebrow: "AI-Powered Industry Project Learning Platform", tagline: "Solve Industry-Grade Problems\nUsing AI & Gen AI", hideIcon: true, hideSummary: true, category: "learning", icon: MonitorPlay,
     summary: "Build practical AI skills through industry projects — industry-grade problem statements, realistic datasets and guided project development, with project-aware AI assistance, mentor guidance and code reviews.",
     blocks: [
-      { type: "logo", src: skillshoneLogo.url, alt: "SkillShone" },
       { type: "text", title: "From Learning to Practical Application", text: "Developing a solution involves understanding a problem, exploring data, writing code and explaining results. SkillShone brings these activities into a guided learning journey, helping learners understand professional workflows and strengthen their technical problem-solving skills." },
       { type: "features", title: "Who SkillShone Is For", items: [
         "Undergraduate and postgraduate students applying classroom knowledge through practical projects",

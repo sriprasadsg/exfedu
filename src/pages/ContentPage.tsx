@@ -5,7 +5,7 @@ import { BlockView } from "@/components/site/Blocks";
 import { categories, findPage, navPages, retiredPageDestinations } from "@/data/site";
 import programmesCap from "@/assets/programmes-cap.png.asset.json";
 import internshipsBanner from "@/assets/internships-banner.jpg.asset.json";
-import skillshoneBanner from "@/assets/skillshone-hero-banner.png.asset.json";
+import skillshoneLogo from "@/assets/skillshone-original.png.asset.json";
 import successImg from "@/assets/hero-success.png";
 import ibmBanner from "@/assets/ibm-hero-banner-v2.png.asset.json";
 import { programmes } from "@/data/site";
@@ -55,7 +55,7 @@ const ContentPage = () => {
         {page.eyebrow && <p className="mb-2 text-xs uppercase tracking-[0.14em] text-muted-foreground">{page.eyebrow}</p>}
         <h1 className="font-display text-4xl font-medium md:text-5xl">{page.title}</h1>
         {page.tagline && <p className="mt-3 whitespace-pre-line text-xl font-medium leading-snug text-foreground md:text-2xl">{page.tagline}</p>}
-        <p className="hero-summary mt-4 text-lg leading-relaxed text-muted-foreground">{page.summary}</p>
+        {!page.hideSummary && <p className="hero-summary mt-4 text-lg leading-relaxed text-muted-foreground">{page.summary}</p>}
       </div>
     </div>
   );
@@ -134,10 +134,10 @@ const ContentPage = () => {
           </div>
           <div className="page-hero-banner-art-mask" aria-hidden="true">
             <img
-              src={skillshoneBanner.url}
+              src={skillshoneLogo.url}
               alt=""
-              width={1942}
-              height={809}
+              width={392}
+              height={48}
               className="page-hero-banner-art"
             />
           </div>
