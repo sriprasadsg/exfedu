@@ -127,15 +127,15 @@ export default function SkillShonePage({ page, breadcrumb }: { page: Page; bread
       <div className="container space-y-16 pb-16">
         {faq && (
           <section aria-label={faq.title}>
-            <h2 className="ss-h2">{faq.title}</h2>
+            <h2 className="ss-h2 text-center">{faq.title}</h2>
             <ul className="ss-faq-list">
               {(faq.items ?? []).map(({ q, a }, i) => {
                 const open = openFaq === i;
                 return (
-                  <li key={q}>
+                  <li key={q} className={open ? "is-open" : undefined}>
                     <button type="button" className="ss-faq-q" aria-expanded={open} onClick={() => setOpenFaq(open ? -1 : i)}>
+                      <span className="ss-faq-sign" aria-hidden="true" />
                       <span>{q}</span>
-                      <ChevronDown className="ss-faq-chev" aria-hidden="true" />
                     </button>
                     {open && <p className="ss-faq-a">{a}</p>}
                   </li>

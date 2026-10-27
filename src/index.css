@@ -1365,12 +1365,16 @@ html body .cap-diagram .cap-art {
 .ss-badge-core { position: absolute; inset: 0; margin: auto; width: 1.6rem; height: 1.6rem; color: hsl(var(--primary)); }
 @keyframes ss-spin { to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) { .ss-badge > svg:first-child { animation: none; } }
-.ss-faq-list { margin-top: 1.75rem; border-top: 1px solid hsl(var(--border)); }
-.ss-faq-list li { border-bottom: 1px solid hsl(var(--border)); }
-.ss-faq-q { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.35rem 0; text-align: left; font-size: .95rem; font-weight: 500; color: hsl(var(--foreground)); }
-.ss-faq-chev { height: 1.05rem; width: 1.05rem; flex: none; color: hsl(var(--foreground)); transition: transform .3s; }
-.ss-faq-q[aria-expanded="true"] .ss-faq-chev { transform: rotate(180deg); }
-.ss-faq-a { padding: 0 2rem 1.35rem 0; font-size: .9rem; line-height: 1.6; color: hsl(var(--muted-foreground)); }
+.ss-faq-list { margin: 2rem auto 0; max-width: 46rem; display: grid; gap: 1rem; }
+.ss-faq-list li { background: hsl(var(--background)); border: 1px solid hsl(var(--border)); border-radius: .5rem; box-shadow: 0 2px 6px -2px hsl(var(--primary) / .12); transition: box-shadow .3s; }
+.ss-faq-list li.is-open { box-shadow: 0 14px 30px -12px hsl(var(--primary) / .22); }
+.ss-faq-q { display: flex; width: 100%; align-items: center; gap: 1.5rem; padding: 1.25rem 1.75rem; text-align: left; font-size: .92rem; font-weight: 400; color: hsl(var(--foreground)); }
+.ss-faq-sign { position: relative; height: 1.1rem; width: 1.1rem; flex: none; }
+.ss-faq-sign::before, .ss-faq-sign::after { content: ""; position: absolute; left: 0; top: 50%; height: 1.5px; width: 100%; background: hsl(var(--primary)); transform: translateY(-50%); transition: transform .3s, background .3s; }
+.ss-faq-sign::after { transform: translateY(-50%) rotate(90deg); }
+.is-open .ss-faq-sign::before { background: hsl(var(--destructive)); }
+.is-open .ss-faq-sign::after { transform: translateY(-50%) rotate(0); opacity: 0; }
+.ss-faq-a { padding: 0 1.75rem 1.75rem 4.35rem; font-size: .88rem; line-height: 1.6; color: hsl(var(--muted-foreground)); }
 .ss-tools { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; margin-top: 1.5rem; }
 .ss-tools li { border: 1px solid hsl(var(--border)); border-radius: 999px; padding: .35rem .9rem; font-size: .8rem; }
 /* Figures band: compact — no tall blank band above or below the numbers. */
