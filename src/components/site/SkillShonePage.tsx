@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowUpRight, Search, Database, Code2, GitPullRequest, FileText, MessageSquareText, Sparkles } from "lucide-react";
+import { ArrowUpRight, ChevronDown, Search, Database, Code2, GitPullRequest, FileText, MessageSquareText, Sparkles } from "lucide-react";
 import type { Page } from "@/data/site";
 import { BlockView } from "@/components/site/Blocks";
 import skillshoneLogo from "@/assets/skillshone-original.png.asset.json";
@@ -29,8 +30,9 @@ const Eyebrow = ({ children }: { children: string }) => (
 );
 
 export default function SkillShonePage({ page, breadcrumb }: { page: Page; breadcrumb: React.ReactNode }) {
-  const faq = page.blocks.find((b) => b.type === "faq");
+  const faq = page.blocks.find((b): b is Extract<Page["blocks"][number], { type: "faq" }> => b.type === "faq");
   const cta = page.blocks.find((b) => b.type === "cta");
+  const [openFaq, setOpenFaq] = useState(-1);
   return (
     <main className="ss-page">
       {/* Hero */}
@@ -105,7 +107,25 @@ export default function SkillShonePage({ page, breadcrumb }: { page: Page; bread
       </section>
 
       <div className="container space-y-16 pb-16">
-        {faq && <BlockView block={faq} page={page} />}
+        {faq && (
+          <section aria-label={faq.title}>
+            <h2 className="ss-h2">{faq.title}</h2>
+            <ul className="ss-faq-list">
+              {(faq.items ?? []).map(({ q, a }, i) => {
+                const open = openFaq === i;
+                return (
+                  <li key={q}>
+                    <button type="button" className="ss-faq-q" aria-expanded={open} onClick={() => setOpenFaq(open ? -1 : i)}>
+                      <span>{q}</span>
+                      <ChevronDown className="ss-faq-chev" aria-hidden="true" />
+                    </button>
+                    {open && <p className="ss-faq-a">{a}</p>}
+                  </li>
+                );
+              })}
+            </ul>
+          </section>
+        )}
         {cta && <BlockView block={cta} page={page} />}
       </div>
     </main>
