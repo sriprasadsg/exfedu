@@ -1334,9 +1334,9 @@ html body .cap-diagram .cap-art {
 .ss-eyebrow { display: flex; align-items: center; gap: .5rem; font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: hsl(var(--muted-foreground)); margin-bottom: .6rem; }
 .ss-eyebrow span { width: .45rem; height: .45rem; border-radius: 999px; background: hsl(var(--primary)); }
 .ss-hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 3rem; align-items: center; padding-block: 2.5rem 1rem; }
-.ss-title { font-size: clamp(1.25rem, 3vw, 2.4rem); line-height: 1.22; font-weight: 500; color: hsl(var(--foreground)); letter-spacing: -.005em; }
+.ss-title { font-size: clamp(1.15rem, 2.6vw, 2.1rem); line-height: 1.22; font-weight: 500; color: hsl(var(--foreground)); letter-spacing: -.005em; }
 .ss-title em { display: block; font-size: .92em; }
-.ss-h2 { font-size: clamp(1.5rem, 2.6vw, 2rem); font-weight: 500; line-height: 1.2; }
+.ss-h2 { font-size: clamp(1.2rem, 2vw, 1.6rem); font-weight: 500; line-height: 1.25; }
 .ss-mini-stats { display: flex; gap: 2rem; margin-top: 1.6rem; }
 .ss-mini-stats dt { font-weight: 500; font-size: .92rem; }
 .ss-mini-stats dd { font-size: .7rem; color: hsl(var(--muted-foreground)); }
@@ -1400,6 +1400,15 @@ html body .cap-diagram .cap-art {
 .ss-faq-list li.is-open .ss-faq-sign::after { transform: translateY(-50%) rotate(0deg); }
 .ss-faq-a { padding: 0 1.75rem 1.25rem 3.85rem; font-size: .86rem; line-height: 1.65; color: hsl(var(--muted-foreground)); }
 .ss-faq-a[hidden] { display: none; }
+
+/* ===== Flash cards: colourful animated edges, gentle entrance, hover lift ===== */
+.ss-glow-card { position: relative; border: 1px solid hsl(var(--border)); border-radius: 1rem; background: hsl(var(--background)); transition: transform .35s ease, box-shadow .35s ease; animation: ss-card-in .6s ease-out backwards; }
+.ss-glow-card::before { content: ""; position: absolute; inset: -1px; border-radius: inherit; padding: 1.5px; background: conic-gradient(from var(--ss-edge, 0deg), hsl(var(--primary)), hsl(var(--connection-blue)), hsl(var(--programme-practical)), hsl(var(--programme-achievement)), hsl(var(--brand-red)), hsl(var(--primary))); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; animation: ss-edge-turn 9s linear infinite; opacity: .6; transition: opacity .35s ease; pointer-events: none; }
+.ss-glow-card::after { content: ""; position: absolute; inset: -1px; border-radius: inherit; box-shadow: 0 0 20px -4px hsl(var(--connection-blue) / .55), 0 0 40px -8px hsl(var(--primary) / .35); opacity: .3; animation: ss-edge-glow 5.5s ease-in-out infinite; pointer-events: none; }
+.ss-glow-card:hover { transform: translateY(-5px); box-shadow: 0 26px 48px -28px hsl(var(--primary) / .55); }
+.ss-glow-card:hover::before { opacity: 1; }
+@keyframes ss-card-in { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { .ss-glow-card, .ss-glow-card::before, .ss-glow-card::after { animation: none; } .ss-glow-card, .ss-glow-card:hover { transform: none; } }
 
 
 
