@@ -130,22 +130,21 @@ const ContentPage = () => {
         <section className="page-hero-banner page-hero-banner--skillshone" aria-label={`${page.title} introduction`}>
           <div className="container relative">
             {breadcrumb}
-            <div className="mt-8">{heading}</div>
-          </div>
-          <div className="page-hero-banner-art-mask" aria-hidden="true">
-            <img
-              src={skillshoneLogo.url}
-              alt=""
-              width={392}
-              height={48}
-              className="page-hero-banner-art"
-            />
+            <div className="skillshone-head">
+              <div className="skillshone-head-copy">
+                <h1 className="sr-only">{page.title}</h1>
+                {page.eyebrow && <p className="mb-2 text-xs uppercase tracking-[0.14em] text-muted-foreground">{page.eyebrow}</p>}
+                {page.tagline && <p className="mt-3 whitespace-pre-line text-xl font-medium leading-snug text-foreground md:text-2xl">{page.tagline}</p>}
+              </div>
+              <img src={skillshoneLogo.url} alt="" width={392} height={48} className="skillshone-head-logo" />
+            </div>
           </div>
         </section>
         <main>{body}</main>
       </Layout>
     );
   }
+
 
   if (page.path === "/industry-collaborations/ibm") {
     return (

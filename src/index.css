@@ -1070,52 +1070,29 @@ html body .cap-diagram .cap-art {
 
 
 /* ===== SkillShone page ===== */
-/* SkillShone hero banner — the original wordmark logo sits right of the copy, shown whole
-   with no feathering or cropping on any edge */
-@media (min-width: 1024px) {
-  .page-hero-banner--skillshone > .container {
-    min-height: 20rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .page-hero-banner--skillshone .page-hero-banner-art-mask {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding-right: clamp(1.5rem, 4vw, 4rem);
-    pointer-events: none;
-  }
-  .page-hero-banner--skillshone .page-hero-banner-art {
-    position: static;
-    width: min(24rem, 30vw);
-    height: auto;
-    object-fit: contain;
-    -webkit-mask-image: none;
-    mask-image: none;
-  }
-  /* the page title wraps well clear of the logo */
-  .page-hero-banner--skillshone > .container > div { max-width: 30rem; }
+/* SkillShone hero banner — the colourful wordmark logo is the page name, so the plain-text
+   title is kept for screen readers only and the name is never shown twice. The logo sits on
+   the right with its base above the tagline, shown whole with no feathering or cropping. */
+.skillshone-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-top: 2rem;
 }
-/* SkillShone hero banner — on phones the logo drops below the copy, shown whole */
+.skillshone-head-copy { max-width: 34rem; }
+.skillshone-head-logo {
+  flex: none;
+  width: min(22rem, 30vw);
+  height: auto;
+  /* lift the logo so its base clears the tagline's top line */
+  margin-top: -1.35rem;
+}
 @media (max-width: 1023px) {
-  .page-hero-banner--skillshone .page-hero-banner-art-mask {
-    display: flex;
-    justify-content: center;
-    padding-bottom: 1.25rem;
-  }
-  .page-hero-banner--skillshone .page-hero-banner-art {
-    position: static;
-    width: 14rem;
-    height: auto;
-    object-fit: contain;
-    -webkit-mask-image: none;
-    mask-image: none;
-  }
+  .skillshone-head { flex-direction: column; align-items: center; text-align: center; }
+  .skillshone-head-logo { width: 14rem; margin-top: 1.25rem; }
 }
+
 
 /* ===== About Us page ===== */
 /* About Us hero banner — the five glossy flash cards sit whole on the RIGHT of the copy
