@@ -11,16 +11,16 @@ import aiGenArt from "@/assets/ss-ai-gen.png";
  *  text, journey steps and FAQ answers — sits on the page itself, so nothing is
  *  hidden behind a click or a panel that covers the bottom of the screen. */
 
-type Step = { icon: LucideIcon; t: string; d: string; more: string };
-type Feature = { icon: LucideIcon; t: string; d: string; tone: Tone; more: string };
+type Step = { icon: LucideIcon; t: string; d: string; tone: Tone };
+type Feature = { icon: LucideIcon; t: string; d: string; tone: Tone };
 
 const steps: Step[] = [
-  { icon: Search, t: "Choose a Problem", d: "Pick from industry-grade problem statements.", more: "Pick from 1,200+ industry-grade problem statements spread across 48 domains and 11 business functions. Credits unlock statements so you can start solving straight away." },
-  { icon: Database, t: "Explore the Data", d: "Work with realistic project datasets.", more: "Work through exploratory analysis and feature engineering on realistic, messy project data — the same kind of data a company actually holds — to find the signals that matter." },
-  { icon: Code2, t: "Develop Your Solution", d: "Build with project-aware AI assistance.", more: "Train and evaluate models inside a real project context, with an AI assistant trained on your own project available whenever you need a nudge, guiding you without giving away the solution." },
-  { icon: GitPullRequest, t: "Review and Refine", d: "Improve through code reviews and feedback.", more: "Industry experts review your code and confirm the solution meets expected professional standards before you move on." },
-  { icon: FileText, t: "Document and Present", d: "Generate a structured project report.", more: "Produce a structured project report. Every submission becomes a statement on your CV and part of a portfolio you can show to employers." },
-  { icon: MessageSquareText, t: "Expert Feedback", d: "Practise with mentors and mock interviews.", more: "Practise with mentors and mock interviews, then use the feedback to sharpen how you present and defend your technical decisions." },
+  { icon: Search, t: "Choose a Problem", d: "Pick an industry-grade problem statement.", tone: "blue" },
+  { icon: Database, t: "Explore the Data", d: "Work with realistic project datasets.", tone: "teal" },
+  { icon: Code2, t: "Develop Your Solution", d: "Build with project-aware AI assistance.", tone: "violet" },
+  { icon: GitPullRequest, t: "Review and Refine", d: "Improve through code reviews and feedback.", tone: "amber" },
+  { icon: FileText, t: "Document and Present", d: "Generate a structured project report.", tone: "blue" },
+  { icon: MessageSquareText, t: "Expert Feedback", d: "Practise with mentors and mock interviews.", tone: "teal" },
 ];
 const stats = [
   { v: "1,200+", l: "Problem statements" },
@@ -29,12 +29,12 @@ const stats = [
   { v: "11", l: "Business functions" },
 ];
 const features: Feature[] = [
-  { icon: Factory, t: "Industry Problem Statements", d: "Curated real-world challenges, complete with datasets and context.", tone: "blue", more: "Challenges are drawn from real industry situations rather than toy tutorials — for example predicting marketing milestone attribution for automotive campaigns, identifying at-risk frontline staff in hospitality, or forecasting unscheduled equipment failure in smart plants. Each statement arrives with the data and background needed to begin." },
-  { icon: Database, t: "Curated Datasets", d: "1,200+ realistic datasets across 48 domains and 11 business functions.", tone: "teal", more: "The datasets are complex and messy in the way real company data is, so exploration, insight-finding and model building all happen in a genuine project context instead of a cleaned teaching example." },
-  { icon: Bot, t: "Free LLM Access", d: "A free LLM API key in your programme, with a project-aware chat assistant.", tone: "violet", more: "Use a free LLM API key in your programme and chat with an assistant trained on your own project. New registrations receive 200 bonus credits, worth 2,000 INR, which unlock problem statements so you can begin right away." },
-  { icon: UserCheck, t: "Expert Mentor Guidance", d: "A mentor reviews your work, gives feedback and guides you to completion.", tone: "amber", more: "You are assigned a mentor who reviews your submissions, provides feedback and keeps the project moving until it is complete." },
-  { icon: GitPullRequest, t: "Code Reviews & Mock Interviews", d: "Industry experts review your code and run mock interviews with feedback.", tone: "teal", more: "Experts check that your solution meets expected standards, then run mock interviews so you can practise explaining your decisions and improve from the feedback you receive." },
-  { icon: Award, t: "Verifiable Certificate", d: "A certificate issued by Exafluence on successful project completion.", tone: "blue", more: "On successful completion of the project you receive a verifiable certificate issued by Exafluence, ready to add to a portfolio or CV." },
+  { icon: Factory, t: "Industry Problem Statements", d: "Curated real-world challenges, complete with datasets and context.", tone: "blue" },
+  { icon: Database, t: "Curated Datasets", d: "1,200+ realistic datasets across 48 domains and 11 business functions.", tone: "teal" },
+  { icon: Bot, t: "Free LLM Access", d: "A free LLM API key in your programme, with a project-aware chat assistant.", tone: "violet" },
+  { icon: UserCheck, t: "Expert Mentor Guidance", d: "A mentor reviews your work, gives feedback and guides you to completion.", tone: "amber" },
+  { icon: GitPullRequest, t: "Code Reviews & Mock Interviews", d: "Industry experts review your code and run mock interviews with feedback.", tone: "teal" },
+  { icon: Award, t: "Verifiable Certificate", d: "A certificate issued by Exafluence on successful project completion.", tone: "blue" },
 ];
 const audiences = ["Undergraduate & postgraduate students", "Final-year project teams", "Graduates & job aspirants", "Professionals & career switchers"];
 const institutions = ["Coursework integration", "Independent evaluation", "Guided development", "Project documentation", "Student portfolios", "Academic–industry engagement"];
@@ -81,9 +81,10 @@ export default function SkillShonePage({ page, breadcrumb }: { page: Page; bread
           <ArrowUpRight className="h-7 w-7 text-muted-foreground" strokeWidth={1.25} aria-hidden="true" />
         </div>
         <ol className="ss-steps">
-          {steps.map(({ icon: Icon, t, d, more }) => (
-            <li key={t} className="ss-step">
-              <Icon className="h-6 w-6 text-primary" strokeWidth={1.25} aria-hidden="true" /><h3>{t}</h3><p>{d}</p><p className="ss-step-more">{more}</p>
+          {steps.map(({ icon: Icon, t, d, tone }, i) => (
+            <li key={t} className="ss-step ss-glow-card" style={{ animationDelay: `${i * 90}ms` }}>
+              <span className={`ss-feature-icon ss-tone-${tone}`} aria-hidden="true"><Icon className="h-5 w-5" strokeWidth={1.5} /></span>
+              <h3>{t}</h3><p>{d}</p>
             </li>
           ))}
         </ol>
@@ -95,12 +96,11 @@ export default function SkillShonePage({ page, breadcrumb }: { page: Page; bread
         <h2 className="ss-h2">Everything You Need to <em>Become AI-Ready</em></h2>
         <p className="mt-3 max-w-2xl text-muted-foreground">From real-world datasets to expert mentors, all in one place.</p>
         <ul className="ss-features">
-          {features.map(({ icon: Icon, t, d, tone, more }) => (
-            <li key={t} className="ss-feature">
+          {features.map(({ icon: Icon, t, d, tone }, i) => (
+            <li key={t} className="ss-feature ss-glow-card" style={{ animationDelay: `${i * 90}ms` }}>
               <span className={`ss-feature-icon ss-tone-${tone}`} aria-hidden="true"><Icon className="h-5 w-5" strokeWidth={1.5} /></span>
               <h3>{t}</h3>
               <p>{d}</p>
-              <p className="ss-feature-more-text">{more}</p>
             </li>
           ))}
         </ul>

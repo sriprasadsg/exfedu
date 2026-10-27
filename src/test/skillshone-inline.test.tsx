@@ -15,11 +15,22 @@ afterEach(cleanup);
 describe("SkillShone inline detail", () => {
   it("shows feature and journey detail on the page with nothing clicked", () => {
     open();
-    expect(screen.getByText(/toy tutorials/)).toBeInTheDocument();
-    expect(screen.getByText(/assistant trained on your own project available/)).toBeInTheDocument();
+    expect(screen.getByText(/Curated real-world challenges, complete with datasets/)).toBeInTheDocument();
+    expect(screen.getByText(/Build with project-aware AI assistance\./)).toBeInTheDocument();
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
     expect(document.querySelector(".ss-sheet")).toBeNull();
     expect(screen.queryByLabelText("Contact name")).not.toBeInTheDocument();
+  });
+
+  it("presents each journey step and feature as a card with its own coloured icon", () => {
+    open();
+    const steps = Array.from(document.querySelectorAll(".ss-step.ss-glow-card"));
+    expect(steps.length).toBe(6);
+    steps.forEach((card) => {
+      const tile = card.querySelector(".ss-feature-icon")!;
+      expect(tile.className).toMatch(/ss-tone-(blue|teal|violet|amber)/);
+    });
+    expect(document.querySelectorAll(".ss-feature.ss-glow-card").length).toBe(6);
   });
 
   it("keeps a FAQ answer closed until its own question is clicked", () => {
