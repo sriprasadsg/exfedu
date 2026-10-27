@@ -152,8 +152,8 @@ export const BlockView = ({ block, page }: { block: Block; page: Page }) => {
       return (
         <div><H2>{block.title}</H2>
           <Accordion type="single" collapsible className="mt-6 max-w-3xl">
-            {["Programmes & admissions", "Collaborations", "Internships & careers", "SkillShone access"].map((q) => (
-              <AccordionItem key={q} value={q}><AccordionTrigger className="font-normal">{q}</AccordionTrigger><AccordionContent><PendingTag /></AccordionContent></AccordionItem>
+            {(block.items ?? ["Programmes & admissions", "Collaborations", "Internships & careers", "SkillShone access"].map((q) => ({ q, a: "" }))).map(({ q, a }) => (
+              <AccordionItem key={q} value={q}><AccordionTrigger className="font-normal">{q}</AccordionTrigger><AccordionContent>{a ? <p className="font-light leading-relaxed text-muted-foreground">{a}</p> : <PendingTag />}</AccordionContent></AccordionItem>
             ))}
           </Accordion>
         </div>

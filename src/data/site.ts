@@ -24,7 +24,7 @@ export type Block =
   | { type: "offerings"; title: string; rows: Offering[] }
   | { type: "programmes"; title: string }
   | { type: "areas"; title: string }
-  | { type: "faq"; title: string }
+  | { type: "faq"; title: string; items?: { q: string; a: string }[] }
   | { type: "team"; title: string; groups: string[] }
   | { type: "gallery"; filters: string[] }
   | { type: "children"; title: string }
