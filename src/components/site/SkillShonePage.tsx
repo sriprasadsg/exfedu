@@ -1,19 +1,17 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { ArrowUpRight, Search, Database, Code2, GitPullRequest, FileText, MessageSquareText, Sparkles, Factory, Bot, UserCheck, Award, type LucideIcon } from "lucide-react";
 import type { Page, Tone } from "@/data/site";
 import { BlockView } from "@/components/site/Blocks";
-import BottomSheet from "@/components/site/BottomSheet";
-import PartnerEnquiry from "@/components/home/PartnerEnquiry";
 import skillshoneLogo from "@/assets/skillshone-original.png.asset.json";
 
 /** Arcado-style editorial layout for SkillShone: minimal hero with stats, step
- *  row, rotating badge and split "who it is for" section. Every detail card,
- *  journey step, question and the enquiry button open a bottom-sheet pop-up, so
- *  the page itself stays short while the full detail is one click away. */
+ *  row, rotating badge and split "who it is for" section. Every detail — feature
+ *  text, journey steps and FAQ answers — sits on the page itself, so nothing is
+ *  hidden behind a click or a panel that covers the bottom of the screen. */
 
 type Step = { icon: LucideIcon; t: string; d: string; more: string };
 type Feature = { icon: LucideIcon; t: string; d: string; tone: Tone; more: string };
-type SheetState = { kind: "feature"; i: number } | { kind: "step"; i: number } | { kind: "faq"; i: number } | { kind: "enquiry" };
 
 const steps: Step[] = [
   { icon: Search, t: "Choose a Problem", d: "Pick from industry-grade problem statements.", more: "Pick from 1,200+ industry-grade problem statements spread across 48 domains and 11 business functions. Credits unlock statements so you can start solving straight away." },
@@ -48,13 +46,7 @@ export default function SkillShonePage({ page, breadcrumb }: { page: Page; bread
   const faq = page.blocks.find((b): b is Extract<Page["blocks"][number], { type: "faq" }> => b.type === "faq");
   const cta = page.blocks.find((b) => b.type === "cta");
   const faqItems = faq?.items ?? [];
-  const [sheet, setSheet] = useState<SheetState | null>(null);
-
-  const sheetTitle =
-    sheet?.kind === "feature" ? features[sheet.i].t
-      : sheet?.kind === "step" ? steps[sheet.i].t
-        : sheet?.kind === "faq" ? faqItems[sheet.i].q
-          : "Enquire about SkillShone";
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
     <main className="ss-page">
@@ -71,7 +63,7 @@ export default function SkillShonePage({ page, breadcrumb }: { page: Page; bread
             </dl>
             <div className="mt-7 flex flex-wrap gap-3">
               <a href="https://skillshone.com/" target="_blank" rel="noreferrer" className="ss-btn ss-btn--solid">Visit SkillShone</a>
-              <button type="button" className="ss-btn" aria-haspopup="dialog" onClick={() => setSheet({ kind: "enquiry" })}>Enquire Now</button>
+              <Link to="/contact" className="ss-btn">Enquire Now</Link>
             </div>
           </div>
           <div className="ss-hero-art">
@@ -87,11 +79,9 @@ export default function SkillShonePage({ page, breadcrumb }: { page: Page; bread
           <ArrowUpRight className="h-7 w-7 text-muted-foreground" strokeWidth={1.25} aria-hidden="true" />
         </div>
         <ol className="ss-steps">
-          {steps.map(({ icon: Icon, t, d }, i) => (
-            <li key={t}>
-              <button type="button" className="ss-step" aria-haspopup="dialog" onClick={() => setSheet({ kind: "step", i })}>
-                <Icon className="h-6 w-6 text-primary" strokeWidth={1.25} aria-hidden="true" /><h3>{t}</h3><p>{d}</p>
-              </button>
+          {steps.map(({ icon: Icon, t, d, more }) => (
+            <li key={t} className="ss-step">
+              <Icon className="h-6 w-6 text-primary" strokeWidth={1.25} aria-hidden="true" /><h3>{t}</h3><p>{d}</p><p className="ss-step-more">{more}</p>
             </li>
           ))}
         </ol>
@@ -103,14 +93,12 @@ export default function SkillShonePage({ page, breadcrumb }: { page: Page; bread
         <h2 className="ss-h2">Everything You Need to <em>Become AI-Ready</em></h2>
         <p className="mt-3 max-w-2xl text-muted-foreground">From real-world datasets to expert mentors, all in one place.</p>
         <ul className="ss-features">
-          {features.map(({ icon: Icon, t, d, tone }, i) => (
-            <li key={t}>
-              <button type="button" className="ss-feature" aria-haspopup="dialog" onClick={() => setSheet({ kind: "feature", i })}>
-                <span className={`ss-feature-icon ss-tone-${tone}`} aria-hidden="true"><Icon className="h-5 w-5" strokeWidth={1.5} /></span>
-                <h3>{t}</h3>
-                <p>{d}</p>
-                <span className="ss-feature-more">Open<ArrowUpRight className="h-4 w-4" strokeWidth={1.5} aria-hidden="true" /></span>
-              </button>
+          {features.map(({ icon: Icon, t, d, tone, more }) => (
+            <li key={t} className="ss-feature">
+              <span className={`ss-feature-icon ss-tone-${tone}`} aria-hidden="true"><Icon className="h-5 w-5" strokeWidth={1.5} /></span>
+              <h3>{t}</h3>
+              <p>{d}</p>
+              <p className="ss-feature-more-text">{more}</p>
             </li>
           ))}
         </ul>
@@ -149,43 +137,23 @@ export default function SkillShonePage({ page, breadcrumb }: { page: Page; bread
           <section aria-label={faq.title}>
             <h2 className="ss-h2 text-center">{faq.title}</h2>
             <ul className="ss-faq-list">
-              {faqItems.map(({ q }, i) => (
-                <li key={q}>
-                  <button type="button" className="ss-faq-q" aria-haspopup="dialog" onClick={() => setSheet({ kind: "faq", i })}>
-                    <span className="ss-faq-sign" aria-hidden="true" />
-                    <span>{q}</span>
-                  </button>
-                </li>
-              ))}
+              {faqItems.map(({ q, a }, i) => {
+                const open = openFaq === i;
+                return (
+                  <li key={q} className={open ? "is-open" : undefined}>
+                    <button type="button" className="ss-faq-q" aria-expanded={open} aria-controls={`ss-faq-a-${i}`} onClick={() => setOpenFaq(open ? null : i)}>
+                      <span className="ss-faq-sign" aria-hidden="true" />
+                      <span>{q}</span>
+                    </button>
+                    <p className="ss-faq-a" id={`ss-faq-a-${i}`} hidden={!open}>{a}</p>
+                  </li>
+                );
+              })}
             </ul>
           </section>
         )}
         {cta && <BlockView block={cta} page={page} />}
       </div>
-
-      <BottomSheet open={sheet !== null} onOpenChange={(next) => { if (!next) setSheet(null); }} title={sheetTitle}>
-        {sheet?.kind === "feature" && (
-          <>
-            {(() => { const Icon = features[sheet.i].icon; return <span className={`ss-sheet-icon ss-tone-${features[sheet.i].tone}`} aria-hidden="true"><Icon className="h-5 w-5" strokeWidth={1.5} /></span>; })()}
-            <p className="ss-sheet-lead">{features[sheet.i].d}</p>
-            <p>{features[sheet.i].more}</p>
-          </>
-        )}
-        {sheet?.kind === "step" && (
-          <>
-            <p className="ss-sheet-step">Step {sheet.i + 1} of {steps.length}</p>
-            <p className="ss-sheet-lead">{steps[sheet.i].d}</p>
-            <p>{steps[sheet.i].more}</p>
-          </>
-        )}
-        {sheet?.kind === "faq" && <p className="ss-sheet-lead">{faqItems[sheet.i].a}</p>}
-        {sheet?.kind === "enquiry" && (
-          <PartnerEnquiry
-            programme="SkillShone"
-            intro={{ title: "Ask about SkillShone", description: "Enquiries are currently in test mode; no details will be sent." }}
-          />
-        )}
-      </BottomSheet>
     </main>
   );
 }
