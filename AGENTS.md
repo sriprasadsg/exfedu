@@ -12,5 +12,5 @@
 - Brand-wording checker rules live in src/lib/brandCheck.ts; AI review only via brandCheckConfig.endpoint on Exafluence AWS so the AI key never reaches the browser.
 - Website AI features call a project-hosted server function that holds the key; the browser never carries a key. Keep each feature's endpoint override in one config object so the same request can later be repointed to Exafluence-hosted delivery without touching UI code.
 - Header menus render primaryNavigation, learningEcosystemPages and sidebarPages from site.ts, independently of footer menuCategories, so primary destinations and sidebar-only resources cannot leak into each other's groups; Contact stays accessible through page calls to action.
-- Click-through detail opens in the shared bottom-sheet component (src/components/site/BottomSheet.tsx, Radix Dialog with side=bottom) rather than a per-page dialog, so every pop-up looks, scrolls and closes the same way; pages keep only short summaries and the fuller text lives in the sheet.
+- Page detail stays on the page itself rather than behind a click: no bottom-anchored panel may cover the viewport, so fuller text renders inline and expandable items (FAQs) open their answer beneath their own question, one at a time.
 
