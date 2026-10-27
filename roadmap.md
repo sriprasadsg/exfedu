@@ -235,3 +235,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] SkillShone: replace the flagged blocks with prompt-based generated artwork matching the supplied references.
 - [x] SkillShone: apply mini colourful icons and boxes with gentle animation per 27 Oct interjection.
 - [x] SkillShone: recolour the star to the SkillShone logo's navy/red combination.
+- [x] SkillShone: cap & institution badges tinted to capsule colours; heading sizes and title spacing reduced (27 Oct).
