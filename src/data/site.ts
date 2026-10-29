@@ -322,10 +322,44 @@ export const primaryNavigation = [
   { path: "/skillshone", title: "SkillShone", icon: MonitorPlay },
   { path: "/#partner-enquiry", title: "Enquire Now", icon: Mail },
 ] as const;
-const learningPaths = ["/practical-learning", "/internships", "/career-development", "/research-innovation", "/student-success"];
-const sidebarPaths = ["/students-corner", "/gallery", "/events-news"];
-export const learningEcosystemPages = learningPaths.flatMap(path => pages.filter(page => page.path === path));
-export const sidebarPages = sidebarPaths.flatMap(path => pages.filter(page => page.path === path));
+/** Approved section menu for an organisation page. Sections without verified
+ * university facts stay flagged for review rather than invented (client, 29 Oct 2026). */
+export type OrganisationSection = {
+  id: string; title: string; icon: LucideIcon; tone: Tone;
+  text?: string; pending?: string; link?: { label: string; path: string };
+};
+const svuSlide = collaborationSlides.find(s => s.organisation === "SVU")!;
+export const organisationSections: Partial<Record<Organisation, OrganisationSection[]>> = {
+  SVU: [
+    { id: "overview", title: "Overview", icon: Building2, tone: "blue", text: svuSlide.text },
+    { id: "programmes", title: "Programmes", icon: GraduationCap, tone: "teal" },
+    { id: "projects-research", title: "Projects & Research", icon: Lightbulb, tone: "violet",
+      text: "Programme learning includes real-time projects, industry mentoring, case studies and a final-semester capstone addressing business challenges.",
+      pending: "SVU research publications, funded projects and research lab details await approved university content.",
+      link: { label: "Research & Innovation", path: "/research-innovation" } },
+    { id: "internships", title: "Internships", icon: Briefcase, tone: "amber",
+      text: "The Python for AI/ML/Gen AI, Data Visualisation and Cloud Technologies diplomas list an internship and project as part of the programme.",
+      pending: "SVU internship durations, host organisations and application windows await approved university content.",
+      link: { label: "Internships & Industry Exposure", path: "/internships" } },
+    { id: "placements", title: "Placements", icon: Compass, tone: "blue",
+      pending: "SVU placement statistics, recruiting organisations and verified outcome records await approved university data.",
+      link: { label: "Career Development", path: "/career-development" } },
+  ],
+};
+
+/** Achievements, events and gallery now sit on the SVU overview page (client, 29 Oct 2026). */
+export const svuOverviewBlocks: { id: string; title: string; icon: LucideIcon; tone: Tone; pending: string; link: { label: string; path: string } }[] = [
+  { id: "achievements", title: "Student Achievements", icon: Award, tone: "amber", pending: "Student achievements, competition results and recognised outcomes await approved university records.", link: { label: "Student Success", path: "/student-success" } },
+  { id: "events", title: "Events", icon: Newspaper, tone: "violet", pending: "SVU event listings and announcements await approved content.", link: { label: "Events & News", path: "/events-news" } },
+  { id: "gallery", title: "Gallery", icon: Images, tone: "teal", pending: "Photographs from SVU events, visits and campus life await approved images.", link: { label: "Gallery & Highlights", path: "/gallery" } },
+];
+
+/** Academic resources now appear on the programme pages themselves. */
+export const academicResources = {
+  items: ["Academic Resources", "Projects & Capstones", "Downloads", "Support"],
+  note: "Programme-specific files await approval. Published resources appear in Student’s Corner.",
+  link: { label: "Student’s Corner", path: "/students-corner" },
+};
 
 /** Hub arms: every arm is subordinate to the central Exafluence Education brand. */
 export const arms: { title: string; path: string; icon: LucideIcon; subtitle: string; priority: "institutional" | "learning" | "student" }[] = [
