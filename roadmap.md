@@ -245,3 +245,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] SkillShone page: removed the closing "Visit SkillShone" button (heading and contact text retained); hero button pair recoloured to the wordmark navy-to-red blend and pale sky-blue outline, logo colours untouched.
 - [ ] SVU section menu: Overview | Programmes | Projects & Research | Internships | Placements on the SVU page; unapproved sections stay flagged, never invented.
 - [ ] Programme detail pages follow: Overview → Eligibility → Duration & Delivery → Programme Features → Curriculum → Admission Process → Brochure & Enquiry.
+- [ ] SVU overview page: student achievements, events and gallery as sections; academic resources placed within the relevant programme pages.
