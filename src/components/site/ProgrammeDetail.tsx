@@ -58,7 +58,7 @@ const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { progr
               </>
             )}
           </nav>
-          <img className="programme-detail-logo" src={org.logo} alt={`${org.name} logo`} />
+          <img className={`programme-detail-logo ${org.logoClass}`} src={org.logo} alt={`${org.name} logo`} />
           <h1>{p.title}</h1>
           <p>{p.overview}</p>
           <dl className="programme-facts">

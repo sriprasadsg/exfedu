@@ -33,7 +33,7 @@ const OrganisationProgrammes = ({ organisation }: { organisation: Organisation }
   return <main className="programme-experience organisation-programmes">
     <header className="programme-intro"><div className="container">
       <nav aria-label="Breadcrumb"><Link to="/">Home</Link><span aria-hidden="true">/</span><Link to="/collaboration-network">Our Collaboration Network</Link><span aria-hidden="true">/</span><span aria-current="page">{org.name}</span></nav>
-      <img className="programme-detail-logo" src={org.logo} alt={`${org.name} logo`} />
+      <img className={`programme-detail-logo ${org.logoClass}`} src={org.logo} alt={`${org.name} logo`} />
       <h1>{org.name} {organisation === "XIME" ? "Programme" : "Programmes"}</h1><p>{slide?.text}</p>
     </div></header>
     {sections && <nav aria-label={`${org.name} sections`} className="organisation-section-nav"><div className="container organisation-section-nav-inner">{sections.map(section => <a key={section.id} href={`#${section.id}`}><section.icon size={16} aria-hidden="true" />{section.title}</a>)}</div></nav>}

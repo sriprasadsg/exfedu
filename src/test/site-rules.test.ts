@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { arms, categories, collaborationSlides, homepageCapabilities, pages, programmes, retiredPageDestinations, navPages, primaryNavigation, organisationSections, svuOverviewBlocks, academicResources } from "@/data/site";
+import { arms, categories, collaborationSlides, homepageCapabilities, organisations, pages, programmes, retiredPageDestinations, navPages, primaryNavigation, organisationSections, svuOverviewBlocks, academicResources } from "@/data/site";
 
 describe("approved website structure", () => {
   it("presents FIS Global, Snowflake and MongoDB together without award years", () => {
@@ -93,5 +93,11 @@ describe("approved website structure", () => {
       expect("tile" in slide).toBe(false);
     }
     expect(new Set(collaborationSlides.map((slide) => slide.image)).size).toBe(3);
+  });
+  it("shows Sri Venkateswara University's supplied logo artwork in its wider slot", () => {
+    expect(organisations.SVU.logo).toContain("c9ca94b2-e037-43af-8e7b-a9a0742353b0");
+    expect(organisations.SVU.logoClass).toBe("logo-wide");
+    expect(organisations.XIME.logoClass).toBe("");
+    expect(organisations.IBM.logoClass).toBe("");
   });
 });
