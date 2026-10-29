@@ -69,7 +69,11 @@ const enquire = (label = "Enquire Now"): Block => ({ type: "cta", title: "Have a
 
 export type Tone = "blue" | "teal" | "amber" | "violet";
 
-export const organisations = { SVU: { name: "Sri Venkateswara University", logo: svuLogo.url }, XIME: { name: "XIME Chennai", logo: ximeLogo.url }, IBM: { name: "IBM", logo: ibmLogo.url } };
+export const organisations = {
+  SVU: { name: "Sri Venkateswara University", logo: svuLogo.url, logoClass: "logo-wide" },
+  XIME: { name: "XIME Chennai", logo: ximeLogo.url, logoClass: "" },
+  IBM: { name: "IBM", logo: ibmLogo.url, logoClass: "" },
+};
 export type Organisation = keyof typeof organisations;
 export type Programme = {
   slug: string; title: string; level: string; organisation: Organisation; subjects: string[]; icon: LucideIcon; tone: Tone;

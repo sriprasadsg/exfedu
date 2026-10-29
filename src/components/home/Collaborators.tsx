@@ -19,7 +19,7 @@ const Collaborators = () => {
         <div ref={viewport} className="network-viewport"><div className="network-track">
           {collaborationSlides.map((slide, i) => <article key={slide.organisation} className="network-slide" aria-label={`${i + 1} of 3: ${organisations[slide.organisation].name}`} aria-hidden={active !== i}>
             <div className="network-image"><img src={slide.image} alt={slide.alt} loading="lazy" /></div>
-            <div className="network-panel"><img className="network-logo" src={organisations[slide.organisation].logo} alt={`${organisations[slide.organisation].name} logo`} loading="lazy" />
+            <div className="network-panel"><img className={`network-logo ${organisations[slide.organisation].logoClass}`} src={organisations[slide.organisation].logo} alt={`${organisations[slide.organisation].name} logo`} loading="lazy" />
               <h3>{slide.heading}</h3><p>{slide.text}</p><Button asChild><Link tabIndex={active === i ? 0 : -1} to={organisationPath(slide.organisation)}>{slide.label}<ArrowRight aria-hidden="true" /></Link></Button>
             </div>
           </article>)}
