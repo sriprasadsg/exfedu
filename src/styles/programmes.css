@@ -107,7 +107,7 @@
 @media (max-width: 1050px) { .programme-filters { grid-template-columns: repeat(2, minmax(0, 1fr)); } .programme-filters > button { justify-self: start; } .programme-table-head, .programme-row { gap: 15px; grid-template-columns: minmax(0, 2fr) .7fr 1fr 1fr 45px; } .programme-detail-body { gap: 35px; } }
 @media (max-width: 767px) {
  .network-section { padding-top: 30px; } .network-heading h1 { font-size: 25px; } .network-image { height: 260px; } .network-image > img { object-position: center; }
- .network-panel { width: 100%; margin: 0; padding: 24px; box-shadow: none; border-top: none; } .network-panel h3 { font-size: 23px; } .network-tech { top: 12px; left: 12px; } .network-panel a { white-space: normal; height: auto; min-height: 44px; text-align: left; }
+ .network-panel { width: 100%; margin: 0; padding: 24px; box-shadow: none; border-top: none; } .network-panel h3 { font-size: 23px; } .network-tech { top: 12px; left: 12px; } .network-tech img { width: 72px; height: 72px; border-radius: 10px; } .network-panel a { white-space: normal; height: auto; min-height: 44px; text-align: left; }
  .programme-intro h1 { font-size: 30px; } .programme-intro .programme-subtitle { font-size: 18px; } .programme-table-head { display: none; }
  .programme-row { grid-template-columns: repeat(3, minmax(0, 1fr)) 35px; gap: 12px; padding: 24px 0; } .programme-row > div { grid-column: 1 / -1; } .programme-mobile-label { display: block; font-size: 11px; color: hsl(var(--muted-foreground)); margin-bottom: 5px; }
  .programme-detail-body { grid-template-columns: minmax(0, 1fr); gap: 32px; } .programme-actions { position: static; border-left: 0; padding-left: 0; border-top: 1px solid hsl(var(--academic-edge)); padding-top: 24px; }
