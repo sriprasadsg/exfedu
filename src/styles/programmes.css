@@ -116,3 +116,40 @@
 @media (max-width: 420px) { .programme-filters { grid-template-columns: minmax(0, 1fr); } .network-logo { height: 50px; } }
 @media (prefers-reduced-motion: reduce) { .network-section *, .programme-experience * { animation: none !important; transition: none !important; scroll-behavior: auto; } }
 @media (prefers-reduced-motion: reduce) { .programme-reveal:not(.is-visible) { opacity: 1; transform: none; } }
+/* Organisation section menu (client, 29 October 2026): SVU's overview, programmes,
+   projects & research, internships and placements read as one continuous page. */
+.organisation-section-nav { position: sticky; top: 80px; z-index: 20; padding-block: 12px; background: hsl(var(--background)); border-bottom: 1px solid hsl(var(--academic-edge)); }
+.organisation-section-nav-inner { display: flex; flex-wrap: wrap; gap: 8px; }
+.organisation-section-nav a { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 16px; border: 1px solid hsl(var(--academic-edge)); border-radius: 999px; font-size: 13px; font-weight: 500; color: hsl(var(--programme-blue)); background: hsl(var(--background)); transition: background-color 300ms ease, color 300ms ease, border-color 300ms ease, transform 300ms ease; }
+.organisation-section-nav a:hover { background: hsl(var(--programme-blue) / .08); border-color: hsl(var(--programme-blue) / .35); transform: translateY(-1px); }
+.organisation-sections { min-width: 0; }
+.organisation-section { padding: 30px 0; border-bottom: 1px solid hsl(var(--academic-edge)); scroll-margin-top: 152px; }
+.organisation-section:last-child { border-bottom: 0; }
+.organisation-section-heading { display: flex; align-items: center; gap: 14px; font-size: 24px; font-weight: 500; line-height: 1.4; margin-bottom: 16px; }
+.organisation-section-text { font-size: 15px; line-height: 1.8; color: hsl(var(--muted-foreground)); max-width: 820px; }
+.organisation-overview-facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 22px; }
+.organisation-overview-facts > div { padding: 16px 18px; border: 1px solid hsl(var(--academic-edge)); border-radius: 10px; background: hsl(var(--academic-surface)); }
+.organisation-overview-facts dt { font-size: 12px; letter-spacing: .04em; text-transform: uppercase; color: hsl(var(--muted-foreground)); }
+.organisation-overview-facts dd { font-size: 15px; font-weight: 500; margin-top: 6px; }
+.organisation-section-pending { display: flex; flex-direction: column; gap: 6px; margin-top: 18px; padding: 14px 16px; border-left: 3px solid hsl(var(--programme-blue) / .4); background: hsl(var(--programme-blue) / .05); font-size: 14px; line-height: 1.7; color: hsl(var(--muted-foreground)); }
+.organisation-section-pending > span { font-size: 12px; font-weight: 500; letter-spacing: .04em; text-transform: uppercase; color: hsl(var(--programme-blue)); }
+.organisation-section .organisation-programme-list { margin-top: 6px; }
+.organisation-subsection { margin-top: 26px; padding-top: 22px; border-top: 1px solid hsl(var(--academic-edge)); scroll-margin-top: 152px; }
+.organisation-subsection h3 { display: flex; align-items: center; gap: 12px; font-size: 19px; font-weight: 500; }
+.organisation-subsection .organisation-section-pending { margin-top: 12px; }
+.organisation-subsection > .inline-flex { margin-top: 14px; }
+.organisation-programmes .programme-actions { top: 156px; }
+
+/* Programme page academic resources, curriculum tools and the closing enquiry row. */
+.programme-section-sub { margin-top: 22px; }
+.programme-section-sub h3 { display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 500; color: hsl(var(--programme-blue)); margin-bottom: 12px; }
+.programme-section-note { display: flex; align-items: flex-start; gap: 10px; margin-top: 18px; padding: 14px 16px; border-radius: 10px; background: hsl(var(--programme-practical) / .07); font-size: 14px; line-height: 1.7; }
+.programme-section-note svg { flex-shrink: 0; margin-top: 3px; color: hsl(var(--programme-practical)); }
+.programme-resource-box { padding: 20px 22px; border: 1px solid hsl(var(--academic-edge)); border-radius: 12px; background: hsl(var(--academic-surface)); }
+.programme-resource-box h3 { font-size: 17px; font-weight: 500; margin-bottom: 12px; }
+.programme-resource-box ul { list-style: disc; padding-left: 22px; }
+.programme-resource-box li { font-size: 14px; line-height: 1.8; }
+.programme-resource-box p { font-size: 13px; line-height: 1.7; color: hsl(var(--muted-foreground)); margin: 12px 0 14px; }
+.programme-enquiry-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 22px; }
+@media (max-width: 767px) { .organisation-section-nav { top: 72px; } .organisation-section-nav a { min-height: 38px; padding: 0 13px; font-size: 12px; } .organisation-section { padding: 24px 0; } .organisation-section-heading { font-size: 21px; } .organisation-overview-facts { grid-template-columns: minmax(0, 1fr); } }
+@media (prefers-reduced-motion: reduce) { .organisation-section-nav a { transition: none; } .organisation-section-nav a:hover { transform: none; } }

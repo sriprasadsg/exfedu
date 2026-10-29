@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { arms, categories, homepageCapabilities, pages, programmes, retiredPageDestinations, navPages, primaryNavigation, learningEcosystemPages, sidebarPages } from "@/data/site";
+import { arms, categories, homepageCapabilities, pages, programmes, retiredPageDestinations, navPages, primaryNavigation, organisationSections, svuOverviewBlocks, academicResources } from "@/data/site";
 
 describe("approved website structure", () => {
   it("presents FIS Global, Snowflake and MongoDB together without award years", () => {
@@ -44,13 +44,24 @@ describe("approved website structure", () => {
     expect(primaryNavigation.map(item => item.path)).toEqual(["/about", "/collaboration-network", "/skillshone", "/#partner-enquiry"]);
     expect(primaryNavigation.map(item => item.title)).toEqual(["About Us", "Our Collaboration Network", "SkillShone", "Enquire Now"]);
   });
-  it("groups exactly five learning destinations in the phone menu", () => {
-    expect(learningEcosystemPages.map(page => page.path)).toEqual(["/practical-learning", "/internships", "/career-development", "/research-innovation", "/student-success"]);
+  it("gives SVU exactly five approved sections in the collaboration menu", () => {
+    expect(Object.keys(organisationSections)).toEqual(["SVU"]);
+    expect(organisationSections.SVU?.map(section => section.title)).toEqual(["Overview", "Programmes", "Projects & Research", "Internships", "Placements"]);
+    expect(organisationSections.SVU?.map(section => section.id)).toEqual(["overview", "programmes", "projects-research", "internships", "placements"]);
   });
-  it("keeps the remaining student resources in the sidebar, outside the primary learning group", () => {
-    expect(sidebarPages.map(page => page.path)).toEqual(["/students-corner", "/gallery", "/events-news"]);
-    expect(learningEcosystemPages.some(page => sidebarPages.some(resource => resource.path === page.path))).toBe(false);
-    expect(sidebarPages.some(page => page.path === "/skillshone")).toBe(false);
+  it("keeps Learning Ecosystem out of the desktop menu and holds unverified SVU sections as flagged", () => {
+    expect(primaryNavigation.map(item => item.title)).not.toContain("Learning Ecosystem");
+    const unverified = organisationSections.SVU?.filter(section => !section.text && section.id !== "programmes") ?? [];
+    expect(unverified.map(section => section.id)).toEqual(["placements"]);
+    expect(unverified.every(section => Boolean(section.pending) && Boolean(section.link))).toBe(true);
+  });
+  it("moves achievements, events and gallery onto the SVU overview and academic resources onto programme pages", () => {
+    expect(svuOverviewBlocks.map(block => block.title)).toEqual(["Student Achievements", "Events", "Gallery"]);
+    expect(svuOverviewBlocks.every(block => block.pending.includes("await"))).toBe(true);
+    expect(svuOverviewBlocks.map(block => block.link.path)).toEqual(["/student-success", "/events-news", "/gallery"]);
+    expect(academicResources.link.path).toBe("/students-corner");
+    expect(academicResources.items).toContain("Academic Resources");
+    expect(pages.some(page => page.path === "/students-corner")).toBe(true);
   });
   it("does not display unconfirmed future partners or industry networks", () => {
     const blocks = pages.flatMap((p) => p.blocks);
