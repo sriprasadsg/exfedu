@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { arms, categories, homepageCapabilities, pages, programmes, retiredPageDestinations, navPages, primaryNavigation, organisationSections, svuOverviewBlocks, academicResources } from "@/data/site";
+import { arms, categories, collaborationSlides, homepageCapabilities, pages, programmes, retiredPageDestinations, navPages, primaryNavigation, organisationSections, svuOverviewBlocks, academicResources } from "@/data/site";
 
 describe("approved website structure", () => {
   it("presents FIS Global, Snowflake and MongoDB together without award years", () => {
@@ -80,5 +80,18 @@ describe("approved website structure", () => {
   it("connects all eleven ecosystem arms to existing pages", () => {
     expect(arms).toHaveLength(11);
     for (const arm of arms) expect(pages.some((p) => p.path === arm.path)).toBe(true);
+  });
+  it("gives every collaboration partner its own illustration tile", () => {
+    const expected: Record<string, string> = {
+      SVU: "svu-partner-illustration.png",
+      XIME: "xime-partner-illustration.png",
+      IBM: "ibm-partner-illustration.png",
+    };
+    expect(collaborationSlides).toHaveLength(3);
+    for (const slide of collaborationSlides) {
+      expect(slide.tile).toContain(expected[slide.organisation]);
+      expect(slide.tileAlt).not.toHaveLength(0);
+    }
+    expect(new Set(collaborationSlides.map((slide) => slide.tile)).size).toBe(3);
   });
 });
