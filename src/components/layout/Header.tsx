@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import logo from "@/assets/exfedu-logo-darker.png.asset.json";
-import { Menu, X, ChevronDown, Search, Plus, Minus } from "lucide-react";
+import { Menu, X, Search, Plus, Minus } from "lucide-react";
 import { menuCategories, navPages, primaryNavigation, learningEcosystemPages, sidebarPages, organisations, programmes, type Organisation } from "@/data/site";
 import { organisationPath, programmePath } from "@/lib/programmeNavigation";
 import { Building2, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@/components/ui/dropdown-menu";
+
 const Header = () => {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
@@ -36,26 +36,9 @@ const Header = () => {
         </Link>
         <nav aria-label="Main navigation" className="hidden items-center gap-0 min-[900px]:flex">
           {primaryNavigation.map((item) => (
-            item.path === null ? (
-              <DropdownMenu key={item.title}>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" className="nav-on-navy cat-learning gap-1.5 px-2 lg:px-3" aria-current={learningEcosystemPages.some(page => page.path === pathname) ? "page" : undefined}>
-                    <item.icon aria-hidden="true" />{item.title}<ChevronDown aria-hidden="true" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="nav-menu-panel w-80 max-w-[calc(100vw-2rem)] p-2">
-                  {learningEcosystemPages.map(page => (
-                    <DropdownMenuItem key={page.path} asChild className="nav-menu-item min-h-11 cursor-pointer gap-2.5">
-                      <Link to={page.path} aria-current={pathname === page.path ? "page" : undefined}><page.icon className="h-4 w-4 shrink-0" aria-hidden="true" /><span className="whitespace-normal">{page.title}</span></Link>
-                    </DropdownMenuItem>
-                  ))}
-                </DropdownMenuContent>
-              </DropdownMenu>
-            ) : (
-              <Button key={item.path} asChild variant={item.path.includes("#") ? "default" : "ghost"} size={item.path.includes("#") ? "sm" : "default"} className={item.path.includes("#") ? "ml-2 nav-cta gap-1.5" : "nav-on-navy gap-1.5 px-2 lg:px-3"}>
-                <Link to={item.path} aria-current={!item.path.includes("#") && pathname.startsWith(item.path) ? "page" : undefined}><item.icon aria-hidden="true" />{item.title}</Link>
-              </Button>
-            )
+            <Button key={item.path} asChild variant={item.path.includes("#") ? "default" : "ghost"} size={item.path.includes("#") ? "sm" : "default"} className={item.path.includes("#") ? "ml-2 nav-cta gap-1.5" : "nav-on-navy gap-1.5 px-2 lg:px-3"}>
+              <Link to={item.path} aria-current={!item.path.includes("#") && pathname.startsWith(item.path) ? "page" : undefined}><item.icon aria-hidden="true" />{item.title}</Link>
+            </Button>
           ))}
         </nav>
         <Button variant="ghost" size="icon" className="nav-on-navy nav-icon-btn" onClick={() => setOpen(!open)} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} aria-controls="mobile-navigation">
@@ -79,8 +62,8 @@ const Header = () => {
                 </ul>
               ) : (
                 <ul className="border-b">
-                  {primaryNavigation.filter(item => item.path !== null && !item.path.includes("#")).map(item => (
-                    <li key={item.path} className="border-t first:border-t-0"><Link to={item.path ?? "/"} onClick={() => setOpen(false)} className="flex min-h-12 items-center gap-3 text-base font-medium text-primary"><item.icon className="h-4 w-4 shrink-0" aria-hidden="true" />{item.title}</Link></li>
+                  {primaryNavigation.filter(item => !item.path.includes("#")).map(item => (
+                    <li key={item.path} className="border-t first:border-t-0"><Link to={item.path} onClick={() => setOpen(false)} className="flex min-h-12 items-center gap-3 text-base font-medium text-primary"><item.icon className="h-4 w-4 shrink-0" aria-hidden="true" />{item.title}</Link></li>
                   ))}
                   <li className="border-t">
                     <Button variant="ghost" onClick={() => setExpanded(expanded ? null : "learning")} aria-expanded={expanded === "learning"} aria-controls="sidebar-learning" className="h-auto min-h-12 w-full justify-between gap-4 rounded-none px-0 text-left text-base font-medium text-primary whitespace-normal">
