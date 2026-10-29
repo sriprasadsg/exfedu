@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import logo from "@/assets/exfedu-logo-darker.png.asset.json";
-import { Menu, X, Search, Plus, Minus } from "lucide-react";
-import { menuCategories, navPages, primaryNavigation, learningEcosystemPages, sidebarPages, organisations, programmes, type Organisation } from "@/data/site";
+import { Menu, X, Search, Plus, Minus, Network } from "lucide-react";
+import { menuCategories, navPages, organisationSections, primaryNavigation, organisations, programmes, type Organisation } from "@/data/site";
 import { organisationPath, programmePath } from "@/lib/programmeNavigation";
 import { Building2, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
+
+const collaborationOrder: Organisation[] = ["SVU", "XIME", "IBM"];
 
 const Header = () => {
   const [open, setOpen] = useState(false);
@@ -27,6 +29,9 @@ const Header = () => {
     ...programmes.map((p) => ({ path: programmePath(p), title: `${p.title} (${organisations[p.organisation].name})`, icon: BookOpen })),
     ...menuCategories.flatMap((c) => navPages(c.slug)),
   ].filter((s) => `${s.title} ${"searchKeywords" in s ? s.searchKeywords : ""}`.toLowerCase().includes(q)) : [];
+  const svuSections = organisationSections.SVU ?? [];
+  const openGroup = expanded === "collaboration";
+
   return (
     <header className="site-header sticky top-0 z-50 border-b">
       <div className="container flex h-20 items-center justify-between gap-2">
@@ -62,18 +67,31 @@ const Header = () => {
                 </ul>
               ) : (
                 <ul className="border-b">
-                  {primaryNavigation.filter(item => !item.path.includes("#")).map(item => (
+                  {primaryNavigation.filter(item => !item.path.includes("#") && item.path !== "/collaboration-network").map(item => (
                     <li key={item.path} className="border-t first:border-t-0"><Link to={item.path} onClick={() => setOpen(false)} className="flex min-h-12 items-center gap-3 text-base font-medium text-primary"><item.icon className="h-4 w-4 shrink-0" aria-hidden="true" />{item.title}</Link></li>
                   ))}
                   <li className="border-t">
-                    <Button variant="ghost" onClick={() => setExpanded(expanded ? null : "learning")} aria-expanded={expanded === "learning"} aria-controls="sidebar-learning" className="h-auto min-h-12 w-full justify-between gap-4 rounded-none px-0 text-left text-base font-medium text-primary whitespace-normal">
-                      Learning Ecosystem{expanded ? <Minus aria-hidden="true" /> : <Plus aria-hidden="true" />}
-                    </Button>
-                    {expanded && <div id="sidebar-learning" className="pb-3">{learningEcosystemPages.map(page => <Link key={page.path} to={page.path} onClick={() => setOpen(false)} className="flex min-h-10 items-center gap-3 py-1 text-sm text-foreground hover:text-primary"><page.icon className="h-4 w-4 shrink-0" aria-hidden="true" />{page.title}</Link>)}</div>}
+                    <div className="flex min-h-12 items-center gap-2">
+                      <Link to="/collaboration-network" onClick={() => setOpen(false)} className="flex min-w-0 flex-1 items-center gap-3 text-base font-medium text-primary"><Network className="h-4 w-4 shrink-0" aria-hidden="true" />Our Collaboration Network</Link>
+                      <Button type="button" variant="ghost" size="icon" aria-label={openGroup ? "Hide collaboration sections" : "Show collaboration sections"} aria-expanded={openGroup} aria-controls="sidebar-collaboration" onClick={() => setExpanded(openGroup ? null : "collaboration")} className="h-9 w-9 shrink-0 text-primary">{openGroup ? <Minus className="h-4 w-4" aria-hidden="true" /> : <Plus className="h-4 w-4" aria-hidden="true" />}</Button>
+                    </div>
+                    {openGroup && (
+                      <div id="sidebar-collaboration" className="pb-3">
+                        {collaborationOrder.map((organisation) => (
+                          <div key={organisation} className="pt-1">
+                            <Link to={organisationPath(organisation)} onClick={() => setOpen(false)} className="flex min-h-10 items-center gap-3 text-sm font-medium text-primary">{organisations[organisation].name}</Link>
+                            {organisation === "SVU" && (
+                              <ul className="ml-2 border-l pl-4">
+                                {svuSections.map(section => (
+                                  <li key={section.id}><Link to={`/collaboration-network/svu#${section.id}`} onClick={() => setOpen(false)} className="flex min-h-9 items-center gap-2.5 py-0.5 text-sm text-foreground hover:text-primary"><section.icon className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />{section.title}</Link></li>
+                                ))}
+                              </ul>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </li>
-                  {sidebarPages.map(page => (
-                    <li key={page.path} className="border-t"><Link to={page.path} onClick={() => setOpen(false)} className="flex min-h-11 items-center gap-3 py-2 text-sm font-medium text-primary"><page.icon className="h-4 w-4 shrink-0" aria-hidden="true" />{page.title}</Link></li>
-                  ))}
                 </ul>
               )}
               <div className="mt-6 flex flex-col gap-4 text-sm font-medium text-foreground">
