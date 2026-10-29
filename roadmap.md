@@ -246,3 +246,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [ ] SVU section menu: Overview | Programmes | Projects & Research | Internships | Placements on the SVU page; unapproved sections stay flagged, never invented.
 - [ ] Programme detail pages follow: Overview → Eligibility → Duration & Delivery → Programme Features → Curriculum → Admission Process → Brochure & Enquiry.
 - [ ] SVU overview page: student achievements, events and gallery as sections; academic resources placed within the relevant programme pages.
+- [ ] Remove Learning Ecosystem from the main menu and the ☰ drawer; under Our Collaboration Network → SVU show Overview, Programmes, Projects & Research, Internships, Placements; drop Student's Corner, Gallery & Highlights and Events & News as standalone drawer links (content moves into SVU pages); keep XIME, IBM and SkillShone separately accessible.
