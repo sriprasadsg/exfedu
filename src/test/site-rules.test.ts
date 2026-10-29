@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { arms, categories, collaborationSlides, homepageCapabilities, pages, programmes, retiredPageDestinations, navPages, primaryNavigation, organisationSections, svuOverviewBlocks, academicResources } from "@/data/site";
+import { arms, categories, collaborationSlides, homepageCapabilities, organisations, pages, programmes, retiredPageDestinations, navPages, primaryNavigation, organisationSections, svuOverviewBlocks, academicResources } from "@/data/site";
 
 describe("approved website structure", () => {
   it("presents FIS Global, Snowflake and MongoDB together without award years", () => {
