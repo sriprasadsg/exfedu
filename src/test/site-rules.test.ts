@@ -42,7 +42,7 @@ describe("approved website structure", () => {
   });
   it("keeps the four approved desktop destinations in order", () => {
     expect(primaryNavigation.map(item => item.path)).toEqual(["/about", "/collaboration-network", "/skillshone", "/#partner-enquiry"]);
-    expect(primaryNavigation.some(item => item.title === "Programmes" || item.title === "Learning Ecosystem")).toBe(false);
+    expect(primaryNavigation.map(item => item.title)).toEqual(["About Us", "Our Collaboration Network", "SkillShone", "Enquire Now"]);
   });
   it("groups exactly five learning destinations in the phone menu", () => {
     expect(learningEcosystemPages.map(page => page.path)).toEqual(["/practical-learning", "/internships", "/career-development", "/research-innovation", "/student-success"]);
