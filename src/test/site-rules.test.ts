@@ -81,7 +81,7 @@ describe("approved website structure", () => {
     expect(arms).toHaveLength(11);
     for (const arm of arms) expect(pages.some((p) => p.path === arm.path)).toBe(true);
   });
-  it("gives every collaboration partner its own illustration tile", () => {
+  it("uses each uploaded partner illustration as the main banner artwork without a thumbnail", () => {
     const expected: Record<string, string> = {
       SVU: "svu-partner-illustration.png",
       XIME: "xime-partner-illustration.png",
@@ -89,9 +89,9 @@ describe("approved website structure", () => {
     };
     expect(collaborationSlides).toHaveLength(3);
     for (const slide of collaborationSlides) {
-      expect(slide.tile).toContain(expected[slide.organisation]);
-      expect(slide.tileAlt).not.toHaveLength(0);
+      expect(slide.image).toContain(expected[slide.organisation]);
+      expect("tile" in slide).toBe(false);
     }
-    expect(new Set(collaborationSlides.map((slide) => slide.tile)).size).toBe(3);
+    expect(new Set(collaborationSlides.map((slide) => slide.image)).size).toBe(3);
   });
 });

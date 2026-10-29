@@ -9,12 +9,9 @@ import type { EnquiryIntro } from "@/components/home/PartnerEnquiry";
 import svuLogo from "@/assets/svu-logo.png.asset.json";
 import ximeLogo from "@/assets/xime-logo.png.asset.json";
 import ibmLogo from "@/assets/ibm-partner-badge.png.asset.json";
-import academicVisual from "@/assets/academic-collab-network-2.png.asset.json";
-import industryVisual from "@/assets/industry-collab-network.png.asset.json";
-import technologyVisual from "@/assets/home-hero-ai-cloud.png.asset.json";
-import svuTile from "@/assets/svu-partner-illustration.png.asset.json";
-import ximeTile from "@/assets/xime-partner-illustration.png.asset.json";
-import ibmTile from "@/assets/ibm-partner-illustration.png.asset.json";
+import svuIllustration from "@/assets/svu-partner-illustration.png.asset.json";
+import ximeIllustration from "@/assets/xime-partner-illustration.png.asset.json";
+import ibmIllustration from "@/assets/ibm-partner-illustration.png.asset.json";
 
 /** Content is data-only: add approved pages, partners or programmes here without touching layouts. */
 export type Offering = { name: string; significance: string[]; benefits: string };
@@ -98,9 +95,9 @@ export const programmes: Programme[] = [
 ];
 
 export const collaborationSlides = [
-  { organisation: "SVU" as Organisation, heading: "Industry-Integrated University Programmes", text: "Explore programmes offered through the collaboration between Sri Venkateswara University and Exafluence Education. Develop knowledge in Data Science, Python for AI, ML and Gen AI, Data Visualisation and Cloud Technologies through academic learning and practical application.", label: "Explore Programmes & Admissions", image: academicVisual.url, alt: "University and technology learning network", tile: svuTile.url, tileAlt: "University campus connected to data and AI systems" },
-  { organisation: "XIME" as Organisation, heading: "Technology Learning with a Business Perspective", text: "Explore the programme offered through XIME Chennai and Exafluence Education, connecting technical learning with business applications and analytical thinking.", label: "Explore Programme Details", image: industryVisual.url, alt: "Business analytics and technology collaboration network", tile: ximeTile.url, tileAlt: "Secure fintech analytics and mobile payments" },
-  { organisation: "IBM" as Organisation, heading: "Industry-Integrated Learning in Emerging Technologies", text: "Explore IBM programmes offered in collaboration with Exafluence Education, including semester-based courses, value-added learning, Quantum Computing and Project-Based Experiential Learning. Review practical learning opportunities tailored to the selected course and institutional requirements.", label: "Explore IBM Programmes", image: technologyVisual.url, alt: "AI processor, cloud, database and graduation cap", tile: ibmTile.url, tileAlt: "AI coding and quantum assembly" },
+  { organisation: "SVU" as Organisation, heading: "Industry-Integrated University Programmes", text: "Explore programmes offered through the collaboration between Sri Venkateswara University and Exafluence Education. Develop knowledge in Data Science, Python for AI, ML and Gen AI, Data Visualisation and Cloud Technologies through academic learning and practical application.", label: "Explore Programmes & Admissions", image: svuIllustration.url, alt: "University campus connected to data and AI systems" },
+  { organisation: "XIME" as Organisation, heading: "Technology Learning with a Business Perspective", text: "Explore the programme offered through XIME Chennai and Exafluence Education, connecting technical learning with business applications and analytical thinking.", label: "Explore Programme Details", image: ximeIllustration.url, alt: "Secure fintech analytics and mobile payments" },
+  { organisation: "IBM" as Organisation, heading: "Industry-Integrated Learning in Emerging Technologies", text: "Explore IBM programmes offered in collaboration with Exafluence Education, including semester-based courses, value-added learning, Quantum Computing and Project-Based Experiential Learning. Review practical learning opportunities tailored to the selected course and institutional requirements.", label: "Explore IBM Programmes", image: ibmIllustration.url, alt: "AI coding and quantum assembly" },
 ];
 
 // Source-specific enrichment; intake labels above come from the approved brief,
