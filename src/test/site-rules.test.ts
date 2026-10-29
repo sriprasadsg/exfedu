@@ -40,15 +40,17 @@ describe("approved website structure", () => {
   it("keeps exactly four requested categories", () => {
     expect(categories.map((c) => c.title)).toEqual(["Core", "Our Collaboration Network", "Industry & Technology Collaborations", "Learning Ecosystem"]);
   });
-  it("omits Programmes from the desktop while preserving the other primary destinations", () => {
-    expect(primaryNavigation.map(item => item.path)).toEqual(["/about", "/collaboration-network", null, "/#partner-enquiry"]);
+  it("keeps the four approved desktop destinations in order", () => {
+    expect(primaryNavigation.map(item => item.path)).toEqual(["/about", "/collaboration-network", "/skillshone", "/#partner-enquiry"]);
+    expect(primaryNavigation.some(item => item.title === "Programmes" || item.title === "Learning Ecosystem")).toBe(false);
   });
-  it("groups exactly five learning destinations in the primary dropdown", () => {
+  it("groups exactly five learning destinations in the phone menu", () => {
     expect(learningEcosystemPages.map(page => page.path)).toEqual(["/practical-learning", "/internships", "/career-development", "/research-innovation", "/student-success"]);
   });
-  it("keeps the four student resources in the sidebar, outside the primary learning group", () => {
-    expect(sidebarPages.map(page => page.path)).toEqual(["/students-corner", "/skillshone", "/gallery", "/events-news"]);
+  it("keeps the remaining student resources in the sidebar, outside the primary learning group", () => {
+    expect(sidebarPages.map(page => page.path)).toEqual(["/students-corner", "/gallery", "/events-news"]);
     expect(learningEcosystemPages.some(page => sidebarPages.some(resource => resource.path === page.path))).toBe(false);
+    expect(sidebarPages.some(page => page.path === "/skillshone")).toBe(false);
   });
   it("does not display unconfirmed future partners or industry networks", () => {
     const blocks = pages.flatMap((p) => p.blocks);

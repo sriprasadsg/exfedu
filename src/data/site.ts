@@ -319,11 +319,11 @@ export const navPages = (cat: CategorySlug) => pages.filter((p) => p.category ==
 export const primaryNavigation = [
   { path: "/about", title: "About Us", icon: Building },
   { path: "/collaboration-network", title: "Our Collaboration Network", icon: Network },
-  { path: null, title: "Learning Ecosystem", icon: GraduationCap },
+  { path: "/skillshone", title: "SkillShone", icon: MonitorPlay },
   { path: "/#partner-enquiry", title: "Enquire Now", icon: Mail },
 ] as const;
 const learningPaths = ["/practical-learning", "/internships", "/career-development", "/research-innovation", "/student-success"];
-const sidebarPaths = ["/students-corner", "/skillshone", "/gallery", "/events-news"];
+const sidebarPaths = ["/students-corner", "/gallery", "/events-news"];
 export const learningEcosystemPages = learningPaths.flatMap(path => pages.filter(page => page.path === path));
 export const sidebarPages = sidebarPaths.flatMap(path => pages.filter(page => page.path === path));
 
