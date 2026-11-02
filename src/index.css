@@ -1693,3 +1693,14 @@ body:not(:has(.homepage-static)) main .lucide-arrow-right, body:not(:has(.homepa
   body:not(:has(.homepage-static)) main .rounded-xl.border::after, body:not(:has(.homepage-static)) main .rounded-2xl.border::after, body:not(:has(.homepage-static)) main .rounded-lg.border::after,
   body:not(:has(.homepage-static)) main a.rounded-md.border::after, main button.rounded-md.border::after { transition: none; }
 }
+/* Enquiry header: the step label, the count and a slim progress line that fills as the visitor
+   advances, so every enquiry panel on the site reads as a colourful sequence. (client, 2 Nov 2026) */
+.enquiry-kicker { font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: hsl(var(--primary)); }
+.enquiry-count { font-weight: 700; color: hsl(var(--brand-red)); }
+.enquiry-progress { height: 4px; margin: 0 0 1.1rem; border-radius: 999px; background: hsl(var(--primary) / .1); overflow: hidden; }
+.enquiry-progress span { display: block; height: 100%; border-radius: 999px; background: linear-gradient(100deg, hsl(var(--primary)) 0%, hsl(var(--connection-teal)) 55%, hsl(var(--brand-red)) 100%); transition: width .35s ease; }
+/* The step-back control gets a tinted round tile that answers in red. */
+.partner-3d-card [aria-label="Previous field"] { color: hsl(var(--primary)); background: hsl(var(--primary) / .08); border-radius: 50%; transition: background-color .2s ease, color .2s ease; }
+.partner-3d-card [aria-label="Previous field"]:hover:not(:disabled) { color: hsl(var(--brand-red)); background: hsl(var(--brand-red) / .1); }
+.partner-3d-card [aria-label="Previous field"]:disabled { opacity: .45; }
+@media (prefers-reduced-motion: reduce) { .enquiry-progress span { transition: none; } }
