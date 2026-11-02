@@ -1,7 +1,7 @@
 import ResearchThemeIcon from "./ResearchThemeIcon";
 import { useEffect, useMemo, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ArrowLeft, ArrowRight, ArrowUpRight, Search, Trophy } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, BookOpen, Code2, Presentation, Search, Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -45,9 +45,15 @@ const SvuOverview = () => {
       <h2>Industry-Integrated Teaching Approach</h2>
       <p className="svu-reading">Faculty and industry professionals connect core concepts with their practical applications, so learners can explain both how a solution works and why a particular approach was chosen.</p>
       <ol className="svu-steps">
-        <li><strong>Understand</strong><span>Core concepts in data, methods and results, guided by faculty and industry professionals.</span></li>
-        <li><strong>Apply</strong><span>Programming exercises, case studies and technical discussions.</span></li>
-        <li><strong>Present</strong><span>Explain how a solution works and why the approach was chosen.</span></li>
+        {svuTeachingSteps.map((step, index) => <li key={step.title} className={`svu-step svu-step--${step.tone}`} style={{ "--step-delay": `${index * 0.12}s` } as React.CSSProperties}>
+          <span className="svu-step-topline" aria-hidden="true" />
+          <span className="svu-step-head">
+            <span className="svu-step-icon"><step.icon size={23} strokeWidth={1.5} aria-hidden="true" /></span>
+            <span className="svu-step-number" aria-hidden="true" />
+          </span>
+          <strong>{step.title}</strong>
+          <span>{step.text}</span>
+        </li>)}
       </ol>
     </section>
 
