@@ -301,3 +301,5 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Publish site so bold Duration & Delivery is live (client, 2 Nov 2026)
 
 - Section "From Learning to Practical Application": use SkillShone colours (client, 2 Nov 2026)
+
+- Apply SkillShone colours to the section in the newest screenshot (client, 2 Nov 2026)
