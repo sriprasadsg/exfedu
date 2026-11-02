@@ -123,7 +123,7 @@ const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { progr
               <span className="programme-section-icon tone-blue">
                 <Library size={22} aria-hidden="true" />
               </span>
-              Brochure &amp; Enquiry
+              {p.organisation === "IBM" ? "Enquiry" : "Brochure & Enquiry"}
             </h2>
             {p.organisation === "SVU" ? <SvuAcademicResources /> : <div className="programme-resource-box">
               <h3>Academic Resources</h3>
