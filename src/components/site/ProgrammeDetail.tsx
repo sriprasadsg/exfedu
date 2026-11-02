@@ -1,4 +1,5 @@
 import { SvuTabBar } from "./SvuPages";
+import { svuSectionPath } from "@/lib/programmeNavigation";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Clock3, Monitor, Download, Cpu, FlaskConical, Library } from "lucide-react";
@@ -13,7 +14,7 @@ import { SvuAcademicResources } from "./SvuReviewedContent";
 
 const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { programme: Programme; organisationOverview?: boolean }) => {
   const org = organisations[p.organisation];
-  const backUrl = organisationOverview ? "/collaboration-network" : organisationPath(p.organisation);
+  const backUrl = organisationOverview ? "/collaboration-network" : p.organisation === "SVU" ? svuSectionPath("programmes") : organisationPath(p.organisation);
   const backLabel = organisationOverview ? "Back to Our Collaboration Network" : `Back to ${org.name} Programmes`;
   const [brochureOpen, setBrochureOpen] = useState(false);
   const [formComplete, setFormComplete] = useState(false);
