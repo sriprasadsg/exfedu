@@ -1590,7 +1590,7 @@ h1, h2, h3, h4, h5, h6 { text-wrap: balance; }
 
 /* Site-wide colourful titles and pointer-tilt boxes (client, 2 November 2026). */
 main h1, main h2, main h3 {
-  background-image: linear-gradient(100deg, hsl(var(--primary)) 0%, hsl(var(--connection-blue)) 55%, hsl(352 70% 48%) 100%);
+  background-image: linear-gradient(100deg, hsl(var(--navy-800)) 0%, hsl(var(--connection-blue)) 42%, hsl(var(--connection-teal)) 72%, hsl(var(--connection-violet)) 100%);
   -webkit-background-clip: text; background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -1600,7 +1600,7 @@ main h1 svg, main h2 svg, main h3 svg { color: hsl(var(--connection-blue)); }
 main h1 :is(a, em, strong, span, small, cite),
 main h2 :is(a, em, strong, span, small, cite),
 main h3 :is(a, em, strong, span, small, cite) {
-  background-image: linear-gradient(100deg, hsl(var(--primary)) 0%, hsl(var(--connection-blue)) 55%, hsl(352 70% 48%) 100%);
+  background-image: linear-gradient(100deg, hsl(var(--navy-800)) 0%, hsl(var(--connection-blue)) 42%, hsl(var(--connection-teal)) 72%, hsl(var(--connection-violet)) 100%);
   -webkit-background-clip: text; background-clip: text;
   -webkit-text-fill-color: transparent;
 }
