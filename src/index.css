@@ -1564,24 +1564,33 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
 .ss-split-headtxt:last-child { padding-right: 3rem; }
 .ss-split-head .ss-eyebrow { justify-content: inherit; }
 
+/* The backing board is a plain soft grey — the writing pad itself. */
 .ss-capsule {
   position: relative;
   margin-top: 3.2rem;
   padding: 1.6rem 3.2rem 2rem;
   border: 1px solid hsl(var(--input) / .6);
   border-radius: 22px;
-  background: hsl(var(--background));
+  background: linear-gradient(160deg, hsl(var(--muted)), hsl(var(--input) / .55));
   box-shadow: 0 18px 34px -22px hsl(var(--primary) / .4);
 }
-/* The sheet no longer needs to be a card of its own: the pad is white, so the two
-   partitions sit straight on it and the only lines are the hairline divider between
-   them and each block's coloured edge. */
+/* The front is one white sheet of ruled paper: faint horizontal lines run one
+   after the other across both partitions, like the reference pad. */
 .ss-pad-sheet {
   position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  background: transparent;
-  overflow: visible;
+  background:
+    repeating-linear-gradient(180deg,
+      transparent 0,
+      transparent 1.9rem,
+      hsl(var(--connection-blue) / .16) 1.9rem,
+      hsl(var(--connection-blue) / .16) calc(1.9rem + 1px)),
+    hsl(var(--background));
+  border: 1px solid hsl(var(--border));
+  border-radius: 14px;
+  box-shadow: 0 10px 24px -16px hsl(var(--foreground) / .35);
+  overflow: hidden;
   z-index: 1;
 }
 .ss-cap {
