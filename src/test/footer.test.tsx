@@ -80,6 +80,7 @@ describe("Footer collaboration network", () => {
       "/collaboration-network",
       "/collaboration-network/svu", "/collaboration-network/ibm", "/collaboration-network/xime",
       "/about", "/skillshone", "/#partner-enquiry",
+      "/privacy-policy", "/terms-and-conditions",
     ]);
   });
 });
