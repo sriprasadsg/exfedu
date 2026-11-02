@@ -1683,7 +1683,7 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
    Slim enough to sit beside the centred content without touching it. */
 .ss-pad-pen {
   position: absolute;
-  top: 50%;
+  top: 58%;
   right: 3.7rem;
   translate: 0 -50%;
   rotate: 176deg;
