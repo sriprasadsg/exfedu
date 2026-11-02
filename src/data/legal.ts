@@ -13,6 +13,7 @@ export interface LegalDocument {
   path: string;
   title: string;
   tagline: string;
+  lastUpdated: string;
   intro: string[];
   sections: LegalSection[];
 }
@@ -21,8 +22,10 @@ export const privacyPolicy: LegalDocument = {
   path: "/privacy-policy",
   title: "Privacy Policy",
   tagline: "Your information, handled with care.",
+  lastUpdated: "3 November 2026",
   intro: [
     "Exafluence Education (Exfedu), an Edtech Division of Exafluence Inc., USA, respects your privacy. This policy explains how personal information is collected, used and protected when you visit our website, submit an enquiry or interact with our educational services.",
+    "Entity responsible for this website and your personal information: Exafluence Education (Exfedu), Edtech Division of Exafluence Inc., USA.",
   ],
   sections: [
     {
@@ -52,7 +55,8 @@ export const privacyPolicy: LegalDocument = {
     {
       heading: "4. Cookies and Website Technologies",
       paragraphs: [
-        "Where required, optional analytics or marketing technologies will operate only after you provide consent. You can manage available preferences through your browser settings.",
+        "This website does not use analytics, advertising or marketing cookies, and no optional tracking technologies operate on it. Only essential technical storage needed for the website to function and keep your browsing session working is used; it does not track you across other websites.",
+        "You can manage or clear this storage at any time through your browser settings.",
       ],
     },
     {
@@ -110,8 +114,9 @@ export const termsAndConditions: LegalDocument = {
   path: "/terms-and-conditions",
   title: "Terms & Conditions",
   tagline: "Clear information for using our website and exploring our programmes.",
+  lastUpdated: "3 November 2026",
   intro: [
-    "These Terms & Conditions govern your use of the Exafluence Education (Exfedu) website. Programme enrolment is also subject to the specific terms provided by the relevant institution or programme provider.",
+    "These Terms & Conditions govern your use of the Exafluence Education (Exfedu) website, operated by Exafluence Education (Exfedu), Edtech Division of Exafluence Inc., USA. Programme enrolment is also subject to the specific terms provided by the relevant institution or programme provider.",
   ],
   sections: [
     {
