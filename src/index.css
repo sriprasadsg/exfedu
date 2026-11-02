@@ -1704,3 +1704,20 @@ body:not(:has(.homepage-static)) main .lucide-arrow-right, body:not(:has(.homepa
 .partner-3d-card [aria-label="Previous field"]:hover:not(:disabled) { color: hsl(var(--brand-red)); background: hsl(var(--brand-red) / .1); }
 .partner-3d-card [aria-label="Previous field"]:disabled { opacity: .45; }
 @media (prefers-reduced-motion: reduce) { .enquiry-progress span { transition: none; } }
+/* Homepage approach boxes: a thick coloured edge down one side only, thin lines on the other
+   three, with the colour drifting slowly along the bar and widening when pointed at.
+   (client, 2 November 2026) */
+@keyframes exi-edge-slide { 0%, 100% { background-position: 0 0; } 50% { background-position: 0 100%; } }
+@keyframes exi-edge-slide-x { from { background-position: 0 0; } to { background-position: 200% 0; } }
+.homepage-static .exi-box { position: relative; overflow: hidden; }
+.homepage-static .exi-box::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background-image: linear-gradient(180deg, hsl(var(--connection-blue)) 0%, hsl(var(--primary)) 50%, hsl(var(--connection-blue)) 100%); background-size: 100% 200%; animation: exi-edge-slide 8s ease-in-out infinite; transition: width .25s ease; }
+.homepage-static .exi-box:hover::before, .homepage-static .exi-box:focus-visible::before { width: 7px; }
+.homepage-static .exi-grid .exi-item:nth-child(3n+2) .exi-box::before { background-image: linear-gradient(180deg, hsl(var(--connection-teal)) 0%, hsl(var(--primary)) 50%, hsl(var(--connection-teal)) 100%); }
+.homepage-static .exi-grid .exi-item:nth-child(3n+3) .exi-box::before { background-image: linear-gradient(180deg, hsl(var(--connection-amber)) 0%, hsl(var(--primary)) 50%, hsl(var(--connection-amber)) 100%); }
+.homepage-static .exi-grid .exi-item:nth-child(2) .exi-box::before { animation-delay: -1.4s; }
+.homepage-static .exi-grid .exi-item:nth-child(3) .exi-box::before { animation-delay: -2.8s; }
+.homepage-static .exi-grid .exi-item:nth-child(4) .exi-box::before { animation-delay: -4.2s; }
+.homepage-static .exi-grid .exi-item:nth-child(5) .exi-box::before { animation-delay: -5.6s; }
+.homepage-static .exi-grid .exi-item:nth-child(6) .exi-box::before { animation-delay: -7s; }
+.homepage-static .exi-substitute::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 4px; background-image: linear-gradient(100deg, hsl(var(--primary)) 0%, hsl(var(--connection-teal)) 33%, hsl(var(--brand-red)) 66%, hsl(var(--primary)) 100%); background-size: 200% 100%; animation: exi-edge-slide-x 12s linear infinite; }
+@media (prefers-reduced-motion: reduce) { .homepage-static .exi-box::before, .homepage-static .exi-substitute::before { animation: none; } }
