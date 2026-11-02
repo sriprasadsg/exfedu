@@ -468,8 +468,8 @@
    tile. Each card carries its own theme hue (royal blue, teal, violet) through a
    turning conic edge, a staggered entrance and a gentle icon float. Nothing moves
    when the visitor prefers reduced motion. */
-.svu-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin: 30px 0 0; padding: 0; list-style: none; counter-reset: step; }
-.svu-step { --step-hue: var(--connection-blue); counter-increment: step; position: relative; display: flex; flex-direction: column; align-items: flex-start; padding: 26px 24px 26px; border-radius: 16px; background: hsl(var(--card)); box-shadow: 0 10px 26px -22px hsl(var(--navy-900) / .45); transition: transform .35s ease, box-shadow .35s ease; animation: svu-step-in .6s ease-out backwards; animation-delay: var(--step-delay, 0s); }
+.svu-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin: 30px 0 0; padding: 0; list-style: none; }
+.svu-step { --step-hue: var(--connection-blue); position: relative; display: flex; flex-direction: column; align-items: flex-start; padding: 26px 24px 26px; border-radius: 16px; background: hsl(var(--card)); box-shadow: 0 10px 26px -22px hsl(var(--navy-900) / .45); transition: transform .35s ease, box-shadow .35s ease; animation: svu-step-in .6s ease-out backwards; animation-delay: var(--step-delay, 0s); }
 .svu-step--blue { --step-hue: var(--connection-blue); }
 .svu-step--teal { --step-hue: var(--programme-practical); }
 .svu-step--violet { --step-hue: var(--programme-innovation); }
@@ -482,7 +482,6 @@
 .svu-step-icon { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 14px; color: hsl(var(--step-hue)); background: hsl(var(--step-hue) / .1); box-shadow: 0 16px 26px -18px hsl(var(--step-hue)); transition: transform .35s ease, box-shadow .35s ease; }
 .svu-step-icon svg { animation: ss-art-float 6s ease-in-out infinite; animation-delay: var(--step-delay, 0s); }
 .svu-step:hover .svu-step-icon { transform: translateY(-3px) scale(1.05); box-shadow: 0 20px 32px -16px hsl(var(--step-hue)); }
-.svu-step-number::before { content: counter(step, decimal-leading-zero); font-size: 30px; font-weight: 500; letter-spacing: .04em; line-height: 1; color: hsl(var(--step-hue) / .4); }
 .svu-step strong { display: block; margin-top: 18px; font-size: 17px; font-weight: 500; color: hsl(var(--navy-900)); }
 .svu-step-text { display: block; margin-top: 8px; font-size: 14px; line-height: 1.75; color: hsl(var(--muted-foreground)); }
 @keyframes svu-step-in { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
