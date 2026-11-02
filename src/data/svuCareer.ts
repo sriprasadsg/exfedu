@@ -19,14 +19,14 @@ export const svuInternships: SvuCareerRecord[] = [
   { student: "P Prabhas Raj", batch: batchOne, organisation: "SHAR, Sriharikota" },
   { student: "Vemuri Bharath Kumar", batch: batchOne, organisation: "Vikram Sarabhai Space Centre, Thiruvananthapuram" },
 ];
-/** Internships introduction (client, 2 November 2026): exact approved website
- * wording. Batch and year detail stays inside the records and the batch filter —
- * never in the heading, the subtitle or these paragraphs. */
+/** Internships introduction (client, 2 November 2026, revised later the same day):
+ * exact approved website wording. Batch and year detail stays inside the records
+ * and the batch filter — never in the heading, the subtitle or these paragraphs. */
 export const svuInternshipIntroduction = {
-  subtitle: "Applying knowledge. Building experience. Advancing with confidence.",
+  subtitle: "From academic foundations to research and industry experience.",
   paragraphs: [
-    "Exfedu proudly celebrates its students who have secured internships at NARL, Gadanki; SHAR, Sriharikota; and Vikram Sarabhai Space Centre, Thiruvananthapuram.",
-    "These opportunities connect academic preparation with research and technical practice, helping students apply their knowledge, strengthen problem-solving skills and experience professional working environments.",
+    "Exfedu proudly celebrates its students who have secured internships at NARL, Gadanki; SHAR, Sriharikota; and Vikram Sarabhai Space Centre, Thiruvananthapuram. Their achievements reflect an important step towards applying technical knowledge beyond the classroom.",
+    "These internships provide opportunities to engage with practical challenges, develop analytical thinking and gain experience in research and professional environments.",
   ],
 };
 /** Display order (client, 2 November 2026): batch-wise first, then alphabetical by
