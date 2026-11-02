@@ -299,3 +299,5 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - Remove the connecting line between the two boxes the client screenshotted (client, 2 Nov 2026)
 
 - [x] Publish site so bold Duration & Delivery is live (client, 2 Nov 2026)
+
+- Section "From Learning to Practical Application": use SkillShone colours (client, 2 Nov 2026)
