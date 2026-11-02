@@ -347,3 +347,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Privacy Policy and Terms & Conditions links made clearly readable in the footer's bottom row; verified desktop/phone and published live.
 - [x] Footer links set to a single colour; only the coloured dots stay to tell entries apart.
 - [x] Learning Ecosystem section introduction: left-aligned navy heading, one short italic subtitle, content directly beneath, on the shared content width.
+- [x] SkillShone: the two "For students"/"For institutions" summary boxes repeated the capsule above, so both removed with their unused styles; capsule and FAQ verified in preview, 123 tests pass.
