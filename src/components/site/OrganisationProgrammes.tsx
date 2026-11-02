@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowRight, BookOpen, Clock3, Monitor } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { collaborationSlides, organisations, organisationSections, programmes, svuOverviewBlocks, PENDING, type Organisation } from "@/data/site";
+import { collaborationSlides, organisations, organisationSections, programmes, PENDING, type Organisation } from "@/data/site";
+import { SvuOverviewContent, SvuResearchContent } from "./SvuReviewedContent";
 import { organisationPath, programmePath } from "@/lib/programmeNavigation";
 import ProgrammeDetail from "./ProgrammeDetail";
 import XimeProgramme from "./XimeProgramme";
@@ -46,11 +47,8 @@ const OrganisationProgrammes = ({ organisation }: { organisation: Organisation }
           {section.id === "programmes" && (shown.length > 0 ? programmeList : <div className="programme-empty"><BookOpen size={30} aria-hidden="true" /><h2>{PENDING}</h2><p>Programme details await verified source content.</p></div>)}
           {section.pending && <p className="organisation-section-pending"><span>{PENDING}</span>{section.pending}</p>}
           {section.link && <Button variant="outline" asChild><Link to={section.link.path}>{section.link.label}<ArrowRight size={16} /></Link></Button>}
-          {section.id === "overview" && svuOverviewBlocks.map(block => <div key={block.id} id={block.id} className="organisation-subsection">
-            <h3><span className={`programme-section-icon tone-${block.tone}`}><block.icon size={19} aria-hidden="true" /></span>{block.title}</h3>
-            <p className="organisation-section-pending"><span>{PENDING}</span>{block.pending}</p>
-            <Button variant="outline" size="sm" asChild><Link to={block.link.path}>{block.link.label}<ArrowRight size={15} /></Link></Button>
-          </div>)}
+          {section.id === "overview" && <SvuOverviewContent />}
+          {section.id === "projects-research" && <SvuResearchContent />}
         </section>) : <section aria-label={`${org.name} programmes`}>
           {shown.length > 0 ? <><h2 className="organisation-list-heading">Programmes <span>{shown.length} programmes</span></h2>{programmeList}</> : <div className="programme-empty"><BookOpen size={30} aria-hidden="true" /><h2>{PENDING}</h2><p>XIME Chennai programme title, duration, delivery mode, eligibility, curriculum and certification information await verified source content.</p><a href="https://www.ximecexfedu.com" target="_blank" rel="noopener noreferrer">XIME Chennai programme source <ArrowRight size={15} className="inline" /></a></div>}
         </section>}

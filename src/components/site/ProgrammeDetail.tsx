@@ -8,6 +8,7 @@ import { academicResources, organisations, PENDING, type Programme } from "@/dat
 import { useProgrammeSeo } from "./ProgrammeDirectory";
 import { organisationPath } from "@/lib/programmeNavigation";
 import { programmeDetailSections } from "@/lib/programmeSections";
+import { SvuAcademicResources } from "./SvuReviewedContent";
 
 const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { programme: Programme; organisationOverview?: boolean }) => {
   const org = organisations[p.organisation];
@@ -114,7 +115,7 @@ const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { progr
               </span>
               Brochure &amp; Enquiry
             </h2>
-            <div className="programme-resource-box">
+            {p.organisation === "SVU" ? <SvuAcademicResources /> : <div className="programme-resource-box">
               <h3>Academic Resources</h3>
               <ul>{academicResources.items.map(item => <li key={item}>{item}</li>)}</ul>
               <p>{academicResources.note}</p>
@@ -124,7 +125,7 @@ const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { progr
                   <ArrowRight size={15} />
                 </Link>
               </Button>
-            </div>
+            </div>}
             <div className="programme-enquiry-row">
               {p.organisation !== "XIME" && (
                 <Button variant="outline" onClick={openBrochure}>
