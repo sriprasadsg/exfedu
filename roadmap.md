@@ -316,3 +316,5 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - Publish after these edits (client, 2 Nov 2026)
 
 - Homepage boxes: thick coloured edge on one side only, remaining edges thin, with gentle animation (client, 2 Nov 2026)
+
+- One column replaced/overlapping: align neatly (client, 2 Nov 2026)
