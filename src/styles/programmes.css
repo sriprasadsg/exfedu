@@ -68,8 +68,8 @@
 .programme-facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 850px; gap: 30px; margin-top: 30px; padding-top: 24px; border-top: 1px solid hsl(var(--academic-edge)); }
 .programme-facts > div { display: grid; grid-template-columns: 28px 1fr; column-gap: 10px; align-items: start; }
 .programme-facts svg { color: hsl(var(--programme-blue)); grid-row: span 2; }
-.programme-facts dt { font-size: 12px; color: hsl(var(--muted-foreground)); }
-.programme-facts dd { font-size: 15px; margin-top: 6px; }
+.programme-facts dt { font-size: 12px; font-weight: 700; letter-spacing: .02em; color: hsl(var(--navy-900)); }
+.programme-facts dd { font-size: 15px; font-weight: 700; margin-top: 6px; }
 .programme-detail-body { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 70px; padding-block: 44px 60px; }
 .programme-detail-section { padding: 26px 0; border-bottom: 1px solid hsl(var(--academic-edge)); }
 .programme-detail-section:first-child { padding-top: 0; }
