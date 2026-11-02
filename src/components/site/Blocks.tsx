@@ -11,6 +11,13 @@ import AboutOverview from "@/components/site/AboutOverview";
 import CollaborationNetwork from "@/components/site/CollaborationNetwork";
 import { programmePath } from "@/lib/programmeNavigation";
 
+// The closing panel's contact address sits inside a sentence, so it is lifted out in bold
+// for visitors to spot at a glance. (client, 2 November 2026)
+const EMAIL_IN_TEXT = /([A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,})/;
+const boldEmail = (text: string) => text.split(EMAIL_IN_TEXT).map((part, i) =>
+  EMAIL_IN_TEXT.test(part) ? <strong key={i} className="cta-email">{part}</strong> : part,
+);
+
 const H2 = ({ children }: { children: React.ReactNode }) => <h2 className="site-section-title font-display font-normal">{children}</h2>;
 
 export const PendingTag = () => (
@@ -189,7 +196,7 @@ export const BlockView = ({ block, page }: { block: Block; page: Page }) => {
           <section id="partner-enquiry-form" className="academic-partner-strip" aria-label="Academic partnership enquiry">
             <div className="academic-partner-copy">
               <span className="academic-partner-icon" aria-hidden="true"><MessageCircle size={23} strokeWidth={1.7} /></span>
-              <div><h2 className="font-display text-xl font-normal">{block.title}</h2><p className="mt-1 text-sm text-muted-foreground">{block.text}</p></div>
+              <div><h2 className="font-display text-xl font-normal">{block.title}</h2><p className="mt-1 text-sm text-muted-foreground">{block.text ? boldEmail(block.text) : null}</p></div>
             </div>
             {block.to && <Button asChild className="academic-partner-action"><Link to={block.to}><GraduationCap className="academic-partner-cap" aria-hidden="true" />{block.label}<ArrowRight aria-hidden="true" /></Link></Button>}
           </section>
