@@ -1724,3 +1724,35 @@ body:not(:has(.homepage-static)) main .lucide-arrow-right, body:not(:has(.homepa
 .homepage-static .exi-grid .exi-item:nth-child(6) .exi-box::before { animation-delay: -7s; }
 .homepage-static .exi-substitute::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 4px; background-image: linear-gradient(100deg, hsl(var(--primary)) 0%, hsl(var(--connection-teal)) 33%, hsl(var(--brand-red)) 66%, hsl(var(--primary)) 100%); background-size: 200% 100%; animation: exi-edge-slide-x 12s linear infinite; }
 @media (prefers-reduced-motion: reduce) { .homepage-static .exi-box::before, .homepage-static .exi-substitute::before { animation: none; } }
+
+/* Enquire Now buttons: the fill changes to a second colour and the button tilts slightly when
+   pointed at; SkillShone's own button keeps its gradient and only tilts. (client, 2 Nov 2026) */
+body:not(:has(.homepage-static)) .cta-enquire { transition: transform .25s ease, background-color .25s ease, box-shadow .25s ease; }
+body:not(:has(.homepage-static)) .cta-enquire:hover,
+body:not(:has(.homepage-static)) .cta-enquire:focus-visible {
+  background-color: hsl(var(--connection-teal));
+  transform: rotate(-1.4deg) translateY(-2px);
+  box-shadow: 0 16px 28px -16px hsl(var(--connection-teal) / .65);
+}
+body:not(:has(.homepage-static)) .ss-btn { transition: transform .25s ease; }
+body:not(:has(.homepage-static)) .ss-btn:hover { transform: rotate(-1.4deg) translateY(-2px); }
+@media (prefers-reduced-motion: reduce) {
+  body:not(:has(.homepage-static)) .cta-enquire, body:not(:has(.homepage-static)) .ss-btn { transition: none; }
+  body:not(:has(.homepage-static)) .cta-enquire:hover, body:not(:has(.homepage-static)) .cta-enquire:focus-visible,
+  body:not(:has(.homepage-static)) .ss-btn:hover { transform: none; }
+}
+
+/* Section titles such as "Faculty & Industry Mentors" and "Programme Support · EdTech Division"
+   join the colourful heading rule; SkillShone's own headings keep navy-to-red. (client, 2 Nov 2026) */
+body:not(:has(.homepage-static)) main h4 {
+  background-image: linear-gradient(100deg, hsl(var(--navy-800)) 0%, hsl(var(--connection-blue)) 42%, hsl(var(--connection-teal)) 72%, hsl(var(--connection-violet)) 100%);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+body:not(:has(.homepage-static)) main h4 :is(a, em, strong, span, small, cite) {
+  background-image: linear-gradient(100deg, hsl(var(--navy-800)) 0%, hsl(var(--connection-blue)) 42%, hsl(var(--connection-teal)) 72%, hsl(var(--connection-violet)) 100%);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+body:not(:has(.homepage-static)) main .ss-foot-cards h4 {
+  background-image: linear-gradient(100deg, hsl(var(--primary)) 0%, hsl(var(--brand-red)) 100%);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}

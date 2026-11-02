@@ -206,8 +206,8 @@ export const BlockView = ({ block, page }: { block: Block; page: Page }) => {
         <div className="flex flex-col items-start justify-between gap-4 border-y py-8 md:flex-row md:items-center">
           <div><p className="font-display text-xl">{block.title}</p><p className="mt-1 text-muted-foreground">{block.text ? boldEmail(block.text) : null}</p></div>
           {block.to && (block.to.startsWith("http")
-            ? <Button asChild className={block.appearance === "skillshone" ? "ss-cta-btn" : undefined}><a href={block.to} target="_blank" rel="noopener noreferrer">{block.label}<ArrowRight /></a></Button>
-            : <Button asChild className={block.appearance === "skillshone" ? "ss-cta-btn" : undefined}><Link to={block.to}>{block.label}<ArrowRight /></Link></Button>)}
+            ? <Button asChild className={[block.appearance === "skillshone" ? "ss-cta-btn" : "", block.label === "Enquire Now" ? "cta-enquire" : ""].filter(Boolean).join(" ") || undefined}><a href={block.to} target="_blank" rel="noopener noreferrer">{block.label}<ArrowRight /></a></Button>
+            : <Button asChild className={[block.appearance === "skillshone" ? "ss-cta-btn" : "", block.label === "Enquire Now" ? "cta-enquire" : ""].filter(Boolean).join(" ") || undefined}><Link to={block.to}>{block.label}<ArrowRight /></Link></Button>)}
         </div>
       );
   }

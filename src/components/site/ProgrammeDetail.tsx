@@ -170,7 +170,7 @@ const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { progr
                   Request Brochure
                 </Button>
               )}
-              <Button asChild>
+              <Button asChild className="cta-enquire">
                 <Link to={enquiryUrl}>
                   Enquire Now
                   <ArrowRight />
@@ -183,7 +183,7 @@ const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { progr
         <aside className="programme-actions">
           <span className="programme-org">{org.name}</span>
           <h2>Programme Enquiry</h2>
-          <Button asChild>
+          <Button asChild className="cta-enquire">
             <Link to={enquiryUrl}>
               Enquire Now
               <ArrowRight />
