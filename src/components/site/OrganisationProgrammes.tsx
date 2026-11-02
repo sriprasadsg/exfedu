@@ -8,6 +8,7 @@ import ProgrammeDetail from "./ProgrammeDetail";
 import XimeProgramme from "./XimeProgramme";
 import { useProgrammeSeo } from "./ProgrammeDirectory";
 import { svuOverview } from "@/data/svuOverview";
+import SvuCareerRecords from "./SvuCareerRecords";
 
 const OrganisationProgrammes = ({ organisation }: { organisation: Organisation }) => {
   const org = organisations[organisation];
@@ -43,12 +44,13 @@ const OrganisationProgrammes = ({ organisation }: { organisation: Organisation }
       <div className="organisation-sections">
         {sections ? sections.map(section => <section key={section.id} id={section.id} className={`organisation-section${section.id === "overview" ? " svu-overview-section" : ""}`} aria-label={section.id === "overview" ? "Overview" : undefined} aria-labelledby={section.id === "overview" ? undefined : `${section.id}-heading`}>
           {section.id !== "overview" && <h2 id={`${section.id}-heading`} className="organisation-section-heading"><span className={`programme-section-icon tone-${section.tone}`}><section.icon size={21} aria-hidden="true" /></span>{section.title}</h2>}
-          {section.id !== "overview" && section.text && <p className="organisation-section-text">{section.text}</p>}
+          {!["overview", "internships", "placements"].includes(section.id) && section.text && <p className="organisation-section-text">{section.text}</p>}
           {section.id === "programmes" && (shown.length > 0 ? programmeList : <div className="programme-empty"><BookOpen size={30} aria-hidden="true" /><h2>{PENDING}</h2><p>Programme details await verified source content.</p></div>)}
-          {section.pending && <p className="organisation-section-pending"><span>{PENDING}</span>{section.pending}</p>}
+          {section.id !== "placements" && section.pending && <p className="organisation-section-pending"><span>{PENDING}</span>{section.pending}</p>}
           {section.link && <Button variant="outline" asChild><Link to={section.link.path}>{section.link.label}<ArrowRight size={16} /></Link></Button>}
           {section.id === "overview" && <SvuOverviewContent />}
           {section.id === "projects-research" && <SvuResearchContent />}
+          {(section.id === "internships" || section.id === "placements") && <SvuCareerRecords kind={section.id} />}
         </section>) : <section aria-label={`${org.name} programmes`}>
           {shown.length > 0 ? <><h2 className="organisation-list-heading">Programmes <span>{shown.length} programmes</span></h2>{programmeList}</> : <div className="programme-empty"><BookOpen size={30} aria-hidden="true" /><h2>{PENDING}</h2><p>XIME Chennai programme title, duration, delivery mode, eligibility, curriculum and certification information await verified source content.</p><a href="https://www.ximecexfedu.com" target="_blank" rel="noopener noreferrer">XIME Chennai programme source <ArrowRight size={15} className="inline" /></a></div>}
         </section>}
