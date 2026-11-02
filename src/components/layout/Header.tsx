@@ -47,11 +47,12 @@ const Header = () => {
     <header className="site-header sticky top-0 z-50 border-b">
       <div className="container flex h-20 items-center justify-between gap-2">
         <Link to="/" className="flex min-w-0 items-center" aria-label="Exafluence Education home">
-          <span className="relative inline-block leading-none">
-            <img src={logo.url} alt="Exafluence Education — An EdTech unit of Exafluence Inc., USA" className="block h-12 w-auto max-w-[150px] lg:max-w-[220px] object-contain" />
+          <span className="relative inline-block h-12 w-auto" style={{ aspectRatio: "1068 / 416" }}>
+            <img src={logo.url} alt="Exafluence Education — An EdTech unit of Exafluence Inc., USA" className="absolute inset-0 h-full w-full object-contain" />
             {/* The pen nib is lifted out of the mark so it can drift on its own (client, 2 Nov 2026). */}
             <img src={logoNib.url} alt="" aria-hidden="true" className="site-logo-nib absolute" style={{ left: "63.015%", top: "27.644%", width: "8.333%", height: "24.279%" }} />
           </span>
+
 
 
         </Link>
