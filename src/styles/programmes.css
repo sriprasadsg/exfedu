@@ -597,5 +597,34 @@
 .ibm-directory-row:nth-of-type(4n+3) { --row: 350 55% 30%; }
 .ibm-directory-row:nth-of-type(4n+4) { --row: 38 70% 32%; }
 .ibm-directory-row:hover { transform: translateY(-3px); background: linear-gradient(90deg, hsl(var(--row) / .12), hsl(var(--card)) 55%); box-shadow: 0 18px 32px -20px hsl(var(--row) / .75); }
-.ibm-directory-row h3, .ibm-directory-row h3 a { color: hsl(var(--row)) !important; -webkit-text-fill-color: currentColor; background: none !important; font-weight: 600; }
+.ibm-directory-row h3, .ibm-directory-row h3 a { color: hsl(var(--row)) !important; -webkit-text-fill-color: currentColor !important; background: none !important; font-weight: 600; }
 .ibm-directory-link { font-weight: 700; color: hsl(var(--row)) !important; }
+
+/* The featured-achievement panel is a dark navy field, so its heading must stay
+   white. The site-wide colourful-title rule (index.css) paints every h3 in main
+   with a gradient text fill, and it out-specifies the plain class rule, which
+   left "Quantum Wave" navy-on-navy and unreadable. This selector carries the
+   same body:not(...) prefix plus the class, so it wins and keeps the panel legible. */
+body:not(:has(.homepage-static)) main .svu-champion-title {
+  background: none; -webkit-background-clip: initial; background-clip: initial;
+  -webkit-text-fill-color: hsl(0 0% 100%); color: hsl(0 0% 100%);
+}
+
+/* Programme detail pages (XIME FinTech and the other organisation courses):
+   the icons already sitting on the page drift gently, so the section markers and
+   the duration / delivery marks feel alive without pulling focus from the text.
+   IBM keeps its own float rule, so it is excluded here to avoid double animation.
+   Client brief, 2 November 2026. */
+@keyframes pd-icon-float { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-4px) rotate(2deg); } }
+.programme-experience:not(.ibm-page) .programme-section-icon { animation: pd-icon-float 5s ease-in-out infinite; }
+.programme-experience:not(.ibm-page) .programme-detail-section:nth-child(2) .programme-section-icon { animation-delay: -1s; }
+.programme-experience:not(.ibm-page) .programme-detail-section:nth-child(3) .programme-section-icon { animation-delay: -2s; }
+.programme-experience:not(.ibm-page) .programme-detail-section:nth-child(4) .programme-section-icon { animation-delay: -3s; }
+.programme-experience:not(.ibm-page) .programme-detail-section:nth-child(5) .programme-section-icon { animation-delay: -4s; }
+.programme-experience:not(.ibm-page) .programme-detail-section:nth-child(n+6) .programme-section-icon { animation-delay: -2.5s; }
+.programme-experience:not(.ibm-page) .programme-facts svg { animation: pd-icon-float 4.4s ease-in-out infinite; }
+.programme-experience:not(.ibm-page) .programme-facts > div:nth-child(2) svg { animation-delay: -2.2s; }
+@media (prefers-reduced-motion: reduce) {
+  .programme-experience:not(.ibm-page) .programme-section-icon,
+  .programme-experience:not(.ibm-page) .programme-facts svg { animation: none; }
+}

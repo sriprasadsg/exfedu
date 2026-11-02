@@ -290,3 +290,5 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Remove the "Our Collaboration Network" breadcrumb link from all collaboration partner pages (SVU, XIME, IBM, programme details).
 - [x] Present the topmost "Back to Our Collaboration Network" button colourfully (shared NetworkBackButton: white pill, blue→teal→violet edge, tinted arrow tile, gentle drift).
 - [x] Publish latest (user asked 16:20 UTC) — scheduled at https://law-site-shine.lovable.app; basic security scan clean beforehand.
+
+- [x] XIME programme pages: gently animate the icons in use (client, 2 Nov 2026)
