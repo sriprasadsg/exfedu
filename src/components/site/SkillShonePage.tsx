@@ -179,6 +179,7 @@ export default function SkillShonePage({ page, breadcrumb }: { page: Page; bread
               <path d="M8 8 H30 L44 52 Q46 60 54 60 H66 Q74 60 76 52 L90 8 H112" fill="none" stroke="currentColor" strokeWidth="9" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </span>
+          <h3 className="ss-pad-title">Building Capability Beyond the Classroom</h3>
           <div className="ss-pad-sheet">
           <div className="ss-cap ss-cap--left">
             <span className="ss-cap-badge" aria-hidden="true"><GraduationCap className="h-6 w-6" strokeWidth={1.5} /></span>
