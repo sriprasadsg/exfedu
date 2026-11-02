@@ -1598,7 +1598,7 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
   gap: .45rem;
   padding: 1.7rem;
   min-height: 13rem;
-  animation: ss-cap-in .7s ease-out both;
+  animation: ss-cap-in .7s ease-out backwards; transition: transform .35s ease, box-shadow .35s ease, background-color .35s ease;
 }
 /* Both partitions are plain white paper — the ruled lines show through — with only
    a fine divider between them and a thin coloured top edge marking each side. */
@@ -1616,7 +1616,7 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
   background: hsl(var(--background));
   border: 1px solid hsl(var(--border));
   box-shadow: 0 6px 14px -10px hsl(var(--foreground) / .3);
-  animation: ss-bob 4s ease-in-out infinite;
+  animation: ss-bob 4s ease-in-out infinite; transition: border-color .35s ease, box-shadow .35s ease;
 }
 .ss-cap--left .ss-cap-badge { color: hsl(var(--connection-blue)); }
 .ss-cap--right .ss-cap-badge { color: hsl(var(--primary)); animation-delay: 1s; }
@@ -1635,13 +1635,35 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
   font-size: .76rem; font-weight: 500;
   border: 1px solid hsl(var(--foreground) / .08);
   box-shadow: 0 6px 14px -10px hsl(var(--foreground) / .3);
-  animation: ss-pill-in .6s ease-out both;
+  animation: ss-pill-in .6s ease-out backwards;
   transition: transform .3s;
 }
 .ss-cap--left li svg { color: hsl(var(--connection-blue)); flex: none; }
 .ss-cap--right li svg { color: hsl(var(--primary)); flex: none; }
 .ss-cap--left li:hover { transform: translateX(6px); }
 .ss-cap--right li:hover { transform: translateX(-6px); }
+
+/* The pad's own boxes answer the pointer: a soft wash of their own colour, a fine
+   ring and a lifted title tile. The panels cannot lift (the sheet clips them), so
+   the colour and ring carry the response instead. */
+.ss-cap--left:hover {
+  background: hsl(var(--connection-blue) / .08);
+  box-shadow: inset 0 0 0 1px hsl(var(--connection-blue) / .3);
+}
+.ss-cap--right:hover {
+  background: hsl(var(--primary) / .05);
+  box-shadow: inset 0 0 0 1px hsl(var(--primary) / .25);
+}
+.ss-cap:hover .ss-cap-badge {
+  border-color: hsl(var(--connection-blue) / .5);
+  box-shadow: 0 10px 18px -10px hsl(var(--foreground) / .45);
+}
+.ss-cap--right:hover .ss-cap-badge { border-color: hsl(var(--primary) / .45); }
+.ss-pad-title { transition: transform .35s ease, box-shadow .35s ease; }
+.ss-pad-title:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 26px -16px hsl(var(--foreground) / .5);
+}
 
 /* The pad's own heading: a white tile clamped on the grey backing directly beneath the clip. */
 .ss-pad-title {
@@ -1717,7 +1739,7 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
   .ss-split-head > div:last-child { text-align: left; }
   .ss-split-headtxt:last-child { padding-right: 0; }
 }
-@media (prefers-reduced-motion: reduce) { .ss-cap, .ss-cap li, .ss-cap-badge, .ss-pad-pen { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .ss-cap, .ss-cap li, .ss-cap-badge, .ss-pad-pen { animation: none; } .ss-pad-title:hover { transform: none; } }
 
 
 /* The closing panel's contact address reads as part of the sentence, so it is lifted out bold. */
