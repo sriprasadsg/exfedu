@@ -1,4 +1,4 @@
-import { Building2, CalendarRange, Hash, UserRound } from "lucide-react";
+import { Building2, CalendarRange, UserRound } from "lucide-react";
 import { filterSvuCareerRecords, svuInternshipIntroduction, svuInternships, svuPlacements } from "@/data/svuCareer";
 
 export default function SvuCareerRecords({ kind }: { kind: "placements" | "internships" }) {
@@ -19,10 +19,9 @@ export default function SvuCareerRecords({ kind }: { kind: "placements" | "inter
       <p className="svu-outcome-role">{record.designation}</p>
       <p className="svu-outcome-org">{record.organisation}</p>
     </li>)}</ul> : <div className="svu-career-table-wrap"><table className="svu-career-table" aria-label={title}><thead><tr>
-      <th scope="col"><i className="svu-career-head-icon svu-career-head-1"><Hash size={14} aria-hidden="true" /></i><span>No.</span></th>
       <th scope="col"><i className="svu-career-head-icon svu-career-head-2"><UserRound size={14} aria-hidden="true" /></i><span>Student Name</span></th>
       <th scope="col"><i className="svu-career-head-icon svu-career-head-3"><CalendarRange size={14} aria-hidden="true" /></i><span>Batch</span></th>
       <th scope="col"><i className="svu-career-head-icon svu-career-head-4"><Building2 size={14} aria-hidden="true" /></i><span>{placements ? "Organisation" : "Internship Organisation"}</span></th>
-    </tr></thead><tbody>{shown.map((record, index) => <tr key={record.student}><td data-label="No.">{index + 1}</td><th scope="row" data-label="Student Name">{record.student}</th><td data-label="Batch">{record.batch}</td><td data-label={placements ? "Organisation" : "Internship Organisation"}>{record.organisation}</td></tr>)}</tbody></table></div>}
+    </tr></thead><tbody>{shown.map(record => <tr key={record.student}><th scope="row" data-label="Student Name">{record.student}</th><td data-label="Batch">{record.batch}</td><td data-label={placements ? "Organisation" : "Internship Organisation"}>{record.organisation}</td></tr>)}</tbody></table></div>}
   </div>;
 }
