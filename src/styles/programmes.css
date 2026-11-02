@@ -553,9 +553,9 @@
 .svu-story-caption { padding-left: 10px; border-left: 2px solid hsl(var(--connection-blue) / .35); }
 
 /* SVU programme directory: each category is a colourful box (client, 2 November 2026). */
-.svu-directory-group { --grp: var(--connection-blue); }
-.svu-directory-group:nth-child(2) { --grp: var(--connection-teal); }
-.svu-directory-group:nth-child(3) { --grp: var(--connection-violet); }
+.svu-directory-group { --grp: 215 60% 24%; }
+.svu-directory-group:nth-child(2) { --grp: 152 45% 24%; }
+.svu-directory-group:nth-child(3) { --grp: 350 55% 30%; }
 .svu-directory-groups .svu-directory { border: 2px solid hsl(var(--grp) / .35); border-top: 4px solid hsl(var(--grp)); border-radius: 14px; overflow: hidden; background: hsl(var(--card)); box-shadow: 0 14px 30px -24px hsl(var(--grp) / .6); transition: transform .25s ease, box-shadow .25s ease; }
 .svu-directory-groups .svu-directory:hover { transform: translateY(-3px); box-shadow: 0 20px 36px -22px hsl(var(--grp) / .7); }
 .svu-directory-groups .svu-directory-head { background: linear-gradient(90deg, hsl(var(--grp) / .14), hsl(var(--grp) / .04)); color: hsl(var(--grp)); font-weight: 600; }
