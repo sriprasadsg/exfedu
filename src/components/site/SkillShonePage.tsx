@@ -150,7 +150,7 @@ export default function SkillShonePage({ page, breadcrumb }: { page: Page; bread
 
 
       {/* Badge */}
-      <section className="container border-t py-14 text-center">
+      <section className="container border-t pt-14 pb-8 text-center">
         <div className="ss-badge" aria-hidden="true">
           <svg viewBox="0 0 100 100"><defs><path id="ss-circle" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0" /></defs>
             <text><textPath href="#ss-circle">• LEARN • BUILD • REVIEW • PRESENT • LEARN • BUILD • REVIEW •</textPath></text></svg>
@@ -172,7 +172,7 @@ export default function SkillShonePage({ page, breadcrumb }: { page: Page; bread
       </section>
 
       {/* Who it's for / institutions — two equal partitions on a writing pad */}
-      <section className="container py-16">
+      <section className="container pt-2 pb-16">
         <div className="ss-capsule">
           <span className="ss-pad-clip" aria-hidden="true">
             <svg viewBox="0 0 120 70" xmlns="http://www.w3.org/2000/svg">
