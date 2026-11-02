@@ -1564,24 +1564,26 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
 .ss-split-headtxt:last-child { padding-right: 3rem; }
 .ss-split-head .ss-eyebrow { justify-content: inherit; }
 
+/* The backing board is a plain soft grey — the writing pad itself. */
 .ss-capsule {
   position: relative;
   margin-top: 3.2rem;
   padding: 1.6rem 3.2rem 2rem;
   border: 1px solid hsl(var(--input) / .6);
   border-radius: 22px;
-  background: hsl(var(--background));
+  background: linear-gradient(160deg, hsl(var(--muted)), hsl(var(--input) / .55));
   box-shadow: 0 18px 34px -22px hsl(var(--primary) / .4);
 }
-/* The sheet no longer needs to be a card of its own: the pad is white, so the two
-   partitions sit straight on it and the only lines are the hairline divider between
-   them and each block's coloured edge. */
+/* The front is one plain white sheet of paper split into two partitions. */
 .ss-pad-sheet {
   position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  background: transparent;
-  overflow: visible;
+  background: hsl(var(--background));
+  border: 1px solid hsl(var(--border));
+  border-radius: 14px;
+  box-shadow: 0 10px 24px -16px hsl(var(--foreground) / .35);
+  overflow: hidden;
   z-index: 1;
 }
 .ss-cap {
@@ -1595,15 +1597,14 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
   min-height: 19rem;
   animation: ss-cap-in .7s ease-out both;
 }
+/* Both partitions are plain white paper — the ruled lines show through — with only
+   a fine divider between them and a thin coloured top edge marking each side. */
 .ss-cap--left {
-  background: linear-gradient(135deg, hsl(var(--connection-blue) / .26), hsl(var(--connection-blue) / .13));
-  border-top: 4px solid hsl(var(--connection-blue));
+  border-top: 3px solid hsl(var(--connection-blue));
 }
 .ss-cap--right {
-  background: linear-gradient(225deg, hsl(var(--primary) / .24), hsl(var(--primary) / .12));
-  border-top: 4px solid hsl(var(--primary));
-  /* the divider is the pad's own white showing through between the two blocks */
-  border-left: 2px solid hsl(var(--background));
+  border-top: 3px solid hsl(var(--primary));
+  border-left: 1px solid hsl(var(--border));
   animation-delay: .12s;
 }
 .ss-cap-badge {
@@ -1616,6 +1617,8 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
 }
 .ss-cap--left .ss-cap-badge { color: hsl(var(--connection-blue)); }
 .ss-cap--right .ss-cap-badge { color: hsl(var(--primary)); animation-delay: 1s; }
+/* All wording on the paper is dark navy. */
+.ss-cap, .ss-cap h3 { color: hsl(var(--primary)); }
 .ss-cap-side {
   font-weight: 700; font-size: .78rem; letter-spacing: .22em;
   text-transform: uppercase; color: hsl(var(--primary));
@@ -1625,7 +1628,7 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
   display: flex; align-items: center; gap: .55rem;
   padding: .55rem 1rem; border-radius: 999px;
   background: hsl(var(--background));
-  color: hsl(var(--foreground));
+  color: hsl(var(--primary));
   font-size: .82rem; font-weight: 500;
   border: 1px solid hsl(var(--foreground) / .08);
   box-shadow: 0 6px 14px -10px hsl(var(--foreground) / .3);

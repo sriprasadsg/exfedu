@@ -351,3 +351,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] SkillShone learners/institutions panel rebuilt as a rounded two-partition writing pad: navy clip clamped on the top edge, blue fountain pen resting along the right side (hidden on phones), original grey/sky-blue tints kept, thin blue-grey border, no yellow, centre illustration removed; verified 1280/390px with no overlap or overflow, 124 tests pass, build OK.
 
 - [x] SkillShone panel: single white writing pad with coloured partitions (Learners sky blue, Institutions navy, front-to-back reversed) and a smaller pen resting on the paper
+- [x] SkillShone pad: remove ruled lines — plain white paper
