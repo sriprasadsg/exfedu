@@ -318,3 +318,18 @@
   .svu-directory-row [data-label]::before { content: attr(data-label) ": "; color: hsl(var(--navy-900)); font-size: 12px; }
 }
 @media (prefers-reduced-motion: reduce) { .svu-flow { animation: none; } .svu-area, .svu-tabbar a, .svu-directory-row { transition: none; } }
+
+/* SVU overview split sections: 35% lead / 65% content, top-aligned, no dividers */
+.svu-split { display: grid; grid-template-columns: minmax(0, 35fr) minmax(0, 65fr); gap: 40px; align-items: start; background: hsl(var(--background)); }
+.svu-split .svu-split-lead .svu-reading { margin-top: 12px; }
+.svu-split .svu-split-lead > a { padding-left: 0; margin-top: 10px; }
+.svu-split h2 { margin: 0; }
+.svu-split .svu-areas { margin-top: 0; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 1fr; gap: 16px; }
+.svu-split .svu-area { padding: 20px; height: 100%; border-color: hsl(var(--connection-blue) / .18); box-shadow: none; align-items: start; }
+.svu-split .svu-area .programme-section-icon { margin: 0; }
+.svu-split-body { max-width: 680px; }
+.svu-split-body .svu-reading { margin-top: 0; }
+.svu-split-body > a { padding-left: 0; margin-top: 10px; }
+.svu-flow { gap: 64px; }
+@media (max-width: 900px) { .svu-split .svu-areas { grid-template-columns: minmax(0, 1fr); grid-auto-rows: auto; } }
+@media (max-width: 767px) { .svu-split { grid-template-columns: minmax(0, 1fr); gap: 20px; } .svu-flow { gap: 40px; } }
