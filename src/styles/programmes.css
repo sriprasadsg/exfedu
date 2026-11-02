@@ -269,11 +269,6 @@
 .svu-block > a { padding-left: 0; margin-top: 10px; }
 .svu-intro .programme-detail-logo { margin-bottom: 18px; }
 .svu-lead, .svu-reading { max-width: 720px; font-size: 15px; line-height: 1.8; color: hsl(var(--muted-foreground)); margin-top: 14px; }
-.svu-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-top: 24px; counter-reset: step; }
-.svu-steps li { counter-increment: step; padding-top: 14px; border-top: 2px solid hsl(var(--connection-blue) / .35); }
-.svu-steps strong { display: block; font-size: 16px; font-weight: 500; color: hsl(var(--navy-900)); }
-.svu-steps strong::before { content: counter(step, decimal-leading-zero) "  "; color: hsl(var(--connection-blue)); font-size: 13px; }
-.svu-steps span { display: block; font-size: 14px; line-height: 1.7; color: hsl(var(--muted-foreground)); margin-top: 6px; }
 .svu-areas { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 22px; }
 .svu-area { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 14px; align-items: start; padding: 16px; border: 1px solid hsl(var(--academic-edge)); border-radius: 12px; transition: background-color 200ms ease, border-color 200ms ease; }
 .svu-area:hover { background: hsl(var(--connection-blue) / .05); border-color: hsl(var(--connection-blue) / .35); }
