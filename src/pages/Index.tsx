@@ -7,7 +7,10 @@ import PartnerEnquiry from "@/components/home/PartnerEnquiry";
 const Index = () => (
   <Layout className="homepage-static">
     <Hero />
-    <h2 className="eco2-title">The Exfedu Learning Ecosystem</h2>
+    <div className="eco2-head">
+      <h2 className="eco2-title">The Exfedu Learning Ecosystem</h2>
+      <p className="eco2-subtitle">Eight connected areas — from academic foundations and technology to practical learning, research and career outcomes.</p>
+    </div>
     <EcosystemHub />
     <WaysToPartner />
     <PartnerEnquiry />
