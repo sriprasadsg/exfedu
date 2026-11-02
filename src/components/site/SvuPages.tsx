@@ -39,6 +39,8 @@ const svuTeachingSteps = [
 const SvuOverview = () => {
   const org = organisations.SVU;
   const hackathon = svuAchievements[0];
+  const [hackBefore, hackAfter = ""] = hackathon.text.split(hackathon.highlight);
+
   return <div className="svu-flow">
     <section className="svu-block svu-intro">
       <img className={`programme-detail-logo ${org.logoClass}`} src={org.logo} alt={`${org.name} logo`} />
@@ -89,7 +91,15 @@ const SvuOverview = () => {
         <figure><img src={item.photo} alt={item.alt} loading="lazy" /><span className="svu-story-badge"><Trophy size={13} aria-hidden="true" />Achievement</span></figure>
         <div className="svu-story-body"><div className="svu-story-head"><ResearchThemeIcon title={item.title} /><h3>{item.title}</h3></div><p>{item.text}</p>{item.caption && <p className="svu-story-caption">{item.caption}</p>}</div>
       </article>)}</div>
-      <p className="svu-highlight"><Trophy size={18} aria-hidden="true" /><span><strong>{hackathon.title}</strong> — {hackathon.text} <a href={hackathon.href} target="_blank" rel="noopener noreferrer">{hackathon.label}<ArrowUpRight size={14} aria-hidden="true" /></a></span></p>
+      <aside className="svu-champion">
+        <span className="svu-champion-medal" aria-hidden="true"><Trophy size={26} strokeWidth={1.4} /></span>
+        <div className="svu-champion-body">
+          <span className="svu-champion-eyebrow">Featured Achievement</span>
+          <h3 className="svu-champion-title">{hackathon.title}</h3>
+          <p className="svu-champion-line">{hackBefore}<strong className="svu-champion-bold">{hackathon.highlight}</strong>{hackAfter} <a className="svu-champion-link" href={hackathon.href} target="_blank" rel="noopener noreferrer">{hackathon.label}<ArrowUpRight size={14} aria-hidden="true" /></a></p>
+        </div>
+      </aside>
+
     </section>
 
     <section className="svu-block">
