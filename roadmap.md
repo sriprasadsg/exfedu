@@ -307,3 +307,5 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - FAQ heading and + symbols: use SkillShone navy/red combination (client, 2 Nov 2026)
 
 - Bars coming out of the capsule icons: align neatly, or present differently (client, 2 Nov 2026)
+
+- Highlight the icon background and animate it gently (client, 2 Nov 2026)
