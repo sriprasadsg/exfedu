@@ -19,8 +19,8 @@ export const svuProjectAreas = [
 ] as const;
 
 export const svuOverviewAchievements = [
-  { title: "Innovation Showcase", text: "Students demonstrated their product at the Ratan Tata Innovation Hub in Tirupati.", photo: innovation.url, caption: "Student innovation presentation, Tirupati" },
-  { title: "Quantum Hackathon Recognition", text: "The Quantum Wave Forecast project secured first place in the semifinals of the AP Quantum Hackathon 2025.", photo: undefined, caption: undefined },
-  { title: "Technology Community Participation", text: "MS Data Science students participated in the PanIIT Andhra Pradesh Summit 2026, gaining exposure to emerging technologies and industry discussions.", photo: summitStudents.url, caption: "MS Data Science students at PanIIT Andhra Pradesh Summit 2026" },
+  { title: "Innovation Showcase", text: "Students demonstrated their product at the Ratan Tata Innovation Hub in Tirupati.", photo: innovation.url, alt: "Student innovation presentation, Tirupati" },
+  { title: "Technology Community Participation", text: "MS Data Science students participated in the PanIIT Andhra Pradesh Summit 2026, gaining exposure to emerging technologies and industry discussions.", photo: summitStudents.url, alt: "MS Data Science students at PanIIT Andhra Pradesh Summit 2026" },
 ];
+
 export const svuOverviewDelegation = { photo: summitDelegation.url, caption: "PanIIT Andhra Pradesh Summit 2026 delegation" };
