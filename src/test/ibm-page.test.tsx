@@ -51,7 +51,7 @@ describe("IBM collaboration page", () => {
 });
 
 describe("IBM institutional enquiry", () => {
-  const step = async (label: string, value?: string) => {
+  const step = async (label: string | RegExp, value?: string) => {
     const field = screen.getByLabelText(label);
     if (value !== undefined) fireEvent.change(field, { target: { value } });
     fireEvent.click(screen.getByRole("button", { name: /Continue|Skip|Send Institutional Enquiry/ }));
@@ -74,7 +74,7 @@ describe("IBM institutional enquiry", () => {
     await step("Programme interest", "Certificate Programme in Quantum Computing");
     await step("Audience", "Undergraduate students");
     await step("Expected participants", "60");
-    await step("Preferred schedule");
+    await step(/Preferred schedule/);
     fireEvent.click(screen.getByLabelText("I agree to be contacted by Exafluence Education about this enquiry."));
     fireEvent.click(screen.getByRole("button", { name: "Send Institutional Enquiry" }));
     expect(await screen.findByRole("status")).toHaveTextContent("Test submission received");
