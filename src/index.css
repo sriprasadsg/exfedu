@@ -887,15 +887,17 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .exi-illus .exi-tile-art img { display: block; width: 100%; height: auto; }
 .exi-glass-layer { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 /* Scope all stillness to Home, including menus rendered outside its wrapper. The thick coloured
-   edges on the approach boxes and the approach banner are exempt (client, 2 November 2026). */
-body:has(.homepage-static) *,
-body:has(.homepage-static) *:not(.exi-box):not(.exi-substitute)::before,
+   edges on the approach boxes, the approach banner and the capabilities cards are exempt
+   (client, 2 November 2026). */
+body:has(.homepage-static) *:not(.cap-card),
+body:has(.homepage-static) *:not(.exi-box):not(.exi-substitute):not(.cap-card)::before,
 body:has(.homepage-static) *:not(.exi-box):not(.exi-substitute)::after {
   animation: none !important;
   transition: none !important;
   scroll-behavior: auto !important;
 }
-.homepage-static .cap-card:hover { transform: none; }
+.homepage-static .cap-card { transition: transform .25s ease, box-shadow .25s ease; }
+.homepage-static .cap-card:hover, .homepage-static .cap-card:focus-visible { transform: translateY(-3px) rotate(-1.4deg) scale(1.03); box-shadow: 0 16px 28px -16px hsl(var(--primary) / .45); }
 .homepage-static .cap-art, .homepage-static .exi-box:hover, .homepage-static .enquiry-restart:hover,
 .homepage-static .enquiry-restart:hover svg, .homepage-static .partner-3d-card input:hover,
 .homepage-static .partner-3d-card input:focus-visible, .homepage-static .partner-3d-card select:hover,
