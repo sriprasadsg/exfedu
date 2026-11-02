@@ -1686,7 +1686,7 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
   top: 58%;
   right: 4.65rem;
   translate: 0 -50%;
-  rotate: 176deg;
+  rotate: 190deg;
   width: 1.3rem;
   color: hsl(var(--connection-blue));
   z-index: 2;
