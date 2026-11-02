@@ -13,10 +13,10 @@ describe("SVU Internships introduction (client brief, 2 November 2026)", () => {
   it("shows the approved heading, subtitle and two paragraphs", () => {
     const intro = introLines(renderPage().container);
     expect(intro[0]).toBe("Student Internships");
-    expect(intro[1]).toBe("Applying knowledge. Building experience. Advancing with confidence.");
+    expect(intro[1]).toBe("From academic foundations to research and industry experience.");
     expect(intro.slice(2)).toEqual([
-      "Exfedu proudly celebrates its students who have secured internships at NARL, Gadanki; SHAR, Sriharikota; and Vikram Sarabhai Space Centre, Thiruvananthapuram.",
-      "These opportunities connect academic preparation with research and technical practice, helping students apply their knowledge, strengthen problem-solving skills and experience professional working environments.",
+      "Exfedu proudly celebrates its students who have secured internships at NARL, Gadanki; SHAR, Sriharikota; and Vikram Sarabhai Space Centre, Thiruvananthapuram. Their achievements reflect an important step towards applying technical knowledge beyond the classroom.",
+      "These internships provide opportunities to engage with practical challenges, develop analytical thinking and gain experience in research and professional environments.",
     ]);
     expect(svuInternshipIntroduction.paragraphs).toEqual(intro.slice(2));
   });
