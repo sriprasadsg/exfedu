@@ -107,7 +107,7 @@ const SvuOverview = () => {
     <section className="svu-block">
       <h2>Industry Exposure and Career Development</h2>
       <p className="svu-reading">Industry case studies, mentor guidance and internship exposure connect technical study with professional practice.</p>
-      <div className="svu-actions"><Button variant="outline" asChild><Link to={svuSectionPath("internships")}>Explore Internships<ArrowRight size={16} /></Link></Button><Button variant="outline" asChild><Link to={svuSectionPath("placements")}>View Placements<ArrowRight size={16} /></Link></Button><Button asChild><Link to="/contact">Enquire Now<ArrowRight size={16} /></Link></Button></div>
+      <div className="svu-actions"><Button variant="outline" asChild><Link to={svuSectionPath("internships")}>Explore Internships<ArrowRight size={16} /></Link></Button><Button variant="outline" asChild><Link to={svuSectionPath("placements")}>View Placements<ArrowRight size={16} /></Link></Button><Button asChild className="cta-enquire"><Link to="/contact">Enquire Now<ArrowRight size={16} /></Link></Button></div>
     </section>
   </div>;
 };

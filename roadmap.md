@@ -321,3 +321,10 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 
 - Malaya Rout designation: Vice President at Exafluence — done, card reads Faculty / Vice President at Exafluence
 - Remove "Guest Faculty" wording; mention only "Faculty" — done, all eleven industry roles now read Faculty
+
+- Faculty & Industry Mentors + Programme Support titles colourful — done
+- Enquire Now hover: fill changes colour and the button tilts — done
+
+- Enquire Now hover shade: another shade, not SkillShone colours (client, 2 Nov 2026)
+
+- Screenshot boxes: tilt them, restore the previously used coloured box lines, and gently animate their icons (client, 2 Nov 2026)

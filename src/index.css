@@ -587,10 +587,10 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .enquiry-title-gradient { background: linear-gradient(90deg, hsl(214 68% 14%), hsl(216 62% 30%)); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .enq-dot { display: inline-block; width: 7px; height: 7px; margin-right: 8px; border-radius: 50%; vertical-align: middle; }
 .enq-dot--blue, .enq-dot--teal, .enq-dot--amber, .enq-dot--violet { background: hsl(214 68% 14%); }
-/* The enquiry's Continue / Send button carries the SkillShone split: navy flowing into red.
-   (client, 2 November 2026) */
-.partner-3d-card .enquiry-cta { background-image: linear-gradient(100deg, hsl(var(--primary)) 0%, hsl(214 72% 32%) 42%, hsl(var(--brand-red)) 100%); background-color: hsl(var(--primary)); border: 0; box-shadow: 0 10px 24px -16px hsl(var(--primary) / .6); }
-.partner-3d-card .enquiry-cta:hover, .partner-3d-card .enquiry-cta:focus-visible { background-image: linear-gradient(100deg, hsl(var(--primary)) 0%, hsl(214 72% 32%) 42%, hsl(var(--brand-red)) 100%); box-shadow: 0 14px 28px -14px hsl(var(--brand-red) / .55); }
+/* The enquiry's Continue / Send button keeps a classic deep teal flowing into navy — deliberately
+   not SkillShone's navy-to-red. (client, 2 November 2026) */
+.partner-3d-card .enquiry-cta { background-image: linear-gradient(100deg, hsl(var(--connection-teal)) 0%, hsl(192 62% 26%) 46%, hsl(var(--primary)) 100%); background-color: hsl(var(--connection-teal)); border: 0; box-shadow: 0 10px 24px -16px hsl(var(--connection-teal) / .6); }
+.partner-3d-card .enquiry-cta:hover, .partner-3d-card .enquiry-cta:focus-visible { background-image: linear-gradient(100deg, hsl(var(--connection-teal)) 0%, hsl(192 62% 26%) 46%, hsl(var(--primary)) 100%); box-shadow: 0 14px 28px -14px hsl(var(--connection-teal) / .55); }
 @media (prefers-reduced-motion: reduce) {
   .partner-3d-object { animation: none; }
   .partner-3d-stage, .partner-3d-stage:hover { transform: translateX(-16px); transition: none; }
@@ -887,15 +887,17 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .exi-illus .exi-tile-art img { display: block; width: 100%; height: auto; }
 .exi-glass-layer { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 /* Scope all stillness to Home, including menus rendered outside its wrapper. The thick coloured
-   edges on the approach boxes and the approach banner are exempt (client, 2 November 2026). */
-body:has(.homepage-static) *,
-body:has(.homepage-static) *:not(.exi-box):not(.exi-substitute)::before,
+   edges on the approach boxes, the approach banner and the capabilities cards are exempt
+   (client, 2 November 2026). */
+body:has(.homepage-static) *:not(.cap-card),
+body:has(.homepage-static) *:not(.exi-box):not(.exi-substitute):not(.cap-card)::before,
 body:has(.homepage-static) *:not(.exi-box):not(.exi-substitute)::after {
   animation: none !important;
   transition: none !important;
   scroll-behavior: auto !important;
 }
-.homepage-static .cap-card:hover { transform: none; }
+.homepage-static .cap-card { transition: transform .25s ease, box-shadow .25s ease; }
+.homepage-static .cap-card:hover, .homepage-static .cap-card:focus-visible { transform: translateY(-3px) rotate(-1.4deg) scale(1.03); box-shadow: 0 16px 28px -16px hsl(var(--primary) / .45); }
 .homepage-static .cap-art, .homepage-static .exi-box:hover, .homepage-static .enquiry-restart:hover,
 .homepage-static .enquiry-restart:hover svg, .homepage-static .partner-3d-card input:hover,
 .homepage-static .partner-3d-card input:focus-visible, .homepage-static .partner-3d-card select:hover,
@@ -923,7 +925,8 @@ body:has(.homepage-static) *:not(.exi-box):not(.exi-substitute)::after {
   animation: magnifying-glass-search 3.2s ease-in-out infinite !important;
 }
 @container cap (min-width: 800px) {
-  .homepage-static .cap-card:hover { transform: translate(-50%, -50%); }
+  /* The cards sit on the circle by centring themselves, so the tilt has to carry that centre. */
+  .homepage-static .cap-card:hover, .homepage-static .cap-card:focus-visible { transform: translate(-50%, -50%) translateY(-3px) rotate(-1.4deg) scale(1.05); box-shadow: 0 18px 30px -16px hsl(var(--primary) / .5); }
 }
 @media (max-width: 640px) {
   .hero-dot-layer { inset: 0; width: 100%; height: 100%; }
@@ -1724,3 +1727,58 @@ body:not(:has(.homepage-static)) main .lucide-arrow-right, body:not(:has(.homepa
 .homepage-static .exi-grid .exi-item:nth-child(6) .exi-box::before { animation-delay: -7s; }
 .homepage-static .exi-substitute::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 4px; background-image: linear-gradient(100deg, hsl(var(--primary)) 0%, hsl(var(--connection-teal)) 33%, hsl(var(--brand-red)) 66%, hsl(var(--primary)) 100%); background-size: 200% 100%; animation: exi-edge-slide-x 12s linear infinite; }
 @media (prefers-reduced-motion: reduce) { .homepage-static .exi-box::before, .homepage-static .exi-substitute::before { animation: none; } }
+
+/* Enquire Now buttons: the fill changes to a second colour and the button tilts slightly when
+   pointed at; SkillShone's own button keeps its gradient and only tilts. (client, 2 Nov 2026) */
+body:not(:has(.homepage-static)) .cta-enquire { transition: transform .25s ease, background-color .25s ease, box-shadow .25s ease; }
+body:not(:has(.homepage-static)) .cta-enquire:hover,
+body:not(:has(.homepage-static)) .cta-enquire:focus-visible {
+  background-color: hsl(var(--connection-teal));
+  transform: rotate(-1.4deg) translateY(-2px);
+  box-shadow: 0 16px 28px -16px hsl(var(--connection-teal) / .65);
+}
+body:not(:has(.homepage-static)) .ss-btn { transition: transform .25s ease; }
+body:not(:has(.homepage-static)) .ss-btn:hover { transform: rotate(-1.4deg) translateY(-2px); }
+@media (prefers-reduced-motion: reduce) {
+  body:not(:has(.homepage-static)) .cta-enquire, body:not(:has(.homepage-static)) .ss-btn { transition: none; }
+  body:not(:has(.homepage-static)) .cta-enquire:hover, body:not(:has(.homepage-static)) .cta-enquire:focus-visible,
+  body:not(:has(.homepage-static)) .ss-btn:hover { transform: none; }
+}
+
+/* Section titles such as "Faculty & Industry Mentors" and "Programme Support · EdTech Division"
+   join the colourful heading rule; SkillShone's own headings keep navy-to-red. (client, 2 Nov 2026) */
+body:not(:has(.homepage-static)) main h4 {
+  background-image: linear-gradient(100deg, hsl(var(--navy-800)) 0%, hsl(var(--connection-blue)) 42%, hsl(var(--connection-teal)) 72%, hsl(var(--connection-violet)) 100%);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+body:not(:has(.homepage-static)) main h4 :is(a, em, strong, span, small, cite) {
+  background-image: linear-gradient(100deg, hsl(var(--navy-800)) 0%, hsl(var(--connection-blue)) 42%, hsl(var(--connection-teal)) 72%, hsl(var(--connection-violet)) 100%);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+body:not(:has(.homepage-static)) main .ss-foot-cards h4 {
+  background-image: linear-gradient(100deg, hsl(var(--primary)) 0%, hsl(var(--brand-red)) 100%);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+/* Capabilities circle: each card carries a thick coloured edge down one side with thin lines on
+   the other three, a matching coloured icon tile, and a gentle pointer-over tilt
+   (client, 2 November 2026). */
+.homepage-static .cap-card { --cap-h: 214; --cap-s: 70%; --cap-l: 42%; overflow: hidden; }
+.homepage-static .cap-card--academic { --cap-h: 214; }
+.homepage-static .cap-card--technology { --cap-h: 172; }
+.homepage-static .cap-card--research { --cap-h: 268; }
+.homepage-static .cap-card--practical { --cap-h: 38; }
+.homepage-static .cap-card--industry { --cap-h: 150; }
+.homepage-static .cap-card--career { --cap-h: 348; }
+.homepage-static .cap-card--digital { --cap-h: 196; }
+.homepage-static .cap-card--programmes { --cap-h: 22; }
+.homepage-static .cap-card::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; border-radius: 10px 0 0 10px; background: hsl(var(--cap-h) var(--cap-s) var(--cap-l)); transition: width .25s ease; }
+.homepage-static .cap-card:hover::before, .homepage-static .cap-card:focus-visible::before { width: 7px; }
+.homepage-static .cap-diagram .cap-art { background: linear-gradient(145deg, hsl(var(--cap-h) 92% 95%), hsl(var(--cap-h) 80% 87%)); color: hsl(var(--cap-h) 72% 38%); box-shadow: inset 0 1px 1px hsl(0 0% 100% / .7), 0 4px 10px -4px hsl(var(--cap-h) 70% 45% / .55); }
+@media (prefers-reduced-motion: reduce) {
+  .homepage-static .cap-card { transition: none; }
+  .homepage-static .cap-card:hover, .homepage-static .cap-card:focus-visible { transform: none; }
+  @container cap (min-width: 800px) {
+    .homepage-static .cap-card:hover, .homepage-static .cap-card:focus-visible { transform: translate(-50%, -50%); }
+  }
+}

@@ -52,10 +52,10 @@ const XimeProgramme = () => {
           : section.text ? <p>{section.text}</p> : section.items?.length ? list(section.items) : pending(section.missing)}
       </section>)}
       <section className="programme-detail-section programme-reveal"><h2><span className="programme-section-icon tone-teal"><MessageCircle size={22} aria-hidden="true" /></span>Programme Enquiry</h2>
-        <Button onClick={openRequest}>Enquire Now<ArrowRight /></Button>
+        <Button className="cta-enquire" onClick={openRequest}>Enquire Now<ArrowRight /></Button>
       </section>
     </div><aside className="programme-actions"><span className="programme-org">XIME Chennai</span><h2>Programme Enquiry</h2>
-      <Button onClick={openRequest}>Enquire Now<ArrowRight /></Button>
+      <Button className="cta-enquire" onClick={openRequest}>Enquire Now<ArrowRight /></Button>
       <Link to="/collaboration-network"><ArrowLeft size={16} />Back to Our Collaboration Network</Link>
     </aside></div>
     <Dialog open={requestOpen} onOpenChange={setRequestOpen}><DialogContent className="programme-brochure-dialog"><DialogTitle>XIME Chennai Programme Enquiry</DialogTitle>
