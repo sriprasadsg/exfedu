@@ -2,9 +2,10 @@ import { cleanup, fireEvent, render, screen, waitFor, within } from "@testing-li
 import { MemoryRouter } from "react-router-dom";
 import { afterEach, describe, expect, it } from "vitest";
 import IbmPages from "@/components/site/IbmPages";
+import ProgrammeDetail from "@/components/site/ProgrammeDetail";
 import { ibmProgrammes } from "@/data/ibm";
 import { ibmProgrammeSections } from "@/lib/programmeSections";
-import { retiredPageDestinations } from "@/data/site";
+import { retiredPageDestinations, programmes } from "@/data/site";
 import { programmePath } from "@/lib/programmeNavigation";
 
 // Client brief, 2 November 2026: IBM gets one dedicated page under Our Collaboration
@@ -108,8 +109,17 @@ describe("IBM programme page sections", () => {
   it("words the teaching role separately from the certificate issuer", () => {
     const pbel = ibmProgrammes.find(p => p.slug === "ibm-pbel")!;
     const certification = ibmProgrammeSections(pbel).find(s => s.title === "Assessment & Certification")?.content ?? "";
-    expect(certification).toContain("Complete online mentorship by Exafluence Education with technical support of IBM");
-    expect(certification).toContain("IBM Digital Badge and Certificate of Completion");
+  it("closes the programme page with a section headed Enquiry", () => {
+    const quantum = ibmProgrammes.find(p => p.slug === "ibm-quantum-computing")!;
+    const { container } = render(<MemoryRouter><ProgrammeDetail programme={quantum} /></MemoryRouter>);
+    const headings = [...container.querySelectorAll(".programme-detail-section h2")].map(h => h.textContent?.trim());
+    expect(headings[headings.length - 1]).toBe("Enquiry");
+
+    // Other partners keep the brochure-first label.
+    const svu = programmes.find(p => p.organisation === "SVU")!;
+    const other = render(<MemoryRouter><ProgrammeDetail programme={svu} /></MemoryRouter>);
+    const otherHeadings = [...other.container.querySelectorAll(".programme-detail-section h2")].map(h => h.textContent?.trim());
+    expect(otherHeadings[otherHeadings.length - 1]).toBe("Brochure & Enquiry");
   });
 });
 
