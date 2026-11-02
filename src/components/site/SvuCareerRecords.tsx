@@ -29,7 +29,7 @@ export default function SvuCareerRecords({ kind }: { kind: "placements" | "inter
       <h2>{record.student}</h2>
       <p className="svu-outcome-role">{record.designation}</p>
       <p className="svu-outcome-org">{record.organisation}</p>
-    </li>)}</ul> :     <table className="svu-career-table" aria-label={title}><thead><tr><th scope="col">No.</th><th scope="col">Student Name</th><th scope="col">Batch</th><th scope="col">{placements ? "Organisation" : "Internship Organisation"}</th></tr></thead><tbody>{shown.map(record => <tr key={record.student}><td data-label="No.">{records.indexOf(record) + 1}</td><th scope="row" data-label="Student Name">{record.student}</th><td data-label="Batch">{record.batch}</td><td data-label={placements ? "Organisation" : "Internship Organisation"}>{record.organisation}</td></tr>)}</tbody></table>}
+    </li>)}</ul> :     <table className="svu-career-table" aria-label={title}><thead><tr><th scope="col">No.</th><th scope="col">Student Name</th><th scope="col">Batch</th><th scope="col">{placements ? "Organisation" : "Internship Organisation"}</th></tr></thead><tbody>{shown.map((record, index) => <tr key={record.student}><td data-label="No.">{index + 1}</td><th scope="row" data-label="Student Name">{record.student}</th><td data-label="Batch">{record.batch}</td><td data-label={placements ? "Organisation" : "Internship Organisation"}>{record.organisation}</td></tr>)}</tbody></table>}
     {shown.length === 0 && <div className="svu-career-empty"><p>No matching records.</p><Button variant="link" onClick={() => { setQuery(""); setBatch("all"); }}>Reset filters</Button></div>}
   </div>;
 }

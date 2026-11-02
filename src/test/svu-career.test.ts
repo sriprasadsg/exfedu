@@ -25,4 +25,17 @@ describe("approved SVU career records", () => {
     expect(filterSvuCareerRecords(svuPlacements, "shortfundly", "I · 2023–2025")).toEqual([]);
     expect(filterSvuCareerRecords(svuInternships, "sriharikota", "all").map(r => r.student)).toEqual(["P Prabhas Raj"]);
   });
+  it("orders records batch-wise, then alphabetically by student", () => {
+    expect(filterSvuCareerRecords(svuPlacements, "", "all").map(r => r.student)).toEqual([
+      "G V Sumanth", "Jonnalagadda Sahithya", "K Mounika", "K Vinay", "Vemuri Bharath Kumar", "Yaram Lakshmi Nisoka",
+      "Kamatam Meghana", "Muthyala Bharadwaj", "Muvvala Rajeswari", "Sri Tulasi Satya Saketh Raprolu", "Veeravalli Sri Satya",
+    ]);
+    expect(filterSvuCareerRecords(svuInternships, "", "all").map(r => r.student)).toEqual([
+      "Bandarupalli Madhuri", "G Mohana Priya", "G V Sumanth", "Jonnalagadda Sahithya", "K Vinay", "M Sreelekha",
+      "Myleri Deepa", "Naguru Navya Nikitha", "P Prabhas Raj", "Talupula Keerthi", "Vemuri Bharath Kumar",
+    ]);
+    // the supplied source arrays keep their original order
+    expect(svuPlacements[0].student).toBe("G V Sumanth");
+    expect(svuInternships[0].student).toBe("G Mohana Priya");
+  });
 });
