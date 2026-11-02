@@ -278,6 +278,21 @@
 
 /* SVU five-page layout (2 Nov 2026 brief): open, centred, no sidebar */
 .svu-container { width: 100%; max-width: 1120px; margin-inline: auto; padding-inline: 24px; }
+/* Colourful back button at the top of every collaboration partner page
+   (client brief, 2 November 2026). Its edge runs blue → teal → violet, so the
+   SkillShone navy/red pairing is deliberately kept out of it. */
+.network-back { position: relative; display: inline-flex; align-items: center; gap: 10px; margin-bottom: 14px; padding: 8px 20px 8px 8px; border-radius: 999px; border: 1px solid hsl(var(--connection-blue) / .28); background: hsl(var(--background)); font-size: 14px; font-weight: 500; color: hsl(var(--navy-900)); text-decoration: none; box-shadow: 0 8px 20px -16px hsl(214 55% 28% / .8); transition: transform .3s ease, box-shadow .3s ease; }
+.network-back::after { content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 2px; background: linear-gradient(120deg, hsl(var(--connection-blue)), hsl(var(--connection-teal)) 48%, hsl(var(--connection-violet))); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; opacity: .7; transition: opacity .3s ease; }
+.network-back:hover { transform: translateY(-2px); box-shadow: 0 14px 26px -16px hsl(214 55% 28% / .9); }
+.network-back:hover::after { opacity: 1; }
+.network-back:focus-visible { outline: 2px solid hsl(var(--connection-blue)); outline-offset: 3px; }
+.network-back-icon { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%; background: linear-gradient(140deg, hsl(var(--connection-blue) / .18), hsl(var(--connection-teal) / .18) 55%, hsl(var(--connection-violet) / .18)); color: hsl(var(--connection-blue)); }
+.network-back .lucide-arrow-left { animation: network-back-nudge 2.6s ease-in-out infinite; }
+@keyframes network-back-nudge { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(-3px); } }
+@media (prefers-reduced-motion: reduce) {
+  .network-back .lucide-arrow-left { animation: none; }
+  .network-back { transform: none; }
+}
 .svu-breadcrumb { padding-top: 28px; }
 .svu-breadcrumb a { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: hsl(var(--connection-blue)); }
 .svu-breadcrumb a:hover { text-decoration: underline; }

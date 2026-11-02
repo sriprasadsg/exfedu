@@ -1,4 +1,5 @@
 import { SvuTabBar } from "./SvuPages";
+import NetworkBackButton from "./NetworkBackButton";
 import { svuSectionPath } from "@/lib/programmeNavigation";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
@@ -50,8 +51,6 @@ const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { progr
     <nav aria-label="Breadcrumb">
       <Link to="/">Home</Link>
       <span aria-hidden="true">/</span>
-      <Link to="/collaboration-network">Our Collaboration Network</Link>
-      <span aria-hidden="true">/</span>
       {organisationOverview ? (
         <span aria-current="page">{org.name}</span>
       ) : (
@@ -68,10 +67,11 @@ const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { progr
     <main className="programme-experience">
       {/* SVU programme pages (2 Nov 2026 brief): breadcrumb, then the section tabs,
           then the programme title and introduction. */}
-      {isSvu && <div className="programme-crumb-band"><div className="container">{breadcrumb}</div></div>}
+      {isSvu && <div className="programme-crumb-band"><div className="container"><NetworkBackButton />{breadcrumb}</div></div>}
       {isSvu && <SvuTabBar active="programmes" detail />}
       <header className={`programme-intro${isSvu ? " programme-intro-after-tabs" : ""}`}>
         <div className="container">
+          {!isSvu && <NetworkBackButton />}
           {!isSvu && breadcrumb}
           <img className={`programme-detail-logo ${org.logoClass}`} src={org.logo} alt={`${org.name} logo`} />
           <h1>{p.title}</h1>

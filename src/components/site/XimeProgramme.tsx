@@ -7,6 +7,7 @@ import PartnerEnquiry from "@/components/home/PartnerEnquiry";
 import { organisations, type Tone } from "@/data/site";
 import { ximeProgrammeContent as content } from "@/data/xime";
 import { useProgrammeSeo } from "./ProgrammeDirectory";
+import NetworkBackButton from "./NetworkBackButton";
 
 type Section = { title: string; icon: LucideIcon; tone: Tone; text?: string; items?: string[]; missing: string };
 const XimeProgramme = () => {
@@ -37,7 +38,8 @@ const XimeProgramme = () => {
   const list = (items: string[]) => <ul>{items.map(item => <li key={item}>{item}</li>)}</ul>;
   return <main className="programme-experience">
     <header className="programme-intro"><div className="container">
-      <nav aria-label="Breadcrumb"><Link to="/">Home</Link><span aria-hidden="true">/</span><Link to="/collaboration-network">Our Collaboration Network</Link><span aria-hidden="true">/</span><span aria-current="page">XIME Chennai</span></nav>
+      <NetworkBackButton />
+      <nav aria-label="Breadcrumb"><Link to="/">Home</Link><span aria-hidden="true">/</span><span aria-current="page">XIME Chennai</span></nav>
       <img className="programme-detail-logo" src={organisations.XIME.logo} alt="XIME Chennai logo" />
       <h1>{content.title ?? "XIME Chennai Programme"}</h1>
       {!content.overview && <p className="programme-review-note">Programme information is awaiting verification from the XIME Chennai source.</p>}

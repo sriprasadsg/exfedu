@@ -1,7 +1,7 @@
 import ResearchThemeIcon from "./ResearchThemeIcon";
 import { useEffect, useMemo, useState, type CSSProperties } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ArrowLeft, ArrowRight, ArrowUpRight, BookOpen, Code2, Presentation, Search, Trophy } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BookOpen, Code2, Presentation, Search, Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -11,6 +11,7 @@ import { svuAchievements, svuConferencePapers, svuProjects, svuPublications } fr
 import { programmePath, svuSectionPath, type SvuSectionId } from "@/lib/programmeNavigation";
 import { useProgrammeSeo } from "./ProgrammeDirectory";
 import SvuCareerRecords from "./SvuCareerRecords";
+import NetworkBackButton from "./NetworkBackButton";
 
 const tabs: { id: SvuSectionId; label: string }[] = [
   { id: "overview", label: "Overview" },
@@ -199,7 +200,7 @@ const SvuPages = ({ section }: { section: SvuSectionId }) => {
   useEffect(() => { if (!hash) window.scrollTo(0, 0); }, [section, hash]);
   return <main className="programme-experience svu-pages">
     <div className="svu-container">
-      <nav aria-label="Breadcrumb" className="svu-breadcrumb"><Link to="/collaboration-network"><ArrowLeft size={15} aria-hidden="true" />Back to Our Collaboration Network</Link></nav>
+      <nav aria-label="Our Collaboration Network" className="svu-breadcrumb"><NetworkBackButton /></nav>
     </div>
     <SvuTabBar active={section} />
     <div className="svu-container svu-body">
