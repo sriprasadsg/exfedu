@@ -318,3 +318,6 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - Homepage boxes: thick coloured edge on one side only, remaining edges thin, with gentle animation — done, blue/teal/amber left edges drift, banner top edge slides
 - One column replaced/overlapping: align neatly — done, internships table columns rebalanced, headers no longer collide
 
+
+- Malaya Rout designation: Vice President at Exafluence — done, card reads Faculty / Vice President at Exafluence
+- Remove "Guest Faculty" wording; mention only "Faculty" — done, all eleven industry roles now read Faculty

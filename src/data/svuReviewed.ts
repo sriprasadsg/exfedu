@@ -46,17 +46,17 @@ export const svuPublications = [
 ].map(([title, id]) => ({ title, href: `https://www.allcommercejournal.com/special-issue/2025.v6.i2S.${id}` }));
 export const svuFaculty = [
   { name: "Anjan Babu", role: "Professor & Coordinator", expertise: "SVU Computer Science professor and coordinator for industry-integrated Data Science programmes." },
-  { name: "Malaya Rout", role: "Visiting Faculty", expertise: "Director of Data Science at Exafluence; AI, ML and industry data solutions." },
-  { name: "Gopinath Kesavan", role: "Guest Faculty", expertise: "AI, cloud-scale solutions, automation and centres of excellence." },
+  { name: "Malaya Rout", role: "Faculty", expertise: "Vice President at Exafluence; AI, ML and industry data solutions." },
+  { name: "Gopinath Kesavan", role: "Faculty", expertise: "AI, cloud-scale solutions, automation and centres of excellence." },
   { name: "Padmanayaki", role: "Assistant Professor", expertise: "Computer Science, Artificial Intelligence and Data Science." },
   { name: "Lalitha", role: "Assistant Professor", expertise: "Analytics, AI and big data." },
-  { name: "Kumar Armugam", role: "Guest Faculty", expertise: "NLP, Computer Vision, Generative AI and multi-cloud technologies." },
-  { name: "Sasank Majeti", role: "Guest Faculty", expertise: "Data analytics, Python, R, SQL, Power BI, Tableau and deep learning." },
-  { name: "Sreeram Babu Bojja", role: "Visiting Faculty", expertise: "Communication, life skills and creative writing." },
-  { name: "Venkat Prasad Reddy", role: "Guest Faculty", expertise: "Banking and healthcare AI, NLP, Agentic AI and Computer Vision." },
-  { name: "Poonam Talati", role: "Guest Faculty", expertise: "Programming, web development and database management." },
-  { name: "Babu", role: "Guest Faculty", expertise: "Agile, DevOps, DevSecOps, cloud, SRE and software quality." },
-  { name: "Abhishek Kumar Ram", role: "Guest Faculty", expertise: "DBMS, SQL, data processing and analytics." },
+  { name: "Kumar Armugam", role: "Faculty", expertise: "NLP, Computer Vision, Generative AI and multi-cloud technologies." },
+  { name: "Sasank Majeti", role: "Faculty", expertise: "Data analytics, Python, R, SQL, Power BI, Tableau and deep learning." },
+  { name: "Sreeram Babu Bojja", role: "Faculty", expertise: "Communication, life skills and creative writing." },
+  { name: "Venkat Prasad Reddy", role: "Faculty", expertise: "Banking and healthcare AI, NLP, Agentic AI and Computer Vision." },
+  { name: "Poonam Talati", role: "Faculty", expertise: "Programming, web development and database management." },
+  { name: "Babu", role: "Faculty", expertise: "Agile, DevOps, DevSecOps, cloud, SRE and software quality." },
+  { name: "Abhishek Kumar Ram", role: "Faculty", expertise: "DBMS, SQL, data processing and analytics." },
 ];
 export const svuSupport = [
   { name: "Neelakanteswara Pagadala", expertise: "AI/ML research, Industrial IoT and student project mentoring." },
