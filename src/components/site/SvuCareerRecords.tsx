@@ -1,4 +1,4 @@
-import { Building2, CalendarRange, Hashtag, UserRound } from "lucide-react";
+import { Building2, CalendarRange, Hash, UserRound } from "lucide-react";
 import { filterSvuCareerRecords, svuInternshipIntroduction, svuInternships, svuPlacements } from "@/data/svuCareer";
 
 export default function SvuCareerRecords({ kind }: { kind: "placements" | "internships" }) {
@@ -19,7 +19,7 @@ export default function SvuCareerRecords({ kind }: { kind: "placements" | "inter
       <p className="svu-outcome-role">{record.designation}</p>
       <p className="svu-outcome-org">{record.organisation}</p>
     </li>)}</ul> : <div className="svu-career-table-wrap"><table className="svu-career-table" aria-label={title}><thead><tr>
-      <th scope="col"><i className="svu-career-head-icon svu-career-head-1"><Hashtag size={14} aria-hidden="true" /></i><span>No.</span></th>
+      <th scope="col"><i className="svu-career-head-icon svu-career-head-1"><Hash size={14} aria-hidden="true" /></i><span>No.</span></th>
       <th scope="col"><i className="svu-career-head-icon svu-career-head-2"><UserRound size={14} aria-hidden="true" /></i><span>Student Name</span></th>
       <th scope="col"><i className="svu-career-head-icon svu-career-head-3"><CalendarRange size={14} aria-hidden="true" /></i><span>Batch</span></th>
       <th scope="col"><i className="svu-career-head-icon svu-career-head-4"><Building2 size={14} aria-hidden="true" /></i><span>{placements ? "Organisation" : "Internship Organisation"}</span></th>
