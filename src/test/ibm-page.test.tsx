@@ -109,6 +109,10 @@ describe("IBM programme page sections", () => {
   it("words the teaching role separately from the certificate issuer", () => {
     const pbel = ibmProgrammes.find(p => p.slug === "ibm-pbel")!;
     const certification = ibmProgrammeSections(pbel).find(s => s.title === "Assessment & Certification")?.content ?? "";
+    expect(certification).toContain("Complete online mentorship by Exafluence Education with technical support of IBM");
+    expect(certification).toContain("IBM Digital Badge and Certificate of Completion");
+  });
+
   it("closes the programme page with a section headed Enquiry", () => {
     const quantum = ibmProgrammes.find(p => p.slug === "ibm-quantum-computing")!;
     const { container } = render(<MemoryRouter><ProgrammeDetail programme={quantum} /></MemoryRouter>);
