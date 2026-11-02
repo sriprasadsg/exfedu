@@ -29,7 +29,7 @@ describe("SVU pages", () => {
   it("placements and internships keep all 11 records with one heading", () => {
     for (const kind of ["placements", "internships"] as const) {
       const { container, unmount } = open(kind);
-      expect(container.querySelectorAll(".svu-career-table tbody tr")).toHaveLength(11);
+      expect(container.querySelectorAll(kind === "placements" ? ".svu-outcome" : ".svu-career-table tbody tr")).toHaveLength(11);
       expect(container.querySelectorAll("h1")).toHaveLength(1);
       unmount();
     }

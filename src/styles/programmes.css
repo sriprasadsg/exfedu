@@ -333,3 +333,15 @@
 .svu-flow { gap: 64px; }
 @media (max-width: 900px) { .svu-split .svu-areas { grid-template-columns: minmax(0, 1fr); grid-auto-rows: auto; } }
 @media (max-width: 767px) { .svu-split { grid-template-columns: minmax(0, 1fr); gap: 20px; } .svu-flow { gap: 40px; } }
+
+/* SVU placements: student-outcome showcase */
+.svu-outcomes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 4px; }
+.svu-outcome { padding: 20px; border: 1px solid hsl(var(--connection-blue) / .18); border-top: 3px solid hsl(var(--connection-blue) / .55); border-radius: 12px; background: hsl(var(--card)); transition: background-color 200ms ease, transform 200ms ease; }
+.svu-outcome:hover { background: hsl(var(--connection-blue) / .04); transform: translateY(-2px); }
+.svu-outcome-batch { font-size: 12px; color: hsl(var(--connection-blue)); }
+.svu-outcome h2 { font-size: 17px; font-weight: 500; line-height: 1.4; color: hsl(var(--navy-900)); margin-top: 8px; }
+.svu-outcome-role { font-size: 14px; font-weight: 500; color: hsl(var(--navy-900) / .8); margin-top: 10px; }
+.svu-outcome-org { font-size: 13px; line-height: 1.6; color: hsl(var(--muted-foreground)); margin-top: 2px; }
+@media (max-width: 900px) { .svu-outcomes { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .svu-outcomes { grid-template-columns: minmax(0, 1fr); } }
+@media (prefers-reduced-motion: reduce) { .svu-outcome { transition: none; } .svu-outcome:hover { transform: none; } }

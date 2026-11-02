@@ -22,7 +22,12 @@ export default function SvuCareerRecords({ kind }: { kind: "placements" | "inter
       <Button variant="ghost" size="icon" aria-label={`Reset ${kind} filters`} title="Reset filters" onClick={() => { setQuery(""); setBatch("all"); }}><RotateCcw size={17} /></Button>
     </div>
     <p className="svu-career-count" role="status">{shown.length} of {records.length} records</p>
-    <table className="svu-career-table" aria-label={title}><thead><tr><th scope="col">No.</th><th scope="col">Student Name</th><th scope="col">Batch</th><th scope="col">{placements ? "Organisation" : "Internship Organisation"}</th>{placements && <th scope="col">Designation</th>}</tr></thead><tbody>{shown.map(record => <tr key={record.student}><td data-label="No.">{records.indexOf(record) + 1}</td><th scope="row" data-label="Student Name">{record.student}</th><td data-label="Batch">{record.batch}</td><td data-label={placements ? "Organisation" : "Internship Organisation"}>{record.organisation}</td>{placements && <td data-label="Designation">{record.designation}</td>}</tr>)}</tbody></table>
+    {placements ? <ul className="svu-outcomes" aria-label={title}>{shown.map(record => <li key={record.student} className="svu-outcome">
+      <span className="svu-outcome-batch">Batch {record.batch}</span>
+      <h2>{record.student}</h2>
+      <p className="svu-outcome-role">{record.designation}</p>
+      <p className="svu-outcome-org">{record.organisation}</p>
+    </li>)}</ul> :     <table className="svu-career-table" aria-label={title}><thead><tr><th scope="col">No.</th><th scope="col">Student Name</th><th scope="col">Batch</th><th scope="col">{placements ? "Organisation" : "Internship Organisation"}</th></tr></thead><tbody>{shown.map(record => <tr key={record.student}><td data-label="No.">{records.indexOf(record) + 1}</td><th scope="row" data-label="Student Name">{record.student}</th><td data-label="Batch">{record.batch}</td><td data-label={placements ? "Organisation" : "Internship Organisation"}>{record.organisation}</td></tr>)}</tbody></table>}
     {shown.length === 0 && <div className="svu-career-empty"><p>No matching records.</p><Button variant="link" onClick={() => { setQuery(""); setBatch("all"); }}>Reset filters</Button></div>}
   </div>;
 }

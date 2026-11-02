@@ -51,6 +51,4 @@ export const SvuAcademicResources = () => <div className="svu-academic-resources
   <h3>Academic Resources</h3><p>Industry-integrated teaching aligned with NEP 2020 connects AI, ML and Generative AI concepts with projects, case studies and real-world applications.</p>
   <h4>Faculty &amp; Industry Mentors</h4><div className="svu-faculty-grid">{svuFaculty.map(item => <article key={item.name}><h5>{item.name}</h5><span className="programme-org">{item.role}</span><p>{item.expertise}</p></article>)}</div>
   <h4>Programme Support · EdTech Division</h4><div className="svu-faculty-grid">{svuSupport.map(item => <article key={item.name}><h5>{item.name}</h5><p>{item.expertise}</p></article>)}</div>
-  <p className="programme-review-note">The uploaded Academic Resources document contains faculty and support profiles, not a syllabus, scheme or academic calendar. Those programme-specific files remain required for review.</p>
-  <p className="organisation-section-pending"><span>Brochure Review Required</span>{svuBrochureReview}</p>
 </div>;
