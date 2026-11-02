@@ -2,14 +2,14 @@ import { SvuTabBar } from "./SvuPages";
 import { svuSectionPath } from "@/lib/programmeNavigation";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, ArrowRight, Clock3, Monitor, Download, Cpu, FlaskConical, Library } from "lucide-react";
+import { ArrowLeft, ArrowRight, Clock3, Monitor, Download, Cpu, FlaskConical, Library, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import PartnerEnquiry from "@/components/home/PartnerEnquiry";
 import { academicResources, organisations, PENDING, type Programme } from "@/data/site";
 import { useProgrammeSeo } from "./ProgrammeDirectory";
 import { organisationPath } from "@/lib/programmeNavigation";
-import { programmeDetailSections, ibmProgrammeSections } from "@/lib/programmeSections";
+import { programmeDetailSections, ibmProgrammeSections, svuProgrammeUsp } from "@/lib/programmeSections";
 import { SvuAcademicResources } from "./SvuReviewedContent";
 
 const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { programme: Programme; organisationOverview?: boolean }) => {
@@ -37,6 +37,9 @@ const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { progr
 
   const enquiryUrl = `/contact?programme=${encodeURIComponent(p.slug)}`;
   const sections = p.organisation === "IBM" ? ibmProgrammeSections(p) : programmeDetailSections(p);
+  // SVU programme pages carry no brochure at all (client brief, 2 November 2026);
+  // the programme enquiry stays available on its own.
+  const offersBrochure = p.organisation !== "XIME" && p.organisation !== "SVU";
   const openBrochure = () => {
     setBrochureOpen(true);
     setFormComplete(false);
@@ -89,6 +92,30 @@ const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { progr
       </header>
       <div className="container programme-detail-body">
         <div className="programme-reading" ref={readingRef}>
+          {/* USP presentation (client brief, 2 November 2026): the programme's strengths
+              read directly below the introduction, before the detailed information. */}
+          {isSvu && <section className="programme-detail-section programme-usp programme-reveal" aria-labelledby="svu-usp-heading">
+            <h2 id="svu-usp-heading">
+              <span className="programme-section-icon tone-blue">
+                <Sparkles size={22} aria-hidden="true" />
+              </span>
+              Built Around Practical Learning
+            </h2>
+            <ul className="programme-usp-list">
+              {svuProgrammeUsp(p).map(point => <li key={point.label} className={point.wide ? "is-wide" : undefined}>
+                <span className={`programme-section-icon tone-${point.tone}`}>
+                  <point.icon size={20} aria-hidden="true" />
+                </span>
+                <span>{point.label}</span>
+              </li>)}
+            </ul>
+            <Button variant="link" className="programme-usp-link" asChild>
+              <Link to={svuSectionPath("projects-research")}>
+                Explore Student Projects
+                <ArrowRight size={16} aria-hidden="true" />
+              </Link>
+            </Button>
+          </section>}
           {sections.map(({ title, icon: Icon, tone, content, items, sub, note }) => (
             <section className="programme-detail-section programme-reveal" key={title}>
               <h2>
@@ -118,12 +145,12 @@ const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { progr
             </section>
           ))}
 
-          <section className="programme-detail-section programme-reveal" id="brochure-enquiry">
+          <section className="programme-detail-section programme-reveal" id={offersBrochure ? "brochure-enquiry" : "programme-enquiry"}>
             <h2>
               <span className="programme-section-icon tone-blue">
                 <Library size={22} aria-hidden="true" />
               </span>
-              {p.organisation === "IBM" ? "Enquiry" : "Brochure & Enquiry"}
+              {p.organisation === "IBM" || p.organisation === "SVU" ? "Enquiry" : "Brochure & Enquiry"}
             </h2>
             {p.organisation === "SVU" ? <SvuAcademicResources /> : <div className="programme-resource-box">
               <h3>Academic Resources</h3>
@@ -137,7 +164,7 @@ const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { progr
               </Button>
             </div>}
             <div className="programme-enquiry-row">
-              {p.organisation !== "XIME" && (
+              {offersBrochure && (
                 <Button variant="outline" onClick={openBrochure}>
                   <Download />
                   Request Brochure
@@ -162,7 +189,7 @@ const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { progr
               <ArrowRight />
             </Link>
           </Button>
-          {p.organisation !== "XIME" && (
+          {offersBrochure && (
             <>
               <Button variant="outline" onClick={openBrochure}>
                 <Download />
@@ -187,7 +214,7 @@ const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { progr
         </aside>
       </div>
 
-      <Dialog open={brochureOpen} onOpenChange={setBrochureOpen}>
+      {offersBrochure && <Dialog open={brochureOpen} onOpenChange={setBrochureOpen}>
         <DialogContent className="programme-brochure-dialog">
           <DialogTitle>{p.brochure ? "Brochure Request" : "Request an Approved Brochure"}</DialogTitle>
           <p className="text-sm text-muted-foreground">{p.title}</p>
@@ -220,7 +247,7 @@ const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { progr
             />
           )}
         </DialogContent>
-      </Dialog>
+      </Dialog>}
     </main>
   );
 };

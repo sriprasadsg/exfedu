@@ -3,7 +3,7 @@ import { Search, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { filterSvuCareerRecords, svuInternships, svuPlacements } from "@/data/svuCareer";
+import { filterSvuCareerRecords, svuInternshipIntroduction, svuInternships, svuPlacements } from "@/data/svuCareer";
 
 export default function SvuCareerRecords({ kind }: { kind: "placements" | "internships" }) {
   const [query, setQuery] = useState("");
@@ -14,8 +14,10 @@ export default function SvuCareerRecords({ kind }: { kind: "placements" | "inter
   const title = placements ? "Student Placements" : "Student Internships";
   return <div className="svu-career-records">
     <h1>{title}</h1>
-    <p className="svu-career-subtitle">{placements ? "Career outcomes in data science, artificial intelligence and technology." : "Connecting academic study with research and professional environments."}</p>
-    <p>{placements ? "Students from the SVU–Exafluence MS Data Science programme have secured roles in data science and AI engineering, alongside trainee positions. The following records show their organisations, designations and academic batches." : "Students from the 2023–2025 batch secured internships at NARL, Gadanki; SHAR, Sriharikota; and Vikram Sarabhai Space Centre, Thiruvananthapuram. These records highlight student participation in research and technical environments beyond the classroom."}</p>
+    <p className="svu-career-subtitle">{placements ? "Career outcomes in data science, artificial intelligence and technology." : svuInternshipIntroduction.subtitle}</p>
+    {placements
+      ? <p>Students from the SVU–Exafluence MS Data Science programme have secured roles in data science and AI engineering, alongside trainee positions. The following records show their organisations, designations and academic batches.</p>
+      : svuInternshipIntroduction.paragraphs.map(text => <p key={text}>{text}</p>)}
     <div className="svu-career-filters">
       <label><span>Search {kind}</span><div className="svu-career-search"><Search size={17} aria-hidden="true" /><Input aria-label={`Search ${kind}`} placeholder="Student, organisation or role" value={query} onChange={event => setQuery(event.target.value)} /></div></label>
       <label><span>Batch</span><Select value={batch} onValueChange={setBatch}><SelectTrigger aria-label={`${title} batch`}><SelectValue /></SelectTrigger><SelectContent><SelectItem value="all">All batches</SelectItem>{[...new Set(records.map(record => record.batch))].map(value => <SelectItem key={value} value={value}>{value}</SelectItem>)}</SelectContent></Select></label>

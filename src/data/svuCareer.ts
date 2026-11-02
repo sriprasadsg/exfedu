@@ -19,6 +19,16 @@ export const svuInternships: SvuCareerRecord[] = [
   { student: "P Prabhas Raj", batch: batchOne, organisation: "SHAR, Sriharikota" },
   { student: "Vemuri Bharath Kumar", batch: batchOne, organisation: "Vikram Sarabhai Space Centre, Thiruvananthapuram" },
 ];
+/** Internships introduction (client, 2 November 2026): exact approved website
+ * wording. Batch and year detail stays inside the records and the batch filter —
+ * never in the heading, the subtitle or these paragraphs. */
+export const svuInternshipIntroduction = {
+  subtitle: "Applying knowledge. Building experience. Advancing with confidence.",
+  paragraphs: [
+    "Exfedu proudly celebrates its students who have secured internships at NARL, Gadanki; SHAR, Sriharikota; and Vikram Sarabhai Space Centre, Thiruvananthapuram.",
+    "These opportunities connect academic preparation with research and technical practice, helping students apply their knowledge, strengthen problem-solving skills and experience professional working environments.",
+  ],
+};
 export const filterSvuCareerRecords = (records: SvuCareerRecord[], query: string, batch: string) => records.filter(record =>
   (batch === "all" || record.batch === batch) && `${record.student} ${record.batch} ${record.organisation} ${record.designation ?? ""}`.toLowerCase().includes(query.trim().toLowerCase())
 );
