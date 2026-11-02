@@ -1,5 +1,5 @@
 import ResearchThemeIcon from "./ResearchThemeIcon";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type CSSProperties } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ArrowLeft, ArrowRight, ArrowUpRight, BookOpen, Code2, Presentation, Search, Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -29,6 +29,12 @@ const seo: Record<SvuSectionId, [string, string]> = {
 };
 
 export const PROJECTS_PER_PAGE = 6;
+
+const svuTeachingSteps = [
+  { title: "Understand", text: "Core concepts in data, methods and results, guided by faculty and industry professionals.", icon: BookOpen, tone: "blue" },
+  { title: "Apply", text: "Programming exercises, case studies and technical discussions.", icon: Code2, tone: "teal" },
+  { title: "Present", text: "Explain how a solution works and why the approach was chosen.", icon: Presentation, tone: "violet" },
+];
 
 const SvuOverview = () => {
   const org = organisations.SVU;

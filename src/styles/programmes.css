@@ -441,3 +441,30 @@
    project, presentation and paper title. Hue comes from ResearchThemeIcon. */
 .research-theme-icon { flex-shrink: 0; display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; background: hsl(var(--theme-hue) 80% 95%); color: hsl(var(--theme-hue) 65% 45%); animation: none !important; }
 .svu-publications a > span:not(.research-theme-icon) { flex: 1; }
+
+/* ===== SVU teaching approach: three colourful flash cards (client, 2 November 2026) =====
+   Same card language as the rest of the site: white card, pale border, tinted icon
+   tile. Each card carries its own theme hue (royal blue, teal, violet) through a
+   turning conic edge, a staggered entrance and a gentle icon float. Nothing moves
+   when the visitor prefers reduced motion. */
+.svu-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin: 30px 0 0; padding: 0; list-style: none; counter-reset: step; }
+.svu-step { --step-hue: var(--connection-blue); counter-increment: step; position: relative; display: flex; flex-direction: column; align-items: flex-start; padding: 26px 24px 26px; border-radius: 16px; background: hsl(var(--card)); box-shadow: 0 10px 26px -22px hsl(var(--navy-900) / .45); transition: transform .35s ease, box-shadow .35s ease; animation: svu-step-in .6s ease-out backwards; animation-delay: var(--step-delay, 0s); }
+.svu-step--blue { --step-hue: var(--connection-blue); }
+.svu-step--teal { --step-hue: var(--programme-practical); }
+.svu-step--violet { --step-hue: var(--programme-innovation); }
+.svu-step::before { content: ""; position: absolute; inset: -1px; border-radius: inherit; padding: 1.5px; background: conic-gradient(from var(--ss-edge, 0deg), hsl(var(--step-hue)), hsl(var(--connection-blue)), hsl(var(--step-hue) / .25), hsl(var(--programme-achievement)), hsl(var(--step-hue))); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; animation: ss-edge-turn 9s linear infinite; opacity: .55; transition: opacity .35s ease; pointer-events: none; }
+.svu-step::after { content: ""; position: absolute; inset: -1px; border-radius: inherit; box-shadow: 0 0 22px -6px hsl(var(--step-hue) / .55); opacity: .35; animation: ss-edge-glow 5.5s ease-in-out infinite; pointer-events: none; }
+.svu-step:hover { transform: translateY(-5px); box-shadow: 0 26px 48px -28px hsl(var(--step-hue) / .6); }
+.svu-step:hover::before { opacity: 1; }
+.svu-step-topline { position: absolute; left: 24px; right: 24px; top: 0; height: 3px; border-radius: 0 0 3px 3px; background: linear-gradient(90deg, hsl(var(--step-hue)), hsl(var(--step-hue) / .15)); }
+.svu-step-head { display: flex; align-items: center; justify-content: space-between; width: 100%; gap: 12px; }
+.svu-step-icon { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 14px; color: hsl(var(--step-hue)); background: hsl(var(--step-hue) / .1); box-shadow: 0 16px 26px -18px hsl(var(--step-hue)); transition: transform .35s ease, box-shadow .35s ease; }
+.svu-step-icon svg { animation: ss-art-float 6s ease-in-out infinite; animation-delay: var(--step-delay, 0s); }
+.svu-step:hover .svu-step-icon { transform: translateY(-3px) scale(1.05); box-shadow: 0 20px 32px -16px hsl(var(--step-hue)); }
+.svu-step-number::before { content: counter(step, decimal-leading-zero); font-size: 30px; font-weight: 500; letter-spacing: .04em; line-height: 1; color: hsl(var(--step-hue) / .28); }
+.svu-step strong { display: block; margin-top: 18px; font-size: 17px; font-weight: 500; color: hsl(var(--navy-900)); }
+.svu-step > span { display: block; margin-top: 8px; font-size: 14px; line-height: 1.75; color: hsl(var(--muted-foreground)); }
+@keyframes svu-step-in { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 900px) { .svu-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .svu-steps { grid-template-columns: minmax(0, 1fr); gap: 16px; } .svu-step { padding: 22px 18px 22px; } }
+@media (prefers-reduced-motion: reduce) { .svu-step, .svu-step::before, .svu-step::after, .svu-step-icon svg { animation: none; } .svu-step, .svu-step:hover { transform: none; } .svu-step:hover .svu-step-icon { transform: none; } }
