@@ -508,7 +508,13 @@
 .svu-career-records .svu-career-subtitle { color: hsl(var(--navy-royal)); }
 .svu-career-records .svu-career-count { color: hsl(var(--navy-royal)); }
 .svu-career-filters { margin-top: 28px; }
-.svu-career-table th:first-child, .svu-career-table td:first-child { padding-left: 0; }
+/* Nothing sits against the panel wall (client, 2 November 2026): the first column starts clear
+   of the border so the names line up exactly under the header icon, and the last column ends
+   clear of the right edge. Phones keep their own card padding. */
+@media (min-width: 768px) {
+  .svu-career-table th:first-child, .svu-career-table td:first-child { padding-left: 22px; }
+  .svu-career-table th:last-child, .svu-career-table td:last-child { padding-right: 22px; }
+}
 
 /* Research theme icons (client, 2 November 2026): colourful, static, before each
    project, presentation and paper title. Hue comes from ResearchThemeIcon. */

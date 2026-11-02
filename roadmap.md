@@ -332,3 +332,5 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Replace "Programme Support · EdTech Division" with "Technical Mentors & Lab Faculty".
 
 - [x] SkillShone topic pills: no pink — replace the pink-tinted halves with the approved light pair (client, 2 Nov 2026)
+
+- [x] Names sit exactly under their icon; nothing placed at a panel/wall edge (client, 2 Nov 2026)
