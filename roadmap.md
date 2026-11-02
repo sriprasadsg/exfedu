@@ -352,4 +352,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 
 - [x] SkillShone panel: single white writing pad with coloured partitions (Learners sky blue, Institutions navy, front-to-back reversed) and a smaller pen resting on the paper
 - [x] SkillShone pad: remove ruled lines — plain white paper
-- [ ] SkillShone pad: remove the two headings above the pad; pen diagonal on right grey margin, tip upper-right
+- [x] SkillShone pad: headings removed; pen on white paper, tip facing 3 o2019clock
