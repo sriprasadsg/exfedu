@@ -4,7 +4,6 @@ import { ArrowUpRight, ArrowRight, GraduationCap, Landmark, Search, Database, Co
 import type { Page, Tone } from "@/data/site";
 import { BlockView } from "@/components/site/Blocks";
 import skillshoneLogo from "@/assets/skillshone-original.png.asset.json";
-import aiGenArt from "@/assets/ss-ai-gen.png";
 import featProblems from "@/assets/ss-feat-problems.png";
 import featDatasets from "@/assets/ss-feat-datasets.png";
 import featLlm from "@/assets/ss-feat-llm.png";
@@ -172,25 +171,45 @@ export default function SkillShonePage({ page, breadcrumb }: { page: Page; bread
         </ul>
       </section>
 
-      {/* Who it's for / institutions — split capsule */}
+      {/* Who it's for / institutions — two equal partitions */}
       <section className="container py-16">
         <div className="ss-split-head">
           <div className="ss-split-headtxt"><Eyebrow>Who it is for</Eyebrow><h2 className="ss-h2">Build a Portfolio, <em>Gain Confidence</em></h2></div>
           <div className="ss-split-headtxt"><Eyebrow>For institutions</Eyebrow><h2 className="ss-h2">Colleges <em>&amp; Universities</em></h2></div>
         </div>
         <div className="ss-capsule">
+          <span className="ss-pad-clip" aria-hidden="true">
+            <svg viewBox="0 0 88 46" xmlns="http://www.w3.org/2000/svg">
+              <rect x="19" y="2.5" width="50" height="21" rx="10.5" fill="none" stroke="currentColor" strokeWidth="4" />
+              <rect x="4" y="18" width="80" height="26" rx="9" fill="currentColor" />
+              <rect className="ss-pad-clip-line" x="15" y="28" width="58" height="3.5" rx="1.75" />
+            </svg>
+          </span>
+
           <div className="ss-cap ss-cap--left">
             <span className="ss-cap-badge" aria-hidden="true"><GraduationCap className="h-6 w-6" strokeWidth={1.5} /></span>
             <span className="ss-cap-side" aria-hidden="true">Learners</span>
             <ul>{audiences.map((a, i) => <li key={a} style={{ animationDelay: `${i * 120}ms` }}><ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />{a}</li>)}</ul>
           </div>
-          <div className="ss-cap-core" aria-hidden="true"><img src={aiGenArt} alt="" width={1024} height={1024} loading="lazy" /></div>
           <div className="ss-cap ss-cap--right">
             <span className="ss-cap-badge" aria-hidden="true"><Landmark className="h-6 w-6" strokeWidth={1.5} /></span>
             <span className="ss-cap-side" aria-hidden="true">Institutions</span>
             <ul>{institutions.map((a, i) => <li key={a} style={{ animationDelay: `${i * 120}ms` }}><ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />{a}</li>)}</ul>
           </div>
+          <span className="ss-pad-pen" aria-hidden="true">
+            <svg viewBox="0 0 46 330" xmlns="http://www.w3.org/2000/svg">
+              <rect x="9" y="6" width="28" height="96" rx="14" fill="currentColor" />
+              <rect className="ss-pad-pen-steel" x="30" y="16" width="6" height="56" rx="3" />
+              <rect className="ss-pad-pen-steel" x="8" y="94" width="30" height="9" rx="4" />
+              <rect x="11" y="103" width="24" height="140" rx="11" fill="currentColor" opacity=".9" />
+              <rect className="ss-pad-pen-steel" x="10" y="240" width="26" height="9" rx="4" />
+              <path className="ss-pad-pen-dark" d="M13 249 L33 249 L29 276 L17 276 Z" />
+              <path className="ss-pad-pen-steel" d="M17 276 L29 276 L23 312 Z" />
+              <path className="ss-pad-pen-dark" d="M22.4 284 L23.6 284 L23.6 306 L22.4 306 Z" />
+            </svg>
+          </span>
         </div>
+
       </section>
 
 

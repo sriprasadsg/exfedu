@@ -348,3 +348,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Footer links set to a single colour; only the coloured dots stay to tell entries apart.
 - [x] Learning Ecosystem section introduction: left-aligned navy heading, one short italic subtitle, content directly beneath, on the shared content width.
 - [x] SkillShone: the two "For students"/"For institutions" summary boxes repeated the capsule above, so both removed with their unused styles; capsule and FAQ verified in preview, 123 tests pass.
+- [x] SkillShone learners/institutions panel rebuilt as a rounded two-partition writing pad: navy clip clamped on the top edge, blue fountain pen resting along the right side (hidden on phones), original grey/sky-blue tints kept, thin blue-grey border, no yellow, centre illustration removed; verified 1280/390px with no overlap or overflow, 124 tests pass, build OK.

@@ -103,6 +103,24 @@ describe("SkillShone inline detail", () => {
     expect(screen.getByText("Academic–industry engagement")).toBeInTheDocument();
   });
 
+  // Client, 2 Nov 2026: the pill capsule became a rounded two-partition panel, centre artwork gone.
+  it("presents learners and institutions as two partitions with no centre illustration", () => {
+    open();
+    expect(document.querySelector(".ss-cap-core")).toBeNull();
+    expect(document.querySelector(".ss-cap--left")).not.toBeNull();
+    expect(document.querySelector(".ss-cap--right")).not.toBeNull();
+    expect(document.querySelector(".ss-cap--left .ss-cap-badge svg")).not.toBeNull();
+    expect(document.querySelector(".ss-cap--right .ss-cap-badge svg")).not.toBeNull();
+    expect(document.querySelector(".ss-cap--left .ss-cap-side")!.textContent).toBe("Learners");
+    expect(document.querySelector(".ss-cap--right .ss-cap-side")!.textContent).toBe("Institutions");
+    // the writing-pad hardware: clip on the top edge, pen resting along the side
+    expect(document.querySelector(".ss-pad-clip svg")).not.toBeNull();
+    expect(document.querySelector(".ss-pad-pen svg")).not.toBeNull();
+    expect(document.querySelector(".ss-pad-clip")!.getAttribute("aria-hidden")).toBe("true");
+  });
+
+
+
   it("sends Enquire Now to the contact page instead of opening a panel", () => {
     open();
     expect(screen.getByRole("link", { name: "Enquire Now" })).toHaveAttribute("href", "/contact");
