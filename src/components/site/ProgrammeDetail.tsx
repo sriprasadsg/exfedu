@@ -42,25 +42,34 @@ const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { progr
     setFormComplete(false);
   };
 
+  const isSvu = p.organisation === "SVU";
+  const breadcrumb = (
+    <nav aria-label="Breadcrumb">
+      <Link to="/">Home</Link>
+      <span aria-hidden="true">/</span>
+      <Link to="/collaboration-network">Our Collaboration Network</Link>
+      <span aria-hidden="true">/</span>
+      {organisationOverview ? (
+        <span aria-current="page">{org.name}</span>
+      ) : (
+        <>
+          <Link to={organisationPath(p.organisation)}>{org.name}</Link>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">{p.title}</span>
+        </>
+      )}
+    </nav>
+  );
+
   return (
     <main className="programme-experience">
-      <header className="programme-intro">
+      {/* SVU programme pages (2 Nov 2026 brief): breadcrumb, then the section tabs,
+          then the programme title and introduction. */}
+      {isSvu && <div className="programme-crumb-band"><div className="container">{breadcrumb}</div></div>}
+      {isSvu && <SvuTabBar active="programmes" detail />}
+      <header className={`programme-intro${isSvu ? " programme-intro-after-tabs" : ""}`}>
         <div className="container">
-          <nav aria-label="Breadcrumb">
-            <Link to="/">Home</Link>
-            <span aria-hidden="true">/</span>
-            <Link to="/collaboration-network">Our Collaboration Network</Link>
-            <span aria-hidden="true">/</span>
-            {organisationOverview ? (
-              <span aria-current="page">{org.name}</span>
-            ) : (
-              <>
-                <Link to={organisationPath(p.organisation)}>{org.name}</Link>
-                <span aria-hidden="true">/</span>
-                <span aria-current="page">{p.title}</span>
-              </>
-            )}
-          </nav>
+          {!isSvu && breadcrumb}
           <img className={`programme-detail-logo ${org.logoClass}`} src={org.logo} alt={`${org.name} logo`} />
           <h1>{p.title}</h1>
           <p>{p.overview}</p>
@@ -78,8 +87,6 @@ const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { progr
           </dl>
         </div>
       </header>
-
-      {p.organisation === "SVU" && <SvuTabBar active="programmes" />}
       <div className="container programme-detail-body">
         <div className="programme-reading" ref={readingRef}>
           {sections.map(({ title, icon: Icon, tone, content, items, sub, note }) => (
