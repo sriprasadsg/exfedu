@@ -463,3 +463,16 @@
 @media (max-width: 900px) { .svu-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 640px) { .svu-steps { grid-template-columns: minmax(0, 1fr); gap: 16px; } .svu-step { padding: 22px 18px 22px; } }
 @media (prefers-reduced-motion: reduce) { .svu-step, .svu-step::before, .svu-step::after, .svu-step-icon svg { animation: none; } .svu-step, .svu-step:hover { transform: none; } .svu-step:hover .svu-step-icon { transform: none; } }
+
+/* SVU achievements: side-by-side photo story cards (2 Nov 2026) */
+.svu-stories { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.svu-story { display: flex; flex-direction: column; align-items: stretch; gap: 0; padding: 0; overflow: hidden; border-top: 3px solid hsl(var(--connection-blue)); }
+.svu-story:nth-child(2) { border-top-color: hsl(352 70% 48%); }
+.svu-story figure { position: relative; height: 280px; background: linear-gradient(160deg, hsl(var(--connection-blue) / .06), hsl(var(--card))); display: grid; place-items: center; padding: 14px; }
+.svu-story img { width: 100%; height: 100%; max-height: none; object-fit: contain; }
+.svu-story-badge { position: absolute; top: 12px; left: 12px; display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px; border-radius: 999px; font-size: 11px; font-weight: 500; background: hsl(var(--card) / .92); color: hsl(var(--connection-blue)); border: 1px solid hsl(var(--connection-blue) / .25); }
+.svu-story-body { padding: 20px 22px 24px; border-top: 1px solid hsl(var(--academic-edge)); }
+.svu-story-head { display: flex; align-items: center; gap: 12px; }
+.svu-story-head h3 { margin: 0; }
+.svu-story-caption { font-size: 12px !important; margin-top: 10px !important; font-style: italic; }
+@media (max-width: 760px) { .svu-stories { grid-template-columns: minmax(0, 1fr); } .svu-story figure { height: 220px; } }

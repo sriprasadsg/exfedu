@@ -86,8 +86,8 @@ const SvuOverview = () => {
     <section className="svu-block" id="achievements">
       <h2>Student Innovation and Achievements</h2>
       <div className="svu-stories">{svuOverviewAchievements.map(item => <article className="svu-story" key={item.title}>
-        <figure><img src={item.photo} alt={item.alt} loading="lazy" />{item.caption && <figcaption>{item.caption}</figcaption>}</figure>
-        <ResearchThemeIcon title={item.title} /><div><h3>{item.title}</h3><p>{item.text}</p></div>
+        <figure><img src={item.photo} alt={item.alt} loading="lazy" /><span className="svu-story-badge"><Trophy size={13} aria-hidden="true" />Achievement</span></figure>
+        <div className="svu-story-body"><div className="svu-story-head"><ResearchThemeIcon title={item.title} /><h3>{item.title}</h3></div><p>{item.text}</p>{item.caption && <p className="svu-story-caption">{item.caption}</p>}</div>
       </article>)}</div>
       <p className="svu-highlight"><Trophy size={18} aria-hidden="true" /><span><strong>{hackathon.title}</strong> — {hackathon.text} <a href={hackathon.href} target="_blank" rel="noopener noreferrer">{hackathon.label}<ArrowUpRight size={14} aria-hidden="true" /></a></span></p>
     </section>
