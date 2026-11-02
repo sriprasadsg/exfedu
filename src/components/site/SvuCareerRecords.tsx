@@ -1,10 +1,10 @@
-import { svuBatchRank, svuInternshipIntroduction, svuInternships, svuPlacements } from "@/data/svuCareer";
+import { filterSvuCareerRecords, svuInternshipIntroduction, svuInternships, svuPlacements } from "@/data/svuCareer";
 
 export default function SvuCareerRecords({ kind }: { kind: "placements" | "internships" }) {
   const placements = kind === "placements";
   const records = placements ? svuPlacements : svuInternships;
   // Search and batch filter removed (client, 2 November 2026); records show in full.
-  const shown = records;
+  const shown = filterSvuCareerRecords(records, "", "all");
   const title = placements ? "Student Placements" : "Student Internships";
   return <div className="svu-career-records">
     <h1>{title}</h1>
