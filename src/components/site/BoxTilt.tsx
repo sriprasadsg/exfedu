@@ -4,7 +4,7 @@ import { useEffect } from "react";
 const SELECTOR = [
   '[class*="card"]', '[class*="-tile"]', '[class*="-item"]', '[class*="story"]',
   '.rounded-xl.border', '.rounded-2xl.border', '.rounded-lg.border',
-  '.svu-outcome', '.svu-career-table-wrap', '.svu-step', '.svu-area', '.svu-champion',
+  '.svu-outcome', '.ibm-steps li', '.ibm-choice li', '.svu-career-table-wrap', '.svu-step', '.svu-area', '.svu-champion',
 ].join(",");
 const EXCLUDE = "[class*='svu-story-'], .cap-card, .education-arm, header *, footer *, nav *, input, textarea, select, [role=dialog] *";
 

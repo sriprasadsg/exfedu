@@ -552,3 +552,24 @@
 .svu-directory-link svg { animation: svu-arrow-go 1.8s ease-in-out infinite; }
 @keyframes svu-arrow-go { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(5px); } }
 @media (prefers-reduced-motion: reduce) { .svu-directory-link svg { animation: none; } .svu-directory-groups .svu-directory:hover { transform: none; } }
+
+/* IBM page: colourful floating icons, side-edged tilting boxes, distinct learner enquiry (client, 2 November 2026). */
+.ibm-page .programme-section-icon { box-shadow: 0 6px 14px -8px currentColor; animation: ibm-icon-float 5s ease-in-out infinite; }
+.ibm-page .programme-section-icon.tone-blue { background: linear-gradient(140deg, hsl(var(--connection-blue) / .2), hsl(var(--connection-teal) / .12)); }
+.ibm-page .programme-section-icon.tone-teal { background: linear-gradient(140deg, hsl(var(--programme-practical) / .22), hsl(var(--connection-blue) / .1)); }
+.ibm-page .programme-section-icon.tone-violet { background: linear-gradient(140deg, hsl(var(--programme-innovation) / .22), hsl(var(--connection-blue) / .1)); }
+.ibm-page .programme-section-icon.tone-amber { background: linear-gradient(140deg, hsl(var(--programme-achievement) / .24), hsl(var(--connection-teal) / .1)); }
+.ibm-page li:nth-child(2) .programme-section-icon { animation-delay: -1.6s; }
+.ibm-page li:nth-child(3) .programme-section-icon { animation-delay: -3.2s; }
+@keyframes ibm-icon-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+.ibm-steps li, .ibm-choice li { --edge: var(--connection-blue); border: 1px solid hsl(var(--edge) / .25); border-left: 5px solid hsl(var(--edge)); background: linear-gradient(100deg, hsl(var(--edge) / .06), hsl(var(--background)) 60%); transition: transform .2s ease, box-shadow .25s ease; }
+.ibm-steps li:nth-child(2), .ibm-choice li:nth-child(4n+2) { --edge: var(--programme-practical); }
+.ibm-steps li:nth-child(3), .ibm-choice li:nth-child(4n+3) { --edge: var(--programme-innovation); }
+.ibm-choice li:nth-child(4n) { --edge: var(--programme-achievement); }
+.ibm-steps li:hover, .ibm-choice li:hover { box-shadow: 0 18px 30px -20px hsl(var(--edge) / .7); }
+.ibm-learner { position: relative; overflow: hidden; padding: 32px 36px; border-radius: 18px; border: 2px solid hsl(var(--connection-teal) / .35); border-left: 6px solid hsl(var(--connection-teal)); background: linear-gradient(120deg, hsl(var(--connection-blue) / .1), hsl(var(--connection-teal) / .1) 55%, hsl(var(--connection-violet) / .08)); }
+.ibm-learner::before { content: ""; position: absolute; right: -60px; top: -60px; width: 200px; height: 200px; border-radius: 50%; background: radial-gradient(circle, hsl(var(--connection-teal) / .25), transparent 70%); animation: ibm-icon-float 7s ease-in-out infinite; pointer-events: none; }
+.ibm-learner > a:first-of-type { background: linear-gradient(100deg, hsl(var(--connection-blue)), hsl(var(--connection-teal))); font-weight: 600; border-radius: 999px; padding-inline: 22px; box-shadow: 0 10px 22px -12px hsl(var(--connection-teal)); }
+.ibm-learner > a:first-of-type:hover { filter: brightness(1.08); transform: translateY(-2px); }
+@media (prefers-reduced-motion: reduce) { .ibm-page .programme-section-icon, .ibm-learner::before { animation: none; } }
+@media (max-width: 760px) { .ibm-learner { padding: 24px 20px; } }
