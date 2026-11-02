@@ -17,3 +17,4 @@
 - Header menus render primaryNavigation, learningEcosystemPages and sidebarPages from site.ts, independently of footer menuCategories, so primary destinations and sidebar-only resources cannot leak into each other's groups; Contact stays accessible through page calls to action.
 - Page detail stays on the page itself rather than behind a click: no bottom-anchored panel may cover the viewport, so fuller text renders inline and expandable items (FAQs) open their answer beneath their own question, one at a time.
 
+- SVU renders as five separate pages (/collaboration-network/svu[/programmes|/projects-research|/internships|/placements]) through SvuPages with a tab bar and no sidebar; svuSectionPath in programmeNavigation.ts is the single source for these links so menus, footer and in-page links stay consistent.
