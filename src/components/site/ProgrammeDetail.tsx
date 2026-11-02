@@ -9,6 +9,7 @@ import PartnerEnquiry from "@/components/home/PartnerEnquiry";
 import { academicResources, organisations, PENDING, type Programme } from "@/data/site";
 import { useProgrammeSeo } from "./ProgrammeDirectory";
 import { organisationPath } from "@/lib/programmeNavigation";
+import InstitutionBrochureForm from "@/components/site/InstitutionBrochureForm";
 import { programmeDetailSections, ibmProgrammeSections, svuProgrammeUsp } from "@/lib/programmeSections";
 import { SvuAcademicResources } from "./SvuReviewedContent";
 
@@ -235,16 +236,7 @@ const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { progr
               )}
             </div>
           ) : (
-            <PartnerEnquiry
-              programme={p.title}
-              onSuccess={() => setFormComplete(true)}
-              intro={{
-                title: "Contact details",
-                description: p.brochure
-                  ? "Complete your enquiry before downloading the approved brochure."
-                  : "The brochure awaits approval. You can test your programme enquiry below.",
-              }}
-            />
+            <InstitutionBrochureForm programme={p.title} onSuccess={() => setFormComplete(true)} />
           )}
         </DialogContent>
       </Dialog>}
