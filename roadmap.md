@@ -308,10 +308,9 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 
 - Bars coming out of the capsule icons: align neatly, or present differently (client, 2 Nov 2026)
 
-- Highlight the icon background and animate it gently (client, 2 Nov 2026)
+- Highlight the icon background and animate it gently — done, brand-tinted tiles drift gently
 
 - Continue button: use SkillShone navy/red combination — done, navy-to-red gradient on all enquiry buttons
 - Partner enquiry: make colourful across the whole site — done, gradient top edge, navy label, red step count, filling progress line
 - Bars coming out of the capsule icons: align neatly, or present differently — done, badge + label now stacked inside each half
-- Partner enquiry: make colourful across the whole site (client, 2 Nov 2026)
 - Publish after these edits (client, 2 Nov 2026)
