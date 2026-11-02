@@ -1668,7 +1668,7 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
 .ss-pad-clip {
   position: absolute;
   top: -1.9rem;
-  left: 50%;
+  left: 26%;
   translate: -50% 0;
   width: 7.5rem;
   color: hsl(var(--primary));
@@ -1681,7 +1681,7 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
    Slim enough to sit beside the centred content without touching it. */
 .ss-pad-pen {
   position: absolute;
-  top: 50%;
+  top: 60%;
   right: 3.7rem;
   translate: 0 -50%;
   rotate: 176deg;
@@ -1836,6 +1836,14 @@ body:not(:has(.homepage-static)) main h3 :is(a, em, strong, span, small, cite) {
 body:not(:has(.homepage-static)) main :is(.about-brand-exa, .about-brand-fluence, .brand-exa, .brand-fluence) {
   background: none; -webkit-background-clip: initial; background-clip: initial;
   -webkit-text-fill-color: currentColor;
+}
+/* The writing pad's title keeps SkillShone's own navy→red lettering instead of the
+   site-wide heading gradient (client, 2 November 2026). */
+body:not(:has(.homepage-static)) main h3.ss-pad-title {
+  background-image: linear-gradient(100deg, hsl(var(--primary)) 0%, hsl(var(--brand-red)) 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: hsl(var(--primary));
 }
 .box-tilt-active {
   transition: transform .18s ease-out, box-shadow .25s ease !important;
