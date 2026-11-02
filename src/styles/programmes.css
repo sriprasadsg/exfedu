@@ -38,6 +38,7 @@
 .programme-search input { padding-left: 38px; }
 .programme-filters button { min-width: 0; }
 .programme-filters [role=combobox] > span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.programme-table-head, .programme-row { display: grid; grid-template-columns: minmax(0, 2.5fr) .7fr 1.25fr 1.1fr 118px; gap: 22px; align-items: center; }
 .programme-table-head { position: relative; overflow: hidden; font-size: 11px; font-weight: 500; letter-spacing: .09em; text-transform: uppercase; color: hsl(var(--navy-800)); padding: 13px 20px; border: 1px solid hsl(var(--academic-edge)); border-bottom: 0; border-radius: 16px 16px 0 0; background: linear-gradient(100deg, hsl(var(--connection-blue) / .12), hsl(var(--connection-teal) / .07) 34%, hsl(var(--connection-violet) / .1) 68%, hsl(var(--brand-red) / .09)); }
 .programme-table-head::before { content: ""; position: absolute; inset: 0 0 auto; height: 3px; background: linear-gradient(90deg, hsl(var(--connection-blue)), hsl(var(--connection-teal)) 32%, hsl(var(--connection-violet)) 66%, hsl(var(--brand-red))); }
 .programme-head-cell { display: inline-flex; align-items: center; gap: 9px; min-width: 0; }
