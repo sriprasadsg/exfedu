@@ -285,3 +285,8 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Search bar and magnifier colourful (client, 2 Nov 2026): 2px blue border, pale blue-teal-violet wash, magnifier set in a blue-to-teal tile; research tab pill framed and labelled in blue/teal/violet; result count teal.
 - [x] Remove the top Back link from pages
 - [x] Programme page: colourful icons, side-edge tilted boxes, new enquiry look; then publish
+
+## 2 Nov 2026 — 16:20 UTC
+- [ ] Remove the "Our Collaboration Network" breadcrumb link from all collaboration partner pages (SVU, XIME, IBM, programme details).
+- [ ] Present the topmost "Back to Our Collaboration Network" button colourfully.
+- [ ] Publish latest (user asked 16:20 UTC).
