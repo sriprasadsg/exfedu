@@ -343,3 +343,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Footer: partners and Quick Links keep their own colours; every other footer line (Privacy Policy, Terms & Conditions, column titles, copyright) returns to the single earlier colour with no dots (client 18:06 UTC 2 Nov 2026)
 - [x] About hero artwork: shining medium-blue outer contours with a soft glow on every sphere, disc and the bead string; floor shadow, white icons and transparency untouched (client 18:09 UTC 2 Nov 2026)
 - [ ] Search white button: apply a gentle animation (client 18:11 UTC 2 Nov 2026)
+- [ ] Second artwork/element from image-239: apply a gentle animation (client 18:12 UTC 2 Nov 2026)
