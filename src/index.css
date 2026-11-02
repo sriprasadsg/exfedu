@@ -1554,13 +1554,12 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
 
 
 /* ===== SkillShone split capsule (learners vs institutions) ===== */
-.ss-split-head, .ss-split-foot { display: grid; grid-template-columns: 1fr 1fr; gap: 9rem; }
-.ss-split-head > div:last-child, .ss-split-foot p:last-child { text-align: right; }
+.ss-split-head { display: grid; grid-template-columns: 1fr 1fr; gap: 9rem; }
+.ss-split-head > div:last-child { text-align: right; }
 /* Pull the institutions heading a bit inward from the page edge */
 .ss-split-headtxt:last-child { padding-right: 3rem; }
 
 .ss-split-head .ss-eyebrow { justify-content: inherit; }
-.ss-split-foot { margin-top: 1.4rem; font-size: .85rem; line-height: 1.6; color: hsl(var(--muted-foreground)); }
 .ss-capsule { position: relative; display: grid; grid-template-columns: 1fr 1fr; margin-top: 1.8rem; }
 .ss-cap { position: relative; padding: 2.6rem 5.5rem 2.2rem 2.4rem; min-height: 19rem; display: flex; align-items: center; animation: ss-cap-in .8s ease-out both; }
 .ss-cap--left { border-radius: 999px 0 0 999px; background: linear-gradient(135deg, hsl(var(--primary) / .16), hsl(var(--primary) / .05)); }
@@ -1593,7 +1592,7 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
 @keyframes ss-bob { 0%,100% { translate: 0 0; } 50% { translate: 0 -4px; } }
 @keyframes ss-spin { to { transform: rotate(360deg); } }
 @media (max-width: 860px) {
-  .ss-split-head, .ss-split-foot { gap: 1.5rem; }
+  .ss-split-head { gap: 1.5rem; }
   .ss-capsule { grid-template-columns: 1fr; gap: 5.5rem; }
   .ss-cap, .ss-cap--right { border-radius: 2.5rem; padding: 3rem 1.5rem 2rem; justify-content: center; min-height: 0; }
   .ss-cap-side { display: none; }
@@ -1601,36 +1600,12 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
   .ss-cap--left .ss-cap-badge { left: 1.25rem; }
   .ss-cap--right .ss-cap-badge { right: 1.25rem; }
 }
-@media (max-width: 560px) { .ss-split-head, .ss-split-foot { grid-template-columns: 1fr; } .ss-split-head > div:last-child, .ss-split-foot p:last-child { text-align: left; } .ss-split-headtxt:last-child { padding-right: 0; } }
+@media (max-width: 560px) { .ss-split-head { grid-template-columns: 1fr; } .ss-split-head > div:last-child { text-align: left; } .ss-split-headtxt:last-child { padding-right: 0; } }
 @media (prefers-reduced-motion: reduce) { .ss-cap, .ss-cap li, .ss-cap-badge, .ss-cap-core::before, .ss-cap-core img { animation: none; } }
 .ss-split-head > div:last-child .ss-eyebrow { justify-content: flex-end; }
 
-/* ===== SkillShone split footer: rectangular hover cards ===== */
-.ss-foot-cards { display: grid !important; grid-template-columns: 1fr 1fr; gap: 1.25rem; text-align: left !important; }
-/* Colourful themed cards (27 Oct 2026): tinted fill, hairline theme border and a
-   pop-up lift on hover — students in the navy theme, institutions in sky blue. */
-.ss-foot-card { display: flex; gap: .9rem; align-items: flex-start; padding: 1.1rem 1.25rem; border-radius: .8rem; background: hsl(var(--background)); border: 1px solid hsl(var(--border)); box-shadow: 0 6px 18px -14px hsl(var(--primary) / .35); transition: transform .3s, box-shadow .3s, border-color .3s; animation: ss-foot-in .6s ease-out both; }
-.ss-foot-card--blue { background: linear-gradient(135deg, hsl(var(--primary) / .09), hsl(var(--primary) / .03)); border-color: hsl(var(--primary) / .18); }
-.ss-foot-card--red { background: linear-gradient(135deg, hsl(var(--connection-blue) / .14), hsl(var(--connection-blue) / .04)); border-color: hsl(var(--connection-blue) / .2); animation-delay: .15s; }
-.ss-foot-card p { margin: .25rem 0 0 !important; text-align: left !important; font-size: .86rem; line-height: 1.6; color: hsl(var(--muted-foreground)); }
-.ss-foot-card h4 { font-size: .92rem; font-weight: 500; color: hsl(var(--primary)); }
-.ss-foot-icon { flex: none; display: grid; place-items: center; width: 2.4rem; height: 2.4rem; border-radius: .6rem; box-shadow: 0 10px 18px -12px currentColor; transition: transform .3s; }
-.ss-foot-card--blue .ss-foot-icon { background: hsl(var(--primary) / .14); color: hsl(var(--primary)); }
-.ss-foot-card--red .ss-foot-icon { background: hsl(var(--connection-blue) / .16); color: hsl(var(--connection-blue)); }
-.ss-foot-card--red h4 { color: hsl(var(--connection-blue)); }
-.ss-foot-card:hover { transform: translateY(-6px) scale(1.015); }
-.ss-foot-card--blue:hover { border-color: hsl(var(--primary) / .45); box-shadow: 0 24px 40px -20px hsl(var(--primary) / .55), 0 0 18px -6px hsl(var(--connection-blue) / .4); }
-.ss-foot-card--red:hover { border-color: hsl(var(--connection-blue) / .45); box-shadow: 0 24px 40px -20px hsl(var(--connection-blue) / .55), 0 0 18px -6px hsl(var(--connection-blue) / .45); }
-.ss-foot-card:hover .ss-foot-icon { transform: scale(1.12) rotate(-5deg); }
-@keyframes ss-foot-in { from { opacity: 0; transform: translateY(14px) scale(.97); } to { opacity: 1; transform: none; } }
-@media (max-width: 700px) { .ss-foot-cards { grid-template-columns: 1fr; } }
-/* The two audience boxes sit inside a grid whose class name also contains "card", so the
-   site-wide edge treatment drew a line straight across the gap between them. The boxes keep
-   their own edges; the container's is removed. (client, 2 November 2026) */
-body:not(:has(.homepage-static)) main .ss-split-foot.ss-foot-cards::after { display: none; }
 /* The closing panel's contact address reads as part of the sentence, so it is lifted out bold. */
 .cta-email { font-weight: 700; color: hsl(var(--foreground)); }
-@media (prefers-reduced-motion: reduce) { .ss-foot-card, .ss-foot-icon { animation: none; transition: none; } .ss-foot-card:hover { transform: none; } }
 .ss-split-headtxt .ss-h2 { color: hsl(var(--primary) / .72); }
 .ss-split-headtxt .ss-h2 em { color: hsl(var(--primary) / .55); }
 .ss-split-headtxt .ss-eyebrow { color: hsl(var(--muted-foreground) / .8); }
@@ -1835,10 +1810,6 @@ body:not(:has(.homepage-static)) main h4 {
 }
 body:not(:has(.homepage-static)) main h4 :is(a, em, strong, span, small, cite) {
   background-image: linear-gradient(100deg, hsl(var(--navy-800)) 0%, hsl(var(--connection-blue)) 42%, hsl(var(--connection-teal)) 72%, hsl(var(--connection-violet)) 100%);
-  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
-}
-body:not(:has(.homepage-static)) main .ss-foot-cards h4 {
-  background-image: linear-gradient(100deg, hsl(var(--primary)) 0%, hsl(var(--brand-red)) 100%);
   -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
 }
 
