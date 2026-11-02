@@ -1,3 +1,4 @@
+import ResearchThemeIcon from "./ResearchThemeIcon";
 import { useEffect, useMemo, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ArrowLeft, ArrowRight, ArrowUpRight, Search, Trophy } from "lucide-react";
@@ -74,7 +75,7 @@ const SvuOverview = () => {
       <h2>Student Innovation and Achievements</h2>
       <div className="svu-stories">{svuOverviewAchievements.map(item => <article className="svu-story" key={item.title}>
         <figure><img src={item.photo} alt={item.alt} loading="lazy" />{item.caption && <figcaption>{item.caption}</figcaption>}</figure>
-        <div><h3>{item.title}</h3><p>{item.text}</p></div>
+        <ResearchThemeIcon title={item.title} /><div><h3>{item.title}</h3><p>{item.text}</p></div>
       </article>)}</div>
       <p className="svu-highlight"><Trophy size={18} aria-hidden="true" /><span><strong>{hackathon.title}</strong> — {hackathon.text} <a href={hackathon.href} target="_blank" rel="noopener noreferrer">{hackathon.label}<ArrowUpRight size={14} aria-hidden="true" /></a></span></p>
     </section>
@@ -149,7 +150,7 @@ const SvuResearch = () => {
       <TabsContent value="projects">
         <label className="svu-project-search"><Search size={18} aria-hidden="true" /><Input aria-label="Search student projects" placeholder="Search projects or student names" value={query} onChange={e => { setQuery(e.target.value); setPage(1); }} /></label>
         <p className="svu-result-count" role="status">{shown.length} of {svuProjects.length} projects</p>
-        <div className="svu-project-list">{visible.map(item => { const n = svuProjects.indexOf(item) + 1; return <article id={`svu-project-${n}`} key={`${item.student}-${item.title}`} className={hash === `#svu-project-${n}` ? "is-target" : undefined}><span className="svu-project-number">{String(n).padStart(2, "0")}</span><div><h3>{item.title}</h3><p>{item.student}</p></div></article>; })}</div>
+        <div className="svu-project-list">{visible.map(item => { const n = svuProjects.indexOf(item) + 1; return <article id={`svu-project-${n}`} key={`${item.student}-${item.title}`} className={hash === `#svu-project-${n}` ? "is-target" : undefined}><span className="svu-project-number">{String(n).padStart(2, "0")}</span><ResearchThemeIcon title={item.title} /><div><h3>{item.title}</h3><p>{item.student}</p></div></article>; })}</div>
         {shown.length === 0 && <p role="status">No matching projects.</p>}
         {pages > 1 && <nav className="svu-pagination" aria-label="Project pages">
           <Button variant="outline" size="sm" disabled={current === 1} onClick={() => setPage(current - 1)}>Previous</Button>
@@ -157,8 +158,8 @@ const SvuResearch = () => {
           <Button variant="outline" size="sm" disabled={current === pages} onClick={() => setPage(current + 1)}>Next</Button>
         </nav>}
       </TabsContent>
-      <TabsContent value="conferences"><div className="svu-project-list">{svuConferencePapers.map(item => <article key={item.student}><div><span className="programme-org">{item.conference}</span><h3>{item.title}</h3><p>{item.student}</p></div></article>)}</div></TabsContent>
-      <TabsContent value="papers"><p className="svu-result-count">MSDS students · Batch 2023–2025</p><div className="svu-publications">{svuPublications.map(item => <a href={item.href} key={item.href} target="_blank" rel="noopener noreferrer"><span>{item.title}</span><ArrowUpRight size={17} aria-hidden="true" /></a>)}</div></TabsContent>
+      <TabsContent value="conferences"><div className="svu-project-list">{svuConferencePapers.map(item => <article key={item.student}><ResearchThemeIcon title={item.title} /><div><span className="programme-org">{item.conference}</span><h3>{item.title}</h3><p>{item.student}</p></div></article>)}</div></TabsContent>
+      <TabsContent value="papers"><p className="svu-result-count">MSDS students · Batch 2023–2025</p><div className="svu-publications">{svuPublications.map(item => <a href={item.href} key={item.href} target="_blank" rel="noopener noreferrer"><ResearchThemeIcon title={item.title} /><span>{item.title}</span><ArrowUpRight size={17} aria-hidden="true" /></a>)}</div></TabsContent>
     </Tabs>
   </div>;
 };
