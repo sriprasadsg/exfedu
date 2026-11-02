@@ -631,14 +631,15 @@
 .ibm-directory-row h3, .ibm-directory-row h3 a { color: hsl(var(--row)) !important; -webkit-text-fill-color: currentColor !important; background: none !important; font-weight: 600; }
 .ibm-directory-link { font-weight: 700; color: hsl(var(--row)) !important; }
 
-/* The featured-achievement panel is a dark navy field, so its heading must stay
-   white. The site-wide colourful-title rule (index.css) paints every h3 in main
-   with a gradient text fill, and it out-specifies the plain class rule, which
-   left "Quantum Wave" navy-on-navy and unreadable. This selector carries the
-   same body:not(...) prefix plus the class, so it wins and keeps the panel legible. */
+/* The featured-achievement panel is a pale sky-blue field, so its heading must
+   read in navy. The site-wide colourful-title rule (index.css) paints every h3
+   in main with a gradient text fill, and it out-specifies the plain class rule,
+   which would leave "Quantum Wave" tinted by the shared gradient. This selector
+   carries the same body:not(...) prefix plus the class, so it wins and keeps the
+   panel legible. */
 body:not(:has(.homepage-static)) main .svu-champion-title {
   background: none; -webkit-background-clip: initial; background-clip: initial;
-  -webkit-text-fill-color: hsl(0 0% 100%); color: hsl(0 0% 100%);
+  -webkit-text-fill-color: hsl(var(--navy-900)); color: hsl(var(--navy-900));
 }
 
 /* Programme detail pages (XIME FinTech and the other organisation courses):
