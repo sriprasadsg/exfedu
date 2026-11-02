@@ -345,10 +345,9 @@ export const organisationSections: Partial<Record<Organisation, OrganisationSect
       text: "Programme learning includes real-time projects, industry mentoring, case studies and a final-semester capstone addressing business challenges.",
       pending: "TIBS 2026 lists three papers but names four presentations in the supplied record. The total requires confirmation." },
     { id: "internships", title: "Internships", icon: Briefcase, tone: "amber",
-      text: "The supplied 2023–2025 batch record lists nine students pursuing internships across the National Atmospheric Research Laboratory (NARL), Satish Dhawan Space Centre (SDSC), and Vikram Sarabhai Space Centre. Internship durations and application windows require confirmation." },
+      text: "Students from the 2023–2025 batch secured internships at NARL, Gadanki; SHAR, Sriharikota; and Vikram Sarabhai Space Centre, Thiruvananthapuram." },
     { id: "placements", title: "Placements", icon: Compass, tone: "blue",
-      text: "Placement preparation combines technical training, free soft-skills development, aptitude preparation and mock interviews with experienced placement consultants.",
-      pending: "Placement statistics, recruiting organisations and verified employment outcomes await approved university records." },
+      text: "Students from the SVU–Exafluence MS Data Science programme have secured roles in data science and AI engineering, alongside trainee positions." },
   ],
 };
 
