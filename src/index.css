@@ -579,7 +579,7 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .partner-3d-stage { transition: transform .7s ease; }
 .partner-3d-stage:hover { transform: translateX(-16px) rotateX(1.5deg) rotateY(-2deg); }
 .partner-3d-card { position: relative; overflow: hidden; background: hsl(var(--background)); border: 1px solid hsl(var(--border)); border-radius: 18px; padding: clamp(1.25rem, 3vw, 1.75rem); }
-.partner-3d-card::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 4px; background: linear-gradient(100deg, hsl(var(--primary)) 0%, hsl(var(--connection-teal)) 48%, hsl(var(--brand-red)) 100%); }
+.partner-3d-card::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 4px; background: linear-gradient(100deg, hsl(var(--primary)) 0%, hsl(var(--connection-blue)) 100%); }
 .partner-3d-card input:not([type="checkbox"]), .partner-3d-card select, .partner-3d-card textarea { min-height: 48px; transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease; }
 .partner-3d-card textarea { min-height: 84px; }
 .partner-3d-card input:not([type="checkbox"]):hover, .partner-3d-card select:hover, .partner-3d-card textarea:hover { border-color: hsl(214 53% 55% / .55); transform: translateY(-1px); }
@@ -926,7 +926,7 @@ body:has(.homepage-static) *:not(.exi-box):not(.exi-substitute)::after {
 }
 @container cap (min-width: 800px) {
   /* The cards sit on the circle by centring themselves, so the tilt has to carry that centre. */
-  .homepage-static .cap-card:hover, .homepage-static .cap-card:focus-visible { transform: translate(-50%, -50%) translateY(-3px) rotate(-1.4deg) scale(1.05); box-shadow: 0 18px 30px -16px hsl(var(--primary) / .5); }
+  .homepage-static .cap-card:hover, .homepage-static .cap-card:focus-visible { transform: translate(-50%, -50%) translateY(-2px) rotate(-0.6deg) scale(1.015); box-shadow: 0 14px 24px -16px hsl(var(--primary) / .45); }
 }
 @media (max-width: 640px) {
   .hero-dot-layer { inset: 0; width: 100%; height: 100%; }
@@ -1690,7 +1690,7 @@ body:not(:has(.homepage-static)) main [class*="card"]::after, body:not(:has(.hom
 body:not(:has(.homepage-static)) main .rounded-xl.border::after, body:not(:has(.homepage-static)) main .rounded-2xl.border::after, body:not(:has(.homepage-static)) main .rounded-lg.border::after,
 body:not(:has(.homepage-static)) main a.rounded-md.border::after, main button.rounded-md.border::after {
   content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1px;
-  background: linear-gradient(120deg, hsl(var(--connection-blue)), hsl(var(--connection-violet)) 50%, hsl(var(--brand-red)));
+  background: linear-gradient(120deg, hsl(var(--primary)), hsl(var(--connection-blue)));
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor; mask-composite: exclude;
   pointer-events: none; opacity: .45; transition: opacity .3s ease;
@@ -1727,14 +1727,12 @@ body:not(:has(.homepage-static)) main .lucide-arrow-right, body:not(:has(.homepa
 .homepage-static .exi-box { position: relative; overflow: hidden; }
 .homepage-static .exi-box::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background-image: linear-gradient(180deg, hsl(var(--connection-blue)) 0%, hsl(var(--primary)) 50%, hsl(var(--connection-blue)) 100%); background-size: 100% 200%; animation: exi-edge-slide 8s ease-in-out infinite; transition: width .25s ease; }
 .homepage-static .exi-box:hover::before, .homepage-static .exi-box:focus-visible::before { width: 7px; }
-.homepage-static .exi-grid .exi-item:nth-child(3n+2) .exi-box::before { background-image: linear-gradient(180deg, hsl(var(--connection-teal)) 0%, hsl(var(--primary)) 50%, hsl(var(--connection-teal)) 100%); }
-.homepage-static .exi-grid .exi-item:nth-child(3n+3) .exi-box::before { background-image: linear-gradient(180deg, hsl(var(--connection-amber)) 0%, hsl(var(--primary)) 50%, hsl(var(--connection-amber)) 100%); }
 .homepage-static .exi-grid .exi-item:nth-child(2) .exi-box::before { animation-delay: -1.4s; }
 .homepage-static .exi-grid .exi-item:nth-child(3) .exi-box::before { animation-delay: -2.8s; }
 .homepage-static .exi-grid .exi-item:nth-child(4) .exi-box::before { animation-delay: -4.2s; }
 .homepage-static .exi-grid .exi-item:nth-child(5) .exi-box::before { animation-delay: -5.6s; }
 .homepage-static .exi-grid .exi-item:nth-child(6) .exi-box::before { animation-delay: -7s; }
-.homepage-static .exi-substitute::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 4px; background-image: linear-gradient(100deg, hsl(var(--primary)) 0%, hsl(var(--connection-teal)) 33%, hsl(var(--brand-red)) 66%, hsl(var(--primary)) 100%); background-size: 200% 100%; animation: exi-edge-slide-x 12s linear infinite; }
+.homepage-static .exi-substitute::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 4px; background-image: linear-gradient(100deg, hsl(var(--primary)) 0%, hsl(var(--connection-blue)) 50%, hsl(var(--primary)) 100%); background-size: 200% 100%; animation: exi-edge-slide-x 12s linear infinite; }
 @media (prefers-reduced-motion: reduce) { .homepage-static .exi-box::before, .homepage-static .exi-substitute::before { animation: none; } }
 
 /* Enquire Now buttons: the fill changes to a second colour and the button tilts slightly when

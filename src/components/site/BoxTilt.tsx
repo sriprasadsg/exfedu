@@ -27,7 +27,7 @@ export function BoxTilt() {
       const x = (e.clientX - r.left) / r.width - 0.5;
       const y = (e.clientY - r.top) / r.height - 0.5;
       el.classList.add("box-tilt-active");
-      el.style.transform = `perspective(800px) rotateX(${(-y * 8).toFixed(2)}deg) rotateY(${(x * 8).toFixed(2)}deg) translateZ(14px) scale(1.02)`;
+      el.style.transform = `perspective(800px) rotateX(${(-y * 3).toFixed(2)}deg) rotateY(${(x * 3).toFixed(2)}deg) translateZ(6px) scale(1.008)`;
     };
     const onLeave = () => { if (current) reset(current); current = null; };
     window.addEventListener("pointermove", onMove, { passive: true });
