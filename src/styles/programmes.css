@@ -59,7 +59,7 @@
 .programme-head-2 i { background: hsl(var(--connection-teal)); }
 .programme-head-3 i { background: hsl(var(--connection-violet)); }
 .programme-head-4 i { background: hsl(var(--connection-amber)); }
-.programme-head-5 i { background: hsl(var(--brand-red)); }
+.programme-head-5 i { background: hsl(var(--connection-blue)); }
 .programme-row { padding: 24px 20px; border-bottom: 1px solid hsl(var(--academic-edge)); transition: background 350ms, border-color 350ms; }
 .programme-row:hover { background: hsl(var(--academic-surface) / .5); border-color: hsl(var(--programme-blue)); }
 .programme-row h2 { font-size: 16px; line-height: 1.5; font-weight: 500; margin-top: 5px; }
@@ -353,10 +353,10 @@
 .svu-story h3 { font-size: 18px; font-weight: 500; color: hsl(var(--navy-900)); }
 .svu-story p { font-size: 15px; line-height: 1.8; color: hsl(var(--muted-foreground)); margin-top: 8px; }
 /* The one line that should read first on the overview: a pale sky-blue award panel, unlike every other card. */
-.svu-champion { position: relative; isolation: isolate; display: flex; align-items: flex-start; gap: 22px; margin-top: 30px; padding: 28px 32px; border-radius: 20px; overflow: hidden; background: linear-gradient(118deg, hsl(205 92% 98%) 0%, hsl(205 88% 93%) 55%, hsl(210 62% 95%) 100%); border: 1px solid hsl(205 62% 86%); box-shadow: 0 18px 40px -28px hsl(205 70% 40% / .55); }
-.svu-champion::before { content: ""; position: absolute; z-index: 2; inset: 0 0 auto; height: 4px; background: linear-gradient(90deg, hsl(var(--connection-blue)), hsl(var(--connection-violet)) 48%, hsl(var(--brand-red))); }
+.svu-champion { position: relative; isolation: isolate; display: flex; align-items: flex-start; gap: 18px; margin-top: 24px; max-width: 860px; padding: 20px 26px; border-radius: 16px; overflow: hidden; background: linear-gradient(118deg, hsl(205 92% 98%) 0%, hsl(205 88% 93%) 55%, hsl(210 62% 95%) 100%); border: 1px solid hsl(205 62% 86%); box-shadow: 0 18px 40px -28px hsl(205 70% 40% / .55); }
+.svu-champion::before { content: ""; position: absolute; z-index: 2; inset: 0 0 auto; height: 4px; background: linear-gradient(90deg, hsl(var(--connection-blue)), hsl(205 85% 70%)); }
 .svu-champion::after { content: ""; position: absolute; inset: -46% -12% auto auto; width: 340px; height: 340px; border-radius: 50%; background: radial-gradient(circle, hsl(var(--connection-blue) / .16), transparent 68%); }
-.svu-champion-medal { position: relative; z-index: 3; flex-shrink: 0; display: grid; place-items: center; width: 66px; height: 66px; border-radius: 20px; color: hsl(0 0% 100%); background: linear-gradient(150deg, hsl(var(--connection-blue)) 0%, hsl(var(--navy-royal)) 58%, hsl(var(--navy-royal-deep)) 100%); border: 1px solid hsl(0 0% 100% / .55); box-shadow: inset 0 1px 0 hsl(0 0% 100% / .5), inset 0 -10px 18px -12px hsl(0 0% 100% / .35), 0 12px 24px -14px hsl(var(--connection-blue) / .6); animation: svu-champion-drift 6s ease-in-out infinite; }
+.svu-champion-medal { position: relative; z-index: 3; flex-shrink: 0; display: grid; place-items: center; width: 54px; height: 54px; border-radius: 16px; color: hsl(0 0% 100%); background: linear-gradient(150deg, hsl(var(--connection-blue)) 0%, hsl(var(--navy-royal)) 58%, hsl(var(--navy-royal-deep)) 100%); border: 1px solid hsl(0 0% 100% / .55); box-shadow: inset 0 1px 0 hsl(0 0% 100% / .5), inset 0 -10px 18px -12px hsl(0 0% 100% / .35), 0 12px 24px -14px hsl(var(--connection-blue) / .6); animation: svu-champion-drift 6s ease-in-out infinite; }
 @keyframes svu-champion-drift { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-5px) rotate(-2deg); } }
 .svu-champion-body { position: relative; z-index: 3; min-width: 0; }
 .svu-champion-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: hsl(var(--navy-600)); }
@@ -364,7 +364,7 @@
 /* The shared heading gradient would paint this title dark on dark, so it is reset here. */
 .svu-champion-title { margin: 9px 0 7px; font-size: 21px; font-weight: 500; letter-spacing: -.01em; background: none; -webkit-background-clip: initial; background-clip: initial; -webkit-text-fill-color: hsl(var(--navy-900)); color: hsl(var(--navy-900)); }
 .svu-champion-line { max-width: 720px; margin: 0; font-size: 15px; line-height: 1.8; color: hsl(220 14% 34%); }
-.svu-champion-bold { padding: 0 2px; font-weight: 700; color: hsl(var(--navy-900)); background: linear-gradient(transparent 62%, hsl(205 88% 84%) 62%); border-radius: 3px; }
+.svu-champion-bold { padding: 0 2px; font-weight: 700; color: hsl(var(--navy-900)); }
 .svu-champion-link { display: inline-flex; align-items: center; gap: 4px; margin-top: 15px; padding: 6px 14px; border-radius: 999px; border: 1px solid hsl(var(--connection-blue) / .45); font-size: 13px; font-weight: 500; color: hsl(var(--navy-900)); text-decoration: none; transition: background-color .25s ease, border-color .25s ease, transform .25s ease; }
 
 .svu-champion-link:hover, .svu-champion-link:focus-visible { background: hsl(205 90% 96%); border-color: hsl(var(--connection-blue) / .8); transform: translateY(-1px); outline: none; }
