@@ -48,11 +48,11 @@ describe("Footer collaboration network", () => {
       "Placements",
     ]);
     expect(svuLinks.map((a) => a.getAttribute("href"))).toEqual([
-      "/collaboration-network/svu#overview",
-      "/collaboration-network/svu#programmes",
-      "/collaboration-network/svu#projects-research",
-      "/collaboration-network/svu#internships",
-      "/collaboration-network/svu#placements",
+      "/collaboration-network/svu",
+      "/collaboration-network/svu/programmes",
+      "/collaboration-network/svu/projects-research",
+      "/collaboration-network/svu/internships",
+      "/collaboration-network/svu/placements",
     ]);
 
     for (const group of groups.slice(1)) {
@@ -78,9 +78,9 @@ describe("Footer collaboration network", () => {
     const destinations = [...container.querySelectorAll<HTMLAnchorElement>("a")].map(a => a.getAttribute("href"));
     expect(destinations).toEqual([
       "/collaboration-network", "/collaboration-network/svu",
-      "/collaboration-network/svu#overview", "/collaboration-network/svu#programmes",
-      "/collaboration-network/svu#projects-research", "/collaboration-network/svu#internships",
-      "/collaboration-network/svu#placements", "/collaboration-network/ibm", "/collaboration-network/xime",
+      "/collaboration-network/svu", "/collaboration-network/svu/programmes",
+      "/collaboration-network/svu/projects-research", "/collaboration-network/svu/internships",
+      "/collaboration-network/svu/placements", "/collaboration-network/ibm", "/collaboration-network/xime",
       "/about", "/skillshone", "/#partner-enquiry",
     ]);
   });
