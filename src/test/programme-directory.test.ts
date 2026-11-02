@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { collaborationSlides, filterProgrammes, programmes } from "@/data/site";
 
 describe("approved collaboration programme rules", () => {
-  it("orders collaborations SVU, XIME Chennai, IBM", () => { expect(collaborationSlides.map(s => s.organisation)).toEqual(["SVU", "XIME", "IBM"]); });
+  it("orders collaborations SVU, IBM, XIME Chennai", () => { expect(collaborationSlides.map(s => s.organisation)).toEqual(["SVU", "IBM", "XIME"]); });
   it("uses the five approved SVU durations and modes", () => {
     expect(programmes.filter(p => p.organisation === "SVU").map(p => [p.duration, p.delivery])).toEqual([["2 years", "Regular, full-time hybrid"], ["1 year", "Part-time hybrid"], ["6 months", "Part-time hybrid"], ["6 months", "Part-time hybrid"], ["6 months", "Part-time hybrid"]]);
   });
