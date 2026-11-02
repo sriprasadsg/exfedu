@@ -272,3 +272,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [ ] SVU Overview teaching-approach cards (client, 2 Nov 2026): remove the 01/02/03 numerics from the three boxes.
 - [ ] Programmes page (client, 2 Nov 2026): fix text that renders not visible (adjust across the whole site, not just this page).
 - [ ] Programmes page (client, 2 Nov 2026): remove "forecast" wording; animate the cap artwork gently and give it its own box/tile.
+- [ ] Publish the latest site (client, 2 Nov 2026: "publih over all latestly").
