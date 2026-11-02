@@ -13,7 +13,7 @@ export const programmeDetailSections = (p: Programme): DetailSection[] => [
   { title: "Overview", icon: BookOpen, tone: "blue", content: p.overview, note: p.practical },
   { title: "Eligibility", icon: GraduationCap, tone: "teal", content: p.eligibility },
   { title: "Duration & Delivery", icon: Clock3, tone: "amber", content: `${p.duration} · ${p.delivery}` },
-  { title: "Programme Features", icon: Sparkles, tone: "violet", items: p.features },
+  { title: "Features", icon: Sparkles, tone: "violet", items: p.features },
   {
     title: "Curriculum", icon: Layers, tone: "blue", items: p.curriculum,
     sub: p.tools?.length ? { label: "Tools and technologies", items: p.tools } : undefined,

@@ -345,3 +345,15 @@
 @media (max-width: 900px) { .svu-outcomes { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 560px) { .svu-outcomes { grid-template-columns: minmax(0, 1fr); } }
 @media (prefers-reduced-motion: reduce) { .svu-outcome { transition: none; } .svu-outcome:hover { transform: none; } }
+
+/* SVU programme directory grouped by category */
+.svu-directory-groups { display: grid; gap: 40px; margin-top: -24px; }
+.svu-directory-group h2 { font-size: 19px; font-weight: 500; color: hsl(var(--navy-900)); margin-bottom: 12px; }
+.svu-directory-groups .svu-directory { margin-top: 0; }
+.svu-directory-groups .svu-directory-head, .svu-directory-groups .svu-directory-row { grid-template-columns: minmax(0, 3fr) minmax(0, 1fr) minmax(0, 1.4fr) 140px; padding: 13px 12px; }
+.programme-experience > .svu-tabbar { margin-top: 0; }
+@media (max-width: 767px) {
+  .svu-directory-groups { gap: 28px; }
+  .svu-directory-groups .svu-directory-row { gap: 4px; padding: 14px 4px; }
+  .svu-directory-groups .svu-directory-row [data-label] { font-size: 13px; }
+}
