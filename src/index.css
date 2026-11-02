@@ -1412,6 +1412,14 @@ html body .cap-diagram .cap-art {
 .ss-tool svg { animation: ss-tool-bob 6s ease-in-out infinite; }
 @keyframes ss-tool-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-1.5px); } }
 @media (prefers-reduced-motion: reduce) { .ss-tool, .ss-tool svg { animation: none; } .ss-tool:hover { transform: none; } }
+/* "From Learning to Practical Application" wears the SkillShone brand colours: the navy and
+   red of the SKILL / SHONE wordmark instead of the general blue, teal, violet and amber tones,
+   with the topic pills alternating between the two. (client, 2 November 2026) */
+.ss-tools .ss-tool { background: hsl(var(--primary) / .07); border-color: hsl(var(--primary) / .22); color: hsl(var(--primary)); }
+.ss-tools .ss-tool:nth-child(even) { background: hsl(var(--brand-red) / .07); border-color: hsl(var(--brand-red) / .22); color: hsl(var(--brand-red)); }
+body:not(:has(.homepage-static)) main h2.ss-h2 { background: none; -webkit-background-clip: initial; background-clip: initial; -webkit-text-fill-color: hsl(var(--primary)); color: hsl(var(--primary)); }
+body:not(:has(.homepage-static)) main h2.ss-h2 em { background: linear-gradient(100deg, hsl(var(--primary)) 0%, hsl(var(--brand-red)) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: hsl(var(--brand-red)); }
+body:not(:has(.homepage-static)) main .ss-badge > svg:first-child { fill: hsl(var(--primary)); }
 /* Figures band: compact — no tall blank band above or below the numbers. */
 .ss-list { margin-top: 1.2rem; border-top: 1px solid hsl(var(--border)); }
 .ss-list li { padding: .7rem 0; border-bottom: 1px solid hsl(var(--border)); font-size: .9rem; }
