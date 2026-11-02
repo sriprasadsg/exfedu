@@ -90,6 +90,19 @@ describe("SkillShone inline detail", () => {
     expect(screen.getByText("Build technical foundations through practical exercises and projects.")).toBeInTheDocument();
   });
 
+  // Client, 2 Nov 2026: the two summary boxes repeated the capsule above them, so they are gone.
+  it("drops the repeated student/institution summary boxes below the capsule", () => {
+    open();
+    expect(document.querySelectorAll(".ss-foot-card").length).toBe(0);
+    expect(screen.queryByText("For students")).not.toBeInTheDocument();
+    expect(screen.queryByText(/Strengthen coding, analytical and problem-solving skills/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/Structured, application-based learning through industry problems/)).not.toBeInTheDocument();
+    // the capsule itself still carries both sides
+    expect(document.querySelectorAll(".ss-cap").length).toBe(2);
+    expect(screen.getByText("Undergraduate & postgraduate students")).toBeInTheDocument();
+    expect(screen.getByText("Academic–industry engagement")).toBeInTheDocument();
+  });
+
   it("sends Enquire Now to the contact page instead of opening a panel", () => {
     open();
     expect(screen.getByRole("link", { name: "Enquire Now" })).toHaveAttribute("href", "/contact");
