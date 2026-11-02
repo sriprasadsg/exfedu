@@ -11,9 +11,14 @@ describe("approved SVU overview associations", () => {
       "Parking Detection System using AI and Computer Vision",
     ]);
   });
-  it("does not assign summit or innovation photographs to the hackathon recognition", () => {
-    expect(svuOverviewAchievements[1].photo).toBeUndefined();
+  it("keeps the two photograph story cards in approved order with their own pictures", () => {
+    expect(svuOverviewAchievements.map(item => item.title)).toEqual([
+      "Innovation Showcase",
+      "Technology Community Participation",
+    ]);
     expect(svuOverviewAchievements[0].photo).toContain("svu-innovation-hub.png");
-    expect(svuOverviewAchievements[2].photo).toContain("svu-paniit-students.jpg");
+    expect(svuOverviewAchievements[1].photo).toContain("svu-paniit-students.jpg");
+    expect(svuOverviewAchievements.every(item => Boolean(item.photo) && Boolean(item.alt))).toBe(true);
   });
+
 });
