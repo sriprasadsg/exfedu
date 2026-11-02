@@ -19,6 +19,7 @@ const LegalPage = ({ path }: { path: string }) => {
           <div className="mt-8 animate-fade-in">
             <h1 className="font-display text-4xl font-medium md:text-5xl">{doc.title}</h1>
             <p className="mt-3 text-xl font-medium leading-snug text-foreground md:text-2xl">{doc.tagline}</p>
+            <p className="mt-2 text-sm text-muted-foreground">Last updated: {doc.lastUpdated}</p>
           </div>
         </div>
       </section>
