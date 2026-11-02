@@ -1278,7 +1278,8 @@ html body .cap-diagram .cap-art {
 }
 .collab2 { background: hsl(var(--background)); padding-block: clamp(2rem, 4vw, 3rem); }
 .collab2-title, .eco2-title { text-align: center; font-size: clamp(1.4rem, 2.6vw, 2rem); font-weight: 500; color: hsl(var(--primary)); }
-.eco2-title { width: min(720px, calc(100% - 48px)); margin: 2.5rem auto 0; padding-block: 1.1rem 1.2rem; border-radius: 16px; background: hsl(207 70% 97%); }
+.eco2-title { position: relative; isolation: isolate; width: min(720px, calc(100% - 48px)); margin: 2.5rem auto 0; padding-block: 1.1rem 1.2rem; border-radius: 16px; background: none; }
+.eco2-title::before { content: ""; position: absolute; z-index: -1; inset: 0; border-radius: 16px; background: hsl(207 70% 97%); }
 .collab2-grid { margin-top: 2rem; display: grid; grid-template-columns: repeat(3, 1fr); }
 .collab2-item { display: flex; flex-direction: column; align-items: center; gap: .6rem; padding: 1rem; text-align: center; }
 .collab2-item + .collab2-item { border-left: 1px solid hsl(207 60% 88%); }
@@ -1594,6 +1595,20 @@ main h1, main h2, main h3 {
   -webkit-text-fill-color: transparent;
 }
 main h1 svg, main h2 svg, main h3 svg { color: hsl(var(--connection-blue)); }
+/* Headings pass their transparent text fill down to inline children, so a linked or
+   emphasised word inside a heading must carry the gradient itself or it paints nothing. */
+main h1 :is(a, em, strong, span, small, cite),
+main h2 :is(a, em, strong, span, small, cite),
+main h3 :is(a, em, strong, span, small, cite) {
+  background-image: linear-gradient(100deg, hsl(var(--primary)) 0%, hsl(var(--connection-blue)) 55%, hsl(352 70% 48%) 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+/* Brand wordmarks keep their own red / blue lettering rather than the heading gradient. */
+main :is(.about-brand-exa, .about-brand-fluence, .brand-exa, .brand-fluence) {
+  background: none; -webkit-background-clip: initial; background-clip: initial;
+  -webkit-text-fill-color: currentColor;
+}
 .box-tilt-active {
   transition: transform .18s ease-out, box-shadow .25s ease !important;
   box-shadow: 0 22px 40px -22px hsl(var(--primary) / .45) !important;
