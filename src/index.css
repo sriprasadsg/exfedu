@@ -1566,13 +1566,23 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
 
 .ss-capsule {
   position: relative;
+  margin-top: 3.2rem;
+  padding: 1.1rem 5.5rem 1.4rem;
+  border: 1px solid hsl(var(--input) / .7);
+  border-radius: 22px;
+  background: linear-gradient(160deg, hsl(var(--connection-blue) / .24), hsl(var(--primary) / .14));
+  box-shadow: 0 18px 34px -22px hsl(var(--primary) / .45);
+}
+.ss-pad-sheet {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin-top: 2.8rem;
-  border: 1px solid hsl(var(--input) / .6);
-  border-radius: 16px;
-  overflow: visible;
   background: hsl(var(--background));
+  border: 1px solid hsl(var(--input) / .6);
+  border-radius: 4px;
+  box-shadow: 0 6px 14px -8px hsl(var(--foreground) / .3);
+  overflow: hidden;
+  z-index: 1;
 }
 .ss-cap {
   position: relative;
@@ -1587,12 +1597,10 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
 }
 .ss-cap--left {
   background: linear-gradient(135deg, hsl(var(--primary) / .16), hsl(var(--primary) / .05));
-  border-radius: 15px 0 0 15px;
 }
 .ss-cap--right {
   background: linear-gradient(225deg, hsl(var(--connection-blue) / .16), hsl(var(--connection-blue) / .05));
   border-left: 1px solid hsl(var(--border));
-  border-radius: 0 15px 15px 0;
   animation-delay: .12s;
 }
 .ss-cap-badge {
@@ -1632,24 +1640,23 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
    blue only; the reference's yellow is deliberately absent. */
 .ss-pad-clip {
   position: absolute;
-  top: -1.45rem;
+  top: -1.9rem;
   left: 50%;
   translate: -50% 0;
-  width: 5.5rem;
+  width: 7.5rem;
   color: hsl(var(--primary));
   z-index: 3;
-  filter: drop-shadow(0 6px 10px hsl(var(--primary) / .25));
+  filter: drop-shadow(0 4px 6px hsl(var(--primary) / .3));
 }
 .ss-pad-clip svg { display: block; width: 100%; height: auto; }
-.ss-pad-clip-line { fill: hsl(var(--background)); opacity: .3; }
 
 .ss-pad-pen {
   position: absolute;
   top: 50%;
-  right: 1.6rem;
+  right: 1.1rem;
   translate: 0 -50%;
-  rotate: 9deg;
-  width: 2.6rem;
+  rotate: 196deg;
+  width: 2.7rem;
   color: hsl(var(--connection-blue));
   z-index: 2;
   filter: drop-shadow(0 12px 14px hsl(var(--primary) / .22));
@@ -1667,11 +1674,10 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
 
 @media (max-width: 860px) {
   .ss-split-head { gap: 1.5rem; }
-  .ss-capsule { grid-template-columns: 1fr; }
+  .ss-capsule { padding: 1rem .9rem 1.1rem; }
+  .ss-pad-sheet { grid-template-columns: 1fr; }
   .ss-cap, .ss-cap--right { min-height: 0; }
   .ss-cap--right { border-left: 0; border-top: 1px solid hsl(var(--border)); }
-  .ss-cap--left { border-radius: 15px 15px 0 0; }
-  .ss-cap--right { border-radius: 0 0 15px 15px; }
   .ss-pad-pen { display: none; }
 }
 @media (max-width: 560px) {
