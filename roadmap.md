@@ -338,3 +338,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Menu bar labels and icons colourful, gently responsive to the pointer (client, 2 Nov 2026)
 - [x] Collaboration carousel controls: previous/next arrows now solid navy and sky-blue circles with white drifting arrows that lift on hover; pagination dots darker with a navy-to-sky-blue active pill (client 17:49 UTC 2 Nov 2026)
 - [x] Footer entries colour-coded individually — SVU navy, IBM royal blue, XIME burgundy, About Us teal, Enquire Now amber — each with a matching dot that swells on hover; footer height unchanged at 251px (client 17:49 UTC 2 Nov 2026)
+- [ ] Partner illustrations (SVU, IBM, XIME): strengthen outer contour of each component with a slightly thicker medium-blue outline; internals, colours, sizes, positions unchanged; no container border (client 17:59 UTC 2 Nov 2026)
