@@ -1745,7 +1745,7 @@ body:not(:has(.homepage-static)) .ss-btn:hover { transform: rotate(-1.4deg) tran
   body:not(:has(.homepage-static)) .ss-btn:hover { transform: none; }
 }
 
-/* Section titles such as "Faculty & Industry Mentors" and "Programme Support · EdTech Division"
+/* Section titles such as "Faculty & Industry Mentors" and "Technical Mentors & Lab Faculty"
    join the colourful heading rule; SkillShone's own headings keep navy-to-red. (client, 2 Nov 2026) */
 body:not(:has(.homepage-static)) main h4 {
   background-image: linear-gradient(100deg, hsl(var(--navy-800)) 0%, hsl(var(--connection-blue)) 42%, hsl(var(--connection-teal)) 72%, hsl(var(--connection-violet)) 100%);
