@@ -7,13 +7,14 @@ import { organisationPath, programmePath } from "@/lib/programmeNavigation";
 import ProgrammeDetail from "./ProgrammeDetail";
 import XimeProgramme from "./XimeProgramme";
 import { useProgrammeSeo } from "./ProgrammeDirectory";
+import { svuOverview } from "@/data/svuOverview";
 
 const OrganisationProgrammes = ({ organisation }: { organisation: Organisation }) => {
   const org = organisations[organisation];
   const shown = programmes.filter(p => p.organisation === organisation);
   const slide = collaborationSlides.find(s => s.organisation === organisation);
   const sections = organisationSections[organisation];
-  useProgrammeSeo(`${org.name} Programmes | Exafluence Education`, slide?.text ?? `Explore ${org.name} programmes with Exafluence Education.`);
+  useProgrammeSeo(organisation === "SVU" ? svuOverview.seoTitle : `${org.name} Programmes | Exafluence Education`, organisation === "SVU" ? svuOverview.seoDescription : slide?.text ?? `Explore ${org.name} programmes with Exafluence Education.`);
   if (organisation === "XIME" && shown.length === 1) return <ProgrammeDetail programme={shown[0]} organisationOverview />;
   if (organisation === "XIME" && shown.length === 0) return <XimeProgramme />;
 
@@ -25,25 +26,24 @@ const OrganisationProgrammes = ({ organisation }: { organisation: Organisation }
     </div>
   </article>)}</div>;
 
-  const overviewFacts = <>
-    <div><dt>Programmes</dt><dd>{shown.length}</dd></div>
-    <div><dt>Delivery</dt><dd>{[...new Set(shown.map(p => p.delivery))].join(" · ")}</dd></div>
-    <div><dt>Intakes</dt><dd>{[...new Set(shown.map(p => p.intake))].join(" · ")}</dd></div>
-  </>;
-
   return <main className="programme-experience organisation-programmes">
-    <header className="programme-intro"><div className="container">
+    <header className={`programme-intro${organisation === "SVU" ? " svu-overview-opening" : ""}`}><div className="container">
       <nav aria-label="Breadcrumb"><Link to="/">Home</Link><span aria-hidden="true">/</span><Link to="/collaboration-network">Our Collaboration Network</Link><span aria-hidden="true">/</span><span aria-current="page">{org.name}</span></nav>
-      <img className={`programme-detail-logo ${org.logoClass}`} src={org.logo} alt={`${org.name} logo`} />
-      <h1>{org.name} {organisation === "XIME" ? "Programme" : "Programmes"}</h1><p>{slide?.text}</p>
+      {organisation === "SVU" ? <div className="svu-overview-intro"><div>
+        <img className={`programme-detail-logo ${org.logoClass}`} src={org.logo} alt={`${org.name} logo`} />
+        <h1>{svuOverview.title}</h1><p className="svu-overview-subtitle">{svuOverview.subtitle}</p><p>{svuOverview.introduction}</p>
+        <Button variant="link" asChild><Link to="#programmes">Explore Programmes<ArrowRight size={16} /></Link></Button>
+      </div>{slide && <figure><img src={slide.image} alt="SVU campus connected to data engineering and AI" /></figure>}</div> : <>
+        <img className={`programme-detail-logo ${org.logoClass}`} src={org.logo} alt={`${org.name} logo`} />
+        <h1>{org.name} {organisation === "XIME" ? "Programme" : "Programmes"}</h1><p>{slide?.text}</p>
+      </>}
     </div></header>
     {sections && <nav aria-label={`${org.name} sections`} className="organisation-section-nav"><div className="container organisation-section-nav-inner">{sections.map(section => <a key={section.id} href={`#${section.id}`}><section.icon size={16} aria-hidden="true" />{section.title}</a>)}</div></nav>}
     <div className="container organisation-programme-body">
       <div className="organisation-sections">
-        {sections ? sections.map(section => <section key={section.id} id={section.id} className="organisation-section" aria-labelledby={`${section.id}-heading`}>
-          <h2 id={`${section.id}-heading`} className="organisation-section-heading"><span className={`programme-section-icon tone-${section.tone}`}><section.icon size={21} aria-hidden="true" /></span>{section.title}</h2>
-          {section.text && <p className="organisation-section-text">{section.text}</p>}
-          {section.id === "overview" && <dl className="organisation-overview-facts">{overviewFacts}</dl>}
+        {sections ? sections.map(section => <section key={section.id} id={section.id} className={`organisation-section${section.id === "overview" ? " svu-overview-section" : ""}`} aria-label={section.id === "overview" ? "Overview" : undefined} aria-labelledby={section.id === "overview" ? undefined : `${section.id}-heading`}>
+          {section.id !== "overview" && <h2 id={`${section.id}-heading`} className="organisation-section-heading"><span className={`programme-section-icon tone-${section.tone}`}><section.icon size={21} aria-hidden="true" /></span>{section.title}</h2>}
+          {section.id !== "overview" && section.text && <p className="organisation-section-text">{section.text}</p>}
           {section.id === "programmes" && (shown.length > 0 ? programmeList : <div className="programme-empty"><BookOpen size={30} aria-hidden="true" /><h2>{PENDING}</h2><p>Programme details await verified source content.</p></div>)}
           {section.pending && <p className="organisation-section-pending"><span>{PENDING}</span>{section.pending}</p>}
           {section.link && <Button variant="outline" asChild><Link to={section.link.path}>{section.link.label}<ArrowRight size={16} /></Link></Button>}

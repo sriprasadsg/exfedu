@@ -180,3 +180,43 @@
 @media (max-width: 767px) { .svu-content-grid, .svu-faculty-grid { grid-template-columns: minmax(0, 1fr); } .svu-gallery { grid-template-columns: minmax(0, 1fr); } .svu-gallery img { height: 280px; } }
 @media (max-width: 767px) { .organisation-section-nav { top: 72px; } .organisation-section-nav a { min-height: 38px; padding: 0 13px; font-size: 12px; } .organisation-section { padding: 24px 0; } .organisation-section-heading { font-size: 21px; } .organisation-overview-facts { grid-template-columns: minmax(0, 1fr); } }
 @media (prefers-reduced-motion: reduce) { .organisation-section-nav a { transition: none; } .organisation-section-nav a:hover { transform: none; } }
+
+/* The approved SVU introduction is isolated from all programme and partner pages. */
+.svu-overview-opening { background: hsl(var(--background)); padding-bottom: 34px; }
+.svu-overview-intro { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: 40px; align-items: center; animation: svu-overview-enter 450ms ease-out both; }
+.svu-overview-intro h1 { font-size: 34px; line-height: 1.3; color: hsl(var(--navy-900)); }
+.svu-overview-intro p { font-size: 15px; color: hsl(var(--muted-foreground)); }
+.svu-overview-intro .svu-overview-subtitle { font-style: italic; margin-top: 16px; }
+.svu-overview-intro figure { width: 100%; aspect-ratio: 4 / 3; }
+.svu-overview-intro figure img { width: 100%; height: 100%; object-fit: contain; mask-image: linear-gradient(90deg, transparent, hsl(var(--foreground)) 8%, hsl(var(--foreground)) 92%, transparent), linear-gradient(0deg, transparent, hsl(var(--foreground)) 8%, hsl(var(--foreground)) 92%, transparent); mask-composite: intersect; }
+.svu-overview-intro a { padding-left: 0; margin-top: 12px; }
+.organisation-section.svu-overview-section { padding-top: 0; }
+.svu-overview-band { padding: 30px 0; scroll-margin-top: 170px; }
+.svu-overview-band + .svu-overview-band { border-top: 1px solid hsl(var(--academic-edge)); }
+.svu-overview-band h2 { display: flex; align-items: flex-start; gap: 12px; font-size: 23px; font-weight: 500; line-height: 1.4; color: hsl(var(--navy-900)); }
+.svu-overview-band h2 svg { flex-shrink: 0; margin-top: 4px; color: hsl(var(--connection-blue)); }
+.svu-overview-band p { font-size: 15px; line-height: 1.8; color: hsl(var(--muted-foreground)); margin-top: 16px; }
+.svu-overview-band > a { padding-left: 0; margin-top: 12px; white-space: normal; }
+.svu-overview-areas { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 22px; }
+.svu-overview-areas .svu-overview-area { height: auto; white-space: normal; display: grid; grid-template-columns: 42px minmax(0, 1fr) 17px; gap: 12px; padding: 16px; border: 1px solid hsl(var(--academic-edge)); border-radius: 8px; text-align: left; }
+.svu-overview-area strong { display: block; font-size: 14px; line-height: 1.5; font-weight: 500; color: hsl(var(--navy-900)); }
+.svu-overview-area strong + span { display: block; font-size: 13px; line-height: 1.7; font-weight: 400; color: hsl(var(--muted-foreground)); margin-top: 6px; }
+.svu-overview-area > svg { color: hsl(var(--connection-blue)); }
+.svu-overview-achievements { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 24px; margin-top: 24px; }
+.svu-overview-achievements article { min-width: 0; }
+.svu-overview-achievements article:nth-child(2) { grid-column: 1 / -1; grid-row: 2; display: grid; grid-template-columns: 150px minmax(0, 1fr); column-gap: 24px; align-items: center; border-block: 1px solid hsl(var(--academic-edge)); padding-block: 22px; }
+.svu-overview-achievements article:nth-child(2) h3 { margin-top: 0; }
+.svu-overview-achievements article:nth-child(2) p { grid-column: 2; margin-top: 6px; }
+.svu-overview-recognition { grid-row: span 2; display: flex; flex-direction: column; align-items: center; gap: 12px; color: hsl(var(--connection-blue)); text-align: center; font-size: 12px; }
+.svu-overview-achievements img { width: 100%; height: 230px; object-fit: contain; background: hsl(var(--academic-surface)); }
+.svu-overview-achievements h3 { font-size: 17px; font-weight: 500; line-height: 1.5; color: hsl(var(--navy-900)); margin-top: 18px; }
+.svu-overview-achievements p { font-size: 14px; margin-top: 8px; }
+.svu-overview-content figcaption { font-size: 12px; line-height: 1.6; color: hsl(var(--muted-foreground)); margin-top: 9px; }
+.svu-overview-delegation { margin-top: 22px; max-width: 440px; scroll-margin-top: 170px; }
+.svu-overview-delegation img { width: 100%; max-height: 240px; object-fit: contain; object-position: left; }
+.svu-overview-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
+.svu-project-list article[id] { scroll-margin-top: 175px; }
+@keyframes svu-overview-enter { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 1050px) { .svu-overview-intro { gap: 24px; } .svu-overview-intro h1 { font-size: 30px; } .svu-overview-areas { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 767px) { .svu-overview-intro { grid-template-columns: minmax(0, 1fr); } .svu-overview-intro h1 { font-size: 28px; } .svu-overview-intro figure { max-width: 400px; justify-self: center; } .svu-overview-band h2 { font-size: 21px; } .svu-overview-achievements { grid-template-columns: minmax(0, 1fr); } .svu-overview-achievements article:nth-child(2) { grid-column: auto; grid-row: auto; grid-template-columns: 64px minmax(0, 1fr); gap: 8px 16px; } .svu-overview-recognition span { display: none; } }
+@media (prefers-reduced-motion: reduce) { .svu-overview-intro { animation: none; } }
