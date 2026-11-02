@@ -73,7 +73,9 @@ describe("approved website structure", () => {
   });
   it("keeps unspecified certification and brochure claims pending", () => {
     for (const programme of programmes) {
-      expect(programme.brochure).toBeUndefined();
+      // Only IBM has approved brochures (client-supplied leaflets, 2 November 2026).
+      if (programme.organisation === "IBM") expect(programme.brochure).toMatch(/\/__l5e\/assets-v1\/.+-brochure\.pdf$/);
+      else expect(programme.brochure).toBeUndefined();
       if (programme.organisation === "XIME") expect(programme.recognition).toMatch(/jointly issued by XIME Chennai and Exafluence Education/);
       else if (programme.slug !== "ibm-semester-industry-learning") expect(programme.recognition).toBeUndefined();
     }
