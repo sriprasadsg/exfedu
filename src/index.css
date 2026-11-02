@@ -1438,6 +1438,7 @@ body:not(:has(.homepage-static)) main .ss-badge > svg:first-child { fill: hsl(va
 .ss-faq-sign::before { background: hsl(var(--primary)); }
 .ss-faq-sign::after { background: hsl(var(--brand-red)); }
 body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
+  width: fit-content; margin-left: auto; margin-right: auto;
   background: linear-gradient(100deg, hsl(var(--primary)) 0%, hsl(var(--brand-red)) 100%);
   -webkit-background-clip: text; background-clip: text;
   -webkit-text-fill-color: transparent; color: hsl(var(--primary));
