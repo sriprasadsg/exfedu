@@ -102,7 +102,7 @@ const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { progr
               Built Around Practical Learning
             </h2>
             <ul className="programme-usp-list">
-              {svuProgrammeUsp(p).map(point => <li key={point.label}>
+              {svuProgrammeUsp(p).map(point => <li key={point.label} className={point.wide ? "is-wide" : undefined}>
                 <span className={`programme-section-icon tone-${point.tone}`}>
                   <point.icon size={20} aria-hidden="true" />
                 </span>

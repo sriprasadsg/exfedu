@@ -49,7 +49,7 @@ export const ibmProgrammeSections = (p: Programme): DetailSection[] => {
  * detailed programme information. The 80 : 20 split renders only for programmes
  * whose approved source states it, so no page claims a ratio the university has
  * not confirmed. */
-export type UspPoint = { label: string; icon: LucideIcon; tone: Tone };
+export type UspPoint = { label: string; icon: LucideIcon; tone: Tone; wide?: boolean };
 export const svuProgrammeUsp = (p: Programme): UspPoint[] => {
   const points: UspPoint[] = [
     { label: "Industry Mentoring", icon: Users, tone: "teal" },
@@ -58,7 +58,7 @@ export const svuProgrammeUsp = (p: Programme): UspPoint[] => {
     { label: "Final-Semester Capstone", icon: GraduationCap, tone: "blue" },
   ];
   if (/80% practical/i.test(`${p.features?.join(" ") ?? ""} ${p.practical ?? ""}`)) {
-    points.unshift({ label: "80% Practical Learning · 20% Theoretical Foundations", icon: Gauge, tone: "blue" });
+    points.unshift({ label: "80% Practical Learning · 20% Theoretical Foundations", icon: Gauge, tone: "blue", wide: true });
   }
   return points;
 };
