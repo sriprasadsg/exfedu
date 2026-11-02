@@ -2,6 +2,78 @@ import innovation from "@/assets/svu-innovation-hub.png.asset.json";
 import summitStudents from "@/assets/svu-paniit-students.jpg.asset.json";
 import summitDelegation from "@/assets/svu-paniit-delegation.jpg.asset.json";
 
+export const svuAchievements = [
+  { title: "Quantum Wave Forecast", text: "First place in the AP Quantum Hackathon 2025 semi-finals. The student project applies quantum computing and explainable AI to FTSE 100 market forecasting.", href: "https://www.youtube.com/watch?v=8WbUsQBxnnw", label: "View news coverage" },
+  { title: "Ideas to Impact", text: "Students presented their product at the Ratan Tata Innovation Hub, International Institute of Digital Technologies, Tirupati, showcasing practical innovation and potential social impact." },
+];
+export const svuEvents = [
+  { title: "PanIIT Andhra Pradesh Summit 2026", text: "M Jayalakshmi and Telapalli Sai Sukrutha, M.S. Data Science students, participated on 3 October 2026 at Dr. B.R. Ambedkar Kala Vedika, Vijayawada, exploring emerging technology and the DeepTech ecosystem." },
+  { title: "Python & Professional Readiness Sessions", text: "Python training, free soft-skills sessions and mock interviews support technical knowledge, communication, aptitude and interview preparation." },
+];
+export const svuGallery = [
+  { src: innovation.url, caption: "Student innovation presentation, Tirupati" },
+  { src: summitStudents.url, caption: "M.S. Data Science students at PanIIT Andhra Pradesh Summit 2026" },
+  { src: summitDelegation.url, caption: "PanIIT Andhra Pradesh Summit 2026 delegation" },
+];
+export const svuResearchMetrics = [
+  { value: 13, label: "Published research papers", context: "MSDS batch 2023–2025" },
+  { value: 46, label: "Student publication certificates", context: "Journal publications" },
+  { value: 37, label: "Conference papers presented", context: "REVA, CMR and KLH conferences" },
+  { value: 73, label: "Conference publication certificates", context: "Separate conference record" },
+];
+export const svuConferencePapers = [
+  { student: "Vemuri Bharath Kumar", conference: "ICTIS 2026 · Bangkok", title: "MSDS 2023–2025 research presentation" },
+  { student: "Kamasani Vishnu Vardhan Reddy", conference: "TIBS 2026 · Manila", title: "A Hybrid Retrieval Architecture for Intelligent Campus Assistants: Combining Semantic Search with Factual Consistency" },
+  { student: "Veeravalli Sri Satya", conference: "TIBS 2026 · Manila", title: "Gesture Controlled Interface for Smart Devices using MediaPipe and Android Debug Bridge" },
+  { student: "Nagala Mouna Meghana", conference: "TIBS 2026 · Manila", title: "Multimodal Orchestrator for Real-Time Cognitive Mirroring in Social Anxiety" },
+  { student: "B Matthew Mineeth", conference: "TIBS 2026 · Manila", title: "A Hybrid Multi-Agent Framework with Reinforcement Learning for Personalized Financial Planning and Asset Allocation" },
+  { student: "Mathyam Supriya", conference: "ICDAI 2026 · West Bengal", title: "MediExplain: An Explainable AI System for Health Report Interpretation and Specialist Guidance" },
+];
+export const svuPublications = [
+  ["AI agents for sustainable brand content creation", "708"],
+  ["AI for green HRM: Promoting eco-conscious workplace practices and carbon footprint reduction", "688"],
+  ["AI in employee wellness and sustainable work-life balance in the digital age", "695"],
+  ["AI in green marketing: Driving sustainable consumer behaviour through personalization", "714"],
+  ["AI-enabled ethical consumerism in modern brand strategies", "764"],
+  ["Auto skill navigator: Pioneering personalized learning and skill development", "689"],
+  ["Cloud-based accounting solutions for paperless, environmentally friendly practices", "707"],
+  ["Ethical AI in lending and credit scoring for sustainable communities", "709"],
+  ["Ethical AI in recruitment and sustainable workforce planning", "690"],
+  ["From data to delight: Predictive analytics for optimizing hospitality service ratings", "741"],
+  ["From theory to transaction: How AI and blockchain are redefining banking operations", "686"],
+  ["Neuromarketing for sustainable product adoption & eco-friendly consumer behaviour", "712"],
+  ["Remote work optimization: Reducing environmental impact while enhancing productivity", "715"],
+].map(([title, id]) => ({ title, href: `https://www.allcommercejournal.com/special-issue/2025.v6.i2S.${id}` }));
+export const svuFaculty = [
+  { name: "Anjan Babu", role: "Professor & Coordinator", expertise: "SVU Computer Science professor and coordinator for industry-integrated Data Science programmes." },
+  { name: "Malaya Rout", role: "Visiting Faculty", expertise: "Director of Data Science at Exafluence; AI, ML and industry data solutions." },
+  { name: "Gopinath Kesavan", role: "Guest Faculty", expertise: "AI, cloud-scale solutions, automation and centres of excellence." },
+  { name: "Padmanayaki", role: "Assistant Professor", expertise: "Computer Science, Artificial Intelligence and Data Science." },
+  { name: "Lalitha", role: "Assistant Professor", expertise: "Analytics, AI and big data." },
+  { name: "Kumar Armugam", role: "Guest Faculty", expertise: "NLP, Computer Vision, Generative AI and multi-cloud technologies." },
+  { name: "Sasank Majeti", role: "Guest Faculty", expertise: "Data analytics, Python, R, SQL, Power BI, Tableau and deep learning." },
+  { name: "Sreeram Babu Bojja", role: "Visiting Faculty", expertise: "Communication, life skills and creative writing." },
+  { name: "Venkat Prasad Reddy", role: "Guest Faculty", expertise: "Banking and healthcare AI, NLP, Agentic AI and Computer Vision." },
+  { name: "Poonam Talati", role: "Guest Faculty", expertise: "Programming, web development and database management." },
+  { name: "Babu", role: "Guest Faculty", expertise: "Agile, DevOps, DevSecOps, cloud, SRE and software quality." },
+  { name: "Abhishek Kumar Ram", role: "Guest Faculty", expertise: "DBMS, SQL, data processing and analytics." },
+];
+export const svuSupport = [
+  { name: "Neelakanteswara Pagadala", expertise: "AI/ML research, Industrial IoT and student project mentoring." },
+  { name: "Saiteja Minchala", expertise: "Data Science, AI and software development." },
+  { name: "Nynaru Teja", expertise: "Full-stack development, AI and MSDS academic assistance." },
+  { name: "Sudeepthi Mahajanam", expertise: "Generative AI, NLP, cloud deployments and LLM evaluation." },
+  { name: "Santharajupalli Umapathi", expertise: "Python, AI, Computer Vision and RAG applications." },
+];
+export const svuBrochureReview = "The supplied programme brochure is held for review: its ISO wording must identify Exafluence Global Analytics Private Limited and must not imply educational accreditation.";
+export const svuReviewedCurricula: Record<string, string[]> = {
+  "masters-data-science": ["Data analysis and visualisation", "Machine learning and big data management", "AI, Generative AI and Quantum Technologies", "Hands-on projects and case studies"],
+  "pg-diploma-data-science": ["Statistical techniques for Data Science", "Python programming", "Fundamentals of Machine Learning", "Big Data Analytics, NoSQL and Hadoop"],
+  "python-ai-ml-genai": ["Intelligent agents and problem-solving", "Python programming and Data Science", "Generative AI and Deep Learning", "Machine learning algorithms", "Responsible AI and optimisation"],
+  "data-visualization": ["Python, statistics, NumPy and Pandas", "Matplotlib and Seaborn", "Excel and SQL", "Tableau and Power BI", "Machine Learning and Generative AI visualisations"],
+  "cloud-technologies": ["Cloud infrastructure and computing essentials", "AWS, Google Cloud and Azure", "Multi-cloud automation", "Cloud applications and optimisation", "Multi-cloud Machine Learning and Generative AI", "Cloud resilience"],
+};
+
 export const svuProjects = [
   {
     "student": "ABBURI SRAVANI",
