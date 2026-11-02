@@ -4,7 +4,6 @@ import { ArrowUpRight, ArrowRight, GraduationCap, Landmark, Search, Database, Co
 import type { Page, Tone } from "@/data/site";
 import { BlockView } from "@/components/site/Blocks";
 import skillshoneLogo from "@/assets/skillshone-original.png.asset.json";
-import aiGenArt from "@/assets/ss-ai-gen.png";
 import featProblems from "@/assets/ss-feat-problems.png";
 import featDatasets from "@/assets/ss-feat-datasets.png";
 import featLlm from "@/assets/ss-feat-llm.png";
@@ -172,7 +171,7 @@ export default function SkillShonePage({ page, breadcrumb }: { page: Page; bread
         </ul>
       </section>
 
-      {/* Who it's for / institutions — split capsule */}
+      {/* Who it's for / institutions — two equal partitions */}
       <section className="container py-16">
         <div className="ss-split-head">
           <div className="ss-split-headtxt"><Eyebrow>Who it is for</Eyebrow><h2 className="ss-h2">Build a Portfolio, <em>Gain Confidence</em></h2></div>
@@ -184,7 +183,6 @@ export default function SkillShonePage({ page, breadcrumb }: { page: Page; bread
             <span className="ss-cap-side" aria-hidden="true">Learners</span>
             <ul>{audiences.map((a, i) => <li key={a} style={{ animationDelay: `${i * 120}ms` }}><ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />{a}</li>)}</ul>
           </div>
-          <div className="ss-cap-core" aria-hidden="true"><img src={aiGenArt} alt="" width={1024} height={1024} loading="lazy" /></div>
           <div className="ss-cap ss-cap--right">
             <span className="ss-cap-badge" aria-hidden="true"><Landmark className="h-6 w-6" strokeWidth={1.5} /></span>
             <span className="ss-cap-side" aria-hidden="true">Institutions</span>
