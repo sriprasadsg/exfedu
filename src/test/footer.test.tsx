@@ -16,13 +16,13 @@ describe("Footer collaboration network", () => {
     const partners = [...container.querySelectorAll<HTMLAnchorElement>("a.footer-partner")];
     expect(partners.map((a) => a.textContent?.trim())).toEqual([
       "Sri Venkateswara University",
-      "XIME Chennai",
       "IBM",
+      "XIME Chennai",
     ]);
     expect(partners.map((a) => a.getAttribute("href"))).toEqual([
       "/collaboration-network/svu",
-      "/collaboration-network/xime",
       "/collaboration-network/ibm",
+      "/collaboration-network/xime",
     ]);
     for (const a of partners) expect(a.querySelector("img")).toBeNull();
   });

@@ -19,7 +19,7 @@ export const useProgrammeSeo = (title: string, description: string) => {
 
 const ProgrammeDirectory = () => {
   const [params, setParams] = useSearchParams();
-  useProgrammeSeo("Industry-Integrated Programmes | Exafluence Education", "Compare AI, Generative AI, Data Science, Cloud Technologies and Quantum Computing programmes from SVU, XIME Chennai and IBM.");
+  useProgrammeSeo("Industry-Integrated Programmes | Exafluence Education", "Compare AI, Generative AI, Data Science, Cloud Technologies and Quantum Computing programmes from SVU, IBM and XIME Chennai.");
   const filters = Object.fromEntries(params.entries());
   const shown = filterProgrammes(filters);
   const update = (key: string, value: string) => { const next = new URLSearchParams(params); if (!value || value === "all") next.delete(key); else next.set(key, value); setParams(next, { replace: true }); };

@@ -71,8 +71,8 @@ export type Tone = "blue" | "teal" | "amber" | "violet";
 
 export const organisations = {
   SVU: { name: "Sri Venkateswara University", logo: svuLogo.url, logoClass: "logo-wide" },
-  XIME: { name: "XIME Chennai", logo: ximeLogo.url, logoClass: "" },
   IBM: { name: "IBM", logo: ibmLogo.url, logoClass: "" },
+  XIME: { name: "XIME Chennai", logo: ximeLogo.url, logoClass: "" },
 };
 export type Organisation = keyof typeof organisations;
 export type Programme = {
@@ -100,8 +100,8 @@ export const programmes: Programme[] = [
 
 export const collaborationSlides = [
   { organisation: "SVU" as Organisation, heading: "Industry-Integrated University Programmes", text: "Explore programmes offered through the collaboration between Sri Venkateswara University and Exafluence Education. Develop knowledge in Data Science, Python for AI, ML and Gen AI, Data Visualisation and Cloud Technologies through academic learning and practical application.", label: "Explore Programmes & Admissions", image: svuIllustration.url, alt: "University campus connected to data and AI systems" },
-  { organisation: "XIME" as Organisation, heading: "Technology Learning with a Business Perspective", text: "Explore the programme offered through XIME Chennai and Exafluence Education, connecting technical learning with business applications and analytical thinking.", label: "Explore Programme Details", image: ximeIllustration.url, alt: "Secure fintech analytics and mobile payments" },
   { organisation: "IBM" as Organisation, heading: "Industry-Integrated Learning in Emerging Technologies", text: "Explore IBM programmes offered in collaboration with Exafluence Education, including semester-based courses, value-added learning, Quantum Computing and Project-Based Experiential Learning. Review practical learning opportunities tailored to the selected course and institutional requirements.", label: "Explore IBM Programmes", image: ibmIllustration.url, alt: "AI coding and quantum assembly" },
+  { organisation: "XIME" as Organisation, heading: "Technology Learning with a Business Perspective", text: "Explore the programme offered through XIME Chennai and Exafluence Education, connecting technical learning with business applications and analytical thinking.", label: "Explore Programme Details", image: ximeIllustration.url, alt: "Secure fintech analytics and mobile payments" },
 ];
 
 // Source-specific enrichment; intake labels above come from the approved brief,
@@ -203,7 +203,7 @@ export const pages: Page[] = [
 
   // Replaces the retired Academic overview and partner subpages.
   { path: "/collaboration-network", title: "Our Collaboration Network", category: "academic", icon: Landmark,
-    summary: "Explore programmes with Sri Venkateswara University, XIME Chennai and IBM.", blocks: [{ type: "collaboration-network" }] },
+    summary: "Explore programmes with Sri Venkateswara University, IBM and XIME Chennai.", blocks: [{ type: "collaboration-network" }] },
 
   // Industry
   { path: "/industry-collaborations", title: "Industry & Technology Collaborations", category: "industry", icon: Network,

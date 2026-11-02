@@ -7,7 +7,7 @@ import { organisationPath, programmePath } from "@/lib/programmeNavigation";
 import { Building2, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const collaborationOrder: Organisation[] = ["SVU", "XIME", "IBM"];
+const collaborationOrder: Organisation[] = ["SVU", "IBM", "XIME"];
 
 const Header = () => {
   const [open, setOpen] = useState(false);

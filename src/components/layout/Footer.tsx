@@ -5,7 +5,7 @@ import skillshoneLogo from "@/assets/skillshone-original.png.asset.json";
 import { menuCategories, navPages, organisations, type Organisation } from "@/data/site";
 import { organisationPath } from "@/lib/programmeNavigation";
 
-const partners: Organisation[] = ["SVU", "XIME", "IBM"];
+const partners: Organisation[] = ["SVU", "IBM", "XIME"];
 
 const Footer = () => (
   <footer className="site-footer border-t">
