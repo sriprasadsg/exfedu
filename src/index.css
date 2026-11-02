@@ -1468,6 +1468,14 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
 }
 .ss-faq-a { padding: 0 1.75rem 1.25rem 3.85rem; font-size: .86rem; line-height: 1.65; color: hsl(var(--muted-foreground)); }
 .ss-faq-a[hidden] { display: none; }
+/* Structured answers: the audience groups inside a question (client, 2 November 2026).
+   SkillShone keeps its own navy/red pairing here. */
+.ss-faq-a > p { margin: 0; }
+.ss-faq-group + .ss-faq-group { margin-top: .9rem; }
+.ss-faq-group h5 { margin: 0 0 .35rem; font-size: .82rem; font-weight: 500; color: hsl(var(--primary)); }
+.ss-faq-group ul { margin: 0; padding: 0; list-style: none; display: grid; gap: .3rem; }
+.ss-faq-group li { position: relative; padding-left: .95rem; }
+.ss-faq-group li::before { content: ""; position: absolute; left: 0; top: .52em; width: 5px; height: 5px; border-radius: 50%; background: hsl(var(--brand-red)); }
 
 /* ===== Flash cards: colourful animated edges, gentle entrance, hover lift ===== */
 .ss-glow-card { position: relative; border: 1px solid hsl(var(--border)); border-radius: 1rem; background: hsl(var(--background)); transition: transform .35s ease, box-shadow .35s ease; animation: ss-card-in .6s ease-out backwards; }
