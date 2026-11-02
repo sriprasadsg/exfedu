@@ -326,3 +326,5 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - Enquire Now hover: fill changes colour and the button tilts — done
 
 - Enquire Now hover shade: another shade, not SkillShone colours (client, 2 Nov 2026)
+
+- Screenshot boxes: tilt them, restore the previously used coloured box lines, and gently animate their icons (client, 2 Nov 2026)
