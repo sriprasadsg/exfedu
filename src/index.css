@@ -1278,7 +1278,7 @@ html body .cap-diagram .cap-art {
 }
 .collab2 { background: hsl(var(--background)); padding-block: clamp(2rem, 4vw, 3rem); }
 .collab2-title, .eco2-title { text-align: center; font-size: clamp(1.4rem, 2.6vw, 2rem); font-weight: 500; color: hsl(var(--primary)); }
-.eco2-title { position: relative; isolation: isolate; width: min(720px, calc(100% - 48px)); margin: 2.5rem auto 0; padding-block: 1.1rem 1.2rem; border-radius: 16px; background: none; }
+.eco2-title { position: relative; isolation: isolate; width: min(720px, calc(100% - 48px)); margin: 2.5rem auto 0; padding-block: 1.1rem 1.2rem; border-radius: 16px; }
 .eco2-title::before { content: ""; position: absolute; z-index: -1; inset: 0; border-radius: 16px; background: hsl(207 70% 97%); }
 .collab2-grid { margin-top: 2rem; display: grid; grid-template-columns: repeat(3, 1fr); }
 .collab2-item { display: flex; flex-direction: column; align-items: center; gap: .6rem; padding: 1rem; text-align: center; }
