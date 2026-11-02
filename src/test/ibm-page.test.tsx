@@ -19,11 +19,9 @@ describe("IBM collaboration page", () => {
     expect(container.querySelectorAll("h1").length).toBe(1);
     expect(screen.getByRole("heading", { level: 1, name: "Develop Technical Skills Through Applied Learning" })).toBeInTheDocument();
 
+    const headings = Array.from(container.querySelectorAll("h2")).map(h => h.textContent);
     const order = ["Explore the Programmes", "From Technical Concepts to Practical Application", "Make an Informed Programme Choice", "For Universities and Organisations", "Discuss Your Learning Goals"]
-      .map(heading => {
-        const node = screen.getByRole("heading", { level: 2, name: heading });
-        return Array.from(container.querySelectorAll("h2")).indexOf(node);
-      });
+      .map(heading => headings.indexOf(heading));
     order.forEach((position, index) => expect(position).toBeGreaterThan(index === 0 ? -1 : order[index - 1]));
 
     const crumb = container.querySelector("nav[aria-label='Breadcrumb']");
