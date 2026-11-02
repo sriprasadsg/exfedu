@@ -20,10 +20,10 @@ describe("SVU career records display order (client, 2 November 2026)", () => {
     ]);
   });
 
-  it("numbers the internship rows 1 to 11 in that order", () => {
+  it("lists internships in order without a number column", () => {
     const { container } = render(<SvuCareerRecords kind="internships" />);
     const rows = [...container.querySelectorAll("tbody tr")];
     expect(rows.map(row => row.querySelector("th")?.textContent?.trim())).toEqual(internshipOrder);
-    expect(rows.map(row => row.querySelector("td")?.textContent?.trim())).toEqual(["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"]);
+    expect([...container.querySelectorAll("thead th")].map(th => th.textContent?.trim())).not.toContain("No.");
   });
 });
