@@ -1589,23 +1589,23 @@ p, li, dd, figcaption, blockquote, td { text-wrap: pretty; }
 h1, h2, h3, h4, h5, h6 { text-wrap: balance; }
 
 /* Site-wide colourful titles and pointer-tilt boxes (client, 2 November 2026). */
-main h1, main h2, main h3 {
+body:not(:has(.homepage-static)) main h1, body:not(:has(.homepage-static)) main h2, body:not(:has(.homepage-static)) main h3 {
   background-image: linear-gradient(100deg, hsl(var(--navy-800)) 0%, hsl(var(--connection-blue)) 42%, hsl(var(--connection-teal)) 72%, hsl(var(--connection-violet)) 100%);
   -webkit-background-clip: text; background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-main h1 svg, main h2 svg, main h3 svg { color: hsl(var(--connection-blue)); }
+body:not(:has(.homepage-static)) main h1 svg, body:not(:has(.homepage-static)) main h2 svg, body:not(:has(.homepage-static)) main h3 svg { color: hsl(var(--connection-blue)); }
 /* Headings pass their transparent text fill down to inline children, so a linked or
    emphasised word inside a heading must carry the gradient itself or it paints nothing. */
-main h1 :is(a, em, strong, span, small, cite),
-main h2 :is(a, em, strong, span, small, cite),
-main h3 :is(a, em, strong, span, small, cite) {
+body:not(:has(.homepage-static)) main h1 :is(a, em, strong, span, small, cite),
+body:not(:has(.homepage-static)) main h2 :is(a, em, strong, span, small, cite),
+body:not(:has(.homepage-static)) main h3 :is(a, em, strong, span, small, cite) {
   background-image: linear-gradient(100deg, hsl(var(--navy-800)) 0%, hsl(var(--connection-blue)) 42%, hsl(var(--connection-teal)) 72%, hsl(var(--connection-violet)) 100%);
   -webkit-background-clip: text; background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 /* Brand wordmarks keep their own red / blue lettering rather than the heading gradient. */
-main :is(.about-brand-exa, .about-brand-fluence, .brand-exa, .brand-fluence) {
+body:not(:has(.homepage-static)) main :is(.about-brand-exa, .about-brand-fluence, .brand-exa, .brand-fluence) {
   background: none; -webkit-background-clip: initial; background-clip: initial;
   -webkit-text-fill-color: currentColor;
 }
@@ -1619,28 +1619,28 @@ main :is(.about-brand-exa, .about-brand-fluence, .brand-exa, .brand-fluence) {
    Cards, tiles, story panels and outlined buttons inside pages get a soft
    blue-violet-red gradient edge; link arrows drift a few pixels side to side.
    Header, footer and the homepage hub are untouched. */
-main [class*="card"], main [class*="-tile"], main [class*="-item"], main [class*="story"],
-main .rounded-xl.border, main .rounded-2xl.border, main .rounded-lg.border,
-main a.rounded-md.border, main button.rounded-md.border { position: relative; }
-main [class*="card"]::after, main [class*="-tile"]::after, main [class*="-item"]::after, main [class*="story"]::after,
-main .rounded-xl.border::after, main .rounded-2xl.border::after, main .rounded-lg.border::after,
-main a.rounded-md.border::after, main button.rounded-md.border::after {
+body:not(:has(.homepage-static)) main [class*="card"], body:not(:has(.homepage-static)) main [class*="-tile"], body:not(:has(.homepage-static)) main [class*="-item"], body:not(:has(.homepage-static)) main [class*="story"],
+body:not(:has(.homepage-static)) main .rounded-xl.border, body:not(:has(.homepage-static)) main .rounded-2xl.border, body:not(:has(.homepage-static)) main .rounded-lg.border,
+body:not(:has(.homepage-static)) main a.rounded-md.border, main button.rounded-md.border { position: relative; }
+body:not(:has(.homepage-static)) main [class*="card"]::after, body:not(:has(.homepage-static)) main [class*="-tile"]::after, body:not(:has(.homepage-static)) main [class*="-item"]::after, body:not(:has(.homepage-static)) main [class*="story"]::after,
+body:not(:has(.homepage-static)) main .rounded-xl.border::after, body:not(:has(.homepage-static)) main .rounded-2xl.border::after, body:not(:has(.homepage-static)) main .rounded-lg.border::after,
+body:not(:has(.homepage-static)) main a.rounded-md.border::after, main button.rounded-md.border::after {
   content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1px;
   background: linear-gradient(120deg, hsl(var(--connection-blue)), hsl(var(--connection-violet)) 50%, hsl(var(--brand-red)));
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor; mask-composite: exclude;
   pointer-events: none; opacity: .45; transition: opacity .3s ease;
 }
-main [class*="card"]:hover::after, main [class*="-tile"]:hover::after, main [class*="-item"]:hover::after, main [class*="story"]:hover::after,
-main .rounded-xl.border:hover::after, main .rounded-2xl.border:hover::after, main .rounded-lg.border:hover::after,
-main a.rounded-md.border:hover::after, main button.rounded-md.border:hover::after { opacity: .9; }
+body:not(:has(.homepage-static)) main [class*="card"]:hover::after, body:not(:has(.homepage-static)) main [class*="-tile"]:hover::after, body:not(:has(.homepage-static)) main [class*="-item"]:hover::after, body:not(:has(.homepage-static)) main [class*="story"]:hover::after,
+body:not(:has(.homepage-static)) main .rounded-xl.border:hover::after, body:not(:has(.homepage-static)) main .rounded-2xl.border:hover::after, body:not(:has(.homepage-static)) main .rounded-lg.border:hover::after,
+body:not(:has(.homepage-static)) main a.rounded-md.border:hover::after, main button.rounded-md.border:hover::after { opacity: .9; }
 
 @keyframes arrow-nudge { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(3px); } }
-main .lucide-arrow-right, main .lucide-arrow-up-right { animation: arrow-nudge 2.6s ease-in-out infinite; }
+body:not(:has(.homepage-static)) main .lucide-arrow-right, body:not(:has(.homepage-static)) main .lucide-arrow-up-right { animation: arrow-nudge 2.6s ease-in-out infinite; }
 
 @media (prefers-reduced-motion: reduce) {
-  main .lucide-arrow-right, main .lucide-arrow-up-right { animation: none; }
-  main [class*="card"]::after, main [class*="-tile"]::after, main [class*="-item"]::after, main [class*="story"]::after,
-  main .rounded-xl.border::after, main .rounded-2xl.border::after, main .rounded-lg.border::after,
-  main a.rounded-md.border::after, main button.rounded-md.border::after { transition: none; }
+  body:not(:has(.homepage-static)) main .lucide-arrow-right, body:not(:has(.homepage-static)) main .lucide-arrow-up-right { animation: none; }
+  body:not(:has(.homepage-static)) main [class*="card"]::after, body:not(:has(.homepage-static)) main [class*="-tile"]::after, body:not(:has(.homepage-static)) main [class*="-item"]::after, body:not(:has(.homepage-static)) main [class*="story"]::after,
+  body:not(:has(.homepage-static)) main .rounded-xl.border::after, body:not(:has(.homepage-static)) main .rounded-2xl.border::after, body:not(:has(.homepage-static)) main .rounded-lg.border::after,
+  body:not(:has(.homepage-static)) main a.rounded-md.border::after, main button.rounded-md.border::after { transition: none; }
 }
