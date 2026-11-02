@@ -29,7 +29,9 @@ describe("approved website structure", () => {
     expect(pages.find(p => p.path === "/collaboration-network")?.blocks).toEqual([{ type: "collaboration-network" }]);
   });
   it("redirects retired academic URLs without duplicate content pages", () => {
-    expect(retiredPageDestinations).toEqual({ "/academic-collaborations": "/collaboration-network", "/academic-collaborations/svu": "/collaboration-network/svu", "/academic-collaborations/xime": "/collaboration-network/xime" });
+    expect(retiredPageDestinations).toEqual({ "/academic-collaborations": "/collaboration-network", "/academic-collaborations/svu": "/collaboration-network/svu", "/academic-collaborations/xime": "/collaboration-network/xime", "/industry-collaborations/ibm": "/collaboration-network/ibm" });
+    // IBM keeps one home under Our Collaboration Network (client brief, 2 November 2026).
+    expect(pages.some(p => p.path === "/industry-collaborations/ibm")).toBe(false);
   });
   it("keeps eight homepage capability cards linked to existing pages", () => {
     expect(homepageCapabilities).toHaveLength(8);
