@@ -1596,12 +1596,12 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
   animation: ss-cap-in .7s ease-out both;
 }
 .ss-cap--left {
-  background: linear-gradient(135deg, hsl(var(--primary) / .2), hsl(var(--primary) / .09));
-  border-top: 4px solid hsl(var(--primary));
+  background: linear-gradient(135deg, hsl(var(--connection-blue) / .22), hsl(var(--connection-blue) / .1));
+  border-top: 4px solid hsl(var(--connection-blue));
 }
 .ss-cap--right {
-  background: linear-gradient(225deg, hsl(var(--connection-blue) / .22), hsl(var(--connection-blue) / .1));
-  border-top: 4px solid hsl(var(--connection-blue));
+  background: linear-gradient(225deg, hsl(var(--primary) / .2), hsl(var(--primary) / .09));
+  border-top: 4px solid hsl(var(--primary));
   /* the divider is the pad's own white showing through between the two blocks */
   border-left: 2px solid hsl(var(--background));
   animation-delay: .12s;
@@ -1614,8 +1614,8 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
   box-shadow: 0 6px 14px -10px hsl(var(--foreground) / .3);
   animation: ss-bob 4s ease-in-out infinite;
 }
-.ss-cap--left .ss-cap-badge { color: hsl(var(--primary)); }
-.ss-cap--right .ss-cap-badge { color: hsl(var(--connection-blue)); animation-delay: 1s; }
+.ss-cap--left .ss-cap-badge { color: hsl(var(--connection-blue)); }
+.ss-cap--right .ss-cap-badge { color: hsl(var(--primary)); animation-delay: 1s; }
 .ss-cap-side {
   font-weight: 700; font-size: .78rem; letter-spacing: .22em;
   text-transform: uppercase; color: hsl(var(--primary));
@@ -1632,8 +1632,8 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
   animation: ss-pill-in .6s ease-out both;
   transition: transform .3s;
 }
-.ss-cap--left li svg { color: hsl(var(--primary)); flex: none; }
-.ss-cap--right li svg { color: hsl(var(--connection-blue)); flex: none; }
+.ss-cap--left li svg { color: hsl(var(--connection-blue)); flex: none; }
+.ss-cap--right li svg { color: hsl(var(--primary)); flex: none; }
 .ss-cap--left li:hover { transform: translateX(6px); }
 .ss-cap--right li:hover { transform: translateX(-6px); }
 
