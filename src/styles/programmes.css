@@ -427,3 +427,12 @@
 .programme-usp .programme-usp-list .programme-section-icon { width: 36px; height: 36px; border-radius: 8px; }
 .programme-usp .programme-usp-link { padding-inline: 0; margin-top: 8px; font-weight: 500; }
 @media (max-width: 640px) { .programme-usp.programme-detail-section { padding: 18px 16px 14px; } .programme-usp .programme-usp-list { grid-template-columns: minmax(0, 1fr); } }
+
+/* SVU Internships introduction (client brief, 2 November 2026): white page, navy
+   heading, blue-grey reading text and a restrained royal-blue accent. The
+   introduction, the search controls and the records table share one left edge. */
+.svu-career-records { background: hsl(var(--background)); color: hsl(215 30% 38%); }
+.svu-career-records .svu-career-subtitle { color: hsl(var(--navy-royal)); }
+.svu-career-records .svu-career-count { color: hsl(var(--navy-royal)); }
+.svu-career-filters { margin-top: 28px; }
+.svu-career-table th:first-child, .svu-career-table td:first-child { padding-left: 0; }
