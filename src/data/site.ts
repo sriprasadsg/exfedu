@@ -28,7 +28,7 @@ export type Block =
   | { type: "offerings"; title: string; rows: Offering[] }
   | { type: "programmes"; title: string }
   | { type: "areas"; title: string }
-  | { type: "faq"; title: string; items?: { q: string; a: string }[] }
+  | { type: "faq"; title: string; items?: { q: string; a?: string; groups?: { label: string; points: string[] }[] }[] }
   | { type: "team"; title: string; groups: string[] }
   | { type: "gallery"; filters: string[] }
   | { type: "children"; title: string }
@@ -294,6 +294,20 @@ export const pages: Page[] = [
         { q: "Can SkillShone support final-year academic projects?", a: "SkillShone supports project selection, development and documentation. Learners should confirm that their selected project meets their institution's academic requirements." },
         { q: "Does SkillShone provide project reports?", a: "The platform supports project report generation and customisation to college templates. Learners should review the report for accuracy and compliance with submission requirements." },
         { q: "How does SkillShone support interview preparation?", a: "Project discussions, technical presentations and mock interviews help learners practise explaining their work and answering questions about their solutions." },
+        { q: "How do these programmes benefit freshers, mid-career professionals and experienced specialists?", groups: [
+          { label: "Freshers and Early-Career Learners", points: [
+            "Build technical foundations through practical exercises and projects.",
+            "Develop a portfolio and strengthen problem-solving and communication skills.",
+          ] },
+          { label: "Mid-Career Professionals", points: [
+            "Update technical skills and apply new approaches to workplace challenges.",
+            "Build specialised knowledge to support career progression or a role transition.",
+          ] },
+          { label: "Experienced Professionals and Domain Experts", points: [
+            "Explore emerging technologies and their applications within your domain.",
+            "Strengthen your ability to evaluate solutions and guide technology initiatives.",
+          ] },
+        ] },
       ] },
       { type: "cta", title: "Start Building with SkillShone", text: "Explore practical AI project learning for your own development, or discuss how SkillShone can support your institution — contact@skillshone.com.", label: "Visit SkillShone" },
     ] },

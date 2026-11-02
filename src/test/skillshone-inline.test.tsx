@@ -72,6 +72,24 @@ describe("SkillShone inline detail", () => {
     expect(second).toHaveAttribute("aria-expanded", "false");
   });
 
+  // Client, 2 Nov 2026: the audience-benefit answer is approved wording in three groups.
+  it("shows the audience-benefit answer as three groups with two points each, closed until clicked", () => {
+    open();
+    const row = screen.getByText("How do these programmes benefit freshers, mid-career professionals and experienced specialists?").closest("li")!;
+    const panel = row.querySelector(".ss-faq-a")!;
+    expect(panel).toHaveAttribute("hidden");
+    fireEvent.click(screen.getByRole("button", { name: /How do these programmes benefit/ }));
+    expect(panel).not.toHaveAttribute("hidden");
+    const groups = Array.from(panel.querySelectorAll(".ss-faq-group"));
+    expect(groups.map((g) => g.querySelector("h5")!.textContent)).toEqual([
+      "Freshers and Early-Career Learners",
+      "Mid-Career Professionals",
+      "Experienced Professionals and Domain Experts",
+    ]);
+    groups.forEach((g) => expect(g.querySelectorAll("li").length).toBe(2));
+    expect(screen.getByText("Build technical foundations through practical exercises and projects.")).toBeInTheDocument();
+  });
+
   it("sends Enquire Now to the contact page instead of opening a panel", () => {
     open();
     expect(screen.getByRole("link", { name: "Enquire Now" })).toHaveAttribute("href", "/contact");
