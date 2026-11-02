@@ -50,20 +50,24 @@ const SvuOverview = () => {
       </ol>
     </section>
 
-    <section className="svu-block">
-      <h2>Applied Technical Areas</h2>
-      <p className="svu-reading">Student projects explore challenges across data engineering, business analytics and intelligent application development.</p>
+    <section className="svu-block svu-split">
+      <div className="svu-split-lead">
+        <h2>Applied AI and Data Science</h2>
+        <p className="svu-reading">Student projects explore challenges across data engineering, business analytics and intelligent application development.</p>
+        <Button variant="link" asChild><Link to={svuSectionPath("projects-research")}>Explore Student Projects<ArrowRight size={16} /></Link></Button>
+      </div>
       <div className="svu-areas">{svuProjectAreas.map(area => <Link key={area.title} to={`${svuSectionPath("projects-research")}#svu-project-${area.projectIndex + 1}`} className="svu-area">
         <span className={`programme-section-icon tone-${area.tone}`}><area.icon size={22} strokeWidth={1.4} aria-hidden="true" /></span>
         <span><strong>{area.title}</strong><span>{area.text}</span></span>
       </Link>)}</div>
-      <Button variant="link" asChild><Link to={svuSectionPath("projects-research")}>Explore Student Projects<ArrowRight size={16} /></Link></Button>
     </section>
 
-    <section className="svu-block">
-      <h2>Research and Technical Exploration</h2>
+    <section className="svu-block svu-split">
+      <div className="svu-split-lead"><h2>Research and Technical Exploration</h2></div>
+      <div className="svu-split-body">
       <p className="svu-reading">Students investigate technical questions and communicate their findings through papers and conference presentations, on topics including explainable AI, retrieval-based systems, multimodal applications, reinforcement learning and quantum machine learning.</p>
       <Button variant="link" asChild><Link to={svuSectionPath("projects-research")}>Explore Projects &amp; Research<ArrowRight size={16} /></Link></Button>
+      </div>
     </section>
 
     <section className="svu-block" id="achievements">
