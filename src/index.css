@@ -1624,6 +1624,8 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
 }
 .ss-cap--left .ss-cap-badge { color: hsl(var(--connection-blue)); }
 .ss-cap--right .ss-cap-badge { color: hsl(var(--primary)); animation-delay: 1s; }
+/* All wording on the paper is dark navy. */
+.ss-cap, .ss-cap h3 { color: hsl(var(--primary)); }
 .ss-cap-side {
   font-weight: 700; font-size: .78rem; letter-spacing: .22em;
   text-transform: uppercase; color: hsl(var(--primary));
@@ -1633,7 +1635,7 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
   display: flex; align-items: center; gap: .55rem;
   padding: .55rem 1rem; border-radius: 999px;
   background: hsl(var(--background));
-  color: hsl(var(--foreground));
+  color: hsl(var(--primary));
   font-size: .82rem; font-weight: 500;
   border: 1px solid hsl(var(--foreground) / .08);
   box-shadow: 0 6px 14px -10px hsl(var(--foreground) / .3);
