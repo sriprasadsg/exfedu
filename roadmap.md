@@ -274,3 +274,7 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [ ] Programmes page (client, 2 Nov 2026): remove "forecast" wording; animate the cap artwork gently and give it its own box/tile.
 - [ ] Publish the latest site (client, 2 Nov 2026: "publih over all latestly").
 - [ ] SVU Internships table header (client, 2 Nov 2026): present colourfully in the established box style (per-column coloured icon tiles, gradient top strip) like the programmes directory head.
+- [ ] Menu bar titles colourful; Batch values colourful; thicker coloured box edges plus tilt movement on all boxes (client, 2 Nov 2026).
+- [x] Invisible text fixed site-wide: heading gradient now paints its own linked/emphasised words, and the homepage ecosystem heading keeps its pale box behind gradient text. 116 tests pass, build OK, every page scanned clean.
+- [x] SVU award panel: "Forecast" dropped from the title (now "Quantum Wave"), trophy cup given a solid royal-blue tile and a gentler 6s float.
+- [x] SVU Internships table header presented colourfully: gradient top strip and per-column coloured icon tiles (blue/teal/violet/amber) in the established card style; stacks on phones.
