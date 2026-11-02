@@ -1,39 +1,42 @@
-import { cleanup, render, screen } from "@testing-library/react";
+import { describe, expect, it } from "vitest";
+import { render, screen, fireEvent } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
-import { afterEach, describe, expect, it } from "vitest";
-import { SvuOverviewContent } from "@/components/site/SvuReviewedContent";
-import { svuOverviewAchievements } from "@/data/svuOverview";
+import SvuPages from "@/components/site/SvuPages";
 
-const open = () => render(<MemoryRouter><SvuOverviewContent /></MemoryRouter>);
+const open = (section: "overview" | "projects-research" | "placements" | "internships" | "programmes") =>
+  render(<MemoryRouter><SvuPages section={section} /></MemoryRouter>);
 
-afterEach(cleanup);
-
-// 2 Nov 2026 brief: the two achievement cards sit side by side on desktop (stacked on phones),
-// each with an equal-width image area, then its own heading and description. The PanIIT group
-// photograph appears once, inside its card, and never again as a standalone figure.
-describe("SVU Student Innovation and Achievements story cards", () => {
-  it("renders two cards with the photograph ahead of heading and description", () => {
-    open();
-    const cards = document.querySelectorAll(".svu-overview-story");
-    expect(cards).toHaveLength(2);
-    cards.forEach(card => {
-      expect(card.querySelector("figure")).toBe(card.firstElementChild);
-      const text = card.querySelector(".svu-overview-story-text")!;
-      expect(text.querySelector("h3")).toBe(text.firstElementChild);
-      expect(text.querySelector("p")).toBe(text.lastElementChild);
-    });
-    expect(screen.getByRole("heading", { name: "Innovation Showcase" })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: "Technology Community Participation" })).toBeInTheDocument();
+describe("SVU pages", () => {
+  it("overview shows two photo stories, the group photo once, and the hackathon result", () => {
+    const { container } = open("overview");
+    expect(container.querySelectorAll(".svu-story")).toHaveLength(2);
+    expect(container.querySelectorAll('img[src*="svu-paniit-delegation"]')).toHaveLength(1);
+    expect(screen.getByText(/First place in the AP Quantum Hackathon 2025 semi-finals/)).toBeTruthy();
+    expect(container.querySelectorAll("h1")).toHaveLength(1);
   });
-
-  it("shows the group photograph once, with its caption and no standalone duplicate", () => {
-    open();
-    const group = svuOverviewAchievements[1].photo;
-    const images = [...document.querySelectorAll(".svu-overview-story img")];
-    expect(images).toHaveLength(2);
-    expect(images.filter(img => img.getAttribute("src") === group)).toHaveLength(1);
-    expect(document.querySelectorAll(`img[src="${group}"]`)).toHaveLength(1);
-    expect(document.querySelectorAll(".svu-overview-delegation")).toHaveLength(0);
-    expect(screen.getByText("SVU\u2013Exafluence student participation at the PanIIT Andhra Pradesh Summit 2026.")).toBeInTheDocument();
+  it("tab bar links to five separate pages", () => {
+    const { container } = open("overview");
+    const hrefs = [...container.querySelectorAll(".svu-tabbar a")].map(a => a.getAttribute("href"));
+    expect(hrefs).toEqual(["/collaboration-network/svu", "/collaboration-network/svu/programmes", "/collaboration-network/svu/projects-research", "/collaboration-network/svu/internships", "/collaboration-network/svu/placements"]);
+  });
+  it("projects show six at a time with pagination and no public approval note", () => {
+    const { container } = open("projects-research");
+    expect(container.querySelectorAll(".svu-project-list article")).toHaveLength(6);
+    expect(container.textContent).not.toContain("Approved Content Required");
+    fireEvent.click(screen.getByRole("button", { name: "Next" }));
+    expect(container.querySelector("#svu-project-7")).not.toBeNull();
+  });
+  it("placements and internships keep all 11 records with one heading", () => {
+    for (const kind of ["placements", "internships"] as const) {
+      const { container, unmount } = open(kind);
+      expect(container.querySelectorAll(".svu-career-table tbody tr")).toHaveLength(11);
+      expect(container.querySelectorAll("h1")).toHaveLength(1);
+      unmount();
+    }
+  });
+  it("uses G V Sumanth consistently", () => {
+    const { container } = open("internships");
+    expect(container.textContent).toContain("G V Sumanth");
+    expect(container.textContent).not.toContain("Sumanth G V");
   });
 });
