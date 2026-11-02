@@ -171,12 +171,8 @@ export default function SkillShonePage({ page, breadcrumb }: { page: Page; bread
         </ul>
       </section>
 
-      {/* Who it's for / institutions — two equal partitions */}
+      {/* Who it's for / institutions — two equal partitions on a writing pad */}
       <section className="container py-16">
-        <div className="ss-split-head">
-          <div className="ss-split-headtxt"><Eyebrow>Who it is for</Eyebrow><h2 className="ss-h2">Build a Portfolio, <em>Gain Confidence</em></h2></div>
-          <div className="ss-split-headtxt"><Eyebrow>For institutions</Eyebrow><h2 className="ss-h2">Colleges <em>&amp; Universities</em></h2></div>
-        </div>
         <div className="ss-capsule">
           <span className="ss-pad-clip" aria-hidden="true">
             <svg viewBox="0 0 120 70" xmlns="http://www.w3.org/2000/svg">
