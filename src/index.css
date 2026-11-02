@@ -1493,6 +1493,13 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
 .ss-cap-side { position: absolute; top: 50%; font-weight: 700; font-size: 1.3rem; letter-spacing: .12em; text-transform: uppercase; opacity: .8; }
 .ss-cap--left .ss-cap-side { left: -2.8rem; transform: translate(-50%, -50%) rotate(-90deg); color: hsl(var(--primary)); }
 .ss-cap--right .ss-cap-side { right: -2.8rem; transform: translate(50%, -50%) rotate(90deg); color: hsl(var(--connection-blue)); }
+/* The capsule's own label and icon badge no longer straddle the frame. Each half now reads as a
+   neat stack — icon badge, small-caps label, then the pills — so nothing crosses the outline.
+   (client, 2 November 2026) */
+.ss-cap { flex-direction: column; align-items: center; justify-content: center; gap: .55rem; padding-top: 2.4rem; padding-bottom: 2.4rem; }
+.ss-cap-badge, .ss-cap--left .ss-cap-badge, .ss-cap--right .ss-cap-badge { position: static; left: auto; right: auto; top: auto; }
+.ss-cap-side, .ss-cap--left .ss-cap-side, .ss-cap--right .ss-cap-side { position: static; left: auto; right: auto; top: auto; transform: none; font-size: .78rem; letter-spacing: .22em; opacity: .9; }
+.ss-cap ul { margin-top: .8rem; }
 .ss-cap-core { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 9.5rem; height: 9.5rem; border-radius: 50%; display: grid; place-items: center; padding: 1rem; background: hsl(var(--background)); box-shadow: 0 0 0 10px hsl(var(--background) / .3), 0 0 0 11px hsl(var(--foreground) / .1), 0 18px 34px -16px hsl(var(--foreground) / .35); z-index: 1; }
 .ss-cap-core img { width: 100%; height: auto; animation: ss-cap-core-float 8s ease-in-out infinite; }
 @keyframes ss-cap-core-float { 0%, 100% { translate: 0 0; } 50% { translate: 0 -5px; } }
