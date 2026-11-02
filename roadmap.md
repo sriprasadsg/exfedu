@@ -252,3 +252,5 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 
 - [ ] Organise uploaded SVU reviewed content and separate programme brochures.
 - [ ] Trim footer to agreed main links and collaboration sections; remove unwanted resources.
+
+- [ ] Confirm SVU footer order: Overview, Programmes, Projects & Research, Internships, Placements.
