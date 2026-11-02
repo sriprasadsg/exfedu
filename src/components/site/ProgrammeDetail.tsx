@@ -9,7 +9,7 @@ import PartnerEnquiry from "@/components/home/PartnerEnquiry";
 import { academicResources, organisations, PENDING, type Programme } from "@/data/site";
 import { useProgrammeSeo } from "./ProgrammeDirectory";
 import { organisationPath } from "@/lib/programmeNavigation";
-import { programmeDetailSections } from "@/lib/programmeSections";
+import { programmeDetailSections, ibmProgrammeSections } from "@/lib/programmeSections";
 import { SvuAcademicResources } from "./SvuReviewedContent";
 
 const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { programme: Programme; organisationOverview?: boolean }) => {
@@ -36,7 +36,7 @@ const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { progr
   useProgrammeSeo(`${p.title} | ${org.name} | Exafluence Education`, `${p.overview} Duration: ${p.duration}. Review features, technologies and certification.`);
 
   const enquiryUrl = `/contact?programme=${encodeURIComponent(p.slug)}`;
-  const sections = programmeDetailSections(p);
+  const sections = p.organisation === "IBM" ? ibmProgrammeSections(p) : programmeDetailSections(p);
   const openBrochure = () => {
     setBrochureOpen(true);
     setFormComplete(false);
