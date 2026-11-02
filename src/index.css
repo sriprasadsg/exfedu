@@ -1574,19 +1574,12 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
   background: linear-gradient(160deg, hsl(var(--muted)), hsl(var(--input) / .55));
   box-shadow: 0 18px 34px -22px hsl(var(--primary) / .4);
 }
-/* The front is one white sheet of ruled paper: faint horizontal lines run one
-   after the other across both partitions, like the reference pad. */
+/* The front is one plain white sheet of paper split into two partitions. */
 .ss-pad-sheet {
   position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  background:
-    repeating-linear-gradient(180deg,
-      transparent 0,
-      transparent 1.9rem,
-      hsl(var(--connection-blue) / .16) 1.9rem,
-      hsl(var(--connection-blue) / .16) calc(1.9rem + 1px)),
-    hsl(var(--background));
+  background: hsl(var(--background));
   border: 1px solid hsl(var(--border));
   border-radius: 14px;
   box-shadow: 0 10px 24px -16px hsl(var(--foreground) / .35);
