@@ -179,13 +179,11 @@ export default function SkillShonePage({ page, breadcrumb }: { page: Page; bread
         </div>
         <div className="ss-capsule">
           <span className="ss-pad-clip" aria-hidden="true">
-            <svg viewBox="0 0 88 46" xmlns="http://www.w3.org/2000/svg">
-              <rect x="19" y="2.5" width="50" height="21" rx="10.5" fill="none" stroke="currentColor" strokeWidth="4" />
-              <rect x="4" y="18" width="80" height="26" rx="9" fill="currentColor" />
-              <rect className="ss-pad-clip-line" x="15" y="28" width="58" height="3.5" rx="1.75" />
+            <svg viewBox="0 0 120 70" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 8 H30 L44 52 Q46 60 54 60 H66 Q74 60 76 52 L90 8 H112" fill="none" stroke="currentColor" strokeWidth="9" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </span>
-
+          <div className="ss-pad-sheet">
           <div className="ss-cap ss-cap--left">
             <span className="ss-cap-badge" aria-hidden="true"><GraduationCap className="h-6 w-6" strokeWidth={1.5} /></span>
             <span className="ss-cap-side" aria-hidden="true">Learners</span>
@@ -195,6 +193,7 @@ export default function SkillShonePage({ page, breadcrumb }: { page: Page; bread
             <span className="ss-cap-badge" aria-hidden="true"><Landmark className="h-6 w-6" strokeWidth={1.5} /></span>
             <span className="ss-cap-side" aria-hidden="true">Institutions</span>
             <ul>{institutions.map((a, i) => <li key={a} style={{ animationDelay: `${i * 120}ms` }}><ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />{a}</li>)}</ul>
+          </div>
           </div>
           <span className="ss-pad-pen" aria-hidden="true">
             <svg viewBox="0 0 46 330" xmlns="http://www.w3.org/2000/svg">
