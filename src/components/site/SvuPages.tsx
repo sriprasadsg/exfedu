@@ -88,7 +88,7 @@ const SvuOverview = () => {
 };
 
 const svuCategories = [
-  { title: "Master\u2019s Programme", levels: ["Master's"] },
+  { title: "Master’s Programme", levels: ["Master's"] },
   { title: "Postgraduate Diploma", levels: ["PG Diploma"] },
   { title: "Short-Term Diplomas", levels: ["Diploma"] },
 ];
@@ -98,7 +98,7 @@ const SvuProgrammes = () => {
   return <div className="svu-flow">
     <section className="svu-block svu-intro">
       <h1>Industry-Integrated Programmes</h1>
-      <p className="svu-lead">Explore programmes offered through the collaboration between Exafluence Inc., USA, and Sri Venkateswara University. Compare study duration and delivery options, then view each programme\u2019s eligibility, curriculum and admission process.</p>
+      <p className="svu-lead">Explore programmes offered through the collaboration between Exafluence Inc., USA, and Sri Venkateswara University. Compare study duration and delivery options, then view each programme’s eligibility, curriculum and admission process.</p>
     </section>
     <div className="svu-directory-groups">{svuCategories.map(cat => {
       const rows = shown.filter(p => cat.levels.includes(p.level));
