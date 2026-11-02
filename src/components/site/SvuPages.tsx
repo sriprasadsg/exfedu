@@ -96,8 +96,10 @@ const SvuOverview = () => {
         <div className="svu-champion-body">
           <span className="svu-champion-eyebrow">Featured Achievement</span>
           <h3 className="svu-champion-title">{hackathon.title}</h3>
-          <p className="svu-champion-line">{hackBefore}<strong className="svu-champion-bold">{hackathon.highlight}</strong>{hackAfter} <a className="svu-champion-link" href={hackathon.href} target="_blank" rel="noopener noreferrer">{hackathon.label}<ArrowUpRight size={14} aria-hidden="true" /></a></p>
+          <p className="svu-champion-line">{hackBefore}<strong className="svu-champion-bold">{hackathon.highlight}</strong>{hackAfter.replace("FTSE 100", "FTSE\u00A0100")}</p>
+          <a className="svu-champion-link" href={hackathon.href} target="_blank" rel="noopener noreferrer">{hackathon.label}<ArrowUpRight size={14} aria-hidden="true" /></a>
         </div>
+
       </aside>
 
     </section>
