@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import logo from "@/assets/exfedu-logo-darker.png.asset.json";
+import logo from "@/assets/exfedu-logo-nibless.png.asset.json";
+import logoNib from "@/assets/exfedu-logo-nib.png.asset.json";
+
 import { Menu, X, Search, Plus, Minus, Network } from "lucide-react";
 import { svuSectionPath, type SvuSectionId } from "@/lib/programmeNavigation";
 import { menuCategories, navPages, organisationSections, primaryNavigation, organisations, programmes, type Organisation } from "@/data/site";
@@ -45,7 +47,13 @@ const Header = () => {
     <header className="site-header sticky top-0 z-50 border-b">
       <div className="container flex h-20 items-center justify-between gap-2">
         <Link to="/" className="flex min-w-0 items-center" aria-label="Exafluence Education home">
-          <img src={logo.url} alt="Exafluence Education — An EdTech unit of Exafluence Inc., USA" className="h-12 w-auto max-w-[150px] lg:max-w-[220px] object-contain" />
+          <span className="relative inline-block h-12 w-auto" style={{ aspectRatio: "1068 / 416" }}>
+            <img src={logo.url} alt="Exafluence Education — An EdTech unit of Exafluence Inc., USA" className="absolute inset-0 h-full w-full object-contain" />
+            {/* The pen nib is lifted out of the mark so it can drift on its own (client, 2 Nov 2026). */}
+            <img src={logoNib.url} alt="" aria-hidden="true" className="site-logo-nib absolute" style={{ left: "63.015%", top: "27.644%", width: "8.333%", height: "24.279%" }} />
+          </span>
+
+
 
         </Link>
         <nav aria-label="Main navigation" className="hidden items-center gap-0 min-[900px]:flex">

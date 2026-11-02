@@ -341,3 +341,6 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Partner illustrations (SVU, IBM, XIME): strengthen outer contour of each component with a slightly thicker medium-blue outline; internals, colours, sizes, positions unchanged; no container border (client 17:59 UTC 2 Nov 2026)
 - [x] Partner illustrations (SVU, IBM, XIME): the strengthened medium-blue outer contours now carry a soft blue glow; internals, colours, sizes, positions and the pale backdrop unchanged; no container border (client 18:01 UTC 2 Nov 2026)
 - [x] Footer: partners and Quick Links keep their own colours; every other footer line (Privacy Policy, Terms & Conditions, column titles, copyright) returns to the single earlier colour with no dots (client 18:06 UTC 2 Nov 2026)
+- [x] About hero artwork: shining medium-blue outer contours with a soft glow on every sphere, disc and the bead string; floor shadow, white icons and transparency untouched (client 18:09 UTC 2 Nov 2026)
+- [x] Search white button (homepage tile artwork's magnifying glass): now drifts gently — 5px/3deg over 6s; the stillness rule was silently overriding it, so it never moved before (client 18:11 UTC 2 Nov 2026)
+- [x] Menu bar logo: the pen nib is lifted out as its own layer and drifts gently on its tip (client 18:12 UTC 2 Nov 2026)

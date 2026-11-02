@@ -917,9 +917,9 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 }
 @keyframes magnifying-glass-search {
   0%, 100% { transform: translate(0, 0) rotate(0); }
-  25% { transform: translate(12px, -8px) rotate(8deg); }
-  50% { transform: translate(0, -12px) rotate(0); }
-  75% { transform: translate(-12px, -4px) rotate(-8deg); }
+  25% { transform: translate(5px, -3px) rotate(3deg); }
+  50% { transform: translate(0, -5px) rotate(0); }
+  75% { transform: translate(-5px, -2px) rotate(-3deg); }
 }
 .exi-tile-art { position: relative; width: min(100%, clamp(278px, 44vw, 469px)); aspect-ratio: 1283 / 875; }
 .exi-illus .exi-tile-art img { display: block; width: 100%; height: auto; }
@@ -927,7 +927,7 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 /* Scope all stillness to Home, including menus rendered outside its wrapper. The thick coloured
    edges on the approach boxes, the approach banner and the capabilities cards are exempt
    (client, 2 November 2026). */
-body:has(.homepage-static) *:not(.cap-card),
+body:has(.homepage-static) *:not(.cap-card):not(.site-logo-nib):not(.hero-dot):not(.cap-connector-dot):not(.exi-glass-symbol),
 body:has(.homepage-static) *:not(.exi-box):not(.exi-substitute):not(.cap-card)::before,
 body:has(.homepage-static) *:not(.exi-box):not(.exi-substitute)::after {
   animation: none !important;
@@ -960,7 +960,18 @@ body:has(.homepage-static) *:not(.exi-box):not(.exi-substitute)::after {
 .homepage-static .exi-glass-symbol {
   transform-box: fill-box;
   transform-origin: center;
-  animation: magnifying-glass-search 3.2s ease-in-out infinite !important;
+  animation: magnifying-glass-search 6s ease-in-out infinite !important;
+}
+/* The mark's pen nib drifts on its own (client, 2 November 2026: "gently apply pen animate").
+   It pivots on its tip, the way a pen moves while writing, and stays barely perceptible. */
+@keyframes logo-nib-write {
+  0%, 100% { transform: translate(0, 0) rotate(0); }
+  35% { transform: translate(-0.35px, 0.5px) rotate(-1.5deg); }
+  70% { transform: translate(0.35px, -0.35px) rotate(1.1deg); }
+}
+.site-logo-nib {
+  transform-origin: 50% 100%;
+  animation: logo-nib-write 5.5s ease-in-out infinite;
 }
 @container cap (min-width: 800px) {
   /* The cards sit on the circle by centring themselves, so the tilt has to carry that centre. */
@@ -986,7 +997,7 @@ html body .cap-diagram .cap-art {
   animation-delay: calc(var(--i, 0) * -1s) !important;
 }
 @media (prefers-reduced-motion: reduce) {
-  .homepage-static .hero-dot, .homepage-static .cap-connector-dot, .homepage-static .exi-glass-symbol { animation: none !important; }
+  .homepage-static .hero-dot, .homepage-static .cap-connector-dot, .homepage-static .exi-glass-symbol, .site-logo-nib { animation: none !important; }
   .hero-title, .hero-tagline, .hero-banner-art { animation: none; }
   html body .cap-art, html body .cap-pen, html body .menu-cat-icon, html body .menu-cat-hero, html body .enquiry-field-icon svg,
   html body .enquiry-success-icon svg, html body .academic-partner-icon svg, html body .academic-invitation-icons svg { animation: none !important; }
