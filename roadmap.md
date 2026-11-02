@@ -363,3 +363,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] SkillShone pad: pen moved left, sitting close beside the points
 - [x] SkillShone pad: pen given a gentle slant (crosswise rest)
 - [x] SkillShone pad: pen slant reversed to the opposite side
+- [x] SkillShone pad: pad boxes respond gently to the pointer (wash, ring, tile lift)
