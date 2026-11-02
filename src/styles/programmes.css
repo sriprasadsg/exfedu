@@ -436,3 +436,8 @@
 .svu-career-records .svu-career-count { color: hsl(var(--navy-royal)); }
 .svu-career-filters { margin-top: 28px; }
 .svu-career-table th:first-child, .svu-career-table td:first-child { padding-left: 0; }
+
+/* Research theme icons (client, 2 November 2026): colourful, static, before each
+   project, presentation and paper title. Hue comes from ResearchThemeIcon. */
+.research-theme-icon { flex-shrink: 0; display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; background: hsl(var(--theme-hue) 80% 95%); color: hsl(var(--theme-hue) 65% 45%); animation: none !important; }
+.svu-publications a > span:not(.research-theme-icon) { flex: 1; }
