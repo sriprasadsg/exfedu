@@ -28,11 +28,11 @@ describe("SVU Internships introduction (client brief, 2 November 2026)", () => {
     expect(intro).not.toMatch(/guarantee|assur|ensure/i);
   });
 
-  it("keeps records, search and the batch filter while carrying no brochure", () => {
+  it("keeps all records without search or batch filter, and carrying no brochure", () => {
     const { container } = renderPage();
     expect(container.textContent).not.toMatch(/brochure|download/i);
-    expect(container.querySelector("input[aria-label='Search internships']")).toBeTruthy();
-    expect(container.querySelector("[aria-label='Student Internships batch']")).toBeTruthy();
+    expect(container.querySelector("input[aria-label='Search internships']")).toBeNull();
+    expect(container.querySelector("[aria-label='Student Internships batch']")).toBeNull();
     expect(container.textContent).toContain("11 of 11 records");
     expect(container.querySelectorAll("[data-label='Batch']").length).toBe(11);
   });
