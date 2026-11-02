@@ -287,6 +287,6 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Programme page: colourful icons, side-edge tilted boxes, new enquiry look; then publish
 
 ## 2 Nov 2026 — 16:20 UTC
-- [ ] Remove the "Our Collaboration Network" breadcrumb link from all collaboration partner pages (SVU, XIME, IBM, programme details).
-- [ ] Present the topmost "Back to Our Collaboration Network" button colourfully.
-- [ ] Publish latest (user asked 16:20 UTC).
+- [x] Remove the "Our Collaboration Network" breadcrumb link from all collaboration partner pages (SVU, XIME, IBM, programme details).
+- [x] Present the topmost "Back to Our Collaboration Network" button colourfully (shared NetworkBackButton: white pill, blue→teal→violet edge, tinted arrow tile, gentle drift).
+- [x] Publish latest (user asked 16:20 UTC) — scheduled at https://law-site-shine.lovable.app; basic security scan clean beforehand.
