@@ -303,3 +303,5 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - Section "From Learning to Practical Application": use SkillShone colours (client, 2 Nov 2026)
 
 - Apply SkillShone colours to the section in the newest screenshot (client, 2 Nov 2026)
+
+- FAQ heading and + symbols: use SkillShone navy/red combination (client, 2 Nov 2026)
