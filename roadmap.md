@@ -354,3 +354,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] SkillShone pad: remove ruled lines — plain white paper
 - [x] SkillShone pad: headings removed; pen on white paper, tip facing 3 o2019clock
 - [ ] SkillShone pad: pen positioned properly with its tip pointing upward
+- [ ] SkillShone pad: use SkillShone brand font colours (navy + red)
