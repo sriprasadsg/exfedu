@@ -1338,8 +1338,11 @@ html body .cap-diagram .cap-art {
 }
 .collab2 { background: hsl(var(--background)); padding-block: clamp(2rem, 4vw, 3rem); }
 .collab2-title, .eco2-title { text-align: center; font-size: clamp(1.4rem, 2.6vw, 2rem); font-weight: 500; color: hsl(var(--primary)); }
-.eco2-title { position: relative; isolation: isolate; width: min(720px, calc(100% - 48px)); margin: 2.5rem auto 0; padding-block: 1.1rem 1.2rem; border-radius: 16px; }
-.eco2-title::before { content: ""; position: absolute; z-index: -1; inset: 0; border-radius: 16px; background: hsl(207 70% 97%); }
+/* Simple section introduction (client, 3 November 2026): left-aligned navy heading,
+   one short italic subtitle, content directly beneath, on the same content width. */
+.eco2-head { width: min(1280px, 100%); margin-inline: auto; padding-inline: 24px; }
+.eco2-title { text-align: left; margin: 2.5rem 0 0; padding-block: 0; }
+.eco2-subtitle { margin-top: .5rem; font-style: italic; font-weight: 400; font-size: clamp(.95rem, 1.6vw, 1.06rem); color: hsl(214 28% 36%); }
 .collab2-grid { margin-top: 2rem; display: grid; grid-template-columns: repeat(3, 1fr); }
 .collab2-item { display: flex; flex-direction: column; align-items: center; gap: .6rem; padding: 1rem; text-align: center; }
 .collab2-item + .collab2-item { border-left: 1px solid hsl(207 60% 88%); }
