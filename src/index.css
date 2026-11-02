@@ -1567,8 +1567,10 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
 /* The backing board is a plain soft grey — the writing pad itself. */
 .ss-capsule {
   position: relative;
-  margin-top: 3.2rem;
-  padding: 1.6rem 3.2rem 2rem;
+  margin-top: 2.4rem;
+  margin-inline: auto;
+  max-width: 64rem;
+  padding: 1.3rem 2.4rem 1.6rem;
   border: 1px solid hsl(var(--input) / .6);
   border-radius: 22px;
   background: linear-gradient(160deg, hsl(var(--muted)), hsl(var(--input) / .55));
@@ -1590,11 +1592,12 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  gap: .55rem;
-  padding: 2.4rem;
-  min-height: 19rem;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: .45rem;
+  padding: 1.7rem;
+  min-height: 13rem;
   animation: ss-cap-in .7s ease-out both;
 }
 /* Both partitions are plain white paper — the ruled lines show through — with only
@@ -1609,7 +1612,7 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
 }
 .ss-cap-badge {
   display: grid; place-items: center;
-  width: 3.2rem; height: 3.2rem; border-radius: 50%;
+  width: 2.7rem; height: 2.7rem; border-radius: 50%;
   background: hsl(var(--background));
   border: 1px solid hsl(var(--border));
   box-shadow: 0 6px 14px -10px hsl(var(--foreground) / .3);
@@ -1623,13 +1626,13 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
   font-weight: 700; font-size: .78rem; letter-spacing: .22em;
   text-transform: uppercase; color: hsl(var(--primary));
 }
-.ss-cap ul { display: grid; gap: .55rem; width: 100%; max-width: 22rem; margin-top: .8rem; }
+.ss-cap ul { display: grid; gap: .45rem; width: 100%; max-width: 20rem; margin-top: .6rem; margin-inline: auto; justify-items: center; }
 .ss-cap li {
-  display: flex; align-items: center; gap: .55rem;
-  padding: .55rem 1rem; border-radius: 999px;
+  display: flex; align-items: center; gap: .45rem;
+  padding: .42rem .85rem; border-radius: 999px;
   background: hsl(var(--background));
   color: hsl(var(--primary));
-  font-size: .82rem; font-weight: 500;
+  font-size: .76rem; font-weight: 500;
   border: 1px solid hsl(var(--foreground) / .08);
   box-shadow: 0 6px 14px -10px hsl(var(--foreground) / .3);
   animation: ss-pill-in .6s ease-out both;
@@ -1640,6 +1643,26 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
 .ss-cap--left li:hover { transform: translateX(6px); }
 .ss-cap--right li:hover { transform: translateX(-6px); }
 
+/* The pad's own heading: a white tile clamped on the grey backing directly beneath the clip. */
+.ss-pad-title {
+  position: relative;
+  z-index: 2;
+  width: max-content;
+  max-width: 100%;
+  margin: 2.1rem auto 1rem;
+  padding: .55rem 1.4rem;
+  border: 1px solid hsl(var(--border));
+  border-top: 3px solid hsl(var(--connection-blue));
+  border-radius: 12px;
+  background: hsl(var(--background));
+  box-shadow: 0 10px 22px -16px hsl(var(--foreground) / .4);
+  text-align: center;
+  font-size: .92rem;
+  font-weight: 700;
+  letter-spacing: .01em;
+  color: hsl(var(--primary));
+}
+
 /* ===== Writing-pad hardware =====
    Client, 2 Nov 2026: the panel reads as a clipboard/writing pad — a navy clip clamped on the
    top edge and a fountain pen resting along the right side, per the reference. Navy and royal
@@ -1647,7 +1670,7 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
 .ss-pad-clip {
   position: absolute;
   top: -1.9rem;
-  left: 50%;
+  left: 26%;
   translate: -50% 0;
   width: 7.5rem;
   color: hsl(var(--primary));
@@ -1656,14 +1679,15 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
 }
 .ss-pad-clip svg { display: block; width: 100%; height: auto; }
 
-/* Resting on the white paper near its right edge, tip facing toward 3 o'clock. */
+/* Standing on the white paper in the clear strip along its right edge, tip pointing upward.
+   Slim enough to sit beside the centred content without touching it. */
 .ss-pad-pen {
   position: absolute;
-  top: 50%;
-  right: 5.6rem;
+  top: 58%;
+  right: 4.65rem;
   translate: 0 -50%;
-  rotate: 286deg;
-  width: 1.7rem;
+  rotate: 170deg;
+  width: 1.3rem;
   color: hsl(var(--connection-blue));
   z-index: 2;
   filter: drop-shadow(0 8px 10px hsl(var(--primary) / .2));
@@ -1814,6 +1838,14 @@ body:not(:has(.homepage-static)) main h3 :is(a, em, strong, span, small, cite) {
 body:not(:has(.homepage-static)) main :is(.about-brand-exa, .about-brand-fluence, .brand-exa, .brand-fluence) {
   background: none; -webkit-background-clip: initial; background-clip: initial;
   -webkit-text-fill-color: currentColor;
+}
+/* The writing pad's title keeps SkillShone's own navy→red lettering instead of the
+   site-wide heading gradient (client, 2 November 2026). */
+body:not(:has(.homepage-static)) main h3.ss-pad-title {
+  background-image: linear-gradient(100deg, hsl(var(--primary)) 0%, hsl(var(--brand-red)) 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: hsl(var(--primary));
 }
 .box-tilt-active {
   transition: transform .18s ease-out, box-shadow .25s ease !important;

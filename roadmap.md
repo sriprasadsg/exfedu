@@ -269,12 +269,12 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] SVU Overview teaching approach: three colourful flash cards (Understand/Apply/Present) with themed icons, turning edges, staggered entrance and reduced-motion fallback; four checks pass.
 - [x] SVU Overview featured achievement panel (client, 2 Nov 2026): "First place in the AP Quantum Hackathon" bolded and the whole line lifted out of the plain paragraph into a navy award panel — red-dash "Featured Achievement" eyebrow, white "Quantum Wave Forecast" heading, blue-underlined bold phrase, outlined "View news coverage" pill on its own row, trophy tile with an 8s drift, gradient top edge; stacks on phones, "FTSE 100" kept on one line, reduced-motion fallback. Heading-gradient reset added so the shared navy heading gradient cannot paint this title dark-on-dark. 113 tests pass, build OK, browser-checked at 1280px and 390px.
 - [x] Programmes directory (client, 2 Nov 2026): "13 programmes" count line removed above the table; column headings presented colourfully — a gradient rule across the top and each of the five columns (Programme, Duration, Delivery Mode, Intake, View Details) given its own coloured icon tile (blue, teal, violet, amber, red), with the last column shortened to "View" below 1050px. 116 tests pass, build OK, browser-checked at 1280px and 883px.
-- [ ] SVU Overview teaching-approach cards (client, 2 Nov 2026): remove the 01/02/03 numerics from the three boxes.
-- [ ] Programmes page (client, 2 Nov 2026): fix text that renders not visible (adjust across the whole site, not just this page).
-- [ ] Programmes page (client, 2 Nov 2026): remove "forecast" wording; animate the cap artwork gently and give it its own box/tile.
-- [ ] Publish the latest site (client, 2 Nov 2026: "publih over all latestly").
-- [ ] SVU Internships table header (client, 2 Nov 2026): present colourfully in the established box style (per-column coloured icon tiles, gradient top strip) like the programmes directory head.
-- [ ] Menu bar titles colourful; Batch values colourful; thicker coloured box edges plus tilt movement on all boxes (client, 2 Nov 2026).
+- [x] SVU Overview teaching-approach cards (client, 2 Nov 2026): remove the 01/02/03 numerics from the three boxes.
+- [x] Programmes page (client, 2 Nov 2026): fix text that renders not visible (adjust across the whole site, not just this page).
+- [x] Programmes page (client, 2 Nov 2026): remove "forecast" wording; animate the cap artwork gently and give it its own box/tile.
+- [x] Publish the latest site (client, 2 Nov 2026: "publih over all latestly").
+- [x] SVU Internships table header (client, 2 Nov 2026): present colourfully in the established box style (per-column coloured icon tiles, gradient top strip) like the programmes directory head.
+- [x] Menu bar titles colourful; Batch values colourful; thicker coloured box edges plus tilt movement on all boxes (client, 2 Nov 2026).
 - [x] Invisible text fixed site-wide: heading gradient now paints its own linked/emphasised words, and the homepage ecosystem heading keeps its pale box behind gradient text. 116 tests pass, build OK, every page scanned clean.
 - [x] SVU award panel: "Forecast" dropped from the title (now "Quantum Wave"), trophy cup given a solid royal-blue tile and a gentler 6s float.
 - [x] SVU Internships table header presented colourfully: gradient top strip and per-column coloured icon tiles (blue/teal/violet/amber) in the established card style; stacks on phones.
@@ -353,3 +353,13 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] SkillShone panel: single white writing pad with coloured partitions (Learners sky blue, Institutions navy, front-to-back reversed) and a smaller pen resting on the paper
 - [x] SkillShone pad: remove ruled lines — plain white paper
 - [x] SkillShone pad: headings removed; pen on white paper, tip facing 3 o2019clock
+- [x] SkillShone pad: pen positioned properly with its tip pointing upward
+- [x] SkillShone pad: use SkillShone brand font colours (navy + red)
+- [x] SkillShone pad: clip shifted left, pen lowered slightly
+- [x] SkillShone pad: pen placed near the 3 o-clock position
+- [x] SkillShone pad: reduce the pad size overall
+- [x] SkillShone pad: reduce empty space between the pad and the buttons above
+- [x] SkillShone pad: pen brought closer to the right side
+- [x] SkillShone pad: pen moved left, sitting close beside the points
+- [x] SkillShone pad: pen given a gentle slant (crosswise rest)
+- [x] SkillShone pad: pen slant reversed to the opposite side
