@@ -1580,3 +1580,9 @@ html body .cap-diagram .cap-art {
   .footer-brand { justify-content: flex-start; }
 }
 @media (prefers-reduced-motion: reduce) { .footer-top-btn { transition: none; } }
+
+/* Site-wide line wrapping (client, 2 November 2026): no single word left alone on
+   a final line. Paragraphs and list items rebalance their last lines; headings
+   split evenly across lines. */
+p, li, dd, figcaption, blockquote, td { text-wrap: pretty; }
+h1, h2, h3, h4, h5, h6 { text-wrap: balance; }
