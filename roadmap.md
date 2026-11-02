@@ -250,7 +250,8 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Collaboration partner order set to SVU, IBM, XIME Chennai (client, 2 Nov 2026): IBM second, XIME third across the collaboration carousel, the ☰ drawer, the footer partner list, the programme-page organisation list, search suggestions and page descriptions; tests updated, 61 pass, browser-verified at 1062x772.
 - [x] SVU section menu confirmed and locked as Overview → Programmes → Projects & Research → Internships → Placements (client, 2 Nov 2026) and mirrored in the footer: the Sri Venkateswara University entry in the footer's Our Collaboration Network column now carries those five titles in that order as anchor links to the matching SVU page sections, while IBM and XIME Chennai stay single text links. Programme brochures remain separate (on the programme pages, never the footer). Footer-structure test added; 62 tests pass, build OK; browser-verified at 1280x1800 (nested list neat and aligned, click lands on Projects & Research, no horizontal overflow).
 
-- [ ] Organise uploaded SVU reviewed content and separate programme brochures.
-- [ ] Trim footer to agreed main links and collaboration sections; remove unwanted resources.
+- [x] Organise reviewed achievements, events, gallery, 47 projects, 13 publications and academic profiles within the agreed SVU pages.
+- [ ] Release separate SVU brochures: blocked by supplied ISO wording that conflicts with approved entity-specific certification boundaries; corrected PDFs required.
+- [x] Trim footer to agreed main links and collaboration sections; remove unwanted resources.
 
-- [ ] Confirm SVU footer order: Overview, Programmes, Projects & Research, Internships, Placements.
+- [x] Confirm SVU footer order: Overview, Programmes, Projects & Research, Internships, Placements.
