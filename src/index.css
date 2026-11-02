@@ -1554,10 +1554,10 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
 
 
 /* ===== SkillShone learners / institutions panel =====
-   Client, 2 Nov 2026: the pill-shaped capsule becomes a gently rounded rectangle with two
-   equal partitions — the writing pad's shape, minus its yellow. Original capsule tints kept
-   (soft grey left, pale sky-blue right), thin blue-grey outer border, fine central divider,
-   centre illustration removed. */
+   Client, 2 Nov 2026: the writing pad reads as one clean white surface — no tinted backing
+   board — and the colour lives inside it: the two partitions are filled blocks, navy on the
+   left and sky blue on the right, each carrying the site's thick one-sided edge. The pen is
+   smaller than before and rests on the paper itself rather than on the pad's margin. */
 .ss-split-head { display: grid; grid-template-columns: 1fr 1fr; gap: 9rem; }
 .ss-split-head > div:last-child { text-align: right; }
 /* Pull the institutions heading a bit inward from the page edge */
@@ -1567,21 +1567,21 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
 .ss-capsule {
   position: relative;
   margin-top: 3.2rem;
-  padding: 1.1rem 5.5rem 1.4rem;
-  border: 1px solid hsl(var(--input) / .7);
+  padding: 1.6rem 3.2rem 2rem;
+  border: 1px solid hsl(var(--input) / .6);
   border-radius: 22px;
-  background: linear-gradient(160deg, hsl(var(--connection-blue) / .24), hsl(var(--primary) / .14));
-  box-shadow: 0 18px 34px -22px hsl(var(--primary) / .45);
+  background: hsl(var(--background));
+  box-shadow: 0 18px 34px -22px hsl(var(--primary) / .4);
 }
+/* The sheet no longer needs to be a card of its own: the pad is white, so the two
+   partitions sit straight on it and the only lines are the hairline divider between
+   them and each block's coloured edge. */
 .ss-pad-sheet {
   position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  background: hsl(var(--background));
-  border: 1px solid hsl(var(--input) / .6);
-  border-radius: 4px;
-  box-shadow: 0 6px 14px -8px hsl(var(--foreground) / .3);
-  overflow: hidden;
+  background: transparent;
+  overflow: visible;
   z-index: 1;
 }
 .ss-cap {
@@ -1596,11 +1596,14 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
   animation: ss-cap-in .7s ease-out both;
 }
 .ss-cap--left {
-  background: linear-gradient(135deg, hsl(var(--primary) / .16), hsl(var(--primary) / .05));
+  background: linear-gradient(135deg, hsl(var(--primary) / .2), hsl(var(--primary) / .09));
+  border-top: 4px solid hsl(var(--primary));
 }
 .ss-cap--right {
-  background: linear-gradient(225deg, hsl(var(--connection-blue) / .16), hsl(var(--connection-blue) / .05));
-  border-left: 1px solid hsl(var(--border));
+  background: linear-gradient(225deg, hsl(var(--connection-blue) / .22), hsl(var(--connection-blue) / .1));
+  border-top: 4px solid hsl(var(--connection-blue));
+  /* the divider is the pad's own white showing through between the two blocks */
+  border-left: 2px solid hsl(var(--background));
   animation-delay: .12s;
 }
 .ss-cap-badge {
@@ -1650,16 +1653,17 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
 }
 .ss-pad-clip svg { display: block; width: 100%; height: auto; }
 
+/* Smaller than before and resting on the paper itself, close to its right edge. */
 .ss-pad-pen {
   position: absolute;
   top: 50%;
-  right: 1.1rem;
+  right: 3.9rem;
   translate: 0 -50%;
   rotate: 196deg;
-  width: 2.7rem;
+  width: 1.7rem;
   color: hsl(var(--connection-blue));
   z-index: 2;
-  filter: drop-shadow(0 12px 14px hsl(var(--primary) / .22));
+  filter: drop-shadow(0 8px 10px hsl(var(--primary) / .2));
   animation: ss-pen-rest 7s ease-in-out infinite;
 }
 .ss-pad-pen svg { display: block; width: 100%; height: auto; }
@@ -1677,7 +1681,8 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
   .ss-capsule { padding: 1rem .9rem 1.1rem; }
   .ss-pad-sheet { grid-template-columns: 1fr; }
   .ss-cap, .ss-cap--right { min-height: 0; }
-  .ss-cap--right { border-left: 0; border-top: 1px solid hsl(var(--border)); }
+  /* stacked: each block's own coloured edge marks the break, so the hairline steps out */
+  .ss-cap--right { border-left: 0; }
   .ss-pad-pen { display: none; }
 }
 @media (max-width: 560px) {
