@@ -209,7 +209,7 @@ export default function SkillShonePage({ page, breadcrumb }: { page: Page; bread
           <section aria-label={faq.title}>
             <h2 className="ss-h2 text-center">{faq.title}</h2>
             <ul className="ss-faq-list">
-              {faqItems.map(({ q, a }, i) => {
+              {faqItems.map(({ q, a, groups }, i) => {
                 const open = openFaq === i;
                 return (
                   <li key={q} className={open ? "is-open" : undefined}>
@@ -217,7 +217,15 @@ export default function SkillShonePage({ page, breadcrumb }: { page: Page; bread
                       <span className="ss-faq-sign" aria-hidden="true" />
                       <span>{q}</span>
                     </button>
-                    <p className="ss-faq-a" id={`ss-faq-a-${i}`} hidden={!open}>{a}</p>
+                    <div className="ss-faq-a" id={`ss-faq-a-${i}`} hidden={!open}>
+                      {a && <p>{a}</p>}
+                      {groups && groups.map((g) => (
+                        <div className="ss-faq-group" key={g.label}>
+                          <h5>{g.label}</h5>
+                          <ul>{g.points.map((pt) => <li key={pt}>{pt}</li>)}</ul>
+                        </div>
+                      ))}
+                    </div>
                   </li>
                 );
               })}
