@@ -11,7 +11,16 @@ describe("SVU pages", () => {
     const { container } = open("overview");
     expect(container.querySelectorAll(".svu-story")).toHaveLength(2);
     expect(container.querySelectorAll('img[src*="svu-paniit-delegation"]')).toHaveLength(1);
-    expect(screen.getByText(/First place in the AP Quantum Hackathon 2025 semi-finals/)).toBeTruthy();
+    const champion = container.querySelector(".svu-champion");
+    expect(champion).toBeTruthy();
+    expect(container.querySelectorAll(".svu-champion")).toHaveLength(1);
+    const bold = champion!.querySelector("strong.svu-champion-bold");
+    expect(bold?.textContent).toBe("First place in the AP Quantum Hackathon");
+    const lineText = bold!.closest(".svu-champion-line")!.textContent!.replace(/\u00A0/g, " ");
+    expect(lineText).toContain("First place in the AP Quantum Hackathon 2025 semi-finals. The student project applies quantum computing and explainable AI to FTSE 100 market forecasting.");
+
+    expect(container.querySelector(".svu-highlight")).toBeNull();
+
     expect(container.querySelectorAll("h1")).toHaveLength(1);
   });
   it("tab bar links to five separate pages", () => {
