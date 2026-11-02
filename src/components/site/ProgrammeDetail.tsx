@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Clock3, Monitor, Download, Cpu, FlaskConical, Library, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
-import PartnerEnquiry from "@/components/home/PartnerEnquiry";
 import { academicResources, organisations, PENDING, type Programme } from "@/data/site";
 import { useProgrammeSeo } from "./ProgrammeDirectory";
 import { organisationPath } from "@/lib/programmeNavigation";
