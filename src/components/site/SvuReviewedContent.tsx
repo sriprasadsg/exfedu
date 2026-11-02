@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowRight, ArrowUpRight, BookOpen, BriefcaseBusiness, FlaskConical, Search, Trophy } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BookOpen, BrainCircuit, BriefcaseBusiness, FlaskConical, Search, Trophy } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
