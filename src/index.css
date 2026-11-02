@@ -1657,7 +1657,7 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
 .ss-pad-pen {
   position: absolute;
   top: 50%;
-  right: 3.9rem;
+  right: 5.6rem;
   translate: 0 -50%;
   rotate: 196deg;
   width: 1.7rem;
