@@ -294,3 +294,27 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] XIME programme pages: gently animate the icons in use (client, 2 Nov 2026)
 
 - [x] Duration & Delivery marks: bold labels/values and gently drifting icons on programme pages (client, 2 Nov 2026)
+
+- SkillShone closing panel: make the email address bold (client, 2 Nov 2026)
+- Remove the connecting line between the two boxes the client screenshotted (client, 2 Nov 2026)
+
+- [x] Publish site so bold Duration & Delivery is live (client, 2 Nov 2026)
+
+- Section "From Learning to Practical Application": use SkillShone colours (client, 2 Nov 2026)
+
+- Apply SkillShone colours to the section in the newest screenshot (client, 2 Nov 2026)
+
+- FAQ heading and + symbols: use SkillShone navy/red combination (client, 2 Nov 2026)
+
+- Bars coming out of the capsule icons: align neatly, or present differently (client, 2 Nov 2026)
+
+- Highlight the icon background and animate it gently — done, brand-tinted tiles drift gently
+
+- Continue button: use SkillShone navy/red combination — done, navy-to-red gradient on all enquiry buttons
+- Partner enquiry: make colourful across the whole site — done, gradient top edge, navy label, red step count, filling progress line
+- Bars coming out of the capsule icons: align neatly, or present differently — done, badge + label now stacked inside each half
+- Publish after these edits (client, 2 Nov 2026)
+
+- Homepage boxes: thick coloured edge on one side only, remaining edges thin, with gentle animation — done, blue/teal/amber left edges drift, banner top edge slides
+- One column replaced/overlapping: align neatly — done, internships table columns rebalanced, headers no longer collide
+

@@ -166,7 +166,7 @@ export default function SkillShonePage({ page, breadcrumb }: { page: Page; bread
         <ul className="ss-tools">
           {tools.map(({ icon: Icon, t, tone }, i) => (
             <li key={t} className={`ss-tone-${tone} ss-tool`} style={{ animationDelay: `${i * 80}ms` }}>
-              <Icon className="h-3.5 w-3.5" strokeWidth={2} aria-hidden="true" />{t}
+              <span className="ss-tool-icon"><Icon className="h-3.5 w-3.5" strokeWidth={2} aria-hidden="true" /></span>{t}
             </li>
           ))}
         </ul>

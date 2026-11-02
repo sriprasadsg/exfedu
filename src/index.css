@@ -518,11 +518,14 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 /* Partner enquiry 3D presentation */
 .enquiry-compact-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 420px); align-items: center; gap: 2.5rem; max-width: 940px; margin: 0 auto; }
 .enquiry-intro { min-width: 0; }
-.enquiry-intro-eyebrow { margin-bottom: .5rem; font-size: .75rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: hsl(var(--primary)); }
+.enquiry-intro-eyebrow { display: inline-flex; align-items: center; gap: .5rem; margin-bottom: .5rem; font-size: .75rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: hsl(var(--primary)); }
+.enquiry-intro-eyebrow::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: linear-gradient(135deg, hsl(var(--connection-blue)), hsl(var(--brand-red))); }
 .enquiry-intro-title { font-size: 1.375rem; font-weight: 500; line-height: 1.4; color: hsl(var(--navy-900)); }
 .enquiry-intro-lead { margin-top: .625rem; max-width: 46ch; font-size: .9375rem; line-height: 1.65; color: hsl(var(--muted-foreground)); }
 .enquiry-intro-point { margin-top: .5rem; max-width: 52ch; font-size: .875rem; line-height: 1.6; color: hsl(var(--muted-foreground)); }
-.enquiry-intro-label { margin-right: .45rem; font-weight: 500; color: hsl(var(--navy-900)); }
+.enquiry-intro-label { margin-right: .45rem; font-weight: 500; color: hsl(var(--connection-blue)); }
+.enquiry-intro-point + .enquiry-intro-point .enquiry-intro-label { color: hsl(var(--connection-teal)); }
+.enquiry-intro-point + .enquiry-intro-point + .enquiry-intro-point .enquiry-intro-label { color: hsl(var(--connection-amber)); }
 .globe { position: relative; display: block; width: 100%; aspect-ratio: 1; }
 .globe canvas { display: block; width: 100%; height: 100%; }
 .partner-3d-card.enquiry-step-card { min-height: 285px; width: 100%; border-radius: var(--radius); padding: 1.5rem; }
@@ -576,7 +579,7 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .partner-3d-stage { transition: transform .7s ease; }
 .partner-3d-stage:hover { transform: translateX(-16px) rotateX(1.5deg) rotateY(-2deg); }
 .partner-3d-card { position: relative; overflow: hidden; background: hsl(var(--background)); border: 1px solid hsl(var(--border)); border-radius: 18px; padding: clamp(1.25rem, 3vw, 1.75rem); }
-.partner-3d-card::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 3px; background: hsl(214 68% 14%); }
+.partner-3d-card::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 4px; background: linear-gradient(100deg, hsl(var(--primary)) 0%, hsl(var(--connection-teal)) 48%, hsl(var(--brand-red)) 100%); }
 .partner-3d-card input:not([type="checkbox"]), .partner-3d-card select, .partner-3d-card textarea { min-height: 48px; transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease; }
 .partner-3d-card textarea { min-height: 84px; }
 .partner-3d-card input:not([type="checkbox"]):hover, .partner-3d-card select:hover, .partner-3d-card textarea:hover { border-color: hsl(214 53% 55% / .55); transform: translateY(-1px); }
@@ -584,8 +587,10 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .enquiry-title-gradient { background: linear-gradient(90deg, hsl(214 68% 14%), hsl(216 62% 30%)); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .enq-dot { display: inline-block; width: 7px; height: 7px; margin-right: 8px; border-radius: 50%; vertical-align: middle; }
 .enq-dot--blue, .enq-dot--teal, .enq-dot--amber, .enq-dot--violet { background: hsl(214 68% 14%); }
-.partner-3d-card .enquiry-cta { background-image: none; background-color: hsl(214 68% 14%); border: 0; }
-.partner-3d-card .enquiry-cta:hover { background-image: none; background-color: hsl(214 62% 22%); }
+/* The enquiry's Continue / Send button carries the SkillShone split: navy flowing into red.
+   (client, 2 November 2026) */
+.partner-3d-card .enquiry-cta { background-image: linear-gradient(100deg, hsl(var(--primary)) 0%, hsl(214 72% 32%) 42%, hsl(var(--brand-red)) 100%); background-color: hsl(var(--primary)); border: 0; box-shadow: 0 10px 24px -16px hsl(var(--primary) / .6); }
+.partner-3d-card .enquiry-cta:hover, .partner-3d-card .enquiry-cta:focus-visible { background-image: linear-gradient(100deg, hsl(var(--primary)) 0%, hsl(214 72% 32%) 42%, hsl(var(--brand-red)) 100%); box-shadow: 0 14px 28px -14px hsl(var(--brand-red) / .55); }
 @media (prefers-reduced-motion: reduce) {
   .partner-3d-object { animation: none; }
   .partner-3d-stage, .partner-3d-stage:hover { transform: translateX(-16px); transition: none; }
@@ -881,8 +886,11 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .exi-tile-art { position: relative; width: min(100%, clamp(278px, 44vw, 469px)); aspect-ratio: 1283 / 875; }
 .exi-illus .exi-tile-art img { display: block; width: 100%; height: auto; }
 .exi-glass-layer { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
-/* Scope all stillness to Home, including menus rendered outside its wrapper. */
-body:has(.homepage-static) *, body:has(.homepage-static) *::before, body:has(.homepage-static) *::after {
+/* Scope all stillness to Home, including menus rendered outside its wrapper. The thick coloured
+   edges on the approach boxes and the approach banner are exempt (client, 2 November 2026). */
+body:has(.homepage-static) *,
+body:has(.homepage-static) *:not(.exi-box):not(.exi-substitute)::before,
+body:has(.homepage-static) *:not(.exi-box):not(.exi-substitute)::after {
   animation: none !important;
   transition: none !important;
   scroll-behavior: auto !important;
@@ -1399,7 +1407,7 @@ html body .cap-diagram .cap-art {
 .ss-faq-list { margin: 2rem auto 0; max-width: 46rem; display: grid; gap: 1rem; }
 .ss-faq-list li { background: hsl(var(--background)); border: 1px solid hsl(var(--border)); border-radius: .5rem; box-shadow: 0 2px 6px -2px hsl(var(--primary) / .12); transition: box-shadow .3s, transform .3s, border-color .3s; }
 .ss-faq-list li:hover { transform: translateY(-2px); border-color: hsl(var(--primary) / .35); box-shadow: 0 14px 28px -18px hsl(var(--primary) / .32); }
-.ss-faq-list li:hover .ss-faq-sign::before, .ss-faq-list li:hover .ss-faq-sign::after { background: hsl(var(--primary)); }
+/* Hover keeps the two brand strokes as they are; the card's own lift and navy edge carry the feedback. */
 @media (prefers-reduced-motion: reduce) { .ss-faq-list li { transition: none; } .ss-faq-list li:hover { transform: none; } }
 .ss-faq-q { display: flex; width: 100%; align-items: center; gap: 1.5rem; padding: 1.25rem 1.75rem; text-align: left; font-size: .92rem; font-weight: 400; color: hsl(var(--foreground)); }
 .ss-faq-sign { position: relative; height: 1.1rem; width: 1.1rem; flex: none; }
@@ -1412,6 +1420,26 @@ html body .cap-diagram .cap-art {
 .ss-tool svg { animation: ss-tool-bob 6s ease-in-out infinite; }
 @keyframes ss-tool-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-1.5px); } }
 @media (prefers-reduced-motion: reduce) { .ss-tool, .ss-tool svg { animation: none; } .ss-tool:hover { transform: none; } }
+/* "From Learning to Practical Application" wears the SkillShone brand colours: the navy and
+   red of the SKILL / SHONE wordmark instead of the general blue, teal, violet and amber tones,
+   with the topic pills alternating between the two. (client, 2 November 2026) */
+.ss-tools .ss-tool { background: hsl(var(--primary) / .07); border-color: hsl(var(--primary) / .22); color: hsl(var(--primary)); }
+.ss-tools .ss-tool:nth-child(even) { background: hsl(var(--brand-red) / .07); border-color: hsl(var(--brand-red) / .22); color: hsl(var(--brand-red)); }
+body:not(:has(.homepage-static)) main h2.ss-h2 { background: none; -webkit-background-clip: initial; background-clip: initial; -webkit-text-fill-color: hsl(var(--primary)); color: hsl(var(--primary)); }
+body:not(:has(.homepage-static)) main h2.ss-h2 em { background: linear-gradient(100deg, hsl(var(--primary)) 0%, hsl(var(--brand-red)) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: hsl(var(--brand-red)); }
+body:not(:has(.homepage-static)) main .ss-badge > svg:first-child { fill: hsl(var(--primary)); }
+/* Each topic pill's icon now sits on its own highlighted tile in the brand colour, and the tile
+   drifts a couple of pixels, pill by pill, instead of the bare icon moving. (client, 2 Nov 2026) */
+@keyframes ss-tool-icon-drift { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
+.ss-tool-icon { display: grid; place-items: center; width: 1.6rem; height: 1.6rem; border-radius: 50%; background: hsl(var(--primary) / .18); box-shadow: 0 0 0 1px hsl(var(--primary) / .28); animation: ss-tool-icon-drift 5s ease-in-out infinite; }
+.ss-tools .ss-tool:nth-child(even) .ss-tool-icon { background: hsl(var(--brand-red) / .16); box-shadow: 0 0 0 1px hsl(var(--brand-red) / .26); }
+.ss-tools .ss-tool:nth-child(2) .ss-tool-icon { animation-delay: -1s; }
+.ss-tools .ss-tool:nth-child(3) .ss-tool-icon { animation-delay: -2s; }
+.ss-tools .ss-tool:nth-child(4) .ss-tool-icon { animation-delay: -3s; }
+.ss-tools .ss-tool:nth-child(5) .ss-tool-icon { animation-delay: -4s; }
+.ss-tools .ss-tool:nth-child(n+6) .ss-tool-icon { animation-delay: -2.5s; }
+.ss-tool svg { animation: none; }
+@media (prefers-reduced-motion: reduce) { .ss-tool-icon { animation: none; } }
 /* Figures band: compact — no tall blank band above or below the numbers. */
 .ss-list { margin-top: 1.2rem; border-top: 1px solid hsl(var(--border)); }
 .ss-list li { padding: .7rem 0; border-bottom: 1px solid hsl(var(--border)); font-size: .9rem; }
@@ -1424,6 +1452,17 @@ html body .cap-diagram .cap-art {
 .ss-step-more, .ss-feature-more-text { margin-top: .55rem; font-size: .8rem; line-height: 1.6; color: hsl(var(--muted-foreground)); }
 .ss-faq-list li.is-open .ss-faq-sign::before, .ss-faq-list li.is-open .ss-faq-sign::after { background: hsl(var(--brand-red)); }
 .ss-faq-list li.is-open .ss-faq-sign::after { transform: translateY(-50%) rotate(0deg); }
+/* The FAQ plus marks carry both brand colours at once — horizontal stroke in navy, vertical
+   stroke in red — and open to a red minus. The heading above them carries the same split.
+   (client, 2 November 2026) */
+.ss-faq-sign::before { background: hsl(var(--primary)); }
+.ss-faq-sign::after { background: hsl(var(--brand-red)); }
+body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
+  width: fit-content; margin-left: auto; margin-right: auto;
+  background: linear-gradient(100deg, hsl(var(--primary)) 0%, hsl(var(--brand-red)) 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: hsl(var(--primary));
+}
 .ss-faq-a { padding: 0 1.75rem 1.25rem 3.85rem; font-size: .86rem; line-height: 1.65; color: hsl(var(--muted-foreground)); }
 .ss-faq-a[hidden] { display: none; }
 
@@ -1474,6 +1513,13 @@ html body .cap-diagram .cap-art {
 .ss-cap-side { position: absolute; top: 50%; font-weight: 700; font-size: 1.3rem; letter-spacing: .12em; text-transform: uppercase; opacity: .8; }
 .ss-cap--left .ss-cap-side { left: -2.8rem; transform: translate(-50%, -50%) rotate(-90deg); color: hsl(var(--primary)); }
 .ss-cap--right .ss-cap-side { right: -2.8rem; transform: translate(50%, -50%) rotate(90deg); color: hsl(var(--connection-blue)); }
+/* The capsule's own label and icon badge no longer straddle the frame. Each half now reads as a
+   neat stack — icon badge, small-caps label, then the pills — so nothing crosses the outline.
+   (client, 2 November 2026) */
+.ss-cap { flex-direction: column; align-items: center; justify-content: center; gap: .55rem; padding-top: 2.4rem; padding-bottom: 2.4rem; }
+.ss-cap-badge, .ss-cap--left .ss-cap-badge, .ss-cap--right .ss-cap-badge { position: static; left: auto; right: auto; top: auto; }
+.ss-cap-side, .ss-cap--left .ss-cap-side, .ss-cap--right .ss-cap-side { position: static; left: auto; right: auto; top: auto; transform: none; font-size: .78rem; letter-spacing: .22em; opacity: .9; }
+.ss-cap ul { margin-top: .8rem; }
 .ss-cap-core { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 9.5rem; height: 9.5rem; border-radius: 50%; display: grid; place-items: center; padding: 1rem; background: hsl(var(--background)); box-shadow: 0 0 0 10px hsl(var(--background) / .3), 0 0 0 11px hsl(var(--foreground) / .1), 0 18px 34px -16px hsl(var(--foreground) / .35); z-index: 1; }
 .ss-cap-core img { width: 100%; height: auto; animation: ss-cap-core-float 8s ease-in-out infinite; }
 @keyframes ss-cap-core-float { 0%, 100% { translate: 0 0; } 50% { translate: 0 -5px; } }
@@ -1514,6 +1560,12 @@ html body .cap-diagram .cap-art {
 .ss-foot-card:hover .ss-foot-icon { transform: scale(1.12) rotate(-5deg); }
 @keyframes ss-foot-in { from { opacity: 0; transform: translateY(14px) scale(.97); } to { opacity: 1; transform: none; } }
 @media (max-width: 700px) { .ss-foot-cards { grid-template-columns: 1fr; } }
+/* The two audience boxes sit inside a grid whose class name also contains "card", so the
+   site-wide edge treatment drew a line straight across the gap between them. The boxes keep
+   their own edges; the container's is removed. (client, 2 November 2026) */
+body:not(:has(.homepage-static)) main .ss-split-foot.ss-foot-cards::after { display: none; }
+/* The closing panel's contact address reads as part of the sentence, so it is lifted out bold. */
+.cta-email { font-weight: 700; color: hsl(var(--foreground)); }
 @media (prefers-reduced-motion: reduce) { .ss-foot-card, .ss-foot-icon { animation: none; transition: none; } .ss-foot-card:hover { transform: none; } }
 .ss-split-headtxt .ss-h2 { color: hsl(var(--primary) / .72); }
 .ss-split-headtxt .ss-h2 em { color: hsl(var(--primary) / .55); }
@@ -1644,3 +1696,31 @@ body:not(:has(.homepage-static)) main .lucide-arrow-right, body:not(:has(.homepa
   body:not(:has(.homepage-static)) main .rounded-xl.border::after, body:not(:has(.homepage-static)) main .rounded-2xl.border::after, body:not(:has(.homepage-static)) main .rounded-lg.border::after,
   body:not(:has(.homepage-static)) main a.rounded-md.border::after, main button.rounded-md.border::after { transition: none; }
 }
+/* Enquiry header: the step label, the count and a slim progress line that fills as the visitor
+   advances, so every enquiry panel on the site reads as a colourful sequence. (client, 2 Nov 2026) */
+.enquiry-kicker { font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: hsl(var(--primary)); }
+.enquiry-count { font-weight: 700; color: hsl(var(--brand-red)); }
+.enquiry-progress { height: 4px; margin: 0 0 1.1rem; border-radius: 999px; background: hsl(var(--primary) / .1); overflow: hidden; }
+.enquiry-progress span { display: block; height: 100%; border-radius: 999px; background: linear-gradient(100deg, hsl(var(--primary)) 0%, hsl(var(--connection-teal)) 55%, hsl(var(--brand-red)) 100%); transition: width .35s ease; }
+/* The step-back control gets a tinted round tile that answers in red. */
+.partner-3d-card [aria-label="Previous field"] { color: hsl(var(--primary)); background: hsl(var(--primary) / .08); border-radius: 50%; transition: background-color .2s ease, color .2s ease; }
+.partner-3d-card [aria-label="Previous field"]:hover:not(:disabled) { color: hsl(var(--brand-red)); background: hsl(var(--brand-red) / .1); }
+.partner-3d-card [aria-label="Previous field"]:disabled { opacity: .45; }
+@media (prefers-reduced-motion: reduce) { .enquiry-progress span { transition: none; } }
+/* Homepage approach boxes: a thick coloured edge down one side only, thin lines on the other
+   three, with the colour drifting slowly along the bar and widening when pointed at.
+   (client, 2 November 2026) */
+@keyframes exi-edge-slide { 0%, 100% { background-position: 0 0; } 50% { background-position: 0 100%; } }
+@keyframes exi-edge-slide-x { from { background-position: 0 0; } to { background-position: 200% 0; } }
+.homepage-static .exi-box { position: relative; overflow: hidden; }
+.homepage-static .exi-box::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background-image: linear-gradient(180deg, hsl(var(--connection-blue)) 0%, hsl(var(--primary)) 50%, hsl(var(--connection-blue)) 100%); background-size: 100% 200%; animation: exi-edge-slide 8s ease-in-out infinite; transition: width .25s ease; }
+.homepage-static .exi-box:hover::before, .homepage-static .exi-box:focus-visible::before { width: 7px; }
+.homepage-static .exi-grid .exi-item:nth-child(3n+2) .exi-box::before { background-image: linear-gradient(180deg, hsl(var(--connection-teal)) 0%, hsl(var(--primary)) 50%, hsl(var(--connection-teal)) 100%); }
+.homepage-static .exi-grid .exi-item:nth-child(3n+3) .exi-box::before { background-image: linear-gradient(180deg, hsl(var(--connection-amber)) 0%, hsl(var(--primary)) 50%, hsl(var(--connection-amber)) 100%); }
+.homepage-static .exi-grid .exi-item:nth-child(2) .exi-box::before { animation-delay: -1.4s; }
+.homepage-static .exi-grid .exi-item:nth-child(3) .exi-box::before { animation-delay: -2.8s; }
+.homepage-static .exi-grid .exi-item:nth-child(4) .exi-box::before { animation-delay: -4.2s; }
+.homepage-static .exi-grid .exi-item:nth-child(5) .exi-box::before { animation-delay: -5.6s; }
+.homepage-static .exi-grid .exi-item:nth-child(6) .exi-box::before { animation-delay: -7s; }
+.homepage-static .exi-substitute::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 4px; background-image: linear-gradient(100deg, hsl(var(--primary)) 0%, hsl(var(--connection-teal)) 33%, hsl(var(--brand-red)) 66%, hsl(var(--primary)) 100%); background-size: 200% 100%; animation: exi-edge-slide-x 12s linear infinite; }
+@media (prefers-reduced-motion: reduce) { .homepage-static .exi-box::before, .homepage-static .exi-substitute::before { animation: none; } }

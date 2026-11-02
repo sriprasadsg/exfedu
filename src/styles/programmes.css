@@ -257,8 +257,14 @@
 .svu-career-head-2 { background: hsl(var(--connection-teal)); }
 .svu-career-head-3 { background: hsl(var(--connection-violet)); }
 .svu-career-head-4 { background: hsl(var(--connection-amber)); }
-.svu-career-table th:first-child { width: 76px; }
-.svu-career-table thead th:nth-child(3) { width: 132px; }
+/* Column widths after the numbering column was removed: the name gets room, the batch stays
+   compact, and headers wrap instead of spilling into the next column. (client, 2 Nov 2026) */
+.svu-career-table thead th { white-space: normal; }
+.svu-career-table th:first-child { width: auto; }
+.svu-career-table thead th:nth-child(2) { width: 150px; }
+.svu-career-table thead th:nth-child(3) { width: auto; }
+.svu-career-table thead th > span { display: inline-block; vertical-align: middle; }
+.svu-career-table tbody th, .svu-career-table tbody td { overflow-wrap: break-word; }
 .svu-career-table tbody tr:last-child th, .svu-career-table tbody tr:last-child td { border-bottom: 0; }
 .svu-career-table tbody tr:hover { background: hsl(var(--academic-surface) / .6); }
 .svu-career-empty { padding: 24px 0; border-block: 1px solid hsl(var(--academic-edge)); }

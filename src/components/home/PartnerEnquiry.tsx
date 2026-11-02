@@ -156,9 +156,10 @@ const PartnerEnquiry = ({ intro = defaultIntro, programme, onSuccess }: { intro?
               </div>
             ) : (
               <>
-                <div className="mb-5 flex items-center justify-between text-xs text-muted-foreground">
-                  <span>Partner enquiry</span><span aria-live="polite">{step + 1} / {fields.length}</span>
+                <div className="mb-3 flex items-center justify-between text-xs text-muted-foreground">
+                  <span className="enquiry-kicker">Partner enquiry</span><span className="enquiry-count" aria-live="polite">{step + 1} / {fields.length}</span>
                 </div>
+                <div className="enquiry-progress" aria-hidden="true"><span style={{ width: `${((step + 1) / fields.length) * 100}%` }} /></div>
                 <div className="enquiry-step-body" key={field}>
                   <label htmlFor={`enquiry-${field}`} className="mb-3 block text-sm font-medium">
                     {labels[field]}{field === "phone" && <span className="ml-2 font-normal text-muted-foreground">(optional)</span>}
