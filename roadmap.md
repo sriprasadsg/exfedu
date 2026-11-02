@@ -311,5 +311,5 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - Highlight the icon background and animate it gently (client, 2 Nov 2026)
 
 - Continue button: use SkillShone navy/red combination (client, 2 Nov 2026)
-- Partner enquiry section: make it colourful (client, 2 Nov 2026)
+- Partner enquiry: make colourful across the whole site (client, 2 Nov 2026)
 - Publish after these edits (client, 2 Nov 2026)
