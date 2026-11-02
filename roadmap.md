@@ -346,3 +346,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Menu bar logo: the pen nib is lifted out as its own layer and drifts gently on its tip (client 18:12 UTC 2 Nov 2026)
 - [x] Privacy Policy and Terms & Conditions links made clearly readable in the footer's bottom row; verified desktop/phone and published live.
 - [x] Footer links set to a single colour; only the coloured dots stay to tell entries apart.
+- [x] Learning Ecosystem section introduction: left-aligned navy heading, one short italic subtitle, content directly beneath, on the shared content width.
