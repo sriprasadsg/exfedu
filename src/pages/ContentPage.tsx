@@ -7,7 +7,7 @@ import programmesCap from "@/assets/programmes-cap.png.asset.json";
 import internshipsBanner from "@/assets/internships-banner.jpg.asset.json";
 import SkillShonePage from "@/components/site/SkillShonePage";
 import successImg from "@/assets/hero-success.png";
-import ibmBanner from "@/assets/ibm-hero-banner-v2.png.asset.json";
+import IbmPages from "@/components/site/IbmPages";
 import { programmes } from "@/data/site";
 import ProgrammeDirectory from "@/components/site/ProgrammeDirectory";
 import ProgrammeDetail from "@/components/site/ProgrammeDetail";
@@ -28,6 +28,7 @@ const ContentPage = () => {
   const svuSection = svuSectionFromPath(pathname);
   if (svuSection) return <Layout><SvuPages section={svuSection} /></Layout>;
   const organisation = organisationFromPath(pathname);
+  if (organisation === "IBM") return <Layout><IbmPages /></Layout>;
   if (organisation) return <Layout><OrganisationProgrammes organisation={organisation} /></Layout>;
   const legacyProgramme = programmes.find(p => pathname.replace(/\/$/, "") === `/programmes/${p.slug}`);
   if (legacyProgramme) return <Navigate to={programmePath(legacyProgramme)} replace />;
@@ -129,30 +130,6 @@ const ContentPage = () => {
 
   if (page.path === "/skillshone") {
     return <Layout><SkillShonePage page={page} breadcrumb={breadcrumb} /></Layout>;
-  }
-
-
-  if (page.path === "/industry-collaborations/ibm") {
-    return (
-      <Layout>
-        <section className="page-hero-banner page-hero-banner--ibm" aria-label="IBM Collaboration introduction">
-          <div className="container relative">
-            {breadcrumb}
-            <div className="mt-8">{heading}</div>
-          </div>
-          <div className="page-hero-banner-art-mask" aria-hidden="true">
-            <img
-              src={ibmBanner.url}
-              alt=""
-              width={941}
-              height={1672}
-              className="page-hero-banner-art"
-            />
-          </div>
-        </section>
-        <main>{body}</main>
-      </Layout>
-    );
   }
 
   return (
