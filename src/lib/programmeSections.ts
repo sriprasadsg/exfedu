@@ -1,4 +1,4 @@
-import { Award, BookOpen, CalendarDays, Clock3, Cpu, GraduationCap, Layers, Sparkles, Target, type LucideIcon } from "lucide-react";
+import { Award, BookOpen, CalendarDays, Clock3, Cpu, FlaskConical, Gauge, GraduationCap, Layers, Presentation, Sparkles, Target, Users, type LucideIcon } from "lucide-react";
 import { PENDING, type Programme, type Tone } from "@/data/site";
 import { ibmFacts } from "@/data/ibm";
 
@@ -42,6 +42,25 @@ export const ibmProgrammeSections = (p: Programme): DetailSection[] => {
     facts.certification ? { title: "Assessment & Certification", icon: Award, tone: "amber", content: [facts.delivery, facts.certification].filter(Boolean).join(" ") } : false,
   ];
   return sections.filter((section): section is DetailSection => !!section);
+};
+
+/** USP presentation for SVU programme pages (client brief, 2 November 2026): the
+ * programme's strengths are read immediately below the introduction, before the
+ * detailed programme information. The 80 : 20 split renders only for programmes
+ * whose approved source states it, so no page claims a ratio the university has
+ * not confirmed. */
+export type UspPoint = { label: string; icon: LucideIcon; tone: Tone };
+export const svuProgrammeUsp = (p: Programme): UspPoint[] => {
+  const points: UspPoint[] = [
+    { label: "Industry Mentoring", icon: Users, tone: "teal" },
+    { label: "Case Studies", icon: Presentation, tone: "violet" },
+    { label: "Applied Projects", icon: FlaskConical, tone: "amber" },
+    { label: "Final-Semester Capstone", icon: GraduationCap, tone: "blue" },
+  ];
+  if (/80% practical/i.test(`${p.features?.join(" ") ?? ""} ${p.practical ?? ""}`)) {
+    points.unshift({ label: "80% Practical Learning · 20% Theoretical Foundations", icon: Gauge, tone: "blue" });
+  }
+  return points;
 };
 
 export { PENDING };
