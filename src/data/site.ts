@@ -219,14 +219,6 @@ export const pages: Page[] = [
   { path: "/industry-collaborations/exafluence-inc", parent: "/industry-collaborations", title: "Exafluence Inc. Industry Connection", category: "industry", icon: Building2,
     summary: "The industry backing behind Exafluence Education.",
     blocks: [{ type: "pending", title: "Industry connection", items: ["About Exafluence Inc.", "How industry expertise reaches learners", "Exafluence ODC Exposure"] }] },
-  { path: "/industry-collaborations/ibm", parent: "/industry-collaborations", title: "IBM Collaboration", category: "industry", icon: Network,
-    summary: "Exafluence Education × IBM Career Education.",
-    blocks: [
-      { type: "text", title: "About the Collaboration", text: "Exafluence Education, the EdTech division of Exafluence Inc., USA, collaborates with IBM Career Education to bridge the gap between academic learning and industry expectations. This collaboration focuses on equipping students with emerging technology skills, practical learning experiences, and industry-relevant knowledge to prepare them for future career opportunities." },
-      { type: "offerings", title: "Programmes", rows: ibmOfferings },
-      { type: "pending", title: "Programme details", items: ["Technologies & Tools", "Hands-on Learning & Labs", "Projects / Capstone", "Duration", "Delivery Mode", "Eligibility", "Certification"] },
-      enquire("Enquire about IBM programmes"),
-    ] },
 
   // Learning & Student Ecosystem
   { path: "/programmes", title: "Programmes", category: "learning", icon: BookOpen,
@@ -320,6 +312,8 @@ export const retiredPageDestinations: Record<string, string> = {
   "/academic-collaborations": "/collaboration-network",
   "/academic-collaborations/svu": "/collaboration-network/svu",
   "/academic-collaborations/xime": "/collaboration-network/xime",
+  // IBM keeps one home under Our Collaboration Network (client brief, 2 November 2026).
+  "/industry-collaborations/ibm": "/collaboration-network/ibm",
 };
 export const navPages = (cat: CategorySlug) => pages.filter((p) => p.category === cat && !p.hideInNav);
 
