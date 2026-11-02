@@ -14,7 +14,7 @@
 - XIME's internal programme overview reads source-verified fields from xime.ts, rendering missing fields as individual review flags without inventing a catalogue entry; its enquiry dialog reuses the test-only contact workflow.
 - Brand-wording checker rules live in src/lib/brandCheck.ts; AI review only via brandCheckConfig.endpoint on Exafluence AWS so the AI key never reaches the browser.
 - Website AI features call a project-hosted server function that holds the key; the browser never carries a key. Keep each feature's endpoint override in one config object so the same request can later be repointed to Exafluence-hosted delivery without touching UI code.
-- Header menus render primaryNavigation, learningEcosystemPages and sidebarPages from site.ts, independently of footer menuCategories, so primary destinations and sidebar-only resources cannot leak into each other's groups; Contact stays accessible through page calls to action.
+- Header menus render primaryNavigation and organisationSections from site.ts, with menu search drawing on menuCategories via navPages, so primary destinations and sidebar-only resources cannot leak into each other's groups; Contact stays accessible through page calls to action.
 - Page detail stays on the page itself rather than behind a click: no bottom-anchored panel may cover the viewport, so fuller text renders inline and expandable items (FAQs) open their answer beneath their own question, one at a time.
 
 - SVU renders as five separate pages (/collaboration-network/svu[/programmes|/projects-research|/internships|/placements]) through SvuPages with a tab bar and no sidebar; svuSectionPath in programmeNavigation.ts is the single source for these links so menus and in-page links stay consistent.
