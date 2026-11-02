@@ -49,10 +49,10 @@ describe("approved website structure", () => {
     expect(organisationSections.SVU?.map(section => section.title)).toEqual(["Overview", "Programmes", "Projects & Research", "Internships", "Placements"]);
     expect(organisationSections.SVU?.map(section => section.id)).toEqual(["overview", "programmes", "projects-research", "internships", "placements"]);
   });
-  it("keeps Learning Ecosystem out of the desktop menu and flags unresolved research and placements", () => {
+  it("keeps Learning Ecosystem out of the desktop menu and flags only unresolved research after placement approval", () => {
     expect(primaryNavigation.map(item => item.title)).not.toContain("Learning Ecosystem");
     const unverified = organisationSections.SVU?.filter(section => section.pending) ?? [];
-    expect(unverified.map(section => section.id)).toEqual(["projects-research", "placements"]);
+    expect(unverified.map(section => section.id)).toEqual(["projects-research"]);
   });
   it("moves achievements, events and gallery onto the SVU overview and academic resources onto programme pages", () => {
     expect(svuOverviewBlocks.map(block => block.title)).toEqual(["Student Achievements", "Events", "Gallery"]);
