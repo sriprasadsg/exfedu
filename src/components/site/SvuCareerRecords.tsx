@@ -18,7 +18,7 @@ export default function SvuCareerRecords({ kind }: { kind: "placements" | "inter
     {placements
       ? <p>Students from the SVU–Exafluence MS Data Science programme have secured roles in data science and AI engineering, alongside trainee positions. The following records show their organisations, designations and academic batches.</p>
       : svuInternshipIntroduction.paragraphs.map(text => <p key={text}>{text}</p>)}
-    {!placements && <><div className="svu-career-filters">
+    {false && <><div className="svu-career-filters">
       <label><span>Search {kind}</span><div className="svu-career-search"><Search size={17} aria-hidden="true" /><Input aria-label={`Search ${kind}`} placeholder="Student, organisation or role" value={query} onChange={event => setQuery(event.target.value)} /></div></label>
       <label><span>Batch</span><Select value={batch} onValueChange={setBatch}><SelectTrigger aria-label={`${title} batch`}><SelectValue /></SelectTrigger><SelectContent><SelectItem value="all">All batches</SelectItem>{[...new Set(records.map(record => record.batch))].map(value => <SelectItem key={value} value={value}>{value}</SelectItem>)}</SelectContent></Select></label>
       <Button variant="ghost" size="icon" aria-label={`Reset ${kind} filters`} title="Reset filters" onClick={() => { setQuery(""); setBatch("all"); }}><RotateCcw size={17} /></Button>
