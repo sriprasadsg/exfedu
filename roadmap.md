@@ -278,3 +278,8 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Invisible text fixed site-wide: heading gradient now paints its own linked/emphasised words, and the homepage ecosystem heading keeps its pale box behind gradient text. 116 tests pass, build OK, every page scanned clean.
 - [x] SVU award panel: "Forecast" dropped from the title (now "Quantum Wave"), trophy cup given a solid royal-blue tile and a gentler 6s float.
 - [x] SVU Internships table header presented colourfully: gradient top strip and per-column coloured icon tiles (blue/teal/violet/amber) in the established card style; stacks on phones.
+- [x] Titles recoloured away from the SkillShone navy-to-red blend (client, 2 Nov 2026): headings now run navy -> royal blue -> teal -> violet; 116 tests pass, build OK, browser-checked (0 red/pink pixels in a card title).
+- [x] SVU menu/tabs colourful (client, 2 Nov 2026): Overview blue, Programmes teal, Projects & Research violet, Internships amber, Placements cyan; active tab underlined in its own colour.
+- [x] Batch colourful (client, 2 Nov 2026): placement cards show the batch as a teal pill with a dot; the internships table Batch column reads teal.
+- [x] Boxes thick-lined in another colour with tilt on all boxes (client, 2 Nov 2026): placement cards 4px teal top / 2px teal edge, career table 2px teal frame; tilt pointer now covers placement cards, career table, teaching steps, topic areas and the award panel.
+- [x] Search bar and magnifier colourful (client, 2 Nov 2026): 2px blue border, pale blue-teal-violet wash, magnifier set in a blue-to-teal tile; research tab pill framed and labelled in blue/teal/violet; result count teal.
