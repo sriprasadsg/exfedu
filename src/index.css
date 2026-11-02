@@ -587,10 +587,10 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .enquiry-title-gradient { background: linear-gradient(90deg, hsl(214 68% 14%), hsl(216 62% 30%)); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .enq-dot { display: inline-block; width: 7px; height: 7px; margin-right: 8px; border-radius: 50%; vertical-align: middle; }
 .enq-dot--blue, .enq-dot--teal, .enq-dot--amber, .enq-dot--violet { background: hsl(214 68% 14%); }
-/* The enquiry's Continue / Send button keeps a classic deep teal flowing into navy — deliberately
-   not SkillShone's navy-to-red. (client, 2 November 2026) */
-.partner-3d-card .enquiry-cta { background-image: linear-gradient(100deg, hsl(var(--connection-teal)) 0%, hsl(192 62% 26%) 46%, hsl(var(--primary)) 100%); background-color: hsl(var(--connection-teal)); border: 0; box-shadow: 0 10px 24px -16px hsl(var(--connection-teal) / .6); }
-.partner-3d-card .enquiry-cta:hover, .partner-3d-card .enquiry-cta:focus-visible { background-image: linear-gradient(100deg, hsl(var(--connection-teal)) 0%, hsl(192 62% 26%) 46%, hsl(var(--primary)) 100%); box-shadow: 0 14px 28px -14px hsl(var(--connection-teal) / .55); }
+/* The enquiry's Continue / Send button runs sky blue into navy — no green, and deliberately not
+   SkillShone's navy-to-red. (client, 2 November 2026: "not green, use sky blue color") */
+.partner-3d-card .enquiry-cta { background-image: linear-gradient(100deg, hsl(202 92% 38%) 0%, hsl(207 90% 34%) 46%, hsl(var(--primary)) 100%); background-color: hsl(205 90% 36%); border: 0; box-shadow: 0 10px 24px -16px hsl(205 90% 40% / .6); }
+.partner-3d-card .enquiry-cta:hover, .partner-3d-card .enquiry-cta:focus-visible { background-image: linear-gradient(100deg, hsl(202 92% 40%) 0%, hsl(207 90% 36%) 46%, hsl(var(--primary)) 100%); box-shadow: 0 14px 28px -14px hsl(205 90% 40% / .55); }
 @media (prefers-reduced-motion: reduce) {
   .partner-3d-object { animation: none; }
   .partner-3d-stage, .partner-3d-stage:hover { transform: translateX(-16px); transition: none; }
