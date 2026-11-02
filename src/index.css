@@ -1596,11 +1596,11 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
   animation: ss-cap-in .7s ease-out both;
 }
 .ss-cap--left {
-  background: linear-gradient(135deg, hsl(var(--connection-blue) / .22), hsl(var(--connection-blue) / .1));
+  background: linear-gradient(135deg, hsl(var(--connection-blue) / .26), hsl(var(--connection-blue) / .13));
   border-top: 4px solid hsl(var(--connection-blue));
 }
 .ss-cap--right {
-  background: linear-gradient(225deg, hsl(var(--primary) / .2), hsl(var(--primary) / .09));
+  background: linear-gradient(225deg, hsl(var(--primary) / .24), hsl(var(--primary) / .12));
   border-top: 4px solid hsl(var(--primary));
   /* the divider is the pad's own white showing through between the two blocks */
   border-left: 2px solid hsl(var(--background));
