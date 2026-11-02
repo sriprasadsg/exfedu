@@ -1690,7 +1690,7 @@ body:not(:has(.homepage-static)) main .ss-split-foot.ss-foot-cards::after { disp
    (client, 2 November 2026: "add the links in the footer") */
 .footer-legal { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0 20px; font-size: .84rem; border-top: 1px solid hsl(214 32% 88%); }
 .footer-legal-links { display: flex; align-items: center; gap: 14px; margin-left: auto; margin-right: 8px; }
-.footer-legal-link { font-weight: 500; color: hsl(214 45% 28%); text-decoration: none; border-bottom: 1px solid transparent; transition: color .2s, border-color .2s; }
+.footer-legal-link { font-weight: 500; color: hsl(214 28% 36%); text-decoration: none; border-bottom: 1px solid transparent; transition: color .2s, border-color .2s; }
 .footer-legal-link:hover, .footer-legal-link:focus-visible { color: hsl(214 68% 16%); border-bottom-color: currentColor; }
 .footer-legal-sep { width: 1px; height: 14px; background: hsl(214 26% 78%); }
 @media (max-width: 767px) {
@@ -1706,10 +1706,10 @@ body:not(:has(.homepage-static)) main .ss-split-foot.ss-foot-cards::after { disp
 .footer-tint-burgundy { --ft: 348 62% 34%; --ft-h: 348 70% 22%; }
 .footer-tint-teal { --ft: 187 62% 27%; --ft-h: 187 72% 15%; }
 .footer-tint-amber { --ft: 28 68% 33%; --ft-h: 28 78% 21%; }
-.footer-partner[class*="footer-tint"], .footer-option[class*="footer-tint"] { display: inline-flex; align-items: center; gap: 8px; color: hsl(var(--ft)); }
+.footer-partner[class*="footer-tint"], .footer-option[class*="footer-tint"] { display: inline-flex; align-items: center; gap: 8px; color: hsl(214 28% 36%); }
 .footer-partner[class*="footer-tint"]::before, .footer-option[class*="footer-tint"]::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: hsl(var(--ft)); box-shadow: 0 0 0 3px hsl(var(--ft) / .14); transition: transform .25s ease, box-shadow .25s ease; }
 .footer-partner[class*="footer-tint"]:hover, .footer-option[class*="footer-tint"]:hover,
-.footer-partner[class*="footer-tint"]:focus-visible, .footer-option[class*="footer-tint"]:focus-visible { color: hsl(var(--ft-h)); }
+.footer-partner[class*="footer-tint"]:focus-visible, .footer-option[class*="footer-tint"]:focus-visible { color: hsl(214 68% 16%); }
 .footer-partner[class*="footer-tint"]:hover::before, .footer-option[class*="footer-tint"]:hover::before { transform: scale(1.35); box-shadow: 0 0 0 4px hsl(var(--ft) / .2); }
 @media (prefers-reduced-motion: reduce) { .footer-partner[class*="footer-tint"]::before, .footer-option[class*="footer-tint"]::before { transition: none; } }
 @media (max-width: 767px) {
