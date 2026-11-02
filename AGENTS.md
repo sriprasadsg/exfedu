@@ -19,3 +19,4 @@
 
 - SVU renders as five separate pages (/collaboration-network/svu[/programmes|/projects-research|/internships|/placements]) through SvuPages with a tab bar and no sidebar; svuSectionPath in programmeNavigation.ts is the single source for these links so menus and in-page links stay consistent.
 - IBM keeps one home at /collaboration-network/ibm: narration, SEO, offering facts and enquiry choices live in src/data/ibm.ts and render through IbmPages, while the retired /industry-collaborations/ibm URL redirects there; IBM programme pages end at a section headed "Enquiry" and the institutional form reuses submitTestEnquiry, so it stays test-only.
+- The menu bar mark renders as two stacked layers — a nib-free logo plus an absolutely positioned pen-nib sprite sized by the wrapper's fixed aspect ratio — so only the pen moves; keep the wrapper's aspect ratio authoritative so the sprite cannot drift when the artwork loads late.
