@@ -4,7 +4,7 @@ import exafluence from "@/assets/exafluence-footer-exact.png.asset.json";
 import skillshoneLogo from "@/assets/skillshone-original.png.asset.json";
 import { organisationSections, organisations, type Organisation } from "@/data/site";
 import { Button } from "@/components/ui/button";
-import { organisationPath } from "@/lib/programmeNavigation";
+import { organisationPath , svuSectionPath, type SvuSectionId } from "@/lib/programmeNavigation";
 
 const partners: Organisation[] = ["SVU", "IBM", "XIME"];
 
@@ -24,7 +24,7 @@ const Footer = () => (
                     <ul className="footer-partner-sections">
                       {organisationSections[p].map((s) => (
                         <li key={s.id}>
-                          <Link to={`${organisationPath(p)}#${s.id}`} className="footer-partner-section">
+                          <Link to={p === "SVU" ? svuSectionPath(s.id as SvuSectionId) : `${organisationPath(p)}#${s.id}`} className="footer-partner-section">
                             {s.title}
                           </Link>
                         </li>

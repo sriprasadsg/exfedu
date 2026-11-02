@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import logo from "@/assets/exfedu-logo-darker.png.asset.json";
 import { Menu, X, Search, Plus, Minus, Network } from "lucide-react";
+import { svuSectionPath, type SvuSectionId } from "@/lib/programmeNavigation";
 import { menuCategories, navPages, organisationSections, primaryNavigation, organisations, programmes, type Organisation } from "@/data/site";
 import { organisationPath, programmePath } from "@/lib/programmeNavigation";
 import { Building2, BookOpen } from "lucide-react";
@@ -83,7 +84,7 @@ const Header = () => {
                             {organisation === "SVU" && (
                               <ul className="ml-2 border-l pl-4">
                                 {svuSections.map(section => (
-                                  <li key={section.id}><Link to={`/collaboration-network/svu#${section.id}`} onClick={() => setOpen(false)} className="flex min-h-9 items-center gap-2.5 py-0.5 text-sm text-foreground hover:text-primary"><section.icon className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />{section.title}</Link></li>
+                                  <li key={section.id}><Link to={svuSectionPath(section.id as SvuSectionId)} onClick={() => setOpen(false)} className="flex min-h-9 items-center gap-2.5 py-0.5 text-sm text-foreground hover:text-primary"><section.icon className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />{section.title}</Link></li>
                                 ))}
                               </ul>
                             )}

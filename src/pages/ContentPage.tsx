@@ -12,7 +12,8 @@ import { programmes } from "@/data/site";
 import ProgrammeDirectory from "@/components/site/ProgrammeDirectory";
 import ProgrammeDetail from "@/components/site/ProgrammeDetail";
 import OrganisationProgrammes from "@/components/site/OrganisationProgrammes";
-import { organisationFromPath, programmePath } from "@/lib/programmeNavigation";
+import { organisationFromPath, programmePath, svuSectionFromPath } from "@/lib/programmeNavigation";
+import SvuPages from "@/components/site/SvuPages";
 import "@/styles/programmes.css";
 
 const heroVisuals: Record<string, string> = {
@@ -24,6 +25,8 @@ const ContentPage = () => {
   const retiredDestination = retiredPageDestinations[pathname.replace(/\/$/, "")];
   if (retiredDestination) return <Navigate to={retiredDestination} replace />;
   if (pathname.replace(/\/$/, "") === "/programmes") return <Layout><ProgrammeDirectory /></Layout>;
+  const svuSection = svuSectionFromPath(pathname);
+  if (svuSection) return <Layout><SvuPages section={svuSection} /></Layout>;
   const organisation = organisationFromPath(pathname);
   if (organisation) return <Layout><OrganisationProgrammes organisation={organisation} /></Layout>;
   const legacyProgramme = programmes.find(p => pathname.replace(/\/$/, "") === `/programmes/${p.slug}`);
