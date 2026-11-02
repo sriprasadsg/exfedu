@@ -3,7 +3,7 @@ import summitStudents from "@/assets/svu-paniit-students.jpg.asset.json";
 import summitDelegation from "@/assets/svu-paniit-delegation.jpg.asset.json";
 
 export const svuAchievements = [
-  { title: "Quantum Wave Forecast", highlight: "First place in the AP Quantum Hackathon", text: "First place in the AP Quantum Hackathon 2025 semi-finals. The student project applies quantum computing and explainable AI to FTSE 100 market forecasting.", href: "https://www.youtube.com/watch?v=8WbUsQBxnnw", label: "View news coverage" },
+  { title: "Quantum Wave", highlight: "First place in the AP Quantum Hackathon", text: "First place in the AP Quantum Hackathon 2025 semi-finals. The student project applies quantum computing and explainable AI to FTSE 100 market forecasting.", href: "https://www.youtube.com/watch?v=8WbUsQBxnnw", label: "View news coverage" },
   { title: "Ideas to Impact", text: "Students presented their product at the Ratan Tata Innovation Hub, International Institute of Digital Technologies, Tirupati, showcasing practical innovation and potential social impact." },
 ];
 export const svuEvents = [

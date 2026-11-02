@@ -31,11 +31,11 @@ describe("SVU teaching approach flash cards (client brief, 2 November 2026)", ()
     expect(shown.map(card => card.querySelector(".svu-step-icon svg") !== null)).toEqual([true, true, true]);
   });
 
-  it("keeps the cards numbered as a list so the 01/02/03 order survives", () => {
+  it("shows no 01/02/03 numerics inside the cards", () => {
     const { container } = renderOverview();
-    const list = container.querySelector("ol.svu-steps");
-    expect(list).not.toBeNull();
-    expect([...cards(container)].every(card => card.querySelector(".svu-step-number") !== null)).toBe(true);
+    expect(container.querySelector("ol.svu-steps")).not.toBeNull();
+    expect(container.querySelector(".svu-step-number")).toBeNull();
+    expect(cards(container).every(card => !/\b0[123]\b/.test(card.textContent ?? ""))).toBe(true);
   });
 
   it("animates each card with a staggered entrance delay", () => {
