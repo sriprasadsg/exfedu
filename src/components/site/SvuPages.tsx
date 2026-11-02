@@ -163,7 +163,9 @@ const SvuResearch = () => {
   </div>;
 };
 
-export const SvuTabBar = ({ active }: { active: SvuSectionId }) => <nav aria-label="Sri Venkateswara University sections" className="svu-tabbar"><div className="svu-container svu-tabbar-inner">
+// `detail` places the bar inside a programme page's opening band (2 Nov 2026 brief):
+// it then shares the page's own content width so its left edge meets the programme title.
+export const SvuTabBar = ({ active, detail = false }: { active: SvuSectionId; detail?: boolean }) => <nav aria-label="Sri Venkateswara University sections" className={`svu-tabbar${detail ? " svu-tabbar-detail" : ""}`}><div className={`svu-tabbar-inner ${detail ? "container" : "svu-container"}`}>
   {tabs.map(t => <Link key={t.id} to={svuSectionPath(t.id)} className={t.id === active ? "is-active" : undefined} aria-current={t.id === active ? "page" : undefined}>{t.label}</Link>)}
 </div></nav>;
 

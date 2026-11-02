@@ -142,12 +142,6 @@ const programmeSections = [
   "Career Opportunities", "Certification", "Brochure",
 ];
 
-const ibmOfferings: Offering[] = [
-  { name: "Co-Branded Program", significance: ["Complete offline delivery by Exafluence Education with technical support of IBM", "Course plugged into the credit structure"], benefits: "Gain industry-relevant skills through semester-wise learning, hands-on training, and exposure to emerging technologies. Earn semester-wise certificates from IBM and co-branded certifications from IBM & the institution that strengthen your academic profile and career readiness." },
-  { name: "Value-Added Program", significance: ["Complete offline delivery by Exafluence Education with technical support of IBM", "Course plugged into the credit structure"], benefits: "Enhance your academic qualifications with industry-focused technical skills beyond the regular curriculum. Gain practical exposure to emerging technologies and earn IBM certification to strengthen your employability and professional profile." },
-  { name: "Project-Based Experiential Learning (PBEL)", significance: ["Complete online mentorship by Exafluence Education with technical support of IBM"], benefits: "Work on real-world industry challenges through hands-on projects, expert mentorship, and collaborative learning. Build problem-solving skills, gain practical project experience, and earn an IBM Digital Badge and Certificate of Completion." },
-  { name: "Certificate in Quantum Computing", significance: ["Complete offline delivery by Exafluence Education with technical support of IBM"], benefits: "Explore the fundamentals of Quantum Computing through an IBM-aligned curriculum and hands-on learning with Qiskit. Develop foundational quantum technology skills and earn an IBM certificate to prepare for emerging opportunities in quantum computing and research." },
-];
 
 export const pages: Page[] = [
   // Core
@@ -219,14 +213,6 @@ export const pages: Page[] = [
   { path: "/industry-collaborations/exafluence-inc", parent: "/industry-collaborations", title: "Exafluence Inc. Industry Connection", category: "industry", icon: Building2,
     summary: "The industry backing behind Exafluence Education.",
     blocks: [{ type: "pending", title: "Industry connection", items: ["About Exafluence Inc.", "How industry expertise reaches learners", "Exafluence ODC Exposure"] }] },
-  { path: "/industry-collaborations/ibm", parent: "/industry-collaborations", title: "IBM Collaboration", category: "industry", icon: Network,
-    summary: "Exafluence Education × IBM Career Education.",
-    blocks: [
-      { type: "text", title: "About the Collaboration", text: "Exafluence Education, the EdTech division of Exafluence Inc., USA, collaborates with IBM Career Education to bridge the gap between academic learning and industry expectations. This collaboration focuses on equipping students with emerging technology skills, practical learning experiences, and industry-relevant knowledge to prepare them for future career opportunities." },
-      { type: "offerings", title: "Programmes", rows: ibmOfferings },
-      { type: "pending", title: "Programme details", items: ["Technologies & Tools", "Hands-on Learning & Labs", "Projects / Capstone", "Duration", "Delivery Mode", "Eligibility", "Certification"] },
-      enquire("Enquire about IBM programmes"),
-    ] },
 
   // Learning & Student Ecosystem
   { path: "/programmes", title: "Programmes", category: "learning", icon: BookOpen,
@@ -320,6 +306,8 @@ export const retiredPageDestinations: Record<string, string> = {
   "/academic-collaborations": "/collaboration-network",
   "/academic-collaborations/svu": "/collaboration-network/svu",
   "/academic-collaborations/xime": "/collaboration-network/xime",
+  // IBM keeps one home under Our Collaboration Network (client brief, 2 November 2026).
+  "/industry-collaborations/ibm": "/collaboration-network/ibm",
 };
 export const navPages = (cat: CategorySlug) => pages.filter((p) => p.category === cat && !p.hideInNav);
 

@@ -9,7 +9,7 @@ import PartnerEnquiry from "@/components/home/PartnerEnquiry";
 import { academicResources, organisations, PENDING, type Programme } from "@/data/site";
 import { useProgrammeSeo } from "./ProgrammeDirectory";
 import { organisationPath } from "@/lib/programmeNavigation";
-import { programmeDetailSections } from "@/lib/programmeSections";
+import { programmeDetailSections, ibmProgrammeSections } from "@/lib/programmeSections";
 import { SvuAcademicResources } from "./SvuReviewedContent";
 
 const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { programme: Programme; organisationOverview?: boolean }) => {
@@ -36,31 +36,40 @@ const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { progr
   useProgrammeSeo(`${p.title} | ${org.name} | Exafluence Education`, `${p.overview} Duration: ${p.duration}. Review features, technologies and certification.`);
 
   const enquiryUrl = `/contact?programme=${encodeURIComponent(p.slug)}`;
-  const sections = programmeDetailSections(p);
+  const sections = p.organisation === "IBM" ? ibmProgrammeSections(p) : programmeDetailSections(p);
   const openBrochure = () => {
     setBrochureOpen(true);
     setFormComplete(false);
   };
 
+  const isSvu = p.organisation === "SVU";
+  const breadcrumb = (
+    <nav aria-label="Breadcrumb">
+      <Link to="/">Home</Link>
+      <span aria-hidden="true">/</span>
+      <Link to="/collaboration-network">Our Collaboration Network</Link>
+      <span aria-hidden="true">/</span>
+      {organisationOverview ? (
+        <span aria-current="page">{org.name}</span>
+      ) : (
+        <>
+          <Link to={organisationPath(p.organisation)}>{org.name}</Link>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">{p.title}</span>
+        </>
+      )}
+    </nav>
+  );
+
   return (
     <main className="programme-experience">
-      <header className="programme-intro">
+      {/* SVU programme pages (2 Nov 2026 brief): breadcrumb, then the section tabs,
+          then the programme title and introduction. */}
+      {isSvu && <div className="programme-crumb-band"><div className="container">{breadcrumb}</div></div>}
+      {isSvu && <SvuTabBar active="programmes" detail />}
+      <header className={`programme-intro${isSvu ? " programme-intro-after-tabs" : ""}`}>
         <div className="container">
-          <nav aria-label="Breadcrumb">
-            <Link to="/">Home</Link>
-            <span aria-hidden="true">/</span>
-            <Link to="/collaboration-network">Our Collaboration Network</Link>
-            <span aria-hidden="true">/</span>
-            {organisationOverview ? (
-              <span aria-current="page">{org.name}</span>
-            ) : (
-              <>
-                <Link to={organisationPath(p.organisation)}>{org.name}</Link>
-                <span aria-hidden="true">/</span>
-                <span aria-current="page">{p.title}</span>
-              </>
-            )}
-          </nav>
+          {!isSvu && breadcrumb}
           <img className={`programme-detail-logo ${org.logoClass}`} src={org.logo} alt={`${org.name} logo`} />
           <h1>{p.title}</h1>
           <p>{p.overview}</p>
@@ -78,8 +87,6 @@ const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { progr
           </dl>
         </div>
       </header>
-
-      {p.organisation === "SVU" && <SvuTabBar active="programmes" />}
       <div className="container programme-detail-body">
         <div className="programme-reading" ref={readingRef}>
           {sections.map(({ title, icon: Icon, tone, content, items, sub, note }) => (
@@ -116,7 +123,7 @@ const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { progr
               <span className="programme-section-icon tone-blue">
                 <Library size={22} aria-hidden="true" />
               </span>
-              Brochure &amp; Enquiry
+              {p.organisation === "IBM" ? "Enquiry" : "Brochure & Enquiry"}
             </h2>
             {p.organisation === "SVU" ? <SvuAcademicResources /> : <div className="programme-resource-box">
               <h3>Academic Resources</h3>

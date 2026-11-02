@@ -49,8 +49,9 @@ type Field = keyof EnquiryData;
 type Status = { kind: "idle" } | { kind: "submitting" } | { kind: "success" } | { kind: "error"; message: string };
 
 let testSubmissionCount = 0;
-/** Simulated delivery for UI/workflow testing. Replace with a fetch to enquiryConfig.endpoint for production. */
-const submitTestEnquiry = async (_data: EnquiryData): Promise<void> => {
+/** Simulated delivery for UI/workflow testing, shared by every enquiry form on the site.
+ * Replace with a fetch to enquiryConfig.endpoint for production. */
+export const submitTestEnquiry = async (_data: unknown): Promise<void> => {
   await new Promise((resolve) => setTimeout(resolve, 800));
   if (typeof window !== "undefined" && new URLSearchParams(window.location.search).get("enquiryTest") === "fail") {
     throw new Error("Simulated network error");
