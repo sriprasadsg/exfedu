@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { svuProjects, svuPublications, svuResearchMetrics, svuConferencePapers, svuFaculty, svuSupport, svuBrochureReview } from "@/data/svuReviewed";
-import { svuProjectAreas, svuOverviewAchievements, svuOverviewDelegation } from "@/data/svuOverview";
+import { svuProjectAreas, svuOverviewAchievements } from "@/data/svuOverview";
 
 export const SvuOverviewContent = () => <div className="svu-overview-content">
   <section className="svu-overview-band"><h2><BookOpen size={23} strokeWidth={1.4} aria-hidden="true" />Industry-Integrated Teaching Approach</h2>
@@ -23,12 +23,12 @@ export const SvuOverviewContent = () => <div className="svu-overview-content">
   </section>
   <section className="svu-overview-band" id="achievements"><h2><Trophy size={23} strokeWidth={1.4} aria-hidden="true" />Student Innovation and Achievements</h2>
     <p>Innovation showcases, hackathons and technology events provide opportunities for students to present their work and engage with wider academic and industry communities.</p>
-    <div className="svu-overview-achievements">{svuOverviewAchievements.map(item => <article key={item.title}>
-      {item.photo ? <figure><img src={item.photo} alt={item.caption} loading="lazy" /><figcaption>{item.caption}</figcaption></figure> : <div className="svu-overview-recognition"><Trophy size={36} strokeWidth={1.3} aria-hidden="true" /><span>AP Quantum Hackathon 2025</span></div>}
-      <h3>{item.title}</h3><p>{item.text}</p>
+    <div className="svu-overview-achievements">{svuOverviewAchievements.map(item => <article className="svu-overview-story" key={item.title}>
+      <figure className="svu-overview-story-media"><img src={item.photo} alt={item.alt} loading="lazy" /><figcaption>{item.caption}</figcaption></figure>
+      <div className="svu-overview-story-text"><h3>{item.title}</h3><p>{item.text}</p></div>
     </article>)}</div>
-    <figure className="svu-overview-delegation" id="gallery"><img src={svuOverviewDelegation.photo} alt={svuOverviewDelegation.caption} loading="lazy" /><figcaption>{svuOverviewDelegation.caption}</figcaption></figure>
   </section>
+
   <section className="svu-overview-band"><h2><BriefcaseBusiness size={23} strokeWidth={1.4} aria-hidden="true" />Industry Exposure and Career Development</h2>
     <p>Industry case studies, mentor guidance and internship exposure connect technical study with professional practice. Project work and presentations help students build portfolios and communicate their skills.</p>
     <p>Explore the dedicated sections for internship information, placement support and documented student selections.</p>
