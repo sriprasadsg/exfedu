@@ -178,6 +178,14 @@ export default function SkillShonePage({ page, breadcrumb }: { page: Page; bread
           <div className="ss-split-headtxt"><Eyebrow>For institutions</Eyebrow><h2 className="ss-h2">Colleges <em>&amp; Universities</em></h2></div>
         </div>
         <div className="ss-capsule">
+          <span className="ss-pad-clip" aria-hidden="true">
+            <svg viewBox="0 0 88 46" xmlns="http://www.w3.org/2000/svg">
+              <rect x="19" y="2.5" width="50" height="21" rx="10.5" fill="none" stroke="currentColor" strokeWidth="4" />
+              <rect x="4" y="18" width="80" height="26" rx="9" fill="currentColor" />
+              <rect className="ss-pad-clip-line" x="15" y="28" width="58" height="3.5" rx="1.75" />
+            </svg>
+          </span>
+
           <div className="ss-cap ss-cap--left">
             <span className="ss-cap-badge" aria-hidden="true"><GraduationCap className="h-6 w-6" strokeWidth={1.5} /></span>
             <span className="ss-cap-side" aria-hidden="true">Learners</span>
