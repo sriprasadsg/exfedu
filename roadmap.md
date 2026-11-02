@@ -314,3 +314,5 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - Partner enquiry: make colourful across the whole site — done, gradient top edge, navy label, red step count, filling progress line
 - Bars coming out of the capsule icons: align neatly, or present differently — done, badge + label now stacked inside each half
 - Publish after these edits (client, 2 Nov 2026)
+
+- Homepage boxes: thick coloured edge on one side only, remaining edges thin, with gentle animation (client, 2 Nov 2026)
