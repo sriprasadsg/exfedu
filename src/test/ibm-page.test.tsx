@@ -119,9 +119,9 @@ describe("IBM programme page sections", () => {
     const headings = [...container.querySelectorAll(".programme-detail-section h2")].map(h => h.textContent?.trim());
     expect(headings[headings.length - 1]).toBe("Enquiry");
 
-    // Other partners keep the brochure-first label.
-    const svu = programmes.find(p => p.organisation === "SVU")!;
-    const other = render(<MemoryRouter><ProgrammeDetail programme={svu} /></MemoryRouter>);
+    // XIME keeps its brochure-first label; SVU pages carry no brochure at all.
+    const xime = programmes.find(p => p.organisation === "XIME")!;
+    const other = render(<MemoryRouter><ProgrammeDetail programme={xime} /></MemoryRouter>);
     const otherHeadings = [...other.container.querySelectorAll(".programme-detail-section h2")].map(h => h.textContent?.trim());
     expect(otherHeadings[otherHeadings.length - 1]).toBe("Brochure & Enquiry");
   });
