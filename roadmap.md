@@ -356,3 +356,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [ ] SkillShone pad: pen positioned properly with its tip pointing upward
 - [ ] SkillShone pad: use SkillShone brand font colours (navy + red)
 - [ ] SkillShone pad: clip shifted left, pen lowered slightly
+- [ ] SkillShone pad: pen placed near the 3 o-clock position
