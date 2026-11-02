@@ -15,7 +15,8 @@ import { submitTestEnquiry } from "@/components/home/PartnerEnquiry";
  * to enquiryConfig.endpoint (Exafluence AWS Cloud).
  * QA: add ?enquiryTest=fail to the URL to simulate a network/server error.
  */
-const programmeOptions = [...ibmProgrammes.map(p => p.title), "Not sure yet"] as [string, ...string[]];
+// Zod needs a non-empty tuple for an enum; the option list itself is data-supplied.
+const programmeOptions = [...ibmProgrammes.map(p => p.title), "Not sure yet"] as unknown as [string, ...string[]];
 const audienceOptions = [...ibmAudiences] as [string, ...string[]];
 
 const institutionalSchema = z.object({
