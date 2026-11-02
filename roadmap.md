@@ -359,3 +359,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] SkillShone pad: pen placed near the 3 o-clock position
 - [x] SkillShone pad: reduce the pad size overall
 - [x] SkillShone pad: reduce empty space between the pad and the buttons above
+- [ ] SkillShone pad: pen brought closer to the right side
