@@ -1677,14 +1677,15 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
 }
 .ss-pad-clip svg { display: block; width: 100%; height: auto; }
 
-/* Resting on the white paper near its right edge, tip facing toward 3 o'clock. */
+/* Resting on the white paper in the clear strip along its right edge, tip toward 3 o'clock.
+   Small enough to sit beside the centred content without touching it. */
 .ss-pad-pen {
   position: absolute;
   top: 50%;
-  right: 5.6rem;
+  right: 3.4rem;
   translate: 0 -50%;
   rotate: 286deg;
-  width: 1.7rem;
+  width: .95rem;
   color: hsl(var(--connection-blue));
   z-index: 2;
   filter: drop-shadow(0 8px 10px hsl(var(--primary) / .2));
