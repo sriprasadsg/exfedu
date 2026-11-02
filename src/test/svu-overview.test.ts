@@ -17,8 +17,9 @@ describe("approved SVU overview associations", () => {
       "Technology Community Participation",
     ]);
     expect(svuOverviewAchievements[0].photo).toContain("svu-innovation-hub.png");
-    expect(svuOverviewAchievements[1].photo).toContain("svu-paniit-students.jpg");
-    expect(svuOverviewAchievements.every(item => Boolean(item.photo) && Boolean(item.alt))).toBe(true);
+    expect(svuOverviewAchievements[1].photo).toContain("svu-paniit-delegation.jpg");
+    expect(svuOverviewAchievements[1].caption).toBe("SVU\u2013Exafluence student participation at the PanIIT Andhra Pradesh Summit 2026.");
+
   });
 
 });
