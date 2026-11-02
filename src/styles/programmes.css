@@ -266,7 +266,7 @@
 .svu-career-table thead th > span { display: inline-block; vertical-align: middle; }
 .svu-career-table tbody th, .svu-career-table tbody td { overflow-wrap: break-word; }
 .svu-career-table tbody tr:last-child th, .svu-career-table tbody tr:last-child td { border-bottom: 0; }
-.svu-career-table tbody tr:hover { background: hsl(var(--academic-surface) / .6); }
+.svu-career-table tbody tr:hover { background: hsl(205 92% 97%); }
 .svu-career-empty { padding: 24px 0; border-block: 1px solid hsl(var(--academic-edge)); }
 @media (max-width: 767px) {
   .svu-career-filters { grid-template-columns: minmax(0, 1fr) 40px; }
@@ -277,7 +277,7 @@
   .svu-career-table tr { display: grid; padding: 14px 16px; border: 1px solid hsl(var(--academic-edge)); border-radius: 8px; }
   .svu-career-table td, .svu-career-table tbody th { display: grid; grid-template-columns: 105px minmax(0, 1fr); gap: 12px; width: auto; border: 0; padding: 5px 0; }
   .svu-career-table td::before, .svu-career-table tbody th::before { content: attr(data-label); font-weight: 400; color: hsl(var(--muted-foreground)); font-size: 12px; }
-.svu-career-table td[data-label="Batch"] { color: hsl(var(--connection-teal)); font-weight: 500; }
+.svu-career-table td[data-label="Batch"] { color: hsl(205 88% 30%); font-weight: 500; }
   .svu-career-table-wrap { border: 0; border-radius: 0; background: none; overflow: visible; }
   .svu-career-table-wrap::before { display: none; }
 }
