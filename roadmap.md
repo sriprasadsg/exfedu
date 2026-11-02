@@ -321,3 +321,6 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 
 - Malaya Rout designation: Vice President at Exafluence — done, card reads Faculty / Vice President at Exafluence
 - Remove "Guest Faculty" wording; mention only "Faculty" — done, all eleven industry roles now read Faculty
+
+- Faculty & Industry Mentors + Programme Support titles colourful — done
+- Enquire Now hover: fill changes colour and the button tilts — done
