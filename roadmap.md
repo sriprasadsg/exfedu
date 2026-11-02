@@ -292,3 +292,5 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Publish latest (user asked 16:20 UTC) — scheduled at https://law-site-shine.lovable.app; basic security scan clean beforehand.
 
 - [x] XIME programme pages: gently animate the icons in use (client, 2 Nov 2026)
+
+- [x] Duration & Delivery marks: bold labels/values and gently drifting icons on programme pages (client, 2 Nov 2026)

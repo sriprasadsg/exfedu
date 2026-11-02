@@ -68,8 +68,8 @@
 .programme-facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 850px; gap: 30px; margin-top: 30px; padding-top: 24px; border-top: 1px solid hsl(var(--academic-edge)); }
 .programme-facts > div { display: grid; grid-template-columns: 28px 1fr; column-gap: 10px; align-items: start; }
 .programme-facts svg { color: hsl(var(--programme-blue)); grid-row: span 2; }
-.programme-facts dt { font-size: 12px; color: hsl(var(--muted-foreground)); }
-.programme-facts dd { font-size: 15px; margin-top: 6px; }
+.programme-facts dt { font-size: 12px; font-weight: 700; letter-spacing: .02em; color: hsl(var(--navy-900)); }
+.programme-facts dd { font-size: 15px; font-weight: 700; margin-top: 6px; }
 .programme-detail-body { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 70px; padding-block: 44px 60px; }
 .programme-detail-section { padding: 26px 0; border-bottom: 1px solid hsl(var(--academic-edge)); }
 .programme-detail-section:first-child { padding-top: 0; }
@@ -622,9 +622,10 @@ body:not(:has(.homepage-static)) main .svu-champion-title {
 .programme-experience:not(.ibm-page) .programme-detail-section:nth-child(4) .programme-section-icon { animation-delay: -3s; }
 .programme-experience:not(.ibm-page) .programme-detail-section:nth-child(5) .programme-section-icon { animation-delay: -4s; }
 .programme-experience:not(.ibm-page) .programme-detail-section:nth-child(n+6) .programme-section-icon { animation-delay: -2.5s; }
-.programme-experience:not(.ibm-page) .programme-facts svg { animation: pd-icon-float 4.4s ease-in-out infinite; }
-.programme-experience:not(.ibm-page) .programme-facts > div:nth-child(2) svg { animation-delay: -2.2s; }
+@keyframes pd-facts-float { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-5px) rotate(-4deg); } }
+.programme-experience .programme-facts svg { animation: pd-facts-float 3.8s ease-in-out infinite; }
+.programme-experience .programme-facts > div:nth-child(2) svg { animation-delay: -1.9s; }
 @media (prefers-reduced-motion: reduce) {
   .programme-experience:not(.ibm-page) .programme-section-icon,
-  .programme-experience:not(.ibm-page) .programme-facts svg { animation: none; }
+  .programme-experience .programme-facts svg { animation: none; }
 }
