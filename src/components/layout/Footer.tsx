@@ -49,8 +49,8 @@ const Footer = () => (
     <div className="container footer-legal">
       <p className="opacity-80">© {new Date().getFullYear()}, All Rights Reserved | <strong className="font-medium">Exafluence Education</strong></p>
       <nav className="footer-legal-links" aria-label="Legal">
-        <Link to="/privacy-policy" className="footer-option footer-tint-navy">Privacy Policy</Link>
-        <Link to="/terms-and-conditions" className="footer-option footer-tint-blue">Terms &amp; Conditions</Link>
+        <Link to="/privacy-policy" className="footer-option">Privacy Policy</Link>
+        <Link to="/terms-and-conditions" className="footer-option">Terms &amp; Conditions</Link>
       </nav>
       <Button variant="ghost" size="icon"
         type="button"
