@@ -2,8 +2,9 @@ import { Award, BookOpen, CalendarDays, Clock3, GraduationCap, Layers, Sparkles,
 import { PENDING, type Programme, type Tone } from "@/data/site";
 
 /** Approved programme detail reading order (client, 29 October 2026):
- * Overview → Eligibility → Duration & Delivery → Programme Features → Curriculum →
- * Admission Process → Brochure & Enquiry. Fields with no verified source render PENDING. */
+ * Overview → Eligibility → Duration & Delivery → Features → Curriculum →
+ * Admission Process → Brochure & Enquiry. "Features" is the label on every
+ * partner's programme pages. Fields with no verified source render PENDING. */
 export type DetailSection = {
   title: string; icon: LucideIcon; tone: Tone;
   content?: string; items?: string[]; sub?: { label: string; items: string[] }; note?: string;

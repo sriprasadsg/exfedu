@@ -357,3 +357,10 @@
   .svu-directory-groups .svu-directory-row { gap: 4px; padding: 14px 4px; }
   .svu-directory-groups .svu-directory-row [data-label] { font-size: 13px; }
 }
+
+/* SVU programme detail (2 Nov 2026 brief): the section tabs sit inside the opening band —
+   breadcrumb, tabs, programme title, introduction — so one pale surface runs behind all three. */
+.programme-crumb-band { background: hsl(var(--academic-surface)); padding-block: 26px 14px; }
+.programme-crumb-band nav { display: flex; flex-wrap: wrap; gap: 10px; font-size: 13px; }
+.svu-tabbar-detail { background: hsl(var(--academic-surface)); }
+.programme-intro-after-tabs { padding-block: 14px 48px; }
