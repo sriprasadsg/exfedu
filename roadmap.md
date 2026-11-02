@@ -255,3 +255,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Trim footer to agreed main links and collaboration sections; remove unwanted resources.
 
 - [x] Confirm SVU footer order: Overview, Programmes, Projects & Research, Internships, Placements.
+- [ ] Update only SVU Overview from the 2 November uploaded brief; preserve other SVU sections, link project areas, pair approved achievement captions/photos and set page-specific metadata.
