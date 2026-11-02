@@ -29,6 +29,13 @@ export const svuInternshipIntroduction = {
     "These opportunities connect academic preparation with research and technical practice, helping students apply their knowledge, strengthen problem-solving skills and experience professional working environments.",
   ],
 };
-export const filterSvuCareerRecords = (records: SvuCareerRecord[], query: string, batch: string) => records.filter(record =>
-  (batch === "all" || record.batch === batch) && `${record.student} ${record.batch} ${record.organisation} ${record.designation ?? ""}`.toLowerCase().includes(query.trim().toLowerCase())
+/** Display order (client, 2 November 2026): batch-wise first, then alphabetical by
+ * student name. Batch rank comes from the roman prefix, so I · 2023–2025 always
+ * precedes II · 2024–2026. Records themselves are never altered. */
+export const svuBatchRank = (batch: string) => batch.split(" ")[0].length;
+export const sortSvuCareerRecords = (records: SvuCareerRecord[]) => [...records].sort((a, b) =>
+  svuBatchRank(a.batch) - svuBatchRank(b.batch) || a.student.localeCompare(b.student, undefined, { sensitivity: "base" })
 );
+export const filterSvuCareerRecords = (records: SvuCareerRecord[], query: string, batch: string) => sortSvuCareerRecords(records.filter(record =>
+  (batch === "all" || record.batch === batch) && `${record.student} ${record.batch} ${record.organisation} ${record.designation ?? ""}`.toLowerCase().includes(query.trim().toLowerCase())
+));
