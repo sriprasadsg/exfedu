@@ -724,6 +724,44 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .site-header .nav-on-navy:not([class*="cat-"])[data-state="open"],
 .site-header-panel .nav-on-navy:not([class*="cat-"]):hover,
 .site-header-panel .nav-on-navy:not([class*="cat-"])[data-state="open"] { color: hsl(210 85% 34%); }
+
+/* Menu bar colour (client, 2 November 2026: "make colourful and icon also"). Each label and its
+   icon carry their own classic colour: navy for About Us, royal blue for the collaboration
+   network, SkillShone's own navy-to-red for SkillShone. Hovering deepens the same colour instead
+   of switching to flat blue, and the icon lifts a little in answer to the pointer. */
+.site-header .nav-on-navy.nav-tone-about, .site-header-panel .nav-tone-about { color: hsl(var(--navy-800)); }
+.site-header .nav-on-navy.nav-tone-network, .site-header-panel .nav-tone-network { color: hsl(var(--connection-blue)); }
+.site-header .nav-on-navy.nav-tone-skillshone, .site-header-panel .nav-tone-skillshone {
+  background-image: linear-gradient(100deg, hsl(var(--primary)) 0%, hsl(var(--brand-red)) 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: hsl(var(--brand-red));
+}
+.site-header .nav-on-navy.nav-tone-about:hover, .site-header .nav-on-navy.nav-tone-about:focus-visible,
+.site-header .nav-on-navy.nav-tone-about[data-state="open"],
+.site-header-panel .nav-tone-about:hover, .site-header-panel .nav-tone-about:focus-visible { color: hsl(var(--navy-900)); }
+.site-header .nav-on-navy.nav-tone-network:hover, .site-header .nav-on-navy.nav-tone-network:focus-visible,
+.site-header .nav-on-navy.nav-tone-network[data-state="open"],
+.site-header-panel .nav-tone-network:hover, .site-header-panel .nav-tone-network:focus-visible { color: hsl(214 84% 38%); }
+.site-header .nav-on-navy.nav-tone-skillshone:hover, .site-header .nav-on-navy.nav-tone-skillshone:focus-visible,
+.site-header .nav-on-navy.nav-tone-skillshone[data-state="open"],
+.site-header-panel .nav-tone-skillshone:hover, .site-header-panel .nav-tone-skillshone:focus-visible {
+  background-image: linear-gradient(100deg, hsl(var(--primary)) 0%, hsl(var(--brand-red)) 45%, hsl(var(--brand-red)) 100%);
+  color: hsl(var(--brand-red));
+}
+.site-header .nav-on-navy svg,
+.site-header-panel :is(.nav-tone-about, .nav-tone-network, .nav-tone-skillshone) svg { transition: transform .22s ease; }
+.site-header .nav-on-navy:hover svg, .site-header .nav-on-navy:focus-visible svg,
+.site-header-panel :is(.nav-tone-about, .nav-tone-network, .nav-tone-skillshone):hover svg,
+.site-header-panel :is(.nav-tone-about, .nav-tone-network, .nav-tone-skillshone):focus-visible svg {
+  transform: translateY(-2px) rotate(-4deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-header .nav-on-navy svg,
+  .site-header-panel :is(.nav-tone-about, .nav-tone-network, .nav-tone-skillshone) svg { transition: none; }
+  .site-header .nav-on-navy:hover svg, .site-header .nav-on-navy:focus-visible svg,
+  .site-header-panel :is(.nav-tone-about, .nav-tone-network, .nav-tone-skillshone):hover svg,
+  .site-header-panel :is(.nav-tone-about, .nav-tone-network, .nav-tone-skillshone):focus-visible svg { transform: none; }
+}
 .site-header-panel {
   position: relative;
   background:

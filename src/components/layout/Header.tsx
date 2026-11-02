@@ -10,6 +10,14 @@ import { Button } from "@/components/ui/button";
 
 const collaborationOrder: Organisation[] = ["SVU", "IBM", "XIME"];
 
+/** Menu colour (client, 2 November 2026): each primary destination carries its own classic
+ *  tone across both label and icon. SkillShone keeps its own navy-to-red brand. */
+const navTone: Record<string, string> = {
+  "/about": "nav-tone-about",
+  "/collaboration-network": "nav-tone-network",
+  "/skillshone": "nav-tone-skillshone",
+};
+
 const Header = () => {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
@@ -42,7 +50,7 @@ const Header = () => {
         </Link>
         <nav aria-label="Main navigation" className="hidden items-center gap-0 min-[900px]:flex">
           {primaryNavigation.map((item) => (
-            <Button key={item.path} asChild variant={item.path.includes("#") ? "default" : "ghost"} size={item.path.includes("#") ? "sm" : "default"} className={item.path.includes("#") ? "ml-2 nav-cta gap-1.5" : "nav-on-navy gap-1.5 px-2 lg:px-3"}>
+            <Button key={item.path} asChild variant={item.path.includes("#") ? "default" : "ghost"} size={item.path.includes("#") ? "sm" : "default"} className={`${item.path.includes("#") ? "ml-2 nav-cta gap-1.5" : "nav-on-navy gap-1.5 px-2 lg:px-3"} ${navTone[item.path] ?? ""}`}>
               <Link to={item.path} aria-current={!item.path.includes("#") && pathname.startsWith(item.path) ? "page" : undefined}><item.icon aria-hidden="true" />{item.title}</Link>
             </Button>
           ))}
@@ -69,11 +77,11 @@ const Header = () => {
               ) : (
                 <ul className="border-b">
                   {primaryNavigation.filter(item => !item.path.includes("#") && item.path !== "/collaboration-network").map(item => (
-                    <li key={item.path} className="border-t first:border-t-0"><Link to={item.path} onClick={() => setOpen(false)} className="flex min-h-12 items-center gap-3 text-base font-medium text-primary"><item.icon className="h-4 w-4 shrink-0" aria-hidden="true" />{item.title}</Link></li>
+                    <li key={item.path} className="border-t first:border-t-0"><Link to={item.path} onClick={() => setOpen(false)} className={`flex min-h-12 items-center gap-3 text-base font-medium text-primary ${navTone[item.path] ?? ""}`}><item.icon className="h-4 w-4 shrink-0" aria-hidden="true" />{item.title}</Link></li>
                   ))}
                   <li className="border-t">
                     <div className="flex min-h-12 items-center gap-2">
-                      <Link to="/collaboration-network" onClick={() => setOpen(false)} className="flex min-w-0 flex-1 items-center gap-3 text-base font-medium text-primary"><Network className="h-4 w-4 shrink-0" aria-hidden="true" />Our Collaboration Network</Link>
+                      <Link to="/collaboration-network" onClick={() => setOpen(false)} className="nav-tone-network flex min-w-0 flex-1 items-center gap-3 text-base font-medium text-primary"><Network className="h-4 w-4 shrink-0" aria-hidden="true" />Our Collaboration Network</Link>
                       <Button type="button" variant="ghost" size="icon" aria-label={openGroup ? "Hide collaboration sections" : "Show collaboration sections"} aria-expanded={openGroup} aria-controls="sidebar-collaboration" onClick={() => setExpanded(openGroup ? null : "collaboration")} className="h-9 w-9 shrink-0 text-primary">{openGroup ? <Minus className="h-4 w-4" aria-hidden="true" /> : <Plus className="h-4 w-4" aria-hidden="true" />}</Button>
                     </div>
                     {openGroup && (
