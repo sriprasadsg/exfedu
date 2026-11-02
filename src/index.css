@@ -1656,13 +1656,13 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
 }
 .ss-pad-clip svg { display: block; width: 100%; height: auto; }
 
-/* Smaller than before and resting on the paper itself, close to its right edge. */
+/* Resting diagonally on the right grey margin of the pad, tip pointing upper-right. */
 .ss-pad-pen {
   position: absolute;
   top: 50%;
-  right: 5.6rem;
+  right: .7rem;
   translate: 0 -50%;
-  rotate: 196deg;
+  rotate: 152deg;
   width: 1.7rem;
   color: hsl(var(--connection-blue));
   z-index: 2;
