@@ -1678,6 +1678,19 @@ body:not(:has(.homepage-static)) main .ss-split-foot.ss-foot-cards::after { disp
 .footer-legal { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-bottom: 20px; font-size: .78rem; }
 .footer-featured { margin-bottom: 0; }
 .footer-top-btn { width: 2.25rem; height: 2.25rem; }
+/* Footer entries each carry their own classic colour — navy, royal blue, burgundy, teal,
+   amber — with a matching dot that swells on hover. (client, 2 November 2026) */
+.footer-tint-navy { --ft: 214 68% 20%; --ft-h: 214 80% 10%; }
+.footer-tint-blue { --ft: 214 82% 44%; --ft-h: 214 88% 28%; }
+.footer-tint-burgundy { --ft: 348 62% 34%; --ft-h: 348 70% 22%; }
+.footer-tint-teal { --ft: 187 62% 27%; --ft-h: 187 72% 15%; }
+.footer-tint-amber { --ft: 28 68% 33%; --ft-h: 28 78% 21%; }
+.footer-partner[class*="footer-tint"], .footer-option[class*="footer-tint"] { display: inline-flex; align-items: center; gap: 8px; color: hsl(var(--ft)); }
+.footer-partner[class*="footer-tint"]::before, .footer-option[class*="footer-tint"]::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: hsl(var(--ft)); box-shadow: 0 0 0 3px hsl(var(--ft) / .14); transition: transform .25s ease, box-shadow .25s ease; }
+.footer-partner[class*="footer-tint"]:hover, .footer-option[class*="footer-tint"]:hover,
+.footer-partner[class*="footer-tint"]:focus-visible, .footer-option[class*="footer-tint"]:focus-visible { color: hsl(var(--ft-h)); }
+.footer-partner[class*="footer-tint"]:hover::before, .footer-option[class*="footer-tint"]:hover::before { transform: scale(1.35); box-shadow: 0 0 0 4px hsl(var(--ft) / .2); }
+@media (prefers-reduced-motion: reduce) { .footer-partner[class*="footer-tint"]::before, .footer-option[class*="footer-tint"]::before { transition: none; } }
 @media (max-width: 767px) {
   .footer-columns { grid-template-columns: minmax(0, 1fr); gap: 24px; padding-block: 28px 16px; }
   .footer-brand { justify-content: flex-start; }
