@@ -13,7 +13,7 @@ export default function SvuCareerRecords({ kind }: { kind: "placements" | "inter
   const shown = filterSvuCareerRecords(records, query, batch);
   const title = placements ? "Student Placements" : "Student Internships";
   return <div className="svu-career-records">
-    <h3>{title}</h3>
+    <h1>{title}</h1>
     <p className="svu-career-subtitle">{placements ? "Career outcomes in data science, artificial intelligence and technology." : "Connecting academic study with research and professional environments."}</p>
     <p>{placements ? "Students from the SVU–Exafluence MS Data Science programme have secured roles in data science and AI engineering, alongside trainee positions. The following records show their organisations, designations and academic batches." : "Students from the 2023–2025 batch secured internships at NARL, Gadanki; SHAR, Sriharikota; and Vikram Sarabhai Space Centre, Thiruvananthapuram. These records highlight student participation in research and technical environments beyond the classroom."}</p>
     <div className="svu-career-filters">
