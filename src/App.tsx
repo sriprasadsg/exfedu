@@ -10,6 +10,7 @@ import ContentPage from "./pages/ContentPage";
 import BrandCheck from "./pages/BrandCheck";
 import EcosystemPreview from "./pages/EcosystemPreview";
 import ProgrammeFinder from "./pages/ProgrammeFinder";
+import LegalPage from "./pages/LegalPage";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +27,8 @@ const App = () => (
           <Route path="/admin/brand-check" element={<BrandCheck />} />
 <Route path="/preview/ecosystem" element={<EcosystemPreview />} />
           <Route path="/programme-finder" element={<ProgrammeFinder />} />
+          <Route path="/privacy-policy" element={<LegalPage path="/privacy-policy" />} />
+          <Route path="/terms-and-conditions" element={<LegalPage path="/terms-and-conditions" />} />
           <Route path="*" element={<ContentPage />} />
         </Routes>
       </BrowserRouter>
