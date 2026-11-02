@@ -1759,3 +1759,26 @@ body:not(:has(.homepage-static)) main .ss-foot-cards h4 {
   background-image: linear-gradient(100deg, hsl(var(--primary)) 0%, hsl(var(--brand-red)) 100%);
   -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
 }
+
+/* Capabilities circle: each card carries a thick coloured edge down one side with thin lines on
+   the other three, a matching coloured icon tile, and a gentle pointer-over tilt
+   (client, 2 November 2026). */
+.homepage-static .cap-card { --cap-h: 214; --cap-s: 70%; --cap-l: 42%; overflow: hidden; }
+.homepage-static .cap-card--academic { --cap-h: 214; }
+.homepage-static .cap-card--technology { --cap-h: 172; }
+.homepage-static .cap-card--research { --cap-h: 268; }
+.homepage-static .cap-card--practical { --cap-h: 38; }
+.homepage-static .cap-card--industry { --cap-h: 150; }
+.homepage-static .cap-card--career { --cap-h: 348; }
+.homepage-static .cap-card--digital { --cap-h: 196; }
+.homepage-static .cap-card--programmes { --cap-h: 22; }
+.homepage-static .cap-card::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; border-radius: 10px 0 0 10px; background: hsl(var(--cap-h) var(--cap-s) var(--cap-l)); transition: width .25s ease; }
+.homepage-static .cap-card:hover::before, .homepage-static .cap-card:focus-visible::before { width: 7px; }
+.homepage-static .cap-diagram .cap-art { background: linear-gradient(145deg, hsl(var(--cap-h) 92% 95%), hsl(var(--cap-h) 80% 87%)); color: hsl(var(--cap-h) 72% 38%); box-shadow: inset 0 1px 1px hsl(0 0% 100% / .7), 0 4px 10px -4px hsl(var(--cap-h) 70% 45% / .55); }
+@media (prefers-reduced-motion: reduce) {
+  .homepage-static .cap-card { transition: none; }
+  .homepage-static .cap-card:hover, .homepage-static .cap-card:focus-visible { transform: none; }
+  @container cap (min-width: 800px) {
+    .homepage-static .cap-card:hover, .homepage-static .cap-card:focus-visible { transform: translate(-50%, -50%); }
+  }
+}
