@@ -1399,7 +1399,7 @@ html body .cap-diagram .cap-art {
 .ss-faq-list { margin: 2rem auto 0; max-width: 46rem; display: grid; gap: 1rem; }
 .ss-faq-list li { background: hsl(var(--background)); border: 1px solid hsl(var(--border)); border-radius: .5rem; box-shadow: 0 2px 6px -2px hsl(var(--primary) / .12); transition: box-shadow .3s, transform .3s, border-color .3s; }
 .ss-faq-list li:hover { transform: translateY(-2px); border-color: hsl(var(--primary) / .35); box-shadow: 0 14px 28px -18px hsl(var(--primary) / .32); }
-.ss-faq-list li:hover .ss-faq-sign::before, .ss-faq-list li:hover .ss-faq-sign::after { background: hsl(var(--primary)); }
+/* Hover keeps the two brand strokes as they are; the card's own lift and navy edge carry the feedback. */
 @media (prefers-reduced-motion: reduce) { .ss-faq-list li { transition: none; } .ss-faq-list li:hover { transform: none; } }
 .ss-faq-q { display: flex; width: 100%; align-items: center; gap: 1.5rem; padding: 1.25rem 1.75rem; text-align: left; font-size: .92rem; font-weight: 400; color: hsl(var(--foreground)); }
 .ss-faq-sign { position: relative; height: 1.1rem; width: 1.1rem; flex: none; }
@@ -1432,6 +1432,16 @@ body:not(:has(.homepage-static)) main .ss-badge > svg:first-child { fill: hsl(va
 .ss-step-more, .ss-feature-more-text { margin-top: .55rem; font-size: .8rem; line-height: 1.6; color: hsl(var(--muted-foreground)); }
 .ss-faq-list li.is-open .ss-faq-sign::before, .ss-faq-list li.is-open .ss-faq-sign::after { background: hsl(var(--brand-red)); }
 .ss-faq-list li.is-open .ss-faq-sign::after { transform: translateY(-50%) rotate(0deg); }
+/* The FAQ plus marks carry both brand colours at once — horizontal stroke in navy, vertical
+   stroke in red — and open to a red minus. The heading above them carries the same split.
+   (client, 2 November 2026) */
+.ss-faq-sign::before { background: hsl(var(--primary)); }
+.ss-faq-sign::after { background: hsl(var(--brand-red)); }
+body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
+  background: linear-gradient(100deg, hsl(var(--primary)) 0%, hsl(var(--brand-red)) 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: hsl(var(--primary));
+}
 .ss-faq-a { padding: 0 1.75rem 1.25rem 3.85rem; font-size: .86rem; line-height: 1.65; color: hsl(var(--muted-foreground)); }
 .ss-faq-a[hidden] { display: none; }
 
