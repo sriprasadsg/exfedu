@@ -365,3 +365,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] SkillShone pad: pen slant reversed to the opposite side
 - [x] SkillShone pad: pad boxes respond gently to the pointer (wash, ring, tile lift)
 - [x] SVU featured-achievement panel: replace dark navy with a pale sky-blue look
+- [x] SVU award panel: no navy-red edge, no underline, smaller box

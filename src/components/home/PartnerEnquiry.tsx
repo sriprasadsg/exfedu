@@ -16,7 +16,23 @@ import { Button } from "@/components/ui/button";
 export const enquiryConfig = {
   mode: "test" as "test" | "production",
   endpoint: "", // e.g. import.meta.env.VITE_ENQUIRY_API_URL — set for AWS deployment
+  /** Inbox each form routes to, matching the email address published on that page. */
+  recipients: {
+    skillshone: "contact@skillshone.com",
+    default: "contact@exafluence.com",
+  },
 };
+
+/** Picks the inbox for the page the form was sent from. */
+export const recipientFor = (path: string): string =>
+  /^\/skillshone(\/|$)/i.test(path) ? enquiryConfig.recipients.skillshone : enquiryConfig.recipients.default;
+
+/** Payload shape the AWS endpoint will receive: form answers plus routing. */
+export const buildEnquiryPayload = (data: unknown, path: string) => ({
+  to: recipientFor(path),
+  sourcePage: path,
+  data,
+});
 
 export const collaborationTypes = [
   "Academic Collaboration",
@@ -51,7 +67,10 @@ type Status = { kind: "idle" } | { kind: "submitting" } | { kind: "success" } | 
 let testSubmissionCount = 0;
 /** Simulated delivery for UI/workflow testing, shared by every enquiry form on the site.
  * Replace with a fetch to enquiryConfig.endpoint for production. */
-export const submitTestEnquiry = async (_data: unknown): Promise<void> => {
+export const submitTestEnquiry = async (data: unknown): Promise<void> => {
+  const path = typeof window !== "undefined" ? window.location.pathname : "/";
+  const payload = buildEnquiryPayload(data, path);
+  if (typeof window !== "undefined") (window as unknown as { __lastEnquiryPayload?: unknown }).__lastEnquiryPayload = payload;
   await new Promise((resolve) => setTimeout(resolve, 800));
   if (typeof window !== "undefined" && new URLSearchParams(window.location.search).get("enquiryTest") === "fail") {
     throw new Error("Simulated network error");
