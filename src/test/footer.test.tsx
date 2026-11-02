@@ -27,6 +27,39 @@ describe("Footer collaboration network", () => {
     for (const a of partners) expect(a.querySelector("img")).toBeNull();
   });
 
+  // The client confirmed the SVU menu order on 2 Nov 2026 and asked for the same
+  // structure in the footer: "Adjust the same in the footer also."
+  it("repeats the agreed SVU section order under the SVU link only", () => {
+    const { container } = open();
+    const groups = [...container.querySelectorAll<HTMLElement>(".footer-partner-group")];
+    expect(groups).toHaveLength(3);
+    expect(groups.map((g) => g.querySelector(".footer-partner")?.textContent?.trim())).toEqual([
+      "Sri Venkateswara University",
+      "IBM",
+      "XIME Chennai",
+    ]);
+
+    const svuLinks = [...groups[0].querySelectorAll<HTMLAnchorElement>("a.footer-partner-section")];
+    expect(svuLinks.map((a) => a.textContent?.trim())).toEqual([
+      "Overview",
+      "Programmes",
+      "Projects & Research",
+      "Internships",
+      "Placements",
+    ]);
+    expect(svuLinks.map((a) => a.getAttribute("href"))).toEqual([
+      "/collaboration-network/svu#overview",
+      "/collaboration-network/svu#programmes",
+      "/collaboration-network/svu#projects-research",
+      "/collaboration-network/svu#internships",
+      "/collaboration-network/svu#placements",
+    ]);
+
+    for (const group of groups.slice(1)) {
+      expect(group.querySelectorAll("a.footer-partner-section")).toHaveLength(0);
+    }
+  });
+
   it("keeps the original SkillShone logo in the pill and shows only the company mark image", () => {
     const { container } = open();
     const pill = container.querySelector<HTMLAnchorElement>("a.footer-featured");
