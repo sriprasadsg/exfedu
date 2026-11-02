@@ -330,3 +330,5 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Screenshot boxes: tilt them, restore the previously used coloured box lines, and gently animate their icons (client, 2 Nov 2026)
 - [x] Internships/Placements table header: two light colours only (pale sky blue + pearl), replacing the four-colour tint, strip and icon badges; gentle mouse-over response. Scope confirmed with client after the fact.
 - [x] Replace "Programme Support · EdTech Division" with "Technical Mentors & Lab Faculty".
+
+- [ ] SkillShone topic pills: no pink — replace the pink-tinted halves with the approved light pair (client, 2 Nov 2026)

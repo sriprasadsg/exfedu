@@ -217,15 +217,18 @@ export default function SkillShonePage({ page, breadcrumb }: { page: Page; bread
                       <span className="ss-faq-sign" aria-hidden="true" />
                       <span>{q}</span>
                     </button>
-                    <div className="ss-faq-a" id={`ss-faq-a-${i}`} hidden={!open}>
-                      {a && <p>{a}</p>}
-                      {groups && groups.map((g) => (
-                        <div className="ss-faq-group" key={g.label}>
-                          <h5>{g.label}</h5>
-                          <ul>{g.points.map((pt) => <li key={pt}>{pt}</li>)}</ul>
-                        </div>
-                      ))}
-                    </div>
+                    {groups ? (
+                      <div className="ss-faq-a" id={`ss-faq-a-${i}`} hidden={!open}>
+                        {groups.map((g) => (
+                          <div className="ss-faq-group" key={g.label}>
+                            <h5>{g.label}</h5>
+                            <ul>{g.points.map((pt) => <li key={pt}>{pt}</li>)}</ul>
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <p className="ss-faq-a" id={`ss-faq-a-${i}`} hidden={!open}>{a}</p>
+                    )}
                   </li>
                 );
               })}
