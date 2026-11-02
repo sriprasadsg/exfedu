@@ -297,3 +297,5 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 
 - SkillShone closing panel: make the email address bold (client, 2 Nov 2026)
 - Remove the connecting line between the two boxes the client screenshotted (client, 2 Nov 2026)
+
+- [x] Publish site so bold Duration & Delivery is live (client, 2 Nov 2026)
