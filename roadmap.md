@@ -319,5 +319,5 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - One column replaced/overlapping: align neatly — done, internships table columns rebalanced, headers no longer collide
 
 
-- Malaya Rout designation: Vice President at Exafluence (client, 2 Nov 2026)
-- Remove "Guest Faculty" wording; mention only "Faculty" (client, 2 Nov 2026)
+- Malaya Rout designation: Vice President at Exafluence — done, card reads Faculty / Vice President at Exafluence
+- Remove "Guest Faculty" wording; mention only "Faculty" — done, all eleven industry roles now read Faculty
