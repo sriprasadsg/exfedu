@@ -11,8 +11,12 @@ const diploma = programmes.find(p => p.slug === "python-ai-ml-genai")!;
 
 const renderPage = (programme: typeof msds) =>
   render(<MemoryRouter><ProgrammeDetail programme={programme} /></MemoryRouter>);
+
 const headings = (container: HTMLElement) =>
   [...container.querySelectorAll(".programme-detail-section h2")].map(h => h.textContent?.trim());
+
+const uspText = (programme: typeof msds) =>
+  renderPage(programme).container.querySelector(".programme-usp")?.textContent ?? "";
 
 describe("SVU programme USP presentation (client brief, 2 November 2026)", () => {
   it("opens with Built Around Practical Learning before the details", () => {
@@ -29,11 +33,11 @@ describe("SVU programme USP presentation (client brief, 2 November 2026)", () =>
       "Applied Projects",
       "Final-Semester Capstone",
     ]);
-    expect(container_usp(msds)).toContain("80% Practical Learning · 20% Theoretical Foundations");
+    expect(uspText(msds)).toContain("80% Practical Learning · 20% Theoretical Foundations");
   });
 
   it("keeps the unconfirmed 80:20 split off other SVU programmes", () => {
-    const usp = container_usp(diploma);
+    const usp = uspText(diploma);
     expect(usp).not.toContain("80%");
     expect(usp).toContain("Industry Mentoring");
     expect(usp).toContain("Final-Semester Capstone");
@@ -53,8 +57,3 @@ describe("SVU programme USP presentation (client brief, 2 November 2026)", () =>
     expect(container.textContent).toContain("Enquire Now");
   });
 });
-
-function container_usp(programme: typeof msds) {
-  const { container } = renderPage(programme);
-  return container.querySelector(".programme-usp")?.textContent ?? "";
-}
