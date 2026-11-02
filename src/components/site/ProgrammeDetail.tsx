@@ -1,3 +1,4 @@
+import { SvuTabBar } from "./SvuPages";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Clock3, Monitor, Download, Cpu, FlaskConical, Library } from "lucide-react";
@@ -77,6 +78,7 @@ const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { progr
         </div>
       </header>
 
+      {p.organisation === "SVU" && <SvuTabBar active="programmes" />}
       <div className="container programme-detail-body">
         <div className="programme-reading" ref={readingRef}>
           {sections.map(({ title, icon: Icon, tone, content, items, sub, note }) => (

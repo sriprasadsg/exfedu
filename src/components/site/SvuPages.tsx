@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { ArrowLeft, ArrowRight, ArrowUpRight, Search, Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -87,22 +87,35 @@ const SvuOverview = () => {
   </div>;
 };
 
+const svuCategories = [
+  { title: "Master\u2019s Programme", levels: ["Master's"] },
+  { title: "Postgraduate Diploma", levels: ["PG Diploma"] },
+  { title: "Short-Term Diplomas", levels: ["Diploma"] },
+];
+
 const SvuProgrammes = () => {
   const shown = programmes.filter(p => p.organisation === "SVU");
   return <div className="svu-flow">
     <section className="svu-block svu-intro">
-      <h1>SVU Programmes</h1>
-      <p className="svu-lead">Programmes offered through Sri Venkateswara University in collaboration with Exafluence Education. Each programme opens its own detail page.</p>
+      <h1>Industry-Integrated Programmes</h1>
+      <p className="svu-lead">Explore programmes offered through the collaboration between Exafluence Inc., USA, and Sri Venkateswara University. Compare study duration and delivery options, then view each programme\u2019s eligibility, curriculum and admission process.</p>
     </section>
-    <div className="svu-directory" role="table" aria-label="SVU programmes">
-      <div role="row" className="svu-directory-head"><span role="columnheader">Programme</span><span role="columnheader">Duration</span><span role="columnheader">Delivery</span><span role="columnheader"><span className="sr-only">Link</span></span></div>
-      {shown.map(p => <div role="row" key={p.slug} className="svu-directory-row">
-        <span role="cell" className="svu-directory-name"><Link to={programmePath(p)}>{p.title}</Link><small>{p.level}</small></span>
-        <span role="cell" data-label="Duration">{p.duration}</span>
-        <span role="cell" data-label="Delivery">{p.delivery}</span>
-        <span role="cell"><Link className="svu-directory-link" to={programmePath(p)}>View Programme<ArrowRight size={15} aria-hidden="true" /></Link></span>
-      </div>)}
-    </div>
+    <div className="svu-directory-groups">{svuCategories.map(cat => {
+      const rows = shown.filter(p => cat.levels.includes(p.level));
+      if (!rows.length) return null;
+      return <section key={cat.title} className="svu-directory-group" aria-label={cat.title}>
+        <h2>{cat.title}</h2>
+        <div className="svu-directory" role="table" aria-label={cat.title}>
+          <div role="row" className="svu-directory-head"><span role="columnheader">Programme Name</span><span role="columnheader">Duration</span><span role="columnheader">Delivery</span><span role="columnheader"><span className="sr-only">View Programme</span></span></div>
+          {rows.map(p => <div role="row" key={p.slug} className="svu-directory-row">
+            <span role="cell" className="svu-directory-name"><Link to={programmePath(p)}>{p.title}</Link></span>
+            <span role="cell" data-label="Duration">{p.duration}</span>
+            <span role="cell" data-label="Delivery">{p.delivery}</span>
+            <span role="cell"><Link className="svu-directory-link" to={programmePath(p)} aria-label={`View Programme: ${p.title}`}>View Programme<ArrowRight size={15} aria-hidden="true" /></Link></span>
+          </div>)}
+        </div>
+      </section>;
+    })}</div>
   </div>;
 };
 
@@ -150,6 +163,10 @@ const SvuResearch = () => {
   </div>;
 };
 
+export const SvuTabBar = ({ active }: { active: SvuSectionId }) => <nav aria-label="Sri Venkateswara University sections" className="svu-tabbar"><div className="svu-container svu-tabbar-inner">
+  {tabs.map(t => <Link key={t.id} to={svuSectionPath(t.id)} className={t.id === active ? "is-active" : undefined} aria-current={t.id === active ? "page" : undefined}>{t.label}</Link>)}
+</div></nav>;
+
 const SvuPages = ({ section }: { section: SvuSectionId }) => {
   useProgrammeSeo(...seo[section]);
   const { hash } = useLocation();
@@ -158,9 +175,7 @@ const SvuPages = ({ section }: { section: SvuSectionId }) => {
     <div className="svu-container">
       <nav aria-label="Breadcrumb" className="svu-breadcrumb"><Link to="/collaboration-network"><ArrowLeft size={15} aria-hidden="true" />Back to Our Collaboration Network</Link></nav>
     </div>
-    <nav aria-label="Sri Venkateswara University sections" className="svu-tabbar"><div className="svu-container svu-tabbar-inner">
-      {tabs.map(t => <NavLink key={t.id} end to={svuSectionPath(t.id)} className={({ isActive }) => isActive ? "is-active" : undefined}>{t.label}</NavLink>)}
-    </div></nav>
+    <SvuTabBar active={section} />
     <div className="svu-container svu-body">
       {section === "overview" && <SvuOverview />}
       {section === "programmes" && <SvuProgrammes />}
