@@ -58,7 +58,6 @@ const SvuOverview = () => {
           <span className="svu-step-head">
             <span className="svu-step-icon"><step.icon size={23} strokeWidth={1.5} aria-hidden="true" /></span>
           </span>
-          </span>
           <strong>{step.title}</strong>
           <span className="svu-step-text">{step.text}</span>
         </li>)}
