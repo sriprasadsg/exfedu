@@ -73,4 +73,15 @@ describe("Footer collaboration network", () => {
     expect(images).toHaveLength(2);
     expect(images.map((i) => i.alt)).toEqual(["SkillShone", "Exafluence — Data Driven Influence"]);
   });
+  it("offers only the agreed main destinations and SVU hierarchy", () => {
+    const { container } = open();
+    const destinations = [...container.querySelectorAll<HTMLAnchorElement>("a")].map(a => a.getAttribute("href"));
+    expect(destinations).toEqual([
+      "/collaboration-network", "/collaboration-network/svu",
+      "/collaboration-network/svu#overview", "/collaboration-network/svu#programmes",
+      "/collaboration-network/svu#projects-research", "/collaboration-network/svu#internships",
+      "/collaboration-network/svu#placements", "/collaboration-network/ibm", "/collaboration-network/xime",
+      "/about", "/skillshone", "/#partner-enquiry",
+    ]);
+  });
 });

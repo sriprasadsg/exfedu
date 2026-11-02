@@ -12,6 +12,7 @@ import ibmLogo from "@/assets/ibm-partner-badge.png.asset.json";
 import svuIllustration from "@/assets/svu-partner-illustration.png.asset.json";
 import ximeIllustration from "@/assets/xime-partner-illustration.png.asset.json";
 import ibmIllustration from "@/assets/ibm-partner-illustration.png.asset.json";
+import { svuReviewedCurricula } from "./svuReviewed";
 
 /** Content is data-only: add approved pages, partners or programmes here without touching layouts. */
 export type Offering = { name: string; significance: string[]; benefits: string };
@@ -116,7 +117,10 @@ const svuVerified: Record<string, Partial<Programme>> = {
   "cloud-technologies": { eligibility: diplomaEligibility, features: ["Six-month part-time hybrid programme", "Multi-cloud environments and hybrid-cloud strategies", "Hands-on practice"], curriculum: ["AWS", "Microsoft Azure", "Google Cloud Platform", "Multi-cloud environments", "Hybrid-cloud strategies"], tools: ["AWS", "Microsoft Azure", "Google Cloud Platform"], practical: "Hands-on practice, with internship and project included in the programme registration listing.", admissions: diplomaEntrance },
   "ibm-pbel": { delivery: "Online mentorship" },
 };
-programmes.forEach(programme => Object.assign(programme, svuVerified[programme.slug] ?? {}));
+programmes.forEach(programme => {
+  Object.assign(programme, svuVerified[programme.slug] ?? {});
+  if (svuReviewedCurricula[programme.slug]) programme.curriculum = svuReviewedCurricula[programme.slug];
+});
 
 export const filterProgrammes = (filters: { organisation?: string; subject?: string; type?: string; q?: string }) => programmes.filter((p) =>
   (!filters.organisation || p.organisation === filters.organisation) && (!filters.subject || p.subjects.includes(filters.subject)) &&
@@ -332,22 +336,19 @@ export type OrganisationSection = {
   id: string; title: string; icon: LucideIcon; tone: Tone;
   text?: string; pending?: string; link?: { label: string; path: string };
 };
-const svuSlide = collaborationSlides.find(s => s.organisation === "SVU")!;
+const svuSlide = collaborationSlides.find(s => s.organisation === "SVU");
 export const organisationSections: Partial<Record<Organisation, OrganisationSection[]>> = {
   SVU: [
-    { id: "overview", title: "Overview", icon: Building2, tone: "blue", text: svuSlide.text },
+    { id: "overview", title: "Overview", icon: Building2, tone: "blue", text: svuSlide?.text },
     { id: "programmes", title: "Programmes", icon: GraduationCap, tone: "teal" },
     { id: "projects-research", title: "Projects & Research", icon: Lightbulb, tone: "violet",
       text: "Programme learning includes real-time projects, industry mentoring, case studies and a final-semester capstone addressing business challenges.",
-      pending: "SVU research publications, funded projects and research lab details await approved university content.",
-      link: { label: "Research & Innovation", path: "/research-innovation" } },
+      pending: "TIBS 2026 lists three papers but names four presentations in the supplied record. The total requires confirmation." },
     { id: "internships", title: "Internships", icon: Briefcase, tone: "amber",
-      text: "The Python for AI/ML/Gen AI, Data Visualisation and Cloud Technologies diplomas list an internship and project as part of the programme.",
-      pending: "SVU internship durations, host organisations and application windows await approved university content.",
-      link: { label: "Internships & Industry Exposure", path: "/internships" } },
+      text: "The supplied 2023–2025 batch record lists nine students pursuing internships across the National Atmospheric Research Laboratory (NARL), Satish Dhawan Space Centre (SDSC), and Vikram Sarabhai Space Centre. Internship durations and application windows require confirmation." },
     { id: "placements", title: "Placements", icon: Compass, tone: "blue",
-      pending: "SVU placement statistics, recruiting organisations and verified outcome records await approved university data.",
-      link: { label: "Career Development", path: "/career-development" } },
+      text: "Placement preparation combines technical training, free soft-skills development, aptitude preparation and mock interviews with experienced placement consultants.",
+      pending: "Placement statistics, recruiting organisations and verified employment outcomes await approved university records." },
   ],
 };
 
