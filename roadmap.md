@@ -358,3 +358,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [ ] SkillShone pad: clip shifted left, pen lowered slightly
 - [ ] SkillShone pad: pen placed near the 3 o-clock position
 - [ ] SkillShone pad: reduce the pad size overall
+- [ ] SkillShone pad: reduce empty space between the pad and the buttons above
