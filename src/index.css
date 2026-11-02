@@ -1624,7 +1624,7 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
   font-weight: 700; font-size: .78rem; letter-spacing: .22em;
   text-transform: uppercase; color: hsl(var(--primary));
 }
-.ss-cap ul { display: grid; gap: .55rem; width: 100%; max-width: 22rem; margin-top: .8rem; }
+.ss-cap ul { display: grid; gap: .55rem; width: 100%; max-width: 22rem; margin-top: .8rem; margin-inline: auto; justify-items: center; }
 .ss-cap li {
   display: flex; align-items: center; gap: .55rem;
   padding: .55rem 1rem; border-radius: 999px;
@@ -1640,6 +1640,26 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
 .ss-cap--right li svg { color: hsl(var(--primary)); flex: none; }
 .ss-cap--left li:hover { transform: translateX(6px); }
 .ss-cap--right li:hover { transform: translateX(-6px); }
+
+/* The pad's own heading: a white tile clamped on the grey backing directly beneath the clip. */
+.ss-pad-title {
+  position: relative;
+  z-index: 2;
+  width: max-content;
+  max-width: 100%;
+  margin: 2.6rem auto 1.2rem;
+  padding: .7rem 1.8rem;
+  border: 1px solid hsl(var(--border));
+  border-top: 3px solid hsl(var(--connection-blue));
+  border-radius: 12px;
+  background: hsl(var(--background));
+  box-shadow: 0 10px 22px -16px hsl(var(--foreground) / .4);
+  text-align: center;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: .01em;
+  color: hsl(var(--primary));
+}
 
 /* ===== Writing-pad hardware =====
    Client, 2 Nov 2026: the panel reads as a clipboard/writing pad — a navy clip clamped on the
