@@ -27,37 +27,27 @@ describe("Footer collaboration network", () => {
     for (const a of partners) expect(a.querySelector("img")).toBeNull();
   });
 
-  // The client confirmed the SVU menu order on 2 Nov 2026 and asked for the same
-  // structure in the footer: "Adjust the same in the footer also."
-  it("repeats the agreed SVU section order under the SVU link only", () => {
+  // Client, 2 Nov 2026: the expanded SVU submenu made the footer taller than its
+  // content needs; those five section links stay inside the SVU page navigation.
+  it("keeps no sub-list under any partner", () => {
     const { container } = open();
-    const groups = [...container.querySelectorAll<HTMLElement>(".footer-partner-group")];
-    expect(groups).toHaveLength(3);
-    expect(groups.map((g) => g.querySelector(".footer-partner")?.textContent?.trim())).toEqual([
-      "Sri Venkateswara University",
-      "IBM",
-      "XIME Chennai",
-    ]);
+    expect(container.querySelectorAll(".footer-partner-group")).toHaveLength(0);
+    expect(container.querySelectorAll("a.footer-partner-section")).toHaveLength(0);
+    const hrefs = [...container.querySelectorAll<HTMLAnchorElement>("a")].map(a => a.getAttribute("href"));
+    expect(hrefs.filter(h => h?.startsWith("/collaboration-network/svu/"))).toEqual([]);
+    expect(hrefs.filter(h => h === "/collaboration-network/svu")).toHaveLength(1);
+  });
 
-    const svuLinks = [...groups[0].querySelectorAll<HTMLAnchorElement>("a.footer-partner-section")];
-    expect(svuLinks.map((a) => a.textContent?.trim())).toEqual([
-      "Overview",
-      "Programmes",
-      "Projects & Research",
-      "Internships",
-      "Placements",
-    ]);
-    expect(svuLinks.map((a) => a.getAttribute("href"))).toEqual([
-      "/collaboration-network/svu",
-      "/collaboration-network/svu/programmes",
-      "/collaboration-network/svu/projects-research",
-      "/collaboration-network/svu/internships",
-      "/collaboration-network/svu/placements",
-    ]);
-
-    for (const group of groups.slice(1)) {
-      expect(group.querySelectorAll("a.footer-partner-section")).toHaveLength(0);
-    }
+  it("sits in three top-aligned columns with the brand mark last", () => {
+    const { container } = open();
+    const columns = [...container.querySelectorAll<HTMLElement>(".footer-columns > div")];
+    expect(columns).toHaveLength(3);
+    expect(columns[0].textContent).toContain("Our Collaboration Network");
+    expect(columns[1].textContent).toContain("Quick Links");
+    expect(columns[1].textContent).toContain("About Us");
+    expect(columns[1].textContent).toContain("Enquire Now");
+    expect(columns[2].querySelector("img")).not.toBeNull();
+    expect(columns[2].querySelectorAll("a")).toHaveLength(0);
   });
 
   it("keeps the original SkillShone logo in the pill and shows only the company mark image", () => {
@@ -73,14 +63,22 @@ describe("Footer collaboration network", () => {
     expect(images).toHaveLength(2);
     expect(images.map((i) => i.alt)).toEqual(["SkillShone", "Exafluence — Data Driven Influence"]);
   });
-  it("offers only the agreed main destinations and SVU hierarchy", () => {
+
+  it("keeps the copyright in its own slim row below the columns", () => {
+    const { container } = open();
+    const legal = container.querySelectorAll(".footer-legal");
+    expect(legal).toHaveLength(1);
+    expect(legal[0].querySelector("p")?.textContent).toContain("Exafluence Education");
+    expect(legal[0].querySelector("button[aria-label='Back to top']")).not.toBeNull();
+    expect(container.querySelector(".footer-columns")?.contains(legal[0])).toBe(false);
+  });
+
+  it("offers only the agreed main destinations", () => {
     const { container } = open();
     const destinations = [...container.querySelectorAll<HTMLAnchorElement>("a")].map(a => a.getAttribute("href"));
     expect(destinations).toEqual([
-      "/collaboration-network", "/collaboration-network/svu",
-      "/collaboration-network/svu", "/collaboration-network/svu/programmes",
-      "/collaboration-network/svu/projects-research", "/collaboration-network/svu/internships",
-      "/collaboration-network/svu/placements", "/collaboration-network/ibm", "/collaboration-network/xime",
+      "/collaboration-network",
+      "/collaboration-network/svu", "/collaboration-network/ibm", "/collaboration-network/xime",
       "/about", "/skillshone", "/#partner-enquiry",
     ]);
   });
