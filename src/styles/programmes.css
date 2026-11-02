@@ -525,3 +525,14 @@
 .svu-story-head h3 { margin: 0; }
 .svu-story-caption { font-size: 12px !important; margin-top: 10px !important; font-style: italic; }
 @media (max-width: 760px) { .svu-stories { grid-template-columns: minmax(0, 1fr); } .svu-story figure { height: 220px; } }
+
+/* Achievement story cards: inner parts are not boxes of their own, so they must not pick up
+   the site-wide gradient edges or tilt; photo stays in its frame and text sits cleanly below. */
+.svu-story { position: relative; isolation: isolate; }
+.svu-story figure { overflow: hidden; }
+.svu-story-badge { position: absolute !important; z-index: 2; }
+.svu-story-body { position: relative; z-index: 1; flex: 1; background: hsl(var(--card)); }
+.svu-story-head, .svu-story-caption { transform: none !important; box-shadow: none !important; }
+.svu-story-head::after, .svu-story-body::after, .svu-story-badge::after, .svu-story-caption::after { content: none !important; }
+.svu-story-head h3 { font-size: 18px; line-height: 1.35; }
+.svu-story-caption { padding-left: 10px; border-left: 2px solid hsl(var(--connection-blue) / .35); }

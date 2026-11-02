@@ -6,7 +6,7 @@ const SELECTOR = [
   '.rounded-xl.border', '.rounded-2xl.border', '.rounded-lg.border',
   '.svu-outcome', '.svu-career-table-wrap', '.svu-step', '.svu-area', '.svu-champion',
 ].join(",");
-const EXCLUDE = ".cap-card, .education-arm, header *, footer *, nav *, input, textarea, select, [role=dialog] *";
+const EXCLUDE = "[class*='svu-story-'], .cap-card, .education-arm, header *, footer *, nav *, input, textarea, select, [role=dialog] *";
 
 export function BoxTilt() {
   useEffect(() => {
