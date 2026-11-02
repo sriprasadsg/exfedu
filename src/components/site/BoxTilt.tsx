@@ -11,6 +11,7 @@ const EXCLUDE = ".cap-card, .education-arm, header *, footer *, nav *, input, te
 export function BoxTilt() {
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const isHome = () => !!document.querySelector(".homepage-static");
     if (!window.matchMedia("(hover: hover)").matches) return;
     let current: HTMLElement | null = null;
     const reset = (el: HTMLElement) => { el.style.transform = ""; el.classList.remove("box-tilt-active"); };
@@ -18,6 +19,7 @@ export function BoxTilt() {
       const target = e.target as Element | null;
       let el = target?.closest?.(SELECTOR) as HTMLElement | null;
       if (el && (el.matches(EXCLUDE) || !el.closest("main") || el.offsetWidth > 900)) el = null;
+      if (el && isHome()) el = null;
       if (current && current !== el) reset(current);
       current = el;
       if (!el) return;
