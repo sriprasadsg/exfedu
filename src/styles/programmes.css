@@ -18,18 +18,18 @@
 .network-controls { display: flex; align-items: center; justify-content: flex-end; gap: 12px; margin-top: 12px; }
 /* Carousel controls carry the site's two colours — navy for "previous", sky blue for "next" —
    as tinted circles that fill solid and lift on hover, with gently drifting arrows. (client, 2 Nov 2026) */
-.network-controls > button { --ctl: var(--connection-blue); border-radius: 50%; border: 1px solid hsl(var(--ctl) / .34); background: hsl(var(--ctl) / .07); color: hsl(var(--ctl)); box-shadow: 0 1px 2px hsl(var(--ctl) / .12); transition: background-color .3s ease, border-color .3s ease, color .3s ease, box-shadow .3s ease, transform .3s ease; }
+.network-controls > button { --ctl: var(--connection-blue); border-radius: 50%; border: 1.5px solid hsl(var(--ctl) / .55); background: hsl(var(--ctl) / .13); color: hsl(var(--ctl)); box-shadow: 0 2px 6px -2px hsl(var(--ctl) / .28); transition: background-color .3s ease, border-color .3s ease, color .3s ease, box-shadow .3s ease, transform .3s ease; }
 .network-controls > button:first-child { --ctl: 214 68% 20%; }
 .network-controls > button:last-child { --ctl: 214 82% 44%; }
 .network-controls > button:hover, .network-controls > button:focus-visible { background: hsl(var(--ctl)); border-color: hsl(var(--ctl)); color: hsl(var(--background)); box-shadow: 0 9px 20px -9px hsl(var(--ctl) / .65); transform: translateY(-2px); }
-.network-controls > button:first-child svg { animation: network-arrow-left 2.8s ease-in-out infinite; }
-.network-controls > button:last-child svg { animation: network-arrow-right 2.8s ease-in-out infinite; }
+.network-section .network-controls > button:first-child svg { animation: network-arrow-left 2.8s ease-in-out infinite; }
+.network-section .network-controls > button:last-child svg { animation: network-arrow-right 2.8s ease-in-out infinite; }
 @keyframes network-arrow-left { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(-3px); } }
 @keyframes network-arrow-right { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(3px); } }
 .network-dots { display: flex; }
 .network-dots button { width: 30px; height: 32px; background: transparent; }
 .network-dots button:hover { background: transparent; }
-.network-dots span { width: 8px; height: 8px; border-radius: 50%; background: hsl(214 45% 80%); box-shadow: inset 0 0 0 1px hsl(214 60% 68% / .4); transition: background-color .35s ease, width .35s ease, box-shadow .35s ease; }
+.network-dots span { width: 8px; height: 8px; border-radius: 50%; background: hsl(214 55% 70%); box-shadow: inset 0 0 0 1px hsl(214 65% 58% / .5); transition: background-color .35s ease, width .35s ease, box-shadow .35s ease; }
 .network-dots button:hover span { background: hsl(214 78% 60%); }
 .network-dots [aria-pressed=true] span { width: 22px; border-radius: 999px; background: linear-gradient(90deg, hsl(214 68% 22%), hsl(214 82% 50%)); box-shadow: 0 3px 9px -3px hsl(214 82% 45% / .6); }
 .network-panel a svg, .programme-actions a svg { transition: transform 350ms ease; }
