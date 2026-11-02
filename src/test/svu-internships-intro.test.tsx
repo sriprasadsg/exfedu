@@ -33,7 +33,7 @@ describe("SVU Internships introduction (client brief, 2 November 2026)", () => {
     expect(container.textContent).not.toMatch(/brochure|download/i);
     expect(container.querySelector("input[aria-label='Search internships']")).toBeNull();
     expect(container.querySelector("[aria-label='Student Internships batch']")).toBeNull();
-    expect(container.textContent).toContain("11 of 11 records");
+    expect(container.textContent).not.toMatch(/of 11 records/);
     expect(container.querySelectorAll("[data-label='Batch']").length).toBe(11);
   });
 });
