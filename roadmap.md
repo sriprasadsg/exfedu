@@ -324,3 +324,5 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 
 - Faculty & Industry Mentors + Programme Support titles colourful — done
 - Enquire Now hover: fill changes colour and the button tilts — done
+
+- Enquire Now hover shade: another shade, not SkillShone colours (client, 2 Nov 2026)
