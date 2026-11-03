@@ -3,7 +3,7 @@ import NetworkBackButton from "./NetworkBackButton";
 import { svuSectionPath } from "@/lib/programmeNavigation";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, ArrowRight, Clock3, Monitor, Download, Cpu, FlaskConical, Library, Sparkles } from "lucide-react";
+import { ArrowLeft, ArrowRight, Clock3, Monitor, Download, Cpu, FlaskConical, Library, Sparkles, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { academicResources, organisations, PENDING, type Programme } from "@/data/site";
@@ -36,7 +36,8 @@ const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { progr
 
   useProgrammeSeo(`${p.title} | ${org.name} | Exafluence Education`, `${p.overview} Duration: ${p.duration}. Review features, technologies and certification.`);
 
-  const enquiryUrl = `/contact?programme=${encodeURIComponent(p.slug)}`;
+  // IBM offerings are institutional; every other programme takes a student enquiry.
+  const enquiryUrl = `/contact?${p.organisation === "IBM" ? "type=institution&" : ""}programme=${encodeURIComponent(p.slug)}`;
   const sections = p.organisation === "IBM" ? ibmProgrammeSections(p) : programmeDetailSections(p);
   // SVU programme pages carry no brochure at all (client brief, 2 November 2026);
   // the programme enquiry stays available on its own.
@@ -145,16 +146,16 @@ const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { progr
             </section>
           ))}
 
-          <section className="programme-detail-section programme-reveal" id={offersBrochure ? "brochure-enquiry" : "programme-enquiry"}>
-            <h2>
-              <span className="programme-section-icon tone-blue">
-                <Library size={22} aria-hidden="true" />
+          {/* Faculty and academic resources stand on their own, before the enquiry. */}
+          <section className="programme-detail-section programme-reveal" aria-labelledby="programme-resources-heading">
+            <h2 id="programme-resources-heading">
+              <span className="programme-section-icon tone-teal">
+                <Users size={22} aria-hidden="true" />
               </span>
-              {p.organisation === "IBM" || p.organisation === "SVU" ? "Enquiry" : "Brochure & Enquiry"}
+              {isSvu ? "Faculty & Academic Resources" : "Academic Resources"}
             </h2>
             {p.organisation === "SVU" ? <SvuAcademicResources /> : <div className="programme-resource-box">
-              <h3>Academic Resources</h3>
-              <ul>{academicResources.items.map(item => <li key={item}>{item}</li>)}</ul>
+                            <ul>{academicResources.items.map(item => <li key={item}>{item}</li>)}</ul>
               <p>{academicResources.note}</p>
               <Button variant="outline" size="sm" asChild>
                 <Link to={academicResources.link.path}>
@@ -163,6 +164,15 @@ const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { progr
                 </Link>
               </Button>
             </div>}
+          </section>
+
+          <section className="programme-detail-section programme-reveal" id={offersBrochure ? "brochure-enquiry" : "programme-enquiry"}>
+            <h2>
+              <span className="programme-section-icon tone-blue">
+                <Library size={22} aria-hidden="true" />
+              </span>
+              {p.organisation === "IBM" || p.organisation === "SVU" ? "Enquiry" : "Brochure & Enquiry"}
+            </h2>
             <div className="programme-enquiry-row">
               {offersBrochure && (
                 <Button variant="outline" onClick={openBrochure}>
@@ -197,9 +207,6 @@ const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { progr
               </Button>
               {!p.brochure && <p>Approved brochure required. No download is available yet.</p>}
             </>
-          )}
-          {p.organisation === "IBM" && (
-            <p>Programme facts follow the supplied brief; original leaflet wording requires confirmation before publication.</p>
           )}
           {p.source && (
             <a href={p.source} target="_blank" rel="noopener noreferrer">
