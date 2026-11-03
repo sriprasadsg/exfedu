@@ -100,13 +100,13 @@ describe("IBM programme page sections", () => {
   it("follows the approved sequence and keeps unsupported sections out", () => {
     const quantum = ibmProgrammes.find(p => p.slug === "ibm-quantum-computing")!;
     const titles = ibmProgrammeSections(quantum).map(s => s.title);
-    expect(titles).toEqual(["Overview", "Learning Outcomes", "Eligibility & Prerequisites", "Curriculum", "Tools & Practical Activities", "Duration & Delivery", "Features", "Assessment & Certification"]);
+    expect(titles).toEqual(["Learning Outcomes", "Eligibility & Prerequisites", "Curriculum", "Tools & Practical Activities", "Duration & Delivery", "Features", "Assessment & Certification"]);
 
     const semester = ibmProgrammes.find(p => p.slug === "ibm-semester-industry-learning")!;
     const semesterTitles = ibmProgrammeSections(semester).map(s => s.title);
     expect(semesterTitles).not.toContain("Eligibility & Prerequisites");
     expect(semesterTitles).not.toContain("Admission Process");
-    expect(semesterTitles[0]).toBe("Overview");
+    expect(semesterTitles).not.toContain("Overview"); // the header already carries the overview
   });
 
   it("words the teaching role separately from the certificate issuer", () => {
@@ -122,11 +122,11 @@ describe("IBM programme page sections", () => {
     const headings = [...container.querySelectorAll(".programme-detail-section h2")].map(h => h.textContent?.trim());
     expect(headings[headings.length - 1]).toBe("Enquiry");
 
-    // XIME keeps its brochure-first label; SVU pages carry no brochure at all.
+    // XIME offers no brochure, so its closing section is simply "Enquiry".
     const xime = programmes.find(p => p.organisation === "XIME")!;
     const other = render(<MemoryRouter><ProgrammeDetail programme={xime} /></MemoryRouter>);
     const otherHeadings = [...other.container.querySelectorAll(".programme-detail-section h2")].map(h => h.textContent?.trim());
-    expect(otherHeadings[otherHeadings.length - 1]).toBe("Brochure & Enquiry");
+    expect(otherHeadings[otherHeadings.length - 1]).toBe("Enquiry");
   });
 });
 
