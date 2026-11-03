@@ -386,4 +386,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 
 - [x] SVU records + programmes tables: single flat colour, no gradients (navy only) — 3 Nov 2026
 - [x] SkillShone writing-pad clip: sized and centred, aligned with the title tile — 3 Nov 2026
-- [ ] SkillShone/SVU: restyle the "View Participating Students" link to the supplied circular-arrow treatment (reference: Harvard "Benefits and rewards" block); keep the accordion behaviour, approved names and test-only rules.
+- [x] "View Participating Students" restyled as a navy disc with a white arrow beside the label (client reference, 3 Nov 2026); accordion behaviour, 15 approved names and test-only rules unchanged, verified 1280/390px.
