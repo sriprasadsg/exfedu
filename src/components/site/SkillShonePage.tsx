@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowUpRight, ArrowRight, GraduationCap, Landmark, Search, Database, Code2, GitPullRequest, FileText, MessageSquareText, Sparkles, BrainCircuit, MessageSquare, Terminal, FlaskConical, type LucideIcon } from "lucide-react";
 import type { Page, Tone } from "@/data/site";
 import { BlockView } from "@/components/site/Blocks";
+import { usePageTitle } from "@/hooks/usePageTitle";
 import skillshoneLogo from "@/assets/skillshone-original.png.asset.json";
 import featProblems from "@/assets/ss-feat-problems.png";
 import featDatasets from "@/assets/ss-feat-datasets.png";
@@ -100,7 +101,13 @@ const JourneyGrid = () => (
 );
 
 
-export default function SkillShonePage({ page, breadcrumb }: { page: Page; breadcrumb: React.ReactNode }) {
+export default function SkillShonePage({ page }: { page: Page }) {
+  usePageTitle("SkillShone | AI Project Learning Platform | Exafluence Education", "SkillShone by Exafluence Education: solve industry-grade problems using AI and Gen AI, for learners and institutions.");
+  const breadcrumb = (
+    <nav className="text-sm text-muted-foreground" aria-label="Breadcrumb">
+      <Link to="/" className="hover:text-primary">Home</Link> / <span aria-current="page">SkillShone</span>
+    </nav>
+  );
   const faq = page.blocks.find((b): b is Extract<Page["blocks"][number], { type: "faq" }> => b.type === "faq");
   const cta = page.blocks.find((b) => b.type === "cta");
   const faqItems = faq?.items ?? [];

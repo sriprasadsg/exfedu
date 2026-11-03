@@ -22,7 +22,7 @@ describe("SVU programme USP presentation (client brief, 2 November 2026)", () =>
   it("opens with Built Around Practical Learning before the details", () => {
     const { container } = renderPage(msds);
     expect(headings(container)[0]).toBe("Built Around Practical Learning");
-    expect(headings(container)[1]).toBe("Overview");
+    expect(headings(container)).not.toContain("Overview");
   });
 
   it("lists all five strengths where the 80:20 split is confirmed", () => {

@@ -424,7 +424,7 @@
 .svu-outcome:hover { background: hsl(var(--connection-blue) / .04); transform: translateY(-2px); }
 .svu-outcome-batch { display: inline-flex; align-items: center; gap: 7px; padding: 4px 11px; border-radius: 999px; font-size: 11px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: hsl(var(--connection-teal)); background: hsl(var(--connection-teal) / .1); border: 1px solid hsl(var(--connection-teal) / .3); }
 .svu-outcome-batch::before { content: ""; width: 6px; height: 6px; border-radius: 999px; background: hsl(var(--connection-teal)); }
-.svu-outcome h2 { font-size: 17px; font-weight: 500; line-height: 1.4; color: hsl(var(--navy-900)); margin-top: 8px; }
+.svu-outcome h3 { font-size: 17px; font-weight: 500; line-height: 1.4; color: hsl(var(--navy-900)); margin-top: 8px; }
 .svu-outcome-role { font-size: 14px; font-weight: 500; color: hsl(var(--navy-900) / .8); margin-top: 10px; }
 .svu-outcome-org { font-size: 13px; line-height: 1.6; color: hsl(var(--muted-foreground)); margin-top: 2px; }
 @media (max-width: 900px) { .svu-outcomes { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
@@ -660,4 +660,25 @@ body:not(:has(.homepage-static)) main .svu-champion-title {
 @media (prefers-reduced-motion: reduce) {
   .programme-experience:not(.ibm-page) .programme-section-icon,
   .programme-experience .programme-facts svg { animation: none; }
+}
+
+/* Refinement pass (client, 3 November 2026). */
+/* Clear separation between the introduction and the records table/cards. */
+.svu-career-records-heading { margin-top: 40px; margin-bottom: 18px; padding-top: 28px; border-top: 1px solid hsl(var(--academic-edge)); font-size: 22px; font-weight: 500; line-height: 1.3; }
+/* Collaboration banners: shorter artwork band and a panel that sits closer, so the
+   artwork and copy balance without a large empty gap. */
+.network-image { height: 320px; }
+.network-image > img { width: min(640px, 54%); }
+.network-panel { margin-top: -120px; width: min(600px, 60%); padding: 24px 28px; }
+.network-section { padding-block: 32px 20px; }
+.programme-intro { padding-block: 22px 36px; }
+.programme-intro nav { margin-bottom: 22px; }
+@media (max-width: 767px) {
+  .network-image { height: 220px; }
+  .network-panel { margin: -48px 12px 0; width: auto; }
+}
+/* Collaboration and programme pages: consistent solid dark navy headings. */
+body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme-experience) :is(h1, h2, h3, h4, h5),
+body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme-experience) :is(h1, h2, h3, h4, h5) :is(a, em, strong, span, small, cite) {
+  background-image: none; -webkit-text-fill-color: currentColor; color: hsl(var(--navy-800));
 }

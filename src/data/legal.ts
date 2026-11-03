@@ -22,7 +22,7 @@ export const privacyPolicy: LegalDocument = {
   path: "/privacy-policy",
   title: "Privacy Policy",
   tagline: "Your information, handled with care.",
-  lastUpdated: "3 November 2026",
+  lastUpdated: "2 November 2026",
   intro: [
     "Exafluence Education (Exfedu), an Edtech Division of Exafluence Inc., USA, respects your privacy. This policy explains how personal information is collected, used and protected when you visit our website, submit an enquiry or interact with our educational services.",
     "Entity responsible for this website and your personal information: Exafluence Education (Exfedu), Edtech Division of Exafluence Inc., USA.",
@@ -114,7 +114,7 @@ export const termsAndConditions: LegalDocument = {
   path: "/terms-and-conditions",
   title: "Terms & Conditions",
   tagline: "Clear information for using our website and exploring our programmes.",
-  lastUpdated: "3 November 2026",
+  lastUpdated: "2 November 2026",
   intro: [
     "These Terms & Conditions govern your use of the Exafluence Education (Exfedu) website, operated by Exafluence Education (Exfedu), Edtech Division of Exafluence Inc., USA. Programme enrolment is also subject to the specific terms provided by the relevant institution or programme provider.",
   ],

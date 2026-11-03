@@ -11,8 +11,9 @@ export type DetailSection = {
   content?: string; items?: string[]; sub?: { label: string; items: string[] }; note?: string;
 };
 
-export const programmeDetailSections = (p: Programme): DetailSection[] => [
-  { title: "Overview", icon: BookOpen, tone: "blue", content: p.overview, note: p.practical },
+export const programmeDetailSections = (p: Programme): DetailSection[] => ([
+  // The overview already opens the page header, so it is not repeated here.
+  p.practical ? { title: "Practical Learning", icon: BookOpen, tone: "blue", content: p.practical } : false,
   { title: "Eligibility", icon: GraduationCap, tone: "teal", content: p.eligibility },
   { title: "Duration & Delivery", icon: Clock3, tone: "amber", content: `${p.duration} · ${p.delivery}` },
   { title: "Features", icon: Sparkles, tone: "violet", items: p.features },
@@ -21,8 +22,9 @@ export const programmeDetailSections = (p: Programme): DetailSection[] => [
     sub: p.tools?.length ? { label: "Tools and technologies", items: p.tools } : undefined,
   },
   { title: "Admission Process", icon: CalendarDays, tone: "teal", content: p.admissions },
-  { title: "Joint Certification on Completion", icon: Award, tone: "amber", content: p.recognition },
-];
+  // Shown only with approved wording; never a placeholder or invented certificate.
+  p.recognition ? { title: "Joint Certification on Completion", icon: Award, tone: "amber", content: p.recognition } : false,
+] as (DetailSection | false)[]).filter((section): section is DetailSection => !!section);
 
 /** IBM programme pages (client brief, 2 November 2026): Overview → Learning Outcomes →
  * Eligibility & Prerequisites → Curriculum → Tools & Practical Activities →
@@ -32,7 +34,6 @@ export const programmeDetailSections = (p: Programme): DetailSection[] => [
 export const ibmProgrammeSections = (p: Programme): DetailSection[] => {
   const facts = ibmFacts(p.slug);
   const sections: (DetailSection | false)[] = [
-    { title: "Overview", icon: BookOpen, tone: "blue", content: p.overview },
     facts.outcomes ? { title: "Learning Outcomes", icon: Target, tone: "teal", items: facts.outcomes } : false,
     p.eligibility ? { title: "Eligibility & Prerequisites", icon: GraduationCap, tone: "teal", content: p.eligibility } : false,
     p.curriculum?.length ? { title: "Curriculum", icon: Layers, tone: "blue", items: p.curriculum } : false,
