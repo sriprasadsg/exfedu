@@ -1582,10 +1582,17 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
   margin-inline: auto;
   max-width: 64rem;
   padding: 1.05rem 1.7rem 1.2rem;
-  border: 1px solid hsl(var(--input) / .6);
+  border: 1px solid hsl(var(--nav-tint) / .75);
   border-radius: 22px;
   background: linear-gradient(160deg, hsl(var(--muted)), hsl(var(--input) / .55));
-  box-shadow: 0 18px 34px -22px hsl(var(--primary) / .4);
+  /* Client, 3 Nov 2026: "bring writing pad only the outer of edge of the pad make glow" — every
+     layer here sits outside the board. Nothing is painted inward, so the grey pad, the white
+     paper and the navy clip keep their exact look and only the outline reads as lit. */
+  box-shadow:
+    0 0 0 1px hsl(var(--nav-tint) / .9),
+    0 0 12px 1px hsl(var(--connection-blue) / .34),
+    0 0 30px 8px hsl(var(--connection-blue) / .18),
+    0 18px 34px -22px hsl(var(--primary) / .4);
 }
 /* The front is one plain white sheet of paper split into two partitions. */
 .ss-pad-sheet {
