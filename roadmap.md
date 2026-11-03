@@ -373,4 +373,3 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Home page centre mark: pen nib writes with one short gentle stroke back and forth, pivoting on its tip; cap layer and text stay still. Verified in browser (nib-only movement, no ghosting, phone intact).
 - [x] SkillShone writing pad: tighter inside spacing only — clip and pad width kept as they are (measured: desktop 1024x1029, phone 350x941, no side overflow).
 - [x] Add a "Tools, Platforms & Technologies" section from the client's uploaded brief — 8 categories, 22 technologies, official marks, placed between Applied AI and Data Science and Research and Technical Exploration on SVU Overview. Verified in browser and by src/test/svu-tools.test.tsx.
-- [ ] Add a "Tools, Platforms & Technologies" section from the client's uploaded brief (no message with it) — read the brief, confirm placement, then build.
