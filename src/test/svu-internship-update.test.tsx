@@ -1,5 +1,4 @@
-import { render, screen } from "@testing-library/react";
-import { fireEvent } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import SvuCareerRecords from "@/components/site/SvuCareerRecords";
 import { svuInternshipUpdate } from "@/data/svuCareer";
@@ -44,8 +43,9 @@ describe("SVU internships programme update (client, 3 November 2026)", () => {
     expect(screen.getByRole("heading", { level: 2, name: "Advancing Skills in Generative AI" })).toBeTruthy();
     expect(screen.getByText("Enrolled")).toBeTruthy();
     expect(screen.getByText("Supporting record: Batch 3")).toBeTruthy();
-    ["15 Students Enrolled", "15 Days", "4 Planned Projects", "Online"].forEach(item =>
-      expect(screen.getByRole("listitem", { name: item })).toBeTruthy()
+    const highlightList = screen.getByRole("list", { name: "Internship highlights" });
+    expect([...highlightList.querySelectorAll("li")].map(li => li.textContent?.trim())).toEqual(
+      ["15 Students Enrolled", "15 Days", "4 Planned Projects", "Online"]
     );
     expect(screen.getByText(svuInternshipUpdate.summary)).toBeTruthy();
   });
