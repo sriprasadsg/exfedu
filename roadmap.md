@@ -388,3 +388,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] SkillShone writing-pad clip: sized and centred, aligned with the title tile — 3 Nov 2026
 - [x] "View Participating Students" restyled as a navy disc with a white arrow beside the label (client reference, 3 Nov 2026); accordion behaviour, 15 approved names and test-only rules unchanged, verified 1280/390px.
 - [x] Writing pad: soft sky-blue glow added to the pad's outer edge only (client, 3 Nov 2026); pad surface, white paper and navy clip untouched, verified 1280/390px.
+- [x] SVU collaboration artwork: replaced with the client's new Data Science laptop render (3 Nov 2026); earlier render archived as an unused CDN asset, verified 1280/390px.
