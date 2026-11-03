@@ -845,6 +845,7 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 .fd .fd-role { font-size: 12.5px; font-weight: 400; line-height: 1.45; color: hsl(var(--muted-foreground)); margin-top: 3px; }
 .fd .fd-desc { font-size: 14px; line-height: 1.6; color: hsl(var(--primary) / .82); margin-top: 10px; }
 
-@media (max-width: 1023px) { .fd-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 639px) { .fd-grid { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 1023px) { .fd .fd-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 639px) { .fd .fd-grid { grid-template-columns: minmax(0, 1fr); } }
+
 
