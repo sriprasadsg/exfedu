@@ -65,7 +65,6 @@ const IbmPages = () => {
 
         <section className="ibm-block" aria-labelledby="ibm-applied-heading">
           <h2 id="ibm-applied-heading">{ibmOverview.applied.title}</h2>
-          <p>{ibmOverview.applied.text}</p>
           <ul className="ibm-steps">
             <li><span className="programme-section-icon tone-blue"><BookOpen size={21} aria-hidden="true" /></span><p>Understand the principles behind the technology</p></li>
             <li><span className="programme-section-icon tone-teal"><Wrench size={21} aria-hidden="true" /></span><p>Explore the tools specified in your programme</p></li>
