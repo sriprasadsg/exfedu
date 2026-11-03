@@ -4,13 +4,10 @@ import { Button } from "@/components/ui/button";
 import { collaborationSlides, organisations, organisationSections, programmes, PENDING, type Organisation } from "@/data/site";
 import { SvuOverviewContent, SvuResearchContent } from "./SvuReviewedContent";
 import { organisationPath, programmePath } from "@/lib/programmeNavigation";
-import ProgrammeDetail from "./ProgrammeDetail";
-import XimeProgramme from "./XimeProgramme";
 import { useProgrammeSeo } from "./ProgrammeDirectory";
 import { svuOverview } from "@/data/svuOverview";
 import SvuCareerRecords from "./SvuCareerRecords";
 import NetworkBackButton from "./NetworkBackButton";
-import ximeBanner from "@/assets/xime-fintech-platform-v2.png";
 
 const OrganisationProgrammes = ({ organisation }: { organisation: Organisation }) => {
   const org = organisations[organisation];
@@ -18,8 +15,6 @@ const OrganisationProgrammes = ({ organisation }: { organisation: Organisation }
   const slide = collaborationSlides.find(s => s.organisation === organisation);
   const sections = organisationSections[organisation];
   useProgrammeSeo(organisation === "SVU" ? svuOverview.seoTitle : `${org.name} Programmes | Exafluence Education`, organisation === "SVU" ? svuOverview.seoDescription : slide?.text ?? `Explore ${org.name} programmes with Exafluence Education.`);
-  if (organisation === "XIME" && shown.length === 1) return <ProgrammeDetail programme={shown[0]} organisationOverview />;
-  if (organisation === "XIME" && shown.length === 0) return <XimeProgramme />;
 
   const programmeList = <div className="organisation-programme-list">{shown.map(p => <article key={p.slug} className="organisation-programme-item">
     <span className={`programme-section-icon tone-${p.tone}`}><p.icon size={23} aria-hidden="true" /></span>
@@ -42,7 +37,6 @@ const OrganisationProgrammes = ({ organisation }: { organisation: Organisation }
           <img className={`programme-detail-logo ${org.logoClass}`} src={org.logo} alt={`${org.name} logo`} />
           <h1>{org.name} Programmes</h1><p>{slide?.text}</p>
         </div>
-        {organisation === "XIME" && <figure className="programme-intro-art"><img src={ximeBanner} alt="Illustration: a central fintech platform connected to four services for data, networks, payments and analytics" loading="lazy" /></figure>}
       </div>}
     </div></header>
     {sections && <nav aria-label={`${org.name} sections`} className="organisation-section-nav"><div className="container organisation-section-nav-inner">{sections.map(section => <a key={section.id} href={`#${section.id}`}><section.icon size={16} aria-hidden="true" />{section.title}</a>)}</div></nav>}
@@ -58,7 +52,7 @@ const OrganisationProgrammes = ({ organisation }: { organisation: Organisation }
           {section.id === "projects-research" && <SvuResearchContent />}
           {(section.id === "internships" || section.id === "placements") && <SvuCareerRecords kind={section.id} />}
         </section>) : <section aria-label={`${org.name} programmes`}>
-          {shown.length > 0 ? <><h2 className="organisation-list-heading">Programmes <span>{shown.length} programmes</span></h2>{programmeList}</> : <div className="programme-empty"><BookOpen size={30} aria-hidden="true" /><h2>{PENDING}</h2><p>XIME Chennai programme title, duration, delivery mode, eligibility, curriculum and certification information await verified source content.</p><a href="https://www.ximecexfedu.com" target="_blank" rel="noopener noreferrer">XIME Chennai programme source <ArrowRight size={15} className="inline" /></a></div>}
+          {shown.length > 0 ? <><h2 className="organisation-list-heading">Programmes <span>{shown.length} programmes</span></h2>{programmeList}</> : <div className="programme-empty"><BookOpen size={30} aria-hidden="true" /><h2>{PENDING}</h2><p>Programme title, duration, delivery mode, eligibility, curriculum and certification information await verified source content.</p></div>}
         </section>}
       </div>
       <aside className="programme-actions"><h2>Our Collaboration Network</h2><nav aria-label="Collaboration organisations" className="organisation-links">{(Object.keys(organisations) as Organisation[]).map(key => <Link key={key} to={organisationPath(key)} aria-current={key === organisation ? "page" : undefined}>{organisations[key].name}<ArrowRight size={15} /></Link>)}</nav><Button variant="outline" asChild><Link to="/collaboration-network"><ArrowLeft size={16} />Back to Our Collaboration Network</Link></Button></aside>

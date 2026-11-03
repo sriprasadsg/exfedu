@@ -41,9 +41,8 @@
 .programme-intro h1 { font-size: 38px; font-weight: 500; line-height: 1.2; max-width: 950px; }
 .programme-intro p { max-width: 850px; font-size: 16px; line-height: 1.8; margin-top: 16px; }
 .programme-intro .programme-subtitle { font-size: 20px; color: hsl(var(--programme-blue)); }
-/* XIME page banner (client brief, 3 November 2026): the supplied AI-FinTech platform render
-   sits beside the introduction, mirroring the IBM page's intro artwork footprint. Scoped to a
-   modifier class so every other programme page keeps its full-width introduction. */
+/* Organisation intro banner grid: copy on the left, optional artwork panel on the right.
+   Scoped to a modifier class so every other programme page keeps its full-width introduction. */
 .programme-intro-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 48px; align-items: center; }
 .programme-intro-art { display: flex; justify-content: center; background: hsl(var(--card)); border: 1px solid hsl(var(--academic-edge)); border-radius: 16px; padding: 18px; box-shadow: 0 14px 30px -26px hsl(var(--navy-900) / .5); }
 .programme-intro-art img { width: 100%; max-width: 440px; max-height: 320px; object-fit: contain; }
@@ -76,7 +75,6 @@
 .programme-org { font-size: 12px; color: hsl(var(--programme-blue)); }
 .programme-org-svu { color: hsl(var(--connection-blue)); }
 .programme-org-ibm { color: hsl(var(--connection-violet)); }
-.programme-org-xime { color: hsl(var(--connection-teal)); }
 .programme-row:last-child { border-bottom: 0; }
 .programme-mobile-label { display: none; }
 .programme-empty { padding: 45px 0; display: flex; flex-direction: column; align-items: flex-start; gap: 16px; border-block: 1px solid hsl(var(--academic-edge)); }
@@ -126,11 +124,6 @@
 .organisation-links { display: flex; flex-direction: column; }
 .organisation-links a { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 14px; padding-block: 14px; border-bottom: 1px solid hsl(var(--academic-edge)); }
 .organisation-links a[aria-current=page] { color: hsl(var(--connection-blue)); font-weight: 500; }
-.xime-review { border-left: 2px solid hsl(var(--academic-edge)); padding-left: 16px; margin-block: 12px; }
-.xime-review p { margin-top: 5px; color: hsl(var(--muted-foreground)); }
-.xime-duration { display: flex; flex-wrap: wrap; gap: 24px 64px; }
-.xime-duration dt { font-size: 13px; color: hsl(var(--muted-foreground)); }
-.xime-duration dd { margin-top: 6px; font-size: 15px; }
 .organisation-programmes .programme-actions > a { white-space: normal; height: auto; min-height: 44px; line-height: 1.5; }
 @media (max-width: 1050px) { .organisation-programme-body { gap: 32px; grid-template-columns: minmax(0, 1fr) 240px; } }
 @media (max-width: 767px) { .organisation-programme-body { grid-template-columns: minmax(0, 1fr); } .organisation-list-heading { flex-wrap: wrap; font-size: 22px; } .organisation-programme-item { gap: 14px; } .organisation-programme-item h2 { font-size: 20px; } }
@@ -687,7 +680,7 @@ body:not(:has(.homepage-static)) main .svu-champion-title {
   -webkit-text-fill-color: hsl(var(--navy-900)); color: hsl(var(--navy-900));
 }
 
-/* Programme detail pages (XIME FinTech and the other organisation courses):
+/* Programme detail pages (the organisation courses):
    the icons already sitting on the page drift gently, so the section markers and
    the duration / delivery marks feel alive without pulling focus from the text.
    IBM keeps its own float rule, so it is excluded here to avoid double animation.
