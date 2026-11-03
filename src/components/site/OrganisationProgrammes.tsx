@@ -10,7 +10,7 @@ import { useProgrammeSeo } from "./ProgrammeDirectory";
 import { svuOverview } from "@/data/svuOverview";
 import SvuCareerRecords from "./SvuCareerRecords";
 import NetworkBackButton from "./NetworkBackButton";
-import ximeBanner from "@/assets/xime-fintech-platform-v2.png.asset.json";
+import ximeBanner from "@/assets/xime-fintech-platform-v2.png";
 
 const OrganisationProgrammes = ({ organisation }: { organisation: Organisation }) => {
   const org = organisations[organisation];
@@ -42,7 +42,7 @@ const OrganisationProgrammes = ({ organisation }: { organisation: Organisation }
           <img className={`programme-detail-logo ${org.logoClass}`} src={org.logo} alt={`${org.name} logo`} />
           <h1>{org.name} Programmes</h1><p>{slide?.text}</p>
         </div>
-        {organisation === "XIME" && <figure className="programme-intro-art"><img src={ximeBanner.url} alt="Illustration: a central fintech platform connected to four services for data, networks, payments and analytics" loading="lazy" /></figure>}
+        {organisation === "XIME" && <figure className="programme-intro-art"><img src={ximeBanner} alt="Illustration: a central fintech platform connected to four services for data, networks, payments and analytics" loading="lazy" /></figure>}
       </div>}
     </div></header>
     {sections && <nav aria-label={`${org.name} sections`} className="organisation-section-nav"><div className="container organisation-section-nav-inner">{sections.map(section => <a key={section.id} href={`#${section.id}`}><section.icon size={16} aria-hidden="true" />{section.title}</a>)}</div></nav>}

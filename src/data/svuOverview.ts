@@ -1,6 +1,6 @@
 import { BarChart3, BrainCircuit, Database, ScanEye } from "lucide-react";
-import innovation from "@/assets/svu-innovation-hub.png.asset.json";
-import summitGroup from "@/assets/svu-paniit-delegation.jpg.asset.json";
+import innovation from "@/assets/svu-innovation-hub.png";
+import summitGroup from "@/assets/svu-paniit-delegation.jpg";
 
 
 export const svuOverview = {
@@ -20,6 +20,6 @@ export const svuProjectAreas = [
 
 // The wide PanIIT group photograph appears once, inside its card, with nobody stretched or cropped.
 export const svuOverviewAchievements = [
-  { title: "Innovation Showcase", text: "Students demonstrated their product at the Ratan Tata Innovation Hub in Tirupati.", photo: innovation.url, alt: "Student innovation presentation, Tirupati", caption: "" },
-  { title: "Technology Community Participation", text: "MS Data Science students participated in the PanIIT Andhra Pradesh Summit 2026, gaining exposure to emerging technologies and industry discussions.", photo: summitGroup.url, alt: "SVU\u2013Exafluence student participation at the PanIIT Andhra Pradesh Summit 2026", caption: "SVU\u2013Exafluence student participation at the PanIIT Andhra Pradesh Summit 2026." },
+  { title: "Innovation Showcase", text: "Students demonstrated their product at the Ratan Tata Innovation Hub in Tirupati.", photo: innovation, alt: "Student innovation presentation, Tirupati", caption: "" },
+  { title: "Technology Community Participation", text: "MS Data Science students participated in the PanIIT Andhra Pradesh Summit 2026, gaining exposure to emerging technologies and industry discussions.", photo: summitGroup, alt: "SVU\u2013Exafluence student participation at the PanIIT Andhra Pradesh Summit 2026", caption: "SVU\u2013Exafluence student participation at the PanIIT Andhra Pradesh Summit 2026." },
 ];

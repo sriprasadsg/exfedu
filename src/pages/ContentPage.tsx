@@ -3,8 +3,8 @@ import Layout from "@/components/layout/Layout";
 import NotFound from "./NotFound";
 import { BlockView } from "@/components/site/Blocks";
 import { categories, findPage, navPages, retiredPageDestinations } from "@/data/site";
-import programmesCap from "@/assets/programmes-cap.png.asset.json";
-import internshipsBanner from "@/assets/internships-banner.jpg.asset.json";
+import programmesCap from "@/assets/programmes-cap.png";
+import internshipsBanner from "@/assets/internships-banner.jpg";
 import SkillShonePage from "@/components/site/SkillShonePage";
 import successImg from "@/assets/hero-success.png";
 import IbmPages from "@/components/site/IbmPages";
@@ -148,7 +148,7 @@ const ContentPage = () => {
             <div className="mt-8">{heading}</div>
           </div>
           <img
-            src={page.path === "/programmes" ? programmesCap.url : internshipsBanner.url}
+            src={page.path === "/programmes" ? programmesCap : internshipsBanner}
             alt=""
             aria-hidden="true"
             width={page.path === "/programmes" ? 914 : 1536}

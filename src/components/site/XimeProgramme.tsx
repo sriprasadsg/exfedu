@@ -8,7 +8,7 @@ import { organisations, type Tone } from "@/data/site";
 import { ximeProgrammeContent as content } from "@/data/xime";
 import { useProgrammeSeo } from "./ProgrammeDirectory";
 import NetworkBackButton from "./NetworkBackButton";
-import ximeBanner from "@/assets/xime-fintech-platform-v2.png.asset.json";
+import ximeBanner from "@/assets/xime-fintech-platform-v2.png";
 
 type Section = { title: string; icon: LucideIcon; tone: Tone; text?: string; items?: string[]; missing: string };
 const XimeProgramme = () => {
@@ -47,7 +47,7 @@ const XimeProgramme = () => {
           <h1>{content.title ?? "XIME Chennai Programme"}</h1>
           {!content.overview && <p className="programme-review-note">Programme information is awaiting verification from the XIME Chennai source.</p>}
         </div>
-        <figure className="programme-intro-art"><img src={ximeBanner.url} alt="Illustration: a central fintech platform connected to four services for data, networks, payments and analytics" loading="lazy" /></figure>
+        <figure className="programme-intro-art"><img src={ximeBanner} alt="Illustration: a central fintech platform connected to four services for data, networks, payments and analytics" loading="lazy" /></figure>
       </div>
     </div></header>
     <div className="container programme-detail-body"><div className="programme-reading" ref={reading}>

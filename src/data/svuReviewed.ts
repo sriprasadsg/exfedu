@@ -1,6 +1,6 @@
-import innovation from "@/assets/svu-innovation-hub.png.asset.json";
-import summitStudents from "@/assets/svu-paniit-students.jpg.asset.json";
-import summitDelegation from "@/assets/svu-paniit-delegation.jpg.asset.json";
+import innovation from "@/assets/svu-innovation-hub.png";
+import summitStudents from "@/assets/svu-paniit-students.jpg";
+import summitDelegation from "@/assets/svu-paniit-delegation.jpg";
 
 export const svuAchievements = [
   { title: "Quantum Wave", highlight: "First place in the AP Quantum Hackathon", text: "First place in the AP Quantum Hackathon 2025 semi-finals. The student project applies quantum computing and explainable AI to FTSE 100 market forecasting.", href: "https://www.youtube.com/watch?v=8WbUsQBxnnw", label: "View news coverage" },
@@ -11,9 +11,9 @@ export const svuEvents = [
   { title: "Python & Professional Readiness Sessions", text: "Python training, free soft-skills sessions and mock interviews support technical knowledge, communication, aptitude and interview preparation." },
 ];
 export const svuGallery = [
-  { src: innovation.url, caption: "Student innovation presentation, Tirupati" },
-  { src: summitStudents.url, caption: "M.S. Data Science students at PanIIT Andhra Pradesh Summit 2026" },
-  { src: summitDelegation.url, caption: "PanIIT Andhra Pradesh Summit 2026 delegation" },
+  { src: innovation, caption: "Student innovation presentation, Tirupati" },
+  { src: summitStudents, caption: "M.S. Data Science students at PanIIT Andhra Pradesh Summit 2026" },
+  { src: summitDelegation, caption: "PanIIT Andhra Pradesh Summit 2026 delegation" },
 ];
 export const svuResearchMetrics = [
   { value: 13, label: "Published research papers", context: "MSDS batch 2023–2025" },

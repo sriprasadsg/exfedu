@@ -4,7 +4,7 @@ import {
   Banknote, HeartPulse, ShoppingBag, Factory, Database, MessagesSquare, FileText,
   Landmark, Compass, Sparkles, Handshake,
 } from "lucide-react";
-import sculpture from "@/assets/about-icon-relief.png.asset.json";
+import sculpture from "@/assets/about-icon-relief.png";
 
 export type AboutOverviewData = {
   title: string;
@@ -80,7 +80,7 @@ export default function AboutOverview({ data }: { data: AboutOverviewData }) {
           <p className="about-editorial-subtitle">{data.subtitle}</p>
           {data.introduction.map((text) => <p key={text}>{text}</p>)}
         </div>
-        <figure><img src={sculpture.url} width={878} height={1545} alt="Tall stack of matte sky-blue spheres and tilted discs carrying icons of a factory and gear, a rising chart, a processor, a cloud, a starred document and people reading a book, linked by a beaded thread" /></figure>
+        <figure><img src={sculpture} width={878} height={1545} alt="Tall stack of matte sky-blue spheres and tilted discs carrying icons of a factory and gear, a rising chart, a processor, a cloud, a starred document and people reading a book, linked by a beaded thread" /></figure>
       </div>
     </header>
 
