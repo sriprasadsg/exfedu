@@ -847,5 +847,11 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 
 @media (max-width: 1023px) { .fd .fd-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 639px) { .fd .fd-grid { grid-template-columns: minmax(0, 1fr); } }
+.fd.fd-page { margin-top: 48px; }
+.fd.fd-page .fd-title { font-size: 24px; margin-bottom: 6px; }
+.fd .fd-intro { font-size: 15px; line-height: 1.7; color: hsl(var(--muted-foreground)); margin: 0 0 20px; max-width: 70ch; }
+.fd.fd-page .fd-cell { border-top: 3px solid hsl(var(--primary)); }
+.svu-faculty-callout { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-top: 20px; padding: 18px 20px; border: 1px solid hsl(var(--academic-edge)); border-radius: 8px; }
+.svu-faculty-callout p { margin: 0; }
 
 

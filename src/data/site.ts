@@ -1,6 +1,6 @@
 import {
   Building, Building2, Landmark, Network, BookOpen, FlaskConical, Briefcase, Compass, Lightbulb, Award,
-  LayoutGrid, MonitorPlay, Images, Newspaper, Mail, GraduationCap,
+  LayoutGrid, MonitorPlay, Images, Newspaper, Mail, GraduationCap, Users,
   Code2, BarChart3, Cloud, Sparkles, Database, Terminal, Presentation, Rocket, Cpu, Layers, PieChart, type LucideIcon,
 } from "lucide-react";
 import type { AboutStoryData } from "@/components/site/AboutStory";
