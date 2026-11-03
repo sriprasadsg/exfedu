@@ -91,6 +91,15 @@ const art: Record<string, () => JSX.Element> = { SVU: SvuArt, IBM: IbmArt, XIME:
 const BannerStory = ({ organisation, active }: { organisation: Organisation; active: boolean }) => {
   const [run, setRun] = useState(0);
   useEffect(() => { if (active) setRun(r => r + 1); }, [active]);
+  /* SVU carries a static 3D laptop-and-dashboard mockup (client brief, 3 Nov 2026):
+     a conceptual Data Science learning illustration, not a real platform. */
+  if (organisation === "SVU") {
+    return (
+      <figure className="banner-story">
+        <img className="bs-static" src={svuLaptopDashboard} alt="Illustration: a laptop with a Python analysis workspace and a floating data dashboard showing a dataset, a chart and insights" loading="lazy" />
+      </figure>
+    );
+  }
   const Art = art[organisation] ?? SvuArt;
   const [a, b, c] = labels[organisation] ?? labels.SVU;
   return (

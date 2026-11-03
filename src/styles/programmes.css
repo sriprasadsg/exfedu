@@ -690,6 +690,8 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 .network-visual { min-width: 0; }
 .banner-story { position: relative; margin: 0; }
 .bs-svg { display: block; width: 100%; height: auto; font-family: inherit; overflow: visible; }
+/* SVU static laptop mockup: fills the artwork column, keeps its proportions, never cropped. */
+.bs-static { display: block; width: 100%; height: auto; }
 .bs-frame { fill: hsl(var(--background)); stroke: hsl(var(--navy-800)); stroke-width: 1.5; }
 .bs-cell { fill: hsl(214 30% 90%); }
 .bs-fill-soft { fill: hsl(210 80% 94%); }
