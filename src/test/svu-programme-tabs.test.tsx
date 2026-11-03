@@ -34,15 +34,15 @@ describe("SVU programme page navigation order", () => {
     expect(firstSection).toBeGreaterThan(intro);
   });
 
-  it("keeps Programmes the active tab and aligns the bar with the page container", () => {
+  it("keeps Overview & Programmes the active tab and aligns the bar with the page container", () => {
     const { container } = open();
     const bar = container.querySelector("nav[aria-label='Sri Venkateswara University sections']")!;
     const inner = bar.firstElementChild as HTMLElement;
 
     expect(inner.classList.contains("container")).toBe(true);
     expect(inner.classList.contains("svu-container")).toBe(false);
-    expect(bar.querySelector("a.is-active")?.textContent).toBe("Programmes");
-    expect(bar.querySelector("[aria-current='page']")?.textContent).toBe("Programmes");
+    expect(bar.querySelector("a.is-active")?.textContent).toBe("Overview & Programmes");
+    expect(bar.querySelector("[aria-current='page']")?.textContent).toBe("Overview & Programmes");
   });
 
   it("leaves other partners' programme pages untouched", () => {

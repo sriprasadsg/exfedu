@@ -37,7 +37,9 @@ describe("SVU Overview — Technologies You Work With", () => {
     const { container } = overview();
     const headings = [...container.querySelectorAll(".svu-flow .svu-block h2")].map(h => h.textContent!.trim());
     expect(headings).not.toContain("Tools, Platforms & Technologies");
-    expect(headings.indexOf("Technologies You Work With")).toBe(headings.indexOf("Applied AI and Data Science") + 1);
+    // Programmes now sit between Applied AI and the technologies strip (3 Nov 2026 page flow).
+    expect(headings.indexOf("Technologies You Work With")).toBe(headings.indexOf("Industry-Integrated Programmes") + 1);
+    expect(headings.indexOf("Industry-Integrated Programmes")).toBe(headings.indexOf("Applied AI and Data Science") + 1);
     expect(headings.indexOf("Research and Technical Exploration")).toBe(headings.indexOf("Technologies You Work With") + 1);
     expect(container.querySelector(".svu-tech .svu-reading")?.textContent).toBe(
       "Explore the tools, platforms and emerging technologies featured across SVU\u2013Exafluence programmes. Coverage varies by programme and curriculum.",

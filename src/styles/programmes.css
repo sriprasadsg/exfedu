@@ -256,7 +256,7 @@
 @media (prefers-reduced-motion: reduce) { .svu-overview-intro { animation: none; } }
 
 .svu-career-records { color: hsl(var(--muted-foreground)); }
-.svu-career-records > h1 { font-size: 22px; line-height: 1.4; font-weight: 500; color: hsl(var(--navy-900)); }
+.svu-career-records > h1, .svu-outcome-part .svu-career-records > h2:first-child { font-size: 22px; line-height: 1.4; font-weight: 500; color: hsl(var(--navy-900)); }
 .svu-career-records > p { font-size: 14px; line-height: 1.8; margin-top: 14px; }
 .svu-career-records .svu-career-subtitle { font-style: italic; margin-top: 8px; }
 .svu-career-filters { display: grid; grid-template-columns: minmax(0, 1fr) 180px 40px; align-items: end; gap: 12px; margin-top: 24px; }
@@ -847,5 +847,14 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 
 @media (max-width: 1023px) { .fd .fd-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 639px) { .fd .fd-grid { grid-template-columns: minmax(0, 1fr); } }
+.fd.fd-page { margin-top: 48px; }
+.fd.fd-page .fd-title { font-size: 24px; margin-bottom: 6px; }
+.fd .fd-intro { font-size: 15px; line-height: 1.7; color: hsl(var(--muted-foreground)); margin: 0 0 20px; max-width: 70ch; }
+.fd.fd-page .fd-cell { border-top: 3px solid hsl(var(--primary)); }
+.svu-faculty-callout { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-top: 20px; padding: 18px 20px; border: 1px solid hsl(var(--academic-edge)); border-radius: 8px; }
+.svu-faculty-callout p { margin: 0; }
 
 
+.svu-outcome-part { margin-top: 56px; scroll-margin-top: 96px; }
+#programmes, #projects { scroll-margin-top: 96px; }
+.svu-faculty-eyebrow { display: block; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: hsl(var(--muted-foreground)); margin-bottom: 8px; }

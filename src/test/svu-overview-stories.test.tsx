@@ -3,12 +3,12 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import SvuPages from "@/components/site/SvuPages";
 
-const open = (section: "overview" | "projects-research" | "placements" | "internships" | "programmes") =>
+const open = (section: "overview" | "outcomes" | "faculty") =>
   render(<MemoryRouter><SvuPages section={section} /></MemoryRouter>);
 
 describe("SVU pages", () => {
-  it("overview shows two photo stories, the group photo once, and the hackathon result", () => {
-    const { container } = open("overview");
+  it("research & careers shows two photo stories, the group photo once, and the hackathon result", () => {
+    const { container } = open("outcomes");
     expect(container.querySelectorAll(".svu-story")).toHaveLength(2);
     expect(container.querySelectorAll('img[src*="svu-paniit-delegation"]')).toHaveLength(1);
     const champion = container.querySelector(".svu-champion");
@@ -23,28 +23,37 @@ describe("SVU pages", () => {
 
     expect(container.querySelectorAll("h1")).toHaveLength(1);
   });
-  it("tab bar links to five separate pages", () => {
+  it("tab bar links to three pages", () => {
     const { container } = open("overview");
     const hrefs = [...container.querySelectorAll(".svu-tabbar a")].map(a => a.getAttribute("href"));
-    expect(hrefs).toEqual(["/collaboration-network/svu", "/collaboration-network/svu/programmes", "/collaboration-network/svu/projects-research", "/collaboration-network/svu/internships", "/collaboration-network/svu/placements"]);
+    expect(hrefs).toEqual(["/collaboration-network/svu", "/collaboration-network/svu/outcomes", "/collaboration-network/svu/faculty"]);
+  });
+  it("overview carries the programmes and one h1", () => {
+    const { container } = open("overview");
+    expect(container.querySelector("#programmes")).not.toBeNull();
+    expect(container.querySelectorAll(".svu-directory-row").length).toBeGreaterThan(0);
+    expect(container.querySelectorAll("h1")).toHaveLength(1);
+  });
+  it("faculty page lists all 12 mentors and 5 technical faculty", () => {
+    const { container } = open("faculty");
+    expect(container.querySelectorAll(".fd-cell")).toHaveLength(17);
+    expect(container.querySelectorAll("h1")).toHaveLength(1);
   });
   it("projects show six at a time with pagination and no public approval note", () => {
-    const { container } = open("projects-research");
+    const { container } = open("outcomes");
     expect(container.querySelectorAll(".svu-project-list article")).toHaveLength(6);
     expect(container.textContent).not.toContain("Approved Content Required");
     fireEvent.click(screen.getByRole("button", { name: "Next" }));
     expect(container.querySelector("#svu-project-7")).not.toBeNull();
   });
   it("placements and internships keep all 11 records with one heading", () => {
-    for (const kind of ["placements", "internships"] as const) {
-      const { container, unmount } = open(kind);
-      expect(container.querySelectorAll(kind === "placements" ? ".svu-outcome" : ".svu-career-table tbody tr")).toHaveLength(11);
-      expect(container.querySelectorAll("h1")).toHaveLength(1);
-      unmount();
-    }
+    const { container } = open("outcomes");
+    expect(container.querySelectorAll("#placements .svu-outcome")).toHaveLength(11);
+    expect(container.querySelectorAll("#internships .svu-career-table tbody tr")).toHaveLength(11);
+    expect(container.querySelectorAll("h1")).toHaveLength(1);
   });
   it("uses G V Sumanth consistently", () => {
-    const { container } = open("internships");
+    const { container } = open("outcomes");
     expect(container.textContent).toContain("G V Sumanth");
     expect(container.textContent).not.toContain("Sumanth G V");
   });
