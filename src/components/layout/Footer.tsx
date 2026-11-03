@@ -10,9 +10,6 @@ import { organisationPath } from "@/lib/programmeNavigation";
 // order Sri Venkateswara University → IBM → XIME Chennai, height follows the content.
 const partners: Organisation[] = ["SVU", "IBM", "XIME"];
 
-// Client brief, 2 November 2026: each footer entry carries its own classic colour.
-const partnerTone: Record<Organisation, string> = { SVU: "footer-tint-navy", IBM: "footer-tint-blue", XIME: "footer-tint-burgundy" };
-
 const Footer = () => (
   <footer className="site-footer border-t">
     <div className="container footer-columns">
@@ -21,7 +18,7 @@ const Footer = () => (
         <ul className="footer-list">
           {partners.map((p) => (
             <li key={p}>
-              <Link to={organisationPath(p)} className={`footer-partner ${partnerTone[p]}`}>{organisations[p].name}</Link>
+              <Link to={organisationPath(p)} className="footer-partner footer-list-link">{organisations[p].name}</Link>
             </li>
           ))}
         </ul>
@@ -30,14 +27,14 @@ const Footer = () => (
       <div>
         <p className="footer-column-title">Quick Links</p>
         <ul className="footer-list">
-          <li><Link to="/about" className="footer-option footer-tint-teal">About Us</Link></li>
+          <li><Link to="/about" className="footer-option footer-list-link">About Us</Link></li>
           <li>
             <Link to="/skillshone" className="footer-featured" aria-label="SkillShone">
               <img src={skillshoneLogo.url} alt="SkillShone" loading="lazy" className="footer-featured-logo" />
               <ArrowUpRight className="h-3 w-3" strokeWidth={1.75} aria-hidden />
             </Link>
           </li>
-          <li><Link to="/#partner-enquiry" className="footer-option footer-tint-amber">Enquire Now</Link></li>
+          <li><Link to="/#partner-enquiry" className="footer-option footer-list-link">Enquire Now</Link></li>
         </ul>
       </div>
 

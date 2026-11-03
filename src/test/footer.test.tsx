@@ -83,4 +83,18 @@ describe("Footer collaboration network", () => {
       "/privacy-policy", "/terms-and-conditions",
     ]);
   });
+
+  // Client, 3 Nov 2026: "remove the colourful dots for the categories list from the footer" —
+  // neither category list may carry a coloured marker on any entry.
+  it("keeps the category lists free of coloured dot markers", () => {
+    const { container } = open();
+    const entries = [...container.querySelectorAll<HTMLAnchorElement>(".footer-list a")];
+    expect(entries).toHaveLength(6);
+    expect(entries.filter((a) => a.classList.contains("footer-list-link"))).toHaveLength(5);
+    for (const a of entries) {
+      expect(a.className).not.toMatch(/tint/i);
+      expect(a.getAttribute("style")).toBeNull();
+    }
+    expect(container.querySelectorAll(".footer-list [class*='tint']")).toHaveLength(0);
+  });
 });
