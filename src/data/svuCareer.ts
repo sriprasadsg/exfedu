@@ -29,6 +29,35 @@ export const svuInternshipIntroduction = {
     "These internships provide opportunities to engage with practical challenges, develop analytical thinking and gain experience in research and professional environments.",
   ],
 };
+/** Internships page programme update (client, 3 November 2026): text-only announcement that
+ * sits below the introduction and above the internship records. No poster artwork was approved
+ * for this update, so nothing here renders an image. Batch detail is deliberately kept as quiet
+ * supporting record information rather than a heading, chip or highlighted label. */
+export const svuInternshipUpdate = {
+  heading: "Advancing Skills in Generative AI",
+  status: "Enrolled",
+  recordNote: "Batch 3",
+  summary: "Exfedu proudly celebrates the enrolment of 15 MSDS students in the 15-Day DEF-SPACE Advanced Generative AI Internship 2026, offered by Bharat Space Education Research Centre, New Delhi. Students will undertake four projects during this online internship and receive an internship certificate upon successful completion.",
+  highlights: ["15 Students Enrolled", "15 Days", "4 Planned Projects", "Online"],
+  /** Spelling preserved exactly as supplied (client, 3 November 2026). */
+  students: [
+    "Badhur Ammulya",
+    "Bandi Govardan Reddy",
+    "Chinnabarugu Malliswar",
+    "Damerla Nanditha",
+    "Guttireddy Vishnukanth Reddy",
+    "Jayampu Veera Maheswari",
+    "Kanipakam Sasikiran Reddy",
+    "Kankanala Nishanth",
+    "Kondredi Geethanjali",
+    "Koneti Vamsi Krishna",
+    "M Jayalakshmi",
+    "Meenakshi Keerthi",
+    "P Ramya Krishna",
+    "Pulivarthi Dharmika Sayee",
+    "Telapalli Sai Sukrutha",
+  ],
+};
 /** Display order (client, 2 November 2026): batch-wise first, then alphabetical by
  * student name. Batch rank comes from the batch's starting year, so 2023–2025 always
  * precedes 2024–2026 (client, 3 November 2026: the roman prefix is no longer shown).

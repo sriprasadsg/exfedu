@@ -1,5 +1,35 @@
-import { Building2, CalendarRange, UserRound } from "lucide-react";
-import { filterSvuCareerRecords, svuInternshipIntroduction, svuInternships, svuPlacements } from "@/data/svuCareer";
+import { useState } from "react";
+import { Building2, CalendarRange, ChevronDown, UserRound } from "lucide-react";
+import { filterSvuCareerRecords, svuInternshipIntroduction, svuInternshipUpdate, svuInternships, svuPlacements } from "@/data/svuCareer";
+
+/** Approved text-only internship update (client, 3 November 2026): the panel sits between the
+ * introduction and the records table, so existing records stay untouched and no student is
+ * listed twice. The name list opens beneath its own control, one at a time. */
+const SvuInternshipUpdate = () => {
+  const [open, setOpen] = useState(false);
+  return <section className="svu-internship-update" aria-labelledby="svu-internship-update-heading">
+    <header className="svu-internship-update-head">
+      <h2 id="svu-internship-update-heading">{svuInternshipUpdate.heading}</h2>
+      <p className="svu-internship-update-meta">
+        <span className="svu-internship-update-status">{svuInternshipUpdate.status}</span>
+        <span className="svu-internship-update-record">Supporting record: {svuInternshipUpdate.recordNote}</span>
+      </p>
+    </header>
+    <p className="svu-internship-update-summary">{svuInternshipUpdate.summary}</p>
+    <ul className="svu-internship-update-highlights" aria-label="Internship highlights">
+      {svuInternshipUpdate.highlights.map(item => <li key={item}>{item}</li>)}
+    </ul>
+    <div className="svu-internship-update-students">
+      <button type="button" className="svu-internship-update-toggle" aria-expanded={open} aria-controls="svu-internship-update-list" onClick={() => setOpen(!open)}>
+        <span>{open ? "Hide Participating Students" : "View Participating Students"}</span>
+        <ChevronDown size={16} aria-hidden="true" />
+      </button>
+      <ol id="svu-internship-update-list" className="svu-internship-update-names" hidden={!open}>
+        {svuInternshipUpdate.students.map(name => <li key={name}>{name}</li>)}
+      </ol>
+    </div>
+  </section>;
+};
 
 export default function SvuCareerRecords({ kind }: { kind: "placements" | "internships" }) {
   const placements = kind === "placements";
