@@ -17,7 +17,7 @@ const titles: Record<string, string> = {
 };
 
 const Frame = ({ x }: { x: number }) => <rect x={x} y={20} width={112} height={112} rx={12} className="bs-frame" />;
-const Arrow = ({ x }: { x: number }) => <g className="bs-arrow"><path d={`M${x} 76h22`} /><path d={`M${x + 16} 70l6 6-6 6`} /></g>;
+const Arrow = ({ x }: { x: number }) => <g className={`bs-arrow ${x < 200 ? "bs-a1" : "bs-a2"}`}><path d={`M${x} 76h22`} /><path d={`M${x + 16} 70l6 6-6 6`} /></g>;
 
 const SvuArt = () => <>
   <g className="bs-stage bs-s1"><Frame x={4} />

@@ -715,8 +715,8 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 .bs-stage { opacity: 0; animation: bs-in .9s ease-out forwards; }
 .bs-s1 { animation-delay: .3s; } .bs-s2 { animation-delay: 2.3s; } .bs-s3 { animation-delay: 4.3s; }
 .bs-arrow { opacity: 0; animation: bs-in .5s ease-out forwards; }
-.bs-arrow:nth-of-type(1) { animation-delay: 1.7s; }
-.bs-svg > .bs-arrow ~ .bs-arrow { animation-delay: 3.7s; }
+.bs-a1 { animation-delay: 1.7s; }
+.bs-a2 { animation-delay: 3.7s; }
 @keyframes bs-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
 .bs-replay { position: absolute; top: -6px; right: -6px; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; border: 1px solid hsl(var(--academic-edge)); background: hsl(var(--background)); color: hsl(var(--navy-800)); opacity: .7; transition: opacity .2s; }
 .bs-replay:hover, .bs-replay:focus-visible { opacity: 1; }
