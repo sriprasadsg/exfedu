@@ -20,7 +20,7 @@ describe("partner page banner artwork", () => {
 
   it("shows the supplied AI-FinTech platform render on the XIME page", () => {
     const { container } = render(<MemoryRouter><XimeProgramme /></MemoryRouter>);
-    expect(imgSrc(container, ".programme-intro-art img")).toContain("xime-fintech-platform.png");
+    expect(imgSrc(container, ".programme-intro-art img")).toContain("xime-fintech-platform-v2.png");
   });
 
   it("keeps the two renders on their own pages", () => {

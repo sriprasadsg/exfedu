@@ -8,7 +8,7 @@ import { organisations, type Tone } from "@/data/site";
 import { ximeProgrammeContent as content } from "@/data/xime";
 import { useProgrammeSeo } from "./ProgrammeDirectory";
 import NetworkBackButton from "./NetworkBackButton";
-import ximeBanner from "@/assets/xime-fintech-platform.png.asset.json";
+import ximeBanner from "@/assets/xime-fintech-platform-v2.png.asset.json";
 
 type Section = { title: string; icon: LucideIcon; tone: Tone; text?: string; items?: string[]; missing: string };
 const XimeProgramme = () => {
