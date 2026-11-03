@@ -38,7 +38,7 @@ const OrganisationProgrammes = ({ organisation }: { organisation: Organisation }
         <Button variant="link" asChild><Link to="#programmes">Explore Programmes<ArrowRight size={16} /></Link></Button>
       </div>{slide && <figure><img src={slide.image} alt="SVU campus connected to data engineering and AI" /></figure>}</div> : <>
         <img className={`programme-detail-logo ${org.logoClass}`} src={org.logo} alt={`${org.name} logo`} />
-        <h1>{org.name} {organisation === "XIME" ? "Programme" : "Programmes"}</h1><p>{slide?.text}</p>
+        <h1>{org.name} Programmes</h1><p>{slide?.text}</p>
       </>}
     </div></header>
     {sections && <nav aria-label={`${org.name} sections`} className="organisation-section-nav"><div className="container organisation-section-nav-inner">{sections.map(section => <a key={section.id} href={`#${section.id}`}><section.icon size={16} aria-hidden="true" />{section.title}</a>)}</div></nav>}
