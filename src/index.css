@@ -409,7 +409,9 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .cap-centre { display: grid; place-items: center; padding: .5rem 0; }
 .cap-circle { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .3rem; width: 180px; height: 180px; aspect-ratio: 1 / 1; flex: none; border: 1.5px solid hsl(230 70% 40%); border-radius: 50%; background: hsl(var(--background)); box-shadow: 0 0 0 14px hsl(214 80% 96%), 0 0 0 15px hsl(214 70% 88%); text-align: center; padding: 1rem; margin: 18px; box-sizing: border-box; overflow: hidden; }
 .cap-company, .cap-name { margin: 0; color: hsl(var(--primary)); font-size: .78rem; font-weight: 500; line-height: 1.25; }
-.cap-pen { width: 40px; height: 40px; object-fit: contain; }
+.cap-pen { position: relative; display: block; height: 40px; aspect-ratio: 337 / 360; }
+.cap-pen img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
+.cap-pen-nib { transform-origin: 86% 100%; }
 .cap-card { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; text-align: center; padding: .7rem .7rem .8rem; border: 1px solid hsl(214 80% 60%); border-radius: 10px; background: hsl(var(--background)); color: hsl(var(--primary)); text-decoration: none; min-width: 0; transition: transform .25s ease, box-shadow .25s ease; }
 .cap-card:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 14px 26px -16px hsl(214 80% 40% / .55); z-index: 3; }
 .cap-card:focus-visible { outline: 2px solid hsl(var(--ring)); outline-offset: 3px; }
@@ -424,12 +426,17 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 @keyframes cap-flow { to { stroke-dashoffset: -20; } }
 .cap-circle { animation: cap-breathe 5s ease-in-out infinite; }
 @keyframes cap-breathe { 0%,100% { box-shadow: 0 0 0 14px hsl(214 80% 96%), 0 0 0 15px hsl(214 70% 88%); } 50% { box-shadow: 0 0 0 22px hsl(214 82% 94%), 0 0 0 23px hsl(214 72% 80%); } }
-.cap-pen { animation: cap-pen 4s ease-in-out infinite; }
-@keyframes cap-pen { 0%,100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-7px) rotate(-6deg); } }
+/* The centre mark's pen writes: one short stroke back and forth, pivoting on its nib tip
+   (client, 3 November 2026: "make the home page pen animate gently, as if it's writing").
+   The cap layer never moves — the nib is its own layer, as in the menu-bar mark. */
+@keyframes cap-pen-write {
+  0%, 100% { transform: translate(-1.5px, 0) rotate(-1.8deg); }
+  50% { transform: translate(1.5px, 0) rotate(1.8deg); }
+}
 .cap-art { margin-bottom: .7rem; }
 .cap-card { transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
 .cap-card:hover, .cap-card:focus-visible { border-color: hsl(230 75% 20%); }
-@media (prefers-reduced-motion: reduce) { .cap-lines line, .cap-circle, .cap-pen, .cap-art { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .cap-lines line, .cap-circle, .cap-pen-nib, .cap-art { animation: none; } }
 @media (prefers-reduced-motion: reduce) { .cap-card { transition: none; } .cap-card:hover { transform: none; } }
 @container cap (min-width: 500px) {
   .cap-diagram { grid-template-columns: repeat(2, minmax(0,1fr)); }
@@ -927,7 +934,7 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 /* Scope all stillness to Home, including menus rendered outside its wrapper. The thick coloured
    edges on the approach boxes, the approach banner and the capabilities cards are exempt
    (client, 2 November 2026). */
-body:has(.homepage-static) *:not(.cap-card):not(.site-logo-nib):not(.hero-dot):not(.cap-connector-dot):not(.exi-glass-symbol),
+body:has(.homepage-static) *:not(.cap-card):not(.site-logo-nib):not(.hero-dot):not(.cap-connector-dot):not(.exi-glass-symbol):not(.cap-pen-nib),
 body:has(.homepage-static) *:not(.exi-box):not(.exi-substitute):not(.cap-card)::before,
 body:has(.homepage-static) *:not(.exi-box):not(.exi-substitute)::after {
   animation: none !important;
@@ -962,6 +969,9 @@ body:has(.homepage-static) *:not(.exi-box):not(.exi-substitute)::after {
   transform-origin: center;
   animation: magnifying-glass-search 6s ease-in-out infinite !important;
 }
+.homepage-static .cap-pen-nib {
+  animation: cap-pen-write 4.6s ease-in-out infinite !important;
+}
 /* The mark's pen nib drifts on its own (client, 2 November 2026: "gently apply pen animate").
    Client, 3 November 2026: "give to the pen write animation as if it writes just, simply from
    back to front and back to front, a simple movement" — so it traces one short horizontal
@@ -985,7 +995,7 @@ body:has(.homepage-static) *:not(.exi-box):not(.exi-substitute)::after {
 }
 /* Gentle icon float across the site (client 23 Oct 2026): icons only, never blocks or text. */
 @keyframes icon-gentle-float { 0%,100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-3px) scale(1.04); } }
-html body .cap-art, html body .cap-pen, html body .menu-cat-icon, html body .menu-cat-hero,
+html body .cap-art, html body .menu-cat-icon, html body .menu-cat-hero,
 html body .enquiry-field-icon svg, html body .enquiry-success-icon svg,
 html body .academic-partner-icon svg, html body .academic-invitation-icons svg {
   animation: icon-gentle-float 4.2s ease-in-out infinite !important;
@@ -998,9 +1008,9 @@ html body .cap-diagram .cap-art {
   animation-delay: calc(var(--i, 0) * -1s) !important;
 }
 @media (prefers-reduced-motion: reduce) {
-  .homepage-static .hero-dot, .homepage-static .cap-connector-dot, .homepage-static .exi-glass-symbol, .site-logo-nib { animation: none !important; }
+  .homepage-static .hero-dot, .homepage-static .cap-connector-dot, .homepage-static .exi-glass-symbol, .site-logo-nib, .homepage-static .cap-pen-nib { animation: none !important; }
   .hero-title, .hero-tagline, .hero-banner-art { animation: none; }
-  html body .cap-art, html body .cap-pen, html body .menu-cat-icon, html body .menu-cat-hero, html body .enquiry-field-icon svg,
+  html body .cap-art, html body .menu-cat-icon, html body .menu-cat-hero, html body .enquiry-field-icon svg,
   html body .enquiry-success-icon svg, html body .academic-partner-icon svg, html body .academic-invitation-icons svg { animation: none !important; }
   html body .cap-diagram .cap-art { animation: none !important; }
 }
