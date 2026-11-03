@@ -41,7 +41,7 @@ const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { progr
   const sections = p.organisation === "IBM" ? ibmProgrammeSections(p) : programmeDetailSections(p);
   // SVU programme pages carry no brochure at all (client brief, 2 November 2026);
   // the programme enquiry stays available on its own.
-  const offersBrochure = p.organisation !== "XIME" && p.organisation !== "SVU";
+  const offersBrochure = p.organisation !== "SVU";
   const openBrochure = () => {
     setBrochureOpen(true);
     setFormComplete(false);

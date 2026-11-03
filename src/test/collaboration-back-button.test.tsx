@@ -34,7 +34,7 @@ const expectNetworkBack = (container: HTMLElement) => {
   }
 };
 
-const ximeProgramme = programmes.find(p => p.slug === "xime-foundation-fintech")!;
+const ibmProgramme = programmes.find(p => p.organisation === "IBM")!;
 const svuProgramme = programmes.find(p => p.organisation === "SVU")!;
 
 describe("collaboration partner back button", () => {
@@ -48,8 +48,8 @@ describe("collaboration partner back button", () => {
     expectNetworkBack(container);
   });
 
-  it("sits above the XIME page without a network breadcrumb link", () => {
-    const { container } = open(<ProgrammeDetail programme={ximeProgramme} organisationOverview />);
+  it("sits above an IBM programme page without a network breadcrumb link", () => {
+    const { container } = open(<ProgrammeDetail programme={ibmProgramme} organisationOverview />);
     expectNetworkBack(container);
   });
 

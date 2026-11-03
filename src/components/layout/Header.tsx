@@ -10,7 +10,7 @@ import { organisationPath, programmePath } from "@/lib/programmeNavigation";
 import { Building2, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const collaborationOrder: Organisation[] = ["SVU", "IBM", "XIME"];
+const collaborationOrder: Organisation[] = ["SVU", "IBM"];
 
 /** Menu colour (client, 2 November 2026): each primary destination carries its own classic
  *  tone across both label and icon. SkillShone keeps its own navy-to-red brand. */

@@ -3,8 +3,8 @@ import { programmes } from "@/data/site";
 import { organisationFromPath, organisationPath, programmePath } from "@/lib/programmeNavigation";
 
 describe("dedicated collaboration navigation", () => {
-  it("opens three distinct organisation pages rather than a filtered directory", () => {
-    expect([organisationPath("SVU"), organisationPath("XIME"), organisationPath("IBM")]).toEqual(["/collaboration-network/svu", "/collaboration-network/xime", "/collaboration-network/ibm"]);
+  it("opens two distinct organisation pages rather than a filtered directory", () => {
+    expect([organisationPath("SVU"), organisationPath("IBM")]).toEqual(["/collaboration-network/svu", "/collaboration-network/ibm"]);
   });
   it("keeps all five SVU details beneath the SVU listing", () => {
     expect(programmes.filter(p => p.organisation === "SVU").map(programmePath)).toEqual([
@@ -18,7 +18,7 @@ describe("dedicated collaboration navigation", () => {
   });
   it("does not interpret a detail or unknown page as an organisation listing", () => {
     expect(organisationFromPath("/collaboration-network/svu/")).toBe("SVU");
-    expect(organisationFromPath("/collaboration-network/xime")).toBe("XIME");
+    expect(organisationFromPath("/collaboration-network/xime")).toBeUndefined();
     expect(organisationFromPath("/collaboration-network/ibm/ibm-pbel")).toBeUndefined();
     expect(organisationFromPath("/collaboration-network/unknown")).toBeUndefined();
   });

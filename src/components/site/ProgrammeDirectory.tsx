@@ -19,7 +19,7 @@ export const useProgrammeSeo = (title: string, description: string) => {
 
 const ProgrammeDirectory = () => {
   const [params, setParams] = useSearchParams();
-  useProgrammeSeo("Industry-Integrated Programmes | Exafluence Education", "Compare AI, Generative AI, Data Science, Cloud Technologies and Quantum Computing programmes from SVU, IBM and XIME Chennai.");
+  useProgrammeSeo("Industry-Integrated Programmes | Exafluence Education", "Compare AI, Generative AI, Data Science, Cloud Technologies and Quantum Computing programmes from SVU and IBM.");
   const filters = Object.fromEntries(params.entries());
   const shown = filterProgrammes(filters);
   const update = (key: string, value: string) => { const next = new URLSearchParams(params); if (!value || value === "all") next.delete(key); else next.set(key, value); setParams(next, { replace: true }); };
@@ -39,7 +39,7 @@ const ProgrammeDirectory = () => {
       <div className="programme-table"><div className="programme-table-head" aria-hidden="true"><span className="programme-head-cell programme-head-1"><i><BookOpen size={15} /></i><span>Programme</span></span><span className="programme-head-cell programme-head-2"><i><Clock size={15} /></i><span>Duration</span></span><span className="programme-head-cell programme-head-3"><i><Monitor size={15} /></i><span>Delivery Mode</span></span><span className="programme-head-cell programme-head-4"><i><CalendarDays size={15} /></i><span>Intake</span></span><span className="programme-head-cell programme-head-5"><i><ArrowRight size={15} /></i><span>View<span className="programme-head-long"> Details</span></span></span></div>
         {shown.map(p => <article key={p.slug} className="programme-row"><div><span className={`programme-org programme-org-${p.organisation.toLowerCase()}`}>{organisations[p.organisation].name}</span><h2><Link to={programmePath(p)}>{p.title}</Link></h2></div><p><span className="programme-mobile-label">Duration</span>{p.duration}</p><p><span className="programme-mobile-label">Delivery Mode</span>{p.delivery}</p><p><span className="programme-mobile-label">Intake</span>{p.intake}</p><Button variant="ghost" size="icon" asChild><Link aria-label={`View ${p.title}`} to={programmePath(p)}><ArrowRight /></Link></Button></article>)}
       </div>
-      {!shown.length && <div className="programme-empty"><BookOpen size={30} /><h2>{params.get("organisation") === "XIME" ? "XIME Chennai programme details await review" : "No matching programmes"}</h2><p>{params.get("organisation") === "XIME" ? "Connecting financial knowledge with data analytics and AI applications. Programme title, eligibility, duration, curriculum and certification require approved source materials." : "Try another subject or reset your filters."}</p><Button variant="outline" onClick={() => setParams({})}><RotateCcw size={16} />Reset filters</Button></div>}
+      {!shown.length && <div className="programme-empty"><BookOpen size={30} /><h2>No matching programmes</h2><p>Try another subject or reset your filters.</p><Button variant="outline" onClick={() => setParams({})}><RotateCcw size={16} />Reset filters</Button></div>}
       <p className="programme-review-note">Dates appear only after approved university or institution notifications. Programme-specific details awaiting approval are identified on each page.</p>
     </section>
   </main>;

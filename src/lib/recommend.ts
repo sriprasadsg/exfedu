@@ -51,7 +51,7 @@ const armKeywords: Record<string, string[]> = {
   "/career-development": ["placement", "job", "career", "resume", "interview", "soft skills", "mentoring"],
   "/research-innovation": ["research", "publication", "paper", "conference", "hackathon", "innovation", "phd"],
   "/skillshone": ["courses", "assessment", "certificate", "certification", "skillshone", "online", "self-paced"],
-  "/collaboration-network": ["university", "degree", "college", "academic", "svu", "xime", "campus"],
+  "/collaboration-network": ["university", "degree", "college", "academic", "svu", "campus"],
   "/industry-collaborations": ["industry", "ibm", "company", "corporate", "technology partner"],
   "/student-success": ["achievement", "success", "placement", "growth", "alumni"],
 };

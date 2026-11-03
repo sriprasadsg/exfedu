@@ -1,7 +1,6 @@
 import type { Organisation } from "@/data/site";
 import svuLaptopDashboard from "@/assets/svu-laptop-dashboard-v2.png";
 import ibmCampus from "@/assets/ibm-collaboration-campus-v2.png";
-import ximeFintech from "@/assets/xime-fintech-platform-v2.png";
 
 /* Collaboration carousel artwork (client briefs, 3 November 2026): each slide shows the
    client-supplied render that also heads that organisation's own page, so the carousel and
@@ -14,10 +13,6 @@ const artwork: Partial<Record<Organisation, { src: string; alt: string }>> = {
   IBM: {
     src: ibmCampus,
     alt: "Illustration: a technology campus around a glowing chip core with signboards for Exafluence Education, IBM Silver Business Partner and Collaborating Institutions",
-  },
-  XIME: {
-    src: ximeFintech,
-    alt: "Illustration: a central fintech platform connected to data, network, payments and growth icons",
   },
 };
 

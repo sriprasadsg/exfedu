@@ -7,8 +7,9 @@ import { Button } from "@/components/ui/button";
 import { organisationPath } from "@/lib/programmeNavigation";
 
 // Client brief, 2 November 2026: three top-aligned columns, no sublists under a partner,
-// order Sri Venkateswara University → IBM → XIME Chennai, height follows the content.
-const partners: Organisation[] = ["SVU", "IBM", "XIME"];
+// order Sri Venkateswara University → IBM, height follows the content.
+// XIME removed from the network (client, 3 November 2026).
+const partners: Organisation[] = ["SVU", "IBM"];
 
 const Footer = () => (
   <footer className="site-footer border-t">

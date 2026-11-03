@@ -46,8 +46,8 @@ describe("SVU programme page navigation order", () => {
   });
 
   it("leaves other partners' programme pages untouched", () => {
-    const xime = programmes.find((p) => p.slug === "xime-foundation-fintech")!;
-    const { container } = render(<MemoryRouter><ProgrammeDetail programme={xime} /></MemoryRouter>);
+    const ibm = programmes.find((p) => p.organisation === "IBM")!;
+    const { container } = render(<MemoryRouter><ProgrammeDetail programme={ibm} /></MemoryRouter>);
     const crumb = container.querySelector("nav[aria-label='Breadcrumb']")!;
 
     expect(container.querySelector("nav[aria-label='Sri Venkateswara University sections']")).toBeNull();

@@ -11,18 +11,16 @@ const open = () => render(<MemoryRouter><Footer /></MemoryRouter>);
 // required, mention only text" (23 Oct 2026), but wants the original SkillShone
 // logo kept there in a reduced size, and the Exafluence footer mark smaller too.
 describe("Footer collaboration network", () => {
-  it("lists the three partners as text links to their own pages", () => {
+  it("lists the two partners as text links to their own pages", () => {
     const { container } = open();
     const partners = [...container.querySelectorAll<HTMLAnchorElement>("a.footer-partner")];
     expect(partners.map((a) => a.textContent?.trim())).toEqual([
       "Sri Venkateswara University",
       "IBM",
-      "XIME Chennai",
     ]);
     expect(partners.map((a) => a.getAttribute("href"))).toEqual([
       "/collaboration-network/svu",
       "/collaboration-network/ibm",
-      "/collaboration-network/xime",
     ]);
     for (const a of partners) expect(a.querySelector("img")).toBeNull();
   });
@@ -90,7 +88,7 @@ describe("Footer collaboration network", () => {
     const destinations = [...container.querySelectorAll<HTMLAnchorElement>("a")].map(a => a.getAttribute("href"));
     expect(destinations).toEqual([
       "/collaboration-network",
-      "/collaboration-network/svu", "/collaboration-network/ibm", "/collaboration-network/xime",
+      "/collaboration-network/svu", "/collaboration-network/ibm",
       "/about", "/skillshone", "/#partner-enquiry",
       "https://www.exafluence.com",
       "/privacy-policy", "/terms-and-conditions",
@@ -102,8 +100,8 @@ describe("Footer collaboration network", () => {
   it("keeps the category lists free of coloured dot markers", () => {
     const { container } = open();
     const entries = [...container.querySelectorAll<HTMLAnchorElement>(".footer-list a")];
-    expect(entries).toHaveLength(6);
-    expect(entries.filter((a) => a.classList.contains("footer-list-link"))).toHaveLength(5);
+    expect(entries).toHaveLength(5);
+    expect(entries.filter((a) => a.classList.contains("footer-list-link"))).toHaveLength(4);
     for (const a of entries) {
       expect(a.className).not.toMatch(/tint/i);
       expect(a.getAttribute("style")).toBeNull();
