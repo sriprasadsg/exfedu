@@ -47,7 +47,7 @@ describe("Footer collaboration network", () => {
     expect(columns[1].textContent).toContain("About Us");
     expect(columns[1].textContent).toContain("Enquire Now");
     expect(columns[2].querySelector("img")).not.toBeNull();
-    expect(columns[2].querySelectorAll("a")).toHaveLength(0);
+    expect(columns[2].querySelectorAll("a")).toHaveLength(1);
   });
 
   it("keeps the original SkillShone logo in the pill and shows only the company mark image", () => {
@@ -73,6 +73,18 @@ describe("Footer collaboration network", () => {
     expect(container.querySelector(".footer-columns")?.contains(legal[0])).toBe(false);
   });
 
+  // Client, 3 Nov 2026: the footer logo links to the parent company site,
+  // "bring html link on the footer logo of exafluence site — www.exafluence.com".
+  it("links the footer logo to the parent company site in a new tab", () => {
+    const { container } = open();
+    const link = container.querySelector<HTMLAnchorElement>("a.footer-company-link");
+    expect(link).not.toBeNull();
+    expect(link?.getAttribute("href")).toBe("https://www.exafluence.com");
+    expect(link?.getAttribute("target")).toBe("_blank");
+    expect(link?.getAttribute("rel")).toContain("noopener");
+    expect(link?.querySelector("img")?.alt).toBe("Exafluence — Data Driven Influence");
+  });
+
   it("offers only the agreed main destinations", () => {
     const { container } = open();
     const destinations = [...container.querySelectorAll<HTMLAnchorElement>("a")].map(a => a.getAttribute("href"));
@@ -80,6 +92,7 @@ describe("Footer collaboration network", () => {
       "/collaboration-network",
       "/collaboration-network/svu", "/collaboration-network/ibm", "/collaboration-network/xime",
       "/about", "/skillshone", "/#partner-enquiry",
+      "https://www.exafluence.com",
       "/privacy-policy", "/terms-and-conditions",
     ]);
   });
