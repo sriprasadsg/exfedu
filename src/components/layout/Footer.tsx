@@ -40,6 +40,11 @@ const Footer = () => (
 
       <div className="footer-brand footer-company-mark">
         <img src={exafluence} alt="Exafluence — Data Driven Influence" className="w-auto" />
+        {/* Client, 3 November 2026: the office address is given in the footer as plain text. */}
+        <address className="footer-address">
+          SRICHAKRA EDEN GREENS APARTMENTS,<br />
+          UPADYAYA NAGAR, TIRUPATI, Andhra Pradesh-517501
+        </address>
       </div>
     </div>
 

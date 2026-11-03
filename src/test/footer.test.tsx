@@ -97,4 +97,18 @@ describe("Footer collaboration network", () => {
     }
     expect(container.querySelectorAll(".footer-list [class*='tint']")).toHaveLength(0);
   });
+
+  // Client, 3 Nov 2026: "footer address: SRICHAKRA EDEN GREENS APARTMENTS, UPADYAYA NAGAR,
+  // TIRUPATI, Andhra Pradesh-517501" — shown in the footer as plain text, never a link.
+  it("shows the Tirupati office address as plain text in the brand column", () => {
+    const { container } = open();
+    const address = container.querySelector<HTMLElement>("address.footer-address");
+    expect(address).not.toBeNull();
+    expect(address?.textContent).toContain("SRICHAKRA EDEN GREENS APARTMENTS");
+    expect(address?.textContent).toContain("UPADYAYA NAGAR, TIRUPATI");
+    expect(address?.textContent).toContain("Andhra Pradesh");
+    expect(address?.textContent).toContain("517501");
+    expect(address?.querySelector("a")).toBeNull();
+    expect(container.querySelector(".footer-brand")?.contains(address)).toBe(true);
+  });
 });
