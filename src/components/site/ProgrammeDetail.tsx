@@ -155,7 +155,7 @@ const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { progr
               {isSvu ? "Faculty & Academic Resources" : "Academic Resources"}
             </h2>
             {p.organisation === "SVU" ? <SvuAcademicResources /> : <div className="programme-resource-box">
-                            <ul>{academicResources.items.map(item => <li key={item}>{item}</li>)}</ul>
+              <ul>{academicResources.items.map(item => <li key={item}>{item}</li>)}</ul>
               <p>{academicResources.note}</p>
               <Button variant="outline" size="sm" asChild>
                 <Link to={academicResources.link.path}>
@@ -171,7 +171,7 @@ const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { progr
               <span className="programme-section-icon tone-blue">
                 <Library size={22} aria-hidden="true" />
               </span>
-              {p.organisation === "IBM" || p.organisation === "SVU" ? "Enquiry" : "Brochure & Enquiry"}
+              {offersBrochure && p.organisation !== "IBM" ? "Brochure & Enquiry" : "Enquiry"}
             </h2>
             <div className="programme-enquiry-row">
               {offersBrochure && (
