@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import heroArt from "@/assets/home-hero-ai-cloud.png.asset.json";
+import heroArt from "@/assets/home-hero-ai-cloud.png";
 
 const Hero = () => (
   <section aria-label="Exafluence Education introduction" className="hero2">

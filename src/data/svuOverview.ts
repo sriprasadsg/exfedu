@@ -1,6 +1,6 @@
 import { BarChart3, BrainCircuit, Database, ScanEye } from "lucide-react";
-import innovation from "@/assets/svu-innovation-hub.png.asset.json";
-import summitGroup from "@/assets/svu-paniit-delegation.jpg.asset.json";
+import innovation from "@/assets/svu-innovation-hub.png";
+import summitGroup from "@/assets/svu-paniit-delegation.jpg";
 
 
 export const svuOverview = {

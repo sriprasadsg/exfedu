@@ -6,16 +6,16 @@ import {
 import type { AboutStoryData } from "@/components/site/AboutStory";
 import type { AboutOverviewData } from "@/components/site/AboutOverview";
 import type { EnquiryIntro } from "@/components/home/PartnerEnquiry";
-import svuLogo from "@/assets/svu-logo.png.asset.json";
-import ximeLogo from "@/assets/xime-logo.png.asset.json";
-import ibmSemesterBrochure from "@/assets/brochures/ibm-semester.pdf.asset.json";
-import ibmValueAddedBrochure from "@/assets/brochures/ibm-value-added.pdf.asset.json";
-import ibmQuantumBrochure from "@/assets/brochures/ibm-quantum.pdf.asset.json";
-import ibmPbelBrochure from "@/assets/brochures/ibm-pbel.pdf.asset.json";
-import ibmLogo from "@/assets/ibm-partner-badge.png.asset.json";
-import svuIllustration from "@/assets/svu-partner-illustration.png.asset.json";
-import ximeIllustration from "@/assets/xime-partner-illustration.png.asset.json";
-import ibmIllustration from "@/assets/ibm-partner-illustration.png.asset.json";
+import svuLogo from "@/assets/svu-logo.png";
+import ximeLogo from "@/assets/xime-logo.png";
+import ibmSemesterBrochure from "@/assets/brochures/ibm-semester.pdf";
+import ibmValueAddedBrochure from "@/assets/brochures/ibm-value-added.pdf";
+import ibmQuantumBrochure from "@/assets/brochures/ibm-quantum.pdf";
+import ibmPbelBrochure from "@/assets/brochures/ibm-pbel.pdf";
+import ibmLogo from "@/assets/ibm-partner-badge.png";
+import svuIllustration from "@/assets/svu-partner-illustration.png";
+import ximeIllustration from "@/assets/xime-partner-illustration.png";
+import ibmIllustration from "@/assets/ibm-partner-illustration.png";
 import { svuReviewedCurricula } from "./svuReviewed";
 
 /** Content is data-only: add approved pages, partners or programmes here without touching layouts. */

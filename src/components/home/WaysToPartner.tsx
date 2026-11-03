@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { ChevronRight, CircleDashed } from "lucide-react";
 import { PENDING } from "@/data/site";
-import exiArt from "@/assets/exi-ceramic-tiles.png.asset.json";
-import stillTiles from "@/assets/exi-tiles-still.png.asset.json";
-import magnifyingGlass from "@/assets/exi-magnifying-glass.png.asset.json";
+import exiArt from "@/assets/exi-ceramic-tiles.png";
+import stillTiles from "@/assets/exi-tiles-still.png";
+import magnifyingGlass from "@/assets/exi-magnifying-glass.png";
 const exiIllustration = exiArt.url;
 
 const Illustration = () => (

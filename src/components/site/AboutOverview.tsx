@@ -4,7 +4,7 @@ import {
   Banknote, HeartPulse, ShoppingBag, Factory, Database, MessagesSquare, FileText,
   Landmark, Compass, Sparkles, Handshake,
 } from "lucide-react";
-import sculpture from "@/assets/about-icon-relief.png.asset.json";
+import sculpture from "@/assets/about-icon-relief.png";
 
 export type AboutOverviewData = {
   title: string;

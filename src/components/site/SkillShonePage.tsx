@@ -4,7 +4,7 @@ import { ArrowUpRight, ArrowRight, GraduationCap, Landmark, Search, Database, Co
 import type { Page, Tone } from "@/data/site";
 import { BlockView } from "@/components/site/Blocks";
 import { usePageTitle } from "@/hooks/usePageTitle";
-import skillshoneLogo from "@/assets/skillshone-original.png.asset.json";
+import skillshoneLogo from "@/assets/skillshone-original.png";
 import featProblems from "@/assets/ss-feat-problems.png";
 import featDatasets from "@/assets/ss-feat-datasets.png";
 import featLlm from "@/assets/ss-feat-llm.png";

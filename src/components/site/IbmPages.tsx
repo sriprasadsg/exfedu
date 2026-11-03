@@ -3,7 +3,7 @@ import { ArrowLeft, ArrowRight, Award, BookOpen, Clock3, Cpu, FlaskConical, Grad
 import { Button } from "@/components/ui/button";
 import { organisations } from "@/data/site";
 import { ibmOverview, ibmProgrammes } from "@/data/ibm";
-import ibmIllustration from "@/assets/ibm-collaboration-campus-v2.png.asset.json";
+import ibmIllustration from "@/assets/ibm-collaboration-campus-v2.png";
 import { programmePath } from "@/lib/programmeNavigation";
 import { useProgrammeSeo } from "./ProgrammeDirectory";
 import IbmInstitutionalEnquiry from "./IbmInstitutionalEnquiry";

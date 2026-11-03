@@ -1,7 +1,7 @@
 // Coin-drop hover sound for the homepage card groups.
 // The browser carries no key here — the sound is a static CDN asset pointer.
 // Played through the Web Audio API with a soft fade-in/out so it stays smooth.
-import coinDropAsset from "@/assets/sounds/coin-drop.wav.asset.json";
+import coinDropAsset from "@/assets/sounds/coin-drop.wav";
 
 let ctx: AudioContext | null = null;
 let buffer: AudioBuffer | null = null;

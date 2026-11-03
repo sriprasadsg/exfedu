@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { RotateCcw } from "lucide-react";
 import type { Organisation } from "@/data/site";
-import svuLaptopDashboard from "@/assets/svu-laptop-dashboard-v2.png.asset.json";
+import svuLaptopDashboard from "@/assets/svu-laptop-dashboard-v2.png";
 
 /** Conceptual three-stage learning illustrations for the collaboration banners.
  * Stages reveal over ~6s, then hold; a replay control restarts the sequence.

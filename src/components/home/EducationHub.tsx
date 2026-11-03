@@ -1,4 +1,4 @@
-import infographic from "@/assets/exafluence-education-hub.png.asset.json";
+import infographic from "@/assets/exafluence-education-hub.png";
 
 const EducationHub = () => (
   <section aria-label="Exafluence Education ecosystem" className="mx-auto max-w-5xl">

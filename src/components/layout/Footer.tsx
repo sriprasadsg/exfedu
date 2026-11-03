@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowUp, ArrowUpRight } from "lucide-react";
-import exafluence from "@/assets/exafluence-footer-exact.png.asset.json";
-import skillshoneLogo from "@/assets/skillshone-original.png.asset.json";
+import exafluence from "@/assets/exafluence-footer-exact.png";
+import skillshoneLogo from "@/assets/skillshone-original.png";
 import { organisations, type Organisation } from "@/data/site";
 import { Button } from "@/components/ui/button";
 import { organisationPath } from "@/lib/programmeNavigation";

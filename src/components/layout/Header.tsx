@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import logo from "@/assets/exfedu-logo-nibless.png.asset.json";
-import logoNib from "@/assets/exfedu-logo-nib.png.asset.json";
+import logo from "@/assets/exfedu-logo-nibless.png";
+import logoNib from "@/assets/exfedu-logo-nib.png";
 
 import { Menu, X, Search, Plus, Minus, Network } from "lucide-react";
 import { svuSectionPath, type SvuSectionId } from "@/lib/programmeNavigation";

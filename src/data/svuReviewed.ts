@@ -1,6 +1,6 @@
-import innovation from "@/assets/svu-innovation-hub.png.asset.json";
-import summitStudents from "@/assets/svu-paniit-students.jpg.asset.json";
-import summitDelegation from "@/assets/svu-paniit-delegation.jpg.asset.json";
+import innovation from "@/assets/svu-innovation-hub.png";
+import summitStudents from "@/assets/svu-paniit-students.jpg";
+import summitDelegation from "@/assets/svu-paniit-delegation.jpg";
 
 export const svuAchievements = [
   { title: "Quantum Wave", highlight: "First place in the AP Quantum Hackathon", text: "First place in the AP Quantum Hackathon 2025 semi-finals. The student project applies quantum computing and explainable AI to FTSE 100 market forecasting.", href: "https://www.youtube.com/watch?v=8WbUsQBxnnw", label: "View news coverage" },

@@ -10,7 +10,7 @@ import { useProgrammeSeo } from "./ProgrammeDirectory";
 import { svuOverview } from "@/data/svuOverview";
 import SvuCareerRecords from "./SvuCareerRecords";
 import NetworkBackButton from "./NetworkBackButton";
-import ximeBanner from "@/assets/xime-fintech-platform-v2.png.asset.json";
+import ximeBanner from "@/assets/xime-fintech-platform-v2.png";
 
 const OrganisationProgrammes = ({ organisation }: { organisation: Organisation }) => {
   const org = organisations[organisation];
