@@ -1581,7 +1581,7 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
   margin-top: 2.4rem;
   margin-inline: auto;
   max-width: 64rem;
-  padding: 1.3rem 2.4rem 1.6rem;
+  padding: 1.05rem 1.7rem 1.2rem;
   border: 1px solid hsl(var(--input) / .6);
   border-radius: 22px;
   background: linear-gradient(160deg, hsl(var(--muted)), hsl(var(--input) / .55));
@@ -1606,9 +1606,9 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
   align-items: center;
   justify-content: center;
   text-align: center;
-  gap: .45rem;
-  padding: 1.7rem;
-  min-height: 13rem;
+  gap: .35rem;
+  padding: 1.1rem 1.3rem 1.2rem;
+  min-height: 10.5rem;
   animation: ss-cap-in .7s ease-out backwards; transition: transform .35s ease, box-shadow .35s ease, background-color .35s ease;
 }
 /* Both partitions are plain white paper — the ruled lines show through — with only
@@ -1637,10 +1637,10 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
   font-weight: 700; font-size: .78rem; letter-spacing: .22em;
   text-transform: uppercase; color: hsl(var(--primary));
 }
-.ss-cap ul { display: grid; gap: .45rem; width: 100%; max-width: 20rem; margin-top: .6rem; margin-inline: auto; justify-items: center; }
+.ss-cap ul { display: grid; gap: .3rem; width: 100%; max-width: 20rem; margin-top: .42rem; margin-inline: auto; justify-items: center; }
 .ss-cap li {
   display: flex; align-items: center; gap: .45rem;
-  padding: .42rem .85rem; border-radius: 999px;
+  padding: .32rem .72rem; border-radius: 999px;
   background: hsl(var(--background));
   color: hsl(var(--primary));
   font-size: .76rem; font-weight: 500;
@@ -1682,8 +1682,8 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
   z-index: 2;
   width: max-content;
   max-width: 100%;
-  margin: 2.1rem auto 1rem;
-  padding: .55rem 1.4rem;
+  margin: 1.5rem auto .8rem;
+  padding: .48rem 1.25rem;
   border: 1px solid hsl(var(--border));
   border-top: 3px solid hsl(var(--connection-blue));
   border-radius: 12px;
