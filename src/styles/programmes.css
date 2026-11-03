@@ -788,3 +788,26 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
   .loop-label-top { padding-top: 20px; }
   .loop-caption { margin: 20px 0 0; }
 }
+
+/* ===== XIME banner: AI–FinTech layers composition (client brief, 3 November 2026) =====
+   Four thin isometric platforms on white with light-grey sides, dark navy labels beside
+   each platform and restrained XIME-red edges. A titles-only compact version carries the
+   phone, so the layer names stay readable at small widths. */
+.xl-svg { font-family: inherit; }
+.xl-shadow { fill: hsl(214 40% 40% / .10); }
+.xl-top { fill: hsl(210 45% 98.5%); stroke: hsl(214 32% 70%); stroke-width: 1.1; }
+.xl-fl { fill: hsl(214 30% 92%); stroke: hsl(214 32% 70%); stroke-width: 1.1; }
+.xl-fr { fill: hsl(214 28% 87%); stroke: hsl(214 32% 66%); stroke-width: 1.1; }
+.xl-edge { fill: none; stroke: hsl(var(--brand-red)); stroke-width: 1.8; stroke-linecap: round; }
+.xl-link { fill: none; stroke: hsl(214 30% 62%); stroke-width: 1.2; stroke-dasharray: 3 4; stroke-linecap: round; }
+.xl-chev { fill: none; stroke: hsl(var(--connection-blue)); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.xl-icon { fill: none; stroke: hsl(var(--navy-900)); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.xl-leader { fill: none; stroke: hsl(214 30% 74%); stroke-width: 1; }
+.xl-title { fill: hsl(var(--navy-900)); font-size: 14px; font-weight: 500; }
+.xl-sub { fill: hsl(var(--navy-700)); font-size: 10.8px; font-weight: 400; }
+.xl-compact { display: none; }
+@media (max-width: 767px) {
+  .xl-full { display: none; }
+  .xl-compact { display: block; }
+  .xl-title { font-size: 15px; }
+}
