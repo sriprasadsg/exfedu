@@ -46,10 +46,10 @@ describe("approved website structure", () => {
     expect(primaryNavigation.map(item => item.path)).toEqual(["/about", "/collaboration-network", "/skillshone", "/#partner-enquiry"]);
     expect(primaryNavigation.map(item => item.title)).toEqual(["About Us", "Our Collaboration Network", "SkillShone", "Enquire Now"]);
   });
-  it("gives SVU exactly five approved sections in the collaboration menu", () => {
+  it("gives SVU six approved sections in the collaboration menu", () => {
     expect(Object.keys(organisationSections)).toEqual(["SVU"]);
-    expect(organisationSections.SVU?.map(section => section.title)).toEqual(["Overview", "Programmes", "Projects & Research", "Internships", "Placements"]);
-    expect(organisationSections.SVU?.map(section => section.id)).toEqual(["overview", "programmes", "projects-research", "internships", "placements"]);
+    expect(organisationSections.SVU?.map(section => section.title)).toEqual(["Overview", "Programmes", "Projects & Research", "Internships", "Placements", "Faculty & Mentors"]);
+    expect(organisationSections.SVU?.map(section => section.id)).toEqual(["overview", "programmes", "projects-research", "internships", "placements", "faculty"]);
   });
   it("keeps Learning Ecosystem out of the desktop menu and flags only unresolved research after placement approval", () => {
     expect(primaryNavigation.map(item => item.title)).not.toContain("Learning Ecosystem");
