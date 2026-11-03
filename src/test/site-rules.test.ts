@@ -29,7 +29,7 @@ describe("approved website structure", () => {
     expect(pages.find(p => p.path === "/collaboration-network")?.blocks).toEqual([{ type: "collaboration-network" }]);
   });
   it("redirects retired academic URLs without duplicate content pages", () => {
-    expect(retiredPageDestinations).toEqual({ "/academic-collaborations": "/collaboration-network", "/academic-collaborations/svu": "/collaboration-network/svu", "/academic-collaborations/xime": "/collaboration-network/xime", "/industry-collaborations/ibm": "/collaboration-network/ibm" });
+    expect(retiredPageDestinations).toEqual({ "/academic-collaborations": "/collaboration-network", "/academic-collaborations/svu": "/collaboration-network/svu", "/academic-collaborations/xime": "/collaboration-network", "/collaboration-network/xime": "/collaboration-network", "/industry-collaborations/ibm": "/collaboration-network/ibm" });
     // IBM keeps one home under Our Collaboration Network (client brief, 2 November 2026).
     expect(pages.some(p => p.path === "/industry-collaborations/ibm")).toBe(false);
   });
@@ -76,8 +76,7 @@ describe("approved website structure", () => {
       // Only IBM has approved brochures (client-supplied leaflets, 2 November 2026).
       if (programme.organisation === "IBM") expect(programme.brochure).toMatch(/brochures\/ibm-.+\.pdf$/);
       else expect(programme.brochure).toBeUndefined();
-      if (programme.organisation === "XIME") expect(programme.recognition).toMatch(/jointly issued by XIME Chennai and Exafluence Education/);
-      else if (programme.slug !== "ibm-semester-industry-learning") expect(programme.recognition).toBeUndefined();
+      if (programme.slug !== "ibm-semester-industry-learning") expect(programme.recognition).toBeUndefined();
     }
   });
   it("connects all eleven ecosystem arms to existing pages", () => {
@@ -87,20 +86,18 @@ describe("approved website structure", () => {
   it("uses each uploaded partner illustration as the main banner artwork without a thumbnail", () => {
     const expected: Record<string, string> = {
       SVU: "svu-partner-illustration.png",
-      XIME: "xime-partner-illustration.png",
       IBM: "ibm-partner-illustration.png",
     };
-    expect(collaborationSlides).toHaveLength(3);
+    expect(collaborationSlides).toHaveLength(2);
     for (const slide of collaborationSlides) {
       expect(slide.image).toContain(expected[slide.organisation]);
       expect("tile" in slide).toBe(false);
     }
-    expect(new Set(collaborationSlides.map((slide) => slide.image)).size).toBe(3);
+    expect(new Set(collaborationSlides.map((slide) => slide.image)).size).toBe(2);
   });
   it("shows Sri Venkateswara University's supplied logo artwork in its wider slot", () => {
     expect(organisations.SVU.logo).toContain("svu-logo.png");
     expect(organisations.SVU.logoClass).toBe("logo-wide");
-    expect(organisations.XIME.logoClass).toBe("");
     expect(organisations.IBM.logoClass).toBe("");
   });
 });
