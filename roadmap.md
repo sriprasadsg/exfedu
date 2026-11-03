@@ -369,3 +369,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Refinement pass (3 Nov): hide pending certification; split student/institution enquiries w/ programme preselect; page titles; legal date; XIME plural; SkillShone breadcrumb; dedupe programme/IBM copy, faculty outside Enquiry; banners/headings; internship heading/spacing
 
 - [x] Pen write animation — logo nib and SkillShone pad pen trace one short stroke back and forth (3 Nov 2026)
+- [x] SkillShone pad: pen removed from the page (3 Nov 2026) — clip is the only pad hardware left

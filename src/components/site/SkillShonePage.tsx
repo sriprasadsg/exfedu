@@ -199,18 +199,6 @@ export default function SkillShonePage({ page }: { page: Page }) {
             <ul>{institutions.map((a, i) => <li key={a} style={{ animationDelay: `${i * 120}ms` }}><ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />{a}</li>)}</ul>
           </div>
           </div>
-          <span className="ss-pad-pen" aria-hidden="true">
-            <svg viewBox="0 0 46 330" xmlns="http://www.w3.org/2000/svg">
-              <rect x="9" y="6" width="28" height="96" rx="14" fill="currentColor" />
-              <rect className="ss-pad-pen-steel" x="30" y="16" width="6" height="56" rx="3" />
-              <rect className="ss-pad-pen-steel" x="8" y="94" width="30" height="9" rx="4" />
-              <rect x="11" y="103" width="24" height="140" rx="11" fill="currentColor" opacity=".9" />
-              <rect className="ss-pad-pen-steel" x="10" y="240" width="26" height="9" rx="4" />
-              <path className="ss-pad-pen-dark" d="M13 249 L33 249 L29 276 L17 276 Z" />
-              <path className="ss-pad-pen-steel" d="M17 276 L29 276 L23 312 Z" />
-              <path className="ss-pad-pen-dark" d="M22.4 284 L23.6 284 L23.6 306 L22.4 306 Z" />
-            </svg>
-          </span>
         </div>
 
       </section>

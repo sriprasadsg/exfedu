@@ -113,9 +113,9 @@ describe("SkillShone inline detail", () => {
     expect(document.querySelector(".ss-cap--right .ss-cap-badge svg")).not.toBeNull();
     expect(document.querySelector(".ss-cap--left .ss-cap-side")!.textContent).toBe("Learners");
     expect(document.querySelector(".ss-cap--right .ss-cap-side")!.textContent).toBe("Institutions");
-    // the writing-pad hardware: clip on the top edge, pen resting along the side
+    // the writing-pad hardware is the clip alone: the pen was removed (client, 3 Nov 2026)
     expect(document.querySelector(".ss-pad-clip svg")).not.toBeNull();
-    expect(document.querySelector(".ss-pad-pen svg")).not.toBeNull();
+    expect(document.querySelector(".ss-pad-pen")).toBeNull();
     expect(document.querySelector(".ss-pad-clip")!.getAttribute("aria-hidden")).toBe("true");
   });
 
