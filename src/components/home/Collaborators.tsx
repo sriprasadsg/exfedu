@@ -14,11 +14,11 @@ const Collaborators = () => {
   useEffect(() => { if (!carousel) return; select(); carousel.on("select", select); return () => { carousel.off("select", select); }; }, [carousel, select]);
   return <section aria-labelledby="collab-title" className="network-section">
     <div className="container">
-      <div className="network-heading"><h1 id="collab-title">Our Collaboration Network</h1><span aria-hidden="true">0{active + 1} / 03</span></div>
+      <div className="network-heading"><h1 id="collab-title">Our Collaboration Network</h1><span aria-hidden="true">0{active + 1} / 0{collaborationSlides.length}</span></div>
       <div className="network-carousel" role="region" aria-roledescription="carousel" aria-label="Collaboration network" tabIndex={0}
         onKeyDown={(e) => { if (e.key === "ArrowLeft") { e.preventDefault(); carousel?.scrollPrev(); } if (e.key === "ArrowRight") { e.preventDefault(); carousel?.scrollNext(); } }}>
         <div ref={viewport} className="network-viewport"><div className="network-track">
-          {collaborationSlides.map((slide, i) => <article key={slide.organisation} className={`network-slide${hasBannerStory(slide.organisation) ? "" : " network-slide--text"}`} aria-label={`${i + 1} of 3: ${organisations[slide.organisation].name}`} aria-hidden={active !== i}>
+          {collaborationSlides.map((slide, i) => <article key={slide.organisation} className={`network-slide${hasBannerStory(slide.organisation) ? "" : " network-slide--text"}`} aria-label={`${i + 1} of ${collaborationSlides.length}: ${organisations[slide.organisation].name}`} aria-hidden={active !== i}>
                         <div className="network-panel"><img className={`network-logo ${organisations[slide.organisation].logoClass}`} src={organisations[slide.organisation].logo} alt={`${organisations[slide.organisation].name} logo`} loading="lazy" />
               <h3>{slide.heading}</h3><p>{slide.text}</p><Button asChild><Link tabIndex={active === i ? 0 : -1} to={organisationPath(slide.organisation)}>{slide.label}<ArrowRight aria-hidden="true" /></Link></Button>
             </div>
