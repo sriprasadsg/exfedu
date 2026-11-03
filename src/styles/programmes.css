@@ -861,3 +861,4 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 .fd .fd-item { transform: none !important; box-shadow: none !important; }
 .fd .fd-tags li { list-style: none; }
 .fd .fd-tags li::marker { content: ""; }
+.fd .fd-tags { margin-left: 0 !important; padding-left: 0 !important; align-items: center; } .fd .fd-tags li { margin: 0 !important; padding: 3px 10px !important; line-height: 1.5; }
