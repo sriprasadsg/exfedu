@@ -1701,6 +1701,22 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
    top edge, per the reference. Navy and royal blue only; the reference's yellow is deliberately
    absent. Client, 3 Nov 2026: "remove pen from skillshone page" — the pen is gone, so the clip
    is the only hardware left on the pad. */
+/* The clip is a small navy binder clip straddling the pad's top edge, centred on exactly the same
+   vertical line as the title tile beneath it (client, 3 Nov 2026: "adjust the writing pad clip and
+   make it aligned"). It was unstyled before, so the artwork fell back to its default box and
+   dwarfed the pad; the size and the centre line are now pinned here. */
+.ss-pad-clip {
+  position: absolute;
+  z-index: 3;
+  top: -1.15rem;
+  left: 50%;
+  translate: -50% 0;
+  width: 6rem;
+  height: 3rem;
+  color: hsl(var(--primary));
+  pointer-events: none;
+}
+.ss-pad-clip svg { display: block; width: 100%; height: 100%; }
 
 
 @keyframes ss-cap-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
