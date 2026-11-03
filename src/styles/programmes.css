@@ -256,7 +256,7 @@
 @media (prefers-reduced-motion: reduce) { .svu-overview-intro { animation: none; } }
 
 .svu-career-records { color: hsl(var(--muted-foreground)); }
-.svu-career-records > h1 { font-size: 22px; line-height: 1.4; font-weight: 500; color: hsl(var(--navy-900)); }
+.svu-career-records > h1, .svu-outcome-part .svu-career-records > h2:first-child { font-size: 22px; line-height: 1.4; font-weight: 500; color: hsl(var(--navy-900)); }
 .svu-career-records > p { font-size: 14px; line-height: 1.8; margin-top: 14px; }
 .svu-career-records .svu-career-subtitle { font-style: italic; margin-top: 8px; }
 .svu-career-filters { display: grid; grid-template-columns: minmax(0, 1fr) 180px 40px; align-items: end; gap: 12px; margin-top: 24px; }
