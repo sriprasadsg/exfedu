@@ -9,25 +9,22 @@ import { organisations, programmes } from "@/data/site";
 import { svuOverview, svuProjectAreas, svuOverviewAchievements } from "@/data/svuOverview";
 import SvuTechTicker from "./SvuTechTicker";
 import { svuAchievements, svuConferencePapers, svuProjects, svuPublications } from "@/data/svuReviewed";
-import { programmePath, svuSectionPath, type SvuSectionId } from "@/lib/programmeNavigation";
+import { programmePath, svuPagePath, svuSectionPath, type SvuPageId } from "@/lib/programmeNavigation";
+import { SvuFacultyPage } from "./SvuReviewedContent";
 import { useProgrammeSeo } from "./ProgrammeDirectory";
 import SvuCareerRecords from "./SvuCareerRecords";
 import NetworkBackButton from "./NetworkBackButton";
 
-const tabs: { id: SvuSectionId; label: string }[] = [
-  { id: "overview", label: "Overview" },
-  { id: "programmes", label: "Programmes" },
-  { id: "projects-research", label: "Projects & Research" },
-  { id: "internships", label: "Internships" },
-  { id: "placements", label: "Placements" },
+const tabs: { id: SvuPageId; label: string }[] = [
+  { id: "overview", label: "Overview & Programmes" },
+  { id: "outcomes", label: "Research & Careers" },
+  { id: "faculty", label: "Faculty & Mentors" },
 ];
 
-const seo: Record<SvuSectionId, [string, string]> = {
+const seo: Record<SvuPageId, [string, string]> = {
   overview: [svuOverview.seoTitle, svuOverview.seoDescription],
-  programmes: ["SVU Programmes | Exafluence Education", "Data science, AI and Gen AI programmes offered through Sri Venkateswara University and Exafluence."],
-  "projects-research": ["SVU Projects & Research | Exafluence Education", "Student projects, conference presentations and research papers from SVU–Exafluence data science students."],
-  internships: ["SVU Student Internships | Exafluence Education", "Documented internship records of SVU–Exafluence MS Data Science students."],
-  placements: ["SVU Student Placements | Exafluence Education", "Documented placement records of SVU–Exafluence MS Data Science students."],
+  outcomes: ["SVU Research & Careers | Exafluence Education", "Student projects, research papers, achievements, internships and placements of SVU–Exafluence data science students."],
+  faculty: ["SVU Faculty & Mentors | Exafluence Education", "SVU faculty, Exafluence industry mentors and technical lab faculty guiding the SVU–Exafluence programmes."],
 };
 
 export const PROJECTS_PER_PAGE = 6;
@@ -40,15 +37,12 @@ const svuTeachingSteps = [
 
 const SvuOverview = () => {
   const org = organisations.SVU;
-  const hackathon = svuAchievements[0];
-  const [hackBefore, hackAfter = ""] = hackathon.text.split(hackathon.highlight);
-
   return <div className="svu-flow">
     <section className="svu-block svu-intro">
       <img className={`programme-detail-logo ${org.logoClass}`} src={org.logo} alt={`${org.name} logo`} />
       <h1>{svuOverview.title}</h1>
       <p className="svu-lead">{svuOverview.introduction}</p>
-      <Button variant="link" asChild><Link to={svuSectionPath("programmes")}>Explore Programmes<ArrowRight size={16} /></Link></Button>
+      <Button variant="link" asChild><a href="#programmes">Explore Programmes<ArrowRight size={16} /></a></Button>
     </section>
 
     <section className="svu-block">
@@ -78,6 +72,8 @@ const SvuOverview = () => {
       </Link>)}</div>
     </section>
 
+    <SvuProgrammes embedded />
+
     <SvuTechTicker />
 
     <section className="svu-block svu-split">
@@ -86,25 +82,6 @@ const SvuOverview = () => {
       <p className="svu-reading">Students investigate technical questions and communicate their findings through papers and conference presentations, on topics including explainable AI, retrieval-based systems, multimodal applications, reinforcement learning and quantum machine learning.</p>
       <Button variant="link" asChild><Link to={svuSectionPath("projects-research")}>Explore Projects &amp; Research<ArrowRight size={16} /></Link></Button>
       </div>
-    </section>
-
-    <section className="svu-block" id="achievements">
-      <h2>Student Innovation and Achievements</h2>
-      <div className="svu-stories">{svuOverviewAchievements.map(item => <article className="svu-story" key={item.title}>
-        <figure><img src={item.photo} alt={item.alt} loading="lazy" /><span className="svu-story-badge"><Trophy size={13} aria-hidden="true" />Achievement</span></figure>
-        <div className="svu-story-body"><div className="svu-story-head"><ResearchThemeIcon title={item.title} /><h3>{item.title}</h3></div><p>{item.text}</p>{item.caption && <p className="svu-story-caption">{item.caption}</p>}</div>
-      </article>)}</div>
-      <aside className="svu-champion">
-        <span className="svu-champion-medal" aria-hidden="true"><Trophy size={26} strokeWidth={1.4} /></span>
-        <div className="svu-champion-body">
-          <span className="svu-champion-eyebrow">Featured Achievement</span>
-          <h3 className="svu-champion-title">{hackathon.title}</h3>
-          <p className="svu-champion-line">{hackBefore}<strong className="svu-champion-bold">{hackathon.highlight}</strong>{hackAfter.replace("FTSE 100", "FTSE\u00A0100")}</p>
-          <a className="svu-champion-link" href={hackathon.href} target="_blank" rel="noopener noreferrer">{hackathon.label}<ArrowUpRight size={14} aria-hidden="true" /></a>
-        </div>
-
-      </aside>
-
     </section>
 
     <section className="svu-block">
@@ -121,18 +98,20 @@ const svuCategories = [
   { title: "Short-Term Diplomas", levels: ["Diploma"] },
 ];
 
-const SvuProgrammes = () => {
+const SvuProgrammes = ({ embedded = false }: { embedded?: boolean }) => {
   const shown = programmes.filter(p => p.organisation === "SVU");
-  return <div className="svu-flow">
+  const Title = embedded ? "h2" : "h1";
+  const Group = embedded ? "h3" : "h2";
+  return <div className="svu-flow" id={embedded ? "programmes" : undefined}>
     <section className="svu-block svu-intro">
-      <h1>Industry-Integrated Programmes</h1>
+      <Title>Industry-Integrated Programmes</Title>
       <p className="svu-lead">Explore programmes offered through the collaboration between Exafluence Inc., USA, and Sri Venkateswara University. Compare study duration and delivery options, then view each programme’s eligibility, curriculum and admission process.</p>
     </section>
     <div className="svu-directory-groups">{svuCategories.map(cat => {
       const rows = shown.filter(p => cat.levels.includes(p.level));
       if (!rows.length) return null;
       return <section key={cat.title} className="svu-directory-group" aria-label={cat.title}>
-        <h2>{cat.title}</h2>
+        <Group>{cat.title}</Group>
         <div className="svu-directory" role="table" aria-label={cat.title}>
           <div role="row" className="svu-directory-head"><span role="columnheader">Programme Name</span><span role="columnheader">Duration</span><span role="columnheader">Delivery</span><span role="columnheader"><span className="sr-only">View Programme</span></span></div>
           {rows.map(p => <div role="row" key={p.slug} className="svu-directory-row">
@@ -167,7 +146,7 @@ const SvuResearch = () => {
     window.setTimeout(() => document.getElementById(hash.slice(1))?.scrollIntoView({ block: "center" }), 60);
   }, [hash]);
 
-  return <div className="svu-flow">
+  return <div className="svu-flow" id="projects">
     <section className="svu-block svu-intro">
       <h1>Projects &amp; Research</h1>
       <p className="svu-lead">Real-time projects, industry mentoring, case studies and a final-semester capstone connect learning with business challenges. Student work is also presented at conferences and in research papers.</p>
@@ -191,16 +170,63 @@ const SvuResearch = () => {
   </div>;
 };
 
+const SvuAchievements = () => {
+  const hackathon = svuAchievements[0];
+  const [hackBefore, hackAfter = ""] = hackathon.text.split(hackathon.highlight);
+  return <div className="svu-flow">
+    <section className="svu-block" id="achievements">
+      <h2>Student Innovation and Achievements</h2>
+      <div className="svu-stories">{svuOverviewAchievements.map(item => <article className="svu-story" key={item.title}>
+        <figure><img src={item.photo} alt={item.alt} loading="lazy" /><span className="svu-story-badge"><Trophy size={13} aria-hidden="true" />Achievement</span></figure>
+        <div className="svu-story-body"><div className="svu-story-head"><ResearchThemeIcon title={item.title} /><h3>{item.title}</h3></div><p>{item.text}</p>{item.caption && <p className="svu-story-caption">{item.caption}</p>}</div>
+      </article>)}</div>
+      <aside className="svu-champion">
+        <span className="svu-champion-medal" aria-hidden="true"><Trophy size={26} strokeWidth={1.4} /></span>
+        <div className="svu-champion-body">
+          <span className="svu-champion-eyebrow">Featured Achievement</span>
+          <h3 className="svu-champion-title">{hackathon.title}</h3>
+          <p className="svu-champion-line">{hackBefore}<strong className="svu-champion-bold">{hackathon.highlight}</strong>{hackAfter.replace("FTSE 100", "FTSE\u00A0100")}</p>
+          <a className="svu-champion-link" href={hackathon.href} target="_blank" rel="noopener noreferrer">{hackathon.label}<ArrowUpRight size={14} aria-hidden="true" /></a>
+        </div>
+
+      </aside>
+
+    </section>
+
+  </div>;
+};
+
+const SvuOutcomes = () => <>
+  <SvuResearch />
+  <SvuAchievements />
+  <section id="internships" className="svu-outcome-part"><SvuCareerRecords kind="internships" embedded /></section>
+  <section id="placements" className="svu-outcome-part"><SvuCareerRecords kind="placements" embedded /></section>
+</>;
+
+const SvuFaculty = () => <div className="svu-flow">
+  <section className="svu-block svu-intro">
+    <span className="svu-faculty-eyebrow">Academic &amp; Industry Guidance</span>
+    <h1>A Community of Academic Scholars &amp; Industry Practitioners</h1>
+    <p className="svu-lead">Senior Sri Venkateswara University faculty teach alongside Exafluence industry professionals, so learners study core concepts and their practical application with the people who use them.</p>
+  </section>
+  <SvuFacultyPage />
+</div>;
+
 // `detail` places the bar inside a programme page's opening band (2 Nov 2026 brief):
 // it then shares the page's own content width so its left edge meets the programme title.
-export const SvuTabBar = ({ active, detail = false }: { active: SvuSectionId; detail?: boolean }) => <nav aria-label="Sri Venkateswara University sections" className={`svu-tabbar${detail ? " svu-tabbar-detail" : ""}`}><div className={`svu-tabbar-inner ${detail ? "container" : "svu-container"}`}>
-  {tabs.map(t => <Link key={t.id} to={svuSectionPath(t.id)} className={t.id === active ? "is-active" : undefined} aria-current={t.id === active ? "page" : undefined}>{t.label}</Link>)}
+export const SvuTabBar = ({ active, detail = false }: { active: SvuPageId; detail?: boolean }) => <nav aria-label="Sri Venkateswara University sections" className={`svu-tabbar${detail ? " svu-tabbar-detail" : ""}`}><div className={`svu-tabbar-inner ${detail ? "container" : "svu-container"}`}>
+  {tabs.map(t => <Link key={t.id} to={svuPagePath(t.id)} className={t.id === active ? "is-active" : undefined} aria-current={t.id === active ? "page" : undefined}>{t.label}</Link>)}
 </div></nav>;
 
-const SvuPages = ({ section }: { section: SvuSectionId }) => {
+const SvuPages = ({ section }: { section: SvuPageId }) => {
   useProgrammeSeo(...seo[section]);
   const { hash } = useLocation();
-  useEffect(() => { if (!hash) window.scrollTo(0, 0); }, [section, hash]);
+  useEffect(() => {
+    if (!hash) { window.scrollTo(0, 0); return; }
+    if (hash.startsWith("#svu-project-")) return; // SvuResearch opens the right page first
+    const t = window.setTimeout(() => document.getElementById(hash.slice(1))?.scrollIntoView({ block: "start" }), 60);
+    return () => window.clearTimeout(t);
+  }, [section, hash]);
   return <main className="programme-experience svu-pages">
     <div className="svu-container">
       <nav aria-label="Our Collaboration Network" className="svu-breadcrumb"><NetworkBackButton /></nav>
@@ -208,9 +234,8 @@ const SvuPages = ({ section }: { section: SvuSectionId }) => {
     <SvuTabBar active={section} />
     <div className="svu-container svu-body">
       {section === "overview" && <SvuOverview />}
-      {section === "programmes" && <SvuProgrammes />}
-      {section === "projects-research" && <SvuResearch />}
-      {(section === "internships" || section === "placements") && <SvuCareerRecords kind={section} />}
+      {section === "outcomes" && <SvuOutcomes />}
+      {section === "faculty" && <SvuFaculty />}
     </div>
   </main>;
 };

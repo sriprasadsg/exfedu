@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { svuProjects, svuPublications, svuResearchMetrics, svuConferencePapers, svuFaculty, svuSupport, svuBrochureReview } from "@/data/svuReviewed";
 import { svuProjectAreas, svuOverviewAchievements } from "@/data/svuOverview";
+import { svuSectionPath } from "@/lib/programmeNavigation";
 
 export const SvuOverviewContent = () => <div className="svu-overview-content">
   <section className="svu-overview-band"><h2><BookOpen size={23} strokeWidth={1.4} aria-hidden="true" />Industry-Integrated Teaching Approach</h2>
