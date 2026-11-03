@@ -29,23 +29,25 @@ describe("removed collaboration visuals", () => {
     }
   });
 
-  it("gives the XIME slide the full width and leaves the other banners untouched", () => {
+  it("shows the client artwork on all three slides", () => {
     const { container } = view();
     const slides = [...container.querySelectorAll(".network-slide")];
     expect(slides).toHaveLength(3);
-    expect(slides[2].className).toContain("network-slide--text");
-    expect(slides[2].querySelector(".network-visual")).toBeNull();
-    expect(slides[0].querySelector(".bs-static")).not.toBeNull();
-    expect(slides[1].querySelector(".bs-svg")).not.toBeNull();
+    for (const slide of slides) {
+      expect(slide.className).not.toContain("network-slide--text");
+      expect(slide.querySelector(".network-visual .bs-static")).not.toBeNull();
+    }
   });
 });
 
 describe("banner artwork availability", () => {
-  it("renders nothing for XIME and still draws the SVU and IBM stories", () => {
-    expect(hasBannerStory("XIME")).toBe(false);
+  it("uses the IBM campus and XIME fintech renders in the carousel", () => {
     expect(hasBannerStory("SVU")).toBe(true);
     expect(hasBannerStory("IBM")).toBe(true);
-    expect(render(<BannerStory organisation="XIME" active />).container.innerHTML).toBe("");
-    expect(render(<BannerStory organisation="IBM" active />).container.querySelector(".bs-replay")).not.toBeNull();
+    expect(hasBannerStory("XIME")).toBe(true);
+    const ibm = render(<BannerStory organisation="IBM" active />).container.querySelector("img");
+    const xime = render(<BannerStory organisation="XIME" active />).container.querySelector("img");
+    expect(ibm?.getAttribute("src")).toContain("ibm-collaboration-campus-v2");
+    expect(xime?.getAttribute("src")).toContain("xime-fintech-platform-v2");
   });
 });
