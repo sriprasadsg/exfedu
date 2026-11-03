@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import { fireEvent } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import SvuCareerRecords from "@/components/site/SvuCareerRecords";
 import { svuInternshipUpdate } from "@/data/svuCareer";
@@ -56,20 +56,20 @@ describe("SVU internships programme update (client, 3 November 2026)", () => {
     expect(headingText).toBe("Advancing Skills in Generative AI");
   });
 
-  it("expands the participating student list on demand, in the supplied spelling and order", async () => {
-    const user = userEvent.setup();
+  it("expands the participating student list on demand, in the supplied spelling and order", () => {
+    
     const { container } = renderInternships();
     const toggle = screen.getByRole("button", { name: /View Participating Students/ });
     expect(toggle.getAttribute("aria-expanded")).toBe("false");
     expect(container.querySelector(".svu-internship-update-names")?.hasAttribute("hidden")).toBe(true);
 
-    await user.click(toggle);
+    fireEvent.click(toggle);
     expect(toggle.getAttribute("aria-expanded")).toBe("true");
     const names = [...container.querySelectorAll(".svu-internship-update-names li")].map(li => li.textContent?.trim());
     expect(names).toEqual(students);
     expect(screen.getByRole("button", { name: /Hide Participating Students/ })).toBeTruthy();
 
-    await user.click(toggle);
+    fireEvent.click(toggle);
     expect(container.querySelector(".svu-internship-update-names")?.hasAttribute("hidden")).toBe(true);
   });
 
