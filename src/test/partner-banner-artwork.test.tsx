@@ -15,7 +15,7 @@ const imgSrc = (container: HTMLElement, selector: string) =>
 describe("partner page banner artwork", () => {
   it("shows the supplied technology campus render on the IBM page", () => {
     const { container } = render(<MemoryRouter><IbmPages /></MemoryRouter>);
-    expect(imgSrc(container, ".ibm-intro-art img")).toContain("ibm-collaboration-campus.png");
+    expect(imgSrc(container, ".ibm-intro-art img")).toContain("ibm-collaboration-campus-v2.png");
   });
 
   it("shows the supplied AI-FinTech platform render on the XIME page", () => {
