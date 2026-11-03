@@ -1,7 +1,8 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { homepageCapabilities } from "@/data/site";
-import penMark from "@/assets/pen-mark.png";
+import penCap from "@/assets/pen-mark-cap.png";
+import penNib from "@/assets/pen-mark-nib.png";
 import { GraduationCap, Cpu, BookOpenCheck, FlaskConical, MonitorSmartphone, Wrench, BriefcaseBusiness, Factory, type LucideIcon } from "lucide-react";
 
 const art: Record<string, LucideIcon> = { academic: GraduationCap, technology: Cpu, programmes: BookOpenCheck, research: FlaskConical, digital: MonitorSmartphone, practical: Wrench, career: BriefcaseBusiness, industry: Factory };
@@ -61,7 +62,10 @@ const EcosystemHub = () => {
         <div className="cap-centre">
           <div className="cap-circle">
             <p className="cap-company"><span className="brand-exa">Exa</span><span className="brand-fluence">fluence</span> Inc.USA</p>
-            <img src={penMark} alt="" width={84} height={84} className="cap-pen" />
+            <span className="cap-pen" aria-hidden="true">
+              <img src={penCap} alt="" className="cap-pen-cap" />
+              <img src={penNib} alt="" className="cap-pen-nib" />
+            </span>
             <p className="cap-name">Exafluence Education</p>
           </div>
         </div>
