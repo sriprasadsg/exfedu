@@ -3,7 +3,7 @@ import { ArrowLeft, ArrowRight, Award, BookOpen, Clock3, Cpu, FlaskConical, Grad
 import { Button } from "@/components/ui/button";
 import { organisations } from "@/data/site";
 import { ibmOverview, ibmProgrammes } from "@/data/ibm";
-import ibmIllustration from "@/assets/ibm-partner-illustration.png.asset.json";
+import ibmIllustration from "@/assets/ibm-collaboration-campus.png.asset.json";
 import { programmePath } from "@/lib/programmeNavigation";
 import { useProgrammeSeo } from "./ProgrammeDirectory";
 import IbmInstitutionalEnquiry from "./IbmInstitutionalEnquiry";
@@ -36,7 +36,7 @@ const IbmPages = () => {
               <p>{ibmOverview.introduction}</p>
               <p className="ibm-relationship">{ibmOverview.relationship}</p>
             </div>
-            <figure className="ibm-intro-art"><img src={ibmIllustration.url} alt="AI coding and quantum assembly" /></figure>
+            <figure className="ibm-intro-art"><img src={ibmIllustration.url} alt="Illustration: a technology campus with signboards for Exafluence Education, IBM and collaborating institutions" /></figure>
           </div>
         </div>
       </div>

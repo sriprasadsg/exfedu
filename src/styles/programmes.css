@@ -41,6 +41,14 @@
 .programme-intro h1 { font-size: 38px; font-weight: 500; line-height: 1.2; max-width: 950px; }
 .programme-intro p { max-width: 850px; font-size: 16px; line-height: 1.8; margin-top: 16px; }
 .programme-intro .programme-subtitle { font-size: 20px; color: hsl(var(--programme-blue)); }
+/* XIME page banner (client brief, 3 November 2026): the supplied AI-FinTech platform render
+   sits beside the introduction, mirroring the IBM page's intro artwork footprint. Scoped to a
+   modifier class so every other programme page keeps its full-width introduction. */
+.programme-intro-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 48px; align-items: center; }
+.programme-intro-art { display: flex; justify-content: center; background: hsl(var(--card)); border: 1px solid hsl(var(--academic-edge)); border-radius: 16px; padding: 18px; box-shadow: 0 14px 30px -26px hsl(var(--navy-900) / .5); }
+.programme-intro-art img { width: 100%; max-width: 440px; max-height: 320px; object-fit: contain; }
+@media (max-width: 1050px) { .programme-intro-grid { gap: 28px; } }
+@media (max-width: 767px) { .programme-intro-grid { grid-template-columns: minmax(0, 1fr); } .programme-intro-art img { max-width: 340px; } }
 .programme-list { padding-block: 36px 56px; }
 .programme-filters { display: grid; grid-template-columns: 1.3fr 1fr 1fr 1fr auto; gap: 18px; align-items: end; }
 .programme-filters label > span { font-size: 13px; font-weight: 500; display: block; margin-bottom: 8px; }
@@ -314,11 +322,15 @@
 .svu-internship-update-highlights li { padding: 2px 20px; border-left: 1px solid hsl(205 30% 90%); font-size: 13px; font-weight: 500; color: hsl(var(--navy-900)); }
 .svu-internship-update-highlights li:first-child { padding-left: 0; border-left: 0; }
 .svu-internship-update-students { margin-top: 18px; padding-top: 16px; border-top: 1px solid hsl(205 30% 90%); }
-.svu-internship-update-toggle { display: inline-flex; align-items: center; gap: 8px; padding: 0; background: none; border: 0; font-family: inherit; font-size: 13.5px; font-weight: 500; color: hsl(var(--connection-blue)); cursor: pointer; }
-.svu-internship-update-toggle svg { transition: transform .3s ease; }
-.svu-internship-update-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
-.svu-internship-update-toggle:hover { color: hsl(var(--navy-900)); }
-.svu-internship-update-toggle:focus-visible { outline: 2px solid hsl(var(--connection-blue)); outline-offset: 4px; border-radius: 4px; }
+/* The students control takes the supplied circular-arrow treatment (client, 3 Nov 2026): a
+   filled navy disc carrying a white arrow beside the label, replacing the bare blue text link. */
+.svu-internship-update-toggle { display: inline-flex; align-items: center; gap: 12px; padding: 0; background: none; border: 0; font-family: inherit; font-size: 14px; font-weight: 500; color: hsl(var(--navy-900)); cursor: pointer; }
+.svu-internship-update-disc { display: inline-grid; place-items: center; flex: none; width: 34px; height: 34px; border-radius: 50%; background: hsl(var(--navy-900)); color: hsl(var(--card)); transition: transform .3s ease, background .3s ease; }
+.svu-internship-update-disc svg { transition: transform .3s ease; }
+.svu-internship-update-toggle[aria-expanded="true"] .svu-internship-update-disc svg { transform: rotate(180deg); }
+.svu-internship-update-toggle:hover { color: hsl(var(--connection-blue)); }
+.svu-internship-update-toggle:hover .svu-internship-update-disc { transform: translateY(-2px); background: hsl(var(--connection-blue)); }
+.svu-internship-update-toggle:focus-visible { outline: 2px solid hsl(var(--connection-blue)); outline-offset: 4px; border-radius: 6px; }
 .svu-internship-update-names { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 40px; margin-top: 14px; padding-top: 4px; }
 .svu-internship-update-names li { padding: 8px 0; border-bottom: 1px solid hsl(205 30% 92%); font-size: 13.5px; line-height: 1.6; color: hsl(var(--navy-800)); }
 .svu-internship-update-names li:nth-last-child(-n+2) { border-bottom: 0; }
@@ -493,7 +505,9 @@
 .ibm-subtitle { font-size: 19px; line-height: 1.5; color: hsl(var(--programme-blue)); margin-top: 14px; }
 .ibm-intro-copy > p { max-width: 720px; font-size: 15px; line-height: 1.8; color: hsl(var(--muted-foreground)); margin-top: 14px; }
 .ibm-relationship { border-left: 2px solid hsl(var(--academic-edge)); padding-left: 16px; }
-.ibm-intro-art { display: flex; justify-content: center; }
+/* The supplied renders carry a solid white ground, so each sits in the site's white card
+   instead of floating as a hard white rectangle on the pale band. */
+.ibm-intro-art { display: flex; justify-content: center; background: hsl(var(--card)); border: 1px solid hsl(var(--academic-edge)); border-radius: 16px; padding: 18px; box-shadow: 0 14px 30px -26px hsl(var(--navy-900) / .5); }
 .ibm-intro-art img { width: 100%; max-width: 440px; max-height: 320px; object-fit: contain; }
 .ibm-flow { display: grid; gap: 60px; padding-block: 56px 76px; }
 .ibm-block h2 { font-size: 24px; line-height: 1.4; font-weight: 500; color: hsl(var(--navy-900)); }
