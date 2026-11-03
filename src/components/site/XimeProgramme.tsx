@@ -37,12 +37,17 @@ const XimeProgramme = () => {
   const pending = (text: string) => <div className="xime-review"><span className="programme-org">Details under review</span><p>{text}</p></div>;
   const list = (items: string[]) => <ul>{items.map(item => <li key={item}>{item}</li>)}</ul>;
   return <main className="programme-experience">
-    <header className="programme-intro"><div className="container">
+    <header className="programme-intro programme-intro--split"><div className="container">
       <NetworkBackButton />
       <nav aria-label="Breadcrumb"><Link to="/">Home</Link><span aria-hidden="true">/</span><span aria-current="page">XIME Chennai</span></nav>
-      <img className="programme-detail-logo" src={organisations.XIME.logo} alt="XIME Chennai logo" />
-      <h1>{content.title ?? "XIME Chennai Programme"}</h1>
-      {!content.overview && <p className="programme-review-note">Programme information is awaiting verification from the XIME Chennai source.</p>}
+      <div className="programme-intro-grid">
+        <div className="programme-intro-copy">
+          <img className="programme-detail-logo" src={organisations.XIME.logo} alt="XIME Chennai logo" />
+          <h1>{content.title ?? "XIME Chennai Programme"}</h1>
+          {!content.overview && <p className="programme-review-note">Programme information is awaiting verification from the XIME Chennai source.</p>}
+        </div>
+        <figure className="programme-intro-art"><img src={ximeBanner.url} alt="Illustration: a central fintech platform connected to four services for data, networks, payments and analytics" loading="lazy" /></figure>
+      </div>
     </div></header>
     <div className="container programme-detail-body"><div className="programme-reading" ref={reading}>
       {sections.map(section => <section className="programme-detail-section programme-reveal" key={section.title}>

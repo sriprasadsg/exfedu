@@ -493,7 +493,9 @@
 .ibm-subtitle { font-size: 19px; line-height: 1.5; color: hsl(var(--programme-blue)); margin-top: 14px; }
 .ibm-intro-copy > p { max-width: 720px; font-size: 15px; line-height: 1.8; color: hsl(var(--muted-foreground)); margin-top: 14px; }
 .ibm-relationship { border-left: 2px solid hsl(var(--academic-edge)); padding-left: 16px; }
-.ibm-intro-art { display: flex; justify-content: center; }
+/* The supplied renders carry a solid white ground, so each sits in the site's white card
+   instead of floating as a hard white rectangle on the pale band. */
+.ibm-intro-art { display: flex; justify-content: center; background: hsl(var(--card)); border: 1px solid hsl(var(--academic-edge)); border-radius: 16px; padding: 18px; box-shadow: 0 14px 30px -26px hsl(var(--navy-900) / .5); }
 .ibm-intro-art img { width: 100%; max-width: 440px; max-height: 320px; object-fit: contain; }
 .ibm-flow { display: grid; gap: 60px; padding-block: 56px 76px; }
 .ibm-block h2 { font-size: 24px; line-height: 1.4; font-weight: 500; color: hsl(var(--navy-900)); }
