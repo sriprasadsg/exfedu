@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Building2, CalendarRange, ChevronDown, UserRound } from "lucide-react";
+import { ArrowDown, Building2, CalendarRange, UserRound } from "lucide-react";
 import { filterSvuCareerRecords, svuInternshipIntroduction, svuInternshipUpdate, svuInternships, svuPlacements } from "@/data/svuCareer";
 
 /** Approved text-only internship update (client, 3 November 2026): the panel sits between the
@@ -21,8 +21,8 @@ const SvuInternshipUpdate = () => {
     </ul>
     <div className="svu-internship-update-students">
       <button type="button" className="svu-internship-update-toggle" aria-expanded={open} aria-controls="svu-internship-update-list" onClick={() => setOpen(!open)}>
+        <span className="svu-internship-update-disc" aria-hidden="true"><ArrowDown size={15} /></span>
         <span>{open ? "Hide Participating Students" : "View Participating Students"}</span>
-        <ChevronDown size={16} aria-hidden="true" />
       </button>
       <ol id="svu-internship-update-list" className="svu-internship-update-names" hidden={!open}>
         {svuInternshipUpdate.students.map(name => <li key={name}>{name}</li>)}
