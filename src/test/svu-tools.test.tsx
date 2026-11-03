@@ -80,8 +80,6 @@ describe("SVU Overview — Technologies You Work With", () => {
     expect(grids[1].getAttribute("aria-hidden")).toBe("true");
     expect([...grids[1].querySelectorAll("img")].every(img => img.getAttribute("alt") === "")).toBe(true);
     expect(grids[1].querySelectorAll(".svu-tech-cell")).toHaveLength(22);
-    // 22 technologies in two columns: eleven full rows, so the loop never shows a gap.
-    expect(22 % 2).toBe(0);
     expect((section.querySelector(".svu-tech-track") as HTMLElement).style.getPropertyValue("--tech-duration")).toBe("28.6s");
   });
 
