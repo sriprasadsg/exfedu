@@ -371,4 +371,5 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Pen write animation — logo nib and SkillShone pad pen trace one short stroke back and forth (3 Nov 2026)
 - [x] SkillShone pad: pen removed from the page (3 Nov 2026) — clip is the only pad hardware left
 - [x] Home page centre mark: pen nib writes with one short gentle stroke back and forth, pivoting on its tip; cap layer and text stay still. Verified in browser (nib-only movement, no ghosting, phone intact).
-- [ ] SkillShone writing pad: adjust the block's size — awaiting the client's direction (measured: 1024x1096 desktop, 350x1076 phone; the navy clip alone takes ~45-50% of the height).
+- [x] SkillShone writing pad: tighter inside spacing only — clip and pad width kept as they are (measured: desktop 1024x1029, phone 350x941, no side overflow).
+- [x] Add a "Tools, Platforms & Technologies" section from the client's uploaded brief — 8 categories, 22 technologies, official marks, placed between Applied AI and Data Science and Research and Technical Exploration on SVU Overview. Verified in browser and by src/test/svu-tools.test.tsx.

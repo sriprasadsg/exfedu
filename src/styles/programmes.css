@@ -730,3 +730,23 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
   .bs-replay { display: none; }
 }
 .banner-story, .bs-svg { border: 0 !important; box-shadow: none !important; outline: 0; filter: none !important; background: transparent !important; }
+
+/* ===== SVU Overview: Tools, Platforms & Technologies (client brief, 3 November 2026) =====
+   Compact rows on white: category label left, marks and names right, thin pale-blue rules
+   between rows. No cards, no carousel — the complete list stays visible. Marks keep their
+   official shapes and colours at a common height; broad learning areas carry navy line icons. */
+.svu-tools .svu-tool-rows { list-style: none; margin: 20px 0 0; padding: 0; }
+.svu-tools .svu-tool-row { display: grid; grid-template-columns: minmax(0, 210px) minmax(0, 1fr); gap: 8px 24px; align-items: start; padding: 13px 0; border-top: 1px solid hsl(var(--academic-edge)); }
+.svu-tools .svu-tool-row:last-child { border-bottom: 1px solid hsl(var(--academic-edge)); }
+.svu-tools .svu-tool-label { margin: 0; font-size: 14px; font-weight: 500; line-height: 1.5; color: hsl(var(--navy-900)); }
+.svu-tools .svu-tool-list { list-style: none; display: flex; flex-wrap: wrap; gap: 9px 14px; margin: 0; padding: 0; }
+.svu-tools .svu-tool { display: inline-flex; align-items: center; gap: 9px; padding: 5px 12px 5px 8px; border: 1px solid hsl(214 45% 91%); border-radius: 9px; background: hsl(214 50% 98%); }
+.svu-tools .svu-tool-logo { height: 30px; width: auto; max-width: 96px; object-fit: contain; flex: none; }
+.svu-tools .svu-tool-icon { display: grid; place-items: center; width: 30px; height: 30px; flex: none; color: hsl(var(--navy-900)); }
+.svu-tools .svu-tool-name { font-size: 13px; line-height: 1.4; color: hsl(var(--muted-foreground)); }
+@media (max-width: 720px) {
+  .svu-tools .svu-tool-row { grid-template-columns: minmax(0, 1fr); gap: 7px; padding: 12px 0; }
+  .svu-tools .svu-tool-list { gap: 8px 10px; }
+  .svu-tools .svu-tool-logo { height: 26px; max-width: 82px; }
+  .svu-tools .svu-tool-icon { width: 26px; height: 26px; }
+}

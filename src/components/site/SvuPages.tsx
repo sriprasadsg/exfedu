@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { organisations, programmes } from "@/data/site";
 import { svuOverview, svuProjectAreas, svuOverviewAchievements } from "@/data/svuOverview";
+import { svuToolCategories, svuToolsIntro } from "@/data/svuTools";
 import { svuAchievements, svuConferencePapers, svuProjects, svuPublications } from "@/data/svuReviewed";
 import { programmePath, svuSectionPath, type SvuSectionId } from "@/lib/programmeNavigation";
 import { useProgrammeSeo } from "./ProgrammeDirectory";
@@ -75,6 +76,27 @@ const SvuOverview = () => {
         <span className={`programme-section-icon tone-${area.tone}`}><area.icon size={22} strokeWidth={1.4} aria-hidden="true" /></span>
         <span><strong>{area.title}</strong><span>{area.text}</span></span>
       </Link>)}</div>
+    </section>
+
+    <section className="svu-block svu-tools">
+      <h2>Tools, Platforms &amp; Technologies</h2>
+      <p className="svu-reading">{svuToolsIntro}</p>
+      <ul className="svu-tool-rows">
+        {svuToolCategories.map((cat) => (
+          <li className="svu-tool-row" key={cat.label}>
+            <h3 className="svu-tool-label">{cat.label}</h3>
+            <ul className="svu-tool-list">
+              {cat.items.map((item) => (
+                <li className="svu-tool" key={item.name}>
+                  {item.logo ? <img src={item.logo} alt="" className="svu-tool-logo" loading="lazy" /> : null}
+                  {item.icon ? <span className="svu-tool-icon"><item.icon size={20} strokeWidth={1.5} aria-hidden="true" /></span> : null}
+                  <span className="svu-tool-name">{item.name}</span>
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))}
+      </ul>
     </section>
 
     <section className="svu-block svu-split">
