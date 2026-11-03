@@ -1,0 +1,101 @@
+import { useEffect, useState, type CSSProperties } from "react";
+import { ChevronDown, ChevronUp } from "lucide-react";
+import { svuTechnologies, svuToolsIntro } from "@/data/svuTools";
+
+/* "Technologies You Work With" (client, 3 November 2026): logos only, each in its own
+   numbered index cell, rising one after another in a narrow vertical strip in the section's
+   right corner. The strip holds two copies of the list and slides by exactly one copy, so the
+   loop is seamless; the second copy is hidden from assistive technology so every technology is
+   announced once. Hover pauses the strip, "Show all technologies" stops it and lays every cell
+   out at once, and a reduced-motion preference always gets that static layout. */
+
+const COLUMNS = 2; // 22 technologies → 11 full rows, so the loop never shows a half-empty row
+const SECONDS_PER_ROW = 2.6;
+
+export const techIndex = (position: number) => String(position).padStart(2, "0");
+
+const usePrefersReducedMotion = () => {
+  const query = "(prefers-reduced-motion: reduce)";
+  const [reduced, setReduced] = useState(() => typeof window !== "undefined" && !!window.matchMedia?.(query).matches);
+  useEffect(() => {
+    const media = window.matchMedia?.(query);
+    if (!media) return;
+    const update = () => setReduced(media.matches);
+    update();
+    media.addEventListener?.("change", update);
+    return () => media.removeEventListener?.("change", update);
+  }, []);
+  return reduced;
+};
+
+const TechCells = ({ copy = false }: { copy?: boolean }) => (
+  <ul
+    className="svu-tech-grid"
+    aria-hidden={copy || undefined}
+    aria-label={copy ? undefined : "Technologies you work with"}
+    data-copy={copy || undefined}
+  >
+    {svuTechnologies.map((item, index) => (
+      <li className="svu-tech-cell" key={item.name} title={copy ? undefined : item.name}>
+        <span className="svu-tech-index" aria-hidden="true">{techIndex(index + 1)}</span>
+        {item.logo ? (
+          <img
+            className="svu-tech-logo"
+            src={item.logo}
+            alt={copy ? "" : item.name}
+            draggable={false}
+            decoding="async"
+          />
+        ) : item.icon ? (
+          <span className="svu-tech-glyph">
+            <item.icon size={26} strokeWidth={1.5} aria-hidden="true" />
+            <span className="svu-tech-short" aria-hidden="true">{item.short}</span>
+            {copy ? null : <span className="sr-only">{item.name}</span>}
+          </span>
+        ) : null}
+      </li>
+    ))}
+  </ul>
+);
+
+const SvuTechTicker = () => {
+  const reducedMotion = usePrefersReducedMotion();
+  const [showAll, setShowAll] = useState(false);
+  const expanded = showAll || reducedMotion;
+  const rows = Math.ceil(svuTechnologies.length / COLUMNS);
+
+  return (
+    <section
+      className={`svu-block svu-tech${expanded ? " is-expanded" : " is-scrolling"}`}
+      aria-labelledby="svu-tech-title"
+    >
+      <div className="svu-tech-lead">
+        <h2 id="svu-tech-title">Technologies You Work With</h2>
+        <p className="svu-reading">{svuToolsIntro}</p>
+        {reducedMotion ? null : (
+          <button
+            type="button"
+            className="svu-tech-toggle"
+            aria-expanded={showAll}
+            aria-controls="svu-tech-window"
+            onClick={() => setShowAll((value) => !value)}
+          >
+            {showAll ? "Resume scrolling" : "Show all technologies"}
+            {showAll ? <ChevronUp size={16} aria-hidden="true" /> : <ChevronDown size={16} aria-hidden="true" />}
+          </button>
+        )}
+      </div>
+      <div className="svu-tech-window" id="svu-tech-window">
+        <div
+          className="svu-tech-track"
+          style={{ "--tech-duration": `${(rows * SECONDS_PER_ROW).toFixed(1)}s` } as CSSProperties}
+        >
+          <TechCells />
+          {expanded ? null : <TechCells copy />}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default SvuTechTicker;

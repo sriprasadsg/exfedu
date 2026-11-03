@@ -733,24 +733,59 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 }
 .banner-story, .bs-svg { border: 0 !important; box-shadow: none !important; outline: 0; filter: none !important; background: transparent !important; }
 
-/* ===== SVU Overview: Tools, Platforms & Technologies (client brief, 3 November 2026) =====
-   Compact rows on white: category label left, marks and names right, thin pale-blue rules
-   between rows. No cards, no carousel — the complete list stays visible. Marks keep their
-   official shapes and colours at a common height; broad learning areas carry navy line icons. */
-.svu-tools .svu-tool-rows { list-style: none; margin: 20px 0 0; padding: 0; }
-.svu-tools .svu-tool-row { display: grid; grid-template-columns: minmax(0, 210px) minmax(0, 1fr); gap: 8px 24px; align-items: start; padding: 13px 0; border-top: 1px solid hsl(var(--academic-edge)); }
-.svu-tools .svu-tool-row:last-child { border-bottom: 1px solid hsl(var(--academic-edge)); }
-.svu-tools .svu-tool-label { margin: 0; font-size: 14px; font-weight: 500; line-height: 1.5; color: hsl(var(--navy-900)); }
-.svu-tools .svu-tool-list { list-style: none; display: flex; flex-wrap: wrap; gap: 9px 14px; margin: 0; padding: 0; }
-.svu-tools .svu-tool { display: inline-flex; align-items: center; gap: 9px; padding: 5px 12px 5px 8px; border: 1px solid hsl(214 45% 91%); border-radius: 9px; background: hsl(214 50% 98%); }
-.svu-tools .svu-tool-logo { height: 30px; width: auto; max-width: 96px; object-fit: contain; flex: none; }
-.svu-tools .svu-tool-icon { display: grid; place-items: center; width: 30px; height: 30px; flex: none; color: hsl(var(--navy-900)); }
-.svu-tools .svu-tool-name { font-size: 13px; line-height: 1.4; color: hsl(var(--muted-foreground)); }
-@media (max-width: 720px) {
-  .svu-tools .svu-tool-row { grid-template-columns: minmax(0, 1fr); gap: 7px; padding: 12px 0; }
-  .svu-tools .svu-tool-list { gap: 8px 10px; }
-  .svu-tools .svu-tool-logo { height: 26px; max-width: 82px; }
-  .svu-tools .svu-tool-icon { width: 26px; height: 26px; }
+/* ===== SVU Overview: Technologies You Work With (client, 3 November 2026) =====
+   Logos only, each in its own numbered index cell, rising one after another in a narrow
+   vertical strip in the section's right corner. The track holds two identical copies and
+   slides by exactly one, so the loop is seamless. Hover pauses it; "Show all technologies"
+   and a reduced-motion preference lay every cell out at once with no motion. */
+.svu-tech { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 300px); gap: 24px 48px; align-items: center; }
+.svu-tech h2 { margin: 0; }
+.svu-tech .svu-reading { margin-top: 12px; max-width: 560px; }
+.svu-tech-toggle { display: inline-flex; align-items: center; gap: 6px; margin-top: 14px; padding: 2px 0; border: 0; background: none; font: inherit; font-size: 14px; font-weight: 500; line-height: 1.5; color: hsl(var(--connection-blue)); cursor: pointer; }
+.svu-tech-toggle:hover { text-decoration: underline; text-underline-offset: 4px; }
+.svu-tech-toggle:focus-visible { outline: 2px solid hsl(var(--ring)); outline-offset: 3px; border-radius: 4px; }
+
+.svu-tech-window { --tech-cell-h: 92px; --tech-gap: 12px; position: relative; min-width: 0; }
+.svu-tech.is-scrolling .svu-tech-window {
+  height: calc(var(--tech-cell-h) * 3 + var(--tech-gap) * 2);
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, hsl(0 0% 0%) 13%, hsl(0 0% 0%) 87%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, hsl(0 0% 0%) 13%, hsl(0 0% 0%) 87%, transparent);
+}
+.svu-tech.is-scrolling .svu-tech-track { animation: svu-tech-rise var(--tech-duration, 28s) linear infinite; will-change: transform; }
+.svu-tech.is-scrolling .svu-tech-window:hover .svu-tech-track { animation-play-state: paused; }
+@keyframes svu-tech-rise { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(0, -50%, 0); } }
+
+/* Each copy ends with one gap of padding, so the two copies are exactly equal in height. */
+.svu-tech-grid { list-style: none; margin: 0; padding: 0 0 var(--tech-gap); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--tech-gap); }
+.svu-tech-cell {
+  position: relative; display: grid; place-items: center; height: var(--tech-cell-h); min-width: 0;
+  border: 1px solid transparent; border-radius: 12px;
+  background:
+    linear-gradient(hsl(var(--background)), hsl(var(--background))) padding-box,
+    linear-gradient(150deg, hsl(var(--navy-900) / .26), hsl(var(--academic-sky) / .42)) border-box;
+  transition: box-shadow 200ms ease;
+}
+.svu-tech-cell:hover { box-shadow: 0 6px 16px -10px hsl(var(--academic-shadow) / .35); }
+.svu-tech-index { position: absolute; top: 7px; left: 9px; font-size: 10px; line-height: 1; letter-spacing: .06em; font-variant-numeric: tabular-nums; color: hsl(var(--muted-foreground)); }
+.svu-tech-logo { display: block; height: 40px; width: auto; max-width: 72%; object-fit: contain; user-select: none; }
+.svu-tech-glyph { display: grid; justify-items: center; gap: 5px; color: hsl(var(--navy-900)); }
+.svu-tech-short { font-size: 11.5px; font-weight: 500; line-height: 1; letter-spacing: .02em; }
+
+/* Everything at once: a static grid beneath the introduction. */
+.svu-tech.is-expanded { grid-template-columns: minmax(0, 1fr); align-items: start; }
+.svu-tech.is-expanded .svu-tech-grid { grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); padding-bottom: 0; }
+
+@media (max-width: 767px) {
+  .svu-tech { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+  .svu-tech-window { --tech-cell-h: 80px; --tech-gap: 10px; }
+  .svu-tech-logo { height: 34px; }
+  .svu-tech.is-expanded .svu-tech-grid { grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .svu-tech-track { animation: none !important; }
+  .svu-tech-grid[data-copy] { display: none; }
+  .svu-tech-cell { transition: none; }
 }
 
 /* ============ Collaboration network loop ============
