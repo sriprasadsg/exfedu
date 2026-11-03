@@ -809,5 +809,5 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 @media (max-width: 767px) {
   .xl-full { display: none; }
   .xl-compact { display: block; }
-  .xl-title { font-size: 15px; }
+  .xl-title { font-size: 14.5px; }
 }

@@ -116,9 +116,9 @@ const XimeLayersView = ({ compact }: { compact?: boolean }) => (
       const cy = xlCy(i);
       return (
         <g key={title}>
-          <path className="xl-leader" d={`M${XL.cx + XL.w + 4} ${cy}H${XL.cx + XL.w + 18}`} />
-          <text className="xl-title" x={226} y={compact ? cy + 4 : cy - 3}>{title}</text>
-          {!compact && <text className="xl-sub" x={226} y={cy + 12}>{sub}</text>}
+          <path className="xl-leader" d={`M${XL.cx + XL.w + 4} ${cy}H${XL.cx + XL.w + 14}`} />
+          <text className="xl-title" x={222} y={compact ? cy + 4 : cy - 3}>{title}</text>
+          {!compact && <text className="xl-sub" x={222} y={cy + 12}>{sub}</text>}
         </g>
       );
     })}
