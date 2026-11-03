@@ -366,3 +366,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] SkillShone pad: pad boxes respond gently to the pointer (wash, ring, tile lift)
 - [x] SVU featured-achievement panel: replace dark navy with a pale sky-blue look
 - [x] SVU award panel: no navy-red edge, no underline, smaller box
+- [ ] Refinement pass (3 Nov): hide pending certification; split student/institution enquiries w/ programme preselect; page titles; legal date; XIME plural; SkillShone breadcrumb; dedupe programme/IBM copy, faculty outside Enquiry; banners/headings; internship heading/spacing
