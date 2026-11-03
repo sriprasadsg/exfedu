@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { RotateCcw } from "lucide-react";
 import type { Organisation } from "@/data/site";
+import svuLaptopDashboard from "@/assets/svu-laptop-dashboard.png";
 
 /** Conceptual three-stage learning illustrations for the collaboration banners.
  * Stages reveal over ~6s, then hold; a replay control restarts the sequence.
@@ -90,6 +91,15 @@ const art: Record<string, () => JSX.Element> = { SVU: SvuArt, IBM: IbmArt, XIME:
 const BannerStory = ({ organisation, active }: { organisation: Organisation; active: boolean }) => {
   const [run, setRun] = useState(0);
   useEffect(() => { if (active) setRun(r => r + 1); }, [active]);
+  /* SVU carries a static 3D laptop-and-dashboard mockup (client brief, 3 Nov 2026):
+     a conceptual Data Science learning illustration, not a real platform. */
+  if (organisation === "SVU") {
+    return (
+      <figure className="banner-story">
+        <img className="bs-static" src={svuLaptopDashboard} alt="Illustration: a laptop with a Python analysis workspace and a floating data dashboard showing a dataset, a chart and insights" loading="lazy" />
+      </figure>
+    );
+  }
   const Art = art[organisation] ?? SvuArt;
   const [a, b, c] = labels[organisation] ?? labels.SVU;
   return (
