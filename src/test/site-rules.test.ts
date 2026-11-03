@@ -74,7 +74,7 @@ describe("approved website structure", () => {
   it("keeps unspecified certification and brochure claims pending", () => {
     for (const programme of programmes) {
       // Only IBM has approved brochures (client-supplied leaflets, 2 November 2026).
-      if (programme.organisation === "IBM") expect(programme.brochure).toMatch(/\/__l5e\/assets-v1\/.+-brochure\.pdf$/);
+      if (programme.organisation === "IBM") expect(programme.brochure).toMatch(/brochures\/ibm-.+\.pdf$/);
       else expect(programme.brochure).toBeUndefined();
       if (programme.organisation === "XIME") expect(programme.recognition).toMatch(/jointly issued by XIME Chennai and Exafluence Education/);
       else if (programme.slug !== "ibm-semester-industry-learning") expect(programme.recognition).toBeUndefined();
@@ -98,7 +98,7 @@ describe("approved website structure", () => {
     expect(new Set(collaborationSlides.map((slide) => slide.image)).size).toBe(3);
   });
   it("shows Sri Venkateswara University's supplied logo artwork in its wider slot", () => {
-    expect(organisations.SVU.logo).toContain("c9ca94b2-e037-43af-8e7b-a9a0742353b0");
+    expect(organisations.SVU.logo).toContain("svu-logo.png");
     expect(organisations.SVU.logoClass).toBe("logo-wide");
     expect(organisations.XIME.logoClass).toBe("");
     expect(organisations.IBM.logoClass).toBe("");
