@@ -36,7 +36,7 @@ const IbmPages = () => {
               <p>{ibmOverview.introduction}</p>
               <p className="ibm-relationship">{ibmOverview.relationship}</p>
             </div>
-            <figure className="ibm-intro-art"><img src={ibmIllustration.url} alt="AI coding and quantum assembly" /></figure>
+            <figure className="ibm-intro-art"><img src={ibmIllustration.url} alt="Illustration: a technology campus with signboards for Exafluence Education, IBM and collaborating institutions" /></figure>
           </div>
         </div>
       </div>
