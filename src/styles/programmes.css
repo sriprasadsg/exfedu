@@ -41,6 +41,14 @@
 .programme-intro h1 { font-size: 38px; font-weight: 500; line-height: 1.2; max-width: 950px; }
 .programme-intro p { max-width: 850px; font-size: 16px; line-height: 1.8; margin-top: 16px; }
 .programme-intro .programme-subtitle { font-size: 20px; color: hsl(var(--programme-blue)); }
+/* XIME page banner (client brief, 3 November 2026): the supplied AI-FinTech platform render
+   sits beside the introduction, mirroring the IBM page's intro artwork footprint. Scoped to a
+   modifier class so every other programme page keeps its full-width introduction. */
+.programme-intro-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 48px; align-items: center; }
+.programme-intro-art { display: flex; justify-content: center; background: hsl(var(--card)); border: 1px solid hsl(var(--academic-edge)); border-radius: 16px; padding: 18px; box-shadow: 0 14px 30px -26px hsl(var(--navy-900) / .5); }
+.programme-intro-art img { width: 100%; max-width: 440px; max-height: 320px; object-fit: contain; }
+@media (max-width: 1050px) { .programme-intro-grid { gap: 28px; } }
+@media (max-width: 767px) { .programme-intro-grid { grid-template-columns: minmax(0, 1fr); } .programme-intro-art img { max-width: 340px; } }
 .programme-list { padding-block: 36px 56px; }
 .programme-filters { display: grid; grid-template-columns: 1.3fr 1fr 1fr 1fr auto; gap: 18px; align-items: end; }
 .programme-filters label > span { font-size: 13px; font-weight: 500; display: block; margin-bottom: 8px; }
