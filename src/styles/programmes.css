@@ -788,3 +788,7 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
   .svu-tech-cell { transition: none; }
 }
 
+
+/* Banners with no illustration (client brief, 3 November 2026): the text panel takes the
+   whole slide so no empty artwork column is left where the graphic used to sit. */
+.network-slide--text { grid-template-columns: minmax(0, 1fr); }

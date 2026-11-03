@@ -62,9 +62,15 @@ const IbmArt = () => <>
 
 const art: Record<string, () => JSX.Element> = { SVU: SvuArt, IBM: IbmArt };
 
+/* Which banners carry an illustration. XIME carries none (client brief, 3 November 2026),
+   so its slide gives the text panel the full width instead of an empty artwork column. */
+export const hasBannerStory = (organisation: Organisation) => organisation === "SVU" || organisation === "IBM";
+
 const BannerStory = ({ organisation, active }: { organisation: Organisation; active: boolean }) => {
   const [run, setRun] = useState(0);
   useEffect(() => { if (active) setRun(r => r + 1); }, [active]);
+  if (!hasBannerStory(organisation)) return null;
+
   /* SVU carries a static 3D laptop-and-dashboard mockup (client brief, 3 Nov 2026):
      a conceptual Data Science learning illustration, not a real platform. */
   if (organisation === "SVU") {

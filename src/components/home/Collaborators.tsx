@@ -5,7 +5,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { collaborationSlides, organisations } from "@/data/site";
 import { organisationPath } from "@/lib/programmeNavigation";
-import BannerStory from "./BannerStory";
+import BannerStory, { hasBannerStory } from "./BannerStory";
 
 const Collaborators = () => {
   const [viewport, carousel] = useEmblaCarousel({ loop: true, duration: 25 });
