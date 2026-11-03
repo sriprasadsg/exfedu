@@ -682,3 +682,50 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme-experience) :is(h1, h2, h3, h4, h5) :is(a, em, strong, span, small, cite) {
   background-image: none; -webkit-text-fill-color: currentColor; color: hsl(var(--navy-800));
 }
+
+/* Collaboration banners (client brief, 3 Nov 2026): text left, a coordinated
+   three-stage learning illustration right (~38%), white background, navy outlines. */
+.network-slide { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 38%); align-items: center; gap: 32px; padding: 28px; background: hsl(var(--background)); border: 1px solid hsl(var(--academic-edge)); border-radius: 14px; }
+.network-slide .network-panel { margin: 0; width: auto; border: 0; box-shadow: none; padding: 0; background: transparent; }
+.network-visual { min-width: 0; }
+.banner-story { position: relative; margin: 0; }
+.bs-svg { display: block; width: 100%; height: auto; font-family: inherit; overflow: visible; }
+.bs-frame { fill: hsl(var(--background)); stroke: hsl(var(--navy-800)); stroke-width: 1.5; }
+.bs-cell { fill: hsl(214 30% 90%); }
+.bs-fill-soft { fill: hsl(210 80% 94%); }
+.bs-fill-accent { fill: hsl(var(--connection-blue)); }
+.bs-axis, .bs-link, .bs-gauge, .bs-arrow path, .bs-needle { fill: none; stroke: hsl(var(--navy-800)); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.bs-link { stroke: hsl(214 30% 75%); }
+.bs-link-hi, .bs-gauge-hi { stroke: hsl(var(--connection-blue)); stroke-width: 2.25; }
+.bs-gauge { stroke-width: 6; stroke: hsl(214 30% 88%); }
+.bs-gauge.bs-gauge-hi { stroke: hsl(var(--connection-blue)); }
+.bs-line { fill: none; stroke: hsl(var(--connection-blue)); stroke-width: 2.25; stroke-linejoin: round; }
+.bs-area { fill: hsl(var(--connection-blue) / .1); }
+.bs-dot { fill: hsl(var(--navy-800)); }
+.bs-node { fill: hsl(var(--background)); stroke: hsl(var(--navy-800)); stroke-width: 1.5; }
+.bs-node-hi { stroke: hsl(var(--connection-blue)); stroke-width: 2.25; fill: hsl(210 80% 94%); }
+.bs-node-fill { fill: hsl(var(--navy-800)); }
+.bs-gate { fill: hsl(var(--connection-blue)); }
+.bs-gate-t { fill: hsl(var(--background)); font-size: 11px; font-weight: 500; text-anchor: middle; }
+.bs-check { fill: none; stroke: hsl(var(--navy-800)); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.bs-check-light { stroke: hsl(var(--background)); stroke-width: 2; }
+.bs-label { fill: hsl(var(--navy-800)); font-size: 11.5px; font-weight: 500; }
+.bs-arrow path { stroke: hsl(var(--connection-blue)); }
+/* Progressive reveal over ~6s, then hold. */
+.bs-stage { opacity: 0; animation: bs-in .9s ease-out forwards; }
+.bs-s1 { animation-delay: .3s; } .bs-s2 { animation-delay: 2.3s; } .bs-s3 { animation-delay: 4.3s; }
+.bs-arrow { opacity: 0; animation: bs-in .5s ease-out forwards; }
+.bs-arrow:nth-of-type(1) { animation-delay: 1.7s; }
+.bs-svg > .bs-arrow ~ .bs-arrow { animation-delay: 3.7s; }
+@keyframes bs-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+.bs-replay { position: absolute; top: -6px; right: -6px; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; border: 1px solid hsl(var(--academic-edge)); background: hsl(var(--background)); color: hsl(var(--navy-800)); opacity: .7; transition: opacity .2s; }
+.bs-replay:hover, .bs-replay:focus-visible { opacity: 1; }
+@media (max-width: 767px) {
+  .network-slide { grid-template-columns: 1fr; gap: 20px; padding: 20px; }
+  .bs-stage, .bs-arrow { animation: none; opacity: 1; }
+  .bs-replay { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bs-stage, .bs-arrow { animation: none; opacity: 1; }
+  .bs-replay { display: none; }
+}
