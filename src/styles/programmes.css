@@ -661,3 +661,24 @@ body:not(:has(.homepage-static)) main .svu-champion-title {
   .programme-experience:not(.ibm-page) .programme-section-icon,
   .programme-experience .programme-facts svg { animation: none; }
 }
+
+/* Refinement pass (client, 3 November 2026). */
+/* Clear separation between the introduction and the records table/cards. */
+.svu-career-records-heading { margin-top: 40px; margin-bottom: 18px; padding-top: 28px; border-top: 1px solid hsl(var(--academic-edge)); font-size: 22px; font-weight: 500; line-height: 1.3; }
+/* Collaboration banners: shorter artwork band and a panel that sits closer, so the
+   artwork and copy balance without a large empty gap. */
+.network-image { height: 320px; }
+.network-image > img { width: min(640px, 54%); }
+.network-panel { margin-top: -120px; width: min(600px, 60%); padding: 24px 28px; }
+.network-section { padding-block: 32px 20px; }
+.programme-intro { padding-block: 22px 36px; }
+.programme-intro nav { margin-bottom: 22px; }
+@media (max-width: 767px) {
+  .network-image { height: 220px; }
+  .network-panel { margin: -48px 12px 0; width: auto; }
+}
+/* Collaboration and programme pages: consistent solid dark navy headings. */
+body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme-experience) :is(h1, h2, h3, h4, h5),
+body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme-experience) :is(h1, h2, h3, h4, h5) :is(a, em, strong, span, small, cite) {
+  background-image: none; -webkit-text-fill-color: currentColor; color: hsl(var(--navy-800));
+}
