@@ -5,7 +5,7 @@ import SkillShonePage from "@/components/site/SkillShonePage";
 import { pages } from "@/data/site";
 
 const page = pages.find((p) => p.path === "/skillshone")!;
-const open = () => render(<MemoryRouter><SkillShonePage page={page} breadcrumb={null} /></MemoryRouter>);
+const open = () => render(<MemoryRouter><SkillShonePage page={page} /></MemoryRouter>);
 
 afterEach(cleanup);
 
