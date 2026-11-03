@@ -4,8 +4,30 @@ export const organisationPath = (organisation: Organisation) => `/collaboration-
 export const programmePath = (programme: Pick<Programme, "organisation" | "slug">) => `${organisationPath(programme.organisation)}/${programme.slug}`;
 export const organisationFromPath = (path: string): Organisation | undefined =>
   (Object.keys(organisations) as Organisation[]).find(organisation => organisationPath(organisation) === path.replace(/\/$/, ""));
-export const svuSectionIds = ["overview", "programmes", "projects-research", "internships", "placements"] as const;
+
+/** SVU renders as three pages; the finer section ids resolve to an anchor on one of them. */
+export const svuPageIds = ["overview", "outcomes", "faculty"] as const;
+export type SvuPageId = typeof svuPageIds[number];
+export const svuSectionIds = ["overview", "programmes", "projects-research", "internships", "placements", "faculty"] as const;
 export type SvuSectionId = typeof svuSectionIds[number];
-export const svuSectionPath = (id: SvuSectionId) => id === "overview" ? organisationPath("SVU") : `${organisationPath("SVU")}/${id}`;
-export const svuSectionFromPath = (path: string): SvuSectionId | undefined =>
-  svuSectionIds.find(id => svuSectionPath(id) === path.replace(/\/$/, ""));
+
+const svuBase = () => organisationPath("SVU");
+export const svuPagePath = (id: SvuPageId) => id === "overview" ? svuBase() : `${svuBase()}/${id}`;
+const sectionTargets: Record<SvuSectionId, string> = {
+  overview: "",
+  programmes: "#programmes",
+  "projects-research": "/outcomes#projects",
+  internships: "/outcomes#internships",
+  placements: "/outcomes#placements",
+  faculty: "/faculty",
+};
+export const svuSectionPath = (id: SvuSectionId) => `${svuBase()}${sectionTargets[id]}`;
+export const svuSectionFromPath = (path: string): SvuPageId | undefined =>
+  svuPageIds.find(id => svuPagePath(id) === path.replace(/\/$/, ""));
+
+/** Retired single-section SVU URLs redirect to their anchor on the merged pages. */
+export const svuLegacyRedirect = (path: string): string | undefined => {
+  const clean = path.replace(/\/$/, "");
+  const legacy = (["programmes", "projects-research", "internships", "placements"] as const).find(id => `${svuBase()}/${id}` === clean);
+  return legacy ? svuSectionPath(legacy) : undefined;
+};

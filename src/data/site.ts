@@ -354,6 +354,7 @@ export const organisationSections: Partial<Record<Organisation, OrganisationSect
       text: "Students from the 2023–2025 batch secured internships at NARL, Gadanki; SHAR, Sriharikota; and Vikram Sarabhai Space Centre, Thiruvananthapuram." },
     { id: "placements", title: "Placements", icon: Compass, tone: "blue",
       text: "Students from the SVU–Exafluence MS Data Science programme have secured roles in data science and AI engineering, alongside trainee positions." },
+    { id: "faculty", title: "Faculty & Mentors", icon: Users, tone: "teal" },
   ],
 };
 
