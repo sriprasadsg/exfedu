@@ -71,7 +71,6 @@ const IbmPages = () => {
             <li><span className="programme-section-icon tone-teal"><Wrench size={21} aria-hidden="true" /></span><p>Explore the tools specified in your programme</p></li>
             <li><span className="programme-section-icon tone-violet"><FlaskConical size={21} aria-hidden="true" /></span><p>Apply your knowledge through its practical activities</p></li>
           </ul>
-          <p className="ibm-note">{ibmOverview.applied.note}</p>
         </section>
 
         <section className="ibm-block" aria-labelledby="ibm-choice-heading">
