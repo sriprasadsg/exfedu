@@ -10,6 +10,7 @@ import { useProgrammeSeo } from "./ProgrammeDirectory";
 import { svuOverview } from "@/data/svuOverview";
 import SvuCareerRecords from "./SvuCareerRecords";
 import NetworkBackButton from "./NetworkBackButton";
+import ximeBanner from "@/assets/xime-fintech-platform.png.asset.json";
 
 const OrganisationProgrammes = ({ organisation }: { organisation: Organisation }) => {
   const org = organisations[organisation];
@@ -36,10 +37,13 @@ const OrganisationProgrammes = ({ organisation }: { organisation: Organisation }
         <img className={`programme-detail-logo ${org.logoClass}`} src={org.logo} alt={`${org.name} logo`} />
         <h1>{svuOverview.title}</h1><p className="svu-overview-subtitle">{svuOverview.subtitle}</p><p>{svuOverview.introduction}</p>
         <Button variant="link" asChild><Link to="#programmes">Explore Programmes<ArrowRight size={16} /></Link></Button>
-      </div>{slide && <figure><img src={slide.image} alt="SVU campus connected to data engineering and AI" /></figure>}</div> : <>
-        <img className={`programme-detail-logo ${org.logoClass}`} src={org.logo} alt={`${org.name} logo`} />
-        <h1>{org.name} Programmes</h1><p>{slide?.text}</p>
-      </>}
+      </div>{slide && <figure><img src={slide.image} alt="SVU campus connected to data engineering and AI" /></figure>}</div> : <div className="programme-intro-grid">
+        <div className="programme-intro-copy">
+          <img className={`programme-detail-logo ${org.logoClass}`} src={org.logo} alt={`${org.name} logo`} />
+          <h1>{org.name} Programmes</h1><p>{slide?.text}</p>
+        </div>
+        {organisation === "XIME" && <figure className="programme-intro-art"><img src={ximeBanner.url} alt="Illustration: a central fintech platform connected to four services for data, networks, payments and analytics" loading="lazy" /></figure>}
+      </div>}
     </div></header>
     {sections && <nav aria-label={`${org.name} sections`} className="organisation-section-nav"><div className="container organisation-section-nav-inner">{sections.map(section => <a key={section.id} href={`#${section.id}`}><section.icon size={16} aria-hidden="true" />{section.title}</a>)}</div></nav>}
     <div className="container organisation-programme-body">
