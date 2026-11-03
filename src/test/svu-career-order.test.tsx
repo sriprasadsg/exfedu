@@ -16,7 +16,7 @@ describe("SVU career records display order (client, 2 November 2026)", () => {
     const { container } = render(<SvuCareerRecords kind="placements" />);
     expect([...container.querySelectorAll(".svu-outcome h3")].map(h => h.textContent?.trim())).toEqual(placementOrder);
     expect([...container.querySelectorAll(".svu-outcome-batch")].map(b => b.textContent?.trim())).toEqual([
-      ...Array(6).fill("Batch I · 2023–2025"), ...Array(5).fill("Batch II · 2024–2026"),
+      ...Array(6).fill("Batch 2023–2025"), ...Array(5).fill("Batch 2024–2026"),
     ]);
   });
 

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import SvuPages from "@/components/site/SvuPages";
 
