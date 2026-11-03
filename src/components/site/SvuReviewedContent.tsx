@@ -1,3 +1,4 @@
+import { FacultyDirectory } from "./FacultyDirectory";
 import ResearchThemeIcon from "./ResearchThemeIcon";
 import { useState } from "react";
 import { ArrowRight, ArrowUpRight, BookOpen, BrainCircuit, BriefcaseBusiness, FlaskConical, Search, Trophy } from "lucide-react";
@@ -50,6 +51,6 @@ export const SvuResearchContent = () => {
 
 export const SvuAcademicResources = () => <div className="svu-academic-resources">
   <p>Industry-integrated teaching aligned with NEP 2020 connects AI, ML and Generative AI concepts with projects, case studies and real-world applications.</p>
-  <h4>Faculty &amp; Industry Mentors</h4><div className="svu-faculty-grid">{svuFaculty.map(item => <article key={item.name}><h5>{item.name}</h5><span className="programme-org">{item.role}</span><p>{item.expertise}</p></article>)}</div>
-  <h4>Technical Mentors &amp; Lab Faculty</h4><div className="svu-faculty-grid">{svuSupport.map(item => <article key={item.name}><h5>{item.name}</h5><p>{item.expertise}</p></article>)}</div>
+  <FacultyDirectory title="Faculty & Industry Mentors" people={svuFaculty} />
+  <FacultyDirectory title="Technical Mentors & Lab Faculty" people={svuSupport} />
 </div>;
