@@ -43,6 +43,7 @@ export default function SvuCareerRecords({ kind }: { kind: "placements" | "inter
     {placements
       ? <p>Students from the SVU–Exafluence MS Data Science programme have secured roles in data science and AI engineering, alongside trainee positions. The following records show their organisations, designations and academic batches.</p>
       : svuInternshipIntroduction.paragraphs.map(text => <p key={text}>{text}</p>)}
+    {!placements && <SvuInternshipUpdate />}
     <h2 className="svu-career-records-heading">{placements ? "Placement Records" : "Internship Records"}</h2>
     {placements ? <ul className="svu-outcomes" aria-label={title}>{shown.map(record => <li key={record.student} className="svu-outcome">
       <span className="svu-outcome-batch">Batch {record.batch}</span>

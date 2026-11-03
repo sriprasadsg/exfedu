@@ -301,6 +301,40 @@
   .svu-career-table-wrap::before { display: none; }
 }
 
+/* SVU internships: approved programme update (client, 3 November 2026). Text only — no poster
+   artwork. White surface, dark navy text and blue-grey hairline dividers; the name list opens
+   in two columns on desktop and one column on phones. */
+.svu-internship-update { margin-top: 28px; padding: 24px 26px; border: 1px solid hsl(205 32% 87%); border-radius: 14px; background: hsl(var(--card)); }
+.svu-internship-update-head { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; padding-bottom: 15px; border-bottom: 1px solid hsl(205 30% 90%); }
+.svu-internship-update-head h2 { font-size: 20px; font-weight: 500; line-height: 1.45; color: hsl(var(--navy-900)); }
+.svu-internship-update-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 0; font-size: 12px; color: hsl(var(--muted-foreground)); }
+.svu-internship-update-status { padding: 4px 11px; border-radius: 999px; border: 1px solid hsl(205 62% 82%); background: hsl(205 92% 97%); font-size: 11.5px; font-weight: 500; letter-spacing: .04em; text-transform: uppercase; color: hsl(205 80% 28%); }
+.svu-internship-update-record { font-size: 12px; color: hsl(var(--muted-foreground)); }
+.svu-internship-update-summary { margin-top: 16px; font-size: 14px; line-height: 1.8; color: hsl(var(--navy-700)); }
+.svu-internship-update-highlights { display: flex; flex-wrap: wrap; margin-top: 18px; padding-top: 16px; border-top: 1px solid hsl(205 30% 90%); }
+.svu-internship-update-highlights li { padding: 2px 20px; border-left: 1px solid hsl(205 30% 90%); font-size: 13px; font-weight: 500; color: hsl(var(--navy-900)); }
+.svu-internship-update-highlights li:first-child { padding-left: 0; border-left: 0; }
+.svu-internship-update-students { margin-top: 18px; padding-top: 16px; border-top: 1px solid hsl(205 30% 90%); }
+.svu-internship-update-toggle { display: inline-flex; align-items: center; gap: 8px; padding: 0; background: none; border: 0; font-family: inherit; font-size: 13.5px; font-weight: 500; color: hsl(var(--connection-blue)); cursor: pointer; }
+.svu-internship-update-toggle svg { transition: transform .3s ease; }
+.svu-internship-update-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
+.svu-internship-update-toggle:hover { color: hsl(var(--navy-900)); }
+.svu-internship-update-toggle:focus-visible { outline: 2px solid hsl(var(--connection-blue)); outline-offset: 4px; border-radius: 4px; }
+.svu-internship-update-names { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 40px; margin-top: 14px; padding-top: 4px; }
+.svu-internship-update-names li { padding: 8px 0; border-bottom: 1px solid hsl(205 30% 92%); font-size: 13.5px; line-height: 1.6; color: hsl(var(--navy-800)); }
+.svu-internship-update-names li:nth-last-child(-n+2) { border-bottom: 0; }
+@media (max-width: 767px) {
+  .svu-internship-update { padding: 18px 18px; }
+  .svu-internship-update-head h2 { font-size: 18px; }
+  .svu-internship-update-highlights { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 12px; }
+  .svu-internship-update-highlights li { padding: 0 14px; }
+  .svu-internship-update-highlights li:nth-child(odd) { padding-left: 0; border-left: 0; }
+  .svu-internship-update-names { grid-template-columns: minmax(0, 1fr); }
+  .svu-internship-update-names li:nth-last-child(-n+2) { border-bottom: 1px solid hsl(205 30% 92%); }
+  .svu-internship-update-names li:last-child { border-bottom: 0; }
+}
+@media (prefers-reduced-motion: reduce) { .svu-internship-update-toggle svg { transition: none; } }
+
 /* SVU five-page layout (2 Nov 2026 brief): open, centred, no sidebar */
 .svu-container { width: 100%; max-width: 1120px; margin-inline: auto; padding-inline: 24px; }
 /* Colourful back button at the top of every collaboration partner page
