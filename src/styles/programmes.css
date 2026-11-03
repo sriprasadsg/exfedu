@@ -260,16 +260,15 @@
 .svu-career-records .svu-career-count { font-size: 12px; margin-block: 16px; }
 /* Internships / Placements table: a two-colour light header — pale sky blue and pearl — with a
    gentle mouse-over response. (client, 2 November 2026: "use 2 color combination of light colors") */
-.svu-career-table-wrap { position: relative; border: 2px solid hsl(205 85% 84%); border-radius: 16px; overflow: hidden; background: hsl(var(--card)); }
-.svu-career-table-wrap::before { content: ""; display: block; height: 3px; background: linear-gradient(90deg, hsl(205 90% 60%), hsl(205 88% 84%)); }
+.svu-career-table-wrap { position: relative; border: 2px solid hsl(var(--academic-edge)); border-radius: 16px; overflow: hidden; background: hsl(var(--card)); }
+.svu-career-table-wrap::before { content: ""; display: block; height: 3px; background: hsl(var(--navy-900)); }
 .svu-career-table { width: 100%; table-layout: fixed; border-collapse: collapse; font-size: 13px; line-height: 1.7; }
 .svu-career-table th, .svu-career-table td { text-align: left; padding: 14px 10px; border-bottom: 1px solid hsl(var(--academic-edge)); vertical-align: top; overflow-wrap: anywhere; }
 .svu-career-table th { font-weight: 500; color: hsl(var(--navy-900)); }
-.svu-career-table thead th { padding-block: 13px; font-size: 11px; font-weight: 500; letter-spacing: .09em; text-transform: uppercase; white-space: nowrap; background: linear-gradient(100deg, hsl(205 92% 97%), hsl(205 88% 91%)); transition: background .35s ease; }
+.svu-career-table thead th { padding-block: 13px; font-size: 11px; font-weight: 500; letter-spacing: .09em; text-transform: uppercase; white-space: nowrap; background: hsl(var(--academic-surface)); transition: background .35s ease; }
 .svu-career-table thead th:hover { background: hsl(205 90% 94%); }
-.svu-career-head-icon { display: inline-grid; place-items: center; vertical-align: -6px; width: 24px; height: 24px; margin-right: 8px; border-radius: 8px; color: hsl(205 88% 30%); background: hsl(205 92% 95%); box-shadow: inset 0 0 0 1px hsl(205 82% 84%); transition: transform .35s ease, box-shadow .35s ease; }
-.svu-career-head-1, .svu-career-head-3 { background: hsl(205 92% 95%); }
-.svu-career-head-2, .svu-career-head-4 { background: hsl(0 0% 100%); }
+.svu-career-head-icon { display: inline-grid; place-items: center; vertical-align: -6px; width: 24px; height: 24px; margin-right: 8px; border-radius: 8px; color: hsl(var(--navy-900)); background: hsl(var(--card)); box-shadow: inset 0 0 0 1px hsl(var(--academic-edge)); transition: transform .35s ease, box-shadow .35s ease; }
+.svu-career-head-1, .svu-career-head-2, .svu-career-head-3, .svu-career-head-4 { background: hsl(var(--card)); }
 .svu-career-table thead th:hover .svu-career-head-icon { transform: translateY(-2px) rotate(-4deg); box-shadow: inset 0 0 0 1px hsl(205 82% 76%), 0 4px 10px -6px hsl(205 80% 40% / .6); }
 .svu-career-table tbody tr { transition: background .35s ease; }
 @media (prefers-reduced-motion: reduce) {
@@ -618,12 +617,10 @@
 .svu-story-caption { padding-left: 10px; border-left: 2px solid hsl(var(--connection-blue) / .35); }
 
 /* SVU programme directory: each category is a colourful box (client, 2 November 2026). */
-.svu-directory-group { --grp: 215 60% 24%; }
-.svu-directory-group:nth-child(2) { --grp: 152 45% 24%; }
-.svu-directory-group:nth-child(3) { --grp: 350 55% 30%; }
+.svu-directory-group { --grp: var(--navy-900); }
 .svu-directory-groups .svu-directory { border: 2px solid hsl(var(--grp) / .35); border-top: 4px solid hsl(var(--grp)); border-radius: 14px; overflow: hidden; background: hsl(var(--card)); box-shadow: 0 14px 30px -24px hsl(var(--grp) / .6); transition: transform .25s ease, box-shadow .25s ease; }
 .svu-directory-groups .svu-directory:hover { transform: translateY(-3px); box-shadow: 0 20px 36px -22px hsl(var(--grp) / .7); }
-.svu-directory-groups .svu-directory-head { background: linear-gradient(90deg, hsl(var(--grp) / .14), hsl(var(--grp) / .04)); color: hsl(var(--grp)); font-weight: 600; }
+.svu-directory-groups .svu-directory-head { background: hsl(var(--grp) / .07); color: hsl(var(--grp)); font-weight: 600; }
 .svu-directory-groups .svu-directory-row:last-child { border-bottom: 0; }
 .svu-directory-groups .svu-directory-row:hover { background: hsl(var(--grp) / .06); }
 .svu-directory-group h2 { display: flex; align-items: center; gap: 10px; }

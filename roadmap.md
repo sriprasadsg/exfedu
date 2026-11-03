@@ -383,3 +383,6 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Technologies You Work With: index numbers and the Show all/Resume control removed, leaving the continuous vertical scroll (reduced motion keeps one still grid). SVU Batch column and cards now read the year range alone, with batch order preserved. Verified in preview: strip still moves, no numbers or buttons, Batch reads 2023–2025 / 2024–2026; 140 tests pass.
 
 - [x] SVU Student Internships: approved text-only programme update added between the introduction and the records table — heading "Advancing Skills in Generative AI", Enrolled status, quiet Batch 3 supporting note, four highlights, and an expandable 15-name participating-student list (two columns on desktop, one on phones). No poster added, existing records untouched, no student duplicated. Verified 1280/390px: panel order, expand/collapse, column counts, 11 records intact, no overflow or page errors; 147 tests pass.
+
+- [x] SVU records + programmes tables: single flat colour, no gradients (navy only) — 3 Nov 2026
+- [x] SkillShone writing-pad clip: sized and centred, aligned with the title tile — 3 Nov 2026
