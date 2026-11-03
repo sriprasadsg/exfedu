@@ -6,7 +6,7 @@ import mysql from "@/assets/tech/mysql.svg";
 import mongodb from "@/assets/tech/mongodb.svg";
 import numpy from "@/assets/tech/numpy.svg";
 import apacheSpark from "@/assets/tech/apachespark.svg";
-import apacheHive from "@/assets/tech/apachehive.svg";
+import apacheHive from "@/assets/tech/apachehive.png";
 import apacheKafka from "@/assets/tech/apachekafka.svg";
 import apacheHadoop from "@/assets/tech/apachehadoop.svg";
 import aws from "@/assets/tech/aws.png";
