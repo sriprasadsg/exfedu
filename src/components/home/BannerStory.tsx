@@ -74,7 +74,6 @@ const BannerStory = ({ organisation, active }: { organisation: Organisation; act
       </figure>
     );
   }
-  if (organisation === "XIME") return <XimeLayers />;
   const Art = art[organisation] ?? SvuArt;
   const [a, b, c] = labels[organisation] ?? labels.SVU;
   return (
