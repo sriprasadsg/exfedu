@@ -2,11 +2,13 @@ import { Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import NotFound from "./NotFound";
 import { legalDocuments } from "@/data/legal";
+import { usePageTitle } from "@/hooks/usePageTitle";
 
 // Client document, 2 November 2026: /privacy-policy and /terms-and-conditions,
 // linked from the footer. Draft-only bracketed fields are omitted until confirmed.
 const LegalPage = ({ path }: { path: string }) => {
   const doc = legalDocuments.find((d) => d.path === path);
+  usePageTitle(doc ? `${doc.title} | Exafluence Education` : document.title, doc ? `${doc.title} for Exafluence Education (Exfedu), Edtech Division of Exafluence Inc., USA.` : undefined);
   if (!doc) return <NotFound />;
 
   return (

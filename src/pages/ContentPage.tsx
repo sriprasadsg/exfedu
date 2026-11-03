@@ -129,7 +129,7 @@ const ContentPage = () => {
   }
 
   if (page.path === "/skillshone") {
-    return <Layout><SkillShonePage page={page} breadcrumb={breadcrumb} /></Layout>;
+    return <Layout><SkillShonePage page={page} /></Layout>;
   }
 
   return (
