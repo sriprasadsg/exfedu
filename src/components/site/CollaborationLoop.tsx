@@ -23,7 +23,7 @@ const SEGMENTS: Segment[] = [
 /* Three 100-degree arcs on one circle (centre 130,130, radius 88) with a 20-degree gap
    between them; a small joint bridges each gap so the loop reads as connected. */
 const LoopSymbol = () => (
-  <svg className="loop-svg" viewBox="0 0 260 260" aria-hidden="true" focusable="false">
+  <svg className="loop-svg" viewBox="24 24 212 212" aria-hidden="true" focusable="false">
     <path className="loop-seg loop-seg-navy" strokeWidth="22" d="M 62.59 73.43 A 88 88 0 0 1 197.41 73.43" />
     <path className="loop-seg loop-seg-blue" strokeWidth="22" d="M 212.69 99.90 A 88 88 0 0 1 145.28 216.66" />
     <path className="loop-seg loop-seg-teal" strokeWidth="22" d="M 114.72 216.66 A 88 88 0 0 1 47.31 99.90" />

@@ -757,7 +757,7 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
    Original three-segment symbol (client brief, 3 November 2026): deep navy, medium blue
    and muted teal on white, each label beside its own segment, caption underneath. */
 .network-loop { padding: 14px 0 58px; background: hsl(var(--background)); border-top: 1px solid hsl(var(--academic-edge)); }
-.loop-map { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 400px) minmax(0, 1fr); grid-template-areas: ". top ." "left symbol right" ". caption ."; align-items: center; gap: 12px 32px; }
+.loop-map { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 360px) minmax(0, 1fr); grid-template-areas: ". top ." "left symbol right" ". caption ."; align-items: center; gap: 14px 22px; }
 .loop-symbol { grid-area: symbol; min-width: 0; }
 .loop-svg { display: block; width: 100%; height: auto; }
 .loop-seg { fill: none; stroke-linecap: round; }
@@ -784,7 +784,7 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
   .network-loop { padding-bottom: 46px; }
   .loop-map { grid-template-columns: minmax(0, 1fr); grid-template-areas: "symbol" "top" "right" "left" "caption"; gap: 0; }
   .loop-symbol { max-width: 250px; margin-inline: auto; }
-  .loop-label { max-width: none; width: 100%; align-items: flex-start; text-align: left; padding: 13px 0; border-top: 1px solid hsl(var(--academic-edge)); }
+  .loop-label { max-width: none; width: 100%; align-items: center; text-align: center; padding: 13px 0; border-top: 1px solid hsl(var(--academic-edge)); }
   .loop-label-top { padding-top: 20px; }
   .loop-caption { margin: 20px 0 0; }
 }
