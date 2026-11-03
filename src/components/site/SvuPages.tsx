@@ -66,7 +66,7 @@ const SvuOverview = () => {
         <p className="svu-reading">Student projects explore challenges across data engineering, business analytics and intelligent application development.</p>
         <Button variant="link" asChild><Link to={svuSectionPath("projects-research")}>Explore Student Projects<ArrowRight size={16} /></Link></Button>
       </div>
-      <div className="svu-areas">{svuProjectAreas.map(area => <Link key={area.title} to={`${svuSectionPath("projects-research")}#svu-project-${area.projectIndex + 1}`} className="svu-area">
+      <div className="svu-areas">{svuProjectAreas.map(area => <Link key={area.title} to={`${svuPagePath("outcomes")}#svu-project-${area.projectIndex + 1}`} className="svu-area">
         <span className={`programme-section-icon tone-${area.tone}`}><area.icon size={22} strokeWidth={1.4} aria-hidden="true" /></span>
         <span><strong>{area.title}</strong><span>{area.text}</span></span>
       </Link>)}</div>
