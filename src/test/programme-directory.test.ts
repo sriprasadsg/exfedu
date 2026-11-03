@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { collaborationSlides, filterProgrammes, programmes } from "@/data/site";
 
 describe("approved collaboration programme rules", () => {
-  it("orders collaborations SVU, IBM, XIME Chennai", () => { expect(collaborationSlides.map(s => s.organisation)).toEqual(["SVU", "IBM", "XIME"]); });
+  it("orders collaborations SVU, IBM", () => { expect(collaborationSlides.map(s => s.organisation)).toEqual(["SVU", "IBM"]); });
   it("uses the five approved SVU durations and modes", () => {
     expect(programmes.filter(p => p.organisation === "SVU").map(p => [p.duration, p.delivery])).toEqual([["2 years", "Regular, full-time hybrid"], ["1 year", "Part-time hybrid"], ["6 months", "Part-time hybrid"], ["6 months", "Part-time hybrid"], ["6 months", "Part-time hybrid"]]);
   });
@@ -29,7 +29,7 @@ describe("approved collaboration programme rules", () => {
     expect(filterProgrammes({ organisation: "SVU", subject: "AI & Gen AI", type: "Diploma", q: "PYTHON" }).map(p => p.slug)).toEqual(["python-ai-ml-genai"]);
     expect(filterProgrammes({ organisation: "IBM", subject: "Cloud Technologies" })).toEqual([]);
   });
-  it("lists the four XIME FinTech programmes by hours, without fees", () => { expect(filterProgrammes({ organisation: "XIME" }).map(p => p.duration)).toEqual(["60 hours", "150 hours", "150 hours", "250 hours (6 months)"]); expect(programmes.some(p => "fees" in p)).toBe(false); });
+  it("keeps XIME out of the catalogue and programmes free of fees", () => { expect(programmes.some(p => p.organisation === "XIME")).toBe(false); expect(programmes.some(p => "fees" in p)).toBe(false); });
   it("limits the source-supported 80/20 statement to M.S. Data Science", () => { expect(programmes.filter(p => JSON.stringify(p).includes("80%")).map(p => p.slug)).toEqual(["masters-data-science"]); });
   it("retains the PG diploma one-year IT experience requirement", () => { expect(programmes.find(p => p.slug === "pg-diploma-data-science")?.eligibility).toContain("at least one year of IT-domain experience"); });
   it("does not transfer PBEL online delivery to the three other IBM offerings", () => { expect(programmes.filter(p => p.organisation === "IBM").map(p => p.delivery)).toEqual(["On-campus", "On-campus", "On-campus", "Online mentorship"]); });
