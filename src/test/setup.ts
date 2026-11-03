@@ -22,3 +22,7 @@ class ObserverStub {
   takeRecords() { return []; }
 }
 Object.defineProperty(window, "IntersectionObserver", { writable: true, value: ObserverStub });
+
+// jsdom has no ResizeObserver either; the collaboration carousel measures its viewport with it.
+Object.defineProperty(window, "ResizeObserver", { writable: true, value: ObserverStub });
+

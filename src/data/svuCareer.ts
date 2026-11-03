@@ -1,6 +1,6 @@
 export type SvuCareerRecord = { student: string; batch: string; organisation: string; designation?: string };
-const batchOne = "I · 2023–2025";
-const batchTwo = "II · 2024–2026";
+const batchOne = "2023–2025";
+const batchTwo = "2024–2026";
 export const svuPlacements: SvuCareerRecord[] = [
   { student: "G V Sumanth", batch: batchOne, organisation: "Exafluence Global Analytics Pvt Ltd", designation: "Associate Data Scientist" },
   { student: "Yaram Lakshmi Nisoka", batch: batchOne, organisation: "Exafluence Global Analytics Pvt Ltd", designation: "Associate Data Scientist" },
@@ -30,9 +30,10 @@ export const svuInternshipIntroduction = {
   ],
 };
 /** Display order (client, 2 November 2026): batch-wise first, then alphabetical by
- * student name. Batch rank comes from the roman prefix, so I · 2023–2025 always
- * precedes II · 2024–2026. Records themselves are never altered. */
-export const svuBatchRank = (batch: string) => batch.split(" ")[0].length;
+ * student name. Batch rank comes from the batch's starting year, so 2023–2025 always
+ * precedes 2024–2026 (client, 3 November 2026: the roman prefix is no longer shown).
+ * Records themselves are never altered. */
+export const svuBatchRank = (batch: string) => Number(batch.match(/\d{4}/)?.[0] ?? 0);
 export const sortSvuCareerRecords = (records: SvuCareerRecord[]) => [...records].sort((a, b) =>
   svuBatchRank(a.batch) - svuBatchRank(b.batch) || a.student.localeCompare(b.student, undefined, { sensitivity: "base" })
 );

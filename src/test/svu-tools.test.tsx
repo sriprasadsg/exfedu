@@ -1,11 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import SvuPages from "@/components/site/SvuPages";
 
 /* Client, 3 November 2026: the SVU Overview technologies section is titled "Technologies You
    Work With" and sits between "Applied AI and Data Science" and "Research and Technical
-   Exploration". It shows logos only — each in its own numbered index cell — rising one after
+   Exploration". It shows logos only — each in its own cell — rising one after
    another in a vertical strip in the section's corner. The list is fixed by the brief, and the
    wording must never imply that every item is covered in every programme. */
 
@@ -53,12 +53,11 @@ describe("SVU Overview — Technologies You Work With", () => {
     const cells = primaryCells(section);
     expect(cells).toHaveLength(22);
     expect(cells.map(cellName)).toEqual(EXPECTED);
-    expect(cells.map(c => c.querySelector(".svu-tech-index")?.textContent)).toEqual(
-      EXPECTED.map((_, i) => String(i + 1).padStart(2, "0")),
-    );
+    // No index numbers in the corners of the cells (client, 3 November 2026).
+    expect(section.querySelectorAll(".svu-tech-index")).toHaveLength(0);
     cells.forEach((cell) => {
       const name = cellName(cell)!;
-      const visibleText = [...cell.querySelectorAll(".svu-tech-index, .svu-tech-short")].map(n => n.textContent).join("");
+      const visibleText = [...cell.querySelectorAll(".svu-tech-short")].map(n => n.textContent).join("");
       expect(cell.textContent?.replace(cell.querySelector(".sr-only")?.textContent ?? "", "")).toBe(visibleText);
       if (NO_PRODUCT_MARK[name]) {
         expect(cell.querySelector("img")).toBeNull();
@@ -83,18 +82,12 @@ describe("SVU Overview — Technologies You Work With", () => {
     expect((section.querySelector(".svu-tech-track") as HTMLElement).style.getPropertyValue("--tech-duration")).toBe("28.6s");
   });
 
-  it("lets visitors stop the motion and see every technology at once", () => {
+  it("keeps the strip scrolling with no show-all control beside it", () => {
     const { container } = overview();
-    const toggle = screen.getByRole("button", { name: "Show all technologies" });
-    expect(toggle.getAttribute("aria-expanded")).toBe("false");
-    fireEvent.click(toggle);
     const section = container.querySelector(".svu-tech")!;
-    expect(section.classList.contains("is-expanded")).toBe(true);
-    expect(section.querySelectorAll(".svu-tech-track > .svu-tech-grid")).toHaveLength(1);
-    expect(primaryCells(section)).toHaveLength(22);
-    const resume = screen.getByRole("button", { name: "Resume scrolling" });
-    expect(resume.getAttribute("aria-expanded")).toBe("true");
-    fireEvent.click(resume);
+    expect(section.querySelectorAll("button")).toHaveLength(0);
+    expect(section.textContent).not.toMatch(/Show all technologies|Resume scrolling/);
     expect(section.classList.contains("is-scrolling")).toBe(true);
+    expect(section.querySelectorAll(".svu-tech-track > .svu-tech-grid")).toHaveLength(2);
   });
 });
