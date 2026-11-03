@@ -857,3 +857,7 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 .fd-item[aria-expanded="true"] { background: hsl(var(--fd-pale)); border-left-color: hsl(var(--primary)); }
 .fd-item[aria-expanded="true"] .fd-chev { transform: rotate(180deg); }
 @media (max-width: 767px) { .fd-desktop { display: none; } .fd-mobile { display: block; } }
+.fd .fd-item::after, .fd .fd-item::before, .fd .fd-tags li::before, .fd .fd-tags li::after { content: none !important; display: none !important; }
+.fd .fd-item { transform: none !important; box-shadow: none !important; }
+.fd .fd-tags li { list-style: none; }
+.fd .fd-tags li::marker { content: ""; }
