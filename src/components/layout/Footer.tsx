@@ -39,7 +39,10 @@ const Footer = () => (
       </div>
 
       <div className="footer-brand footer-company-mark">
-        <img src={exafluence} alt="Exafluence — Data Driven Influence" className="w-auto" />
+        {/* Client, 3 November 2026: the footer logo links to the parent company site. */}
+        <a href="https://www.exafluence.com" target="_blank" rel="noopener noreferrer" className="footer-company-link" aria-label="Exafluence — opens in a new tab">
+          <img src={exafluence} alt="Exafluence — Data Driven Influence" className="w-auto" />
+        </a>
         {/* Client, 3 November 2026: the office address is given in the footer as plain text. */}
         <address className="footer-address">
           SRICHAKRA EDEN GREENS APARTMENTS,<br />
