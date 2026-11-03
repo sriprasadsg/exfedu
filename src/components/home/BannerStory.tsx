@@ -9,12 +9,10 @@ import svuLaptopDashboard from "@/assets/svu-laptop-dashboard.png";
 const labels: Record<string, [string, string, string]> = {
   SVU: ["Explore Data", "Analyse", "Discover Insights"],
   IBM: ["Explore", "Build", "Apply"],
-  XIME: ["Understand Finance", "Apply AI", "Inform Decisions"],
 };
 const titles: Record<string, string> = {
   SVU: "Illustration: a dataset becomes a chart, then a highlighted pattern",
   IBM: "Illustration: a code panel connects to a computing diagram with a small quantum circuit, then an output",
-  XIME: "Illustration: a financial chart, a risk indicator, then a decision point",
 };
 
 const Frame = ({ x }: { x: number }) => <rect x={x} y={20} width={112} height={112} rx={12} className="bs-frame" />;
@@ -62,31 +60,79 @@ const IbmArt = () => <>
   </g>
 </>;
 
-const XimeArt = () => <>
-  <g className="bs-stage bs-s1"><Frame x={4} />
-    <path d="M18 116h84" className="bs-axis" />
-    <path d="M20 104l16-12 14 6 16-24 14 8 18-32" className="bs-line" />
-    <path d="M20 104l16-12 14 6 16-24 14 8 18-32V116H20Z" className="bs-area" />
-  </g>
-  <Arrow x={120} />
-  <g className="bs-stage bs-s2"><Frame x={146} />
-    {/* risk gauge, no values */}
-    <path d="M168 100a34 34 0 0 1 68 0" className="bs-gauge" />
-    <path d="M168 100a34 34 0 0 1 22-32" className="bs-gauge bs-gauge-hi" />
-    <path d="M202 100l-14-22" className="bs-needle" /><circle cx={202} cy={100} r={4} className="bs-node-fill" />
-    <rect x={172} y={110} width={60} height={10} rx={5} className="bs-fill-soft" />
-  </g>
-  <Arrow x={262} />
-  <g className="bs-stage bs-s3"><Frame x={288} />
-    <circle cx={306} cy={76} r={7} className="bs-node bs-node-hi" />
-    <path d="M313 76h14M327 76l20-24M327 76l20 24" className="bs-link bs-link-hi" />
-    <rect x={348} y={42} width={28} height={18} rx={4} className="bs-fill-accent" />
-    <rect x={348} y={92} width={28} height={18} rx={4} className="bs-cell" />
-    <path d="M356 51l4 4 8-8" className="bs-check bs-check-light" />
-  </g>
-</>;
+/* XIME carries an original AI–FinTech layers composition (client brief, 3 November 2026):
+   four thin isometric platforms stacked upward — financial data supports AI and machine
+   learning, then FinTech applications, then business insights. One small icon per platform
+   with its label beside it, subtle vertical supports in the gaps, white and light-grey
+   surfaces, dark navy labels and restrained XIME-red accents on two selected edges.
+   Conceptual illustration only: it is not a software platform and implies no outcomes. */
+const XL = { cx: 112, cy0: 66, step: 60, w: 90, h: 38, t: 7 };
+const xlCy = (i: number) => XL.cy0 + i * XL.step;
+const xlTop = (cy: number) => `M${XL.cx} ${cy - XL.h}L${XL.cx + XL.w} ${cy}L${XL.cx} ${cy + XL.h}L${XL.cx - XL.w} ${cy}Z`;
+const xlLeft = (cy: number) => `M${XL.cx - XL.w} ${cy}L${XL.cx} ${cy + XL.h}L${XL.cx} ${cy + XL.h + XL.t}L${XL.cx - XL.w} ${cy + XL.t}Z`;
+const xlRight = (cy: number) => `M${XL.cx + XL.w} ${cy}L${XL.cx} ${cy + XL.h}L${XL.cx} ${cy + XL.h + XL.t}L${XL.cx + XL.w} ${cy + XL.t}Z`;
 
-const art: Record<string, () => JSX.Element> = { SVU: SvuArt, IBM: IbmArt, XIME: XimeArt };
+/* One small icon per layer, drawn upright on the front of its platform. */
+const DataIcon = () => <g className="xl-icon"><rect x={-9} y={-7} width={18} height={14} rx={2} /><path d="M-9 -1.5h18M-1.5 -1.5V7" /></g>;
+const ModelIcon = () => <g className="xl-icon"><path d="M-6 5.5L0 -6L6 5.5M-6 5.5h12" /><circle cx={0} cy={-6} r={2.4} /><circle cx={-6} cy={5.5} r={2.4} /><circle cx={6} cy={5.5} r={2.4} /></g>;
+const PayIcon = () => <g className="xl-icon"><rect x={-9} y={-6.5} width={18} height={13} rx={2.5} /><path d="M-9 -2h18M-5 3h6" /></g>;
+const InsightIcon = () => <g className="xl-icon"><path d="M-9 7.5h18" /><rect x={-8} y={1} width={4} height={6.5} /><rect x={-2} y={-3} width={4} height={10.5} /><rect x={4} y={-7} width={4} height={14.5} /></g>;
+
+const XLAYERS = [
+  { title: "Business Insights", sub: "Dashboard and decision indicators", Icon: InsightIcon },
+  { title: "FinTech Applications", sub: "Payments, risk and financial analytics", Icon: PayIcon },
+  { title: "AI & Machine Learning", sub: "Connected nodes and predictive models", Icon: ModelIcon },
+  { title: "Financial Data", sub: "Transactions, tables and data streams", Icon: DataIcon },
+];
+
+const XL_LABEL = "Illustration: four stacked platforms. Financial data supports AI and machine learning, which supports FinTech applications, which supports business insights.";
+
+const XimeLayersView = ({ compact }: { compact?: boolean }) => (
+  <svg className={`bs-svg xl-svg ${compact ? "xl-compact" : "xl-full"}`} viewBox={`0 0 ${compact ? 380 : 450} 320`} role="img" aria-label={XL_LABEL}>
+    <ellipse className="xl-shadow" cx={XL.cx} cy={304} rx={77} ry={11} />
+    {/* Supports run beneath each platform, so only the stretch between platforms shows. */}
+    {[0, 1, 2].map((j) => [XL.cx - 55, XL.cx + 55].map((x) => (
+      <g key={`${j}-${x}`}>
+        <path className="xl-link" d={`M${x} ${xlCy(j) + 12}V${xlCy(j + 1) - 12}`} />
+        <path className="xl-chev" d={`M${x - 3.5} ${xlCy(j) + 35}l3.5 -3.5 3.5 3.5`} />
+      </g>
+    )))}
+    {[3, 2, 1, 0].map((i) => {
+      const cy = xlCy(i);
+      const { Icon } = XLAYERS[i];
+      return (
+        <g key={XLAYERS[i].title}>
+          <path className="xl-fl" d={xlLeft(cy)} />
+          <path className="xl-fr" d={xlRight(cy)} />
+          <path className="xl-top" d={xlTop(cy)} />
+          <g transform={`translate(${XL.cx} ${cy + 19})`}><Icon /></g>
+        </g>
+      );
+    })}
+    {/* Restrained XIME-red accents along two selected edges. */}
+    <path className="xl-edge" d={`M${XL.cx - XL.w} ${xlCy(0)}L${XL.cx} ${xlCy(0) + XL.h}`} />
+    <path className="xl-edge" d={`M${XL.cx + XL.w} ${xlCy(3)}L${XL.cx} ${xlCy(3) + XL.h}`} />
+    {XLAYERS.map(({ title, sub }, i) => {
+      const cy = xlCy(i);
+      return (
+        <g key={title}>
+          <path className="xl-leader" d={`M${XL.cx + XL.w + 4} ${cy}H${XL.cx + XL.w + 14}`} />
+          <text className="xl-title" x={222} y={compact ? cy + 4 : cy - 3}>{title}</text>
+          {!compact && <text className="xl-sub" x={222} y={cy + 12}>{sub}</text>}
+        </g>
+      );
+    })}
+  </svg>
+);
+
+const XimeLayers = () => (
+  <figure className="banner-story">
+    <XimeLayersView />
+    <XimeLayersView compact />
+  </figure>
+);
+
+const art: Record<string, () => JSX.Element> = { SVU: SvuArt, IBM: IbmArt };
 
 const BannerStory = ({ organisation, active }: { organisation: Organisation; active: boolean }) => {
   const [run, setRun] = useState(0);
@@ -100,6 +146,7 @@ const BannerStory = ({ organisation, active }: { organisation: Organisation; act
       </figure>
     );
   }
+  if (organisation === "XIME") return <XimeLayers />;
   const Art = art[organisation] ?? SvuArt;
   const [a, b, c] = labels[organisation] ?? labels.SVU;
   return (
