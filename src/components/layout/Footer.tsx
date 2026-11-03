@@ -30,7 +30,7 @@ const Footer = () => (
           <li><Link to="/about" className="footer-option footer-list-link">About Us</Link></li>
           <li>
             <Link to="/skillshone" className="footer-featured" aria-label="SkillShone">
-              <img src={skillshoneLogo.url} alt="SkillShone" loading="lazy" className="footer-featured-logo" />
+              <img src={skillshoneLogo} alt="SkillShone" loading="lazy" className="footer-featured-logo" />
               <ArrowUpRight className="h-3 w-3" strokeWidth={1.75} aria-hidden />
             </Link>
           </li>
@@ -39,7 +39,7 @@ const Footer = () => (
       </div>
 
       <div className="footer-brand footer-company-mark">
-        <img src={exafluence.url} alt="Exafluence — Data Driven Influence" className="w-auto" />
+        <img src={exafluence} alt="Exafluence — Data Driven Influence" className="w-auto" />
       </div>
     </div>
 

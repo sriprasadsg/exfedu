@@ -132,7 +132,7 @@ export default function SkillShonePage({ page }: { page: Page }) {
             </div>
           </div>
           <div className="ss-hero-art">
-            <div className="ss-hero-card"><img src={skillshoneLogo.url} alt="SkillShone" width={392} height={48} /></div>
+            <div className="ss-hero-card"><img src={skillshoneLogo} alt="SkillShone" width={392} height={48} /></div>
           </div>
         </div>
       </section>

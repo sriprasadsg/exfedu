@@ -80,7 +80,7 @@ export default function AboutOverview({ data }: { data: AboutOverviewData }) {
           <p className="about-editorial-subtitle">{data.subtitle}</p>
           {data.introduction.map((text) => <p key={text}>{text}</p>)}
         </div>
-        <figure><img src={sculpture.url} width={878} height={1545} alt="Tall stack of matte sky-blue spheres and tilted discs carrying icons of a factory and gear, a rising chart, a processor, a cloud, a starred document and people reading a book, linked by a beaded thread" /></figure>
+        <figure><img src={sculpture} width={878} height={1545} alt="Tall stack of matte sky-blue spheres and tilted discs carrying icons of a factory and gear, a rising chart, a processor, a cloud, a starred document and people reading a book, linked by a beaded thread" /></figure>
       </div>
     </header>
 

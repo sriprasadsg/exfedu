@@ -78,7 +78,7 @@ const BannerStory = ({ organisation, active }: { organisation: Organisation; act
   if (organisation === "SVU") {
     return (
       <figure className="banner-story">
-        <img className="bs-static" src={svuLaptopDashboard.url} alt="Illustration: a laptop with a Python analysis workspace and a floating Data Science dashboard showing a dataset, a chart, an insight and the technologies used" loading="lazy" />
+        <img className="bs-static" src={svuLaptopDashboard} alt="Illustration: a laptop with a Python analysis workspace and a floating Data Science dashboard showing a dataset, a chart, an insight and the technologies used" loading="lazy" />
       </figure>
     );
   }

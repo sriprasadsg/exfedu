@@ -11,9 +11,9 @@ export const svuEvents = [
   { title: "Python & Professional Readiness Sessions", text: "Python training, free soft-skills sessions and mock interviews support technical knowledge, communication, aptitude and interview preparation." },
 ];
 export const svuGallery = [
-  { src: innovation.url, caption: "Student innovation presentation, Tirupati" },
-  { src: summitStudents.url, caption: "M.S. Data Science students at PanIIT Andhra Pradesh Summit 2026" },
-  { src: summitDelegation.url, caption: "PanIIT Andhra Pradesh Summit 2026 delegation" },
+  { src: innovation, caption: "Student innovation presentation, Tirupati" },
+  { src: summitStudents, caption: "M.S. Data Science students at PanIIT Andhra Pradesh Summit 2026" },
+  { src: summitDelegation, caption: "PanIIT Andhra Pradesh Summit 2026 delegation" },
 ];
 export const svuResearchMetrics = [
   { value: 13, label: "Published research papers", context: "MSDS batch 2023–2025" },

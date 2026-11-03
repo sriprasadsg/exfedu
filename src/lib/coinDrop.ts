@@ -18,7 +18,7 @@ const ensureBuffer = () => {
   if (buffer || loading) return;
   try {
     ctx ??= new AudioContext();
-    loading = fetch(coinDropAsset.url)
+    loading = fetch(coinDropAsset)
       .then((res) => res.arrayBuffer())
       .then((raw) => ctx!.decodeAudioData(raw))
       .then((decoded) => {

@@ -15,7 +15,7 @@ const Hero = () => (
         </ul>
         <Button asChild size="lg" className="hero2-cta"><Link to="/programmes">Explore Programmes</Link></Button>
       </div>
-      <img src={heroArt.url} alt="" aria-hidden="true" width={1449} height={1085} className="hero2-art" fetchPriority="high" />
+      <img src={heroArt} alt="" aria-hidden="true" width={1449} height={1085} className="hero2-art" fetchPriority="high" />
     </div>
   </section>
 );

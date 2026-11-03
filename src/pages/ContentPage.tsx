@@ -148,7 +148,7 @@ const ContentPage = () => {
             <div className="mt-8">{heading}</div>
           </div>
           <img
-            src={page.path === "/programmes" ? programmesCap.url : internshipsBanner.url}
+            src={page.path === "/programmes" ? programmesCap : internshipsBanner}
             alt=""
             aria-hidden="true"
             width={page.path === "/programmes" ? 914 : 1536}
