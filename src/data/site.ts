@@ -7,14 +7,12 @@ import type { AboutStoryData } from "@/components/site/AboutStory";
 import type { AboutOverviewData } from "@/components/site/AboutOverview";
 import type { EnquiryIntro } from "@/components/home/PartnerEnquiry";
 import svuLogo from "@/assets/svu-logo.png";
-import ximeLogo from "@/assets/xime-logo.png";
 import ibmSemesterBrochure from "@/assets/brochures/ibm-semester.pdf";
 import ibmValueAddedBrochure from "@/assets/brochures/ibm-value-added.pdf";
 import ibmQuantumBrochure from "@/assets/brochures/ibm-quantum.pdf";
 import ibmPbelBrochure from "@/assets/brochures/ibm-pbel.pdf";
 import ibmLogo from "@/assets/ibm-partner-badge.png";
 import svuIllustration from "@/assets/svu-partner-illustration.png";
-import ximeIllustration from "@/assets/xime-partner-illustration.png";
 import ibmIllustration from "@/assets/ibm-partner-illustration.png";
 import { svuReviewedCurricula } from "./svuReviewed";
 
@@ -77,7 +75,6 @@ export type Tone = "blue" | "teal" | "amber" | "violet";
 export const organisations = {
   SVU: { name: "Sri Venkateswara University", logo: svuLogo, logoClass: "logo-wide" },
   IBM: { name: "IBM", logo: ibmLogo, logoClass: "" },
-  XIME: { name: "XIME Chennai", logo: ximeLogo, logoClass: "" },
 };
 export type Organisation = keyof typeof organisations;
 export type Programme = {
@@ -93,10 +90,6 @@ export const programmes: Programme[] = [
   { slug: "python-ai-ml-genai", title: "Diploma in Python for AI, ML & Generative AI", level: "Diploma", organisation: "SVU", subjects: ["AI & Gen AI", "Python"], icon: Code2, tone: "violet", duration: "6 months", delivery: "Part-time hybrid", intake: svuIntake, overview: "Develop knowledge in Python for Artificial Intelligence, Machine Learning and Generative AI.", features: ["Six-month programme", "Part-time hybrid learning"], admissions: svuAdmissions, source: "https://www.svudatascience.in" },
   { slug: "data-visualization", title: "Diploma in Data Visualisation — Power BI, Tableau & SQL", level: "Diploma", organisation: "SVU", subjects: ["Data Visualisation"], icon: BarChart3, tone: "amber", duration: "6 months", delivery: "Part-time hybrid", intake: svuIntake, overview: "Explore data visualisation using Power BI, Tableau and SQL.", features: ["Six-month programme", "Part-time hybrid learning"], admissions: svuAdmissions, source: "https://www.svudatascience.in" },
   { slug: "cloud-technologies", title: "Diploma in Cloud Technologies", level: "Diploma", organisation: "SVU", subjects: ["Cloud Technologies"], icon: Cloud, tone: "blue", duration: "6 months", delivery: "Part-time hybrid", intake: svuIntake, overview: "Develop knowledge in Cloud Technologies through academic learning and practical application.", features: ["Six-month programme", "Part-time hybrid learning"], admissions: svuAdmissions, source: "https://www.svudatascience.in" },
-  { slug: "xime-foundation-fintech", title: "Foundation Course in AI-Driven FinTech", level: "Foundation", organisation: "XIME", subjects: ["AI & Gen AI", "FinTech"], icon: BookOpen, tone: "blue", duration: "60 hours", delivery: "Online", intake: "Weekday & weekend batches", overview: "Beginner-friendly introduction to finance, AI and FinTech.", features: ["Live interactive sessions", "No coding required", "Guided mini project", "LMS and recorded sessions"], tools: ["Python, Jupyter, NumPy, Pandas", "Power BI, Tableau, SQL", "Machine learning and anomaly detection", "Gen AI, LLMs and RAG"], practical: "Case-based learning and a guided mini project.", recognition: "Foundation Certification in AI-Driven FinTech jointly issued by XIME Chennai and Exafluence Education.", source: "https://www.ximecexfedu.com" },
-  { slug: "xime-advanced-fintech", title: "Advanced Certificate in AI-Driven FinTech", level: "Advanced certificate", organisation: "XIME", subjects: ["AI & Gen AI", "FinTech"], icon: BarChart3, tone: "teal", duration: "150 hours", delivery: "Online", intake: "Weekday & weekend batches", overview: "Apply AI and analytics to real financial use cases.", features: ["Credit risk modelling", "Portfolio optimisation", "Fraud and anomaly detection", "Gen AI in financial workflows"], tools: ["Python, Jupyter, NumPy, Pandas", "Power BI, Tableau, SQL", "Machine learning and anomaly detection", "Gen AI, LLMs and RAG"], practical: "Industry-based capstone project.", recognition: "Advanced Certification in AI-Driven FinTech jointly issued by XIME Chennai and Exafluence Education.", source: "https://www.ximecexfedu.com" },
-  { slug: "xime-professional-fintech", title: "Professional Certificate in AI-Driven FinTech", level: "Professional certificate", organisation: "XIME", subjects: ["AI & Gen AI", "FinTech"], icon: Award, tone: "violet", duration: "150 hours", delivery: "Online", intake: "Weekday & weekend batches", overview: "Applied AI for working professionals in banking, finance and technology.", features: ["Predictive models for financial insight", "Credit scoring and risk segmentation", "Investment optimisation", "AI tools for financial automation"], tools: ["Python, Jupyter, NumPy, Pandas", "Power BI, Tableau, SQL", "Machine learning and anomaly detection", "Gen AI, LLMs and RAG"], practical: "Real financial datasets and an industry-aligned capstone.", recognition: "Professional Certification in AI-Driven FinTech jointly issued by XIME Chennai and Exafluence Education.", source: "https://www.ximecexfedu.com" },
-  { slug: "xime-fintech-specialist", title: "Certified AI-Driven FinTech Specialist", level: "Specialist certification", organisation: "XIME", subjects: ["AI & Gen AI", "FinTech"], icon: GraduationCap, tone: "amber", duration: "250 hours (6 months)", delivery: "Online", intake: "Weekday & weekend batches", overview: "In-depth AI, finance and analytics expertise in six months.", features: ["Machine learning predictive modelling", "Credit scoring and risk segmentation", "Real-world datasets and case studies", "Career project portfolio"], tools: ["Python, Jupyter, NumPy, Pandas", "Power BI, Tableau, SQL", "Machine learning and anomaly detection", "Gen AI, LLMs and RAG"], practical: "Capstone and specialisations on real-world datasets.", recognition: "Certified AI-Driven FinTech Specialist jointly issued by XIME Chennai and Exafluence Education.", source: "https://www.ximecexfedu.com" },
   { slug: "ibm-semester-industry-learning", brochure: ibmSemesterBrochure, title: "Semester-Based Industry Learning", level: "Semester course", organisation: "IBM", subjects: ["Emerging Technologies"], icon: Cpu, tone: "blue", duration: "45 hours", delivery: "On-campus", intake: "Institution-selected", overview: "Industry-integrated semester learning with institution-aligned course selection.", features: ["One course per semester", "Institution-aligned course selection", "60% practical learning and 40% theory"], practical: "60% practical learning and 40% theory.", recognition: "3 academic credits, as stated in the supplied brief. Course-specific certification wording awaits leaflet confirmation." },
   { slug: "ibm-value-added-courses", brochure: ibmValueAddedBrochure, title: "Value-Added Courses", level: "Value-added course", organisation: "IBM", subjects: ["Emerging Technologies"], icon: Layers, tone: "teal", duration: "45 hours", delivery: "On-campus", intake: "Institution-selected", overview: "Institution-selected courses connecting practical exercises with relevant technology exposure.", eligibility: "Undergraduate and postgraduate learners across disciplines.", features: ["Institution-selected courses", "Practical exercises and relevant technology exposure"], curriculum: ["Curriculum based on the selected course and institutional requirements."], practical: "Practical exercises tailored to the selected course." },
   { slug: "ibm-quantum-computing", brochure: ibmQuantumBrochure, title: "Certificate Programme in Quantum Computing", level: "Certificate programme", organisation: "IBM", subjects: ["Quantum Computing"], icon: Sparkles, tone: "violet", duration: "60 hours", delivery: "On-campus", intake: "Institution-selected", overview: "Explore Quantum Computing concepts and applications using IBM-provided curriculum and learning content.", eligibility: "B.Tech third- and fourth-year students, and degree second- and third-year students, across streams.", features: ["IBM-provided curriculum and learning content", "60 hours, including 33 practical hours", "Quantum Computing concepts and applications"], curriculum: ["Quantum Computing concepts and applications", "Qiskit and technologies specified in the curriculum"], tools: ["Qiskit"], practical: "33 practical hours within the 60-hour programme." },
@@ -106,7 +99,6 @@ export const programmes: Programme[] = [
 export const collaborationSlides = [
   { organisation: "SVU" as Organisation, heading: "Industry-Integrated University Programmes", text: "Explore programmes offered through the collaboration between Sri Venkateswara University and Exafluence Education. Develop knowledge in Data Science, Python for AI, ML and Gen AI, Data Visualisation and Cloud Technologies through academic learning and practical application.", label: "Explore Programmes & Admissions", image: svuIllustration, alt: "University campus connected to data and AI systems" },
   { organisation: "IBM" as Organisation, heading: "Industry-Integrated Learning in Emerging Technologies", text: "Explore IBM programmes offered in collaboration with Exafluence Education, including semester-based courses, value-added learning, Quantum Computing and Project-Based Experiential Learning. Review practical learning opportunities tailored to the selected course and institutional requirements.", label: "Explore IBM Programmes", image: ibmIllustration, alt: "AI coding and quantum assembly" },
-  { organisation: "XIME" as Organisation, heading: "Technology Learning with a Business Perspective", text: "Explore the programmes offered through XIME Chennai and Exafluence Education, connecting technical learning with business applications and analytical thinking.", label: "Explore Programme Details", image: ximeIllustration, alt: "Secure fintech analytics and mobile payments" },
 ];
 
 // Source-specific enrichment; intake labels above come from the approved brief,
@@ -205,7 +197,7 @@ export const pages: Page[] = [
 
   // Replaces the retired Academic overview and partner subpages.
   { path: "/collaboration-network", title: "Our Collaboration Network", category: "academic", icon: Landmark,
-    summary: "Explore programmes with Sri Venkateswara University, IBM and XIME Chennai.", blocks: [{ type: "collaboration-network" }] },
+    summary: "Explore programmes with Sri Venkateswara University and IBM.", blocks: [{ type: "collaboration-network" }] },
 
   // Industry
   { path: "/industry-collaborations", title: "Industry & Technology Collaborations", category: "industry", icon: Network,
@@ -323,7 +315,9 @@ export const findPage = (path: string) => pages.find((p) => p.path === path.repl
 export const retiredPageDestinations: Record<string, string> = {
   "/academic-collaborations": "/collaboration-network",
   "/academic-collaborations/svu": "/collaboration-network/svu",
-  "/academic-collaborations/xime": "/collaboration-network/xime",
+  // XIME is removed from the network (client, 3 November 2026); its old URLs land on the network page.
+  "/academic-collaborations/xime": "/collaboration-network",
+  "/collaboration-network/xime": "/collaboration-network",
   // IBM keeps one home under Our Collaboration Network (client brief, 2 November 2026).
   "/industry-collaborations/ibm": "/collaboration-network/ibm",
 };
@@ -374,7 +368,7 @@ export const academicResources = {
 
 /** Hub arms: every arm is subordinate to the central Exafluence Education brand. */
 export const arms: { title: string; path: string; icon: LucideIcon; subtitle: string; priority: "institutional" | "learning" | "student" }[] = [
-  { title: "Our Collaboration Network", path: "/collaboration-network", icon: Landmark, subtitle: "SVU · XIME · IBM", priority: "institutional" },
+  { title: "Our Collaboration Network", path: "/collaboration-network", icon: Landmark, subtitle: "SVU · IBM", priority: "institutional" },
   { title: "Industry & Technology", path: "/industry-collaborations", icon: Network, subtitle: "IBM · Exafluence Inc.", priority: "institutional" },
   { title: "Programmes", path: "/programmes", icon: BookOpen, subtitle: "AI · Data · Cloud", priority: "learning" },
   { title: "Practical Learning", path: "/practical-learning", icon: FlaskConical, subtitle: "Labs · Projects · Capstones", priority: "learning" },
