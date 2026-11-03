@@ -22,3 +22,5 @@
 - The menu bar mark renders as two stacked layers — a nib-free logo plus an absolutely positioned pen-nib sprite sized by the wrapper's fixed aspect ratio — so only the pen moves; keep the wrapper's aspect ratio authoritative so the sprite cannot drift when the artwork loads late.
 - Student programme enquiries (StudentEnquiry, ?programme= preselects) and institutional partnership enquiries (PartnerEnquiry, ?type=institution or IBM programmes) are separate forms on /contact, both test-only via submitTestEnquiry, so learners are never asked for organisation details.
 - The SVU technologies strip (SvuTechTicker) renders the list twice in a two-column grid and slides the track by exactly one copy, with the repeat aria-hidden and no index numbers or show-all control; reduced motion drops the copy for one static grid, so the loop stays seamless without announcing anything twice.
+- SVU faculty render as photo-free cards in one responsive grid (FacultyDirectory); no selection state, no expertise pills.
+

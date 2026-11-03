@@ -834,31 +834,18 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
    readable measure so short copy stays centred in the card instead of drifting to one edge. */
 .network-slide--text { grid-template-columns: minmax(0, 1fr); }
 .network-slide--text .network-panel { max-width: 640px; margin-inline: auto; }
-/* Faculty directory: text-only list + profile, accordion on phones */
-.fd { --fd-pale: 205 85% 95%; margin-top: 32px; font-family: "Google Sans", sans-serif; color: hsl(var(--primary)); }
+/* Faculty directory: compact photo-free profile grid (client brief, 3 November 2026) — three
+   columns on wide desktops, two on tablets, one on phones; card height follows the copy, so no
+   card carries a fixed minimum height or a band of empty space below short text. */
+.fd { margin-top: 32px; font-family: "Google Sans", sans-serif; color: hsl(var(--primary)); }
 .fd-title { font-size: 23px; font-weight: 500; margin-bottom: 16px; }
-.fd-desktop { display: grid; grid-template-columns: 35fr 65fr; gap: 28px; align-items: start; }
-.fd-list { display: flex; flex-direction: column; border-top: 1px solid hsl(var(--academic-edge)); }
-.fd-item { display: flex; justify-content: space-between; align-items: center; gap: 12px; width: 100%; text-align: left; padding: 11px 14px; border: 0; border-radius: 0; box-shadow: none; border-left: 3px solid transparent; border-bottom: 1px solid hsl(var(--academic-edge)); background: hsl(var(--background)); color: hsl(var(--primary)); opacity: 1; flex-direction: row; }
-.fd-list .fd-item { flex-direction: column; align-items: flex-start; justify-content: flex-start; gap: 0; }
-.fd-item:hover { background: hsl(var(--fd-pale) / .6); }
-.fd-item[aria-selected="true"] { background: hsl(var(--fd-pale)); border-left-color: hsl(var(--primary)); }
-.fd-item:focus-visible { outline: 2px solid hsl(var(--ring)); outline-offset: -2px; }
-.fd-name { display: block; font-size: 15px; font-weight: 500; }
-.fd-role { display: block; font-size: 12.5px; color: hsl(var(--muted-foreground)); margin-top: 2px; }
-.fd-profile { padding: 8px 4px 8px 0; }
-.fd-profile h5 { font-size: 20px; font-weight: 500; }
-.fd-desc { font-size: 14.5px; line-height: 1.75; color: hsl(var(--primary)); margin-top: 14px; }
-.fd-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; list-style: none; padding: 0; }
-.fd-tags li { font-size: 12.5px; padding: 3px 10px; border-radius: 999px; background: hsl(var(--fd-pale)); color: hsl(var(--primary)); }
-.fd-mobile { display: none; border-top: 1px solid hsl(var(--academic-edge)); }
-.fd-acc-body { padding: 4px 14px 16px; border-bottom: 1px solid hsl(var(--academic-edge)); }
-.fd-acc-body .fd-desc { margin-top: 6px; }
-.fd-item[aria-expanded="true"] { background: hsl(var(--fd-pale)); border-left-color: hsl(var(--primary)); }
-.fd-item[aria-expanded="true"] .fd-chev { transform: rotate(180deg); }
-@media (max-width: 767px) { .fd-desktop { display: none; } .fd-mobile { display: block; } }
-.fd .fd-item::after, .fd .fd-item::before, .fd .fd-tags li::before, .fd .fd-tags li::after { content: none !important; display: none !important; }
-.fd .fd-item { transform: none !important; box-shadow: none !important; }
-.fd .fd-tags li { list-style: none; }
-.fd .fd-tags li::marker { content: ""; }
-.fd .fd-tags { margin-left: 0 !important; padding-left: 0 !important; align-items: center; } .fd .fd-tags li { margin: 0 !important; padding: 3px 10px !important; line-height: 1.5; }
+.fd .fd-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: start; list-style: none; margin: 0; padding: 0; }
+.fd-cell { background: hsl(var(--background)); border: 1px solid hsl(var(--academic-edge)); border-radius: 8px; padding: 19px; }
+.fd .fd-name { font-size: 16px; font-weight: 500; color: hsl(var(--primary)); }
+.fd .fd-role { font-size: 12.5px; font-weight: 400; line-height: 1.45; color: hsl(var(--muted-foreground)); margin-top: 3px; }
+.fd .fd-desc { font-size: 14px; line-height: 1.6; color: hsl(var(--primary) / .82); margin-top: 10px; }
+
+@media (max-width: 1023px) { .fd .fd-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 639px) { .fd .fd-grid { grid-template-columns: minmax(0, 1fr); } }
+
+
