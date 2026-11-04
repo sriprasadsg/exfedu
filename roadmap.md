@@ -1,3 +1,5 @@
+- [x] Reduce the home banner sentence font size (client, 4 Nov 2026).
+- [x] Remove the Enquire Now button from the SkillShone page; "Visit SkillShone" kept, desktop/phone checked, 196 tests pass.
 - [x] Remove faculty page Enquire Now button; Explore Programmes and shared navigation preserved; desktop/phone checked.
 - [x] Remove letters above placement student names; all 11 records retained, desktop/phone checked; nine relevant tests pass.
 - [x] Remove Placements content enquiry buttons and replace the screenshot's navy records strip with a plain heading; all 11 records verified, six tests pass.
