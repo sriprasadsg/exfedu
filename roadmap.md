@@ -1,4 +1,6 @@
-- [x] SVU Overview: replace the three tail sections with one "Technology, Research & Professional Growth" band carrying the client's 4 Nov 2026 wording (Tools & Technologies / Research & Innovation / Industry Exposure & Career Development), logo strip kept inside the first part, old headings retired; 185 tests pass, desktop/phone verified
+- [x] Projects & Research page: remove the "Student Projects / Conference Presentations / Research Papers" tab strip — all three kinds now render one under another with their own headings, search and pagination kept; 189 tests pass, desktop/phone verified
+- [ ] Placements page: follow the presentation of the client's 4 Nov 2026 reference (colorlib.com/wp/auto-service-wordpress-themes/) — restyle the placement list after that theme's pattern, keeping all 11 records
+
 - [x] Faculty & Mentors page: same hover lift on the faculty cards, and bold the faculty names (verified 700 weight, lift computed, 181 tests pass)
 - [x] Split the requested SVU Innovations box into two partitions: a title partition and a longer content partition (desktop 356/692px side by side, phone stacks, placements shares the layout)
 - [x] Bring blocks/containers gently forward when the mouse touches them (SVU story cards, achievement panel, internships/placements partitions, faculty cards, IBM steps verified; generic card/tile selector covers the rest of the site)
