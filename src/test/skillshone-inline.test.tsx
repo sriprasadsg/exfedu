@@ -127,4 +127,20 @@ describe("SkillShone inline detail", () => {
     expect(screen.queryByRole("link", { name: "Enquire Now" })).toBeNull();
     expect(document.querySelectorAll(".ss-hero .ss-btn")).toHaveLength(1);
   });
+
+  // Client, 4 Nov 2026: SkillShone has no enquiry form and no mailbox of its own —
+  // the page sends people to the SkillShone site whenever they need it.
+  it("carries no enquiry form or email address and directs to the SkillShone site", () => {
+    open();
+    expect(screen.queryByRole("form")).toBeNull();
+    expect(document.querySelector('a[href^="/contact"]')).toBeNull();
+    expect(document.querySelector('a[href^="mailto:"]')).toBeNull();
+    expect(document.body.textContent).not.toMatch(/[\w.+-]+@[\w-]+\.[\w.-]+/);
+    const siteLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>('a[href="https://skillshone.com/"]'));
+    expect(siteLinks.length).toBeGreaterThanOrEqual(2);
+    siteLinks.forEach((a) => {
+      expect(a.getAttribute("target")).toBe("_blank");
+      expect(a.textContent).toMatch(/Visit SkillShone/);
+    });
+  });
 });

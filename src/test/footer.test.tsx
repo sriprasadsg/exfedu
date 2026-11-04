@@ -101,6 +101,11 @@ describe("Footer collaboration network", () => {
       "/about", "/skillshone", "/#partner-enquiry",
       "https://www.exafluence.com",
       "/privacy-policy", "/terms-and-conditions",
+      // Client, 4 Nov 2026: official social pages join the footer corner, icons only.
+      "https://www.linkedin.com/company/exfedu",
+      "https://www.instagram.com/exafluence.education/",
+      "https://www.facebook.com/exafluence.education/",
+      "https://www.youtube.com/@ExafluenceEducation",
     ]);
   });
 

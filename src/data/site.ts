@@ -303,7 +303,7 @@ export const pages: Page[] = [
           ] },
         ] },
       ] },
-      { type: "cta", title: "Start Building with SkillShone", text: "Explore practical AI project learning for your own development, or discuss how SkillShone can support your institution — contact@skillshone.com.", label: "Visit SkillShone" },
+      { type: "cta", title: "Start Building with SkillShone", text: "Explore practical AI project learning for your own development, or see how SkillShone supports institutions — visit the SkillShone site for details.", label: "Visit SkillShone", to: "https://skillshone.com/", appearance: "skillshone" },
     ] },
   { path: "/gallery", title: "Gallery & Highlights", category: "learning", icon: Images,
     summary: "Moments from events, visits and achievements.",
