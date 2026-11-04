@@ -7,7 +7,6 @@ import ibmIllustration from "@/assets/ibm-collaboration-campus-v2.png";
 import { programmePath } from "@/lib/programmeNavigation";
 import { useProgrammeSeo } from "./ProgrammeDirectory";
 import IbmInstitutionalEnquiry from "./IbmInstitutionalEnquiry";
-import NetworkBackButton from "./NetworkBackButton";
 
 /** IBM collaboration page (client brief, 2 November 2026): breadcrumb, introduction,
  * programme directory, applied learning, programme information, institutional
@@ -23,7 +22,6 @@ const IbmPages = () => {
     <main className="programme-experience ibm-page">
       <div className="ibm-band">
         <div className="container">
-          <NetworkBackButton />
           <nav aria-label="Breadcrumb">
             <Link to="/">Home</Link><span aria-hidden="true">/</span>
             <span aria-current="page">IBM</span>

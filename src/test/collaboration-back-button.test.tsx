@@ -8,59 +8,44 @@ import ProgrammeDetail from "@/components/site/ProgrammeDetail";
 import SvuPages from "@/components/site/SvuPages";
 import { programmes } from "@/data/site";
 
-// Client brief, 2 November 2026: the "Our Collaboration Network" breadcrumb link is
-// removed from every partner page, replaced by a colourful back button at the top.
+// Client brief, 4 November 2026: the "Back to Our Collaboration Network" pill is
+// removed from every page — the combined page is retired, so breadcrumbs and
+// partner navigation handle movement instead.
 afterEach(cleanup);
 
 const open = (ui: ReactElement) => render(<MemoryRouter>{ui}</MemoryRouter>);
 
-const position = (root: HTMLElement, selector: string) => {
-  const node = root.querySelector(selector);
-  return node ? Array.from(root.querySelectorAll("*")).indexOf(node) : -1;
-};
-
-const expectNetworkBack = (container: HTMLElement) => {
-  const back = container.querySelector("a.network-back");
-  expect(back?.getAttribute("href")).toBe("/collaboration-network");
-  expect(back?.textContent).toBe("Back to Our Collaboration Network");
-  // the first link on the page is the back button, so it really is the topmost one
-  expect(container.querySelector("a")?.classList.contains("network-back")).toBe(true);
-  const crumb = container.querySelector("nav[aria-label='Breadcrumb']");
-  expect(crumb?.textContent ?? "").not.toContain("Our Collaboration Network");
-  if (crumb) {
-    expect(position(container, "a.network-back")).toBeLessThan(
-      position(container, "nav[aria-label='Breadcrumb']"),
-    );
-  }
+const expectNoNetworkBack = (container: HTMLElement) => {
+  expect(container.querySelector("a.network-back")).toBeNull();
 };
 
 const ibmProgramme = programmes.find(p => p.organisation === "IBM")!;
 const svuProgramme = programmes.find(p => p.organisation === "SVU")!;
 
-describe("collaboration partner back button", () => {
-  it("sits above the SVU section pages without a network breadcrumb link", () => {
+describe("collaboration back button", () => {
+  it("is absent from the SVU section pages", () => {
     const { container } = open(<SvuPages section="overview" />);
-    expectNetworkBack(container);
+    expectNoNetworkBack(container);
   });
 
-  it("sits above the IBM page without a network breadcrumb link", () => {
+  it("is absent from the IBM page", () => {
     const { container } = open(<IbmPages />);
-    expectNetworkBack(container);
+    expectNoNetworkBack(container);
   });
 
-  it("sits above an IBM programme page without a network breadcrumb link", () => {
+  it("is absent from an IBM programme page", () => {
     const { container } = open(<ProgrammeDetail programme={ibmProgramme} organisationOverview />);
-    expectNetworkBack(container);
+    expectNoNetworkBack(container);
   });
 
-  it("sits above a partner programme listing without a network breadcrumb link", () => {
+  it("is absent from a partner programme listing", () => {
     const { container } = open(<OrganisationProgrammes organisation="SVU" />);
-    expectNetworkBack(container);
+    expectNoNetworkBack(container);
   });
 
-  it("omits the unnecessary network back button from SVU programme pages", () => {
+  it("is absent from SVU programme pages while the breadcrumb stays", () => {
     const { container } = open(<ProgrammeDetail programme={svuProgramme} />);
-    expect(container.querySelector("a.network-back")).toBeNull();
+    expectNoNetworkBack(container);
     expect(container.querySelector("nav[aria-label='Breadcrumb']")).toBeTruthy();
   });
 });
