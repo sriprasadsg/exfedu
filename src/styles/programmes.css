@@ -991,8 +991,12 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 .svu-rocket .svu-offer-fields dd.svu-outcome-role { margin: 8px 0 0; padding: 0; border: 0; font-size: 13px; line-height: 1.5; color: hsl(var(--muted-foreground)); }
 .svu-rocket .svu-offer-batch { display: block; margin-top: 8px; font-size: 13px; letter-spacing: .04em; color: hsl(var(--navy-900) / .8); }
 .svu-service-band { margin: 46px calc(50% - 50vw) 0; padding: 15px max(24px, calc(50vw - 536px)); background: hsl(var(--navy-900)); }
-.svu-service-band .svu-career-records-heading { margin: 0; padding: 0; border: 0; font-size: 12px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: hsl(var(--primary-foreground)); }
+.svu-career-records--rocket .svu-service-band .svu-career-records-heading { margin: 0; padding: 0; border: 0; font-size: 12px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: hsl(var(--primary-foreground)); }
 @media (max-width: 860px) { .svu-rocket { grid-template-columns: minmax(0, 1fr); gap: 30px; } }
+@media (max-width: 600px) { .svu-rocket .svu-offer-fields { grid-template-columns: minmax(0, 1fr); padding: 8px 18px 16px; }
+  .svu-rocket .svu-offer-fields > div { padding: 12px 0; }
+  .svu-rocket .svu-offer-fields > div + div { border-left: 0; border-top: 1px solid hsl(205 30% 90%); }
+  .svu-rocket .svu-offer-fields h3 { margin-top: 6px; } }
 @media (prefers-reduced-motion: reduce) { .svu-rocket .svu-offer { transition: none; } .svu-rocket .svu-offer:hover { transform: none; } }
 /* Projects & Research after the Ultim8 reference (4 Nov 2026) */
 .svu-u8-hero { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 48px; align-items: center; padding: 28px 0 44px; }
