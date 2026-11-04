@@ -21,9 +21,12 @@ describe("approved SVU career records", () => {
     expect(svuInternships[10].organisation).toBe("Vikram Sarabhai Space Centre, Thiruvananthapuram");
   });
   it("combines case-insensitive search and batch filtering", () => {
-    expect(filterSvuCareerRecords(svuPlacements, " shortfundly ", "2024–2026").map(r => r.student)).toEqual(["Kamatam Meghana", "Muthyala Bharadwaj"]);
-    expect(filterSvuCareerRecords(svuPlacements, "shortfundly", "2023–2025")).toEqual([]);
+    expect(filterSvuCareerRecords(svuPlacements, " smartygen ", "2024–2026").map(r => r.student)).toEqual(["Kamatam Meghana", "Muthyala Bharadwaj"]);
+    expect(filterSvuCareerRecords(svuPlacements, "smartygen", "2023–2025")).toEqual([]);
     expect(filterSvuCareerRecords(svuInternships, "sriharikota", "all").map(r => r.student)).toEqual(["P Prabhas Raj"]);
+    // The client removed the "Shortfundly" word (4 November 2026): the company reads without it.
+    expect(svuPlacements.filter(r => r.organisation.includes("Smartygen")).map(r => r.organisation))
+      .toEqual(["SM Smartygen Media Networks Pvt Ltd", "SM Smartygen Media Networks Pvt Ltd"]);
   });
   it("orders records batch-wise, then alphabetically by student", () => {
     expect(filterSvuCareerRecords(svuPlacements, "", "all").map(r => r.student)).toEqual([
