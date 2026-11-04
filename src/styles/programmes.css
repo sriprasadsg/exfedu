@@ -1026,7 +1026,7 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 .svu-ca .svu-areas > .svu-area:nth-child(even):hover { transform: translateY(24px); }
 .svu-ca .svu-split { padding-bottom: 48px; }
 .svu-ca .svu-growth { margin-inline: calc(50% - 50vw); padding: 72px max(24px, calc(50vw - 560px)); border: 0; border-radius: 0; background: hsl(var(--navy-900)); color: hsl(var(--primary-foreground) / .82); }
-.svu-ca .svu-growth h2, .svu-ca .svu-growth h3 { color: hsl(var(--primary-foreground)); background: none; -webkit-text-fill-color: hsl(var(--primary-foreground)); }
+.svu-ca .svu-growth h2, .svu-ca .svu-growth h3 { color: hsl(var(--primary-foreground)) !important; background: none !important; -webkit-text-fill-color: hsl(var(--primary-foreground)) !important; }
 .svu-ca .svu-growth .svu-reading { color: hsl(var(--primary-foreground) / .78); }
 .svu-ca .svu-growth-part { border-color: hsl(var(--primary-foreground) / .16); }
 .svu-ca .svu-growth a:not(.cta-enquire) { color: hsl(var(--primary-foreground)); }
