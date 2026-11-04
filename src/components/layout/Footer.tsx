@@ -8,8 +8,9 @@ import { footerLocations, headquartersLabel } from "@/data/locations";
 import { CountryFlag } from "@/components/layout/FlagIcons";
 
 // Client brief, 2 November 2026: partner names as plain text in the footer: "not logos
-// required, mention only text" (23 Oct 2026), but the original SkillShone logo stays there
-// in a reduced size, and the Exafluence footer mark smaller too.
+// required, mention only text" (23 Oct 2026). SkillShone joins as plain text too
+// (4 November 2026: same font and colour as the other links), and the Exafluence footer
+// mark is smaller.
 // XIME removed from the network (client, 3 November 2026).
 const partners: Organisation[] = ["SVU", "IBM"];
 
