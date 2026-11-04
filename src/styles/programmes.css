@@ -1051,7 +1051,7 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 .svu-u8-head h2 { font-size: clamp(24px, 2.6vw, 32px); font-weight: 400; color: hsl(var(--navy-900)); }
 @media (max-width: 860px) { .svu-u8-hero { grid-template-columns: 1fr; gap: 28px; } }
 /* SVU Overview after the Creative Agency reference (4 Nov 2026) */
-.svu-ca-hero { position: relative; padding: 36px 0 56px; }
+.svu-ca-hero { position: relative; min-width: 0; padding: 36px 0 56px; }
 /* Headline kept on one line wherever there is room: the size is derived from the
    available column width (measured ratio ~26.6 x font-size for this wording). */
 .svu-ca-hero h1 { max-width: none; white-space: nowrap; font-size: min(45px, calc((100vw - 96px) / 26.6)); line-height: 1.12; font-weight: 700; color: hsl(var(--navy-900)); }
