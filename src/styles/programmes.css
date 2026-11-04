@@ -771,13 +771,13 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 }
 .banner-story, .bs-svg { border: 0 !important; box-shadow: none !important; outline: 0; filter: none !important; background: transparent !important; }
 
-/* ===== SVU Overview: Technologies You Work With (client, 3 November 2026) =====
+/* ===== SVU Overview: Tools & Technologies (client, 3 and 4 November 2026) =====
    Logos only, each in its own cell, rising one after another in a narrow vertical strip in
    the section's right corner. The track holds two identical copies and slides by exactly
    one, so the loop is seamless. Hover pauses it; a reduced-motion preference lays every
    cell out at once with no motion. */
 .svu-tech { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 300px); gap: 24px 48px; align-items: center; }
-.svu-tech h2 { margin: 0; }
+.svu-tech h3 { margin: 0; }
 .svu-tech .svu-reading { margin-top: 12px; max-width: 560px; }
 .svu-tech-window { --tech-cell-h: 92px; --tech-gap: 12px; position: relative; min-width: 0; }
 .svu-tech.is-scrolling .svu-tech-window {
