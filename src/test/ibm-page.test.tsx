@@ -26,11 +26,10 @@ describe("IBM collaboration page", () => {
     order.forEach((position, index) => expect(position).toBeGreaterThan(index === 0 ? -1 : order[index - 1]));
 
     const crumb = container.querySelector("nav[aria-label='Breadcrumb']");
-    // Client brief, 2 November 2026: the network link left the breadcrumb for a
-    // colourful back button sitting above it.
+    // Client brief, 4 November 2026: the network back pill is removed entirely.
     expect(crumb?.textContent).not.toContain("Our Collaboration Network");
     expect(crumb?.querySelector("[aria-current='page']")?.textContent).toBe("IBM");
-    expect(container.querySelector("a.network-back")?.getAttribute("href")).toBe("/collaboration-network");
+    expect(container.querySelector("a.network-back")).toBeNull();
   });
 
   it("lists every IBM programme with focus, duration, delivery and an internal link", () => {
