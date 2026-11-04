@@ -59,6 +59,6 @@ export const SvuAcademicResources = () => <div className="svu-academic-resources
 </div>;
 
 export const SvuFacultyPage = () => <>
-  <FacultyDirectory page title="Faculty & Industry Mentors" intro="Faculty and Exafluence industry professionals who teach and mentor across AI, machine learning, data engineering and cloud." people={svuFaculty} />
-  <FacultyDirectory page title="Technical Mentors & Lab Faculty" intro="Mentors who guide lab exercises, student projects and hands-on implementation." people={svuSupport} />
+  <FacultyDirectory page cols={4} title="Faculty & Industry Mentors" intro="Faculty and Exafluence industry professionals who teach and mentor across AI, machine learning, data engineering and cloud." people={svuFaculty} />
+  <FacultyDirectory page cols={3} title="Technical Mentors & Lab Faculty" intro="Mentors who guide lab exercises, student projects and hands-on implementation." people={svuSupport} />
 </>;
