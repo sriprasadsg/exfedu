@@ -53,7 +53,7 @@ export const SvuResearchContent = () => {
 export const SvuAcademicResources = () => <div className="svu-academic-resources">
   <p>Industry-integrated teaching aligned with NEP 2020 connects AI, ML and Generative AI concepts with projects, case studies and real-world applications.</p>
   <div className="svu-faculty-callout">
-    <p>Meet the {svuFaculty.length} faculty and industry mentors and {svuSupport.length} technical mentors who guide this programme.</p>
+    <p>Meet the faculty, industry mentors and technical mentors who guide this programme.</p>
     <Link className="svu-directory-link" to={svuSectionPath("faculty")}>View Faculty &amp; Mentors<ArrowRight size={15} aria-hidden="true" /></Link>
   </div>
 </div>;
