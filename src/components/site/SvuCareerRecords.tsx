@@ -66,7 +66,7 @@ export default function SvuCareerRecords({ kind, embedded = false }: { kind: "pl
       </ol>
     </>}
     {placements
-      ? <div className="svu-pl-band"><Sub className="svu-career-records-heading">Placement Records</Sub></div>
+      ? <Sub className="svu-career-records-heading">Placement Records</Sub>
       : <Sub id="internship-records" className="svu-career-records-heading">Internship Records</Sub>}
     {placements ? <ul className="svu-pl-cards" aria-label={title}>{shown.map(record => <li key={record.student} className="svu-outcome svu-pl-card">
       <span className="svu-pl-mark" aria-hidden="true">{initialsOf(record.student)}</span>

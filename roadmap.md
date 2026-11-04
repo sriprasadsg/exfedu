@@ -1,3 +1,4 @@
+- [ ] Remove Placements content enquiry buttons and replace the screenshot's navy records strip with a plain heading; retain all students.
 - [x] Remove the letter boxes above faculty names; all 17 cards retained, bold names and desktop/phone layouts verified.
 - [x] Remove the empty left area when participating students expand: names now span both columns; expand/collapse verified at 1280/1062/390px, 13 tests pass.
 - [x] Reframe the Student Internships introduction and Generative AI update as two aligned sections; desktop/phone checked, 15-name toggle and 11 records preserved.

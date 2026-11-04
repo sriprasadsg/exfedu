@@ -26,9 +26,8 @@ describe("SVU placements on the Archbook model", () => {
     expect(split?.querySelector("a.svu-pl-link")?.getAttribute("href")).toBe("/collaboration-network/svu#programmes");
   });
 
-  it("rules the records under a navy band and keeps all eleven approved records", () => {
+  it("keeps all eleven approved records", () => {
     const { container } = placements();
-    expect(container.querySelector(".svu-pl-band .svu-career-records-heading")?.textContent).toBe("Placement Records");
     const rows = [...container.querySelectorAll(".svu-pl-card")];
     expect(rows).toHaveLength(svuPlacements.length);
     const rendered = rows.map(row => ({
