@@ -233,7 +233,7 @@ const innovationStrip = [
   { href: "#svu-internship-update-heading", label: "Generative AI Internship", Icon: Sparkles },
   { href: "#internship-records", label: "Internship Records", Icon: Rocket },
 ];
-const SvuInnovations = () => <div className="svu-flow">
+const SvuInnovations = () => <div className="svu-flow svu-framo">
   <section className="svu-block svu-intro svu-upskill-hero">
     <span className="svu-upskill-pill"><Sparkles size={13} aria-hidden="true" />Student Work & Experience</span>
     <h1>Student <em>Innovations</em> & Internships</h1>
