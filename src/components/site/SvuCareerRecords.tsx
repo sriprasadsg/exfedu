@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowDown, ArrowRight, Building2, CalendarRange } from "lucide-react";
 import svuLaptopDashboard from "@/assets/svu-laptop-dashboard-v2.png";
-import { initialsOf } from "@/components/site/FacultyDirectory";
 import { svuPagePath } from "@/lib/programmeNavigation";
 import { filterSvuCareerRecords, svuInternshipIntroduction, svuInternshipUpdate, svuInternships, svuPlacements } from "@/data/svuCareer";
 
@@ -69,7 +68,6 @@ export default function SvuCareerRecords({ kind, embedded = false }: { kind: "pl
       ? <Sub className="svu-career-records-heading">Placement Records</Sub>
       : <Sub id="internship-records" className="svu-career-records-heading">Internship Records</Sub>}
     {placements ? <ul className="svu-pl-cards" aria-label={title}>{shown.map(record => <li key={record.student} className="svu-outcome svu-pl-card">
-      <span className="svu-pl-mark" aria-hidden="true">{initialsOf(record.student)}</span>
       <h3>{record.student}</h3>
       <p className="svu-outcome-role">{record.designation}</p>
       <p className="svu-outcome-org">{record.organisation}</p>
