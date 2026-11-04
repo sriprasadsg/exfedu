@@ -1,11 +1,12 @@
-import { Award, BookOpen, CalendarDays, Clock3, Cpu, FlaskConical, Gauge, GraduationCap, Presentation, Sparkles, Target, Users, type LucideIcon } from "lucide-react";
+import { Award, BookOpen, CalendarDays, Cpu, FlaskConical, Gauge, GraduationCap, Presentation, Target, Users, type LucideIcon } from "lucide-react";
 import { PENDING, type Programme, type Tone } from "@/data/site";
 import { ibmFacts } from "@/data/ibm";
 
-/** Approved programme detail reading order (client, 29 October 2026):
- * Overview → Eligibility → Duration & Delivery → Features → Tools →
- * Admission Process → Brochure & Enquiry. "Features" is the label on every
- * partner's programme pages. Fields with no verified source render PENDING. */
+/** Approved programme detail reading order (client, 29 October 2026; amended
+ * 4 November 2026): Overview → Eligibility → Tools → Admission Process →
+ * Enquiry. "Duration & Delivery" and "Features" repeat the header facts and
+ * the Practical Learning text, so they are not rendered as sections.
+ * Fields with no verified source render PENDING. */
 export type DetailSection = {
   title: string; icon: LucideIcon; tone: Tone;
   content?: string; items?: string[]; sub?: { label: string; items: string[] }; note?: string;
@@ -15,17 +16,17 @@ export const programmeDetailSections = (p: Programme): DetailSection[] => ([
   // The overview already opens the page header, so it is not repeated here.
   p.practical ? { title: "Practical Learning", icon: BookOpen, tone: "blue", content: p.practical } : false,
   { title: "Eligibility", icon: GraduationCap, tone: "teal", content: p.eligibility },
-  { title: "Duration & Delivery", icon: Clock3, tone: "amber", content: `${p.duration} · ${p.delivery}` },
-  { title: "Features", icon: Sparkles, tone: "violet", items: p.features },
   p.tools?.length ? { title: "Tools and technologies", icon: Cpu, tone: "blue", items: p.tools } : false,
   { title: "Admission Process", icon: CalendarDays, tone: "teal", content: p.admissions },
   // Shown only with approved wording; never a placeholder or invented certificate.
   p.recognition ? { title: "Joint Certification on Completion", icon: Award, tone: "amber", content: p.recognition } : false,
 ] as (DetailSection | false)[]).filter((section): section is DetailSection => !!section);
 
-/** IBM programme pages (client brief, 2 November 2026): Overview → Learning Outcomes →
- * Eligibility & Prerequisites → Tools & Practical Activities →
- * Duration & Delivery → Features → Assessment & Certification → Enquiry.
+/** IBM programme pages (client brief, 2 November 2026; amended 4 November 2026):
+ * Overview → Learning Outcomes → Eligibility & Prerequisites →
+ * Tools & Practical Activities → Assessment & Certification → Enquiry.
+ * "Duration & Delivery" and "Features" repeat the header facts and the
+ * practical-activities text, so they are not rendered as sections.
  * A section the approved leaflets do not support is left out rather than filled in,
  * and the teaching role stays worded separately from the certificate issuer. */
 export const ibmProgrammeSections = (p: Programme): DetailSection[] => {
@@ -34,8 +35,6 @@ export const ibmProgrammeSections = (p: Programme): DetailSection[] => {
     facts.outcomes ? { title: "Learning Outcomes", icon: Target, tone: "teal", items: facts.outcomes } : false,
     p.eligibility ? { title: "Eligibility & Prerequisites", icon: GraduationCap, tone: "teal", content: p.eligibility } : false,
     p.tools?.length || p.practical ? { title: "Tools & Practical Activities", icon: Cpu, tone: "violet", items: p.tools, note: p.practical } : false,
-    { title: "Duration & Delivery", icon: Clock3, tone: "amber", content: `${p.duration} · ${p.delivery}` },
-    p.features?.length ? { title: "Features", icon: Sparkles, tone: "violet", items: p.features } : false,
     facts.certification ? { title: "Assessment & Certification", icon: Award, tone: "amber", content: [facts.delivery, facts.certification].filter(Boolean).join(" ") } : false,
   ];
   return sections.filter((section): section is DetailSection => !!section);
