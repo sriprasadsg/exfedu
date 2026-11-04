@@ -37,10 +37,21 @@ const SvuInternshipUpdate = ({ open, onToggle }: { open: boolean; onToggle: () =
  * title such as "Data Scientist – Trainee" keeps the icon of the role it is trained for. */
 const designationIcon = (designation = "") => {
   const role = designation.toLowerCase();
-  if (role.includes("data scientist")) return <BrainCircuit size={15} aria-hidden="true" />;
-  if (role.includes("engineer")) return <Cpu size={15} aria-hidden="true" />;
-  if (role.includes("trainee")) return <GraduationCap size={15} aria-hidden="true" />;
-  return <Briefcase size={15} aria-hidden="true" />;
+  if (role.includes("data scientist")) return <BrainCircuit size={16} aria-hidden="true" />;
+  if (role.includes("engineer")) return <Cpu size={16} aria-hidden="true" />;
+  if (role.includes("trainee")) return <GraduationCap size={16} aria-hidden="true" />;
+  return <Briefcase size={16} aria-hidden="true" />;
+};
+
+/** Each designation family carries its own colour (client, 4 November 2026): analytics roles in
+ * violet, engineering roles in teal, plain trainee roles in amber and anything else in the
+ * site's connection blue. Checked in the same order as the icons above. */
+const designationTone = (designation = "") => {
+  const role = designation.toLowerCase();
+  if (role.includes("data scientist")) return "data";
+  if (role.includes("engineer")) return "engineer";
+  if (role.includes("trainee")) return "trainee";
+  return "other";
 };
 
 export default function SvuCareerRecords({ kind, embedded = false }: { kind: "placements" | "internships"; embedded?: boolean }) {
@@ -81,11 +92,11 @@ export default function SvuCareerRecords({ kind, embedded = false }: { kind: "pl
       : <Sub id="internship-records" className="svu-career-records-heading">Internship Records</Sub>}
     {placements ? <ul className="svu-pl-cards" aria-label={title}>{shown.map(record => <li key={record.student} className="svu-outcome svu-pl-card">
       <div className="svu-pl-person">
-        <UserRound size={17} aria-hidden="true" />
+        <span className="svu-pl-avatar" aria-hidden="true"><UserRound size={26} /></span>
         <h3>{record.student}</h3>
       </div>
-      <p className="svu-outcome-role">{designationIcon(record.designation)}<span>{record.designation}</span></p>
-      <p className="svu-outcome-org"><Building2 size={15} aria-hidden="true" /><span>{record.organisation}</span></p>
+      <p className="svu-outcome-role" data-tone={designationTone(record.designation)}>{designationIcon(record.designation)}<span>{record.designation}</span></p>
+      <p className="svu-outcome-org"><Building2 size={16} aria-hidden="true" /><span>{record.organisation}</span></p>
       <p className="svu-outcome-batch"><span className="sr-only">Batch </span>{record.batch}</p>
     </li>)}</ul> : <ul className="svu-intern-cards" aria-label={title}>{shown.map(record => <li key={record.student} className="svu-intern-card">
       <span className="svu-intern-org"><Building2 size={13} aria-hidden="true" />{record.organisation}</span>

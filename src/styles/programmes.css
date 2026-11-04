@@ -1262,22 +1262,24 @@ body:not(:has(.homepage-static)) main .svu-career-records--logistics .svu-career
 @media (max-width: 767px) { .svu-proceeding-list--single .svu-proceeding-by { text-align: left; } .svu-proceeding-head { padding: 12px 15px; } .svu-proceeding-list { padding: 12px 14px 16px; } .svu-proceeding-paper { padding: 13px 14px; } }
 @media (prefers-reduced-motion: reduce) { .svu-proceeding-paper { transition: none; } .svu-proceeding-paper:hover { transform: none; box-shadow: none; } }
 
-/* ===== SVU placement boxes as rectangles with matched icons (client, 4 November 2026) =====
-   Every record sits in a square-cornered box. A person icon leads the student's name, an icon
-   matched to the designation leads the role, and an industry icon leads the organisation. */
+/* ===== SVU placement boxes: tall rectangles led by a centred colourful icon (client, 4 November 2026) =====
+   Every record sits in a square-cornered box taller than it is wide. A colourful student glyph
+   sits centred at the very top, the role carries an icon matched to its designation in that
+   role's colour, and the organisation carries an industry icon in its own colour. */
 .svu-pl-card,
-.svu-career-records--logistics .svu-pl-card { border-radius: 0; border: 1px solid hsl(205 35% 88%); border-top: 2px solid hsl(var(--navy-900)); background: hsl(208 90% 97%); box-shadow: none; display: flex; flex-direction: column; min-height: 400px; padding: 0; }
-.svu-pl-person { padding: 30px 26px 0; }
-.svu-pl-card .svu-outcome-role { margin-top: 12px; padding: 0 26px; }
-.svu-pl-card .svu-outcome-org { margin-top: auto; padding: 18px 26px 0; background: hsl(var(--card)); }
-.svu-pl-card .svu-outcome-batch { margin: 0; padding: 8px 26px 24px; background: hsl(var(--card)); }
-.svu-pl-person { display: flex; align-items: center; gap: 10px; }
-.svu-pl-person > svg { flex: none; color: hsl(var(--connection-blue)); }
+.svu-career-records--logistics .svu-pl-card { border-radius: 0; border: 1px solid hsl(205 35% 88%); border-top: 2px solid hsl(var(--navy-900)); background: hsl(208 90% 97%); box-shadow: none; display: flex; flex-direction: column; align-items: center; text-align: center; min-height: 400px; padding: 0; }
+.svu-pl-person { display: flex; flex-direction: column; align-items: center; gap: 12px; width: 100%; padding: 32px 26px 0; }
+.svu-pl-avatar { display: grid; place-items: center; flex: none; width: 62px; height: 62px; border-radius: 18px; background: linear-gradient(135deg, hsl(202 95% 55%), hsl(168 78% 44%)); color: hsl(var(--primary-foreground)); box-shadow: 0 14px 24px -16px hsl(190 82% 38% / .95); }
 .svu-pl-person h3 { min-width: 0; }
-.svu-pl-card .svu-outcome-role { display: flex; align-items: center; gap: 8px; }
-.svu-pl-card .svu-outcome-role svg { flex: none; color: hsl(var(--connection-blue)); }
-.svu-pl-card .svu-outcome-org { display: flex; align-items: flex-start; gap: 8px; }
-.svu-pl-card .svu-outcome-org svg { flex: none; margin-top: 3px; color: hsl(var(--navy-900) / .55); }
+.svu-pl-card .svu-outcome-role { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 14px; padding: 0 26px; }
+.svu-pl-card .svu-outcome-role svg { flex: none; }
+.svu-pl-card .svu-outcome-role[data-tone="data"] svg { color: hsl(262 72% 58%); }
+.svu-pl-card .svu-outcome-role[data-tone="engineer"] svg { color: hsl(172 72% 36%); }
+.svu-pl-card .svu-outcome-role[data-tone="trainee"] svg { color: hsl(36 92% 48%); }
+.svu-pl-card .svu-outcome-role[data-tone="other"] svg { color: hsl(var(--connection-blue)); }
+.svu-pl-card .svu-outcome-org { display: flex; align-items: flex-start; justify-content: center; gap: 8px; margin-top: auto; padding: 18px 26px 0; background: hsl(var(--card)); }
+.svu-pl-card .svu-outcome-org svg { flex: none; margin-top: 3px; color: hsl(152 62% 36%); }
+.svu-pl-card .svu-outcome-batch { margin: 0; padding: 8px 26px 24px; background: hsl(var(--card)); }
 @media (max-width: 639px) {
   .svu-pl-person { gap: 8px; padding: 24px 22px 0; }
   .svu-pl-card .svu-outcome-role, .svu-pl-card .svu-outcome-org { gap: 7px; }

@@ -21,7 +21,7 @@ describe("SVU placement records as icon-led rectangular boxes", () => {
     rows.forEach(card => {
       const person = card.querySelector(".svu-pl-person");
       expect(person).not.toBeNull();
-      expect(iconClass(person)).toContain("lucide-user-round");
+      expect(iconClass(person?.querySelector(".svu-pl-avatar"))).toContain("lucide-user-round");
       expect(person?.querySelector("h3")?.textContent?.trim()).toBeTruthy();
       expect(person?.querySelector("h3")?.textContent).toBe(
         svuPlacements.find(record => record.student === person?.querySelector("h3")?.textContent)?.student,
