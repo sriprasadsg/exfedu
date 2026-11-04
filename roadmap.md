@@ -1,4 +1,6 @@
+- [x] Centre the Duration and Delivery icons on every SVU programme page (client picture, 4 Nov 2026): navy circular icon centred in its card with the label and value centred beneath, desktop and phone checked on three SVU programme pages; IBM programme pages keep the icon at the left edge; build OK, 10 programme-page tests pass.
 - [x] Replace the placements page artwork with the client's circular student-profile emblem (uploaded 4 Nov 2026): stored as a CDN asset, centred in a white rounded tile beside the introduction, whole at 260px desktop / 252px phone, no overflow; laptop dashboard render kept for the collaboration banner; 8 tests pass, build OK.
+
 - [x] Remove the duplicate Practical Learning paragraph from every SVU programme detail page (client picture, 4 Nov 2026); the "Built Around Practical Learning" strengths block above is kept, live pages read Built Around Practical Learning → Eligibility → Admission Process → Brochure & Enquiry, 26 tests pass, build OK.
 
 - [x] Remove the pale circle and triangle decorations from the SVU overview opening band; verified by pixel scan at 1062px, test added.
