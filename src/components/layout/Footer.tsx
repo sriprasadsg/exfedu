@@ -58,29 +58,29 @@ const Footer = () => (
               if (!office) return null;
               return (
                 <div className="footer-office-cell" key={`${country.code}-${office.label}`}>
-                {officeIndex === 0 && (
-                  <p className="footer-country-name">
-                    <CountryFlag code={country.code} />
-                    <span>{country.name}</span>
-                  </p>
-                )}
-                <div className="footer-office">
-                  <MapPin className="footer-office-pin" strokeWidth={1.9} aria-hidden />
-                  <div className="footer-office-body">
-                    <p className="footer-office-label">{office.label}</p>
-                    <address className="footer-office-address">
-                      {office.lines.map((line) => (
-                        <span key={line}>
-                          {line}
-                          <br />
-                        </span>
-                      ))}
-                    </address>
-                    {office.phone && <p className="footer-office-phone">{office.phone}</p>}
+                  {row === 0 && (
+                    <p className="footer-country-name">
+                      <CountryFlag code={country.code} />
+                      <span>{country.name}</span>
+                    </p>
+                  )}
+                  <div className="footer-office">
+                    <MapPin className="footer-office-pin" strokeWidth={1.9} aria-hidden />
+                    <div className="footer-office-body">
+                      <p className="footer-office-label">{office.label}</p>
+                      <address className="footer-office-address">
+                        {office.lines.map((line) => (
+                          <span key={line}>
+                            {line}
+                            <br />
+                          </span>
+                        ))}
+                      </address>
+                    </div>
                   </div>
                 </div>
-              </div>
-            )),
+              );
+            }),
           )}
         </div>
       </div>
