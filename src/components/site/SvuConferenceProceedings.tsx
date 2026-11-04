@@ -22,7 +22,7 @@ export const SvuConferenceProceedings = () => {
               <h4 className="svu-proceeding-event">{event}</h4>
               <span className="svu-proceeding-place">{place}</span>
             </header>
-            <ul className="svu-proceeding-list">
+            <ul className={`svu-proceeding-list${venue.papers.length === 1 ? " svu-proceeding-list--single" : ""}`}>
               {venue.papers.map(paper => {
                 const { icon: Icon, hue } = researchTheme(paper.title);
                 return (
