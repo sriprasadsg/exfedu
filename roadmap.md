@@ -1,3 +1,4 @@
+- [ ] IBM programme column (client, 4 Nov 2026): present it on the photo model from the two uploads (image-298.png, image-299.png)
 - [ ] Placements page (client, 4 Nov 2026): follow demo.templatemonster.com/demo/181699.html "ditto presentation" — same section order and card treatment, keeping all 11 records
 - [ ] Student Innovations & Internships page (client, 4 Nov 2026): rebuild on the TemplateMonster consulting template https://www.templatemonster.com/free-templates/consulting-website-template-51691.html, keeping all approved records, the internship update and the achievement stories
 - [ ] Faculty & Mentors page (client, 4 Nov 2026): rebuild on the Nexora model https://preview.themewagon.com/nexora/ — wash opening with pill badge, heavy headline with one blue phrase and two buttons, then white profile cards with a tinted initials tile
