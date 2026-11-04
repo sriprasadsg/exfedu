@@ -1144,7 +1144,7 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 .svu-pl-art { margin: 0; padding: 16px; border: 1px solid hsl(205 35% 89%); border-radius: 18px; background: hsl(var(--card)); }
 .svu-pl-art img { display: block; width: 100%; height: auto; }
 .svu-pl-band { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; margin-top: 32px; padding: 24px 30px; border-radius: 18px; background: hsl(var(--navy-900)); }
-.svu-career-records--archbook .svu-career-records-heading { margin: 0; padding: 0; border: 0; font-size: 13px; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: hsl(var(--primary-foreground)); }
+.svu-career-records--archbook .svu-career-records-heading { margin: 32px 0 0; padding: 0; border: 0; font-size: 24px; font-weight: 500; letter-spacing: 0; text-transform: none; color: hsl(var(--navy-900)); }
 .svu-pl-band-link { display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border: 1px solid hsl(var(--primary-foreground) / .5); border-radius: 4px; font-size: 12px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: hsl(var(--primary-foreground)); }
 .svu-pl-band-link:hover { background: hsl(var(--primary-foreground) / .12); }
 .svu-pl-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; margin: 26px 0 0; padding: 0; list-style: none; }
