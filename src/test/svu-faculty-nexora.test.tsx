@@ -32,9 +32,9 @@ describe("SVU faculty page on the Nexora model", () => {
     expect(cells[0].querySelector(".fd-role")?.textContent).toBe("Professor & Coordinator");
   });
 
-  it("gives the smaller technical group its own three-column row", () => {
+  it("gives the smaller technical group its own responsive row", () => {
     const { container } = render(<FacultyDirectory page title="Technical Mentors & Lab Faculty" people={svuSupport} />);
     expect(container.querySelectorAll(".fd-cell")).toHaveLength(5);
-    expect(container.querySelector(".fd-grid")?.getAttribute("data-cols")).toBe("3");
+    expect(container.querySelector(".fd-grid")?.hasAttribute("data-cols")).toBe(false);
   });
 });
