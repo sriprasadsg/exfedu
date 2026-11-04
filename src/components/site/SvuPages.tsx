@@ -205,11 +205,12 @@ const SvuInnovations = () => <div className="svu-flow">
   <section id="internships" className="svu-outcome-part"><SvuCareerRecords kind="internships" embedded /></section>
 </div>;
 
-/** Placements stand alone (client, 4 November 2026) with the same editorial page opening. */
+/** Placements stand alone (client, 4 November 2026). Its title stays as a hidden
+ * heading (client, 4 Nov 2026: "remove this place") — only "Career Outcomes" shows. */
 const SvuPlacements = () => <div className="svu-flow">
   <section className="svu-block svu-intro">
     <span className="svu-faculty-eyebrow">Career Outcomes</span>
-    <h1>Placements</h1>
+    <h1 className="sr-only">Placements</h1>
   </section>
   <section id="placements" className="svu-outcome-part"><SvuCareerRecords kind="placements" embedded /></section>
 </div>;
