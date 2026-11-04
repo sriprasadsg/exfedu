@@ -8,6 +8,7 @@
 - Partner enquiry keeps in-memory answers while rendering only its current step, validating that step before advancing and the full schema before simulated delivery; this preserves answers without exposing completed fields.
 - Pages, programmes and hub arms are data in src/data/site.ts; reviewed SVU records live in src/data/svuReviewed.ts and render inline through SvuReviewedContent on the existing catch-all routes, so source-specific records stay separate from navigation and layouts.
 - Approved introductory SVU narration and photo associations live in svuOverview.ts, separately from exhaustive reviewed records; overview links target stable original-index project anchors without duplicating research lists or programme brochures.
+- SVU career records stay source-preserved with year-only batches; introduction and text-only update sit side by side on desktop, the expanded student list spans both columns before the records; phones stack in reading order.
 - SVU conference work renders as event-grouped proceedings bands via SvuConferenceProceedings, never the student-project list.
 - Programme templates read course-specific data from site.ts through the catch-all route; programmeNavigation.ts supplies canonical organisation/detail paths so carousel, directory, breadcrumbs and back links share one hierarchy; approved brochure access is gated by the existing test-only contact workflow.
 - Unconfirmed claims render as "Approved Content Required" placeholders; never invent partnership, placement, ranking or certification content.
