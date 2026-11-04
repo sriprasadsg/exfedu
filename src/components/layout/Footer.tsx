@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
-import { ArrowUp, ArrowUpRight } from "lucide-react";
+import { ArrowUp, ArrowUpRight, MapPin } from "lucide-react";
 import exafluence from "@/assets/exafluence-footer-exact.png";
 import skillshoneLogo from "@/assets/skillshone-original.png";
 import { organisations, type Organisation } from "@/data/site";
 import { Button } from "@/components/ui/button";
 import { organisationPath } from "@/lib/programmeNavigation";
+import { footerLocations, headquartersLabel } from "@/data/locations";
+import { CountryFlag } from "@/components/layout/FlagIcons";
 
 // Client brief, 2 November 2026: three top-aligned columns, no sublists under a partner,
 // order Sri Venkateswara University → IBM, height follows the content.
@@ -44,11 +46,41 @@ const Footer = () => (
         <a href="https://www.exafluence.com" target="_blank" rel="noopener noreferrer" className="footer-company-link" aria-label="Exafluence — opens in a new tab">
           <img src={exafluence} alt="Exafluence — Data Driven Influence" className="w-auto" />
         </a>
-        {/* Client, 3 November 2026: the office address is given in the footer as plain text. */}
-        <address className="footer-address">
-          SRICHAKRA EDEN GREENS APARTMENTS,<br />
-          UPADYAYA NAGAR, TIRUPATI, Andhra Pradesh-517501
-        </address>
+      </div>
+    </div>
+
+    {/* Client, 4 November 2026: the single office line is replaced by the headquarters
+        list — a map marker before every address, a small flag beside each country. */}
+    <div className="container footer-locations">
+      <p className="footer-locations-title">{headquartersLabel}</p>
+      <div className="footer-location-grid">
+        {footerLocations.map((country) => (
+          <section className="footer-country" key={country.code} aria-label={country.name}>
+            <p className="footer-country-name">
+              <CountryFlag code={country.code} />
+              <span>{country.name}</span>
+            </p>
+            <ul className="footer-offices">
+              {country.offices.map((office) => (
+                <li className="footer-office" key={office.label}>
+                  <MapPin className="footer-office-pin" strokeWidth={1.9} aria-hidden />
+                  <div className="footer-office-body">
+                    <p className="footer-office-label">{office.label}</p>
+                    <address className="footer-office-address">
+                      {office.lines.map((line) => (
+                        <span key={line}>
+                          {line}
+                          <br />
+                        </span>
+                      ))}
+                    </address>
+                    {office.phone && <p className="footer-office-phone">{office.phone}</p>}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
       </div>
     </div>
 
