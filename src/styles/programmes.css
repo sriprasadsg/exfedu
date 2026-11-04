@@ -1266,9 +1266,10 @@ body:not(:has(.homepage-static)) main .svu-career-records--logistics .svu-career
    Every record sits in a square-cornered box. A person icon leads the student's name, an icon
    matched to the designation leads the role, and an industry icon leads the organisation. */
 .svu-pl-card,
-.svu-career-records--logistics .svu-pl-card { border-radius: 0; border: 1px solid hsl(205 35% 88%); border-top: 2px solid hsl(var(--navy-900)); background: hsl(var(--card)); box-shadow: none; display: flex; flex-direction: column; min-height: 380px; padding: 28px 26px 26px; }
-.svu-pl-card .svu-outcome-org { margin-top: auto; padding-top: 12px; }
-.svu-pl-card .svu-outcome-batch { margin-top: 8px; }
+.svu-career-records--logistics .svu-pl-card { border-radius: 0; border: 1px solid hsl(205 35% 88%); border-top: 2px solid hsl(var(--navy-900)); background: hsl(var(--card)); box-shadow: none; display: flex; flex-direction: column; justify-content: center; min-height: 380px; padding: 30px 26px; }
+.svu-pl-card .svu-outcome-role { margin-top: 12px; }
+.svu-pl-card .svu-outcome-org { margin-top: 26px; padding-top: 16px; }
+.svu-pl-card .svu-outcome-batch { margin-top: 12px; }
 .svu-pl-person { display: flex; align-items: center; gap: 10px; }
 .svu-pl-person > svg { flex: none; color: hsl(var(--connection-blue)); }
 .svu-pl-person h3 { min-width: 0; }
