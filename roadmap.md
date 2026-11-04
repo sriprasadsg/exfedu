@@ -1,4 +1,6 @@
-- [x] Placements page: follow the AUTO-SERVICE reference (client, 4 Nov 2026) — navy header band with a crest badge on its edge, three ruled columns per card, full-bleed "Placement Records" band; 11 records kept, 189 tests pass, desktop/phone verified
+- [ ] SVU page (client, 4 Nov 2026): drop "Applied" and retitle that section "AI, Gen AI & Data Science", keeping "Data Science" on a single line
+- [x] SVU programmes block (client, 4 Nov 2026): title renamed to "Explore Programmes", "Sri Venkateswara University." held on one line, colourful per-category icon chips (blue/teal/amber), programme rows tilt forward on hover; 189 tests pass, desktop/phone verified
+
 - [ ] SVU page (client, 4 Nov 2026): rename the programmes section title to "Explore Programmes", keep "Sri Venkateswara University" on a single line, make the programme icons colourful and give programme boxes the gentle front tilt on hover
 - [x] Projects & Research page: remove the "Student Projects / Conference Presentations / Research Papers" tab strip — all three kinds now render one under another with their own headings, search and pagination kept; 189 tests pass, desktop/phone verified
 
