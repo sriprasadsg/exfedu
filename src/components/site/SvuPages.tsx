@@ -7,9 +7,10 @@ import { Input } from "@/components/ui/input";
 import { organisations, programmes } from "@/data/site";
 import { svuGrowth, svuOverview, svuProjectAreas, svuOverviewAchievements } from "@/data/svuOverview";
 import SvuTechTicker from "./SvuTechTicker";
-import { svuConferencePapers, svuFeaturedAchievement, svuProjects, svuPublications } from "@/data/svuReviewed";
+import { svuFeaturedAchievement, svuProjects, svuPublications } from "@/data/svuReviewed";
 import { programmePath, svuPagePath, svuSectionPath, type SvuPageId } from "@/lib/programmeNavigation";
 import { SvuFacultyPage } from "./SvuReviewedContent";
+import { SvuConferenceProceedings } from "./SvuConferenceProceedings";
 import { useProgrammeSeo } from "./ProgrammeDirectory";
 import SvuCareerRecords from "./SvuCareerRecords";
 
