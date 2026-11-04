@@ -8,8 +8,6 @@ import { svuPlacements } from "@/data/svuCareer";
 /** Placements follow the client's sleek monochrome brief (4 November 2026): an oversized
  * headline with an italic final word, then hairline-ruled record rows — no filled bands,
  * crest badges, pills or tilted cards. Every approved record still renders in order. */
-const rows = [...document.querySelectorAll(".svu-mono-row")];
-void rows;
 
 describe("SVU placements monochrome presentation", () => {
   it("shows the headline with its italic final word and a hairline record ledger", () => {
