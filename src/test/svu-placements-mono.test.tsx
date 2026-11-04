@@ -28,7 +28,15 @@ describe("SVU placements monochrome presentation", () => {
     expect(container.querySelector(".svu-career-records-heading")?.textContent).toBe("Placement Records");
   });
 
-  it("keeps every approved placement record, in order, inside its own row", () => {
+  it("keeps every approved placement record, in the display order, inside its own row", () => {
+    // Display order is the client's own rule (batch-wise, then alphabetically), already
+    // pinned by svu-career-order.test.tsx; here the point is that each row pairs the right
+    // organisation, role and batch with the right student.
+    const displayOrder = [
+      "G V Sumanth", "Jonnalagadda Sahithya", "K Mounika", "K Vinay", "Vemuri Bharath Kumar", "Yaram Lakshmi Nisoka",
+      "Kamatam Meghana", "Muthyala Bharadwaj", "Muvvala Rajeswari", "Sri Tulasi Satya Saketh Raprolu", "Veeravalli Sri Satya",
+    ];
+    const byStudent = new Map(svuPlacements.map(record => [record.student, record]));
     const { container } = render(<SvuCareerRecords kind="placements" />);
     const shown = [...container.querySelectorAll(".svu-mono-row")].map(row => [
       row.querySelector(".svu-outcome-org")?.textContent?.trim(),
@@ -36,7 +44,10 @@ describe("SVU placements monochrome presentation", () => {
       row.querySelector(".svu-outcome-role")?.textContent?.trim(),
       row.querySelector(".svu-outcome-batch")?.textContent?.trim(),
     ]);
-    expect(shown).toEqual(svuPlacements.map(record => [record.organisation, record.student, record.designation, `Batch ${record.batch}`]));
+    expect(shown).toEqual(displayOrder.map(name => {
+      const record = byStudent.get(name)!;
+      return [record.organisation, record.student, record.designation, `Batch ${record.batch}`];
+    }));
   });
 
   it("renders the ledger on the placements page without internship material", () => {
