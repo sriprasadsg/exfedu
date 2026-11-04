@@ -849,7 +849,9 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 
 
 .svu-outcome-part { margin-top: 0; scroll-margin-top: 96px; }
+.svu-career-records--ledger .svu-career-title-card { top: auto; }
 #programmes, #projects { scroll-margin-top: 96px; }
+.svu-career-records--ledger .svu-career-title-card { top: auto; }
 .svu-faculty-eyebrow { display: block; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: hsl(var(--muted-foreground)); margin-bottom: 8px; }
 /* Professional refresh: placements & internships (4 Nov 2026) */
 .svu-career-figures { display: grid; gap: 0; margin-top: 22px; border-top: 1px solid hsl(205 32% 87%); }
@@ -857,6 +859,7 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 .svu-career-figures dt { font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: hsl(var(--muted-foreground)); }
 .svu-career-figures dd { font-size: 22px; font-weight: 500; line-height: 1; color: hsl(var(--navy-900)); font-variant-numeric: tabular-nums; }
 .svu-career-title-card { align-self: start; position: sticky; top: 96px; }
+.svu-career-records--ledger .svu-career-title-card { top: auto; }
 @media (max-width: 880px) { .svu-career-title-card { position: static; } .svu-career-figures { grid-template-columns: repeat(3, minmax(0,1fr)); } .svu-career-figures > div { flex-direction: column-reverse; align-items: flex-start; gap: 6px; } }
 .svu-outcome { border: 1px solid hsl(205 32% 87%); border-top: 3px solid hsl(var(--navy-900)); padding: 22px 22px 20px; }
 .svu-outcome-batch { color: hsl(var(--navy-900)); background: hsl(205 92% 97%); border-color: hsl(205 32% 87%); }
@@ -875,3 +878,39 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 .svu-offer-fields dd, .svu-offer-fields dd.svu-outcome-role { margin: 2px 0 0; padding: 0; border: 0; font-size: 13px; line-height: 1.55; color: hsl(var(--muted-foreground)); font-weight: 400; }
 .svu-offer-fields h3 { margin: 0; font-size: 15px; color: hsl(var(--navy-900)); }
 .svu-offer-batch { all: unset; } .svu-offer-batch::before { display: none; }
+/* Placements ledger, editorial style after the Varlow reference (4 Nov 2026) */
+.svu-ledger-statement { margin: 8px 0 22px; font-size: clamp(26px, 3.4vw, 40px); line-height: 1.12; font-weight: 500; letter-spacing: -.02em; color: hsl(var(--navy-900)); }
+.svu-ledger-statement span { color: hsl(var(--navy-900) / .38); }
+.svu-ledger { display: block; border-top: 1px solid hsl(var(--navy-900) / .85); }
+.svu-ledger .svu-offer { display: grid; grid-template-columns: 1.1fr 1.1fr 1.2fr .6fr; align-items: center; gap: 20px; padding: 20px 4px; border: 0; border-bottom: 1px solid hsl(205 30% 88%); border-radius: 0; background: none; transition: background .3s ease, padding .3s ease; }
+.svu-ledger .svu-offer:hover { transform: none; background: hsl(205 92% 97%); padding-inline: 14px; }
+.svu-ledger .svu-offer-head { padding: 0; background: none; color: hsl(var(--navy-900)); }
+.svu-ledger .svu-offer-head svg { color: hsl(var(--connection-blue)); }
+.svu-ledger .svu-offer-head .svu-outcome-org { font-size: 17px; letter-spacing: -.01em; }
+.svu-ledger .svu-offer-fields { display: contents; }
+.svu-ledger .svu-offer-fields > div { grid-template-columns: 1fr; }
+.svu-ledger .svu-offer-fields i { display: none; }
+.svu-ledger .svu-offer-fields dt { display: none; }
+.svu-ledger .svu-offer-fields h3 { font-size: 16px; }
+.svu-ledger .svu-offer-fields > div:last-child { justify-items: end; }
+@media (max-width: 720px) {
+  .svu-ledger .svu-offer { grid-template-columns: 1fr auto; gap: 6px 12px; }
+  .svu-ledger .svu-offer-head { grid-column: 1 / -1; }
+}
+.svu-career-records--ledger { display: block; }
+.svu-career-records--ledger .svu-career-title-card { margin: 0; position: static; top: auto; padding: 0 0 28px; border: 0; border-radius: 0; background: none; }
+.svu-career-records--ledger .svu-career-content-card { margin: 0; padding: 0; border: 0; border-radius: 0; background: none; }
+.svu-career-records--ledger .svu-ledger-statement { margin: 0 0 18px; max-width: 760px; font-size: clamp(30px, 4.2vw, 52px); }
+.svu-career-records--ledger .svu-career-title-card > h1, .svu-career-records--ledger .svu-career-title-card > h2 { font-size: 15px; letter-spacing: .08em; text-transform: uppercase; }
+.svu-career-records--ledger .svu-career-content-card > p { max-width: 760px; }
+.svu-ledger-cols { display: grid; grid-template-columns: 1.1fr 1.1fr 1.2fr .6fr; gap: 20px; padding: 0 4px 10px; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: hsl(var(--muted-foreground)); }
+.svu-ledger-cols span:last-child { text-align: right; }
+.svu-ledger .svu-offer-head svg { flex: none; }
+.svu-ledger .svu-offer-fields dd.svu-outcome-role { font-size: 14px; color: hsl(var(--navy-900) / .75); }
+.svu-ledger .svu-offer-fields > div:last-child dd { font-variant-numeric: tabular-nums; color: hsl(var(--navy-900)); }
+@media (max-width: 720px) {
+  .svu-ledger-cols { display: none; }
+  .svu-ledger .svu-offer { grid-template-columns: 1fr; gap: 4px; }
+  .svu-ledger .svu-offer-fields > div:last-child { justify-items: start; }
+}
+.svu-career-records--ledger .svu-career-title-card::before, .svu-career-records--ledger .svu-career-title-card::after, .svu-career-records--ledger .svu-career-content-card::before, .svu-career-records--ledger .svu-career-content-card::after { display: none; }
