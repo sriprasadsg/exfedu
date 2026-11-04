@@ -62,12 +62,12 @@ const SvuTechTicker = () => {
 
   return (
     <section
-      className={`svu-block svu-tech${reducedMotion ? " is-expanded" : " is-scrolling"}`}
+      className={`svu-growth-part svu-tech${reducedMotion ? " is-expanded" : " is-scrolling"}`}
       aria-labelledby="svu-tech-title"
     >
       <div className="svu-tech-lead">
-        <h2 id="svu-tech-title">Technologies You Work With</h2>
-        <p className="svu-reading">{svuToolsIntro}</p>
+        <h3 id="svu-tech-title">{svuGrowth.tools.title}</h3>
+        <p className="svu-reading">{svuGrowth.tools.text}</p>
       </div>
       <div className="svu-tech-window" id="svu-tech-window">
         <div
