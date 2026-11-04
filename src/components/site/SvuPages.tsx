@@ -213,7 +213,6 @@ const SvuPlacements = () => <div className="svu-flow">
   <section className="svu-block svu-intro">
     <span className="svu-faculty-eyebrow">Career Outcomes</span>
     <h1>Placements</h1>
-    <p className="svu-lead">Documented placement records of SVU–Exafluence students, listed with organisation, designation and academic batch.</p>
   </section>
   <section id="placements" className="svu-outcome-part"><SvuCareerRecords kind="placements" embedded /></section>
 </div>;
