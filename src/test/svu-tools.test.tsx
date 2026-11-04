@@ -38,9 +38,9 @@ describe("SVU Overview — Tools & Technologies", () => {
     const { container } = overview();
     const headings = [...container.querySelectorAll(".svu-flow .svu-block h2")].map(h => h.textContent!.trim());
     expect(headings).not.toContain("Tools, Platforms & Technologies");
-    // Programmes now sit between Applied AI and the growth band (3 Nov 2026 page flow).
+    // Programmes now sit between the AI, Gen AI & Data Science band and the growth band (3 Nov 2026 page flow).
     // Programmes stand apart at the end of the page (client, 4 Nov 2026), not in the middle.
-    expect(headings.indexOf("Technology, Research & Professional Growth")).toBe(headings.indexOf("Applied AI and Data Science") + 1);
+    expect(headings.indexOf("Technology, Research & Professional Growth")).toBe(headings.indexOf("AI, Gen AI & Data Science") + 1);
     expect(headings.indexOf("Explore Programmes")).toBe(headings.length - 1);
     expect(container.querySelector(".svu-tech h3")?.textContent).toBe("Tools & Technologies");
     expect(container.querySelector(".svu-tech .svu-reading")?.textContent).toBe(

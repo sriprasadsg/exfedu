@@ -66,7 +66,7 @@ const SvuOverview = () => {
 
     <section className="svu-block svu-split">
       <div className="svu-split-lead">
-        <h2>Applied AI and Data Science</h2>
+        <h2>AI, Gen AI &amp; <span className="svu-nowrap">Data Science</span></h2>
         <p className="svu-reading">Student projects explore challenges across data engineering, business analytics and intelligent application development.</p>
         <Button variant="link" asChild><Link to={svuSectionPath("projects-research")}>Explore Student Projects<ArrowRight size={16} /></Link></Button>
       </div>
