@@ -1,6 +1,7 @@
 - [x] Remove the pale circle and triangle decorations from the SVU overview opening band; verified by pixel scan at 1062px, test added.
-- [ ] Remove the faculty members tabs from all programme pages (client, 4 Nov 2026).
-- [ ] Change the letterforms of the header and SVU section-bar labels (client picture, 4 Nov 2026): awaiting the client's choice of style.
+- [x] Remove the faculty and academic resources block from every programme page (SVU and IBM); enquiry sections kept, live pages and 38 tests checked.
+- [x] Lighten the header menu labels and the five SVU section labels to regular weight (client picture, 4 Nov 2026); letter spacing stays zero site-wide.
+
 
 - [x] Remove the "12" and "5" mentor counts from the SVU programme sentence; wording now "Meet the faculty, industry mentors and technical mentors who guide this programme.", verified on the live programme page.
 
