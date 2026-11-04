@@ -39,7 +39,7 @@ export default function SvuCareerRecords({ kind, embedded = false }: { kind: "pl
   const title = placements ? "Student Placements" : "Student Internships";
   const Title = embedded ? "h2" : "h1";
   const Sub = embedded ? "h3" : "h2";
-  return <div className={placements ? "svu-career-records svu-career-records--ledger" : "svu-career-records"}>
+  return <div className={placements ? "svu-career-records svu-career-records--ledger" : "svu-career-records svu-career-records--upskill"}>
     <div className="svu-career-title-card">
       {placements && <p className="svu-ledger-statement">Every placement. Every role. <span>On the record.</span></p>}
       <Title>{title}</Title>
@@ -50,7 +50,7 @@ export default function SvuCareerRecords({ kind, embedded = false }: { kind: "pl
       ? <p>Students from the SVU–Exafluence MS Data Science programme have secured roles in data science and AI engineering, alongside trainee positions. The following records show their organisations, designations and academic batches.</p>
       : svuInternshipIntroduction.paragraphs.map(text => <p key={text}>{text}</p>)}
     {!placements && <SvuInternshipUpdate />}
-    <Sub className="svu-career-records-heading">{placements ? "Placement Records" : "Internship Records"}</Sub>
+    <Sub id={placements ? undefined : "internship-records"} className="svu-career-records-heading">{placements ? "Placement Records" : "Internship Records"}</Sub>
     {placements && <div className="svu-ledger-cols" aria-hidden="true"><span>Organisation</span><span>Student</span><span>Profile</span><span>Batch</span></div>}
     {placements ? <ul className="svu-outcomes svu-ledger" aria-label={title}>{shown.map(record => <li key={record.student} className="svu-outcome svu-offer">
       <header className="svu-offer-head"><Building2 size={16} aria-hidden="true" /><p className="svu-outcome-org">{record.organisation}</p></header>
@@ -59,11 +59,11 @@ export default function SvuCareerRecords({ kind, embedded = false }: { kind: "pl
         <div><i aria-hidden="true"><Briefcase size={15} /></i><dt>Profile</dt><dd className="svu-outcome-role">{record.designation}</dd></div>
         <div><i aria-hidden="true"><CalendarRange size={15} /></i><dt>Batch</dt><dd><span className="svu-outcome-batch svu-offer-batch"><span className="sr-only">Batch </span>{record.batch}</span></dd></div>
       </dl>
-    </li>)}</ul> : <div className="svu-career-table-wrap"><table className="svu-career-table" aria-label={title}><thead><tr>
-      <th scope="col"><i className="svu-career-head-icon svu-career-head-2"><UserRound size={14} aria-hidden="true" /></i><span>Student Name</span></th>
-      <th scope="col"><i className="svu-career-head-icon svu-career-head-3"><CalendarRange size={14} aria-hidden="true" /></i><span>Batch</span></th>
-      <th scope="col"><i className="svu-career-head-icon svu-career-head-4"><Building2 size={14} aria-hidden="true" /></i><span>{placements ? "Organisation" : "Internship Organisation"}</span></th>
-    </tr></thead><tbody>{shown.map(record => <tr key={record.student}><th scope="row" data-label="Student Name">{record.student}</th><td data-label="Batch">{record.batch}</td><td data-label={placements ? "Organisation" : "Internship Organisation"}>{record.organisation}</td></tr>)}</tbody></table></div>}
+    </li>)}</ul> : <ul className="svu-intern-cards" aria-label={title}>{shown.map(record => <li key={record.student} className="svu-intern-card">
+      <span className="svu-intern-org"><Building2 size={13} aria-hidden="true" />{record.organisation}</span>
+      <h4>{record.student}</h4>
+      <p className="svu-intern-meta" data-label="Batch"><CalendarRange size={14} aria-hidden="true" /><span className="sr-only">Batch </span>{record.batch}</p>
+    </li>)}</ul>}
     </div>
   </div>;
 }

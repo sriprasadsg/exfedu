@@ -83,7 +83,7 @@ describe("SVU internships programme update (client, 3 November 2026)", () => {
     expect(title?.querySelector(".svu-career-subtitle")).not.toBeNull();
     expect(content?.querySelector(".svu-internship-update")).not.toBeNull();
     expect(content?.querySelector(".svu-career-records-heading")).not.toBeNull();
-    expect(content?.querySelectorAll("tbody tr")).toHaveLength(11);
+    expect(content?.querySelectorAll(".svu-intern-card")).toHaveLength(11);
 
     const { container: place } = render(<SvuCareerRecords kind="placements" />);
     expect(place.querySelector(".svu-career-title-card .svu-career-subtitle")).not.toBeNull();
@@ -93,9 +93,9 @@ describe("SVU internships programme update (client, 3 November 2026)", () => {
 
   it("preserves every existing internship record without duplicating an update student", () => {
     const { container } = renderInternships();
-    const rows = [...container.querySelectorAll("tbody tr")];
+    const rows = [...container.querySelectorAll(".svu-intern-card")];
     expect(rows).toHaveLength(11);
-    const tableStudents = rows.map(row => row.querySelector("th")?.textContent?.trim());
+    const tableStudents = rows.map(row => row.querySelector("h4")?.textContent?.trim());
     students.forEach(name => expect(tableStudents).not.toContain(name));
     expect(container.textContent).toContain("NARL, Gadanki");
     expect(container.textContent).toContain("SHAR, Sriharikota");

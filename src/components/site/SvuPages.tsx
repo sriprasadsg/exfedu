@@ -1,7 +1,7 @@
 import ResearchThemeIcon from "./ResearchThemeIcon";
 import { useEffect, useMemo, useState, type CSSProperties } from "react";
 import { Link, Navigate, useLocation } from "react-router-dom";
-import { ArrowRight, ArrowUpRight, BookOpen, Code2, Presentation, Search, Trophy, GraduationCap, ScrollText } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BookOpen, Lightbulb, Rocket, Sparkles, Code2, Presentation, Search, Trophy, GraduationCap, ScrollText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -180,7 +180,7 @@ const SvuAchievements = () => (
       <figure><img src={item.photo} alt={item.alt} loading="lazy" /></figure>
       <div className="svu-story-body"><div className="svu-story-head"><ResearchThemeIcon title={item.title} /><h3>{item.title}</h3></div>{item.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}</div>
     </article>)}</div>
-    <aside className="svu-champion">
+    <aside className="svu-champion" id="featured-achievement">
       <span className="svu-champion-medal" aria-hidden="true"><Trophy size={26} strokeWidth={1.4} /></span>
       <div className="svu-champion-body">
         <span className="svu-champion-eyebrow">Featured Achievement</span>
@@ -194,11 +194,24 @@ const SvuAchievements = () => (
 
 /** Student innovations and internships share one page (client, 4 November 2026):
  * innovation stories and the featured achievement, then the internship records. */
+const innovationStrip = [
+  { href: "#achievements", label: "Innovation Stories", Icon: Lightbulb },
+  { href: "#featured-achievement", label: "Featured Achievement", Icon: Trophy },
+  { href: "#svu-internship-update-heading", label: "Generative AI Internship", Icon: Sparkles },
+  { href: "#internship-records", label: "Internship Records", Icon: Rocket },
+];
 const SvuInnovations = () => <div className="svu-flow">
-  <section className="svu-block svu-intro">
-    <span className="svu-faculty-eyebrow">Student Work & Experience</span>
-    <h1>Student Innovations & Internships</h1>
+  <section className="svu-block svu-intro svu-upskill-hero">
+    <span className="svu-upskill-pill"><Sparkles size={13} aria-hidden="true" />Student Work & Experience</span>
+    <h1>Student <em>Innovations</em> & Internships</h1>
     <p className="svu-lead">Innovation stories and competition achievements from student project work, followed by internship experience at research and technology organisations.</p>
+    <div className="svu-upskill-actions">
+      <Button asChild><a href="#achievements">Explore innovations <ArrowUpRight size={16} aria-hidden="true" /></a></Button>
+      <Button asChild variant="outline"><a href="#internships">View internships <ArrowUpRight size={16} aria-hidden="true" /></a></Button>
+    </div>
+    <nav className="svu-upskill-strip" aria-label="On this page">
+      {innovationStrip.map(({ href, label, Icon }) => <a key={href} href={href}><Icon size={22} strokeWidth={1.5} aria-hidden="true" /><span>{label}</span></a>)}
+    </nav>
   </section>
   <SvuAchievements />
   <section id="internships" className="svu-outcome-part"><SvuCareerRecords kind="internships" embedded /></section>

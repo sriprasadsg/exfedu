@@ -16,7 +16,7 @@ describe("SVU innovations and placements pages", () => {
     const { container } = open("innovations");
     expect(container.querySelector("h1")?.textContent).toBe("Student Innovations & Internships");
     expect(container.querySelector(".svu-internship-update")).not.toBeNull();
-    expect(container.querySelectorAll("#internships .svu-career-table tbody tr")).toHaveLength(11);
+    expect(container.querySelectorAll("#internships .svu-intern-card")).toHaveLength(11);
     expect(container.querySelectorAll("#internships [data-label='Batch']").length).toBe(11);
     expect(container.querySelector(".svu-outcomes")).toBeNull();
   });
