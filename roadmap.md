@@ -1,5 +1,6 @@
 - [x] About page: connecting-technology details (approved Exafluence Inc. industry scope) + embedded partner enquiry form; verified 1280/375px, FAQs route now 404
 - [x] FAQs removed from the About Us (Core) menu; /faqs removed from site data
+- [x] Remove the visible "Placements" title from the SVU Placements page (hidden h1 kept for search engines)
 # Roadmap
 - [x] Split SVU outcomes into separate Student Innovations & Internships and Placements pages (five tabs total, shared editorial theme); old anchors redirect, 180 tests pass.
 - [x] Remove the "Back to Our Collaboration Network" pill from every page (SVU, IBM, organisation listings, programme details); component, styles and tests updated, breadcrumbs preserved.
