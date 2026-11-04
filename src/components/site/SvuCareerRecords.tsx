@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowDown, Building2, CalendarRange, UserRound } from "lucide-react";
+import { ArrowDown, Briefcase, Building2, CalendarRange, UserRound } from "lucide-react";
 import { filterSvuCareerRecords, svuInternshipIntroduction, svuInternshipUpdate, svuInternships, svuPlacements } from "@/data/svuCareer";
 
 /** Approved text-only internship update (client, 3 November 2026): the panel sits between the
@@ -50,11 +50,13 @@ export default function SvuCareerRecords({ kind, embedded = false }: { kind: "pl
       : svuInternshipIntroduction.paragraphs.map(text => <p key={text}>{text}</p>)}
     {!placements && <SvuInternshipUpdate />}
     <Sub className="svu-career-records-heading">{placements ? "Placement Records" : "Internship Records"}</Sub>
-    {placements ? <ul className="svu-outcomes" aria-label={title}>{shown.map(record => <li key={record.student} className="svu-outcome">
-      <span className="svu-outcome-batch">Batch {record.batch}</span>
-      <h3>{record.student}</h3>
-      <p className="svu-outcome-role">{record.designation}</p>
-      <p className="svu-outcome-org"><Building2 size={14} aria-hidden="true" />{record.organisation}</p>
+    {placements ? <ul className="svu-outcomes" aria-label={title}>{shown.map(record => <li key={record.student} className="svu-outcome svu-offer">
+      <header className="svu-offer-head"><Building2 size={16} aria-hidden="true" /><p className="svu-outcome-org">{record.organisation}</p></header>
+      <dl className="svu-offer-fields">
+        <div><i aria-hidden="true"><UserRound size={15} /></i><dt>Student</dt><dd><h3>{record.student}</h3></dd></div>
+        <div><i aria-hidden="true"><Briefcase size={15} /></i><dt>Profile</dt><dd className="svu-outcome-role">{record.designation}</dd></div>
+        <div><i aria-hidden="true"><CalendarRange size={15} /></i><dt>Batch</dt><dd><span className="svu-outcome-batch svu-offer-batch"><span className="sr-only">Batch </span>{record.batch}</span></dd></div>
+      </dl>
     </li>)}</ul> : <div className="svu-career-table-wrap"><table className="svu-career-table" aria-label={title}><thead><tr>
       <th scope="col"><i className="svu-career-head-icon svu-career-head-2"><UserRound size={14} aria-hidden="true" /></i><span>Student Name</span></th>
       <th scope="col"><i className="svu-career-head-icon svu-career-head-3"><CalendarRange size={14} aria-hidden="true" /></i><span>Batch</span></th>
