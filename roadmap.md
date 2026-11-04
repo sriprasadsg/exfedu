@@ -408,3 +408,5 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] SVU collaboration artwork: replaced with the client's new Data Science laptop render (3 Nov 2026); earlier render archived as an unused CDN asset, verified 1280/390px.
 
 - [x] Hosting & backend step-by-step written up (3 Nov 2026): confirmed 0 application tables in the attached backend, one server function (programme-recommend) holding the AI key, all enquiry forms still test-only via submitTestEnquiry with recipient routing already in place; AWS migration plan saved to /mnt/documents/exafluence-hosting-and-backend.md
+
+- [ ] Projects & Research page: follow Colorlib Ultim8 template
