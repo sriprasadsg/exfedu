@@ -68,7 +68,7 @@ const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { progr
     <main className="programme-experience">
       {/* SVU programme pages (2 Nov 2026 brief): breadcrumb, then the section tabs,
           then the programme title and introduction. */}
-      {isSvu && <div className="programme-crumb-band"><div className="container"><NetworkBackButton />{breadcrumb}</div></div>}
+      {isSvu && <div className="programme-crumb-band"><div className="container">{breadcrumb}</div></div>}
       {isSvu && <SvuTabBar active="overview" detail />}
       <header className={`programme-intro${isSvu ? " programme-intro-after-tabs" : ""}`}>
         <div className="container">
