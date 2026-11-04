@@ -895,8 +895,8 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
   .svu-ledger .svu-offer-head { grid-column: 1 / -1; }
 }
 .svu-career-records--ledger { display: block; }
-.svu-career-records--ledger .svu-career-title-card { position: static; padding: 0 0 28px; border: 0; border-radius: 0; background: none; }
-.svu-career-records--ledger .svu-career-content-card { padding: 0; border: 0; border-radius: 0; background: none; }
+.svu-career-records--ledger .svu-career-title-card { margin: 0; position: static; padding: 0 0 28px; border: 0; border-radius: 0; background: none; }
+.svu-career-records--ledger .svu-career-content-card { margin: 0; padding: 0; border: 0; border-radius: 0; background: none; }
 .svu-career-records--ledger .svu-ledger-statement { margin: 0 0 18px; max-width: 760px; font-size: clamp(30px, 4.2vw, 52px); }
 .svu-career-records--ledger .svu-career-title-card > h1, .svu-career-records--ledger .svu-career-title-card > h2 { font-size: 15px; letter-spacing: .08em; text-transform: uppercase; }
 .svu-career-records--ledger .svu-career-content-card > p { max-width: 760px; }
@@ -910,3 +910,4 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
   .svu-ledger .svu-offer { grid-template-columns: 1fr; gap: 4px; }
   .svu-ledger .svu-offer-fields > div:last-child { justify-items: start; }
 }
+.svu-career-records--ledger .svu-career-title-card::before, .svu-career-records--ledger .svu-career-title-card::after, .svu-career-records--ledger .svu-career-content-card::before, .svu-career-records--ledger .svu-career-content-card::after { display: none; }
