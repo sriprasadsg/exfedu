@@ -177,7 +177,7 @@ const SvuAchievements = () => (
   <section className="svu-block" id="achievements">
     <h2>Student Innovation and Achievements</h2>
     <div className="svu-stories">{svuOverviewAchievements.map(item => <article className="svu-story" key={item.title}>
-      <figure><img src={item.photo} alt={item.alt} loading="lazy" /><span className="svu-story-badge"><Trophy size={13} aria-hidden="true" />Achievement</span></figure>
+      <figure><img src={item.photo} alt={item.alt} loading="lazy" /></figure>
       <div className="svu-story-body"><div className="svu-story-head"><ResearchThemeIcon title={item.title} /><h3>{item.title}</h3></div>{item.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}</div>
     </article>)}</div>
     <aside className="svu-champion">
