@@ -464,3 +464,6 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] SVU placements boxes: colourful student icon centred at the top of each box, designation icons coloured by role family and a green industry icon (client, 4 Nov 2026). Verified in browser: icon tile centred on the box mid-line, violet circuit for data-science roles, teal processor for engineers, green building before each company.
 - [x] Removed the word "(Shortfundly)" from the SM Smartygen Media Networks organisation name on the placements page (client, 4 Nov 2026). Verified in browser: the word appears nowhere on the page; the two records read "SM Smartygen Media Networks Pvt Ltd"; career-record test updated and passing.
 - [x] SVU placements boxes: industry name at the bottom centre with the year directly beneath it, inside spacing evened out (client, 4 Nov 2026). Verified in browser: company and year centred below the hairline near the box bottom, with the free space split evenly above the name group and between the role and the company; boxes 343x400 on desktop, 342x340 on a phone.
+
+## 4 Nov 2026 (cont.)
+- [ ] About Us boxes: make responsive like the student projects page boxes (client, 4 Nov 2026)
