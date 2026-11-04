@@ -1,9 +1,9 @@
 // Client brief, 4 November 2026: the footer replaces the single office line with a
-// headquarters list. Wording, phone numbers and PIN codes are reproduced as supplied.
+// headquarters list. Wording and PIN codes are reproduced as supplied; phone numbers
+// were removed from the footer at the client's request the same day.
 export type FooterOffice = {
   label: string;
   lines: string[];
-  phone?: string;
 };
 
 export type FooterCountry = {
@@ -22,7 +22,6 @@ export const footerLocations: FooterCountry[] = [
       {
         label: "Texas",
         lines: ["400 Stonebrook Pkwy, #905", "Frisco, Texas - 75036"],
-        phone: "Ph: +1 7328373764",
       },
       {
         label: "New Jersey",
@@ -37,7 +36,6 @@ export const footerLocations: FooterCountry[] = [
       {
         label: "Corporate Address - Tirupati",
         lines: ["#210, Ecco Greens Tech Hub", "Upadhyaya Nagar, Tirupati - 517507"],
-        phone: "Phone: 0877 - 222675",
       },
       {
         label: "Registered Address - Bangalore",

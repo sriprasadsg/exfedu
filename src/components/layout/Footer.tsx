@@ -49,15 +49,22 @@ const Footer = () => (
       <div className="footer-locations">
         <p className="footer-locations-title">{headquartersLabel}</p>
         <div className="footer-location-grid">
-          {footerLocations.map((country) => (
-            <section className="footer-country" key={country.code} aria-label={country.name}>
-              <p className="footer-country-name">
-                <CountryFlag code={country.code} />
-                <span>{country.name}</span>
-              </p>
-              <ul className="footer-offices">
-                {country.offices.map((office) => (
-                  <li className="footer-office" key={office.label}>
+          {/* Client, 4 November 2026: the two countries' offices share one grid, so the
+              second office in each country (New Jersey and Bangalore) starts on the same
+              row and lines up across the columns. */}
+          {[0, 1].map((row) =>
+            footerLocations.map((country) => {
+              const office = country.offices[row];
+              if (!office) return null;
+              return (
+                <div className="footer-office-cell" key={`${country.code}-${office.label}`}>
+                  {row === 0 && (
+                    <p className="footer-country-name">
+                      <CountryFlag code={country.code} />
+                      <span>{country.name}</span>
+                    </p>
+                  )}
+                  <div className="footer-office">
                     <MapPin className="footer-office-pin" strokeWidth={1.9} aria-hidden />
                     <div className="footer-office-body">
                       <p className="footer-office-label">{office.label}</p>
@@ -69,13 +76,12 @@ const Footer = () => (
                           </span>
                         ))}
                       </address>
-                      {office.phone && <p className="footer-office-phone">{office.phone}</p>}
                     </div>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          ))}
+                  </div>
+                </div>
+              );
+            }),
+          )}
         </div>
       </div>
     </div>
