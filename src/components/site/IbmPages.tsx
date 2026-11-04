@@ -19,8 +19,9 @@ const IbmPages = () => {
   const org = organisations.IBM;
 
   return (
-    <main className="programme-experience ibm-page">
+    <main className="programme-experience ibm-page ibm-pm">
       <div className="ibm-band">
+        <span className="ibm-pm-bar" aria-hidden="true" />
         <div className="container">
           <nav aria-label="Breadcrumb">
             <Link to="/">Home</Link><span aria-hidden="true">/</span>

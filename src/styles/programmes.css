@@ -1048,3 +1048,28 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 .svu-ca-programmes { padding-top: 72px; scroll-margin-top: 130px; }
 .svu-ca-programmes .svu-intro h2 { font-size: clamp(28px, 3.2vw, 40px); font-weight: 700; letter-spacing: -.025em; }
 @media (max-width: 760px) { .svu-ca .svu-areas > .svu-area:nth-child(even) { transform: none; } .svu-ca-tri { display: none; } }
+
+/* IBM page — Pillow Mart reference: white hero, side colour bar, large headline,
+   artwork framed by an offset block and dot grid, alternating offset-accent sections. */
+.ibm-pm .ibm-band { position: relative; overflow: hidden; background: hsl(var(--card)); border-bottom: 0; padding-block: 30px 72px; }
+.ibm-pm-bar { position: absolute; left: 0; top: 26%; width: clamp(28px, 6vw, 96px); height: 56%; background: hsl(var(--navy-900)); }
+.ibm-pm .ibm-intro { gap: clamp(32px, 5vw, 72px); margin-top: 24px; }
+.ibm-pm .ibm-intro-copy h1 { font-size: clamp(34px, 4.4vw, 54px); line-height: 1.08; letter-spacing: -.03em; color: hsl(var(--navy-900)); }
+.ibm-pm .ibm-subtitle { font-size: 18px; }
+.ibm-pm .ibm-intro-art { position: relative; isolation: isolate; border: 0; box-shadow: none; background: hsl(var(--academic-surface)); border-radius: 4px; padding: 28px; }
+.ibm-pm .ibm-intro-art::before { content: ""; position: absolute; z-index: -1; inset: 28px -18px -18px 28px; background: hsl(var(--navy-900) / .9); border-radius: 4px; }
+.ibm-pm .ibm-intro-art::after { content: ""; position: absolute; z-index: -2; left: -46px; bottom: -40px; width: 140px; height: 110px; background-image: radial-gradient(hsl(var(--navy-900) / .35) 1.6px, transparent 1.8px); background-size: 14px 14px; }
+.ibm-pm .ibm-intro-art img { max-height: 360px; }
+.ibm-pm .ibm-flow { padding-top: 40px; }
+.ibm-pm .ibm-block > h2 { position: relative; padding-top: 18px; font-size: clamp(26px, 2.8vw, 34px); letter-spacing: -.02em; color: hsl(var(--navy-900)); }
+.ibm-pm .ibm-block > h2::before { content: ""; position: absolute; left: 0; top: 0; width: 56px; height: 4px; background: hsl(var(--navy-900)); }
+.ibm-pm .ibm-steps li, .ibm-pm .ibm-choice li { position: relative; border-radius: 4px; transition: transform .25s ease, box-shadow .25s ease; }
+.ibm-pm .ibm-steps li::before, .ibm-pm .ibm-choice li::before { content: ""; position: absolute; left: 0; top: 0; width: 4px; height: 100%; background: hsl(var(--navy-900)); border-radius: 4px 0 0 4px; }
+.ibm-pm .ibm-steps li:hover, .ibm-pm .ibm-choice li:hover { transform: translateY(-3px); box-shadow: 10px 10px 0 -2px hsl(var(--academic-surface)); }
+.ibm-pm .ibm-institution { background: hsl(var(--academic-surface)); border-radius: 4px; box-shadow: 14px 14px 0 hsl(var(--navy-900) / .08); }
+@media (max-width: 760px) {
+  .ibm-pm-bar { top: 0; height: 6px; width: 40%; }
+  .ibm-pm .ibm-intro-art::before { inset: 20px -8px -8px 20px; }
+  .ibm-pm .ibm-intro-art::after { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .ibm-pm .ibm-steps li, .ibm-pm .ibm-choice li { transition: none; } }
