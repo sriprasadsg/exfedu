@@ -1,3 +1,4 @@
+- [ ] Remove the empty left area when participating students expand: show names across both columns beneath the introduction and update; check expand/collapse on desktop and phone.
 - [x] Reframe the Student Internships introduction and Generative AI update as two aligned sections; desktop/phone checked, 15-name toggle and 11 records preserved.
 - [x] Restyle Placements after the Framo logistics reference https://www.okler.net/previews/framo/1.0.0/demo-logistics-1.html; all 11 approved outcomes and links verified on desktop and phone.
 - [x] IBM programme column (client, 4 Nov 2026): presented on the photo model — navy header bar, floating card rows with left accent bars, tinted gradients, coloured programme names and right-aligned "View Programme" actions
