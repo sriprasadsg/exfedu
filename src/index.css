@@ -1826,7 +1826,6 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
 .footer-office-label { margin: 0 0 1px; font-size: .84rem; font-weight: 500; color: hsl(214 68% 16%); white-space: nowrap; }
 .footer-office-address { margin: 0; font-style: normal; font-size: .82rem; line-height: 1.68; color: hsl(214 28% 36%); letter-spacing: .01em; }
 .footer-office-address span { white-space: nowrap; }
-.footer-office-phone { margin: 2px 0 0; font-size: .8rem; color: hsl(214 28% 36%); }
 @container (max-width: 470px) { .footer-location-grid { grid-template-columns: minmax(0, 1fr); gap: 18px; } .footer-office-label, .footer-office-address span { white-space: normal; } }
 @media (max-width: 767px) { .footer-location-grid { grid-template-columns: minmax(0, 1fr); gap: 18px; } .footer-office-label, .footer-office-address span { white-space: normal; } }
 /* Legal links get their own clearly readable row above the copyright line.
