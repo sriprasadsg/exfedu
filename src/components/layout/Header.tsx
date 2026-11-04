@@ -69,7 +69,7 @@ const Header = () => {
                 {collaborationOrder.map((o, i) => <li key={o}>
                   {/* Hover swaps front and back: the block takes the label's navy, the label takes the panel's white. */}
                   <Link to={organisationPath(o)} className="flex items-center gap-2 rounded-md px-3 py-2 text-sm text-foreground transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:bg-accent focus-visible:text-accent-foreground focus-visible:outline-none">
-                    <span className="opacity-60">{i + 1}.</span>{o === "SVU" ? "Sri Venkateswara University" : "IBM"}
+                    {o === "SVU" ? "Sri Venkateswara University" : "IBM"}
                   </Link>
                 </li>)}
               </ul>
