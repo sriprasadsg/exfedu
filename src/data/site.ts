@@ -323,6 +323,10 @@ export const retiredPageDestinations: Record<string, string> = {
   "/collaboration-network/xime": "/collaboration-network",
   // IBM keeps one home under Our Collaboration Network (client brief, 2 November 2026).
   "/industry-collaborations/ibm": "/collaboration-network/ibm",
+  // The Cloud Technologies diploma is removed from the programme range (client, 4 November 2026);
+  // its old URLs land on the SVU programmes listing.
+  "/collaboration-network/svu/cloud-technologies": "/collaboration-network/svu#programmes",
+  "/programmes/cloud-technologies": "/collaboration-network/svu#programmes",
 };
 export const navPages = (cat: CategorySlug) => pages.filter((p) => p.category === cat && !p.hideInNav);
 
