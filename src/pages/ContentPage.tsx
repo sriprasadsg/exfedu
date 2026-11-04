@@ -22,6 +22,7 @@ const heroVisuals: Record<string, string> = {
 
 const ContentPage = () => {
   const { pathname } = useLocation();
+  if (pathname.replace(/\/$/, "") === "/collaboration-network") return <Navigate to="/collaboration-network/svu" replace />;
   const retiredDestination = retiredPageDestinations[pathname.replace(/\/$/, "")];
   if (retiredDestination) return <Navigate to={retiredDestination} replace />;
   if (pathname.replace(/\/$/, "") === "/programmes") return <Layout><ProgrammeDirectory /></Layout>;
@@ -42,10 +43,6 @@ const ContentPage = () => {
   if (!cat) return <NotFound />;
   const parent = page.parent ? findPage(page.parent) : undefined;
   const siblings = navPages(page.category);
-
-  if (page.path === "/collaboration-network") {
-    return <Layout>{page.blocks.map((block, i) => <BlockView key={i} block={block} page={page} />)}</Layout>;
-  }
 
   const breadcrumb = (
     <nav className="text-sm text-muted-foreground" aria-label="Breadcrumb">
