@@ -52,7 +52,7 @@ const OrganisationProgrammes = ({ organisation }: { organisation: Organisation }
           {section.id === "projects-research" && <SvuResearchContent />}
           {(section.id === "internships" || section.id === "placements") && <SvuCareerRecords kind={section.id} />}
         </section>) : <section aria-label={`${org.name} programmes`}>
-          {shown.length > 0 ? <><h2 className="organisation-list-heading">Programmes <span>{shown.length} programmes</span></h2>{programmeList}</> : <div className="programme-empty"><BookOpen size={30} aria-hidden="true" /><h2>{PENDING}</h2><p>Programme title, duration, delivery mode, eligibility, curriculum and certification information await verified source content.</p></div>}
+          {shown.length > 0 ? <><h2 className="organisation-list-heading">Programmes <span>{shown.length} programmes</span></h2>{programmeList}</> : <div className="programme-empty"><BookOpen size={30} aria-hidden="true" /><h2>{PENDING}</h2><p>Programme title, duration, delivery mode, eligibility and certification information await verified source content.</p></div>}
         </section>}
       </div>
       <aside className="programme-actions"><h2>Our Collaboration Network</h2><nav aria-label="Collaboration organisations" className="organisation-links">{(Object.keys(organisations) as Organisation[]).map(key => <Link key={key} to={organisationPath(key)} aria-current={key === organisation ? "page" : undefined}>{organisations[key].name}<ArrowRight size={15} /></Link>)}</nav><Button variant="outline" asChild><Link to="/collaboration-network"><ArrowLeft size={16} />Back to Our Collaboration Network</Link></Button></aside>

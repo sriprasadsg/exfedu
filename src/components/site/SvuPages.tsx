@@ -105,7 +105,7 @@ const SvuProgrammes = ({ embedded = false }: { embedded?: boolean }) => {
   return <div className="svu-flow" id={embedded ? "programmes" : undefined}>
     <section className="svu-block svu-intro">
       <Title>Industry-Integrated Programmes</Title>
-      <p className="svu-lead">Explore programmes offered through the collaboration between Exafluence Inc., USA, and Sri Venkateswara University. Compare study duration and delivery options, then view each programme’s eligibility, curriculum and admission process.</p>
+      <p className="svu-lead">Explore programmes offered through the collaboration between Exafluence Inc., USA, and Sri Venkateswara University. Compare study duration and delivery options, then view each programme’s eligibility and admission process.</p>
     </section>
     <div className="svu-directory-groups">{svuCategories.map((cat, index) => {
       const rows = shown.filter(p => cat.levels.includes(p.level));

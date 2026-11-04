@@ -1,7 +1,7 @@
 - [x] About page: connecting-technology details (approved Exafluence Inc. industry scope) + embedded partner enquiry form; verified 1280/375px, FAQs route now 404
 - [x] FAQs removed from the About Us (Core) menu; /faqs removed from site data
 # Roadmap
-- [ ] Remove curriculum sections from every programme page and curriculum references in programme-list introductions.
+- [x] Remove curriculum sections from every programme page and curriculum references in programme-list introductions; preserve tools and other course facts.
 - [x] Remove the highlighted network back button from SVU programme detail pages; preserve breadcrumbs and programme return links.
 - [x] Divide SVU programme categories into distinct editorial sections while preserving course details and links.
 - [x] Remove the combined collaboration page; desktop and phone menus open each partner directly, with the old overview URL redirected to SVU.
