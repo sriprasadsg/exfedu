@@ -417,3 +417,6 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Hosting & backend step-by-step written up (3 Nov 2026): confirmed 0 application tables in the attached backend, one server function (programme-recommend) holding the AI key, all enquiry forms still test-only via submitTestEnquiry with recipient routing already in place; AWS migration plan saved to /mnt/documents/exafluence-hosting-and-backend.md
 
 - [x] Projects & Research page: follow Colorlib Ultim8 template
+
+- [x] Attach SVU brochures (MS DS, PG Diploma, Diplomas)
+- [x] Remove "Programme source" links

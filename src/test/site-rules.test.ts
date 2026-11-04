@@ -75,7 +75,7 @@ describe("approved website structure", () => {
     for (const programme of programmes) {
       // Only IBM has approved brochures (client-supplied leaflets, 2 November 2026).
       if (programme.organisation === "IBM") expect(programme.brochure).toMatch(/brochures\/ibm-.+\.pdf$/);
-      else expect(programme.brochure).toBeUndefined();
+      else expect(programme.brochure).toMatch(/svu-.+\.pdf$/);
       if (programme.slug !== "ibm-semester-industry-learning") expect(programme.recognition).toBeUndefined();
     }
   });

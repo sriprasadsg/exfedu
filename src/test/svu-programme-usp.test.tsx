@@ -50,10 +50,10 @@ describe("SVU programme USP presentation (client brief, 2 November 2026)", () =>
     expect(link?.getAttribute("href")).toBe(svuSectionPath("projects-research"));
   });
 
-  it("carries no brochure on SVU programme pages but keeps enquiries", () => {
+  it("offers the approved brochure on SVU programme pages, without a source link", () => {
     const { container } = renderPage(msds);
-    expect(container.textContent).not.toMatch(/brochure/i);
-    expect(headings(container).at(-1)).toBe("Enquiry");
+    expect(container.textContent).toMatch(/Download Brochure/);
+    expect(container.textContent).not.toMatch(/Programme source/);
     expect(container.textContent).toContain("Enquire Now");
   });
 });
