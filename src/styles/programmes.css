@@ -1149,7 +1149,7 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 .svu-career-records--archbook .svu-career-records-heading { margin: 32px 0 0; padding: 0; border: 0; font-size: 24px; font-weight: 500; letter-spacing: 0; text-transform: none; color: hsl(var(--navy-900)); }
 .svu-pl-band-link { display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border: 1px solid hsl(var(--primary-foreground) / .5); border-radius: 4px; font-size: 12px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: hsl(var(--primary-foreground)); }
 .svu-pl-band-link:hover { background: hsl(var(--primary-foreground) / .12); }
-.svu-pl-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin: 26px 0 0; padding: 0; list-style: none; }
+.svu-pl-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; margin: 26px 0 0; padding: 0; list-style: none; }
 .svu-pl-card { position: relative; padding: 26px 24px 24px; border: 1px solid hsl(205 35% 89%); border-top: 3px solid hsl(var(--navy-900)); border-radius: 6px; background: hsl(var(--card)); box-shadow: 0 18px 36px -32px hsl(var(--navy-900) / .7); transition: box-shadow 320ms ease; }
 .svu-pl-card:hover { transform: none; background: hsl(var(--card)); box-shadow: 0 26px 46px -30px hsl(var(--navy-900) / .8); }
 .svu-pl-mark { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 12px; background: hsl(208 90% 96%); color: hsl(var(--connection-blue)); font-size: 15px; font-weight: 700; letter-spacing: .04em; }
@@ -1158,7 +1158,7 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 .svu-pl-card .svu-outcome-org { display: block; margin: 16px 0 0; padding-top: 13px; border-top: 1px solid hsl(var(--navy-900) / .12); font-size: 13.5px; line-height: 1.6; color: hsl(var(--muted-foreground)); }
 .svu-pl-card .svu-outcome-batch { margin: 9px 0 0; padding: 0; border: 0; background: none; color: hsl(var(--muted-foreground) / .85); font-size: 11.5px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; font-variant-numeric: tabular-nums; }
 .svu-pl-card .svu-outcome-batch::before { display: none; }
-@media (max-width: 1023px) { .svu-pl-cards { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 1023px) { .svu-pl-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 880px) { .svu-pl-split { grid-template-columns: minmax(0, 1fr); gap: 22px; } }
 @media (max-width: 639px) { .svu-pl-cards { grid-template-columns: minmax(0, 1fr); } .svu-career-records--archbook .svu-career-title-card { padding: 24px 20px 26px; } .svu-pl-band { padding: 20px 22px; } }
 
@@ -1262,21 +1262,31 @@ body:not(:has(.homepage-static)) main .svu-career-records--logistics .svu-career
 @media (max-width: 767px) { .svu-proceeding-list--single .svu-proceeding-by { text-align: left; } .svu-proceeding-head { padding: 12px 15px; } .svu-proceeding-list { padding: 12px 14px 16px; } .svu-proceeding-paper { padding: 13px 14px; } }
 @media (prefers-reduced-motion: reduce) { .svu-proceeding-paper { transition: none; } .svu-proceeding-paper:hover { transform: none; box-shadow: none; } }
 
-/* ===== SVU placement boxes as rectangles with matched icons (client, 4 November 2026) =====
-   Every record sits in a square-cornered box. A person icon leads the student's name, an icon
-   matched to the designation leads the role, and an industry icon leads the organisation. */
+/* ===== SVU placement boxes: tall rectangles led by a centred colourful icon (client, 4 November 2026) =====
+   Every record sits in a square-cornered box taller than it is wide. A colourful student glyph
+   sits centred at the very top, the role carries an icon matched to its designation in that
+   role's colour, and the organisation carries an industry icon in its own colour. */
 .svu-pl-card,
-.svu-career-records--logistics .svu-pl-card { border-radius: 0; border: 1px solid hsl(205 35% 88%); border-top: 2px solid hsl(var(--navy-900)); background: hsl(var(--card)); box-shadow: none; padding: 20px 26px 18px; }
-.svu-pl-card .svu-outcome-org { margin-top: 12px; padding-top: 10px; }
-.svu-pl-card .svu-outcome-batch { margin-top: 6px; }
-.svu-pl-person { display: flex; align-items: center; gap: 10px; }
-.svu-pl-person > svg { flex: none; color: hsl(var(--connection-blue)); }
-.svu-pl-person h3 { min-width: 0; }
-.svu-pl-card .svu-outcome-role { display: flex; align-items: center; gap: 8px; }
-.svu-pl-card .svu-outcome-role svg { flex: none; color: hsl(var(--connection-blue)); }
-.svu-pl-card .svu-outcome-org { display: flex; align-items: flex-start; gap: 8px; }
-.svu-pl-card .svu-outcome-org svg { flex: none; margin-top: 3px; color: hsl(var(--navy-900) / .55); }
+.svu-career-records--logistics .svu-pl-card { border-radius: 0; border: 1px solid hsl(205 35% 88%); border-top: 2px solid hsl(var(--navy-900)); background: hsl(208 90% 97%); box-shadow: none; display: flex; flex-direction: column; align-items: center; text-align: center; min-height: 400px; padding: 0; }
+.svu-pl-person { display: flex; flex-direction: column; align-items: center; gap: 12px; width: 100%; margin-top: auto; padding: 0 26px; }
+.svu-pl-avatar { display: grid; place-items: center; flex: none; width: 72px; height: 72px; border-radius: 20px; background: linear-gradient(135deg, hsl(202 95% 55%), hsl(168 78% 44%)); color: hsl(var(--primary-foreground)); box-shadow: 0 14px 24px -16px hsl(190 82% 38% / .95); }
+.svu-pl-avatar svg { width: 30px; height: 30px; }
+.svu-pl-person h3 { min-width: 0; font-size: 21px; }
+.svu-pl-card .svu-outcome-role { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 14px; padding: 0 26px; font-size: 15px; }
+.svu-pl-card .svu-outcome-role svg { flex: none; }
+.svu-pl-card .svu-outcome-role[data-tone="data"] svg { color: hsl(262 72% 58%); }
+.svu-pl-card .svu-outcome-role[data-tone="engineer"] svg { color: hsl(172 72% 36%); }
+.svu-pl-card .svu-outcome-role[data-tone="trainee"] svg { color: hsl(36 92% 48%); }
+.svu-pl-card .svu-outcome-role[data-tone="other"] svg { color: hsl(var(--connection-blue)); }
+.svu-pl-card .svu-outcome-org { display: flex; align-items: flex-start; justify-content: center; gap: 8px; margin-top: auto; padding: 18px 26px 0; }
+.svu-pl-card .svu-outcome-org svg { flex: none; margin-top: 3px; color: hsl(152 62% 36%); }
+.svu-pl-card .svu-outcome-batch { margin: 0; padding: 6px 26px 28px; }
 @media (max-width: 639px) {
-  .svu-pl-person { gap: 8px; }
+  .svu-pl-person { gap: 10px; padding: 0 22px; }
+  .svu-pl-avatar { width: 60px; height: 60px; border-radius: 18px; }
   .svu-pl-card .svu-outcome-role, .svu-pl-card .svu-outcome-org { gap: 7px; }
+  .svu-pl-card, .svu-career-records--logistics .svu-pl-card { min-height: 340px; }
+  .svu-pl-card .svu-outcome-role { padding: 0 22px; }
+  .svu-pl-card .svu-outcome-org { padding: 16px 22px 0; }
+  .svu-pl-card .svu-outcome-batch { padding: 6px 22px 22px; }
 }
