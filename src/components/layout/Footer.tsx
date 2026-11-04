@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowUp, MapPin } from "lucide-react";
+import { ArrowUp, Facebook, Instagram, Linkedin, MapPin, Youtube } from "lucide-react";
 import exafluence from "@/assets/exafluence-footer-exact.png";
 import { organisations, type Organisation } from "@/data/site";
 import { Button } from "@/components/ui/button";
@@ -13,6 +13,15 @@ import { CountryFlag } from "@/components/layout/FlagIcons";
 // mark is smaller.
 // XIME removed from the network (client, 3 November 2026).
 const partners: Organisation[] = ["SVU", "IBM"];
+
+// Client brief, 4 November 2026: the four official pages sit in the footer's bottom
+// corner as icons only — no captions, no boxes, each opening in its own tab.
+const socialLinks = [
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/exfedu", Icon: Linkedin },
+  { label: "Instagram", href: "https://www.instagram.com/exafluence.education/", Icon: Instagram },
+  { label: "Facebook", href: "https://www.facebook.com/exafluence.education/", Icon: Facebook },
+  { label: "YouTube", href: "https://www.youtube.com/@ExafluenceEducation", Icon: Youtube },
+];
 
 const Footer = () => (
   <footer className="site-footer border-t">
@@ -96,6 +105,13 @@ const Footer = () => (
         <Link to="/privacy-policy" className="footer-option footer-legal-link">Privacy Policy</Link>
         <span className="footer-legal-sep" aria-hidden />
         <Link to="/terms-and-conditions" className="footer-option footer-legal-link">Terms &amp; Conditions</Link>
+      </nav>
+      <nav className="footer-social" aria-label="Social media">
+        {socialLinks.map(({ label, href, Icon }) => (
+          <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label={`${label} — opens in a new tab`}>
+            <Icon className="h-4 w-4" strokeWidth={1.9} aria-hidden />
+          </a>
+        ))}
       </nav>
       <Button variant="ghost" size="icon"
         type="button"
