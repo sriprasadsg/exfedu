@@ -47,7 +47,6 @@ export default function SvuCareerRecords({ kind, embedded = false }: { kind: "pl
       <p className="svu-career-subtitle">{placements ? "Career outcomes in data science, artificial intelligence and technology." : svuInternshipIntroduction.subtitle}</p>
       {!placements && svuInternshipIntroduction.paragraphs.map(text => <p className="svu-intern-introduction" key={text}>{text}</p>)}
       {placements && <div className="svu-hero-actions">
-        <Link to="/contact" className="svu-hero-primary">Enquire Now <ArrowRight size={16} aria-hidden="true" /></Link>
         <Link to={`${svuPagePath("innovations")}#internships`} className="svu-hero-secondary">View Internships</Link>
       </div>}
     </div>
@@ -67,7 +66,7 @@ export default function SvuCareerRecords({ kind, embedded = false }: { kind: "pl
       </ol>
     </>}
     {placements
-      ? <div className="svu-pl-band"><Sub className="svu-career-records-heading">Placement Records</Sub><Link to="/contact" className="svu-pl-band-link">Enquire Now <ArrowRight size={15} aria-hidden="true" /></Link></div>
+      ? <div className="svu-pl-band"><Sub className="svu-career-records-heading">Placement Records</Sub></div>
       : <Sub id="internship-records" className="svu-career-records-heading">Internship Records</Sub>}
     {placements ? <ul className="svu-pl-cards" aria-label={title}>{shown.map(record => <li key={record.student} className="svu-outcome svu-pl-card">
       <span className="svu-pl-mark" aria-hidden="true">{initialsOf(record.student)}</span>
