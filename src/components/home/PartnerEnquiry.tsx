@@ -16,16 +16,12 @@ import { Button } from "@/components/ui/button";
 export const enquiryConfig = {
   mode: "test" as "test" | "production",
   endpoint: "", // e.g. import.meta.env.VITE_ENQUIRY_API_URL — set for AWS deployment
-  /** Inbox each form routes to, matching the email address published on that page. */
-  recipients: {
-    skillshone: "contact@skillshone.com",
-    default: "contact@exafluence.com",
-  },
+  /** Single inbox every enquiry form on the site routes to. */
+  recipient: "contact@exafluence.com",
 };
 
-/** Picks the inbox for the page the form was sent from. */
-export const recipientFor = (path: string): string =>
-  /^\/skillshone(\/|$)/i.test(path) ? enquiryConfig.recipients.skillshone : enquiryConfig.recipients.default;
+/** Every form, on every page, goes to the one Exafluence inbox. */
+export const recipientFor = (_path: string): string => enquiryConfig.recipient;
 
 /** Payload shape the AWS endpoint will receive: form answers plus routing. */
 export const buildEnquiryPayload = (data: unknown, path: string) => ({
