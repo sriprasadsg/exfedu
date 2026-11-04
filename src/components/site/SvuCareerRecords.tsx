@@ -43,6 +43,11 @@ export default function SvuCareerRecords({ kind, embedded = false }: { kind: "pl
     <div className="svu-career-title-card">
       <Title>{title}</Title>
       <p className="svu-career-subtitle">{placements ? "Career outcomes in data science, artificial intelligence and technology." : svuInternshipIntroduction.subtitle}</p>
+      <dl className="svu-career-figures">
+        <div><dt>{placements ? "Students placed" : "Interns recorded"}</dt><dd>{shown.length}</dd></div>
+        <div><dt>Organisations</dt><dd>{new Set(shown.map(r => r.organisation)).size}</dd></div>
+        <div><dt>Batches</dt><dd>{new Set(shown.map(r => r.batch)).size}</dd></div>
+      </dl>
     </div>
     <div className="svu-career-content-card">
     {placements
@@ -54,7 +59,7 @@ export default function SvuCareerRecords({ kind, embedded = false }: { kind: "pl
       <span className="svu-outcome-batch">Batch {record.batch}</span>
       <h3>{record.student}</h3>
       <p className="svu-outcome-role">{record.designation}</p>
-      <p className="svu-outcome-org">{record.organisation}</p>
+      <p className="svu-outcome-org"><Building2 size={14} aria-hidden="true" />{record.organisation}</p>
     </li>)}</ul> : <div className="svu-career-table-wrap"><table className="svu-career-table" aria-label={title}><thead><tr>
       <th scope="col"><i className="svu-career-head-icon svu-career-head-2"><UserRound size={14} aria-hidden="true" /></i><span>Student Name</span></th>
       <th scope="col"><i className="svu-career-head-icon svu-career-head-3"><CalendarRange size={14} aria-hidden="true" /></i><span>Batch</span></th>
