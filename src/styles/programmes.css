@@ -13,7 +13,7 @@
 .network-panel { position: relative; margin: -165px 0 0 28px; background: hsl(var(--background)); padding: 26px 30px; width: min(560px, 64%); border: 1px solid hsl(var(--academic-edge)); box-shadow: 0 8px 22px hsl(var(--foreground) / .06); }
 .network-logo { width: auto; height: 58px; max-width: 170px; object-fit: contain; object-position: left; margin-bottom: 18px; }
 .network-logo.logo-wide { height: 64px; max-width: 250px; }
-.network-panel h3 { font-size: 24px; font-weight: 500; line-height: 1.3; }
+.network-panel h3, .network-panel h2 { font-size: 24px; font-weight: 500; line-height: 1.3; }
 .network-panel p { font-size: 14px; line-height: 1.7; margin: 14px 0 20px; }
 .network-controls { display: flex; align-items: center; justify-content: flex-end; gap: 12px; margin-top: 12px; }
 /* Carousel controls carry the site's two colours: the previous arrow is a solid navy circle,
@@ -130,7 +130,7 @@
 @media (max-width: 1050px) { .programme-filters { grid-template-columns: repeat(2, minmax(0, 1fr)); } .programme-filters > button { justify-self: start; } .programme-table-head, .programme-row { gap: 15px; grid-template-columns: minmax(0, 2fr) .7fr 1fr 1fr 66px; } .programme-detail-body { gap: 35px; } .programme-head-cell { gap: 7px; letter-spacing: .05em; } .programme-head-cell i { width: 22px; height: 22px; border-radius: 7px; } .programme-head-5 { justify-content: flex-end; } .programme-head-long { display: none; } }
 @media (max-width: 767px) {
  .network-section { padding-top: 30px; } .network-heading h1 { font-size: 25px; } .network-image { height: 260px; } .network-image > img { width: 100%; padding: 20px; object-position: center; }
- .network-panel { width: 100%; margin: 0; padding: 24px; box-shadow: none; border-top: none; } .network-panel h3 { font-size: 23px; } .network-panel a { white-space: normal; height: auto; min-height: 44px; text-align: left; }
+ .network-panel { width: 100%; margin: 0; padding: 24px; box-shadow: none; border-top: none; } .network-panel h3, .network-panel h2 { font-size: 23px; } .network-panel a { white-space: normal; height: auto; min-height: 44px; text-align: left; }
  .programme-intro h1 { font-size: 30px; } .programme-intro .programme-subtitle { font-size: 18px; } .programme-table-head { display: none; }
  .programme-row { grid-template-columns: repeat(3, minmax(0, 1fr)) 35px; gap: 12px; padding: 24px 0; } .programme-row > div { grid-column: 1 / -1; } .programme-mobile-label { display: block; font-size: 11px; color: hsl(var(--muted-foreground)); margin-bottom: 5px; }
  .programme-detail-body { grid-template-columns: minmax(0, 1fr); gap: 32px; } .programme-actions { position: static; border-left: 0; padding-left: 0; border-top: 1px solid hsl(var(--academic-edge)); padding-top: 24px; }
