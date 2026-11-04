@@ -8,13 +8,16 @@ import { organisationPath } from "@/lib/programmeNavigation";
 import { footerLocations, headquartersLabel } from "@/data/locations";
 import { CountryFlag } from "@/components/layout/FlagIcons";
 
-// Client brief, 2 November 2026: three top-aligned columns, no sublists under a partner,
-// order Sri Venkateswara University → IBM, height follows the content.
+// Client brief, 2 November 2026: partner names as plain text in the footer: "not logos
+// required, mention only text" (23 Oct 2026), but the original SkillShone logo stays there
+// in a reduced size, and the Exafluence footer mark smaller too.
 // XIME removed from the network (client, 3 November 2026).
 const partners: Organisation[] = ["SVU", "IBM"];
 
 const Footer = () => (
   <footer className="site-footer border-t">
+    {/* Client brief, 4 November 2026: the footer reads in one row — 1. Our Collaboration
+        Network, 2. Quick Links, 3. the headquarters list beside them in the next column. */}
     <div className="container footer-columns">
       <div>
         <Link to="/collaboration-network" className="footer-title-gradient footer-column-title">Our Collaboration Network</Link>
@@ -41,47 +44,47 @@ const Footer = () => (
         </ul>
       </div>
 
-      <div className="footer-brand footer-company-mark">
-        {/* Client, 3 November 2026: the footer logo links to the parent company site. */}
-        <a href="https://www.exafluence.com" target="_blank" rel="noopener noreferrer" className="footer-company-link" aria-label="Exafluence — opens in a new tab">
-          <img src={exafluence} alt="Exafluence — Data Driven Influence" className="w-auto" />
-        </a>
+      {/* Client, 4 November 2026: the headquarters list — a map marker before every address
+          and a small flag beside each country — sits in the column beside Quick Links. */}
+      <div className="footer-locations">
+        <p className="footer-locations-title">{headquartersLabel}</p>
+        <div className="footer-location-grid">
+          {footerLocations.map((country) => (
+            <section className="footer-country" key={country.code} aria-label={country.name}>
+              <p className="footer-country-name">
+                <CountryFlag code={country.code} />
+                <span>{country.name}</span>
+              </p>
+              <ul className="footer-offices">
+                {country.offices.map((office) => (
+                  <li className="footer-office" key={office.label}>
+                    <MapPin className="footer-office-pin" strokeWidth={1.9} aria-hidden />
+                    <div className="footer-office-body">
+                      <p className="footer-office-label">{office.label}</p>
+                      <address className="footer-office-address">
+                        {office.lines.map((line) => (
+                          <span key={line}>
+                            {line}
+                            <br />
+                          </span>
+                        ))}
+                      </address>
+                      {office.phone && <p className="footer-office-phone">{office.phone}</p>}
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ))}
+        </div>
       </div>
     </div>
 
-    {/* Client, 4 November 2026: the single office line is replaced by the headquarters
-        list — a map marker before every address, a small flag beside each country. */}
-    <div className="container footer-locations">
-      <p className="footer-locations-title">{headquartersLabel}</p>
-      <div className="footer-location-grid">
-        {footerLocations.map((country) => (
-          <section className="footer-country" key={country.code} aria-label={country.name}>
-            <p className="footer-country-name">
-              <CountryFlag code={country.code} />
-              <span>{country.name}</span>
-            </p>
-            <ul className="footer-offices">
-              {country.offices.map((office) => (
-                <li className="footer-office" key={office.label}>
-                  <MapPin className="footer-office-pin" strokeWidth={1.9} aria-hidden />
-                  <div className="footer-office-body">
-                    <p className="footer-office-label">{office.label}</p>
-                    <address className="footer-office-address">
-                      {office.lines.map((line) => (
-                        <span key={line}>
-                          {line}
-                          <br />
-                        </span>
-                      ))}
-                    </address>
-                    {office.phone && <p className="footer-office-phone">{office.phone}</p>}
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </section>
-        ))}
-      </div>
+    <div className="container footer-brand-row footer-company-mark">
+      {/* Client, 3 November 2026: the footer logo links to the parent company site. */}
+      <a href="https://www.exafluence.com" target="_blank" rel="noopener noreferrer" className="footer-company-link" aria-label="Exafluence — opens in a new tab">
+        <img src={exafluence} alt="Exafluence — Data Driven Influence" className="w-auto" />
+      </a>
     </div>
 
     <div className="container footer-legal">
