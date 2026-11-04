@@ -31,6 +31,18 @@ const SvuInternshipUpdate = ({ open, onToggle }: { open: boolean; onToggle: () =
   </section>;
 };
 
+/** Placement cards carry an icon matched to the role itself (client, 4 November 2026): research
+ * and analytics roles read as a neural circuit, engineering roles as a processor, plain trainee
+ * roles as a graduation cap, and anything else as a case. Checked in this order so a compound
+ * title such as "Data Scientist – Trainee" keeps the icon of the role it is trained for. */
+const designationIcon = (designation = "") => {
+  const role = designation.toLowerCase();
+  if (role.includes("data scientist")) return <BrainCircuit size={15} aria-hidden="true" />;
+  if (role.includes("engineer")) return <Cpu size={15} aria-hidden="true" />;
+  if (role.includes("trainee")) return <GraduationCap size={15} aria-hidden="true" />;
+  return <Briefcase size={15} aria-hidden="true" />;
+};
+
 export default function SvuCareerRecords({ kind, embedded = false }: { kind: "placements" | "internships"; embedded?: boolean }) {
   const [studentsOpen, setStudentsOpen] = useState(false);
   const placements = kind === "placements";
