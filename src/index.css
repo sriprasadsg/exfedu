@@ -1334,10 +1334,10 @@ html body .cap-diagram .cap-art {
 
 /* Homepage redesign (client reference, 23 Oct 2026) */
 .hero2 { background: linear-gradient(180deg, hsl(207 78% 94%), hsl(207 70% 97%)); }
-.hero2-inner { display: grid; grid-template-columns: 1.05fr 1fr; align-items: center; gap: 2rem; padding-block: clamp(2rem, 5vw, 4rem); }
+.hero2-inner { display: grid; grid-template-columns: 2fr 1fr; align-items: center; gap: 2rem; padding-block: clamp(2rem, 5vw, 4rem); }
 .hero2-title { font-size: clamp(2rem, 4.2vw, 3.2rem); font-weight: 500; line-height: 1.1; color: hsl(var(--primary)); }
 .hero2-sub { margin-top: .5rem; font-size: clamp(1rem, 1.6vw, 1.2rem); color: hsl(var(--primary)); }
-.hero2-lines { margin-top: 1.25rem; display: grid; gap: .2rem; font-size: clamp(1rem, 1.5vw, 1.25rem); font-weight: 500; line-height: 1.55; color: hsl(var(--primary)); }
+.hero2-lines { margin-top: 1.25rem; display: grid; gap: .2rem; font-size: clamp(0.9rem, 1.35vw, 1.05rem); font-weight: 500; line-height: 1.6; color: hsl(var(--primary)); }
 .hero2-nowrap { white-space: nowrap; }
 .hero2-cta { margin-top: 1.75rem; background: hsl(var(--navy-royal)); color: hsl(0 0% 100%); }
 .hero2-cta:hover { background: hsl(var(--navy-royal-deep)); }
