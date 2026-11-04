@@ -864,3 +864,13 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 .svu-outcome-role { padding-top: 10px; margin-top: 12px; border-top: 1px solid hsl(205 30% 92%); }
 .svu-outcome-org { display: flex; align-items: center; gap: 7px; margin-top: 6px; }
 .svu-outcome-org svg { flex: none; color: hsl(var(--connection-blue)); }
+/* Placement cards follow the client's offer-sheet pattern (4 Nov 2026) */
+.svu-offer { padding: 0; overflow: hidden; border-top-width: 1px; }
+.svu-offer-head { display: flex; align-items: center; gap: 10px; padding: 14px 18px; background: hsl(var(--navy-900)); color: hsl(var(--primary-foreground)); }
+.svu-offer-head .svu-outcome-org { margin: 0; font-size: 14px; font-weight: 500; letter-spacing: .02em; color: inherit; }
+.svu-offer-fields { display: grid; gap: 14px; padding: 18px; }
+.svu-offer-fields > div { display: grid; grid-template-columns: 30px minmax(0,1fr); column-gap: 10px; align-items: start; }
+.svu-offer-fields i { grid-row: span 2; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 999px; background: hsl(205 92% 95%); color: hsl(var(--navy-900)); }
+.svu-offer-fields dt { font-size: 11px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: hsl(var(--navy-900)); }
+.svu-offer-fields dd, .svu-offer-fields dd.svu-outcome-role { margin: 2px 0 0; padding: 0; border: 0; font-size: 13px; line-height: 1.55; color: hsl(var(--muted-foreground)); font-weight: 400; }
+.svu-offer-fields h3 { margin: 0; font-size: 15px; color: hsl(var(--navy-900)); }
