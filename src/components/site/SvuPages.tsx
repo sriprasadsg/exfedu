@@ -8,7 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { organisations, programmes } from "@/data/site";
 import { svuOverview, svuProjectAreas, svuOverviewAchievements } from "@/data/svuOverview";
 import SvuTechTicker from "./SvuTechTicker";
-import { svuAchievements, svuConferencePapers, svuFeaturedAchievement, svuProjects, svuPublications } from "@/data/svuReviewed";
+import { svuConferencePapers, svuFeaturedAchievement, svuProjects, svuPublications } from "@/data/svuReviewed";
 import { programmePath, svuPagePath, svuSectionPath, type SvuPageId } from "@/lib/programmeNavigation";
 import { SvuFacultyPage } from "./SvuReviewedContent";
 import { useProgrammeSeo } from "./ProgrammeDirectory";
