@@ -23,8 +23,13 @@ describe("SVU faculty cards", () => {
     expect(find(".fd {")).not.toContain("--primary");
   });
 
-  it("sizes the card boxes to the width available", () => {
-    expect(find(".fd .fd-grid {")).toContain("repeat(auto-fit, minmax(min(100%, 280px), 1fr))");
-    expect(css).not.toContain('.fd .fd-grid[data-cols="4"]');
+  it("gives every card box the same shape and size at each width", () => {
+    const grid = find(".fd .fd-grid {");
+    expect(grid).toContain("repeat(4, minmax(0, 1fr))");
+    expect(grid).toContain("grid-auto-rows: 1fr");
+    expect(css).toContain("@media (max-width: 1099px) { .fd .fd-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }");
+    expect(css).toContain("@media (max-width: 859px) { .fd .fd-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }");
+    expect(css).toContain("@media (max-width: 599px) { .fd .fd-grid { grid-template-columns: minmax(0, 1fr); } }");
+    expect(css).toContain("@media (min-width: 600px) { .fd-cell { min-height: 208px; } }");
   });
 });
