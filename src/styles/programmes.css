@@ -849,7 +849,9 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 
 
 .svu-outcome-part { margin-top: 0; scroll-margin-top: 96px; }
+.svu-career-records--ledger .svu-career-title-card { top: auto; }
 #programmes, #projects { scroll-margin-top: 96px; }
+.svu-career-records--ledger .svu-career-title-card { top: auto; }
 .svu-faculty-eyebrow { display: block; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: hsl(var(--muted-foreground)); margin-bottom: 8px; }
 /* Professional refresh: placements & internships (4 Nov 2026) */
 .svu-career-figures { display: grid; gap: 0; margin-top: 22px; border-top: 1px solid hsl(205 32% 87%); }
@@ -857,6 +859,7 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 .svu-career-figures dt { font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: hsl(var(--muted-foreground)); }
 .svu-career-figures dd { font-size: 22px; font-weight: 500; line-height: 1; color: hsl(var(--navy-900)); font-variant-numeric: tabular-nums; }
 .svu-career-title-card { align-self: start; position: sticky; top: 96px; }
+.svu-career-records--ledger .svu-career-title-card { top: auto; }
 @media (max-width: 880px) { .svu-career-title-card { position: static; } .svu-career-figures { grid-template-columns: repeat(3, minmax(0,1fr)); } .svu-career-figures > div { flex-direction: column-reverse; align-items: flex-start; gap: 6px; } }
 .svu-outcome { border: 1px solid hsl(205 32% 87%); border-top: 3px solid hsl(var(--navy-900)); padding: 22px 22px 20px; }
 .svu-outcome-batch { color: hsl(var(--navy-900)); background: hsl(205 92% 97%); border-color: hsl(205 32% 87%); }
@@ -895,7 +898,7 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
   .svu-ledger .svu-offer-head { grid-column: 1 / -1; }
 }
 .svu-career-records--ledger { display: block; }
-.svu-career-records--ledger .svu-career-title-card { margin: 0; position: static; padding: 0 0 28px; border: 0; border-radius: 0; background: none; }
+.svu-career-records--ledger .svu-career-title-card { margin: 0; position: static; top: auto; padding: 0 0 28px; border: 0; border-radius: 0; background: none; }
 .svu-career-records--ledger .svu-career-content-card { margin: 0; padding: 0; border: 0; border-radius: 0; background: none; }
 .svu-career-records--ledger .svu-ledger-statement { margin: 0 0 18px; max-width: 760px; font-size: clamp(30px, 4.2vw, 52px); }
 .svu-career-records--ledger .svu-career-title-card > h1, .svu-career-records--ledger .svu-career-title-card > h2 { font-size: 15px; letter-spacing: .08em; text-transform: uppercase; }
