@@ -57,14 +57,17 @@ describe("Footer collaboration network", () => {
     expect(container.querySelector(".footer-columns")?.contains(brand ?? new DocumentFragment())).toBe(false);
   });
 
-  it("keeps the original SkillShone logo in the pill and shows only the company mark image", () => {
+  it("keeps the original SkillShone logo plain — no box and no arrow — like other footer links", () => {
     const { container } = open();
-    const pill = container.querySelector<HTMLAnchorElement>("a.footer-featured");
-    expect(pill).not.toBeNull();
-    expect(pill?.getAttribute("href")).toBe("/skillshone");
-    const logo = pill?.querySelector<HTMLImageElement>("img.footer-featured-logo");
+    const link = container.querySelector<HTMLAnchorElement>("a.footer-featured");
+    expect(link).not.toBeNull();
+    expect(link?.getAttribute("href")).toBe("/skillshone");
+    const logo = link?.querySelector<HTMLImageElement>("img.footer-featured-logo");
     expect(logo?.getAttribute("src")).toContain("skillshone-original.png");
     expect(logo?.alt).toBe("SkillShone");
+    // Client, 4 November 2026: no surrounding box, no arrow.
+    expect(link?.querySelector("svg")).toBeNull();
+    expect(link?.className).not.toContain("footer-featured-pill");
 
     const images = [...container.querySelectorAll<HTMLImageElement>("img")];
     expect(images).toHaveLength(2);

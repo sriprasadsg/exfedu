@@ -397,8 +397,8 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .card-premium:hover { transform: translateY(-3px); box-shadow: 0 14px 30px -18px hsl(var(--primary) / 0.25); }
 @media (prefers-reduced-motion: reduce) { .hero-visual--float { animation: none; } }
 
-.footer-featured { display: inline-flex; align-items: center; gap: .25rem; margin-bottom: .8rem; padding: .28rem .6rem; border-radius: 999px; border: 1px solid hsl(214 68% 16% / .45); font-size: .8rem; font-weight: 500; letter-spacing: .02em; color: hsl(214 68% 16%); text-decoration: none; transition: background-color .3s ease, border-color .3s ease; }
-.footer-featured:hover, .footer-featured:focus-visible { background: hsl(214 68% 16% / .08); border-color: hsl(214 68% 16% / .75); outline: none; }
+.footer-featured { display: inline-flex; align-items: center; gap: .25rem; margin-bottom: .8rem; color: hsl(214 68% 16%); text-decoration: none; transition: color .3s ease; }
+.footer-featured:hover, .footer-featured:focus-visible { color: hsl(214 68% 16% / .75); outline: none; }
 
 /* ===== Homepage capabilities: centre circle + eight cards (matches client infographic) ===== */
 .cap-section { container: cap / inline-size; max-width: 1280px; margin: 0 auto; padding: 1.5rem 1.5rem 3rem; background: hsl(var(--background)); font-family: 'Google Sans Flex', 'Google Sans', system-ui, sans-serif; }
@@ -1386,22 +1386,17 @@ html body .cap-diagram .cap-art {
   50% { transform: translateY(-4px); box-shadow: 0 16px 30px -16px hsl(0 100% 40% / .3); }
 }
 
-/* Footer SkillShone pill — original logo, coloured border, gentle motion */
-.footer-featured {
-  border: 1.5px solid transparent;
-  background-image: linear-gradient(hsl(204 100% 97%), hsl(204 100% 97%)),
-    linear-gradient(120deg, hsl(214 86% 19%), hsl(0 100% 40%));
-  background-origin: border-box; background-clip: padding-box, border-box;
-  animation: skillshone-box-drift 7s ease-in-out infinite;
-}
-.footer-featured-logo { height: .62rem; width: auto; display: block; }
-.footer-featured:hover, .footer-featured:focus-visible { background-color: hsl(204 100% 97%); }
+/* Footer SkillShone link — plain like every other footer link (client, 4 November 2026:
+   no surrounding box, no arrow), only the original wordmark, sized like link text. */
+.footer-featured { background: none; }
+.footer-featured-logo { height: .8rem; width: auto; display: block; }
+.footer-featured:hover, .footer-featured:focus-visible { background: none; }
 
 /* About subtitle — smaller, calmer line */
 .about-editorial-subtitle { font-size: .95rem; line-height: 1.55; }
 
 @media (prefers-reduced-motion: reduce) {
-  .skillshone-logo-box, .footer-featured { animation: none; }
+  .skillshone-logo-box { animation: none; }
 }
 
 /* ===== SkillShone editorial layout (Arcado reference) ===== */

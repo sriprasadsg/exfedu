@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowUp, ArrowUpRight, MapPin } from "lucide-react";
+import { ArrowUp, MapPin } from "lucide-react";
 import exafluence from "@/assets/exafluence-footer-exact.png";
 import skillshoneLogo from "@/assets/skillshone-original.png";
 import { organisations, type Organisation } from "@/data/site";
@@ -35,9 +35,10 @@ const Footer = () => (
         <ul className="footer-list">
           <li><Link to="/about" className="footer-option footer-list-link">About Us</Link></li>
           <li>
+            {/* Client, 4 November 2026: no surrounding box and no arrow — the SkillShone
+                link reads like every other footer link. */}
             <Link to="/skillshone" className="footer-featured" aria-label="SkillShone">
               <img src={skillshoneLogo} alt="SkillShone" loading="lazy" className="footer-featured-logo" />
-              <ArrowUpRight className="h-3 w-3" strokeWidth={1.75} aria-hidden />
             </Link>
           </li>
           <li><Link to="/#partner-enquiry" className="footer-option footer-list-link">Enquire Now</Link></li>
