@@ -1,4 +1,4 @@
-- [ ] SVU page (client, 4 Nov 2026): drop "Applied" and retitle that section "AI, Gen AI & Data Science", keeping "Data Science" on a single line
+- [x] SVU page (client, 4 Nov 2026): "Applied" dropped and the section retitled "AI, Gen AI & Data Science" with "Data Science" held on one line; 189 tests pass, desktop/phone verified
 - [x] SVU programmes block (client, 4 Nov 2026): title renamed to "Explore Programmes", "Sri Venkateswara University." held on one line, colourful per-category icon chips (blue/teal/amber), programme rows tilt forward on hover; 189 tests pass, desktop/phone verified
 
 - [ ] SVU page (client, 4 Nov 2026): rename the programmes section title to "Explore Programmes", keep "Sri Venkateswara University" on a single line, make the programme icons colourful and give programme boxes the gentle front tilt on hover
