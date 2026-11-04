@@ -1,10 +1,11 @@
 import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 
 // Client brief, 4 November 2026: the SVU overview headline ("Industry-Integrated Data
 // Science, AI & Gen AI Education") must read as one line, so the size is derived from the
 // column instead of letting the text wrap. Phones still wrap for legibility.
-const css = readFileSync(new URL("../styles/programmes.css", import.meta.url), "utf8");
+const css = readFileSync(resolve(process.cwd(), "src/styles/programmes.css"), "utf8");
 
 describe("SVU overview headline", () => {
   const hero = css.match(/\.svu-ca-hero h1 \{[^}]*\}/)?.[0] ?? "";
