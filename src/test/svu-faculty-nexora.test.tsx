@@ -18,7 +18,7 @@ describe("SVU faculty page on the Nexora model", () => {
   });
 
   it("keeps every approved faculty record when simplifying the cards", () => {
-    const { container } = render(<FacultyDirectory page cols={4} title="Faculty & Industry Mentors" people={svuFaculty} />);
+    const { container } = render(<FacultyDirectory page title="Faculty & Industry Mentors" people={svuFaculty} />);
     const cells = [...container.querySelectorAll(".fd-cell")];
     expect(cells).toHaveLength(12);
     expect(cells.map(cell => ({
