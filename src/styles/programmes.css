@@ -1261,3 +1261,20 @@ body:not(:has(.homepage-static)) main .svu-career-records--logistics .svu-career
 .svu-proceeding-by b { font-weight: 500; color: hsl(var(--navy-800)); }
 @media (max-width: 767px) { .svu-proceeding-list--single .svu-proceeding-by { text-align: left; } .svu-proceeding-head { padding: 12px 15px; } .svu-proceeding-list { padding: 12px 14px 16px; } .svu-proceeding-paper { padding: 13px 14px; } }
 @media (prefers-reduced-motion: reduce) { .svu-proceeding-paper { transition: none; } .svu-proceeding-paper:hover { transform: none; box-shadow: none; } }
+
+/* ===== SVU placement boxes as rectangles with matched icons (client, 4 November 2026) =====
+   Every record sits in a square-cornered box. A person icon leads the student's name, an icon
+   matched to the designation leads the role, and an industry icon leads the organisation. */
+.svu-pl-card,
+.svu-career-records--logistics .svu-pl-card { border-radius: 0; border: 1px solid hsl(205 35% 88%); border-top: 2px solid hsl(var(--navy-900)); background: hsl(var(--card)); box-shadow: none; }
+.svu-pl-person { display: flex; align-items: center; gap: 10px; }
+.svu-pl-person > svg { flex: none; color: hsl(var(--connection-blue)); }
+.svu-pl-person h3 { min-width: 0; }
+.svu-pl-card .svu-outcome-role { display: flex; align-items: center; gap: 8px; }
+.svu-pl-card .svu-outcome-role svg { flex: none; color: hsl(var(--connection-blue)); }
+.svu-pl-card .svu-outcome-org { display: flex; align-items: flex-start; gap: 8px; }
+.svu-pl-card .svu-outcome-org svg { flex: none; margin-top: 3px; color: hsl(var(--navy-900) / .55); }
+@media (max-width: 639px) {
+  .svu-pl-person { gap: 8px; }
+  .svu-pl-card .svu-outcome-role, .svu-pl-card .svu-outcome-org { gap: 7px; }
+}
