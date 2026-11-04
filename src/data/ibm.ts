@@ -19,7 +19,7 @@ export const ibmOverview = {
   relationship: "Exafluence Education, the EdTech division of Exafluence Inc., USA, collaborates with IBM Career Education to bridge the gap between academic learning and industry expectations. This collaboration focuses on equipping students with emerging technology skills, practical learning experiences, and industry-relevant knowledge to prepare them for future career opportunities.",
   directory: {
     title: "Explore the Programmes",
-    text: "Discover the available programmes and understand what each covers before you enquire. Individual programme pages explain the curriculum, prerequisites, practical activities and completion requirements.",
+    text: "Discover the available programmes and understand what each covers before you enquire. Individual programme pages explain prerequisites, practical activities and completion requirements.",
   },
   applied: {
     title: "From Technical Concepts to Practical Application",

@@ -1,7 +1,7 @@
 import ResearchThemeIcon from "./ResearchThemeIcon";
 import { useEffect, useMemo, useState, type CSSProperties } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ArrowRight, ArrowUpRight, BookOpen, Code2, Presentation, Search, Trophy } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BookOpen, Code2, Presentation, Search, Trophy, GraduationCap, ScrollText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -93,9 +93,9 @@ const SvuOverview = () => {
 };
 
 const svuCategories = [
-  { title: "Master’s Programme", levels: ["Master's"] },
-  { title: "Postgraduate Diploma", levels: ["PG Diploma"] },
-  { title: "Short-Term Diplomas", levels: ["Diploma"] },
+  { title: "Master’s Programme", levels: ["Master's"], icon: GraduationCap },
+  { title: "Postgraduate Diploma", levels: ["PG Diploma"], icon: ScrollText },
+  { title: "Short-Term Diplomas", levels: ["Diploma"], icon: BookOpen },
 ];
 
 const SvuProgrammes = ({ embedded = false }: { embedded?: boolean }) => {
@@ -105,13 +105,13 @@ const SvuProgrammes = ({ embedded = false }: { embedded?: boolean }) => {
   return <div className="svu-flow" id={embedded ? "programmes" : undefined}>
     <section className="svu-block svu-intro">
       <Title>Industry-Integrated Programmes</Title>
-      <p className="svu-lead">Explore programmes offered through the collaboration between Exafluence Inc., USA, and Sri Venkateswara University. Compare study duration and delivery options, then view each programme’s eligibility, curriculum and admission process.</p>
+      <p className="svu-lead">Explore programmes offered through the collaboration between Exafluence Inc., USA, and Sri Venkateswara University. Compare study duration and delivery options, then view each programme’s eligibility and admission process.</p>
     </section>
-    <div className="svu-directory-groups">{svuCategories.map(cat => {
+    <div className="svu-directory-groups">{svuCategories.map((cat, index) => {
       const rows = shown.filter(p => cat.levels.includes(p.level));
       if (!rows.length) return null;
       return <section key={cat.title} className="svu-directory-group" aria-label={cat.title}>
-        <Group>{cat.title}</Group>
+        <div className="svu-category-heading"><span className="svu-category-icon"><cat.icon size={25} strokeWidth={1.5} aria-hidden="true" /></span><span className="svu-category-index" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span><Group>{cat.title}</Group></div>
         <div className="svu-directory" role="table" aria-label={cat.title}>
           <div role="row" className="svu-directory-head"><span role="columnheader">Programme Name</span><span role="columnheader">Duration</span><span role="columnheader">Delivery</span><span role="columnheader"><span className="sr-only">View Programme</span></span></div>
           {rows.map(p => <div role="row" key={p.slug} className="svu-directory-row">

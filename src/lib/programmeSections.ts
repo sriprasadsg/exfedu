@@ -1,9 +1,9 @@
-import { Award, BookOpen, CalendarDays, Clock3, Cpu, FlaskConical, Gauge, GraduationCap, Layers, Presentation, Sparkles, Target, Users, type LucideIcon } from "lucide-react";
+import { Award, BookOpen, CalendarDays, Clock3, Cpu, FlaskConical, Gauge, GraduationCap, Presentation, Sparkles, Target, Users, type LucideIcon } from "lucide-react";
 import { PENDING, type Programme, type Tone } from "@/data/site";
 import { ibmFacts } from "@/data/ibm";
 
 /** Approved programme detail reading order (client, 29 October 2026):
- * Overview → Eligibility → Duration & Delivery → Features → Curriculum →
+ * Overview → Eligibility → Duration & Delivery → Features → Tools →
  * Admission Process → Brochure & Enquiry. "Features" is the label on every
  * partner's programme pages. Fields with no verified source render PENDING. */
 export type DetailSection = {
@@ -17,17 +17,14 @@ export const programmeDetailSections = (p: Programme): DetailSection[] => ([
   { title: "Eligibility", icon: GraduationCap, tone: "teal", content: p.eligibility },
   { title: "Duration & Delivery", icon: Clock3, tone: "amber", content: `${p.duration} · ${p.delivery}` },
   { title: "Features", icon: Sparkles, tone: "violet", items: p.features },
-  {
-    title: "Curriculum", icon: Layers, tone: "blue", items: p.curriculum,
-    sub: p.tools?.length ? { label: "Tools and technologies", items: p.tools } : undefined,
-  },
+  p.tools?.length ? { title: "Tools and technologies", icon: Cpu, tone: "blue", items: p.tools } : false,
   { title: "Admission Process", icon: CalendarDays, tone: "teal", content: p.admissions },
   // Shown only with approved wording; never a placeholder or invented certificate.
   p.recognition ? { title: "Joint Certification on Completion", icon: Award, tone: "amber", content: p.recognition } : false,
 ] as (DetailSection | false)[]).filter((section): section is DetailSection => !!section);
 
 /** IBM programme pages (client brief, 2 November 2026): Overview → Learning Outcomes →
- * Eligibility & Prerequisites → Curriculum → Tools & Practical Activities →
+ * Eligibility & Prerequisites → Tools & Practical Activities →
  * Duration & Delivery → Features → Assessment & Certification → Enquiry.
  * A section the approved leaflets do not support is left out rather than filled in,
  * and the teaching role stays worded separately from the certificate issuer. */
@@ -36,7 +33,6 @@ export const ibmProgrammeSections = (p: Programme): DetailSection[] => {
   const sections: (DetailSection | false)[] = [
     facts.outcomes ? { title: "Learning Outcomes", icon: Target, tone: "teal", items: facts.outcomes } : false,
     p.eligibility ? { title: "Eligibility & Prerequisites", icon: GraduationCap, tone: "teal", content: p.eligibility } : false,
-    p.curriculum?.length ? { title: "Curriculum", icon: Layers, tone: "blue", items: p.curriculum } : false,
     p.tools?.length || p.practical ? { title: "Tools & Practical Activities", icon: Cpu, tone: "violet", items: p.tools, note: p.practical } : false,
     { title: "Duration & Delivery", icon: Clock3, tone: "amber", content: `${p.duration} · ${p.delivery}` },
     p.features?.length ? { title: "Features", icon: Sparkles, tone: "violet", items: p.features } : false,

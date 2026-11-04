@@ -100,7 +100,7 @@ describe("IBM programme page sections", () => {
   it("follows the approved sequence and keeps unsupported sections out", () => {
     const quantum = ibmProgrammes.find(p => p.slug === "ibm-quantum-computing")!;
     const titles = ibmProgrammeSections(quantum).map(s => s.title);
-    expect(titles).toEqual(["Learning Outcomes", "Eligibility & Prerequisites", "Curriculum", "Tools & Practical Activities", "Duration & Delivery", "Features", "Assessment & Certification"]);
+    expect(titles).toEqual(["Learning Outcomes", "Eligibility & Prerequisites", "Tools & Practical Activities", "Duration & Delivery", "Features", "Assessment & Certification"]);
 
     const semester = ibmProgrammes.find(p => p.slug === "ibm-semester-industry-learning")!;
     const semesterTitles = ibmProgrammeSections(semester).map(s => s.title);

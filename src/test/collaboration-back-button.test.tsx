@@ -58,8 +58,9 @@ describe("collaboration partner back button", () => {
     expectNetworkBack(container);
   });
 
-  it("sits above an SVU programme page without a network breadcrumb link", () => {
+  it("omits the unnecessary network back button from SVU programme pages", () => {
     const { container } = open(<ProgrammeDetail programme={svuProgramme} />);
-    expectNetworkBack(container);
+    expect(container.querySelector("a.network-back")).toBeNull();
+    expect(container.querySelector("nav[aria-label='Breadcrumb']")).toBeTruthy();
   });
 });
