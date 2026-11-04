@@ -1,6 +1,6 @@
 import ResearchThemeIcon from "./ResearchThemeIcon";
 import { useEffect, useMemo, useState, type CSSProperties } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, Navigate, useLocation } from "react-router-dom";
 import { ArrowRight, ArrowUpRight, BookOpen, Code2, Presentation, Search, Trophy, GraduationCap, ScrollText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -16,13 +16,17 @@ import SvuCareerRecords from "./SvuCareerRecords";
 
 const tabs: { id: SvuPageId; label: string }[] = [
   { id: "overview", label: "Overview & Programmes" },
-  { id: "outcomes", label: "Research & Careers" },
+  { id: "outcomes", label: "Projects & Research" },
+  { id: "innovations", label: "Student Innovations & Internships" },
+  { id: "placements", label: "Placements" },
   { id: "faculty", label: "Faculty & Mentors" },
 ];
 
 const seo: Record<SvuPageId, [string, string]> = {
   overview: [svuOverview.seoTitle, svuOverview.seoDescription],
-  outcomes: ["SVU Research & Careers | Exafluence Education", "Student projects, research papers, achievements, internships and placements of SVU–Exafluence data science students."],
+  outcomes: ["SVU Projects & Research | Exafluence Education", "Student projects, conference presentations and research papers of SVU–Exafluence data science students."],
+  innovations: ["SVU Student Innovations & Internships | Exafluence Education", "Student innovation stories, achievements and internship records of SVU–Exafluence data science students."],
+  placements: ["SVU Placements | Exafluence Education", "Documented placement records of SVU–Exafluence data science students."],
   faculty: ["SVU Faculty & Mentors | Exafluence Education", "SVU faculty, Exafluence industry mentors and technical lab faculty guiding the SVU–Exafluence programmes."],
 };
 
@@ -172,7 +176,7 @@ const SvuResearch = () => {
 const SvuAchievements = () => {
   const hackathon = svuAchievements[0];
   const [hackBefore, hackAfter = ""] = hackathon.text.split(hackathon.highlight);
-  return <div className="svu-flow">
+  return (
     <section className="svu-block" id="achievements">
       <h2>Student Innovation and Achievements</h2>
       <div className="svu-stories">{svuOverviewAchievements.map(item => <article className="svu-story" key={item.title}>
@@ -187,20 +191,32 @@ const SvuAchievements = () => {
           <p className="svu-champion-line">{hackBefore}<strong className="svu-champion-bold">{hackathon.highlight}</strong>{hackAfter.replace("FTSE 100", "FTSE\u00A0100")}</p>
           <a className="svu-champion-link" href={hackathon.href} target="_blank" rel="noopener noreferrer">{hackathon.label}<ArrowUpRight size={14} aria-hidden="true" /></a>
         </div>
-
       </aside>
-
     </section>
-
-  </div>;
+  );
 };
 
-const SvuOutcomes = () => <>
-  <SvuResearch />
+/** Student innovations and internships share one page (client, 4 November 2026):
+ * innovation stories and the featured achievement, then the internship records. */
+const SvuInnovations = () => <div className="svu-flow">
+  <section className="svu-block svu-intro">
+    <span className="svu-faculty-eyebrow">Student Work & Experience</span>
+    <h1>Student Innovations & Internships</h1>
+    <p className="svu-lead">Innovation stories and competition achievements from student project work, followed by internship experience at research and technology organisations.</p>
+  </section>
   <SvuAchievements />
   <section id="internships" className="svu-outcome-part"><SvuCareerRecords kind="internships" embedded /></section>
+</div>;
+
+/** Placements stand alone (client, 4 November 2026) with the same editorial page opening. */
+const SvuPlacements = () => <div className="svu-flow">
+  <section className="svu-block svu-intro">
+    <span className="svu-faculty-eyebrow">Career Outcomes</span>
+    <h1>Placements</h1>
+    <p className="svu-lead">Documented placement records of SVU–Exafluence students, listed with organisation, designation and academic batch.</p>
+  </section>
   <section id="placements" className="svu-outcome-part"><SvuCareerRecords kind="placements" embedded /></section>
-</>;
+</div>;
 
 const SvuFaculty = () => <div className="svu-flow">
   <section className="svu-block svu-intro">
@@ -226,11 +242,17 @@ const SvuPages = ({ section }: { section: SvuPageId }) => {
     const t = window.setTimeout(() => document.getElementById(hash.slice(1))?.scrollIntoView({ block: "start" }), 60);
     return () => window.clearTimeout(t);
   }, [section, hash]);
+  // Old /outcomes anchors now live on pages of their own (4 November 2026).
+  if (section === "outcomes" && (hash === "#internships" || hash === "#placements")) {
+    return <Navigate to={svuSectionPath(hash === "#internships" ? "internships" : "placements")} replace />;
+  }
   return <main className="programme-experience svu-pages">
     <SvuTabBar active={section} />
     <div className="svu-container svu-body">
       {section === "overview" && <SvuOverview />}
-      {section === "outcomes" && <SvuOutcomes />}
+      {section === "outcomes" && <SvuResearch />}
+      {section === "innovations" && <SvuInnovations />}
+      {section === "placements" && <SvuPlacements />}
       {section === "faculty" && <SvuFaculty />}
     </div>
   </main>;
