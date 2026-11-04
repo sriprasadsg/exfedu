@@ -109,17 +109,43 @@ describe("Footer collaboration network", () => {
     expect(container.querySelectorAll(".footer-list [class*='tint']")).toHaveLength(0);
   });
 
-  // Client, 3 Nov 2026: "footer address: SRICHAKRA EDEN GREENS APARTMENTS, UPADYAYA NAGAR,
-  // TIRUPATI, Andhra Pradesh-517501" — shown in the footer as plain text, never a link.
-  it("shows the Tirupati office address as plain text in the brand column", () => {
+  // Client, 4 Nov 2026: the single office line is replaced by the headquarters list —
+  // a map marker before every address, a small country flag beside each country name.
+  it("lists the four headquarters addresses as plain text with map markers", () => {
     const { container } = open();
-    const address = container.querySelector<HTMLElement>("address.footer-address");
-    expect(address).not.toBeNull();
-    expect(address?.textContent).toContain("SRICHAKRA EDEN GREENS APARTMENTS");
-    expect(address?.textContent).toContain("UPADYAYA NAGAR, TIRUPATI");
-    expect(address?.textContent).toContain("Andhra Pradesh");
-    expect(address?.textContent).toContain("517501");
-    expect(address?.querySelector("a")).toBeNull();
-    expect(container.querySelector(".footer-brand")?.contains(address)).toBe(true);
+    expect(container.querySelector("address.footer-address")).toBeNull();
+    expect(container.querySelector(".footer-locations-title")?.textContent).toBe("Headquarters");
+    const offices = [...container.querySelectorAll<HTMLElement>(".footer-office")];
+    expect(offices.map((o) => o.querySelector(".footer-office-label")?.textContent)).toEqual([
+      "Texas",
+      "New Jersey",
+      "Corporate Address - Tirupati",
+      "Registered Address - Bangalore",
+    ]);
+    const text = container.querySelector(".footer-locations")?.textContent ?? "";
+    for (const part of [
+      "400 Stonebrook Pkwy, #905",
+      "Frisco, Texas - 75036",
+      "Ph: +1 7328373764",
+      "5 Independence Way",
+      "Princeton, New Jersey - 08540",
+      "#210, Ecco Greens Tech Hub",
+      "Upadhyaya Nagar, Tirupati - 517507",
+      "Phone: 0877 - 222675",
+      "HM Towers, 5th floor, Brigade Road Off",
+      "MG Road, Bangalore - 560001",
+    ]) expect(text).toContain(part);
+    expect(offices.every((o) => o.querySelector("svg.footer-office-pin") !== null)).toBe(true);
+    for (const o of offices) expect(o.querySelector("a")).toBeNull();
+  });
+
+  it("names each country once, with a small flag beside it", () => {
+    const { container } = open();
+    const countries = [...container.querySelectorAll<HTMLElement>(".footer-country-name")];
+    expect(countries.map((c) => c.textContent?.trim())).toEqual(["USA", "India"]);
+    const flags = container.querySelectorAll("svg.footer-flag");
+    expect(flags).toHaveLength(2);
+    for (const flag of flags) expect(flag.getAttribute("aria-hidden")).toBe("true");
+    expect(container.querySelectorAll("img.footer-flag")).toHaveLength(0);
   });
 });
