@@ -36,7 +36,10 @@ describe("Footer collaboration network", () => {
     expect(hrefs.filter(h => h === "/collaboration-network/svu")).toHaveLength(1);
   });
 
-  it("sits in three top-aligned columns with the brand mark last", () => {
+  // Client, 4 Nov 2026: "1. Our Collaboration Network, 2. Quick Links … 3. Our Locations —
+  // get beside into the next column": the headquarters list joins the row as its third column,
+  // and the company mark keeps its own row below.
+  it("sits in three columns: network, quick links, then the headquarters list beside them", () => {
     const { container } = open();
     const columns = [...container.querySelectorAll<HTMLElement>(".footer-columns > div")];
     expect(columns).toHaveLength(3);
@@ -44,8 +47,14 @@ describe("Footer collaboration network", () => {
     expect(columns[1].textContent).toContain("Quick Links");
     expect(columns[1].textContent).toContain("About Us");
     expect(columns[1].textContent).toContain("Enquire Now");
-    expect(columns[2].querySelector("img")).not.toBeNull();
-    expect(columns[2].querySelectorAll("a")).toHaveLength(1);
+    expect(columns[2].classList.contains("footer-locations")).toBe(true);
+    expect(columns[2].textContent).toContain("Headquarters");
+    expect(columns[2].querySelectorAll("a")).toHaveLength(0);
+    const brand = container.querySelector<HTMLElement>(".footer-brand-row");
+    expect(brand).not.toBeNull();
+    expect(brand?.querySelector("img")).not.toBeNull();
+    expect(brand?.querySelectorAll("a")).toHaveLength(1);
+    expect(container.querySelector(".footer-columns")?.contains(brand ?? new DocumentFragment())).toBe(false);
   });
 
   it("keeps the original SkillShone logo in the pill and shows only the company mark image", () => {
