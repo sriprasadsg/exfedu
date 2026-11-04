@@ -1051,9 +1051,13 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 .svu-u8-head h2 { font-size: clamp(24px, 2.6vw, 32px); font-weight: 400; color: hsl(var(--navy-900)); }
 @media (max-width: 860px) { .svu-u8-hero { grid-template-columns: 1fr; gap: 28px; } }
 /* SVU Overview after the Creative Agency reference (4 Nov 2026) */
-.svu-ca-hero { position: relative; padding: 36px 0 56px; }
-.svu-ca-hero h1 { max-width: 880px; font-size: clamp(34px, 4.6vw, 58px); line-height: 1.08; font-weight: 700; letter-spacing: -.03em; color: hsl(var(--navy-900)); }
+.svu-ca-hero { position: relative; min-width: 0; padding: 36px 0 56px; }
+/* Headline kept on one line wherever there is room: the size is derived from the
+   available column width (this wording measures ~27.2 x font-size in Google Sans Flex 700,
+   and the SVU column is 1072px wide at most). */
+.svu-ca-hero h1 { max-width: none; white-space: nowrap; font-size: min(39px, calc((100vw - 72px) / 27.2)); line-height: 1.15; font-weight: 700; color: hsl(var(--navy-900)); }
 .svu-ca-hero .svu-lead { max-width: 720px; margin-top: 20px; }
+@media (max-width: 760px) { .svu-ca-hero h1 { white-space: normal; font-size: clamp(26px, 7.4vw, 34px); } }
 .svu-ca-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 26px; padding-bottom: 4px; font-size: 15px; font-weight: 500; color: hsl(var(--navy-900)); border-bottom: 3px solid hsl(var(--connection-blue)); transition: gap .25s ease; }
 .svu-ca-link:hover { gap: 12px; }
 .svu-ca > .svu-block h2 { font-size: clamp(26px, 3vw, 38px); font-weight: 700; letter-spacing: -.025em; line-height: 1.12; }
