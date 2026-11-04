@@ -8,7 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { organisations, programmes } from "@/data/site";
 import { svuOverview, svuProjectAreas, svuOverviewAchievements } from "@/data/svuOverview";
 import SvuTechTicker from "./SvuTechTicker";
-import { svuAchievements, svuConferencePapers, svuProjects, svuPublications } from "@/data/svuReviewed";
+import { svuConferencePapers, svuFeaturedAchievement, svuProjects, svuPublications } from "@/data/svuReviewed";
 import { programmePath, svuPagePath, svuSectionPath, type SvuPageId } from "@/lib/programmeNavigation";
 import { SvuFacultyPage } from "./SvuReviewedContent";
 import { useProgrammeSeo } from "./ProgrammeDirectory";
@@ -173,28 +173,24 @@ const SvuResearch = () => {
   </div>;
 };
 
-const SvuAchievements = () => {
-  const hackathon = svuAchievements[0];
-  const [hackBefore, hackAfter = ""] = hackathon.text.split(hackathon.highlight);
-  return (
-    <section className="svu-block" id="achievements">
-      <h2>Student Innovation and Achievements</h2>
-      <div className="svu-stories">{svuOverviewAchievements.map(item => <article className="svu-story" key={item.title}>
-        <figure><img src={item.photo} alt={item.alt} loading="lazy" /><span className="svu-story-badge"><Trophy size={13} aria-hidden="true" />Achievement</span></figure>
-        <div className="svu-story-body"><div className="svu-story-head"><ResearchThemeIcon title={item.title} /><h3>{item.title}</h3></div><p>{item.text}</p>{item.caption && <p className="svu-story-caption">{item.caption}</p>}</div>
-      </article>)}</div>
-      <aside className="svu-champion">
-        <span className="svu-champion-medal" aria-hidden="true"><Trophy size={26} strokeWidth={1.4} /></span>
-        <div className="svu-champion-body">
-          <span className="svu-champion-eyebrow">Featured Achievement</span>
-          <h3 className="svu-champion-title">{hackathon.title}</h3>
-          <p className="svu-champion-line">{hackBefore}<strong className="svu-champion-bold">{hackathon.highlight}</strong>{hackAfter.replace("FTSE 100", "FTSE\u00A0100")}</p>
-          <a className="svu-champion-link" href={hackathon.href} target="_blank" rel="noopener noreferrer">{hackathon.label}<ArrowUpRight size={14} aria-hidden="true" /></a>
-        </div>
-      </aside>
-    </section>
-  );
-};
+const SvuAchievements = () => (
+  <section className="svu-block" id="achievements">
+    <h2>Student Innovation and Achievements</h2>
+    <div className="svu-stories">{svuOverviewAchievements.map(item => <article className="svu-story" key={item.title}>
+      <figure><img src={item.photo} alt={item.alt} loading="lazy" /><span className="svu-story-badge"><Trophy size={13} aria-hidden="true" />Achievement</span></figure>
+      <div className="svu-story-body"><div className="svu-story-head"><ResearchThemeIcon title={item.title} /><h3>{item.title}</h3></div><p>{item.text}</p>{item.caption && <p className="svu-story-caption">{item.caption}</p>}</div>
+    </article>)}</div>
+    <aside className="svu-champion">
+      <span className="svu-champion-medal" aria-hidden="true"><Trophy size={26} strokeWidth={1.4} /></span>
+      <div className="svu-champion-body">
+        <span className="svu-champion-eyebrow">Featured Achievement</span>
+        <h3 className="svu-champion-title">{svuFeaturedAchievement.title}</h3>
+        <p className="svu-champion-standfirst">{svuFeaturedAchievement.standfirst}</p>
+        {svuFeaturedAchievement.paragraphs.map(paragraph => <p className="svu-champion-line" key={paragraph}>{paragraph}</p>)}
+      </div>
+    </aside>
+  </section>
+);
 
 /** Student innovations and internships share one page (client, 4 November 2026):
  * innovation stories and the featured achievement, then the internship records. */
@@ -208,11 +204,12 @@ const SvuInnovations = () => <div className="svu-flow">
   <section id="internships" className="svu-outcome-part"><SvuCareerRecords kind="internships" embedded /></section>
 </div>;
 
-/** Placements stand alone (client, 4 November 2026) with the same editorial page opening. */
+/** Placements stand alone (client, 4 November 2026). Its title stays as a hidden
+ * heading (client, 4 Nov 2026: "remove this place") — only "Career Outcomes" shows. */
 const SvuPlacements = () => <div className="svu-flow">
   <section className="svu-block svu-intro">
     <span className="svu-faculty-eyebrow">Career Outcomes</span>
-    <h1>Placements</h1>
+    <h1 className="sr-only">Placements</h1>
   </section>
   <section id="placements" className="svu-outcome-part"><SvuCareerRecords kind="placements" embedded /></section>
 </div>;
@@ -221,7 +218,7 @@ const SvuFaculty = () => <div className="svu-flow">
   <section className="svu-block svu-intro">
     <span className="svu-faculty-eyebrow">Academic &amp; Industry Guidance</span>
     <h1>A Community of Academic Scholars &amp; Industry Practitioners</h1>
-    <p className="svu-lead">Senior Sri Venkateswara University faculty teach alongside Exafluence industry professionals, so learners study core concepts and their practical application with the people who use them.</p>
+    <p className="svu-lead">Learn from Exafluence Education Faculties and Exafluence Inc. mentors who combine subject knowledge, practical insights and personalised guidance to connect learning with real-world applications.</p>
   </section>
   <SvuFacultyPage />
 </div>;
