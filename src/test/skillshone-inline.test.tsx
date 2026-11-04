@@ -121,8 +121,10 @@ describe("SkillShone inline detail", () => {
 
 
 
-  it("sends Enquire Now to the contact page instead of opening a panel", () => {
+  // Client, 4 Nov 2026: the hero enquiry button was removed from the SkillShone page.
+  it("keeps the hero free of an Enquire Now button", () => {
     open();
-    expect(screen.getByRole("link", { name: "Enquire Now" })).toHaveAttribute("href", "/contact");
+    expect(screen.queryByRole("link", { name: "Enquire Now" })).toBeNull();
+    expect(document.querySelectorAll(".ss-hero .ss-btn")).toHaveLength(1);
   });
 });

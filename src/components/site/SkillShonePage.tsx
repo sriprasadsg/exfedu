@@ -128,7 +128,6 @@ export default function SkillShonePage({ page }: { page: Page }) {
             </dl>
             <div className="mt-7 flex flex-wrap gap-3">
               <a href="https://skillshone.com/" target="_blank" rel="noreferrer" className="ss-btn ss-btn--solid">Visit SkillShone</a>
-              <Link to="/contact" className="ss-btn">Enquire Now</Link>
             </div>
           </div>
           <div className="ss-hero-art">
