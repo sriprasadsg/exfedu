@@ -1,11 +1,12 @@
 import { FacultyDirectory } from "./FacultyDirectory";
 import ResearchThemeIcon from "./ResearchThemeIcon";
+import { SvuConferenceProceedings } from "./SvuConferenceProceedings";
 import { useState } from "react";
 import { ArrowRight, ArrowUpRight, BookOpen, BrainCircuit, BriefcaseBusiness, FlaskConical, Search, Trophy } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { svuProjects, svuPublications, svuResearchMetrics, svuConferencePapers, svuFaculty, svuSupport, svuBrochureReview } from "@/data/svuReviewed";
+import { svuProjects, svuPublications, svuResearchMetrics, svuFaculty, svuSupport, svuBrochureReview } from "@/data/svuReviewed";
 import { svuProjectAreas, svuOverviewAchievements } from "@/data/svuOverview";
 
 export const SvuOverviewContent = () => <div className="svu-overview-content">
@@ -44,7 +45,7 @@ export const SvuResearchContent = () => {
   return <div className="svu-research">
     <dl className="svu-research-metrics">{svuResearchMetrics.map(item => <div key={item.label}><dd>{item.value}</dd><dt>{item.label}<span>{item.context}</span></dt></div>)}</dl>
     <section className="organisation-subsection" id="svu-student-projects"><h3>Student Projects</h3><label className="svu-project-search"><span className="svu-search-tile" aria-hidden="true"><Search size={16} /></span><Input aria-label="Search student projects" placeholder="Search projects or student names" value={query} onChange={e => setQuery(e.target.value)} /></label><p className="svu-result-count">{shown.length} of {svuProjects.length} projects</p><div className="svu-project-list">{shown.map((item) => <article id={`svu-project-${svuProjects.indexOf(item) + 1}`} key={`${item.student}-${item.title}`}><ResearchThemeIcon title={item.title} /><div><h4>{item.title}</h4><p>{item.student}</p></div></article>)}</div>{shown.length === 0 && <p role="status">No matching projects.</p>}</section>
-    <section className="organisation-subsection"><h3>International Conference Presentations</h3><div className="svu-project-list">{svuConferencePapers.map(item => <article key={item.student}><ResearchThemeIcon title={item.title} /><div><span className="programme-org">{item.conference}</span><h4>{item.title}</h4><p>{item.student}</p></div></article>)}</div></section>
+    <section className="organisation-subsection"><h3>International Conference Presentations</h3><SvuConferenceProceedings /></section>
     <section className="organisation-subsection"><h3>Accepted Research Papers</h3><p className="svu-result-count">MSDS students · Batch 2023–2025</p><div className="svu-publications">{svuPublications.map(item => <a href={item.href} key={item.href} target="_blank" rel="noopener noreferrer"><ResearchThemeIcon title={item.title} /><span>{item.title}</span><ArrowUpRight size={17} aria-hidden="true" /></a>)}</div></section>
   </div>;
 };
