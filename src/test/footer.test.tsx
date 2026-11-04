@@ -127,23 +127,25 @@ describe("Footer collaboration network", () => {
     const offices = [...container.querySelectorAll<HTMLElement>(".footer-office")];
     expect(offices.map((o) => o.querySelector(".footer-office-label")?.textContent)).toEqual([
       "Texas",
-      "New Jersey",
       "Corporate Address - Tirupati",
+      "New Jersey",
       "Registered Address - Bangalore",
     ]);
     const text = container.querySelector(".footer-locations")?.textContent ?? "";
     for (const part of [
       "400 Stonebrook Pkwy, #905",
       "Frisco, Texas - 75036",
-      "Ph: +1 7328373764",
       "5 Independence Way",
       "Princeton, New Jersey - 08540",
       "#210, Ecco Greens Tech Hub",
       "Upadhyaya Nagar, Tirupati - 517507",
-      "Phone: 0877 - 222675",
       "HM Towers, 5th floor, Brigade Road Off",
       "MG Road, Bangalore - 560001",
     ]) expect(text).toContain(part);
+    // Client, 4 Nov 2026: "remove phone numbers" — the headquarters list carries none.
+    expect(text).not.toContain("+1 7328373764");
+    expect(text).not.toContain("0877 - 222675");
+    expect(text).not.toMatch(/Ph:|Phone:/);
     expect(offices.every((o) => o.querySelector("svg.footer-office-pin") !== null)).toBe(true);
     for (const o of offices) expect(o.querySelector("a")).toBeNull();
   });
