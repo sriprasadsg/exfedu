@@ -39,8 +39,9 @@ export default function SvuCareerRecords({ kind, embedded = false }: { kind: "pl
   const title = placements ? "Student Placements" : "Student Internships";
   const Title = embedded ? "h2" : "h1";
   const Sub = embedded ? "h3" : "h2";
-  return <div className="svu-career-records">
+  return <div className={placements ? "svu-career-records svu-career-records--ledger" : "svu-career-records"}>
     <div className="svu-career-title-card">
+      {placements && <p className="svu-ledger-statement">Every placement. Every role. <span>On the record.</span></p>}
       <Title>{title}</Title>
       <p className="svu-career-subtitle">{placements ? "Career outcomes in data science, artificial intelligence and technology." : svuInternshipIntroduction.subtitle}</p>
     </div>
@@ -50,7 +51,7 @@ export default function SvuCareerRecords({ kind, embedded = false }: { kind: "pl
       : svuInternshipIntroduction.paragraphs.map(text => <p key={text}>{text}</p>)}
     {!placements && <SvuInternshipUpdate />}
     <Sub className="svu-career-records-heading">{placements ? "Placement Records" : "Internship Records"}</Sub>
-    {placements && <p className="svu-ledger-statement">Every placement. Every role. <span>On the record.</span></p>}
+    {placements && <div className="svu-ledger-cols" aria-hidden="true"><span>Organisation</span><span>Student</span><span>Profile</span><span>Batch</span></div>}
     {placements ? <ul className="svu-outcomes svu-ledger" aria-label={title}>{shown.map(record => <li key={record.student} className="svu-outcome svu-offer">
       <header className="svu-offer-head"><Building2 size={16} aria-hidden="true" /><p className="svu-outcome-org">{record.organisation}</p></header>
       <dl className="svu-offer-fields">
