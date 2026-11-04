@@ -18,11 +18,12 @@ describe("SVU placements on the Archbook model", () => {
     expect(hero?.querySelector("a.svu-hero-secondary")?.getAttribute("href")).toBe("/collaboration-network/svu/innovations#internships");
   });
 
-  it("pairs the approved introduction with the collaboration artwork", () => {
+  it("pairs the approved introduction with the student profile emblem", () => {
     const { container } = placements();
     const split = container.querySelector(".svu-pl-split");
     expect(split?.querySelector("p")?.textContent).toContain("SVU–Exafluence MS Data Science programme");
-    expect(split?.querySelector("img")?.getAttribute("src")).toContain("svu-laptop-dashboard-v2");
+    // Client, 4 November 2026: the placements artwork is now the circular student profile emblem.
+    expect(split?.querySelector("img")?.getAttribute("src")).toContain("circular-student-profile-emblem");
     expect(split?.querySelector("a.svu-pl-link")?.getAttribute("href")).toBe("/collaboration-network/svu#programmes");
   });
 
