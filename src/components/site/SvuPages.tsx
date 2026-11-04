@@ -42,7 +42,6 @@ const SvuOverview = () => {
   return <div className="svu-flow svu-ca">
     {/* Statement opening, staggered areas and a dark band after the Creative Agency reference (4 Nov 2026) */}
     <section className="svu-block svu-intro svu-ca-hero">
-      <span className="svu-ca-dot" aria-hidden="true" /><span className="svu-ca-tri" aria-hidden="true" />
       <img className={`programme-detail-logo ${org.logoClass}`} src={org.logo} alt={`${org.name} logo`} />
       <h1>{svuOverview.title}</h1>
       <p className="svu-lead">{svuOverview.introduction}</p>

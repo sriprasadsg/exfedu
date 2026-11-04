@@ -30,7 +30,15 @@ describe("SVU innovations and placements pages", () => {
     expect(container.querySelectorAll("h1")).toHaveLength(1);
   });
 
+  it("keeps the overview opening free of the floating circle and triangle decorations", () => {
+    const { container } = render(<MemoryRouter><SvuPages section="overview" /></MemoryRouter>);
+    expect(container.querySelector(".svu-ca-dot")).toBeNull();
+    expect(container.querySelector(".svu-ca-tri")).toBeNull();
+    expect(container.querySelector(".svu-ca-hero img")).not.toBeNull();
+  });
+
   it("points section links and legacy URLs at the new pages without a redirect loop", () => {
+
     expect(svuSectionPath("internships")).toBe("/collaboration-network/svu/innovations#internships");
     expect(svuSectionPath("placements")).toBe("/collaboration-network/svu/placements");
     expect(svuLegacyRedirect("/collaboration-network/svu/internships")).toBe("/collaboration-network/svu/innovations#internships");

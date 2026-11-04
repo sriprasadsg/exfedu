@@ -1,4 +1,7 @@
+- [x] Remove the pale circle and triangle decorations from the SVU overview opening band; verified by pixel scan at 1062px, test added.
+- [ ] Change the letterforms of the header and SVU section-bar labels (client picture, 4 Nov 2026): awaiting the client's choice of style.
 - [x] Remove the "12" and "5" mentor counts from the SVU programme sentence; wording now "Meet the faculty, industry mentors and technical mentors who guide this programme.", verified on the live programme page.
+
 - [x] Reduce the home banner sentence font size (client, 4 Nov 2026).
 - [x] Remove the Enquire Now button from the SkillShone page; "Visit SkillShone" kept, desktop/phone checked, 196 tests pass.
 - [x] Remove faculty page Enquire Now button; Explore Programmes and shared navigation preserved; desktop/phone checked.
