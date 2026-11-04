@@ -874,3 +874,4 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 .svu-offer-fields dt { font-size: 11px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: hsl(var(--navy-900)); }
 .svu-offer-fields dd, .svu-offer-fields dd.svu-outcome-role { margin: 2px 0 0; padding: 0; border: 0; font-size: 13px; line-height: 1.55; color: hsl(var(--muted-foreground)); font-weight: 400; }
 .svu-offer-fields h3 { margin: 0; font-size: 15px; color: hsl(var(--navy-900)); }
+.svu-offer-batch { all: unset; } .svu-offer-batch::before { display: none; }
