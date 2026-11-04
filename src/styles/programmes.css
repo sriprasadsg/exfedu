@@ -879,18 +879,16 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 .svu-ledger-statement { margin: 8px 0 22px; font-size: clamp(26px, 3.4vw, 40px); line-height: 1.12; font-weight: 500; letter-spacing: -.02em; color: hsl(var(--navy-900)); }
 .svu-ledger-statement span { color: hsl(var(--navy-900) / .38); }
 .svu-ledger { display: block; border-top: 1px solid hsl(var(--navy-900) / .85); }
-.svu-ledger .svu-offer { display: grid; grid-template-columns: 1.1fr 1.3fr .7fr; align-items: center; gap: 20px; padding: 20px 4px; border: 0; border-bottom: 1px solid hsl(205 30% 88%); border-radius: 0; background: none; transition: background .3s ease, padding .3s ease; }
+.svu-ledger .svu-offer { display: grid; grid-template-columns: 1.1fr 1.1fr 1.2fr .6fr; align-items: center; gap: 20px; padding: 20px 4px; border: 0; border-bottom: 1px solid hsl(205 30% 88%); border-radius: 0; background: none; transition: background .3s ease, padding .3s ease; }
 .svu-ledger .svu-offer:hover { transform: none; background: hsl(205 92% 97%); padding-inline: 14px; }
 .svu-ledger .svu-offer-head { padding: 0; background: none; color: hsl(var(--navy-900)); }
 .svu-ledger .svu-offer-head svg { color: hsl(var(--connection-blue)); }
 .svu-ledger .svu-offer-head .svu-outcome-org { font-size: 17px; letter-spacing: -.01em; }
 .svu-ledger .svu-offer-fields { display: contents; }
-.svu-ledger .svu-offer-fields > div:nth-child(2) { display: none; }
 .svu-ledger .svu-offer-fields > div { grid-template-columns: 1fr; }
 .svu-ledger .svu-offer-fields i { display: none; }
 .svu-ledger .svu-offer-fields dt { display: none; }
 .svu-ledger .svu-offer-fields h3 { font-size: 16px; }
-.svu-ledger .svu-offer-fields > div:first-child dd::after { content: attr(data-role); }
 .svu-ledger .svu-offer-fields > div:last-child { justify-items: end; }
 @media (max-width: 720px) {
   .svu-ledger .svu-offer { grid-template-columns: 1fr auto; gap: 6px 12px; }
