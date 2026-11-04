@@ -1,3 +1,6 @@
+- [x] Faculty & Mentors page: same hover lift on the faculty cards, and bold the faculty names (verified 700 weight, lift computed, 181 tests pass)
+- [x] Split the requested SVU Innovations box into two partitions: a title partition and a longer content partition (desktop 356/692px side by side, phone stacks, placements shares the layout)
+- [x] Bring blocks/containers gently forward when the mouse touches them (SVU story cards, achievement panel, internships/placements partitions, faculty cards, IBM steps verified; generic card/tile selector covers the rest of the site)
 - [x] Renovate the two SVU "Student Innovation and Achievements" story cards with the client's 4 Nov 2026 wording (PanIIT summit participation first, Ratan Tata Innovation Hub second); photo caption dropped as duplicate copy
 - [x] About page: connecting-technology details (approved Exafluence Inc. industry scope) + embedded partner enquiry form; verified 1280/375px, FAQs route now 404
 - [x] FAQs removed from the About Us (Core) menu; /faqs removed from site data

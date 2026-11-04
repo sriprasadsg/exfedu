@@ -248,8 +248,8 @@
 @media (prefers-reduced-motion: reduce) { .svu-overview-intro { animation: none; } }
 
 .svu-career-records { color: hsl(var(--muted-foreground)); }
-.svu-career-records > h1, .svu-outcome-part .svu-career-records > h2:first-child { font-size: 22px; line-height: 1.4; font-weight: 500; color: hsl(var(--navy-900)); }
-.svu-career-records > p { font-size: 14px; line-height: 1.8; margin-top: 14px; }
+.svu-career-title-card > h1, .svu-career-title-card > h2 { font-size: 22px; line-height: 1.4; font-weight: 500; color: hsl(var(--navy-900)); }
+.svu-career-content-card > p { font-size: 14px; line-height: 1.8; margin-top: 14px; }
 .svu-career-records .svu-career-subtitle { font-style: italic; margin-top: 8px; }
 .svu-career-filters { display: grid; grid-template-columns: minmax(0, 1fr) 180px 40px; align-items: end; gap: 12px; margin-top: 24px; }
 .svu-career-filters label { min-width: 0; }
@@ -535,9 +535,17 @@
 /* SVU Internships introduction (client brief, 2 November 2026): white page, navy
    heading, blue-grey reading text and a restrained royal-blue accent. The
    introduction, the search controls and the records table share one left edge. */
-.svu-career-records { background: hsl(var(--background)); color: hsl(215 30% 38%); }
+.svu-career-records { color: hsl(215 30% 38%); }
 .svu-career-records .svu-career-subtitle { color: hsl(var(--navy-royal)); }
 .svu-career-records .svu-career-count { color: hsl(var(--navy-royal)); }
+/* Student internships and placements divide into two partitions (client, 4 November 2026): a narrower
+   title panel beside a longer content panel. Phones stack them in reading order, nothing is clipped. */
+.svu-career-records { display: grid; grid-template-columns: minmax(0, 34fr) minmax(0, 66fr); gap: 24px; align-items: start; }
+.svu-career-title-card { min-width: 0; padding: 24px 22px; border: 1px solid hsl(205 32% 87%); border-radius: 14px; background: hsl(205 92% 97%); }
+.svu-career-title-card .svu-career-subtitle { margin-top: 10px; }
+.svu-career-content-card { min-width: 0; padding: 26px 28px 30px; border: 1px solid hsl(205 32% 87%); border-radius: 14px; background: hsl(var(--card)); }
+.svu-career-content-card > p:first-child { margin-top: 0; }
+@media (max-width: 880px) { .svu-career-records { grid-template-columns: minmax(0, 1fr); gap: 16px; } .svu-career-content-card { padding: 20px 18px 24px; } }
 .svu-career-filters { margin-top: 28px; }
 /* Nothing sits against the panel wall (client, 2 November 2026): the first column starts clear
    of the border so the names line up exactly under the header icon, and the last column ends
@@ -584,7 +592,6 @@
 .svu-story:nth-child(2) { border-top-color: hsl(352 70% 48%); }
 .svu-story figure { position: relative; height: 280px; background: linear-gradient(160deg, hsl(var(--connection-blue) / .06), hsl(var(--card))); display: grid; place-items: center; padding: 14px; }
 .svu-story img { width: 100%; height: 100%; max-height: none; object-fit: contain; }
-.svu-story-badge { position: absolute; top: 12px; left: 12px; display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px; border-radius: 999px; font-size: 11px; font-weight: 500; background: hsl(var(--card) / .92); color: hsl(var(--connection-blue)); border: 1px solid hsl(var(--connection-blue) / .25); }
 .svu-story-body { padding: 20px 22px 24px; border-top: 1px solid hsl(var(--academic-edge)); }
 .svu-story-head { display: flex; align-items: center; gap: 12px; }
 .svu-story-head h3 { margin: 0; }
@@ -596,10 +603,9 @@
    the site-wide gradient edges or tilt; photo stays in its frame and text sits cleanly below. */
 .svu-story { position: relative; isolation: isolate; }
 .svu-story figure { overflow: hidden; }
-.svu-story-badge { position: absolute !important; z-index: 2; }
 .svu-story-body { position: relative; z-index: 1; flex: 1; background: hsl(var(--card)); }
 .svu-story-head, .svu-story-caption { transform: none !important; box-shadow: none !important; }
-.svu-story-head::after, .svu-story-body::after, .svu-story-badge::after, .svu-story-caption::after { content: none !important; }
+.svu-story-head::after, .svu-story-body::after, .svu-story-caption::after { content: none !important; }
 .svu-story-head h3 { font-size: 18px; line-height: 1.35; }
 .svu-story-caption { padding-left: 10px; border-left: 2px solid hsl(var(--connection-blue) / .35); }
 
@@ -828,7 +834,7 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 .fd-title { font-size: 23px; font-weight: 500; margin-bottom: 16px; }
 .fd .fd-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: start; list-style: none; margin: 0; padding: 0; }
 .fd-cell { background: hsl(var(--background)); border: 1px solid hsl(var(--academic-edge)); border-radius: 8px; padding: 19px; }
-.fd .fd-name { font-size: 16px; font-weight: 500; color: hsl(var(--primary)); }
+.fd .fd-name { font-size: 16px; font-weight: 700; color: hsl(var(--primary)); }
 .fd .fd-role { font-size: 12.5px; font-weight: 400; line-height: 1.45; color: hsl(var(--muted-foreground)); margin-top: 3px; }
 .fd .fd-desc { font-size: 14px; line-height: 1.6; color: hsl(var(--primary) / .82); margin-top: 10px; }
 

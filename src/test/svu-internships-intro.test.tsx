@@ -6,7 +6,7 @@ import { svuInternshipIntroduction } from "@/data/svuCareer";
 const renderPage = () => render(<SvuCareerRecords kind="internships" />);
 
 const introLines = (container: HTMLElement) =>
-  [...container.querySelectorAll(".svu-career-records > h1, .svu-career-records > p:not(.svu-career-count)")]
+  [...container.querySelectorAll(".svu-career-title-card > h1, .svu-career-title-card > h2, .svu-career-title-card > p:not(.svu-career-count), .svu-career-content-card > p:not(.svu-career-count)")]
     .map(element => element.textContent?.trim() ?? "");
 
 describe("SVU Internships introduction (client brief, 2 November 2026)", () => {

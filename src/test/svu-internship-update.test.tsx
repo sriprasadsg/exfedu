@@ -73,6 +73,24 @@ describe("SVU internships programme update (client, 3 November 2026)", () => {
     expect(container.querySelector(".svu-internship-update-names")?.hasAttribute("hidden")).toBe(true);
   });
 
+  it("divides the page into a title partition and a longer content partition", () => {
+    const { container } = renderInternships();
+    const title = container.querySelector(".svu-career-title-card");
+    const content = container.querySelector(".svu-career-content-card");
+    expect(title).not.toBeNull();
+    expect(content).not.toBeNull();
+    expect(title?.textContent).toContain("Student Internships");
+    expect(title?.querySelector(".svu-career-subtitle")).not.toBeNull();
+    expect(content?.querySelector(".svu-internship-update")).not.toBeNull();
+    expect(content?.querySelector(".svu-career-records-heading")).not.toBeNull();
+    expect(content?.querySelectorAll("tbody tr")).toHaveLength(11);
+
+    const { container: place } = render(<SvuCareerRecords kind="placements" />);
+    expect(place.querySelector(".svu-career-title-card .svu-career-subtitle")).not.toBeNull();
+    expect(place.querySelector(".svu-career-content-card .svu-career-records-heading")).not.toBeNull();
+    expect(place.querySelector(".svu-career-content-card .svu-outcome")).not.toBeNull();
+  });
+
   it("preserves every existing internship record without duplicating an update student", () => {
     const { container } = renderInternships();
     const rows = [...container.querySelectorAll("tbody tr")];
