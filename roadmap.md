@@ -436,6 +436,6 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] Remove "Programme source" links
 
 - [x] Three SVU diploma courses: tool/technology names removed from titles ("Diploma in AI, ML & Generative AI", "Diploma in Data Visualisation"), tools sections dropped from those pages, and the Cloud Technologies diploma removed everywhere with its old URLs redirecting to the SVU programmes listing. Verified in browser: 4 rows in the table, no Cloud Technologies anywhere, both retired URLs land on the listing, course pages show no tools section; 196 tests pass, build OK.
-- [ ] Remove the pale blue circle and triangle decorative shapes the client screenshotted (4 Nov 2026) — page/section still to be located.
-- [ ] Remove the "Tools & Practical Activities" placeholder content ("Approved Content Required") across all programme pages (client, 4 Nov 2026).
-- [ ] Add social media links as icons only in the footer corner: LinkedIn (Exafluence Education page), Instagram https://www.instagram.com/exafluence.education/, Facebook https://www.facebook.com/exafluence.education/, YouTube (Exafluence Education) (client, 4 Nov 2026).
+- [ ] Remove the pale blue circle and triangle decorative shapes the client screenshotted (4 Nov 2026) — blocked: no page carries those shapes, so the client must say which page or section they appear on.
+- [x] "Tools & Practical Activities" / "Tools and technologies" section removed from every programme page (client, 4 Nov 2026); the "Approved Content Required" placeholder it carried is gone. Verified on the PBEL page: sections read Learning Outcomes → Eligibility & Prerequisites → Assessment & Certification → Academic Resources → Enquiry.
+- [x] Social media icons added to the footer's bottom corner, icons only: LinkedIn (linkedin.com/company/exfedu), Instagram and Facebook (exafluence.education), YouTube (@ExafluenceEducation) — all opening in a new tab (client, 4 Nov 2026).
