@@ -3,11 +3,11 @@ import { collaborationSlides, filterProgrammes, programmes } from "@/data/site";
 
 describe("approved collaboration programme rules", () => {
   it("orders collaborations SVU, IBM", () => { expect(collaborationSlides.map(s => s.organisation)).toEqual(["SVU", "IBM"]); });
-  it("uses the five approved SVU durations and modes", () => {
-    expect(programmes.filter(p => p.organisation === "SVU").map(p => [p.duration, p.delivery])).toEqual([["2 years", "Regular, full-time hybrid"], ["1 year", "Part-time hybrid"], ["6 months", "Part-time hybrid"], ["6 months", "Part-time hybrid"], ["6 months", "Part-time hybrid"]]);
+  it("uses the four approved SVU durations and modes", () => {
+    expect(programmes.filter(p => p.organisation === "SVU").map(p => [p.duration, p.delivery])).toEqual([["2 years", "Regular, full-time hybrid"], ["1 year", "Part-time hybrid"], ["6 months", "Part-time hybrid"], ["6 months", "Part-time hybrid"]]);
   });
   it("gives January and July intakes only to SVU diplomas", () => {
-    expect(programmes.filter(p => p.organisation === "SVU" && p.level !== "Master's").map(p => p.intake)).toEqual(Array(4).fill("January and July"));
+    expect(programmes.filter(p => p.organisation === "SVU" && p.level !== "Master's").map(p => p.intake)).toEqual(Array(3).fill("January and July"));
     expect(programmes.find(p => p.slug === "masters-data-science")?.intake).toBe("University admission cycle");
   });
   it("keeps IBM course hours distinct", () => { expect(programmes.filter(p => p.organisation === "IBM").map(p => p.duration)).toEqual(["45 hours", "45 hours", "60 hours", "90 hours"]); });
@@ -26,8 +26,17 @@ describe("approved collaboration programme rules", () => {
     expect(pbel?.curriculum).toEqual(["Orientation", "Training and Labs", "Project Development", "Presentation and Evaluation", "Certification"]);
   });
   it("combines organisation, subject, type and programme search", () => {
-    expect(filterProgrammes({ organisation: "SVU", subject: "AI & Gen AI", type: "Diploma", q: "PYTHON" }).map(p => p.slug)).toEqual(["python-ai-ml-genai"]);
-    expect(filterProgrammes({ organisation: "IBM", subject: "Cloud Technologies" })).toEqual([]);
+    expect(filterProgrammes({ organisation: "SVU", subject: "AI & Gen AI", type: "Diploma", q: "GENERATIVE" }).map(p => p.slug)).toEqual(["python-ai-ml-genai"]);
+    expect(filterProgrammes({ subject: "Cloud Technologies" })).toEqual([]);
+  });
+  it("keeps tool and technology names out of the SVU diploma titles", () => {
+    expect(programmes.find(p => p.slug === "python-ai-ml-genai")?.title).toBe("Diploma in AI, ML & Generative AI");
+    expect(programmes.find(p => p.slug === "data-visualization")?.title).toBe("Diploma in Data Visualisation");
+    expect(programmes.some(p => p.slug === "cloud-technologies")).toBe(false);
+    expect(programmes.filter(p => p.organisation === "SVU").map(p => p.title)).toEqual([
+      "M.S. Data Science", "PG Diploma in Data Science", "Diploma in AI, ML & Generative AI", "Diploma in Data Visualisation",
+    ]);
+    expect(programmes.filter(p => p.organisation === "SVU").flatMap(p => p.tools ?? [])).toEqual([]);
   });
   it("keeps XIME out of the catalogue and programmes free of fees", () => { expect(programmes.some(p => (p.organisation as string) === "XIME")).toBe(false); expect(programmes.some(p => "fees" in p)).toBe(false); });
   it("limits the source-supported 80/20 statement to M.S. Data Science", () => { expect(programmes.filter(p => JSON.stringify(p).includes("80%")).map(p => p.slug)).toEqual(["masters-data-science"]); });
