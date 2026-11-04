@@ -32,7 +32,7 @@ describe("SVU placement records as icon-led rectangular boxes", () => {
   it("leads every organisation with an industry icon", () => {
     cards().forEach(card => {
       const org = card.querySelector(".svu-outcome-org");
-      expect(iconClass(org)).toContain("lucide-building-2");
+      expect(iconClass(org)).toContain("lucide-building2");
       expect(org?.textContent).toBe(svuPlacements.find(record => record.organisation === org?.textContent)?.organisation);
     });
   });
