@@ -178,7 +178,7 @@ const SvuAchievements = () => (
     <h2>Student Innovation and Achievements</h2>
     <div className="svu-stories">{svuOverviewAchievements.map(item => <article className="svu-story" key={item.title}>
       <figure><img src={item.photo} alt={item.alt} loading="lazy" /><span className="svu-story-badge"><Trophy size={13} aria-hidden="true" />Achievement</span></figure>
-      <div className="svu-story-body"><div className="svu-story-head"><ResearchThemeIcon title={item.title} /><h3>{item.title}</h3></div><p>{item.text}</p>{item.caption && <p className="svu-story-caption">{item.caption}</p>}</div>
+      <div className="svu-story-body"><div className="svu-story-head"><ResearchThemeIcon title={item.title} /><h3>{item.title}</h3></div>{item.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}</div>
     </article>)}</div>
     <aside className="svu-champion">
       <span className="svu-champion-medal" aria-hidden="true"><Trophy size={26} strokeWidth={1.4} /></span>

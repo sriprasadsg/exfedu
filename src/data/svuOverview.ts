@@ -19,7 +19,24 @@ export const svuProjectAreas = [
 ] as const;
 
 // The wide PanIIT group photograph appears once, inside its card, with nobody stretched or cropped.
+// Approved narrative copy, client, 4 November 2026: each card carries its own paragraphs, no photo caption.
 export const svuOverviewAchievements = [
-  { title: "Innovation Showcase", text: "Students demonstrated their product at the Ratan Tata Innovation Hub in Tirupati.", photo: innovation, alt: "Student innovation presentation, Tirupati", caption: "" },
-  { title: "Technology Community Participation", text: "MS Data Science students participated in the PanIIT Andhra Pradesh Summit 2026, gaining exposure to emerging technologies and industry discussions.", photo: summitGroup, alt: "SVU\u2013Exafluence student participation at the PanIIT Andhra Pradesh Summit 2026", caption: "SVU\u2013Exafluence student participation at the PanIIT Andhra Pradesh Summit 2026." },
+  {
+    title: "Student Participation at PanIIT Andhra Pradesh Summit",
+    photo: summitGroup,
+    alt: "SVU–Exafluence students with faculty at the PanIIT Andhra Pradesh Summit 2026",
+    paragraphs: [
+      "MS Data Science students M Jayalakshmi and Telapalli Sai Sukrutha represented the SVU–Exafluence programme at the PanIIT Andhra Pradesh Summit 2026 in Vijayawada, gaining exposure to advanced technologies and industry perspectives.",
+      "SVU Vice-Chancellor Prof. Tata Narasinga Rao and Prof. G. Anjan Babu, Chairman, Board of Studies in Computer Science, appreciated their participation and encouraged them to pursue further learning and networking opportunities.",
+    ],
+  },
+  {
+    title: "Student Innovation at Ratan Tata Innovation Hub",
+    photo: innovation,
+    alt: "Exafluence Education students presenting their product at the Ratan Tata Innovation Hub, Tirupati",
+    paragraphs: [
+      "Exafluence Education students showcased their product at the Ratan Tata Innovation Hub, Tirupati. SVU Vice-Chancellor Prof. Appa Rao, along with SVU officials, appreciated the students’ innovation and practical application of technology.",
+    ],
+  },
 ];
+

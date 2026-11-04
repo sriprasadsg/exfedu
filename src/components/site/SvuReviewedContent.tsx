@@ -27,8 +27,8 @@ export const SvuOverviewContent = () => <div className="svu-overview-content">
   <section className="svu-overview-band" id="achievements"><h2><Trophy size={23} strokeWidth={1.4} aria-hidden="true" />Student Innovation and Achievements</h2>
     <p>Innovation showcases, hackathons and technology events provide opportunities for students to present their work and engage with wider academic and industry communities.</p>
     <div className="svu-overview-achievements">{svuOverviewAchievements.map(item => <article className="svu-overview-story" key={item.title}>
-      <figure className="svu-overview-story-media"><img src={item.photo} alt={item.alt} loading="lazy" /><figcaption>{item.caption}</figcaption></figure>
-      <div className="svu-overview-story-text"><h3>{item.title}</h3><p>{item.text}</p></div>
+      <figure className="svu-overview-story-media"><img src={item.photo} alt={item.alt} loading="lazy" /></figure>
+      <div className="svu-overview-story-text"><h3>{item.title}</h3>{item.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}</div>
     </article>)}</div>
   </section>
 
