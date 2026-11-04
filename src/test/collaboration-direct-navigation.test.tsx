@@ -10,8 +10,9 @@ describe("direct collaboration navigation", () => {
   it("opens each partner directly without a combined-page menu link", () => {
     const { container } = render(<MemoryRouter><Header /></MemoryRouter>);
     fireEvent.click(screen.getByRole("button", { name: "Our Collaboration Network" }));
-    expect(screen.getByRole("link", { name: "1. Sri Venkateswara University" }).getAttribute("href")).toBe("/collaboration-network/svu");
-    expect(screen.getByRole("link", { name: "2. IBM" }).getAttribute("href")).toBe("/collaboration-network/ibm");
+    // No numeric prefixes beside menu titles (client, 4 November 2026).
+    expect(screen.getByRole("link", { name: "Sri Venkateswara University" }).getAttribute("href")).toBe("/collaboration-network/svu");
+    expect(screen.getByRole("link", { name: "IBM" }).getAttribute("href")).toBe("/collaboration-network/ibm");
     expect(container.querySelector('a[href="/collaboration-network"]')).toBeNull();
   });
 

@@ -107,11 +107,11 @@ const SvuProgrammes = ({ embedded = false }: { embedded?: boolean }) => {
       <Title>Industry-Integrated Programmes</Title>
       <p className="svu-lead">Explore programmes offered through the collaboration between Exafluence Inc., USA, and Sri Venkateswara University. Compare study duration and delivery options, then view each programme’s eligibility and admission process.</p>
     </section>
-    <div className="svu-directory-groups">{svuCategories.map((cat, index) => {
+    <div className="svu-directory-groups">{svuCategories.map((cat) => {
       const rows = shown.filter(p => cat.levels.includes(p.level));
       if (!rows.length) return null;
       return <section key={cat.title} className="svu-directory-group" aria-label={cat.title}>
-        <div className="svu-category-heading"><span className="svu-category-icon"><cat.icon size={25} strokeWidth={1.5} aria-hidden="true" /></span><span className="svu-category-index" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span><Group>{cat.title}</Group></div>
+        <div className="svu-category-heading"><span className="svu-category-icon"><cat.icon size={25} strokeWidth={1.5} aria-hidden="true" /></span><Group>{cat.title}</Group></div>
         <div className="svu-directory" role="table" aria-label={cat.title}>
           <div role="row" className="svu-directory-head"><span role="columnheader">Programme Name</span><span role="columnheader">Duration</span><span role="columnheader">Delivery</span><span role="columnheader"><span className="sr-only">View Programme</span></span></div>
           {rows.map(p => <div role="row" key={p.slug} className="svu-directory-row">
@@ -156,7 +156,7 @@ const SvuResearch = () => {
       <TabsContent value="projects">
         <label className="svu-project-search"><span className="svu-search-tile" aria-hidden="true"><Search size={16} /></span><Input aria-label="Search student projects" placeholder="Search projects or student names" value={query} onChange={e => { setQuery(e.target.value); setPage(1); }} /></label>
         <p className="svu-result-count" role="status">{shown.length} of {svuProjects.length} projects</p>
-        <div className="svu-project-list">{visible.map(item => { const n = svuProjects.indexOf(item) + 1; return <article id={`svu-project-${n}`} key={`${item.student}-${item.title}`} className={hash === `#svu-project-${n}` ? "is-target" : undefined}><span className="svu-project-number">{String(n).padStart(2, "0")}</span><ResearchThemeIcon title={item.title} /><div><h3>{item.title}</h3><p>{item.student}</p></div></article>; })}</div>
+        <div className="svu-project-list">{visible.map(item => { const n = svuProjects.indexOf(item) + 1; return <article id={`svu-project-${n}`} key={`${item.student}-${item.title}`} className={hash === `#svu-project-${n}` ? "is-target" : undefined}><ResearchThemeIcon title={item.title} /><div><h3>{item.title}</h3><p>{item.student}</p></div></article>; })}</div>
         {shown.length === 0 && <p role="status">No matching projects.</p>}
         {pages > 1 && <nav className="svu-pagination" aria-label="Project pages">
           <Button variant="outline" size="sm" disabled={current === 1} onClick={() => setPage(current - 1)}>Previous</Button>
