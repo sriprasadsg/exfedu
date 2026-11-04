@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowDown, Briefcase, Building2, CalendarRange, UserRound } from "lucide-react";
+import { ArrowDown, ArrowRight, Building2, CalendarRange } from "lucide-react";
 import { filterSvuCareerRecords, svuInternshipIntroduction, svuInternshipUpdate, svuInternships, svuPlacements } from "@/data/svuCareer";
 
 /** Approved text-only internship update (client, 3 November 2026): the panel sits between the
@@ -39,10 +39,12 @@ export default function SvuCareerRecords({ kind, embedded = false }: { kind: "pl
   const title = placements ? "Student Placements" : "Student Internships";
   const Title = embedded ? "h2" : "h1";
   const Sub = embedded ? "h3" : "h2";
-  return <div className={placements ? "svu-career-records svu-career-records--rocket" : "svu-career-records svu-career-records--upskill"}>
+  // Sleek monochrome brief (client, 4 November 2026): the closing word of the headline
+  // carries the template's italic serif emphasis, so the split happens here only.
+  const [headLead, ...headTail] = title.split(" ");
+  return <div className={placements ? "svu-career-records svu-career-records--mono" : "svu-career-records svu-career-records--upskill"}>
     <div className="svu-career-title-card">
-      {placements && <span className="svu-rocket-mark" aria-hidden="true" />}
-      <Title>{title}</Title>
+      <Title>{placements ? <>{headLead} <em>{headTail.join(" ")}</em></> : title}</Title>
       <p className="svu-career-subtitle">{placements ? "Career outcomes in data science, artificial intelligence and technology." : svuInternshipIntroduction.subtitle}</p>
     </div>
     <div className="svu-career-content-card">
@@ -51,15 +53,17 @@ export default function SvuCareerRecords({ kind, embedded = false }: { kind: "pl
       : svuInternshipIntroduction.paragraphs.map(text => <p key={text}>{text}</p>)}
     {!placements && <SvuInternshipUpdate />}
     {placements
-      ? <div className="svu-service-band"><Sub className="svu-career-records-heading">Placement Records</Sub></div>
+      ? <Sub className="svu-career-records-heading">Placement Records</Sub>
       : <Sub id="internship-records" className="svu-career-records-heading">Internship Records</Sub>}
-    {placements ? <ul className="svu-outcomes svu-rocket" aria-label={title}>{shown.map(record => <li key={record.student} className="svu-outcome svu-offer">
-      <span className="svu-offer-crest" aria-hidden="true"><Building2 size={20} strokeWidth={1.6} /></span>
-      <header className="svu-offer-head"><p className="svu-outcome-org">{record.organisation}</p></header>
-      <dl className="svu-offer-fields">
-        <div><i aria-hidden="true"><UserRound size={15} /></i><dt>Student</dt><dd><h3>{record.student}</h3></dd></div>
-        <div><i aria-hidden="true"><Briefcase size={15} /></i><dt>Profile</dt><dd className="svu-outcome-role">{record.designation}</dd></div>
-        <div><i aria-hidden="true"><CalendarRange size={15} /></i><dt>Batch</dt><dd><span className="svu-outcome-batch svu-offer-batch"><span className="sr-only">Batch </span>{record.batch}</span></dd></div>
+    {placements ? <ul className="svu-mono-ledger" aria-label={title}>{shown.map(record => <li key={record.student} className="svu-outcome svu-mono-row">
+      <div className="svu-mono-row-head">
+        <p className="svu-outcome-org">{record.organisation}</p>
+        <ArrowRight className="svu-mono-row-arrow" size={18} aria-hidden="true" />
+      </div>
+      <dl className="svu-mono-row-fields">
+        <div><dt>Student</dt><dd><h3>{record.student}</h3></dd></div>
+        <div><dt>Profile</dt><dd className="svu-outcome-role">{record.designation}</dd></div>
+        <div><dt>Batch</dt><dd><span className="svu-outcome-batch"><span className="sr-only">Batch </span>{record.batch}</span></dd></div>
       </dl>
     </li>)}</ul> : <ul className="svu-intern-cards" aria-label={title}>{shown.map(record => <li key={record.student} className="svu-intern-card">
       <span className="svu-intern-org"><Building2 size={13} aria-hidden="true" />{record.organisation}</span>
