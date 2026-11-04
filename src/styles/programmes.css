@@ -1281,7 +1281,8 @@ body:not(:has(.homepage-static)) main .svu-career-records--logistics .svu-career
 .svu-pl-card .svu-outcome-org svg { flex: none; margin-top: 3px; color: hsl(152 62% 36%); }
 .svu-pl-card .svu-outcome-batch { margin: 0; padding: 8px 26px 24px; background: hsl(var(--card)); }
 @media (max-width: 639px) {
-  .svu-pl-person { gap: 8px; padding: 24px 22px 0; }
+  .svu-pl-person { gap: 10px; padding: 26px 22px 0; }
+  .svu-pl-avatar { width: 54px; height: 54px; border-radius: 16px; }
   .svu-pl-card .svu-outcome-role, .svu-pl-card .svu-outcome-org { gap: 7px; }
   .svu-pl-card, .svu-career-records--logistics .svu-pl-card { min-height: 330px; }
   .svu-pl-card .svu-outcome-role { padding: 0 22px; }
