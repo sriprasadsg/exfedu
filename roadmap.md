@@ -3,6 +3,7 @@
 - [x] Remove the visible "Placements" title from the SVU Placements page (hidden h1 kept for search engines)
 - [x] Replace the SVU Faculty page intro sentence with the client's Exafluence Education Faculties / Exafluence Inc. mentors wording
 - [x] Remove the YouTube "View news coverage" link from the SVU featured achievement panel
+- [x] Drop just the word "SVU" from the "Faculty & Industry Mentors" intro line (client choice)
 # Roadmap
 - [x] Split SVU outcomes into separate Student Innovations & Internships and Placements pages (five tabs total, shared editorial theme); old anchors redirect, 180 tests pass.
 - [x] Remove the "Back to Our Collaboration Network" pill from every page (SVU, IBM, organisation listings, programme details); component, styles and tests updated, breadcrumbs preserved.
