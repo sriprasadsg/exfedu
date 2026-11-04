@@ -2,8 +2,19 @@ import innovation from "@/assets/svu-innovation-hub.png";
 import summitStudents from "@/assets/svu-paniit-students.jpg";
 import summitDelegation from "@/assets/svu-paniit-delegation.jpg";
 
+/** Featured achievement story (client-approved, 4 Nov 2026). */
+export const svuFeaturedAchievement = {
+  title: "SVU\u2013Exafluence MS Data Science Students Win First Prize at Quantum Hackathon Semi-Finals",
+  standfirst: "Applying quantum computing and data science to financial market forecasting.",
+  paragraphs: [
+    "Students from the MS Data Science programme offered through Sri Venkateswara University and Exafluence Education secured first prize in the semi-finals of the AP Quantum Hackathon 2025 for their project, \u201cQuantum Wave Forecast.\u201d",
+    "Competing against approximately 50 teams from Tirupati, Nellore and Kadapa districts, the team developed a hybrid quantum\u2013classical model to predict FTSE\u00A0100 market trends. The project combined Quantum Fourier Transform, a Variational Quantum Classifier and Explainable AI.",
+    "Our students were congratulated by SVU\u2019s Vice-Chancellor, Prof. Apparao, along with the Registrar and faculty members.",
+  ],
+  href: "https://www.youtube.com/watch?v=8WbUsQBxnnw",
+  label: "View news coverage",
+};
 export const svuAchievements = [
-  { title: "Quantum Wave", highlight: "First place in the AP Quantum Hackathon", text: "First place in the AP Quantum Hackathon 2025 semi-finals. The student project applies quantum computing and explainable AI to FTSE 100 market forecasting.", href: "https://www.youtube.com/watch?v=8WbUsQBxnnw", label: "View news coverage" },
   { title: "Ideas to Impact", text: "Students presented their product at the Ratan Tata Innovation Hub, International Institute of Digital Technologies, Tirupati, showcasing practical innovation and potential social impact." },
 ];
 export const svuEvents = [
