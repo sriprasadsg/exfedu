@@ -33,7 +33,7 @@ describe("SVU faculty page on the Nexora model", () => {
   });
 
   it("gives the smaller technical group its own three-column row", () => {
-    const { container } = render(<FacultyDirectory page cols={3} title="Technical Mentors & Lab Faculty" people={svuSupport} />);
+    const { container } = render(<FacultyDirectory page title="Technical Mentors & Lab Faculty" people={svuSupport} />);
     expect(container.querySelectorAll(".fd-cell")).toHaveLength(5);
     expect(container.querySelector(".fd-grid")?.getAttribute("data-cols")).toBe("3");
   });
