@@ -5,7 +5,7 @@ export type FacultyPerson = { name: string; role?: string; expertise: string };
 /** Nexora profile-card pattern (client, 4 November 2026): each person sits in a white card
  * led by a tinted tile carrying their initials — text only, never a photo, placeholder
  * artwork or icon. `page` lifts the headings one level for the dedicated faculty page. */
-const initialsOf = (name: string) => {
+export const initialsOf = (name: string) => {
   const [first = "", second = ""] = name.split(" ");
   return (first.slice(0, 1) + (second.slice(0, 1) || first.slice(1, 2))).toUpperCase();
 };
