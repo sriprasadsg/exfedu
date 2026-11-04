@@ -1084,7 +1084,7 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 .programme-mono .programme-intro h1 em { font-family: Georgia, "Times New Roman", serif; font-style: italic; font-weight: 700; letter-spacing: -.02em; }
 .programme-mono .programme-intro h1::after { content: "\2192"; display: inline-block; margin-left: .25em; font-weight: 300; font-size: .7em; color: hsl(var(--navy-900) / .7); vertical-align: middle; }
 .programme-mono .programme-intro > .container > p { max-width: 62ch; color: hsl(var(--navy-900) / .72); font-size: 17px; }
-.programme-mono .programme-facts > div { padding: 12px 26px 12px 60px; position: relative; background: transparent; border: 1px solid hsl(var(--navy-900) / .9); border-radius: 999px; box-shadow: none; }
+.programme-mono .programme-facts > div { display: block; padding: 12px 26px 12px 60px; position: relative; background: transparent; border: 1px solid hsl(var(--navy-900) / .9); border-radius: 999px; box-shadow: none; }
 .programme-mono .programme-facts svg { color: hsl(var(--navy-900)); position: absolute; left: 24px; top: 50%; transform: translateY(-50%); }
 .programme-mono .programme-actions { padding: 26px; overflow: hidden; }
 .programme-mono .programme-actions > a, .programme-mono .programme-actions > button { max-width: 100%; box-sizing: border-box; }
