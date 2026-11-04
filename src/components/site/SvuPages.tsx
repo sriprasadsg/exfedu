@@ -106,9 +106,9 @@ const SvuOverview = () => {
 };
 
 const svuCategories = [
-  { title: "Master’s Programme", levels: ["Master's"], icon: GraduationCap },
-  { title: "Postgraduate Diploma", levels: ["PG Diploma"], icon: ScrollText },
-  { title: "Short-Term Diplomas", levels: ["Diploma"], icon: BookOpen },
+  { title: "Master’s Programme", levels: ["Master's"], icon: GraduationCap, tone: "blue" },
+  { title: "Postgraduate Diploma", levels: ["PG Diploma"], icon: ScrollText, tone: "teal" },
+  { title: "Short-Term Diplomas", levels: ["Diploma"], icon: BookOpen, tone: "amber" },
 ];
 
 const SvuProgrammes = ({ embedded = false }: { embedded?: boolean }) => {
@@ -117,14 +117,14 @@ const SvuProgrammes = ({ embedded = false }: { embedded?: boolean }) => {
   const Group = embedded ? "h3" : "h2";
   return <div className="svu-flow" id={embedded ? "programmes" : undefined}>
     <section className="svu-block svu-intro">
-      <Title>Industry-Integrated Programmes</Title>
-      <p className="svu-lead">Explore programmes offered through the collaboration between Exafluence Inc., USA, and Sri Venkateswara University. Compare study duration and delivery options, then view each programme’s eligibility and admission process.</p>
+      <Title>Explore Programmes</Title>
+      <p className="svu-lead">Explore programmes offered through the collaboration between Exafluence Inc., USA, and <span className="svu-nowrap">Sri Venkateswara University.</span> Compare study duration and delivery options, then view each programme’s eligibility and admission process.</p>
     </section>
     <div className="svu-directory-groups">{svuCategories.map((cat) => {
       const rows = shown.filter(p => cat.levels.includes(p.level));
       if (!rows.length) return null;
       return <section key={cat.title} className="svu-directory-group" aria-label={cat.title}>
-        <div className="svu-category-heading"><span className="svu-category-icon"><cat.icon size={25} strokeWidth={1.5} aria-hidden="true" /></span><Group>{cat.title}</Group></div>
+        <div className="svu-category-heading"><span className={`svu-category-icon svu-category-icon--${cat.tone}`}><cat.icon size={25} strokeWidth={1.5} aria-hidden="true" /></span><Group>{cat.title}</Group></div>
         <div className="svu-directory" role="table" aria-label={cat.title}>
           <div role="row" className="svu-directory-head"><span role="columnheader">Programme Name</span><span role="columnheader">Duration</span><span role="columnheader">Delivery</span><span role="columnheader"><span className="sr-only">View Programme</span></span></div>
           {rows.map(p => <div role="row" key={p.slug} className="svu-directory-row">
