@@ -467,3 +467,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 
 ## 4 Nov 2026 (cont.)
 - [ ] About Us boxes: make responsive like the student projects page boxes (client, 4 Nov 2026)
+- [ ] SVU overview: make the boxed panel in the client screenshot responsive (client, 4 Nov 2026)
