@@ -1075,3 +1075,22 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
   .ibm-pm .ibm-intro-art::after { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { .ibm-pm .ibm-steps li, .ibm-pm .ibm-choice li { transition: none; } }
+
+/* Programme landing pages — sleek monochrome agency reference: white canvas, oversized
+   editorial headline with an italic final word, outlined pill buttons, hairline rules. */
+.programme-mono { background: hsl(var(--card)); }
+.programme-mono .programme-intro { background: hsl(var(--card)); border-bottom: 1px solid hsl(var(--navy-900) / .14); padding-block: 36px 56px; }
+.programme-mono .programme-intro h1 { font-family: "Google Sans", ui-sans-serif, system-ui, sans-serif; font-weight: 400; font-size: clamp(38px, 5.6vw, 76px); line-height: 1.02; letter-spacing: -.035em; color: hsl(var(--navy-900)); max-width: 16ch; margin-block: 18px 22px; }
+.programme-mono .programme-intro h1 em { font-family: Georgia, "Times New Roman", serif; font-style: italic; font-weight: 700; letter-spacing: -.02em; }
+.programme-mono .programme-intro h1::after { content: "\2192"; display: inline-block; margin-left: .25em; font-weight: 300; font-size: .7em; color: hsl(var(--navy-900) / .7); vertical-align: middle; }
+.programme-mono .programme-intro > .container > p { max-width: 62ch; color: hsl(var(--navy-900) / .72); font-size: 17px; }
+.programme-mono .programme-facts > div { display: block; padding: 12px 26px 12px 60px; position: relative; background: transparent; border: 1px solid hsl(var(--navy-900) / .9); border-radius: 999px; box-shadow: none; }
+.programme-mono .programme-facts svg { color: hsl(var(--navy-900)); position: absolute; left: 24px; top: 50%; transform: translateY(-50%); }
+.programme-mono .programme-actions { padding: 26px; overflow: hidden; }
+.programme-mono .programme-actions > a, .programme-mono .programme-actions > button { max-width: 100%; box-sizing: border-box; }
+.programme-mono .programme-detail-section { border-top: 1px solid hsl(var(--navy-900) / .14); padding-top: 32px; background: transparent; box-shadow: none; }
+.programme-mono .programme-detail-section > h2 { font-weight: 400; font-size: clamp(24px, 2.6vw, 32px); letter-spacing: -.02em; color: hsl(var(--navy-900)); }
+.programme-mono .programme-section-icon { background: transparent; border: 1px solid hsl(var(--navy-900) / .85); color: hsl(var(--navy-900)); border-radius: 999px; }
+.programme-mono .programme-actions { background: hsl(var(--card)); border: 1px solid hsl(var(--navy-900) / .9); border-radius: 22px; box-shadow: none; }
+.programme-mono .cta-enquire { background: hsl(var(--card)); color: hsl(var(--navy-900)); border: 1.5px solid hsl(var(--navy-900)); border-radius: 999px; box-shadow: none; background-image: none; }
+.programme-mono .cta-enquire:hover { background: hsl(var(--navy-900)); color: hsl(var(--card)); }
