@@ -127,7 +127,7 @@ describe("IBM programme page sections", () => {
     const svu = programmes.find(p => p.organisation === "SVU")!;
     const other = render(<MemoryRouter><ProgrammeDetail programme={svu} /></MemoryRouter>);
     const otherHeadings = [...other.container.querySelectorAll(".programme-detail-section h2")].map(h => h.textContent?.trim());
-    expect(otherHeadings[otherHeadings.length - 1]).toBe("Enquiry");
+    expect(otherHeadings[otherHeadings.length - 1]).toBe("Brochure & Enquiry");
   });
 });
 
