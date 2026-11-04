@@ -219,7 +219,7 @@ const SvuFaculty = () => <div className="svu-flow">
   <section className="svu-block svu-intro">
     <span className="svu-faculty-eyebrow">Academic &amp; Industry Guidance</span>
     <h1>A Community of Academic Scholars &amp; Industry Practitioners</h1>
-    <p className="svu-lead">Senior Sri Venkateswara University faculty teach alongside Exafluence industry professionals, so learners study core concepts and their practical application with the people who use them.</p>
+    <p className="svu-lead">Learn from Exafluence Education Faculties and Exafluence Inc. mentors who combine subject knowledge, practical insights and personalised guidance to connect learning with real-world applications.</p>
   </section>
   <SvuFacultyPage />
 </div>;
