@@ -14,7 +14,7 @@ describe("SVU faculty page on the Nexora model", () => {
     expect(container.querySelector(".svu-hero-badge")?.textContent).toBe("Academic & Industry Guidance");
     expect(container.querySelector(".svu-hero-accent")?.textContent).toBe("Industry Practitioners");
     expect(container.querySelector(".svu-hero-primary")?.getAttribute("href")).toBe("/contact");
-    expect(container.querySelector(".svu-hero-secondary")?.getAttribute("href")).toBe("/collaboration-network/svu/overview#programmes");
+    expect(container.querySelector(".svu-hero-secondary")?.getAttribute("href")).toBe("/collaboration-network/svu#programmes");
     expect(container.querySelector("h1")?.textContent).toBe("A Community of Academic Scholars & Industry Practitioners");
   });
 
