@@ -1,8 +1,10 @@
 import { useEffect, useState, type CSSProperties } from "react";
-import { svuTechnologies, svuToolsIntro } from "@/data/svuTools";
+import { svuTechnologies } from "@/data/svuTools";
+import { svuGrowth } from "@/data/svuOverview";
 
-/* "Technologies You Work With" (client, 3 November 2026): logos only, each in its own cell,
-   rising one after another in a narrow vertical strip in the section's right corner. The strip
+/* The "Tools & Technologies" part of the SVU Overview growth band (client, 3 and 4 November
+   2026): logos only, each in its own cell, rising one after another in a narrow vertical strip
+   in the section's right corner. The strip
    holds two copies of the list and slides by exactly one copy, so the loop is seamless; the
    second copy is hidden from assistive technology so every technology is announced once.
    Hover pauses the strip and a reduced-motion preference gets one still grid with every logo
