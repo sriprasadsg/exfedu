@@ -965,7 +965,7 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 }
 /* Placements after the SEO Rocket reference (4 Nov 2026): centred section head, three-up centred feature cards */
 .svu-career-records--rocket { display: block; }
-.svu-career-records--rocket .svu-career-title-card { position: static; margin: 0; padding: 8px 0 18px; border: 0; border-radius: 0; background: none; text-align: center; }
+.svu-career-records.svu-career-records--rocket .svu-career-title-card { position: static !important; top: 0 !important; margin: 0; padding: 8px 0 18px; border: 0; border-radius: 0; background: none; text-align: center; }
 .svu-rocket-mark { display: block; width: 10px; height: 10px; margin: 0 auto 14px; border-left: 2px solid hsl(var(--connection-blue)); border-bottom: 2px solid hsl(var(--connection-blue)); transform: rotate(-45deg); }
 .svu-career-records--rocket .svu-career-title-card > h1, .svu-career-records--rocket .svu-career-title-card > h2 { margin: 0; font-size: clamp(28px, 3.4vw, 40px); font-weight: 500; letter-spacing: -.01em; color: hsl(var(--navy-900)); }
 .svu-career-records--rocket .svu-career-subtitle { margin: 10px 0 0; font-size: 12px; font-style: normal; letter-spacing: .12em; text-transform: uppercase; color: hsl(var(--muted-foreground)); }
