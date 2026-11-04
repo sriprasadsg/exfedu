@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowDown, ArrowRight, Building2, CalendarRange } from "lucide-react";
+import { ArrowDown, ArrowRight, BrainCircuit, Briefcase, Building2, CalendarRange, Cpu, GraduationCap, UserRound } from "lucide-react";
 import studentProfileEmblem from "@/assets/circular-student-profile-emblem.png.asset.json";
 import { svuPagePath } from "@/lib/programmeNavigation";
 import { filterSvuCareerRecords, svuInternshipIntroduction, svuInternshipUpdate, svuInternships, svuPlacements } from "@/data/svuCareer";
@@ -29,6 +29,18 @@ const SvuInternshipUpdate = ({ open, onToggle }: { open: boolean; onToggle: () =
       </Button>
     </div>
   </section>;
+};
+
+/** Placement cards carry an icon matched to the role itself (client, 4 November 2026): research
+ * and analytics roles read as a neural circuit, engineering roles as a processor, plain trainee
+ * roles as a graduation cap, and anything else as a case. Checked in this order so a compound
+ * title such as "Data Scientist – Trainee" keeps the icon of the role it is trained for. */
+const designationIcon = (designation = "") => {
+  const role = designation.toLowerCase();
+  if (role.includes("data scientist")) return <BrainCircuit size={15} aria-hidden="true" />;
+  if (role.includes("engineer")) return <Cpu size={15} aria-hidden="true" />;
+  if (role.includes("trainee")) return <GraduationCap size={15} aria-hidden="true" />;
+  return <Briefcase size={15} aria-hidden="true" />;
 };
 
 export default function SvuCareerRecords({ kind, embedded = false }: { kind: "placements" | "internships"; embedded?: boolean }) {
@@ -68,9 +80,12 @@ export default function SvuCareerRecords({ kind, embedded = false }: { kind: "pl
       ? <Sub className="svu-career-records-heading">Placement Records</Sub>
       : <Sub id="internship-records" className="svu-career-records-heading">Internship Records</Sub>}
     {placements ? <ul className="svu-pl-cards" aria-label={title}>{shown.map(record => <li key={record.student} className="svu-outcome svu-pl-card">
-      <h3>{record.student}</h3>
-      <p className="svu-outcome-role">{record.designation}</p>
-      <p className="svu-outcome-org">{record.organisation}</p>
+      <div className="svu-pl-person">
+        <UserRound size={17} aria-hidden="true" />
+        <h3>{record.student}</h3>
+      </div>
+      <p className="svu-outcome-role">{designationIcon(record.designation)}<span>{record.designation}</span></p>
+      <p className="svu-outcome-org"><Building2 size={15} aria-hidden="true" /><span>{record.organisation}</span></p>
       <p className="svu-outcome-batch"><span className="sr-only">Batch </span>{record.batch}</p>
     </li>)}</ul> : <ul className="svu-intern-cards" aria-label={title}>{shown.map(record => <li key={record.student} className="svu-intern-card">
       <span className="svu-intern-org"><Building2 size={13} aria-hidden="true" />{record.organisation}</span>
