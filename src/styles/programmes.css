@@ -841,6 +841,6 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 .svu-faculty-callout p { margin: 0; }
 
 
-.svu-outcome-part { margin-top: 56px; scroll-margin-top: 96px; }
+.svu-outcome-part { margin-top: 0; scroll-margin-top: 96px; }
 #programmes, #projects { scroll-margin-top: 96px; }
 .svu-faculty-eyebrow { display: block; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: hsl(var(--muted-foreground)); margin-bottom: 8px; }
