@@ -187,7 +187,6 @@ const SvuAchievements = () => (
         <h3 className="svu-champion-title">{svuFeaturedAchievement.title}</h3>
         <p className="svu-champion-standfirst">{svuFeaturedAchievement.standfirst}</p>
         {svuFeaturedAchievement.paragraphs.map(paragraph => <p className="svu-champion-line" key={paragraph}>{paragraph}</p>)}
-        <a className="svu-champion-link" href={svuFeaturedAchievement.href} target="_blank" rel="noopener noreferrer">{svuFeaturedAchievement.label}<ArrowUpRight size={14} aria-hidden="true" /></a>
       </div>
     </aside>
   </section>

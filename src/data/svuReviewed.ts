@@ -11,8 +11,6 @@ export const svuFeaturedAchievement = {
     "Competing against approximately 50 teams from Tirupati, Nellore and Kadapa districts, the team developed a hybrid quantum\u2013classical model to predict FTSE\u00A0100 market trends. The project combined Quantum Fourier Transform, a Variational Quantum Classifier and Explainable AI.",
     "Our students were congratulated by SVU\u2019s Vice-Chancellor, Prof. Apparao, along with the Registrar and faculty members.",
   ],
-  href: "https://www.youtube.com/watch?v=8WbUsQBxnnw",
-  label: "View news coverage",
 };
 export const svuAchievements = [
   { title: "Ideas to Impact", text: "Students presented their product at the Ratan Tata Innovation Hub, International Institute of Digital Technologies, Tirupati, showcasing practical innovation and potential social impact." },

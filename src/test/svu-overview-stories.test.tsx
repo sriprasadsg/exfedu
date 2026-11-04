@@ -22,7 +22,7 @@ describe("SVU pages", () => {
     expect(lines[0]).toBe("Students from the MS Data Science programme offered through Sri Venkateswara University and Exafluence Education secured first prize in the semi-finals of the AP Quantum Hackathon 2025 for their project, \u201cQuantum Wave Forecast.\u201d");
     expect(lines[1]).toBe("Competing against approximately 50 teams from Tirupati, Nellore and Kadapa districts, the team developed a hybrid quantum\u2013classical model to predict FTSE 100 market trends. The project combined Quantum Fourier Transform, a Variational Quantum Classifier and Explainable AI.");
     expect(lines[2]).toBe("Our students were congratulated by SVU\u2019s Vice-Chancellor, Prof. Apparao, along with the Registrar and faculty members.");
-    expect(champion!.querySelector("a.svu-champion-link")!.getAttribute("href")).toBe("https://www.youtube.com/watch?v=8WbUsQBxnnw");
+    expect(champion!.querySelector("a.svu-champion-link")).toBeNull();
 
     expect(container.querySelector(".svu-highlight")).toBeNull();
 
