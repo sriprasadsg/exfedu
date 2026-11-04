@@ -1,3 +1,4 @@
+- [ ] Remove the item shown in the latest faculty screenshot.
 - [ ] Remove letters above placement student names; retain all records and name styling.
 - [x] Remove Placements content enquiry buttons and replace the screenshot's navy records strip with a plain heading; all 11 records verified, six tests pass.
 - [x] Remove the letter boxes above faculty names; all 17 cards retained, bold names and desktop/phone layouts verified.
