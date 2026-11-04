@@ -1,4 +1,6 @@
+- [x] Remove the duplicate Practical Learning paragraph from every SVU programme detail page (client picture, 4 Nov 2026); the "Built Around Practical Learning" strengths block above is kept, live pages read Built Around Practical Learning → Eligibility → Admission Process → Brochure & Enquiry, 26 tests pass, build OK.
 - [x] Remove the pale circle and triangle decorations from the SVU overview opening band; verified by pixel scan at 1062px, test added.
+
 - [x] Remove the faculty and academic resources block from every programme page (SVU and IBM); enquiry sections kept, live pages and 38 tests checked.
 - [x] Lighten the header menu labels and the five SVU section labels to regular weight (client picture, 4 Nov 2026); letter spacing stays zero site-wide.
 
