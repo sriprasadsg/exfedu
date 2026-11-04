@@ -50,7 +50,8 @@ export default function SvuCareerRecords({ kind, embedded = false }: { kind: "pl
       : svuInternshipIntroduction.paragraphs.map(text => <p key={text}>{text}</p>)}
     {!placements && <SvuInternshipUpdate />}
     <Sub className="svu-career-records-heading">{placements ? "Placement Records" : "Internship Records"}</Sub>
-    {placements ? <ul className="svu-outcomes" aria-label={title}>{shown.map(record => <li key={record.student} className="svu-outcome svu-offer">
+    {placements && <p className="svu-ledger-statement">Every placement. Every role. <span>On the record.</span></p>}
+    {placements ? <ul className="svu-outcomes svu-ledger" aria-label={title}>{shown.map(record => <li key={record.student} className="svu-outcome svu-offer">
       <header className="svu-offer-head"><Building2 size={16} aria-hidden="true" /><p className="svu-outcome-org">{record.organisation}</p></header>
       <dl className="svu-offer-fields">
         <div><i aria-hidden="true"><UserRound size={15} /></i><dt>Student</dt><dd><h3>{record.student}</h3></dd></div>
