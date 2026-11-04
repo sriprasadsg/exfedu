@@ -184,22 +184,27 @@ const SvuResearch = () => {
     </section>
     <div className="svu-u8-band"><p>Student Projects · Conference Presentations · Research Papers</p></div>
     <div className="svu-u8-head" id="svu-research-work"><h2>Explore Student Work</h2></div>
-    <Tabs value={tab} onValueChange={setTab} className="svu-research-tabs svu-u8-tabs">
-      <TabsList><TabsTrigger value="projects">Student Projects</TabsTrigger><TabsTrigger value="conferences">Conference Presentations</TabsTrigger><TabsTrigger value="papers">Research Papers</TabsTrigger></TabsList>
-      <TabsContent value="projects">
-        <label className="svu-project-search"><span className="svu-search-tile" aria-hidden="true"><Search size={16} /></span><Input aria-label="Search student projects" placeholder="Search projects or student names" value={query} onChange={e => { setQuery(e.target.value); setPage(1); }} /></label>
-        <p className="svu-result-count" role="status">{shown.length} of {svuProjects.length} projects</p>
-        <div className="svu-project-list">{visible.map(item => { const n = svuProjects.indexOf(item) + 1; return <article id={`svu-project-${n}`} key={`${item.student}-${item.title}`} className={hash === `#svu-project-${n}` ? "is-target" : undefined}><ResearchThemeIcon title={item.title} /><div><h3>{item.title}</h3><p>{item.student}</p></div></article>; })}</div>
-        {shown.length === 0 && <p role="status">No matching projects.</p>}
-        {pages > 1 && <nav className="svu-pagination" aria-label="Project pages">
-          <Button variant="outline" size="sm" disabled={current === 1} onClick={() => setPage(current - 1)}>Previous</Button>
-          <span>Page {current} of {pages}</span>
-          <Button variant="outline" size="sm" disabled={current === pages} onClick={() => setPage(current + 1)}>Next</Button>
-        </nav>}
-      </TabsContent>
-      <TabsContent value="conferences"><div className="svu-project-list">{svuConferencePapers.map(item => <article key={item.student}><ResearchThemeIcon title={item.title} /><div><span className="programme-org">{item.conference}</span><h3>{item.title}</h3><p>{item.student}</p></div></article>)}</div></TabsContent>
-      <TabsContent value="papers"><p className="svu-result-count">MSDS students · Batch 2023–2025</p><div className="svu-publications">{svuPublications.map(item => <a href={item.href} key={item.href} target="_blank" rel="noopener noreferrer"><ResearchThemeIcon title={item.title} /><span>{item.title}</span><ArrowUpRight size={17} aria-hidden="true" /></a>)}</div></TabsContent>
-    </Tabs>
+    <section className="svu-work-part" id="svu-student-projects">
+      <h3>Student Projects</h3>
+      <label className="svu-project-search"><span className="svu-search-tile" aria-hidden="true"><Search size={16} /></span><Input aria-label="Search student projects" placeholder="Search projects or student names" value={query} onChange={e => { setQuery(e.target.value); setPage(1); }} /></label>
+      <p className="svu-result-count" role="status">{shown.length} of {svuProjects.length} projects</p>
+      <div className="svu-project-list">{visible.map(item => { const n = svuProjects.indexOf(item) + 1; return <article id={`svu-project-${n}`} key={`${item.student}-${item.title}`} className={hash === `#svu-project-${n}` ? "is-target" : undefined}><ResearchThemeIcon title={item.title} /><div><h3>{item.title}</h3><p>{item.student}</p></div></article>; })}</div>
+      {shown.length === 0 && <p role="status">No matching projects.</p>}
+      {pages > 1 && <nav className="svu-pagination" aria-label="Project pages">
+        <Button variant="outline" size="sm" disabled={current === 1} onClick={() => setPage(current - 1)}>Previous</Button>
+        <span>Page {current} of {pages}</span>
+        <Button variant="outline" size="sm" disabled={current === pages} onClick={() => setPage(current + 1)}>Next</Button>
+      </nav>}
+    </section>
+    <section className="svu-work-part" id="svu-conference-presentations">
+      <h3>Conference Presentations</h3>
+      <div className="svu-project-list">{svuConferencePapers.map(item => <article key={item.student}><ResearchThemeIcon title={item.title} /><div><span className="programme-org">{item.conference}</span><h3>{item.title}</h3><p>{item.student}</p></div></article>)}</div>
+    </section>
+    <section className="svu-work-part" id="svu-research-papers">
+      <h3>Research Papers</h3>
+      <p className="svu-result-count">MSDS students · Batch 2023–2025</p>
+      <div className="svu-publications">{svuPublications.map(item => <a href={item.href} key={item.href} target="_blank" rel="noopener noreferrer"><ResearchThemeIcon title={item.title} /><span>{item.title}</span><ArrowUpRight size={17} aria-hidden="true" /></a>)}</div>
+    </section>
   </div>;
 };
 
