@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowUp, MapPin } from "lucide-react";
 import exafluence from "@/assets/exafluence-footer-exact.png";
-import skillshoneLogo from "@/assets/skillshone-original.png";
 import { organisations, type Organisation } from "@/data/site";
 import { Button } from "@/components/ui/button";
 import { organisationPath } from "@/lib/programmeNavigation";
@@ -9,8 +8,9 @@ import { footerLocations, headquartersLabel } from "@/data/locations";
 import { CountryFlag } from "@/components/layout/FlagIcons";
 
 // Client brief, 2 November 2026: partner names as plain text in the footer: "not logos
-// required, mention only text" (23 Oct 2026), but the original SkillShone logo stays there
-// in a reduced size, and the Exafluence footer mark smaller too.
+// required, mention only text" (23 Oct 2026). SkillShone joins as plain text too
+// (4 November 2026: same font and colour as the other links), and the Exafluence footer
+// mark is smaller.
 // XIME removed from the network (client, 3 November 2026).
 const partners: Organisation[] = ["SVU", "IBM"];
 
@@ -34,13 +34,9 @@ const Footer = () => (
         <p className="footer-column-title">Quick Links</p>
         <ul className="footer-list">
           <li><Link to="/about" className="footer-option footer-list-link">About Us</Link></li>
-          <li>
-            {/* Client, 4 November 2026: no surrounding box and no arrow — the SkillShone
-                link reads like every other footer link. */}
-            <Link to="/skillshone" className="footer-featured" aria-label="SkillShone">
-              <img src={skillshoneLogo} alt="SkillShone" loading="lazy" className="footer-featured-logo" />
-            </Link>
-          </li>
+          {/* Client, 4 November 2026: SkillShone reads like every other footer link —
+              the same font and the same muted colour, no logo image, box or arrow. */}
+          <li><Link to="/skillshone" className="footer-option footer-list-link">SkillShone</Link></li>
           <li><Link to="/#partner-enquiry" className="footer-option footer-list-link">Enquire Now</Link></li>
         </ul>
       </div>
