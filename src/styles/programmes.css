@@ -963,6 +963,8 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 .svu-career-records--upskill .svu-internship-update-highlights li { padding: 0 12px; }
 .svu-career-records--upskill .svu-internship-update-highlights li:nth-child(odd) { padding-left: 0; border-left: 0; }
 .svu-career-records--upskill .svu-career-records-heading, .svu-career-records--upskill .svu-intern-cards { grid-column: 1 / -1; margin-top: 0; }
+.svu-career-records--upskill .svu-internship-update-names--full { grid-column: 1 / -1; margin: 0; padding: 20px 24px; border: 1px solid hsl(var(--border)); border-radius: 6px; background: hsl(var(--card)); }
+.svu-career-records--upskill .svu-internship-update-names--full[hidden] { display: none; }
 @media (max-width: 900px) { .svu-career-records--upskill { grid-template-columns: minmax(0, 1fr); gap: 24px; } }
 .svu-career-records--upskill [class*="card"]::before, .svu-career-records--upskill [class*="card"]::after { display: none; }
 .svu-intern-cards { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 16px; }
