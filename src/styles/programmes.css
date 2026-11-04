@@ -988,3 +988,27 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 .svu-rocket .svu-offer-batch { font-size: 12px; letter-spacing: .08em; color: hsl(var(--navy-900) / .7); }
 @media (max-width: 900px) { .svu-rocket { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; } }
 @media (max-width: 560px) { .svu-rocket { grid-template-columns: 1fr; } }
+/* Projects & Research after the Ultim8 reference (4 Nov 2026) */
+.svu-u8-hero { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 48px; align-items: center; padding: 28px 0 44px; }
+.svu-u8-copy h1 { font-size: clamp(32px, 4vw, 46px); font-weight: 400; letter-spacing: -.01em; color: hsl(var(--connection-blue)); }
+.svu-u8-copy .svu-lead { margin-top: 16px; max-width: 520px; }
+.svu-u8-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.svu-u8-btn { padding: 11px 24px; border-radius: 999px; border: 1px solid hsl(var(--connection-blue)); color: hsl(var(--connection-blue)); background: hsl(var(--background)); font-size: 14px; font-weight: 500; transition: background .25s ease, color .25s ease, transform .25s ease; }
+.svu-u8-btn:hover { transform: translateY(-2px); background: hsl(var(--connection-blue) / .08); }
+.svu-u8-btn--fill { background: hsl(var(--connection-blue)); color: hsl(var(--primary-foreground)); }
+.svu-u8-btn--fill:hover { background: hsl(var(--navy-900)); border-color: hsl(var(--navy-900)); }
+.svu-u8-panel { padding: 18px; border: 1px solid hsl(205 32% 88%); border-radius: 18px; background: hsl(var(--background)); box-shadow: 0 28px 60px -34px hsl(var(--navy-900) / .45); }
+.svu-u8-panel-bar { display: flex; gap: 6px; margin-bottom: 14px; }
+.svu-u8-panel-bar i { width: 9px; height: 9px; border-radius: 999px; background: hsl(205 40% 86%); }
+.svu-u8-panel-row { display: grid; grid-template-columns: 40px minmax(0,1fr); align-items: center; column-gap: 14px; padding: 14px; border-radius: 12px; background: hsl(205 92% 97%); }
+.svu-u8-panel-row + .svu-u8-panel-row { margin-top: 10px; }
+.svu-u8-panel-row span { grid-row: span 2; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 10px; background: hsl(var(--connection-blue)); color: hsl(var(--primary-foreground)); }
+.svu-u8-panel-row b { font-size: 14px; font-weight: 500; color: hsl(var(--navy-900)); }
+.svu-u8-panel-row em { display: block; height: 6px; margin-top: 8px; width: 70%; border-radius: 999px; background: hsl(var(--connection-blue) / .22); }
+.svu-u8-panel-row:nth-of-type(3) em { width: 52%; } .svu-u8-panel-row:nth-of-type(4) em { width: 84%; }
+.svu-u8-band { margin: 0 calc(50% - 50vw); padding: 28px max(24px, calc(50vw - 536px)); background: linear-gradient(90deg, hsl(var(--navy-900)), hsl(var(--connection-blue))); }
+.svu-u8-band p { margin: 0; font-size: 16px; font-weight: 500; letter-spacing: .02em; color: hsl(var(--primary-foreground)); }
+.svu-u8-head { padding: 56px 0 8px; text-align: center; scroll-margin-top: 140px; }
+.svu-u8-head h2 { font-size: clamp(24px, 2.6vw, 32px); font-weight: 400; color: hsl(var(--navy-900)); }
+.svu-u8-tabs [role="tablist"] { justify-content: center; }
+@media (max-width: 860px) { .svu-u8-hero { grid-template-columns: 1fr; gap: 28px; } }
