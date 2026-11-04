@@ -64,7 +64,7 @@ const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { progr
   );
 
   return (
-    <main className="programme-experience">
+    <main className="programme-experience programme-mono">
       {/* SVU programme pages (2 Nov 2026 brief): breadcrumb, then the section tabs,
           then the programme title and introduction. */}
       {isSvu && <div className="programme-crumb-band"><div className="container">{breadcrumb}</div></div>}
@@ -73,7 +73,7 @@ const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { progr
         <div className="container">
           {!isSvu && breadcrumb}
           <img className={`programme-detail-logo ${org.logoClass}`} src={org.logo} alt={`${org.name} logo`} />
-          <h1>{p.title}</h1>
+          <h1>{(() => { const w = p.title.split(" "); const last = w.pop(); return <>{w.join(" ")}{w.length ? " " : ""}<em>{last}</em></>; })()}</h1>
           <p>{p.overview}</p>
           <dl className="programme-facts">
             <div>
