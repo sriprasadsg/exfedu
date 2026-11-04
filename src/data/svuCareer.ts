@@ -11,8 +11,8 @@ export const svuPlacements: SvuCareerRecord[] = [
   { student: "Sri Tulasi Satya Saketh Raprolu", batch: batchTwo, organisation: "Exafluence Global Analytics Pvt Ltd", designation: "Data Scientist – Trainee" },
   { student: "K Mounika", batch: batchOne, organisation: "SRAYS Solutions", designation: "Trainee" },
   { student: "Muvvala Rajeswari", batch: batchTwo, organisation: "SRAYS Solutions", designation: "Trainee" },
-  { student: "Kamatam Meghana", batch: batchTwo, organisation: "SM Smartygen Media Networks Pvt Ltd (Shortfundly)", designation: "AI Engineer" },
-  { student: "Muthyala Bharadwaj", batch: batchTwo, organisation: "SM Smartygen Media Networks Pvt Ltd (Shortfundly)", designation: "AI Engineer" },
+  { student: "Kamatam Meghana", batch: batchTwo, organisation: "SM Smartygen Media Networks Pvt Ltd", designation: "AI Engineer" },
+  { student: "Muthyala Bharadwaj", batch: batchTwo, organisation: "SM Smartygen Media Networks Pvt Ltd", designation: "AI Engineer" },
 ];
 export const svuInternships: SvuCareerRecord[] = [
   ...["G Mohana Priya", "Bandarupalli Madhuri", "K Vinay", "Myleri Deepa", "Naguru Navya Nikitha", "G V Sumanth", "Talupula Keerthi", "M Sreelekha", "Jonnalagadda Sahithya"].map(student => ({ student, batch: batchOne, organisation: "NARL, Gadanki" })),
