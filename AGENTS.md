@@ -1,6 +1,6 @@
 # Architecture rules
 - Homepage motion uses coordinate-aligned SVG sprites for banner dots, isolated SVG connector endpoint dots, and an extracted magnifying-glass sprite over a glyph-free tile image; route-scoped CSS disables every other animation without changing other pages.
-- The collaboration header is a chooser for individual SVU and IBM pages, not a combined page; the retired /collaboration-network URL redirects to SVU (the first partner) to keep old links working, while organisation and programme URLs remain canonical.
+- The collaboration header is a chooser for individual SVU and IBM pages, not a combined page; /collaboration-network is that live chooser page and the retired /academic-collaborations URL redirects to it to keep old links working, while organisation and programme URLs remain canonical.
 - Collaboration carousel slides pair the text panel with BannerStory, which shows the same static client render imported by each organisation's own page and returns nothing when none is approved; hasBannerStory gates the artwork column so a text-only slide spans the full card and carousel/partner-page artwork cannot drift apart.
 - The About route renders a data-driven about-overview editorial block with its own compact introduction and existing programme/contact destinations, omitting the shared sidebar and large banner to preserve a coherent full-width reading order.
 - Render homepage capabilities from site.ts as eight linked cards at equal 45-degree intervals around a centre circle, with DOM-measured radial connectors meeting card edges; container queries switch to stacked two/one-column grids when the radial canvas cannot fit, preserving readable content.
@@ -24,4 +24,3 @@
 - Student programme enquiries (StudentEnquiry, ?programme= preselects) and institutional partnership enquiries (PartnerEnquiry, ?type=institution or IBM programmes) are separate forms on /contact, both test-only via submitTestEnquiry, so learners are never asked for organisation details.
 - The SVU technologies strip (SvuTechTicker) renders the list twice in a two-column grid and slides the track by exactly one copy, with the repeat aria-hidden and no index numbers or show-all control; reduced motion drops the copy for one static grid, so the loop stays seamless without announcing anything twice.
 - SVU faculty render as photo-free cards in one responsive grid (FacultyDirectory); no selection state, no expertise pills.
-
