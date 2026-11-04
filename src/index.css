@@ -1826,7 +1826,6 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
   .footer-legal { flex-wrap: wrap; gap: 10px 16px; }
   .footer-legal-links { margin-left: 0; }
 }
-.footer-featured { margin-bottom: 0; }
 .footer-top-btn { width: 2.25rem; height: 2.25rem; }
 /* Client brief, 3 November 2026: the footer category lists carry no coloured dots —
    every entry reads in the same muted slate colour and simply darkens when hovered. */

@@ -57,21 +57,18 @@ describe("Footer collaboration network", () => {
     expect(container.querySelector(".footer-columns")?.contains(brand ?? new DocumentFragment())).toBe(false);
   });
 
-  it("keeps the original SkillShone logo plain — no box and no arrow — like other footer links", () => {
+  it("renders SkillShone as plain text like every other quick link — same font, no colour, no image", () => {
     const { container } = open();
-    const link = container.querySelector<HTMLAnchorElement>("a.footer-featured");
+    const link = container.querySelector<HTMLAnchorElement>("a[href='/skillshone']");
     expect(link).not.toBeNull();
-    expect(link?.getAttribute("href")).toBe("/skillshone");
-    const logo = link?.querySelector<HTMLImageElement>("img.footer-featured-logo");
-    expect(logo?.getAttribute("src")).toContain("skillshone-original.png");
-    expect(logo?.alt).toBe("SkillShone");
-    // Client, 4 November 2026: no surrounding box, no arrow.
-    expect(link?.querySelector("svg")).toBeNull();
-    expect(link?.className).not.toContain("footer-featured-pill");
+    // Client, 4 November 2026: same font and muted colour as the other links, no image.
+    expect(link?.className).toBe("footer-option footer-list-link");
+    expect(link?.textContent).toBe("SkillShone");
+    expect(link?.querySelector("img, svg")).toBeNull();
 
     const images = [...container.querySelectorAll<HTMLImageElement>("img")];
-    expect(images).toHaveLength(2);
-    expect(images.map((i) => i.alt)).toEqual(["SkillShone", "Exafluence — Data Driven Influence"]);
+    expect(images).toHaveLength(1);
+    expect(images.map((i) => i.alt)).toEqual(["Exafluence — Data Driven Influence"]);
   });
 
   it("keeps the copyright in its own slim row below the columns", () => {
