@@ -688,6 +688,7 @@ body:not(:has(.homepage-static)) main .svu-pl-band .svu-career-records-heading {
   -webkit-text-fill-color: hsl(var(--primary-foreground)); color: hsl(var(--primary-foreground));
 }
 
+/* The featured-achievement panel is a pale sky-blue field, so its heading must
    read in navy. The site-wide colourful-title rule (index.css) paints every h3
    in main with a gradient text fill, and it out-specifies the plain class rule,
    which would leave "Quantum Wave" tinted by the shared gradient. This selector
