@@ -40,12 +40,14 @@ const svuTeachingSteps = [
 
 const SvuOverview = () => {
   const org = organisations.SVU;
-  return <div className="svu-flow">
-    <section className="svu-block svu-intro">
+  return <div className="svu-flow svu-ca">
+    {/* Statement opening, staggered areas and a dark band after the Creative Agency reference (4 Nov 2026) */}
+    <section className="svu-block svu-intro svu-ca-hero">
+      <span className="svu-ca-dot" aria-hidden="true" /><span className="svu-ca-tri" aria-hidden="true" />
       <img className={`programme-detail-logo ${org.logoClass}`} src={org.logo} alt={`${org.name} logo`} />
       <h1>{svuOverview.title}</h1>
       <p className="svu-lead">{svuOverview.introduction}</p>
-      <Button variant="link" asChild><a href="#programmes">Explore Programmes<ArrowRight size={16} /></a></Button>
+      <a className="svu-ca-link" href="#programmes">Explore Programmes<ArrowRight size={16} /></a>
     </section>
 
     <section className="svu-block">
@@ -75,8 +77,6 @@ const SvuOverview = () => {
       </Link>)}</div>
     </section>
 
-    <SvuProgrammes embedded />
-
     {/* One reading band (client copy, 4 November 2026): the heading and introduction sit above
         three hairline-separated parts — the logo strip, Research & Innovation and Industry
         Exposure & Career Development — instead of three separate boxed sections. */}
@@ -100,6 +100,9 @@ const SvuOverview = () => {
         <div className="svu-actions"><Button variant="outline" asChild><Link to={svuSectionPath("internships")}>Explore Internships<ArrowRight size={16} /></Link></Button><Button variant="outline" asChild><Link to={svuSectionPath("placements")}>View Placements<ArrowRight size={16} /></Link></Button><Button asChild className="cta-enquire"><Link to="/contact">Enquire Now<ArrowRight size={16} /></Link></Button></div>
       </section>
     </section>
+
+    {/* Programmes stand apart at the end of the page (client, 4 Nov 2026), not between sections. */}
+    <section className="svu-ca-programmes"><SvuProgrammes embedded /></section>
   </div>;
 };
 
