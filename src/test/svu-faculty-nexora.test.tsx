@@ -18,7 +18,7 @@ describe("SVU faculty page on the Nexora model", () => {
   });
 
   it("keeps every approved faculty record when simplifying the cards", () => {
-    const { container } = render(<FacultyDirectory page cols={4} title="Faculty & Industry Mentors" people={svuFaculty} />);
+    const { container } = render(<FacultyDirectory page title="Faculty & Industry Mentors" people={svuFaculty} />);
     const cells = [...container.querySelectorAll(".fd-cell")];
     expect(cells).toHaveLength(12);
     expect(cells.map(cell => ({
@@ -26,15 +26,15 @@ describe("SVU faculty page on the Nexora model", () => {
       role: cell.querySelector(".fd-role")?.textContent,
       expertise: cell.querySelector(".fd-desc")?.textContent,
     }))).toEqual(svuFaculty.map(person => ({ ...person })));
-    expect(container.querySelector(".fd-grid")?.getAttribute("data-cols")).toBe("4");
+    expect(container.querySelector(".fd-grid")?.hasAttribute("data-cols")).toBe(false);
     expect(container.querySelector(".fd-cell img, .fd-cell svg")).toBeNull();
     expect(cells[0].querySelector(".fd-name")?.textContent).toBe("Anjan Babu");
     expect(cells[0].querySelector(".fd-role")?.textContent).toBe("Professor & Coordinator");
   });
 
-  it("gives the smaller technical group its own three-column row", () => {
-    const { container } = render(<FacultyDirectory page cols={3} title="Technical Mentors & Lab Faculty" people={svuSupport} />);
+  it("gives the smaller technical group its own responsive row", () => {
+    const { container } = render(<FacultyDirectory page title="Technical Mentors & Lab Faculty" people={svuSupport} />);
     expect(container.querySelectorAll(".fd-cell")).toHaveLength(5);
-    expect(container.querySelector(".fd-grid")?.getAttribute("data-cols")).toBe("3");
+    expect(container.querySelector(".fd-grid")?.hasAttribute("data-cols")).toBe(false);
   });
 });
