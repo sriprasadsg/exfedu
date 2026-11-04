@@ -1,5 +1,9 @@
 import { useState } from "react";
-import { ArrowDown, Briefcase, Building2, CalendarRange, UserRound } from "lucide-react";
+import { Link } from "react-router-dom";
+import { ArrowDown, ArrowRight, Building2, CalendarRange } from "lucide-react";
+import svuLaptopDashboard from "@/assets/svu-laptop-dashboard-v2.png";
+import { initialsOf } from "@/components/site/FacultyDirectory";
+import { svuPagePath } from "@/lib/programmeNavigation";
 import { filterSvuCareerRecords, svuInternshipIntroduction, svuInternshipUpdate, svuInternships, svuPlacements } from "@/data/svuCareer";
 
 /** Approved text-only internship update (client, 3 November 2026): the panel sits between the
@@ -39,28 +43,34 @@ export default function SvuCareerRecords({ kind, embedded = false }: { kind: "pl
   const title = placements ? "Student Placements" : "Student Internships";
   const Title = embedded ? "h2" : "h1";
   const Sub = embedded ? "h3" : "h2";
-  return <div className={placements ? "svu-career-records svu-career-records--rocket" : "svu-career-records svu-career-records--upskill"}>
+  return <div className={placements ? "svu-career-records svu-career-records--archbook" : "svu-career-records svu-career-records--upskill"}>
     <div className="svu-career-title-card">
-      {placements && <span className="svu-rocket-mark" aria-hidden="true" />}
       <Title>{title}</Title>
       <p className="svu-career-subtitle">{placements ? "Career outcomes in data science, artificial intelligence and technology." : svuInternshipIntroduction.subtitle}</p>
+      {placements && <div className="svu-hero-actions">
+        <Link to="/contact" className="svu-hero-primary">Enquire Now <ArrowRight size={16} aria-hidden="true" /></Link>
+        <Link to={`${svuPagePath("innovations")}#internships`} className="svu-hero-secondary">View Internships</Link>
+      </div>}
     </div>
     <div className="svu-career-content-card">
-    {placements
-      ? <p>Students from the SVU–Exafluence MS Data Science programme have secured roles in data science and AI engineering, alongside trainee positions. The following records show their organisations, designations and academic batches.</p>
+    {placements ? <div className="svu-pl-split">
+      <div className="svu-pl-copy">
+        <p>Students from the SVU–Exafluence MS Data Science programme have secured roles in data science and AI engineering, alongside trainee positions. The following records show their organisations, designations and academic batches.</p>
+        <Link to={`${svuPagePath("overview")}#programmes`} className="svu-pl-link">Explore Programmes <ArrowRight size={15} aria-hidden="true" /></Link>
+      </div>
+      <figure className="svu-pl-art"><img src={svuLaptopDashboard} alt="Laptop showing a data-analysis dashboard, the artwork used on the SVU collaboration banner" /></figure>
+    </div>
       : svuInternshipIntroduction.paragraphs.map(text => <p key={text}>{text}</p>)}
     {!placements && <SvuInternshipUpdate />}
     {placements
-      ? <div className="svu-service-band"><Sub className="svu-career-records-heading">Placement Records</Sub></div>
+      ? <div className="svu-pl-band"><Sub className="svu-career-records-heading">Placement Records</Sub><Link to="/contact" className="svu-pl-band-link">Enquire Now <ArrowRight size={15} aria-hidden="true" /></Link></div>
       : <Sub id="internship-records" className="svu-career-records-heading">Internship Records</Sub>}
-    {placements ? <ul className="svu-outcomes svu-rocket" aria-label={title}>{shown.map(record => <li key={record.student} className="svu-outcome svu-offer">
-      <span className="svu-offer-crest" aria-hidden="true"><Building2 size={20} strokeWidth={1.6} /></span>
-      <header className="svu-offer-head"><p className="svu-outcome-org">{record.organisation}</p></header>
-      <dl className="svu-offer-fields">
-        <div><i aria-hidden="true"><UserRound size={15} /></i><dt>Student</dt><dd><h3>{record.student}</h3></dd></div>
-        <div><i aria-hidden="true"><Briefcase size={15} /></i><dt>Profile</dt><dd className="svu-outcome-role">{record.designation}</dd></div>
-        <div><i aria-hidden="true"><CalendarRange size={15} /></i><dt>Batch</dt><dd><span className="svu-outcome-batch svu-offer-batch"><span className="sr-only">Batch </span>{record.batch}</span></dd></div>
-      </dl>
+    {placements ? <ul className="svu-pl-cards" aria-label={title}>{shown.map(record => <li key={record.student} className="svu-outcome svu-pl-card">
+      <span className="svu-pl-mark" aria-hidden="true">{initialsOf(record.student)}</span>
+      <h3>{record.student}</h3>
+      <p className="svu-outcome-role">{record.designation}</p>
+      <p className="svu-outcome-org">{record.organisation}</p>
+      <p className="svu-outcome-batch"><span className="sr-only">Batch </span>{record.batch}</p>
     </li>)}</ul> : <ul className="svu-intern-cards" aria-label={title}>{shown.map(record => <li key={record.student} className="svu-intern-card">
       <span className="svu-intern-org"><Building2 size={13} aria-hidden="true" />{record.organisation}</span>
       <h4>{record.student}</h4>

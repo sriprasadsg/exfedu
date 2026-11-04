@@ -664,16 +664,29 @@
 @media (prefers-reduced-motion: reduce) { .ibm-page .programme-section-icon, .ibm-learner::before { animation: none; } }
 @media (max-width: 760px) { .ibm-learner { padding: 24px 20px; } }
 
-/* IBM directory — classic coloured box arrangement */
-.ibm-directory { border-top: 0; display: grid; gap: 14px; }
-.ibm-directory-head { border-radius: 12px; border: 0; background: linear-gradient(90deg, hsl(215 60% 24%), hsl(215 45% 34%)); color: hsl(var(--primary-foreground)); font-weight: 600; letter-spacing: .02em; }
-.ibm-directory-row { --row: 215 60% 24%; border: 2px solid hsl(var(--row) / .25); border-left: 6px solid hsl(var(--row)); border-radius: 12px; background: linear-gradient(90deg, hsl(var(--row) / .07), hsl(var(--card)) 45%); box-shadow: 0 12px 26px -22px hsl(var(--row) / .7); transition: transform .25s ease, box-shadow .25s ease; }
+/* IBM directory — the programme-list model from the client's reference photo (4 November 2026):
+   one continuous navy header bar, then each programme as its own floating card carrying a solid
+   left accent bar, a faint tinted gradient pooling to the left, a thin matching outline and a
+   right-aligned "View Programme" action in the same accent hue. */
+.ibm-directory { border-top: 0; display: grid; gap: 13px; }
+.ibm-directory-head { border-radius: 12px; border: 0; padding: 17px 26px; background: linear-gradient(90deg, hsl(215 60% 24%), hsl(215 45% 34%)); color: hsl(var(--primary-foreground)); font-size: 13px; font-weight: 600; letter-spacing: .02em; }
+.ibm-directory-row { --row: 215 60% 24%; border: 1px solid hsl(var(--row) / .22); border-left: 5px solid hsl(var(--row)); border-radius: 13px; padding: 22px 26px; background: linear-gradient(115deg, hsl(var(--row) / .08), hsl(var(--card)) 52%); box-shadow: 0 10px 22px -18px hsl(var(--row) / .6); transition: transform .25s ease, box-shadow .25s ease; }
 .ibm-directory-row:nth-of-type(4n+2) { --row: 152 45% 24%; }
 .ibm-directory-row:nth-of-type(4n+3) { --row: 350 55% 30%; }
 .ibm-directory-row:nth-of-type(4n+4) { --row: 38 70% 32%; }
-.ibm-directory-row:hover { transform: translateY(-3px); background: linear-gradient(90deg, hsl(var(--row) / .12), hsl(var(--card)) 55%); box-shadow: 0 18px 32px -20px hsl(var(--row) / .75); }
+.ibm-directory-row:hover { transform: translateY(-3px); background: linear-gradient(115deg, hsl(var(--row) / .13), hsl(var(--card)) 58%); box-shadow: 0 18px 30px -18px hsl(var(--row) / .7); }
 .ibm-directory-row h3, .ibm-directory-row h3 a { color: hsl(var(--row)) !important; -webkit-text-fill-color: currentColor !important; background: none !important; font-weight: 600; }
-.ibm-directory-link { font-weight: 700; color: hsl(var(--row)) !important; }
+.ibm-directory-link { font-weight: 600; color: hsl(var(--row)) !important; justify-self: end; padding-right: 0; }
+.ibm-directory-link svg { transition: transform .25s ease; }
+.ibm-directory-row:hover .ibm-directory-link svg { transform: translateX(4px); }
+
+/* The record band is navy, so its heading must stay pale: the site-wide colourful-title rule
+   (index.css) paints every heading in main with a gradient text fill and out-specifies the plain
+   class rule, which would leave "Placement Records" dark on dark. */
+body:not(:has(.homepage-static)) main .svu-pl-band .svu-career-records-heading {
+  background: none; -webkit-background-clip: initial; background-clip: initial;
+  -webkit-text-fill-color: hsl(var(--primary-foreground)); color: hsl(var(--primary-foreground));
+}
 
 /* The featured-achievement panel is a pale sky-blue field, so its heading must
    read in navy. The site-wide colourful-title rule (index.css) paints every h3
@@ -833,23 +846,25 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
    readable measure so short copy stays centred in the card instead of drifting to one edge. */
 .network-slide--text { grid-template-columns: minmax(0, 1fr); }
 .network-slide--text .network-panel { max-width: 640px; margin-inline: auto; }
-/* Faculty directory: compact photo-free profile grid (client brief, 3 November 2026) — three
-   columns on wide desktops, two on tablets, one on phones; card height follows the copy, so no
-   card carries a fixed minimum height or a band of empty space below short text. */
+/* Faculty directory (client brief, 3 November 2026; Nexora profile-card model, 4 November 2026):
+   each person sits in a white card led by a tinted tile carrying their initials — text only,
+   never a photo or placeholder artwork. Four columns for the twelve mentors, three for the
+   smaller group; card height follows the copy, so no card carries a band of empty space. */
 .fd { margin-top: 32px; font-family: "Google Sans", sans-serif; color: hsl(var(--primary)); }
-.fd-title { font-size: 23px; font-weight: 500; margin-bottom: 16px; }
-.fd .fd-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: start; list-style: none; margin: 0; padding: 0; }
-.fd-cell { background: hsl(var(--background)); border: 1px solid hsl(var(--academic-edge)); border-radius: 8px; padding: 19px; }
-.fd .fd-name { font-size: 16px; font-weight: 700; color: hsl(var(--primary)); }
+.fd-title { font-size: 23px; font-weight: 700; letter-spacing: -.02em; color: hsl(var(--navy-900)); margin-bottom: 16px; }
+.fd .fd-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; align-items: start; list-style: none; margin: 0; padding: 0; }
+.fd .fd-grid[data-cols="4"] { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.fd-cell { background: hsl(var(--card)); border: 1px solid hsl(205 35% 89%); border-radius: 18px; padding: 24px; box-shadow: 0 16px 34px -30px hsl(var(--navy-900) / .6); }
+.fd-mark { display: grid; place-items: center; width: 46px; height: 46px; margin-bottom: 16px; border-radius: 14px; background: hsl(205 92% 96%); border: 1px solid hsl(205 60% 88%); color: hsl(var(--connection-blue)); font-size: 15px; font-weight: 700; letter-spacing: .03em; }
+.fd .fd-name { font-size: 17px; font-weight: 700; color: hsl(var(--navy-900)); }
 .fd .fd-role { font-size: 12.5px; font-weight: 400; line-height: 1.45; color: hsl(var(--muted-foreground)); margin-top: 3px; }
 .fd .fd-desc { font-size: 14px; line-height: 1.6; color: hsl(var(--primary) / .82); margin-top: 10px; }
 
-@media (max-width: 1023px) { .fd .fd-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 639px) { .fd .fd-grid { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 1023px) { .fd .fd-grid, .fd .fd-grid[data-cols="4"] { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 639px) { .fd .fd-grid, .fd .fd-grid[data-cols="4"] { grid-template-columns: minmax(0, 1fr); } }
 .fd.fd-page { margin-top: 48px; }
-.fd.fd-page .fd-title { font-size: 24px; margin-bottom: 6px; }
+.fd.fd-page .fd-title { font-size: clamp(24px, 2.6vw, 32px); margin-bottom: 6px; }
 .fd .fd-intro { font-size: 15px; line-height: 1.7; color: hsl(var(--muted-foreground)); margin: 0 0 20px; max-width: 70ch; }
-.fd.fd-page .fd-cell { border-top: 3px solid hsl(var(--primary)); }
 .svu-faculty-callout { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-top: 20px; padding: 18px 20px; border: 1px solid hsl(var(--academic-edge)); border-radius: 8px; }
 .svu-faculty-callout p { margin: 0; }
 
@@ -1094,3 +1109,51 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 .programme-mono .programme-actions { background: hsl(var(--card)); border: 1px solid hsl(var(--navy-900) / .9); border-radius: 22px; box-shadow: none; }
 .programme-mono .cta-enquire { background: hsl(var(--card)); color: hsl(var(--navy-900)); border: 1.5px solid hsl(var(--navy-900)); border-radius: 999px; box-shadow: none; background-image: none; }
 .programme-mono .cta-enquire:hover { background: hsl(var(--navy-900)); color: hsl(var(--card)); }
+
+/* Placements — Archbook landing-page model (client, 4 November 2026): a wash hero with an
+   uppercase headline and two buttons, a copy/artwork split, a navy record band and the records
+   as a three-up card row. Approved wording and all eleven records are unchanged. */
+.svu-career-records--archbook { display: block; }
+.svu-career-records--archbook .svu-career-title-card { position: static; top: auto; padding: 34px 34px 36px; border: 1px solid hsl(205 45% 90%); border-radius: 22px; background: linear-gradient(180deg, hsl(205 92% 97%), hsl(var(--card))); }
+.svu-career-records--archbook .svu-career-title-card > h1, .svu-career-records--archbook .svu-career-title-card > h2 { font-weight: 700; font-size: clamp(30px, 4.8vw, 58px); line-height: 1.04; letter-spacing: .012em; text-transform: uppercase; color: hsl(var(--navy-900)); max-width: 18ch; margin: 0; }
+.svu-career-records--archbook .svu-career-subtitle { margin: 16px 0 0; max-width: 62ch; font-size: 16px; font-weight: 400; font-style: normal; letter-spacing: 0; text-transform: none; color: hsl(var(--muted-foreground)); }
+.svu-career-records--archbook .svu-career-content-card { margin-top: 28px; padding: 0; border: 0; border-radius: 0; background: none; }
+.svu-pl-split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .82fr); gap: 34px; align-items: center; padding: 30px 0 34px; border-bottom: 1px solid hsl(var(--navy-900) / .14); }
+.svu-pl-copy p { margin: 0; max-width: 58ch; font-size: 15px; line-height: 1.85; color: hsl(var(--muted-foreground)); }
+.svu-pl-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 20px; padding-bottom: 5px; font-size: 12px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: hsl(var(--navy-900)); border-bottom: 1px solid hsl(var(--navy-900) / .32); }
+.svu-pl-link:hover { color: hsl(var(--connection-blue)); border-color: hsl(var(--connection-blue)); }
+.svu-pl-art { margin: 0; padding: 16px; border: 1px solid hsl(205 35% 89%); border-radius: 18px; background: hsl(var(--card)); }
+.svu-pl-art img { display: block; width: 100%; height: auto; }
+.svu-pl-band { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; margin-top: 32px; padding: 24px 30px; border-radius: 18px; background: hsl(var(--navy-900)); }
+.svu-career-records--archbook .svu-career-records-heading { margin: 0; padding: 0; border: 0; font-size: 13px; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: hsl(var(--primary-foreground)); }
+.svu-pl-band-link { display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border: 1px solid hsl(var(--primary-foreground) / .5); border-radius: 4px; font-size: 12px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: hsl(var(--primary-foreground)); }
+.svu-pl-band-link:hover { background: hsl(var(--primary-foreground) / .12); }
+.svu-pl-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; margin: 26px 0 0; padding: 0; list-style: none; }
+.svu-pl-card { position: relative; padding: 26px 24px 24px; border: 1px solid hsl(205 35% 89%); border-top: 3px solid hsl(var(--navy-900)); border-radius: 6px; background: hsl(var(--card)); box-shadow: 0 18px 36px -32px hsl(var(--navy-900) / .7); transition: box-shadow 320ms ease; }
+.svu-pl-card:hover { transform: none; background: hsl(var(--card)); box-shadow: 0 26px 46px -30px hsl(var(--navy-900) / .8); }
+.svu-pl-mark { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 12px; background: hsl(208 90% 96%); color: hsl(var(--connection-blue)); font-size: 15px; font-weight: 700; letter-spacing: .04em; }
+.svu-pl-card h3 { margin: 16px 0 0; font-size: 19px; font-weight: 700; letter-spacing: -.01em; line-height: 1.3; color: hsl(var(--navy-900)); }
+.svu-pl-card .svu-outcome-role { margin: 6px 0 0; padding: 0; border: 0; display: block; font-size: 14px; font-weight: 500; color: hsl(var(--connection-blue)); }
+.svu-pl-card .svu-outcome-org { display: block; margin: 16px 0 0; padding-top: 13px; border-top: 1px solid hsl(var(--navy-900) / .12); font-size: 13.5px; line-height: 1.6; color: hsl(var(--muted-foreground)); }
+.svu-pl-card .svu-outcome-batch { margin: 9px 0 0; padding: 0; border: 0; background: none; color: hsl(var(--muted-foreground) / .85); font-size: 11.5px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; font-variant-numeric: tabular-nums; }
+.svu-pl-card .svu-outcome-batch::before { display: none; }
+@media (max-width: 1023px) { .svu-pl-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 880px) { .svu-pl-split { grid-template-columns: minmax(0, 1fr); gap: 22px; } }
+@media (max-width: 639px) { .svu-pl-cards { grid-template-columns: minmax(0, 1fr); } .svu-career-records--archbook .svu-career-title-card { padding: 24px 20px 26px; } .svu-pl-band { padding: 20px 22px; } }
+
+/* Faculty opening — Nexora model (client, 4 November 2026): a soft wash band carrying a pill
+   badge, a heavy headline with one blue phrase, the approved introduction and two buttons:
+   solid navy and plain outlined. */
+.svu-faculty-hero { background: linear-gradient(180deg, hsl(205 92% 97%), hsl(var(--card))); border: 1px solid hsl(205 45% 90%); border-radius: 22px; padding: 34px 34px 36px; }
+.svu-hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border: 1px solid hsl(205 55% 85%); border-radius: 999px; background: hsl(var(--card)); font-size: 11px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: hsl(var(--connection-blue)); }
+.svu-hero-badge i { width: 6px; height: 6px; border-radius: 999px; background: hsl(var(--connection-blue)); }
+.svu-pages .svu-faculty-hero h1 { max-width: 20ch; margin-top: 18px; font-size: clamp(30px, 4.4vw, 52px); font-weight: 700; letter-spacing: -.03em; line-height: 1.08; color: hsl(var(--navy-900)); }
+.svu-hero-accent { color: hsl(var(--connection-blue)); }
+.svu-pages .svu-faculty-hero .svu-lead { max-width: 68ch; margin-top: 16px; font-size: 16px; }
+.svu-hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+.svu-hero-primary, .svu-hero-secondary { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 10px; font-size: 14px; font-weight: 500; transition: background-color .3s ease, border-color .3s ease, color .3s ease; }
+.svu-hero-primary { background: hsl(var(--navy-900)); color: hsl(var(--primary-foreground)); }
+.svu-hero-primary:hover { background: hsl(var(--connection-blue)); }
+.svu-hero-secondary { background: hsl(var(--card)); border: 1px solid hsl(205 30% 84%); color: hsl(var(--navy-900)); }
+.svu-hero-secondary:hover { border-color: hsl(var(--navy-900)); }
+@media (max-width: 639px) { .svu-faculty-hero { padding: 24px 20px 26px; border-radius: 18px; } }

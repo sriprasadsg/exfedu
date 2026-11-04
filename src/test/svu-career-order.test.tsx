@@ -1,4 +1,5 @@
 import { render } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
 import { describe, expect, it } from "vitest";
 import SvuCareerRecords from "@/components/site/SvuCareerRecords";
 
@@ -13,7 +14,7 @@ const internshipOrder = [
 
 describe("SVU career records display order (client, 2 November 2026)", () => {
   it("shows placement cards batch-wise, then alphabetically", () => {
-    const { container } = render(<SvuCareerRecords kind="placements" />);
+    const { container } = render(<MemoryRouter><SvuCareerRecords kind="placements" /></MemoryRouter>);
     expect([...container.querySelectorAll(".svu-outcome h3")].map(h => h.textContent?.trim())).toEqual(placementOrder);
     expect([...container.querySelectorAll(".svu-outcome-batch")].map(b => b.textContent?.trim())).toEqual([
       ...Array(6).fill("Batch 2023–2025"), ...Array(5).fill("Batch 2024–2026"),
