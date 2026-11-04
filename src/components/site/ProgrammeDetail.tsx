@@ -2,15 +2,14 @@ import { SvuTabBar } from "./SvuPages";
 import { svuSectionPath } from "@/lib/programmeNavigation";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, ArrowRight, Clock3, Monitor, Download, Cpu, FlaskConical, Library, Sparkles, Users } from "lucide-react";
+import { ArrowLeft, ArrowRight, Clock3, Monitor, Download, Cpu, FlaskConical, Library, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
-import { academicResources, organisations, PENDING, type Programme } from "@/data/site";
+import { organisations, PENDING, type Programme } from "@/data/site";
 import { useProgrammeSeo } from "./ProgrammeDirectory";
 import { organisationPath } from "@/lib/programmeNavigation";
 import InstitutionBrochureForm from "@/components/site/InstitutionBrochureForm";
 import { programmeDetailSections, ibmProgrammeSections, svuProgrammeUsp } from "@/lib/programmeSections";
-import { SvuAcademicResources } from "./SvuReviewedContent";
 
 const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { programme: Programme; organisationOverview?: boolean }) => {
   const org = organisations[p.organisation];
