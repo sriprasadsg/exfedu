@@ -1,3 +1,5 @@
+- [ ] Reframe the Student Internships introduction and Generative AI update as two aligned sections, preserving approved text and records.
+- [ ] Restyle Placements after the Framo logistics reference https://www.okler.net/previews/framo/1.0.0/demo-logistics-1.html; retain all approved outcomes and links, verify desktop and phone.
 - [x] IBM programme column (client, 4 Nov 2026): presented on the photo model — navy header bar, floating card rows with left accent bars, tinted gradients, coloured programme names and right-aligned "View Programme" actions
 - [x] Placements page (client, 4 Nov 2026): rebuilt on the Archbook model (demo 181699) — wash hero with two buttons, copy/artwork split, navy record band, eleven records as cards
 - [ ] Student Innovations & Internships page (client, 4 Nov 2026): rebuild on the TemplateMonster consulting template https://www.templatemonster.com/free-templates/consulting-website-template-51691.html, keeping all approved records, the internship update and the achievement stories
