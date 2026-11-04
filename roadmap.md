@@ -1,3 +1,5 @@
+- [ ] Student Innovations & Internships page (client, 4 Nov 2026): rebuild on the TemplateMonster consulting template https://www.templatemonster.com/free-templates/consulting-website-template-51691.html, keeping all approved records, the internship update and the achievement stories
+- [ ] Faculty & Mentors page (client, 4 Nov 2026): rebuild on the Nexora model https://preview.themewagon.com/nexora/ — wash opening with pill badge, heavy headline with one blue phrase and two buttons, then white profile cards with a tinted initials tile
 - [x] SVU page (client, 4 Nov 2026): "Applied" dropped and the section retitled "AI, Gen AI & Data Science" with "Data Science" held on one line; 189 tests pass, desktop/phone verified
 - [x] SVU programmes block (client, 4 Nov 2026): title renamed to "Explore Programmes", "Sri Venkateswara University." held on one line, colourful per-category icon chips (blue/teal/amber), programme rows tilt forward on hover; 189 tests pass, desktop/phone verified
 
