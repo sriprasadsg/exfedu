@@ -680,7 +680,14 @@
 .ibm-directory-link svg { transition: transform .25s ease; }
 .ibm-directory-row:hover .ibm-directory-link svg { transform: translateX(4px); }
 
-/* The featured-achievement panel is a pale sky-blue field, so its heading must
+/* The record band is navy, so its heading must stay pale: the site-wide colourful-title rule
+   (index.css) paints every heading in main with a gradient text fill and out-specifies the plain
+   class rule, which would leave "Placement Records" dark on dark. */
+body:not(:has(.homepage-static)) main .svu-pl-band .svu-career-records-heading {
+  background: none; -webkit-background-clip: initial; background-clip: initial;
+  -webkit-text-fill-color: hsl(var(--primary-foreground)); color: hsl(var(--primary-foreground));
+}
+
    read in navy. The site-wide colourful-title rule (index.css) paints every h3
    in main with a gradient text fill, and it out-specifies the plain class rule,
    which would leave "Quantum Wave" tinted by the shared gradient. This selector
