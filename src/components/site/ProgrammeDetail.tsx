@@ -64,7 +64,7 @@ const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { progr
   );
 
   return (
-    <main className="programme-experience programme-mono">
+    <main className="programme-experience programme-enfold">
       {/* SVU programme pages (2 Nov 2026 brief): breadcrumb, then the section tabs,
           then the programme title and introduction. */}
       {isSvu && <div className="programme-crumb-band"><div className="container">{breadcrumb}</div></div>}
