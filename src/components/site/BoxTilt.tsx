@@ -4,11 +4,11 @@ import { useEffect } from "react";
 const SELECTOR = [
   '[class*="card"]', '[class*="-tile"]', '[class*="-item"]', '[class*="story"]',
   '.rounded-xl.border', '.rounded-2xl.border', '.rounded-lg.border',
-  '.svu-outcome', '.ibm-steps li', '.ibm-choice li', '.svu-career-table-wrap', '.svu-step', '.svu-area', '.svu-champion', '.svu-internship-update',
+  '.ibm-steps li', '.ibm-choice li', '.svu-step', '.svu-area', '.svu-champion',
 ].join(",");
 const EXCLUDE = "[class*='svu-story-'], .cap-card, .education-arm, header *, footer *, nav *, input, textarea, select, [role=dialog] *";
 /** Wider panels that still lift gently; the width guard otherwise protects page-wide layout shells. */
-const FULL_WIDTH = ".svu-champion, .svu-internship-update, .svu-career-table-wrap";
+const FULL_WIDTH = ".svu-champion, .svu-career-content-card";
 
 /** Nearest card-like ancestor allowed to move. Excluded inner parts (a story card's text panel,
  *  for example) are stepped over, so the whole block lifts wherever the pointer touches it

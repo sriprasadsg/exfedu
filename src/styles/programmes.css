@@ -248,8 +248,8 @@
 @media (prefers-reduced-motion: reduce) { .svu-overview-intro { animation: none; } }
 
 .svu-career-records { color: hsl(var(--muted-foreground)); }
-.svu-career-records > h1, .svu-outcome-part .svu-career-records > h2:first-child { font-size: 22px; line-height: 1.4; font-weight: 500; color: hsl(var(--navy-900)); }
-.svu-career-records > p { font-size: 14px; line-height: 1.8; margin-top: 14px; }
+.svu-career-title-card > h1, .svu-career-title-card > h2 { font-size: 22px; line-height: 1.4; font-weight: 500; color: hsl(var(--navy-900)); }
+.svu-career-content-card > p { font-size: 14px; line-height: 1.8; margin-top: 14px; }
 .svu-career-records .svu-career-subtitle { font-style: italic; margin-top: 8px; }
 .svu-career-filters { display: grid; grid-template-columns: minmax(0, 1fr) 180px 40px; align-items: end; gap: 12px; margin-top: 24px; }
 .svu-career-filters label { min-width: 0; }
@@ -535,9 +535,17 @@
 /* SVU Internships introduction (client brief, 2 November 2026): white page, navy
    heading, blue-grey reading text and a restrained royal-blue accent. The
    introduction, the search controls and the records table share one left edge. */
-.svu-career-records { background: hsl(var(--background)); color: hsl(215 30% 38%); }
+.svu-career-records { color: hsl(215 30% 38%); }
 .svu-career-records .svu-career-subtitle { color: hsl(var(--navy-royal)); }
 .svu-career-records .svu-career-count { color: hsl(var(--navy-royal)); }
+/* Student internships and placements divide into two partitions (client, 4 November 2026): a narrower
+   title panel beside a longer content panel. Phones stack them in reading order, nothing is clipped. */
+.svu-career-records { display: grid; grid-template-columns: minmax(0, 34fr) minmax(0, 66fr); gap: 24px; align-items: start; }
+.svu-career-title-card { min-width: 0; padding: 24px 22px; border: 1px solid hsl(205 32% 87%); border-radius: 14px; background: hsl(205 92% 97%); }
+.svu-career-title-card .svu-career-subtitle { margin-top: 10px; }
+.svu-career-content-card { min-width: 0; padding: 26px 28px 30px; border: 1px solid hsl(205 32% 87%); border-radius: 14px; background: hsl(var(--card)); }
+.svu-career-content-card > p:first-child { margin-top: 0; }
+@media (max-width: 880px) { .svu-career-records { grid-template-columns: minmax(0, 1fr); gap: 16px; } .svu-career-content-card { padding: 20px 18px 24px; } }
 .svu-career-filters { margin-top: 28px; }
 /* Nothing sits against the panel wall (client, 2 November 2026): the first column starts clear
    of the border so the names line up exactly under the header icon, and the last column ends
