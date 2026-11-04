@@ -1396,7 +1396,7 @@ html body .cap-diagram .cap-art {
 .about-editorial-subtitle { font-size: .95rem; line-height: 1.55; }
 
 @media (prefers-reduced-motion: reduce) {
-  .skillshone-logo-box, .footer-featured { animation: none; }
+  .skillshone-logo-box { animation: none; }
 }
 
 /* ===== SkillShone editorial layout (Arcado reference) ===== */
