@@ -40,7 +40,7 @@ const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { progr
   const sections = p.organisation === "IBM" ? ibmProgrammeSections(p) : programmeDetailSections(p);
   // SVU programme pages carry no brochure at all (client brief, 2 November 2026);
   // the programme enquiry stays available on its own.
-  const offersBrochure = p.organisation !== "SVU";
+  const offersBrochure = p.organisation !== "SVU" || !!p.brochure;
   const openBrochure = () => {
     setBrochureOpen(true);
     setFormComplete(false);
@@ -205,12 +205,6 @@ const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { progr
               </Button>
               {!p.brochure && <p>Approved brochure required. No download is available yet.</p>}
             </>
-          )}
-          {p.source && (
-            <a href={p.source} target="_blank" rel="noopener noreferrer">
-              Programme source
-              <ArrowRight size={14} />
-            </a>
           )}
           <Link to={backUrl}>
             <ArrowLeft size={16} />
