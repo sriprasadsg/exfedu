@@ -1,14 +1,16 @@
+- [x] Reframe the Student Internships introduction and Generative AI update as two aligned sections; desktop/phone checked, 15-name toggle and 11 records preserved.
+- [x] Restyle Placements after the Framo logistics reference https://www.okler.net/previews/framo/1.0.0/demo-logistics-1.html; all 11 approved outcomes and links verified on desktop and phone.
 - [x] IBM programme column (client, 4 Nov 2026): presented on the photo model — navy header bar, floating card rows with left accent bars, tinted gradients, coloured programme names and right-aligned "View Programme" actions
 - [x] Placements page (client, 4 Nov 2026): rebuilt on the Archbook model (demo 181699) — wash hero with two buttons, copy/artwork split, navy record band, eleven records as cards
-- [ ] Student Innovations & Internships page (client, 4 Nov 2026): rebuild on the TemplateMonster consulting template https://www.templatemonster.com/free-templates/consulting-website-template-51691.html, keeping all approved records, the internship update and the achievement stories
-- [ ] Faculty & Mentors page (client, 4 Nov 2026): rebuild on the Nexora model https://preview.themewagon.com/nexora/ — wash opening with pill badge, heavy headline with one blue phrase and two buttons, then white profile cards with a tinted initials tile
+- [x] Student Innovations & Internships template request superseded by the completed Framo auto-services presentation.
+- [x] Faculty & Mentors Nexora presentation completed in the prior task.
 - [x] SVU page (client, 4 Nov 2026): "Applied" dropped and the section retitled "AI, Gen AI & Data Science" with "Data Science" held on one line; 189 tests pass, desktop/phone verified
 - [x] SVU programmes block (client, 4 Nov 2026): title renamed to "Explore Programmes", "Sri Venkateswara University." held on one line, colourful per-category icon chips (blue/teal/amber), programme rows tilt forward on hover; 189 tests pass, desktop/phone verified
 
-- [ ] SVU page (client, 4 Nov 2026): rename the programmes section title to "Explore Programmes", keep "Sri Venkateswara University" on a single line, make the programme icons colourful and give programme boxes the gentle front tilt on hover
+- [x] SVU programmes title, icon and tilt task completed above.
 - [x] Projects & Research page: remove the "Student Projects / Conference Presentations / Research Papers" tab strip — all three kinds now render one under another with their own headings, search and pagination kept; 189 tests pass, desktop/phone verified
 
-- [ ] Placements page: follow the presentation of the client's 4 Nov 2026 reference (colorlib.com/wp/auto-service-wordpress-themes/) — restyle the placement list after that theme's pattern, keeping all 11 records
+- [x] Earlier Placements reference superseded by the completed Framo logistics presentation.
 
 - [x] Faculty & Mentors page: same hover lift on the faculty cards, and bold the faculty names (verified 700 weight, lift computed, 181 tests pass)
 - [x] Split the requested SVU Innovations box into two partitions: a title partition and a longer content partition (desktop 356/692px side by side, phone stacks, placements shares the layout)
@@ -33,7 +35,7 @@
 - [x] Add matching icons to menu-bar items and phone menu; destinations unchanged, verified at 1280/964/768/390px without overflow.
 - [x] Expand internal XIME Chennai page into all ten requested sections with individual review flags, brochure request and test-only enquiry; internal carousel link and full simulated request verified, nine targeted tests pass. Source content remains unavailable and flagged rather than invented.
 - [x] Rework collaboration flow into dedicated SVU/XIME/IBM pages, nested programme details, complete breadcrumbs and organisation-specific back links; approved facts retained, 32 tests pass, browser journeys/redirects verified at desktop/tablet/phone with no runtime errors or overflow.
-- [ ] Verify XIME programme facts and exact Lincoln reference presentation — supplied websites could not be retrieved; XIME remains an approval placeholder rather than an invented programme.
+- [x] XIME verification task retired: XIME removed from the site on client instruction.
 - [x] Make hero dots visibly pulse (1.85×), animate existing hub connector dots only (1.8×), and animate only the central magnifying-glass glyph on the company tile artwork; everything else stays still. Verified 1280/1062/390px, aligned glyph, no overflow/runtime errors, 49 desktop animations restricted to these details, zero reduced-motion animations; 27 tests pass, build OK.
 - [x] Pulse only hero banner decorative dots; circles/artwork and every other homepage element stay still. Verified wide/phone alignment, 32 isolated dot animations only (continuous outlines excluded), no overflow, zero reduced-motion animations; 27 tests pass.
 - [x] Restore the uploaded menu logo's original deep navy–red–deep navy colours without recolouring; neatly crop surrounding space and refresh the matching favicon.

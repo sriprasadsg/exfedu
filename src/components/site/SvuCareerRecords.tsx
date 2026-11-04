@@ -43,10 +43,11 @@ export default function SvuCareerRecords({ kind, embedded = false }: { kind: "pl
   const title = placements ? "Student Placements" : "Student Internships";
   const Title = embedded ? "h2" : "h1";
   const Sub = embedded ? "h3" : "h2";
-  return <div className={placements ? "svu-career-records svu-career-records--archbook" : "svu-career-records svu-career-records--upskill"}>
+  return <div className={placements ? "svu-career-records svu-career-records--archbook svu-career-records--logistics" : "svu-career-records svu-career-records--upskill"}>
     <div className="svu-career-title-card">
       <Title>{title}</Title>
       <p className="svu-career-subtitle">{placements ? "Career outcomes in data science, artificial intelligence and technology." : svuInternshipIntroduction.subtitle}</p>
+      {!placements && svuInternshipIntroduction.paragraphs.map(text => <p className="svu-intern-introduction" key={text}>{text}</p>)}
       {placements && <div className="svu-hero-actions">
         <Link to="/contact" className="svu-hero-primary">Enquire Now <ArrowRight size={16} aria-hidden="true" /></Link>
         <Link to={`${svuPagePath("innovations")}#internships`} className="svu-hero-secondary">View Internships</Link>
@@ -60,7 +61,7 @@ export default function SvuCareerRecords({ kind, embedded = false }: { kind: "pl
       </div>
       <figure className="svu-pl-art"><img src={svuLaptopDashboard} alt="Laptop showing a data-analysis dashboard, the artwork used on the SVU collaboration banner" /></figure>
     </div>
-      : svuInternshipIntroduction.paragraphs.map(text => <p key={text}>{text}</p>)}
+      : null}
     {!placements && <SvuInternshipUpdate />}
     {placements
       ? <div className="svu-pl-band"><Sub className="svu-career-records-heading">Placement Records</Sub><Link to="/contact" className="svu-pl-band-link">Enquire Now <ArrowRight size={15} aria-hidden="true" /></Link></div>
