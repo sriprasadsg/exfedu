@@ -1237,3 +1237,23 @@ body:not(:has(.homepage-static)) main .svu-career-records--logistics .svu-career
   .svu-career-records--logistics .svu-pl-band { margin-top: 28px; padding: 24px 22px; }
 }
 @media (prefers-reduced-motion: reduce) { .svu-career-records--logistics .svu-pl-card { transition: none; } .svu-career-records--logistics .svu-pl-card:hover { transform: none; } }
+
+/* ===== SVU conference proceedings board (client, 4 November 2026) =====
+   Conference work reads differently from the student-project list: presentations group under
+   the event they were given at, each event a navy band over pale paper tiles carrying their
+   own theme hue. Tiles lift gently; nothing moves under reduced motion. */
+.svu-proceedings { display: grid; gap: 22px; }
+.svu-proceeding { overflow: hidden; border: 1px solid hsl(var(--academic-edge)); border-radius: 16px; background: hsl(var(--card)); box-shadow: 0 20px 40px -34px hsl(var(--navy-900) / .6); }
+.svu-proceeding-head { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; padding: 14px 20px; background: linear-gradient(100deg, hsl(var(--navy-900)), hsl(var(--connection-blue))); color: hsl(var(--primary-foreground)); }
+.svu-proceeding-pin { display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 9px; background: hsl(var(--primary-foreground) / .16); color: hsl(var(--primary-foreground)); }
+.svu-proceeding-event { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+.svu-proceeding-place { font-size: 12.5px; letter-spacing: .04em; color: hsl(205 90% 84%); }
+.svu-proceeding-list { list-style: none; margin: 0; padding: 16px 20px 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 12px; background: hsl(var(--academic-surface)); }
+.svu-proceeding-paper { display: flex; align-items: flex-start; gap: 13px; padding: 15px 16px; border-left: 3px solid hsl(var(--theme-hue) 62% 52%); border-radius: 12px; background: hsl(var(--card)); transition: transform 200ms ease, box-shadow 200ms ease; }
+.svu-proceeding-paper:hover { transform: translateY(-2px); box-shadow: 0 16px 28px -22px hsl(var(--theme-hue) 62% 40% / .8); }
+.svu-proceeding-body { min-width: 0; }
+.svu-proceeding-title { margin: 0; font-size: 15.5px; font-weight: 500; line-height: 1.55; color: hsl(var(--navy-900)); overflow-wrap: anywhere; }
+.svu-proceeding-by { margin-top: 7px; font-size: 13px; color: hsl(var(--muted-foreground)); }
+.svu-proceeding-by b { font-weight: 500; color: hsl(var(--navy-800)); }
+@media (max-width: 767px) { .svu-proceeding-head { padding: 12px 15px; } .svu-proceeding-list { padding: 12px 14px 16px; } .svu-proceeding-paper { padding: 13px 14px; } }
+@media (prefers-reduced-motion: reduce) { .svu-proceeding-paper { transition: none; } .svu-proceeding-paper:hover { transform: none; box-shadow: none; } }

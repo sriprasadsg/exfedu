@@ -195,7 +195,7 @@ const SvuResearch = () => {
     </section>
     <section className="svu-work-part" id="svu-conference-presentations">
       <h3>Conference Presentations</h3>
-      <div className="svu-project-list">{svuConferencePapers.map(item => <article key={item.student}><ResearchThemeIcon title={item.title} /><div><span className="programme-org">{item.conference}</span><h3>{item.title}</h3><p>{item.student}</p></div></article>)}</div>
+      <SvuConferenceProceedings />
     </section>
     <section className="svu-work-part" id="svu-research-papers">
       <h3>Research Papers</h3>
