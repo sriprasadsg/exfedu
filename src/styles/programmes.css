@@ -400,10 +400,11 @@
 .svu-directory-name a:hover { color: hsl(var(--connection-blue)); }
 .svu-directory-name small { display: block; font-size: 12px; margin-top: 2px; }
 .svu-directory-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; color: hsl(var(--connection-blue)); }
-.svu-research-tabs { margin-top: -24px; }
-.svu-research-tabs [role="tablist"] { height: auto; flex-wrap: wrap; justify-content: flex-start; gap: 4px; padding: 5px; border: 2px solid hsl(var(--connection-blue) / .26); border-radius: 15px; background: hsl(var(--connection-blue) / .1); }
-.svu-research-tabs [role="tab"] { font-weight: 500; color: hsl(var(--connection-blue)); }
-.svu-research-tabs [role="tab"][data-state="active"] { color: hsl(var(--navy-900)); }
+/* Projects & Research parts sit one under another (tab strip removed 4 Nov 2026) */
+.svu-work-part { padding-top: 44px; scroll-margin-top: 150px; }
+.svu-work-part > h3 { font-size: 20px; font-weight: 500; letter-spacing: -.01em; color: hsl(var(--connection-blue)); margin-bottom: 16px; }
+.svu-work-part .svu-project-search { margin-bottom: 14px; }
+.svu-work-part .svu-result-count { margin-bottom: 4px; }
 .svu-project-list h3 { font-size: 16px; font-weight: 500; line-height: 1.5; color: hsl(var(--navy-900)); overflow-wrap: anywhere; }
 .svu-project-list article.is-target { background: hsl(var(--connection-blue) / .05); }
 .svu-pagination { display: flex; align-items: center; gap: 16px; margin-top: 20px; font-size: 13px; color: hsl(var(--muted-foreground)); }
@@ -1010,7 +1011,6 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 .svu-u8-band p { margin: 0; font-size: 16px; font-weight: 500; letter-spacing: .02em; color: hsl(var(--primary-foreground)); }
 .svu-u8-head { padding: 56px 0 8px; text-align: center; scroll-margin-top: 140px; }
 .svu-u8-head h2 { font-size: clamp(24px, 2.6vw, 32px); font-weight: 400; color: hsl(var(--navy-900)); }
-.svu-u8-tabs [role="tablist"] { justify-content: center; }
 @media (max-width: 860px) { .svu-u8-hero { grid-template-columns: 1fr; gap: 28px; } }
 /* SVU Overview after the Creative Agency reference (4 Nov 2026) */
 .svu-ca-hero { position: relative; padding: 36px 0 56px; }
