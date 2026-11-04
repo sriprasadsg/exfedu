@@ -963,3 +963,28 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
   .svu-growth { padding: 22px 18px 4px; border-radius: 14px; }
   .svu-growth-part { padding: 20px 0; }
 }
+/* Placements after the SEO Rocket reference (4 Nov 2026): centred section head, three-up centred feature cards */
+.svu-career-records--rocket { display: block; }
+.svu-career-records--rocket .svu-career-title-card { position: static; margin: 0; padding: 8px 0 18px; border: 0; border-radius: 0; background: none; text-align: center; }
+.svu-rocket-mark { display: block; width: 10px; height: 10px; margin: 0 auto 14px; border-left: 2px solid hsl(var(--connection-blue)); border-bottom: 2px solid hsl(var(--connection-blue)); transform: rotate(-45deg); }
+.svu-career-records--rocket .svu-career-title-card > h1, .svu-career-records--rocket .svu-career-title-card > h2 { margin: 0; font-size: clamp(28px, 3.4vw, 40px); font-weight: 500; letter-spacing: -.01em; color: hsl(var(--navy-900)); }
+.svu-career-records--rocket .svu-career-subtitle { margin: 10px 0 0; font-size: 12px; font-style: normal; letter-spacing: .12em; text-transform: uppercase; color: hsl(var(--muted-foreground)); }
+.svu-career-records--rocket .svu-career-content-card { margin: 0; padding: 0; border: 0; border-radius: 0; background: none; }
+.svu-career-records--rocket .svu-career-content-card > p { max-width: 720px; margin: 0 auto; text-align: center; }
+.svu-career-records--rocket .svu-career-records-heading { margin: 44px 0 26px; text-align: center; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: hsl(var(--navy-900)); }
+.svu-rocket { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; padding: 0; list-style: none; }
+.svu-rocket .svu-offer { display: flex; flex-direction: column; align-items: center; padding: 34px 24px 28px; text-align: center; border: 1px solid hsl(205 30% 90%); border-radius: 14px; background: hsl(var(--background)); transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease; }
+.svu-rocket .svu-offer:hover { transform: translateY(-4px); border-color: hsl(205 60% 82%); box-shadow: 0 16px 34px -22px hsl(var(--navy-900) / .4); }
+.svu-rocket-icon { display: grid; place-items: center; width: 64px; height: 64px; margin-bottom: 18px; border-radius: 999px; border: 1px solid hsl(var(--connection-blue) / .45); color: hsl(var(--connection-blue)); transition: background .3s ease, color .3s ease; }
+.svu-rocket .svu-offer:hover .svu-rocket-icon { background: hsl(var(--connection-blue)); color: hsl(var(--primary-foreground)); }
+.svu-rocket .svu-offer-head { padding: 0; background: none; color: hsl(var(--navy-900)); }
+.svu-rocket .svu-offer-head .svu-outcome-org { font-size: 13px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; }
+.svu-rocket .svu-offer-fields { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 10px 0 0; width: 100%; }
+.svu-rocket .svu-offer-fields > div { display: block; }
+.svu-rocket .svu-offer-fields i, .svu-rocket .svu-offer-fields dt { display: none; }
+.svu-rocket .svu-offer-fields h3 { font-size: 17px; font-weight: 500; }
+.svu-rocket .svu-offer-fields dd.svu-outcome-role { font-size: 14px; color: hsl(var(--muted-foreground)); }
+.svu-rocket .svu-offer-fields > div:last-child { margin-top: 14px; padding-top: 12px; width: 100%; border-top: 1px dotted hsl(205 30% 82%); }
+.svu-rocket .svu-offer-batch { font-size: 12px; letter-spacing: .08em; color: hsl(var(--navy-900) / .7); }
+@media (max-width: 900px) { .svu-rocket { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; } }
+@media (max-width: 560px) { .svu-rocket { grid-template-columns: 1fr; } }
