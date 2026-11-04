@@ -62,7 +62,7 @@ export default function SvuCareerRecords({ kind, embedded = false }: { kind: "pl
     </li>)}</ul> : <ul className="svu-intern-cards" aria-label={title}>{shown.map(record => <li key={record.student} className="svu-intern-card">
       <span className="svu-intern-org"><Building2 size={13} aria-hidden="true" />{record.organisation}</span>
       <h4>{record.student}</h4>
-      <p className="svu-intern-meta"><CalendarRange size={14} aria-hidden="true" /><span className="sr-only">Batch </span>{record.batch}</p>
+      <p className="svu-intern-meta" data-label="Batch"><CalendarRange size={14} aria-hidden="true" /><span className="sr-only">Batch </span>{record.batch}</p>
     </li>)}</ul>}
     </div>
   </div>;
