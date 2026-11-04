@@ -340,10 +340,6 @@
 
 /* SVU five-page layout (2 Nov 2026 brief): open, centred, no sidebar */
 .svu-container { width: 100%; max-width: 1120px; margin-inline: auto; padding-inline: 24px; }
-/* Colourful back button at the top of every collaboration partner page
-   (client brief, 2 November 2026). Its edge runs blue → teal → violet, so the
-   SkillShone navy/red pairing is deliberately kept out of it. */
-}
 .svu-breadcrumb { padding-top: 28px; }
 .svu-breadcrumb a { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: hsl(var(--connection-blue)); }
 .svu-breadcrumb a:hover { text-decoration: underline; }
