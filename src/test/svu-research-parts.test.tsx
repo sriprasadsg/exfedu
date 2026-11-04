@@ -29,7 +29,7 @@ describe("Projects & Research renders without the tab strip", () => {
 
   it("keeps every conference presentation and research paper on the page", () => {
     const { container } = openResearch();
-    expect(container.querySelectorAll("#svu-conference-presentations .svu-project-list article")).toHaveLength(svuConferencePapers.length);
+    expect(container.querySelectorAll("#svu-conference-presentations .svu-proceeding-paper")).toHaveLength(svuConferencePapers.length);
     expect(container.querySelectorAll("#svu-research-papers .svu-publications a")).toHaveLength(svuPublications.length);
   });
 
