@@ -1,7 +1,7 @@
 import ResearchThemeIcon from "./ResearchThemeIcon";
 import { useEffect, useMemo, useState, type CSSProperties } from "react";
 import { Link, Navigate, useLocation } from "react-router-dom";
-import { ArrowRight, ArrowUpRight, BookOpen, Lightbulb, Rocket, Sparkles, Code2, Presentation, Search, Trophy, GraduationCap, ScrollText } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BookOpen, Lightbulb, Rocket, Sparkles, Code2, Presentation, Search, FolderKanban, FileText, Trophy, GraduationCap, ScrollText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
