@@ -664,16 +664,21 @@
 @media (prefers-reduced-motion: reduce) { .ibm-page .programme-section-icon, .ibm-learner::before { animation: none; } }
 @media (max-width: 760px) { .ibm-learner { padding: 24px 20px; } }
 
-/* IBM directory — classic coloured box arrangement */
-.ibm-directory { border-top: 0; display: grid; gap: 14px; }
-.ibm-directory-head { border-radius: 12px; border: 0; background: linear-gradient(90deg, hsl(215 60% 24%), hsl(215 45% 34%)); color: hsl(var(--primary-foreground)); font-weight: 600; letter-spacing: .02em; }
-.ibm-directory-row { --row: 215 60% 24%; border: 2px solid hsl(var(--row) / .25); border-left: 6px solid hsl(var(--row)); border-radius: 12px; background: linear-gradient(90deg, hsl(var(--row) / .07), hsl(var(--card)) 45%); box-shadow: 0 12px 26px -22px hsl(var(--row) / .7); transition: transform .25s ease, box-shadow .25s ease; }
+/* IBM directory — the programme-list model from the client's reference photo (4 November 2026):
+   one continuous navy header bar, then each programme as its own floating card carrying a solid
+   left accent bar, a faint tinted gradient pooling to the left, a thin matching outline and a
+   right-aligned "View Programme" action in the same accent hue. */
+.ibm-directory { border-top: 0; display: grid; gap: 13px; }
+.ibm-directory-head { border-radius: 12px; border: 0; padding: 17px 26px; background: linear-gradient(90deg, hsl(215 60% 24%), hsl(215 45% 34%)); color: hsl(var(--primary-foreground)); font-size: 13px; font-weight: 600; letter-spacing: .02em; }
+.ibm-directory-row { --row: 215 60% 24%; border: 1px solid hsl(var(--row) / .22); border-left: 5px solid hsl(var(--row)); border-radius: 13px; padding: 22px 26px; background: linear-gradient(115deg, hsl(var(--row) / .08), hsl(var(--card)) 52%); box-shadow: 0 10px 22px -18px hsl(var(--row) / .6); transition: transform .25s ease, box-shadow .25s ease; }
 .ibm-directory-row:nth-of-type(4n+2) { --row: 152 45% 24%; }
 .ibm-directory-row:nth-of-type(4n+3) { --row: 350 55% 30%; }
 .ibm-directory-row:nth-of-type(4n+4) { --row: 38 70% 32%; }
-.ibm-directory-row:hover { transform: translateY(-3px); background: linear-gradient(90deg, hsl(var(--row) / .12), hsl(var(--card)) 55%); box-shadow: 0 18px 32px -20px hsl(var(--row) / .75); }
+.ibm-directory-row:hover { transform: translateY(-3px); background: linear-gradient(115deg, hsl(var(--row) / .13), hsl(var(--card)) 58%); box-shadow: 0 18px 30px -18px hsl(var(--row) / .7); }
 .ibm-directory-row h3, .ibm-directory-row h3 a { color: hsl(var(--row)) !important; -webkit-text-fill-color: currentColor !important; background: none !important; font-weight: 600; }
-.ibm-directory-link { font-weight: 700; color: hsl(var(--row)) !important; }
+.ibm-directory-link { font-weight: 600; color: hsl(var(--row)) !important; justify-self: end; padding-right: 0; }
+.ibm-directory-link svg { transition: transform .25s ease; }
+.ibm-directory-row:hover .ibm-directory-link svg { transform: translateX(4px); }
 
 /* The featured-achievement panel is a pale sky-blue field, so its heading must
    read in navy. The site-wide colourful-title rule (index.css) paints every h3
