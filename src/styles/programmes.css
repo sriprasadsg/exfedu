@@ -1012,3 +1012,25 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 .svu-u8-head h2 { font-size: clamp(24px, 2.6vw, 32px); font-weight: 400; color: hsl(var(--navy-900)); }
 .svu-u8-tabs [role="tablist"] { justify-content: center; }
 @media (max-width: 860px) { .svu-u8-hero { grid-template-columns: 1fr; gap: 28px; } }
+/* SVU Overview after the Creative Agency reference (4 Nov 2026) */
+.svu-ca-hero { position: relative; padding: 36px 0 56px; }
+.svu-ca-hero h1 { max-width: 880px; font-size: clamp(34px, 4.6vw, 58px); line-height: 1.08; font-weight: 700; letter-spacing: -.03em; color: hsl(var(--navy-900)); }
+.svu-ca-hero .svu-lead { max-width: 720px; margin-top: 20px; }
+.svu-ca-dot { position: absolute; right: 22%; top: 36px; width: 44px; height: 44px; border-radius: 999px; background: hsl(var(--connection-blue) / .14); pointer-events: none; }
+.svu-ca-tri { position: absolute; right: 6%; top: 140px; width: 0; height: 0; border-left: 26px solid transparent; border-right: 26px solid transparent; border-top: 46px solid hsl(var(--connection-blue) / .18); transform: rotate(-18deg); pointer-events: none; }
+.svu-ca-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 26px; padding-bottom: 4px; font-size: 15px; font-weight: 500; color: hsl(var(--navy-900)); border-bottom: 3px solid hsl(var(--connection-blue)); transition: gap .25s ease; }
+.svu-ca-link:hover { gap: 12px; }
+.svu-ca > .svu-block h2 { font-size: clamp(26px, 3vw, 38px); font-weight: 700; letter-spacing: -.025em; line-height: 1.12; }
+.svu-ca .svu-areas { gap: 20px; }
+.svu-ca .svu-areas > .svu-area:nth-child(even) { transform: translateY(28px); }
+.svu-ca .svu-areas > .svu-area:nth-child(even):hover { transform: translateY(24px); }
+.svu-ca .svu-split { padding-bottom: 48px; }
+.svu-ca .svu-growth { margin-inline: calc(50% - 50vw); padding: 72px max(24px, calc(50vw - 560px)); border: 0; border-radius: 0; background: hsl(var(--navy-900)); color: hsl(var(--primary-foreground) / .82); }
+.svu-ca .svu-growth h2, .svu-ca .svu-growth h3 { color: hsl(var(--primary-foreground)) !important; background: none !important; -webkit-text-fill-color: hsl(var(--primary-foreground)) !important; }
+.svu-ca .svu-growth .svu-reading { color: hsl(var(--primary-foreground) / .78); }
+.svu-ca .svu-growth-part { border-color: hsl(var(--primary-foreground) / .16); }
+.svu-ca .svu-growth a:not(.cta-enquire) { color: hsl(var(--primary-foreground)); }
+.svu-ca .svu-growth .svu-actions a:not(.cta-enquire) { background: transparent; border-color: hsl(var(--primary-foreground) / .45); }
+.svu-ca-programmes { padding-top: 72px; scroll-margin-top: 130px; }
+.svu-ca-programmes .svu-intro h2 { font-size: clamp(28px, 3.2vw, 40px); font-weight: 700; letter-spacing: -.025em; }
+@media (max-width: 760px) { .svu-ca .svu-areas > .svu-area:nth-child(even) { transform: none; } .svu-ca-tri { display: none; } }
