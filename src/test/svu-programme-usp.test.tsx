@@ -56,4 +56,16 @@ describe("SVU programme USP presentation (client brief, 2 November 2026)", () =>
     expect(container.textContent).not.toMatch(/Programme source/);
     expect(container.textContent).toContain("Enquire Now");
   });
+
+  // Client brief, 4 November 2026: the practical-learning paragraph repeated the
+  // USP block above, so it is no longer rendered as its own section.
+  it("drops the duplicate Practical Learning section from every SVU programme page", () => {
+    for (const programme of [msds, diploma]) {
+      const { container } = renderPage(programme);
+      expect(headings(container)).not.toContain("Practical Learning");
+      expect(container.textContent).not.toContain("80% practical and 20% theoretical learning.");
+      expect(headings(container)[0]).toBe("Built Around Practical Learning");
+    }
+  });
 });
+
