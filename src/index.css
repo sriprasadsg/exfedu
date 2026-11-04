@@ -397,7 +397,7 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .card-premium:hover { transform: translateY(-3px); box-shadow: 0 14px 30px -18px hsl(var(--primary) / 0.25); }
 @media (prefers-reduced-motion: reduce) { .hero-visual--float { animation: none; } }
 
-.footer-featured { display: inline-flex; align-items: center; gap: .3rem; margin-bottom: .8rem; padding: .38rem .8rem; border-radius: 999px; border: 1px solid hsl(214 68% 16% / .45); font-size: .8rem; font-weight: 500; letter-spacing: .02em; color: hsl(214 68% 16%); text-decoration: none; transition: background-color .3s ease, border-color .3s ease; }
+.footer-featured { display: inline-flex; align-items: center; gap: .25rem; margin-bottom: .8rem; padding: .28rem .6rem; border-radius: 999px; border: 1px solid hsl(214 68% 16% / .45); font-size: .8rem; font-weight: 500; letter-spacing: .02em; color: hsl(214 68% 16%); text-decoration: none; transition: background-color .3s ease, border-color .3s ease; }
 .footer-featured:hover, .footer-featured:focus-visible { background: hsl(214 68% 16% / .08); border-color: hsl(214 68% 16% / .75); outline: none; }
 
 /* ===== Homepage capabilities: centre circle + eight cards (matches client infographic) ===== */
@@ -1337,7 +1337,7 @@ html body .cap-diagram .cap-art {
 .hero2-inner { display: grid; grid-template-columns: 2fr 1fr; align-items: center; gap: 2rem; padding-block: clamp(2rem, 5vw, 4rem); }
 .hero2-title { font-size: clamp(2rem, 4.2vw, 3.2rem); font-weight: 500; line-height: 1.1; color: hsl(var(--primary)); }
 .hero2-sub { margin-top: .5rem; font-size: clamp(1rem, 1.6vw, 1.2rem); color: hsl(var(--primary)); }
-.hero2-lines { margin-top: 1.25rem; display: grid; gap: .2rem; font-size: clamp(0.9rem, 1.35vw, 1.05rem); font-weight: 500; line-height: 1.6; color: hsl(var(--primary)); }
+.hero2-lines { margin-top: 1.25rem; display: grid; gap: .2rem; font-size: clamp(1.05rem, 1.55vw, 1.2rem); font-weight: 400; line-height: 1.6; color: hsl(var(--primary)); }
 .hero2-nowrap { white-space: nowrap; }
 .hero2-cta { margin-top: 1.75rem; background: hsl(var(--navy-royal)); color: hsl(0 0% 100%); }
 .hero2-cta:hover { background: hsl(var(--navy-royal-deep)); }
@@ -1394,7 +1394,7 @@ html body .cap-diagram .cap-art {
   background-origin: border-box; background-clip: padding-box, border-box;
   animation: skillshone-box-drift 7s ease-in-out infinite;
 }
-.footer-featured-logo { height: .8rem; width: auto; display: block; }
+.footer-featured-logo { height: .62rem; width: auto; display: block; }
 .footer-featured:hover, .footer-featured:focus-visible { background-color: hsl(204 100% 97%); }
 
 /* About subtitle — smaller, calmer line */
