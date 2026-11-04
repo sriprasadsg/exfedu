@@ -2,13 +2,14 @@ import { describe, expect, it } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import SvuPages from "@/components/site/SvuPages";
+import type { SvuPageId } from "@/lib/programmeNavigation";
 
-const open = (section: "overview" | "outcomes" | "faculty") =>
+const open = (section: SvuPageId) =>
   render(<MemoryRouter><SvuPages section={section} /></MemoryRouter>);
 
 describe("SVU pages", () => {
-  it("research & careers shows two photo stories, the group photo once, and the hackathon result", () => {
-    const { container } = open("outcomes");
+  it("student innovations & internships shows two photo stories, the group photo once, and the hackathon result", () => {
+    const { container } = open("innovations");
     expect(container.querySelectorAll(".svu-story")).toHaveLength(2);
     expect(container.querySelectorAll('img[src*="svu-paniit-delegation"]')).toHaveLength(1);
     const champion = container.querySelector(".svu-champion");
@@ -23,10 +24,16 @@ describe("SVU pages", () => {
 
     expect(container.querySelectorAll("h1")).toHaveLength(1);
   });
-  it("tab bar links to three pages", () => {
+  it("tab bar links to five pages", () => {
     const { container } = open("overview");
     const hrefs = [...container.querySelectorAll(".svu-tabbar a")].map(a => a.getAttribute("href"));
-    expect(hrefs).toEqual(["/collaboration-network/svu", "/collaboration-network/svu/outcomes", "/collaboration-network/svu/faculty"]);
+    expect(hrefs).toEqual([
+      "/collaboration-network/svu",
+      "/collaboration-network/svu/outcomes",
+      "/collaboration-network/svu/innovations",
+      "/collaboration-network/svu/placements",
+      "/collaboration-network/svu/faculty",
+    ]);
   });
   it("overview carries the programmes and one h1", () => {
     const { container } = open("overview");
@@ -46,14 +53,18 @@ describe("SVU pages", () => {
     fireEvent.click(screen.getByRole("button", { name: "Next" }));
     expect(container.querySelector("#svu-project-7")).not.toBeNull();
   });
-  it("placements and internships keep all 11 records with one heading", () => {
-    const { container } = open("outcomes");
+  it("placements keep all 11 records on their own page", () => {
+    const { container } = open("placements");
     expect(container.querySelectorAll("#placements .svu-outcome")).toHaveLength(11);
+    expect(container.querySelectorAll("h1")).toHaveLength(1);
+  });
+  it("internships keep all 11 records on the innovations page", () => {
+    const { container } = open("innovations");
     expect(container.querySelectorAll("#internships .svu-career-table tbody tr")).toHaveLength(11);
     expect(container.querySelectorAll("h1")).toHaveLength(1);
   });
   it("uses G V Sumanth consistently", () => {
-    const { container } = open("outcomes");
+    const { container } = open("innovations");
     expect(container.textContent).toContain("G V Sumanth");
     expect(container.textContent).not.toContain("Sumanth G V");
   });
