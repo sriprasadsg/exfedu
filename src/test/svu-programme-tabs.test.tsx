@@ -54,4 +54,20 @@ describe("SVU programme page navigation order", () => {
     // The breadcrumb stays inside the opening band, directly above the title.
     expect(crumb.parentElement?.parentElement?.className).toContain("programme-intro");
   });
+
+  // Client brief, 4 November 2026: the faculty members block is off every programme page.
+  it("drops the faculty and academic resources block from SVU and IBM programme pages", () => {
+    const ibm = programmes.find((p) => p.organisation === "IBM")!;
+    const pages = [programme, ibm].map((p) =>
+      render(<MemoryRouter><ProgrammeDetail programme={p} /></MemoryRouter>).container);
+
+    for (const container of pages) {
+      expect(container.querySelector(".svu-faculty-callout")).toBeNull();
+      expect(container.querySelector(".svu-academic-resources")).toBeNull();
+      expect(container.textContent).not.toContain("View Faculty & Mentors");
+      expect(container.textContent).not.toContain("Faculty & Academic Resources");
+      expect(container.querySelector("#programme-enquiry, #brochure-enquiry")).not.toBeNull();
+    }
+  });
 });
+
