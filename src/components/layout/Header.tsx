@@ -66,7 +66,7 @@ const Header = () => {
             return <div key={item.path} className="group relative" onKeyDown={(event) => { if (event.key === "Escape") { setNetworkOpen(false); event.currentTarget.querySelector("button")?.focus(); } }}>
               <Button type="button" variant="ghost" className="nav-on-navy nav-tone-network gap-1.5 px-2 lg:px-3" aria-expanded={networkOpen} aria-controls="desktop-collaboration" onClick={() => setNetworkOpen(!networkOpen)}><item.icon aria-hidden="true" />{item.title}<ChevronDown className="h-3.5 w-3.5" aria-hidden="true" /></Button>
               <ul id="desktop-collaboration" className={`${networkOpen ? "visible opacity-100" : "invisible opacity-0"} absolute left-0 top-full z-50 min-w-[260px] rounded-lg border border-border bg-background p-1.5 shadow-lg transition-opacity group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100`}>
-                {collaborationOrder.map((o, i) => <li key={o}>
+                {collaborationOrder.map((o) => <li key={o}>
                   {/* Hover swaps front and back: the block takes the label's navy, the label takes the panel's white. */}
                   <Link to={organisationPath(o)} className="flex items-center gap-2 rounded-md px-3 py-2 text-sm text-foreground transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:bg-accent focus-visible:text-accent-foreground focus-visible:outline-none">
                     {o === "SVU" ? "Sri Venkateswara University" : "IBM"}

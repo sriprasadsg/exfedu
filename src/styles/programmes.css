@@ -196,7 +196,6 @@
 .svu-result-count { font-size: 13px; font-weight: 500; color: hsl(var(--connection-teal)); margin-block: 14px; }
 .svu-project-list article { display: flex; gap: 18px; padding-block: 18px; border-bottom: 1px solid hsl(var(--academic-edge)); }
 .svu-project-list article > div { min-width: 0; }
-.svu-project-number { flex-shrink: 0; font-size: 13px; color: hsl(var(--connection-blue)); padding-top: 3px; }
 .svu-project-list p { font-size: 13px; color: hsl(var(--muted-foreground)); margin-top: 6px; }
 .svu-publications a { display: flex; align-items: center; justify-content: space-between; gap: 18px; border-bottom: 1px solid hsl(var(--academic-edge)); padding-block: 16px; font-size: 14px; line-height: 1.7; }
 .svu-publications a:hover { color: hsl(var(--connection-blue)); }
@@ -622,7 +621,6 @@
 .svu-directory-group { --grp: var(--navy-900); display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 32px; padding: 32px 0; border-top: 1px solid hsl(var(--academic-edge)); }
 .svu-category-heading { display: grid; grid-template-columns: 48px 1fr; align-content: start; align-items: center; gap: 14px; }
 .svu-category-icon { display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 8px; color: hsl(var(--grp)); background: hsl(var(--academic-surface)); }
-.svu-category-index { justify-self: end; font-size: 24px; font-weight: 400; color: hsl(var(--muted-foreground)); }
 .svu-category-heading :is(h2, h3) { grid-column: 1 / -1; font-size: 18px; font-weight: 500; line-height: 1.45; color: hsl(var(--grp)); margin: 0; }
 .svu-directory-groups .svu-directory { border: 0; border-left: 1px solid hsl(var(--academic-edge)); padding-left: 24px; border-radius: 0; background: hsl(var(--background)); box-shadow: none; }
 .svu-directory-groups .svu-directory-head, .svu-directory-groups .svu-directory-row { grid-template-columns: minmax(0, 2fr) minmax(70px, .65fr) minmax(0, 1fr) 125px; gap: 16px; padding: 14px 10px; }
@@ -637,9 +635,8 @@
 @media (max-width: 767px) {
  .svu-directory-groups { gap: 0; }
  .svu-directory-group { grid-template-columns: minmax(0, 1fr); gap: 20px; padding: 26px 0; }
- .svu-category-heading { grid-template-columns: 44px minmax(0, 1fr) 32px; gap: 12px; }
+ .svu-category-heading { grid-template-columns: 44px minmax(0, 1fr); gap: 12px; }
  .svu-category-icon { width: 44px; height: 44px; }
- .svu-category-index { grid-column: 3; grid-row: 1; font-size: 20px; }
  .svu-category-heading :is(h2, h3) { grid-column: 2; grid-row: 1; font-size: 17px; }
  .svu-directory-groups .svu-directory { padding-left: 0; border-left: 0; }
  .svu-directory-groups .svu-directory-row { grid-template-columns: minmax(0, 1fr); gap: 8px; padding: 18px 0; }
