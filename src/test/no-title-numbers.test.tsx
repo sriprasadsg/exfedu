@@ -3,7 +3,7 @@ import { MemoryRouter } from "react-router-dom";
 import { afterEach, describe, expect, it } from "vitest";
 import Header from "@/components/layout/Header";
 import SvuPages from "@/components/site/SvuPages";
-import SvuReviewedContent from "@/components/site/SvuReviewedContent";
+import { SvuResearchContent } from "@/components/site/SvuReviewedContent";
 
 afterEach(cleanup);
 
@@ -19,7 +19,7 @@ describe("no numeric labels beside titles (client, 4 November 2026)", () => {
   it("shows student projects without numbered badges", () => {
     const { container } = render(<MemoryRouter><SvuPages section="projects-research" /></MemoryRouter>);
     expect(container.querySelector(".svu-project-number")).toBeNull();
-    const { container: reviewed } = render(<SvuReviewedContent />);
+    const { container: reviewed } = render(<MemoryRouter><SvuResearchContent /></MemoryRouter>);
     expect(reviewed.querySelector(".svu-project-number")).toBeNull();
   });
 
