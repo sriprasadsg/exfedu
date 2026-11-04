@@ -1053,8 +1053,9 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 /* SVU Overview after the Creative Agency reference (4 Nov 2026) */
 .svu-ca-hero { position: relative; min-width: 0; padding: 36px 0 56px; }
 /* Headline kept on one line wherever there is room: the size is derived from the
-   available column width (measured ratio ~26.6 x font-size for this wording). */
-.svu-ca-hero h1 { max-width: none; white-space: nowrap; font-size: min(45px, calc((100vw - 96px) / 26.6)); line-height: 1.12; font-weight: 700; color: hsl(var(--navy-900)); }
+   available column width (this wording measures ~27.2 x font-size in Google Sans Flex 700,
+   and the SVU column is 1072px wide at most). */
+.svu-ca-hero h1 { max-width: none; white-space: nowrap; font-size: min(39px, calc((100vw - 72px) / 27.2)); line-height: 1.15; font-weight: 700; color: hsl(var(--navy-900)); }
 .svu-ca-hero .svu-lead { max-width: 720px; margin-top: 20px; }
 @media (max-width: 760px) { .svu-ca-hero h1 { white-space: normal; font-size: clamp(26px, 7.4vw, 34px); } }
 .svu-ca-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 26px; padding-bottom: 4px; font-size: 15px; font-weight: 500; color: hsl(var(--navy-900)); border-bottom: 3px solid hsl(var(--connection-blue)); transition: gap .25s ease; }
