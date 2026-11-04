@@ -9,11 +9,10 @@ import { svuFaculty, svuSupport } from "@/data/svuReviewed";
  * badge, a heavy headline carrying one blue phrase and two buttons; every person then sits in
  * a text-only white card with approved names, roles and descriptions. */
 describe("SVU faculty page on the Nexora model", () => {
-  it("opens with a pill badge, an accented headline and two buttons", () => {
+  it("keeps the programme destination available on the faculty page", () => {
     const { container } = render(<MemoryRouter><SvuPages section="faculty" /></MemoryRouter>);
     expect(container.querySelector(".svu-hero-badge")?.textContent).toBe("Academic & Industry Guidance");
     expect(container.querySelector(".svu-hero-accent")?.textContent).toBe("Industry Practitioners");
-    expect(container.querySelector(".svu-hero-primary")?.getAttribute("href")).toBe("/contact");
     expect(container.querySelector(".svu-hero-secondary")?.getAttribute("href")).toBe("/collaboration-network/svu#programmes");
     expect(container.querySelector("h1")?.textContent).toBe("A Community of Academic Scholars & Industry Practitioners");
   });

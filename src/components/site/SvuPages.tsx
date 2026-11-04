@@ -266,7 +266,6 @@ const SvuFaculty = () => <div className="svu-flow">
     <h1>A Community of Academic Scholars &amp; <span className="svu-hero-accent">Industry Practitioners</span></h1>
     <p className="svu-lead">Learn from Exafluence Education Faculties and Exafluence Inc. mentors who combine subject knowledge, practical insights and personalised guidance to connect learning with real-world applications.</p>
     <div className="svu-hero-actions">
-      <Link to="/contact" className="svu-hero-primary">Enquire Now <ArrowRight size={16} aria-hidden="true" /></Link>
       <Link to={`${svuPagePath("overview")}#programmes`} className="svu-hero-secondary">Explore Programmes</Link>
     </div>
   </section>
