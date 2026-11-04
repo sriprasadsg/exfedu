@@ -682,8 +682,8 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.01em; }
 .site-header .nav-on-navy,
 .site-header-panel .nav-on-navy { color: hsl(214 68% 16%); }
 
-/* Menu labels: lighter, more open letterforms (client, 4 Nov 2026) */
-.site-header .nav-on-navy:not(.nav-cta) { font-weight: 400; letter-spacing: .015em; }
+/* Menu labels: lighter letterforms (client, 4 Nov 2026); letter spacing is held at zero site-wide */
+.site-header .nav-on-navy:not(.nav-cta) { font-weight: 400; }
 
 /* Menu labels: white by default; category accent only on hover/open (one treatment: colour + soft underline) */
 .site-header .nav-on-navy { position: relative; transition: color 200ms ease, background-color 200ms ease; }
