@@ -71,7 +71,7 @@ describe("SVU pages", () => {
   });
   it("internships keep all 11 records on the innovations page", () => {
     const { container } = open("innovations");
-    expect(container.querySelectorAll("#internships .svu-career-table tbody tr")).toHaveLength(11);
+    expect(container.querySelectorAll("#internships .svu-intern-card")).toHaveLength(11);
     expect(container.querySelectorAll("h1")).toHaveLength(1);
   });
   it("uses G V Sumanth consistently", () => {
