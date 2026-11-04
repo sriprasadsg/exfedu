@@ -1204,6 +1204,7 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 }
 
 /* Placements: Framo logistics composition, using approved education content only. */
+body:not(:has(.homepage-static)) main .svu-career-records--logistics .svu-career-title-card > :is(h1, h2) { color: hsl(var(--primary-foreground)); background: none; -webkit-text-fill-color: currentColor; }
 .svu-career-records--logistics .svu-career-title-card { padding: 56px 48px; border: 0; border-radius: 0; background: hsl(var(--navy-900)); }
 .svu-career-records--logistics .svu-career-title-card > h1,
 .svu-career-records--logistics .svu-career-title-card > h2 { max-width: 18ch; font-size: 48px; line-height: 1.12; font-weight: 700; letter-spacing: 0; text-transform: none; color: hsl(var(--primary-foreground)); background: none; -webkit-text-fill-color: currentColor; }
