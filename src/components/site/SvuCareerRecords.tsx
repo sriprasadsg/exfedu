@@ -50,9 +50,11 @@ export default function SvuCareerRecords({ kind, embedded = false }: { kind: "pl
       ? <p>Students from the SVU–Exafluence MS Data Science programme have secured roles in data science and AI engineering, alongside trainee positions. The following records show their organisations, designations and academic batches.</p>
       : svuInternshipIntroduction.paragraphs.map(text => <p key={text}>{text}</p>)}
     {!placements && <SvuInternshipUpdate />}
-    <Sub id={placements ? undefined : "internship-records"} className="svu-career-records-heading">{placements ? "Placement Records" : "Internship Records"}</Sub>
+    {placements
+      ? <div className="svu-service-band"><Sub className="svu-career-records-heading">Placement Records</Sub></div>
+      : <Sub id="internship-records" className="svu-career-records-heading">Internship Records</Sub>}
     {placements ? <ul className="svu-outcomes svu-rocket" aria-label={title}>{shown.map(record => <li key={record.student} className="svu-outcome svu-offer">
-      <span className="svu-rocket-icon" aria-hidden="true"><Building2 size={26} strokeWidth={1.4} /></span>
+      <span className="svu-offer-crest" aria-hidden="true"><Building2 size={20} strokeWidth={1.6} /></span>
       <header className="svu-offer-head"><p className="svu-outcome-org">{record.organisation}</p></header>
       <dl className="svu-offer-fields">
         <div><i aria-hidden="true"><UserRound size={15} /></i><dt>Student</dt><dd><h3>{record.student}</h3></dd></div>
