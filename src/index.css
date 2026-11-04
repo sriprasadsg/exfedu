@@ -1802,7 +1802,7 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
 /* ===== Footer (client brief, 2 November 2026) =====
    Soft blue-grey #F3F6FA, three top-aligned columns, ~32px padding, slim copyright row. */
 .site-footer { background: #F3F6FA; color: hsl(214 68% 16%); border-top-color: hsl(214 32% 84%); }
-.footer-columns { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .9fr) minmax(0, 1.9fr); gap: 32px; align-items: start; padding-block: 32px 22px; }
+.footer-columns { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, .85fr) minmax(0, 2.05fr); gap: 32px; align-items: start; padding-block: 32px 22px; }
 .footer-column-title { display: block; margin: 0 0 12px; font-size: .95rem; font-weight: 500; color: hsl(214 68% 16%); }
 .footer-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 9px; justify-items: start; }
 /* Client, 4 November 2026: with the headquarters list moving into the columns, the
