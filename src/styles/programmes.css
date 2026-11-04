@@ -589,6 +589,7 @@
 .svu-story-head { display: flex; align-items: center; gap: 12px; }
 .svu-story-head h3 { margin: 0; }
 .svu-story-caption { font-size: 12px !important; margin-top: 10px !important; font-style: italic; }
+.svu-story-body p + p { margin-top: 14px; }
 @media (max-width: 760px) { .svu-stories { grid-template-columns: minmax(0, 1fr); } .svu-story figure { height: 220px; } }
 
 /* Achievement story cards: inner parts are not boxes of their own, so they must not pick up
