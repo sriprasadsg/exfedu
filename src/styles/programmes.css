@@ -833,23 +833,25 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
    readable measure so short copy stays centred in the card instead of drifting to one edge. */
 .network-slide--text { grid-template-columns: minmax(0, 1fr); }
 .network-slide--text .network-panel { max-width: 640px; margin-inline: auto; }
-/* Faculty directory: compact photo-free profile grid (client brief, 3 November 2026) — three
-   columns on wide desktops, two on tablets, one on phones; card height follows the copy, so no
-   card carries a fixed minimum height or a band of empty space below short text. */
+/* Faculty directory (client brief, 3 November 2026; Nexora profile-card model, 4 November 2026):
+   each person sits in a white card led by a tinted tile carrying their initials — text only,
+   never a photo or placeholder artwork. Four columns for the twelve mentors, three for the
+   smaller group; card height follows the copy, so no card carries a band of empty space. */
 .fd { margin-top: 32px; font-family: "Google Sans", sans-serif; color: hsl(var(--primary)); }
-.fd-title { font-size: 23px; font-weight: 500; margin-bottom: 16px; }
-.fd .fd-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: start; list-style: none; margin: 0; padding: 0; }
-.fd-cell { background: hsl(var(--background)); border: 1px solid hsl(var(--academic-edge)); border-radius: 8px; padding: 19px; }
-.fd .fd-name { font-size: 16px; font-weight: 700; color: hsl(var(--primary)); }
+.fd-title { font-size: 23px; font-weight: 700; letter-spacing: -.02em; color: hsl(var(--navy-900)); margin-bottom: 16px; }
+.fd .fd-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; align-items: start; list-style: none; margin: 0; padding: 0; }
+.fd .fd-grid[data-cols="4"] { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.fd-cell { background: hsl(var(--card)); border: 1px solid hsl(205 35% 89%); border-radius: 18px; padding: 24px; box-shadow: 0 16px 34px -30px hsl(var(--navy-900) / .6); }
+.fd-mark { display: grid; place-items: center; width: 46px; height: 46px; margin-bottom: 16px; border-radius: 14px; background: hsl(205 92% 96%); border: 1px solid hsl(205 60% 88%); color: hsl(var(--connection-blue)); font-size: 15px; font-weight: 700; letter-spacing: .03em; }
+.fd .fd-name { font-size: 17px; font-weight: 700; color: hsl(var(--navy-900)); }
 .fd .fd-role { font-size: 12.5px; font-weight: 400; line-height: 1.45; color: hsl(var(--muted-foreground)); margin-top: 3px; }
 .fd .fd-desc { font-size: 14px; line-height: 1.6; color: hsl(var(--primary) / .82); margin-top: 10px; }
 
-@media (max-width: 1023px) { .fd .fd-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 639px) { .fd .fd-grid { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 1023px) { .fd .fd-grid, .fd .fd-grid[data-cols="4"] { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 639px) { .fd .fd-grid, .fd .fd-grid[data-cols="4"] { grid-template-columns: minmax(0, 1fr); } }
 .fd.fd-page { margin-top: 48px; }
-.fd.fd-page .fd-title { font-size: 24px; margin-bottom: 6px; }
+.fd.fd-page .fd-title { font-size: clamp(24px, 2.6vw, 32px); margin-bottom: 6px; }
 .fd .fd-intro { font-size: 15px; line-height: 1.7; color: hsl(var(--muted-foreground)); margin: 0 0 20px; max-width: 70ch; }
-.fd.fd-page .fd-cell { border-top: 3px solid hsl(var(--primary)); }
 .svu-faculty-callout { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-top: 20px; padding: 18px 20px; border: 1px solid hsl(var(--academic-edge)); border-radius: 8px; }
 .svu-faculty-callout p { margin: 0; }
 
