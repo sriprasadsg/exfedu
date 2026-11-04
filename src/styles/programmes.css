@@ -1136,7 +1136,7 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 .svu-pl-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 20px; padding-bottom: 5px; font-size: 12px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: hsl(var(--navy-900)); border-bottom: 1px solid hsl(var(--navy-900) / .32); }
 .svu-pl-link:hover { color: hsl(var(--connection-blue)); border-color: hsl(var(--connection-blue)); }
 .svu-pl-art { margin: 0; padding: 16px; border: 1px solid hsl(205 35% 89%); border-radius: 18px; background: hsl(var(--card)); }
-.svu-pl-art img { display: block; width: 100%; height: auto; }
+.svu-pl-art img { display: block; width: 100%; max-width: 260px; height: auto; margin: 0 auto; }
 .svu-pl-band { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; margin-top: 32px; padding: 24px 30px; border-radius: 18px; background: hsl(var(--navy-900)); }
 .svu-career-records--archbook .svu-career-records-heading { margin: 32px 0 0; padding: 0; border: 0; font-size: 24px; font-weight: 500; letter-spacing: 0; text-transform: none; color: hsl(var(--navy-900)); }
 .svu-pl-band-link { display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border: 1px solid hsl(var(--primary-foreground) / .5); border-radius: 4px; font-size: 12px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: hsl(var(--primary-foreground)); }
@@ -1211,7 +1211,7 @@ body:not(:has(.homepage-static)) main .svu-career-records--logistics .svu-career
 .svu-career-records--logistics .svu-hero-secondary:hover { background: hsl(var(--primary-foreground) / .12); }
 .svu-career-records--logistics .svu-career-content-card { margin-top: 0; }
 .svu-career-records--logistics .svu-pl-split { padding: 44px 36px; margin: 0; gap: 36px; background: hsl(var(--secondary)); border: 0; }
-.svu-career-records--logistics .svu-pl-art { padding: 0; border: 0; border-radius: 0; background: transparent; }
+.svu-career-records--logistics .svu-pl-art { padding: 22px; border: 1px solid hsl(205 35% 89%); border-radius: 18px; background: hsl(var(--card)); }
 .svu-career-records--logistics .svu-pl-band { margin-top: 44px; padding: 28px 32px; border-radius: 0; }
 .svu-career-records--logistics .svu-pl-band .svu-career-records-heading { font-size: 24px; line-height: 1.3; font-weight: 500; letter-spacing: 0; text-transform: none; }
 .svu-career-records--logistics .svu-pl-band .svu-career-records-heading::after { display: none; }

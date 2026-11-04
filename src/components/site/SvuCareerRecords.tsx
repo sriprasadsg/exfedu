@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowDown, ArrowRight, Building2, CalendarRange } from "lucide-react";
-import svuLaptopDashboard from "@/assets/svu-laptop-dashboard-v2.png";
+import studentProfileEmblem from "@/assets/circular-student-profile-emblem.png.asset.json";
 import { svuPagePath } from "@/lib/programmeNavigation";
 import { filterSvuCareerRecords, svuInternshipIntroduction, svuInternshipUpdate, svuInternships, svuPlacements } from "@/data/svuCareer";
 
@@ -55,7 +55,7 @@ export default function SvuCareerRecords({ kind, embedded = false }: { kind: "pl
         <p>Students from the SVU–Exafluence MS Data Science programme have secured roles in data science and AI engineering, alongside trainee positions. The following records show their organisations, designations and academic batches.</p>
         <Link to={`${svuPagePath("overview")}#programmes`} className="svu-pl-link">Explore Programmes <ArrowRight size={15} aria-hidden="true" /></Link>
       </div>
-      <figure className="svu-pl-art"><img src={svuLaptopDashboard} alt="Laptop showing a data-analysis dashboard, the artwork used on the SVU collaboration banner" /></figure>
+      <figure className="svu-pl-art"><img src={studentProfileEmblem.url} alt="Circular emblem of a graduation cap above a student profile card and an open book" /></figure>
     </div>
       : null}
     {!placements && <>
