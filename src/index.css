@@ -1811,18 +1811,18 @@ body:not(:has(.homepage-static)) main h2.ss-h2:has(+ .ss-faq-list) {
 
 /* Client brief, 4 November 2026: the single office line gives way to the headquarters
    list — a map marker before every address and a small country flag beside each
-   country name. It sits in the column beside Quick Links and the countries stack,
-   USA first and India in the next (lower) column. */
+   country name. It sits in the column beside Quick Links: USA in the first country
+   column, India in the next column to its right, stacked when the column is narrow. */
 .footer-locations { container-type: inline-size; }
 .footer-locations-title { margin: 0 0 14px; font-size: .95rem; font-weight: 500; color: hsl(214 68% 16%); }
-.footer-location-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; }
+.footer-location-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 40px; }
 .footer-country { margin: 0; }
 .footer-country-name { display: flex; align-items: center; gap: 8px; margin: 0 0 11px; font-size: .82rem; font-weight: 500; letter-spacing: .09em; text-transform: uppercase; color: hsl(214 68% 16%); }
 .footer-flag { width: 19px; height: 13px; flex: none; border-radius: 2px; box-shadow: 0 0 0 1px hsl(214 30% 82%); }
 .footer-offices { list-style: none; margin: 0; padding: 0; display: grid; gap: 13px; }
 .footer-office { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 9px; align-items: start; }
 .footer-office-pin { width: .95rem; height: .95rem; margin-top: .18rem; color: hsl(214 40% 46%); flex: none; }
-.footer-office-label { margin: 0 0 1px; font-size: .84rem; font-weight: 500; color: hsl(214 68% 16%); }
+.footer-office-label { margin: 0 0 1px; font-size: .84rem; font-weight: 500; color: hsl(214 68% 16%); text-wrap: balance; }
 .footer-office-address { margin: 0; font-style: normal; font-size: .82rem; line-height: 1.68; color: hsl(214 28% 36%); letter-spacing: .01em; }
 .footer-office-phone { margin: 2px 0 0; font-size: .8rem; color: hsl(214 28% 36%); }
 @media (max-width: 767px) { .footer-location-grid { grid-template-columns: minmax(0, 1fr); gap: 18px; } }
