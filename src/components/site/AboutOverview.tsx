@@ -71,7 +71,7 @@ export default function AboutOverview({ data }: { data: AboutOverviewData }) {
     };
   }, []);
 
-  return <article className="about-editorial">
+  return <article className="about-editorial about-apps">
     <header className="container about-editorial-opening">
       <nav aria-label="Breadcrumb" className="about-editorial-breadcrumb"><Link to="/">Exafluence Education</Link><span aria-hidden="true">/</span><span>About Us</span></nav>
       <div className="about-editorial-intro">
