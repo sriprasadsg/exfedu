@@ -943,3 +943,4 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 @media (max-width: 1000px) { .svu-intern-cards { grid-template-columns: repeat(2, minmax(0,1fr)); } }
 @media (max-width: 520px) { .svu-intern-cards { grid-template-columns: minmax(0,1fr); } }
 @media (prefers-reduced-motion: reduce) { .svu-intern-card, .svu-upskill-strip svg { transition: none; } }
+.svu-pages .svu-upskill-hero h1 em, .svu-upskill-hero h1 > em { font-style: normal; color: hsl(var(--connection-blue)) !important; -webkit-text-fill-color: hsl(var(--connection-blue)); }
