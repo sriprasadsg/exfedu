@@ -434,3 +434,5 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 
 - [x] Attach SVU brochures (MS DS, PG Diploma, Diplomas)
 - [x] Remove "Programme source" links
+
+- [x] Three SVU diploma courses: tool/technology names removed from titles ("Diploma in AI, ML & Generative AI", "Diploma in Data Visualisation"), tools sections dropped from those pages, and the Cloud Technologies diploma removed everywhere with its old URLs redirecting to the SVU programmes listing. Verified in browser: 4 rows in the table, no Cloud Technologies anywhere, both retired URLs land on the listing, course pages show no tools section; 196 tests pass, build OK.
