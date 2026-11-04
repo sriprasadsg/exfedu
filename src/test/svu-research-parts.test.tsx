@@ -38,6 +38,6 @@ describe("Projects & Research renders without the tab strip", () => {
     fireEvent.click(screen.getByRole("button", { name: "Next" }));
     expect(container.querySelector("#svu-project-7")).not.toBeNull();
     fireEvent.change(screen.getByLabelText("Search student projects"), { target: { value: "zzzz" } });
-    expect(screen.getByRole("status")).toBeInTheDocument();
+    expect(screen.getByText("No matching projects.")).toBeInTheDocument();
   });
 });
