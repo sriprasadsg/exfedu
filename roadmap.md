@@ -463,3 +463,4 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] SVU placements: the eleven record boxes reshaped from near-square blocks into wide rectangles — two across on desktop, one column on smaller screens, tighter padding (client, 4 Nov 2026). Icons, records and wording unchanged; verified in browser at 1280/1062/390 with nothing clipped; 211 tests pass, build OK.
 - [ ] SVU placements boxes: centred colourful student icon at the top of each box, colourful designation and industry icons (client, 4 Nov 2026).
 - [ ] Remove the word "Shortfundly" from the SM Smartygen Media Networks organisation name on the placements page (client, 4 Nov 2026).
+- [ ] SVU placements boxes: industry name at the bottom centre with the year directly beneath it, and the inside spacing evened out (client, 4 Nov 2026).
