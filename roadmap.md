@@ -1,3 +1,4 @@
+- [x] Renovate the two SVU "Student Innovation and Achievements" story cards with the client's 4 Nov 2026 wording (PanIIT summit participation first, Ratan Tata Innovation Hub second); photo caption dropped as duplicate copy
 - [x] About page: connecting-technology details (approved Exafluence Inc. industry scope) + embedded partner enquiry form; verified 1280/375px, FAQs route now 404
 - [x] FAQs removed from the About Us (Core) menu; /faqs removed from site data
 - [x] Remove the visible "Placements" title from the SVU Placements page (hidden h1 kept for search engines)

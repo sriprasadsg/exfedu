@@ -12,6 +12,13 @@ describe("SVU pages", () => {
     const { container } = open("innovations");
     expect(container.querySelectorAll(".svu-story")).toHaveLength(2);
     expect(container.querySelectorAll('img[src*="svu-paniit-delegation"]')).toHaveLength(1);
+    expect([...container.querySelectorAll(".svu-story h3")].map(h => h.textContent)).toEqual([
+      "Student Participation at PanIIT Andhra Pradesh Summit",
+      "Student Innovation at Ratan Tata Innovation Hub",
+    ]);
+    expect(container.querySelectorAll(".svu-story p")).toHaveLength(3);
+    expect(container.textContent).toContain("Prof. Tata Narasinga Rao");
+    expect(container.textContent).toContain("Prof. G. Anjan Babu");
     const champion = container.querySelector(".svu-champion");
     expect(champion).toBeTruthy();
     expect(container.querySelectorAll(".svu-champion")).toHaveLength(1);
