@@ -969,9 +969,9 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 /* The update box responds to its own width, not the screen's: when the box itself cannot fit
    two readable highlight columns, the highlights stack one under the other. */
 @container (max-width: 400px) {
-  .svu-internship-update-highlights { grid-template-columns: minmax(0, 1fr); }
-  .svu-internship-update-highlights li { padding: 0; border-left: 0; }
-  .svu-internship-update-summary { overflow-wrap: anywhere; }
+  .svu-career-records--upskill .svu-internship-update-highlights { grid-template-columns: minmax(0, 1fr); }
+  .svu-career-records--upskill .svu-internship-update-highlights li { padding: 0; border-left: 0; }
+  .svu-career-records--upskill .svu-internship-update-summary { overflow-wrap: anywhere; }
 }
 @media (max-width: 900px) { .svu-career-records--upskill { grid-template-columns: minmax(0, 1fr); gap: 24px; } }
 .svu-career-records--upskill [class*="card"]::before, .svu-career-records--upskill [class*="card"]::after { display: none; }
