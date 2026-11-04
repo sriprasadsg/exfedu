@@ -22,8 +22,7 @@ describe("SVU career records display order (client, 2 November 2026)", () => {
 
   it("lists internships in order without a number column", () => {
     const { container } = render(<SvuCareerRecords kind="internships" />);
-    const rows = [...container.querySelectorAll("tbody tr")];
-    expect(rows.map(row => row.querySelector("th")?.textContent?.trim())).toEqual(internshipOrder);
-    expect([...container.querySelectorAll("thead th")].map(th => th.textContent?.trim())).not.toContain("No.");
+    expect([...container.querySelectorAll(".svu-intern-card h4")].map(h => h.textContent?.trim())).toEqual(internshipOrder);
+    expect(container.textContent).not.toContain("No.");
   });
 });
