@@ -110,7 +110,7 @@ describe("Footer collaboration network", () => {
     const { container } = open();
     const entries = [...container.querySelectorAll<HTMLAnchorElement>(".footer-list a")];
     expect(entries).toHaveLength(5);
-    expect(entries.filter((a) => a.classList.contains("footer-list-link"))).toHaveLength(4);
+    expect(entries.filter((a) => a.classList.contains("footer-list-link"))).toHaveLength(5);
     for (const a of entries) {
       expect(a.className).not.toMatch(/tint/i);
       expect(a.getAttribute("style")).toBeNull();
