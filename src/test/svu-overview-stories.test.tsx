@@ -59,7 +59,7 @@ describe("SVU pages", () => {
   });
   it("projects show six at a time with pagination and no public approval note", () => {
     const { container } = open("outcomes");
-    expect(container.querySelectorAll(".svu-project-list article")).toHaveLength(6);
+    expect(container.querySelectorAll("#svu-student-projects .svu-project-list article")).toHaveLength(6);
     expect(container.textContent).not.toContain("Approved Content Required");
     fireEvent.click(screen.getByRole("button", { name: "Next" }));
     expect(container.querySelector("#svu-project-7")).not.toBeNull();

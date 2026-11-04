@@ -14,7 +14,7 @@ export const SvuOverviewContent = () => <div className="svu-overview-content">
     <p>Faculty and industry professionals connect core concepts with their practical applications. Programming exercises, case studies and technical discussions help students understand how to work with data, select suitable methods and interpret results.</p>
     <p>The approach encourages structured problem-solving, helping learners explain both how a solution works and why a particular approach was chosen.</p>
   </section>
-  <section className="svu-overview-band"><h2><BrainCircuit size={23} strokeWidth={1.4} aria-hidden="true" />Applied AI and Data Science</h2>
+  <section className="svu-overview-band"><h2><BrainCircuit size={23} strokeWidth={1.4} aria-hidden="true" />AI, Gen AI &amp; <span className="svu-nowrap">Data Science</span></h2>
     <p>Student projects explore challenges across data engineering, business analytics and intelligent application development.</p>
     <div className="svu-overview-areas">{svuProjectAreas.map(area => <Button variant="ghost" asChild key={area.title}><Link to={`#svu-project-${area.projectIndex + 1}`} className="svu-overview-area"><span className={`programme-section-icon tone-${area.tone}`}><area.icon size={23} strokeWidth={1.4} aria-hidden="true" /></span><span><strong>{area.title}</strong><span>{area.text}</span></span><ArrowRight size={17} aria-hidden="true" /></Link></Button>)}</div>
     <Button variant="link" asChild><Link to="#svu-student-projects">Explore Student Projects<ArrowRight size={16} /></Link></Button>

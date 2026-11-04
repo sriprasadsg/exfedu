@@ -4,7 +4,7 @@ import { useEffect } from "react";
 const SELECTOR = [
   '[class*="card"]', '[class*="-tile"]', '[class*="-item"]', '[class*="story"]',
   '.rounded-xl.border', '.rounded-2xl.border', '.rounded-lg.border',
-  '.ibm-steps li', '.ibm-choice li', '.svu-step', '.svu-area', '.svu-champion', '.fd-cell',
+  '.ibm-steps li', '.ibm-choice li', '.svu-step', '.svu-area', '.svu-champion', '.fd-cell', '.svu-directory-row',
 ].join(",");
 const EXCLUDE = ".svu-career-records--upskill > *, .svu-career-records--ledger *, .svu-career-records--rocket *, [class*='svu-story-'], .cap-card, .education-arm, header *, footer *, nav *, input, textarea, select, [role=dialog] *";
 /** Wider panels that still lift gently; the width guard otherwise protects page-wide layout shells. */
