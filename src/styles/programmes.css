@@ -1269,22 +1269,23 @@ body:not(:has(.homepage-static)) main .svu-career-records--logistics .svu-career
 .svu-pl-card,
 .svu-career-records--logistics .svu-pl-card { border-radius: 0; border: 1px solid hsl(205 35% 88%); border-top: 2px solid hsl(var(--navy-900)); background: hsl(208 90% 97%); box-shadow: none; display: flex; flex-direction: column; align-items: center; text-align: center; min-height: 400px; padding: 0; }
 .svu-pl-person { display: flex; flex-direction: column; align-items: center; gap: 12px; width: 100%; margin-top: auto; padding: 0 26px; }
-.svu-pl-avatar { display: grid; place-items: center; flex: none; width: 62px; height: 62px; border-radius: 18px; background: linear-gradient(135deg, hsl(202 95% 55%), hsl(168 78% 44%)); color: hsl(var(--primary-foreground)); box-shadow: 0 14px 24px -16px hsl(190 82% 38% / .95); }
-.svu-pl-person h3 { min-width: 0; }
-.svu-pl-card .svu-outcome-role { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 14px; padding: 0 26px; }
+.svu-pl-avatar { display: grid; place-items: center; flex: none; width: 72px; height: 72px; border-radius: 20px; background: linear-gradient(135deg, hsl(202 95% 55%), hsl(168 78% 44%)); color: hsl(var(--primary-foreground)); box-shadow: 0 14px 24px -16px hsl(190 82% 38% / .95); }
+.svu-pl-avatar svg { width: 30px; height: 30px; }
+.svu-pl-person h3 { min-width: 0; font-size: 21px; }
+.svu-pl-card .svu-outcome-role { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 14px; padding: 0 26px; font-size: 15px; }
 .svu-pl-card .svu-outcome-role svg { flex: none; }
 .svu-pl-card .svu-outcome-role[data-tone="data"] svg { color: hsl(262 72% 58%); }
 .svu-pl-card .svu-outcome-role[data-tone="engineer"] svg { color: hsl(172 72% 36%); }
 .svu-pl-card .svu-outcome-role[data-tone="trainee"] svg { color: hsl(36 92% 48%); }
 .svu-pl-card .svu-outcome-role[data-tone="other"] svg { color: hsl(var(--connection-blue)); }
-.svu-pl-card .svu-outcome-org { display: flex; align-items: flex-start; justify-content: center; gap: 8px; margin-top: auto; padding: 18px 26px 0; background: hsl(var(--card)); }
+.svu-pl-card .svu-outcome-org { display: flex; align-items: flex-start; justify-content: center; gap: 8px; margin-top: auto; padding: 18px 26px 0; }
 .svu-pl-card .svu-outcome-org svg { flex: none; margin-top: 3px; color: hsl(152 62% 36%); }
-.svu-pl-card .svu-outcome-batch { margin: 0; padding: 6px 26px 26px; background: hsl(var(--card)); }
+.svu-pl-card .svu-outcome-batch { margin: 0; padding: 6px 26px 28px; }
 @media (max-width: 639px) {
   .svu-pl-person { gap: 10px; padding: 0 22px; }
-  .svu-pl-avatar { width: 54px; height: 54px; border-radius: 16px; }
+  .svu-pl-avatar { width: 60px; height: 60px; border-radius: 18px; }
   .svu-pl-card .svu-outcome-role, .svu-pl-card .svu-outcome-org { gap: 7px; }
-  .svu-pl-card, .svu-career-records--logistics .svu-pl-card { min-height: 330px; }
+  .svu-pl-card, .svu-career-records--logistics .svu-pl-card { min-height: 340px; }
   .svu-pl-card .svu-outcome-role { padding: 0 22px; }
   .svu-pl-card .svu-outcome-org { padding: 16px 22px 0; }
   .svu-pl-card .svu-outcome-batch { padding: 6px 22px 22px; }
