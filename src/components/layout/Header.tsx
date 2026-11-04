@@ -66,8 +66,9 @@ const Header = () => {
               {btn}
               <ul className="invisible absolute left-0 top-full z-50 min-w-[260px] rounded-lg border border-border bg-background p-1.5 opacity-0 shadow-lg transition-opacity group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
                 {collaborationOrder.map((o, i) => <li key={o}>
-                  <Link to={organisationPath(o)} className="flex items-center gap-2 rounded-md px-3 py-2 text-sm text-foreground hover:bg-accent focus-visible:bg-accent">
-                    <span className="text-muted-foreground">{i + 1}.</span>{o === "SVU" ? "Sri Venkateswara University" : "IBM"}
+                  {/* Hover swaps front and back: the block takes the label's navy, the label takes the panel's white. */}
+                  <Link to={organisationPath(o)} className="flex items-center gap-2 rounded-md px-3 py-2 text-sm text-foreground transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:bg-accent focus-visible:text-accent-foreground focus-visible:outline-none">
+                    <span className="opacity-60">{i + 1}.</span>{o === "SVU" ? "Sri Venkateswara University" : "IBM"}
                   </Link>
                 </li>)}
               </ul>
