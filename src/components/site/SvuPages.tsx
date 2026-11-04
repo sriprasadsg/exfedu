@@ -4,7 +4,6 @@ import { Link, Navigate, useLocation } from "react-router-dom";
 import { ArrowRight, ArrowUpRight, BookOpen, Lightbulb, Rocket, Sparkles, Code2, Presentation, Search, FolderKanban, FileText, Trophy, GraduationCap, ScrollText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { organisations, programmes } from "@/data/site";
 import { svuGrowth, svuOverview, svuProjectAreas, svuOverviewAchievements } from "@/data/svuOverview";
 import SvuTechTicker from "./SvuTechTicker";
@@ -144,7 +143,6 @@ const SvuResearch = () => {
   const { hash } = useLocation();
   const [query, setQuery] = useState("");
   const [page, setPage] = useState(1);
-  const [tab, setTab] = useState("projects");
   const shown = useMemo(() => svuProjects.filter(p => `${p.student} ${p.title}`.toLowerCase().includes(query.toLowerCase().trim())), [query]);
   const pages = Math.max(1, Math.ceil(shown.length / PROJECTS_PER_PAGE));
   const current = Math.min(page, pages);
@@ -155,12 +153,12 @@ const SvuResearch = () => {
     const match = hash.match(/^#svu-project-(\d+)$/);
     if (!match) return;
     const index = Number(match[1]) - 1;
-    setTab("projects"); setQuery("");
+    setQuery("");
     setPage(Math.floor(index / PROJECTS_PER_PAGE) + 1);
     window.setTimeout(() => document.getElementById(hash.slice(1))?.scrollIntoView({ block: "center" }), 60);
   }, [hash]);
 
-  const go = (value: string) => { setTab(value); window.setTimeout(() => document.getElementById("svu-research-work")?.scrollIntoView({ behavior: "smooth", block: "start" }), 40); };
+  const go = (value: string) => { window.setTimeout(() => document.getElementById(value)?.scrollIntoView({ behavior: "smooth", block: "start" }), 40); };
   const kinds = [
     { value: "projects", label: "Student Projects", icon: <FolderKanban size={18} /> },
     { value: "conferences", label: "Conference Presentations", icon: <Presentation size={18} /> },
@@ -173,8 +171,8 @@ const SvuResearch = () => {
         <h1>Projects &amp; Research</h1>
         <p className="svu-lead">Real-time projects, industry mentoring, case studies and a final-semester capstone connect learning with business challenges. Student work is also presented at conferences and in research papers.</p>
         <div className="svu-u8-actions">
-          <button type="button" className="svu-u8-btn svu-u8-btn--fill" onClick={() => go("projects")}>Student Projects</button>
-          <button type="button" className="svu-u8-btn" onClick={() => go("papers")}>Research Papers</button>
+          <button type="button" className="svu-u8-btn svu-u8-btn--fill" onClick={() => go("svu-student-projects")}>Student Projects</button>
+          <button type="button" className="svu-u8-btn" onClick={() => go("svu-research-papers")}>Research Papers</button>
         </div>
       </div>
       <div className="svu-u8-panel" aria-hidden="true">
