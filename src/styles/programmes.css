@@ -419,8 +419,6 @@
 .svu-research-tabs { margin-top: -24px; }
 .svu-research-tabs [role="tablist"] { height: auto; flex-wrap: wrap; justify-content: flex-start; gap: 4px; padding: 5px; border: 2px solid hsl(var(--connection-blue) / .26); border-radius: 15px; background: linear-gradient(100deg, hsl(var(--connection-blue) / .1), hsl(var(--connection-teal) / .08) 50%, hsl(var(--connection-violet) / .1)); }
 .svu-research-tabs [role="tab"] { font-weight: 500; color: hsl(var(--connection-blue)); }
-.svu-research-tabs [role="tab"]:nth-child(2) { color: hsl(var(--connection-teal)); }
-.svu-research-tabs [role="tab"]:nth-child(3) { color: hsl(var(--connection-violet)); }
 .svu-research-tabs [role="tab"][data-state="active"] { color: hsl(var(--navy-900)); }
 .svu-project-list h3 { font-size: 16px; font-weight: 500; line-height: 1.5; color: hsl(var(--navy-900)); overflow-wrap: anywhere; }
 .svu-project-list article.is-target { background: hsl(var(--connection-blue) / .05); }
