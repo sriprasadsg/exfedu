@@ -1246,10 +1246,10 @@ body:not(:has(.homepage-static)) main .svu-career-records--logistics .svu-career
 .svu-proceeding { overflow: hidden; border: 1px solid hsl(var(--academic-edge)); border-radius: 16px; background: hsl(var(--card)); box-shadow: 0 20px 40px -34px hsl(var(--navy-900) / .6); }
 .svu-proceeding-head { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; padding: 14px 20px; background: linear-gradient(100deg, hsl(var(--navy-900)), hsl(var(--connection-blue))); color: hsl(var(--primary-foreground)); }
 .svu-proceeding-pin { display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 9px; background: hsl(var(--primary-foreground) / .16); color: hsl(var(--primary-foreground)); }
-.svu-proceeding-event { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: hsl(var(--primary-foreground)); }
+.svu-proceeding-head .svu-proceeding-event { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: hsl(var(--primary-foreground)) !important; -webkit-text-fill-color: hsl(var(--primary-foreground)) !important; background: none !important; }
 .svu-proceeding-place { font-size: 12.5px; letter-spacing: .04em; color: hsl(205 90% 84%); }
-.svu-proceeding-list--single { grid-template-columns: minmax(0, 1fr); }
 .svu-proceeding-list { list-style: none; margin: 0; padding: 16px 20px 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr)); gap: 12px; background: hsl(var(--academic-surface)); }
+.svu-proceeding-list--single { grid-template-columns: minmax(0, 1fr); }
 .svu-proceeding-paper { display: flex; align-items: flex-start; gap: 13px; padding: 15px 16px; border-left: 3px solid hsl(var(--theme-hue) 62% 52%); border-radius: 12px; background: hsl(var(--card)); transition: transform 200ms ease, box-shadow 200ms ease; }
 .svu-proceeding-paper:hover { transform: translateY(-2px); box-shadow: 0 16px 28px -22px hsl(var(--theme-hue) 62% 40% / .8); }
 .svu-proceeding-body { min-width: 0; }
