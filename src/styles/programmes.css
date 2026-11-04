@@ -1250,14 +1250,15 @@ body:not(:has(.homepage-static)) main .svu-career-records--logistics .svu-career
 .svu-proceeding-place { font-size: 12.5px; letter-spacing: .04em; color: hsl(205 90% 84%); }
 .svu-proceeding-list { list-style: none; margin: 0; padding: 16px 20px 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr)); gap: 12px; background: hsl(var(--academic-surface)); }
 .svu-proceeding-list--single { grid-template-columns: minmax(0, 1fr); }
-/* A lone presentation keeps the full row but reads as a citation: capped line length, slightly larger title. */
-.svu-proceeding-list--single .svu-proceeding-body { max-width: 68ch; }
-.svu-proceeding-list--single .svu-proceeding-title { font-size: 17px; }
+/* A lone presentation keeps the full row and reads as a programme line: title left, presenter right. */
+.svu-proceeding-list--single .svu-proceeding-body { flex: 1; display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 28px; }
+.svu-proceeding-list--single .svu-proceeding-title { flex: 1 1 320px; }
+.svu-proceeding-list--single .svu-proceeding-by { margin-top: 0; text-align: right; }
 .svu-proceeding-paper { display: flex; align-items: flex-start; gap: 13px; padding: 15px 16px; border-left: 3px solid hsl(var(--theme-hue) 62% 52%); border-radius: 12px; background: hsl(var(--card)); transition: transform 200ms ease, box-shadow 200ms ease; }
 .svu-proceeding-paper:hover { transform: translateY(-2px); box-shadow: 0 16px 28px -22px hsl(var(--theme-hue) 62% 40% / .8); }
 .svu-proceeding-body { min-width: 0; }
 .svu-proceeding-title { margin: 0; font-size: 15.5px; font-weight: 500; line-height: 1.55; color: hsl(var(--navy-900)); overflow-wrap: anywhere; }
 .svu-proceeding-by { margin-top: 7px; font-size: 13px; color: hsl(var(--muted-foreground)); }
 .svu-proceeding-by b { font-weight: 500; color: hsl(var(--navy-800)); }
-@media (max-width: 767px) { .svu-proceeding-head { padding: 12px 15px; } .svu-proceeding-list { padding: 12px 14px 16px; } .svu-proceeding-paper { padding: 13px 14px; } }
+@media (max-width: 767px) { .svu-proceeding-list--single .svu-proceeding-by { text-align: left; } .svu-proceeding-head { padding: 12px 15px; } .svu-proceeding-list { padding: 12px 14px 16px; } .svu-proceeding-paper { padding: 13px 14px; } }
 @media (prefers-reduced-motion: reduce) { .svu-proceeding-paper { transition: none; } .svu-proceeding-paper:hover { transform: none; box-shadow: none; } }
