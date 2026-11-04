@@ -1,7 +1,7 @@
 import ResearchThemeIcon from "./ResearchThemeIcon";
 import { useEffect, useMemo, useState, type CSSProperties } from "react";
 import { Link, Navigate, useLocation } from "react-router-dom";
-import { ArrowRight, ArrowUpRight, BookOpen, Lightbulb, Rocket, Sparkles, Code2, Presentation, Search, Trophy, GraduationCap, ScrollText } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BookOpen, Lightbulb, Rocket, Sparkles, Code2, Presentation, Search, FolderKanban, FileText, Trophy, GraduationCap, ScrollText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -157,12 +157,31 @@ const SvuResearch = () => {
     window.setTimeout(() => document.getElementById(hash.slice(1))?.scrollIntoView({ block: "center" }), 60);
   }, [hash]);
 
+  const go = (value: string) => { setTab(value); window.setTimeout(() => document.getElementById("svu-research-work")?.scrollIntoView({ behavior: "smooth", block: "start" }), 40); };
+  const kinds = [
+    { value: "projects", label: "Student Projects", icon: <FolderKanban size={18} /> },
+    { value: "conferences", label: "Conference Presentations", icon: <Presentation size={18} /> },
+    { value: "papers", label: "Research Papers", icon: <FileText size={18} /> },
+  ];
   return <div className="svu-flow" id="projects">
-    <section className="svu-block svu-intro">
-      <h1>Projects &amp; Research</h1>
-      <p className="svu-lead">Real-time projects, industry mentoring, case studies and a final-semester capstone connect learning with business challenges. Student work is also presented at conferences and in research papers.</p>
+    {/* Split hero, pill buttons and a band after the Ultim8 reference (4 Nov 2026) */}
+    <section className="svu-u8-hero">
+      <div className="svu-u8-copy">
+        <h1>Projects &amp; Research</h1>
+        <p className="svu-lead">Real-time projects, industry mentoring, case studies and a final-semester capstone connect learning with business challenges. Student work is also presented at conferences and in research papers.</p>
+        <div className="svu-u8-actions">
+          <button type="button" className="svu-u8-btn svu-u8-btn--fill" onClick={() => go("projects")}>Student Projects</button>
+          <button type="button" className="svu-u8-btn" onClick={() => go("papers")}>Research Papers</button>
+        </div>
+      </div>
+      <div className="svu-u8-panel" aria-hidden="true">
+        <div className="svu-u8-panel-bar"><i /><i /><i /></div>
+        {kinds.map(k => <div key={k.value} className="svu-u8-panel-row"><span>{k.icon}</span><b>{k.label}</b><em /></div>)}
+      </div>
     </section>
-    <Tabs value={tab} onValueChange={setTab} className="svu-research-tabs">
+    <div className="svu-u8-band"><p>Student Projects · Conference Presentations · Research Papers</p></div>
+    <div className="svu-u8-head" id="svu-research-work"><h2>Explore Student Work</h2></div>
+    <Tabs value={tab} onValueChange={setTab} className="svu-research-tabs svu-u8-tabs">
       <TabsList><TabsTrigger value="projects">Student Projects</TabsTrigger><TabsTrigger value="conferences">Conference Presentations</TabsTrigger><TabsTrigger value="papers">Research Papers</TabsTrigger></TabsList>
       <TabsContent value="projects">
         <label className="svu-project-search"><span className="svu-search-tile" aria-hidden="true"><Search size={16} /></span><Input aria-label="Search student projects" placeholder="Search projects or student names" value={query} onChange={e => { setQuery(e.target.value); setPage(1); }} /></label>

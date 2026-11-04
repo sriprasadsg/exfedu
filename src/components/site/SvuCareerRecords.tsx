@@ -39,9 +39,9 @@ export default function SvuCareerRecords({ kind, embedded = false }: { kind: "pl
   const title = placements ? "Student Placements" : "Student Internships";
   const Title = embedded ? "h2" : "h1";
   const Sub = embedded ? "h3" : "h2";
-  return <div className={placements ? "svu-career-records svu-career-records--ledger" : "svu-career-records svu-career-records--upskill"}>
+  return <div className={placements ? "svu-career-records svu-career-records--rocket" : "svu-career-records svu-career-records--upskill"}>
     <div className="svu-career-title-card">
-      {placements && <p className="svu-ledger-statement">Every placement. Every role. <span>On the record.</span></p>}
+      {placements && <span className="svu-rocket-mark" aria-hidden="true" />}
       <Title>{title}</Title>
       <p className="svu-career-subtitle">{placements ? "Career outcomes in data science, artificial intelligence and technology." : svuInternshipIntroduction.subtitle}</p>
     </div>
@@ -51,9 +51,9 @@ export default function SvuCareerRecords({ kind, embedded = false }: { kind: "pl
       : svuInternshipIntroduction.paragraphs.map(text => <p key={text}>{text}</p>)}
     {!placements && <SvuInternshipUpdate />}
     <Sub id={placements ? undefined : "internship-records"} className="svu-career-records-heading">{placements ? "Placement Records" : "Internship Records"}</Sub>
-    {placements && <div className="svu-ledger-cols" aria-hidden="true"><span>Organisation</span><span>Student</span><span>Profile</span><span>Batch</span></div>}
-    {placements ? <ul className="svu-outcomes svu-ledger" aria-label={title}>{shown.map(record => <li key={record.student} className="svu-outcome svu-offer">
-      <header className="svu-offer-head"><Building2 size={16} aria-hidden="true" /><p className="svu-outcome-org">{record.organisation}</p></header>
+    {placements ? <ul className="svu-outcomes svu-rocket" aria-label={title}>{shown.map(record => <li key={record.student} className="svu-outcome svu-offer">
+      <span className="svu-rocket-icon" aria-hidden="true"><Building2 size={26} strokeWidth={1.4} /></span>
+      <header className="svu-offer-head"><p className="svu-outcome-org">{record.organisation}</p></header>
       <dl className="svu-offer-fields">
         <div><i aria-hidden="true"><UserRound size={15} /></i><dt>Student</dt><dd><h3>{record.student}</h3></dd></div>
         <div><i aria-hidden="true"><Briefcase size={15} /></i><dt>Profile</dt><dd className="svu-outcome-role">{record.designation}</dd></div>
