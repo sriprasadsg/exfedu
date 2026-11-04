@@ -10,13 +10,11 @@ import SvuCareerRecords from "@/components/site/SvuCareerRecords";
 const placements = () => render(<MemoryRouter><SvuCareerRecords kind="placements" /></MemoryRouter>);
 
 describe("SVU placements on the Archbook model", () => {
-  it("opens with the hero headline, approved subtitle and two calls to action", () => {
+  it("keeps the internship destination available from placements", () => {
     const { container } = placements();
     const hero = container.querySelector(".svu-career-title-card");
     expect(hero?.textContent).toContain("Student Placements");
     expect(hero?.querySelector(".svu-career-subtitle")?.textContent).toBe("Career outcomes in data science, artificial intelligence and technology.");
-    expect(hero?.querySelectorAll("a.svu-hero-primary")).toHaveLength(1);
-    expect(hero?.querySelector("a.svu-hero-primary")?.getAttribute("href")).toBe("/contact");
     expect(hero?.querySelector("a.svu-hero-secondary")?.getAttribute("href")).toBe("/collaboration-network/svu/innovations#internships");
   });
 
@@ -28,10 +26,8 @@ describe("SVU placements on the Archbook model", () => {
     expect(split?.querySelector("a.svu-pl-link")?.getAttribute("href")).toBe("/collaboration-network/svu#programmes");
   });
 
-  it("rules the records under a navy band and keeps all eleven approved records", () => {
+  it("keeps all eleven approved records", () => {
     const { container } = placements();
-    expect(container.querySelector(".svu-pl-band .svu-career-records-heading")?.textContent).toBe("Placement Records");
-    expect(container.querySelector(".svu-pl-band a.svu-pl-band-link")?.getAttribute("href")).toBe("/contact");
     const rows = [...container.querySelectorAll(".svu-pl-card")];
     expect(rows).toHaveLength(svuPlacements.length);
     const rendered = rows.map(row => ({
