@@ -1091,24 +1091,30 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 }
 @media (prefers-reduced-motion: reduce) { .ibm-pm .ibm-steps li, .ibm-pm .ibm-choice li { transition: none; } }
 
-/* Programme landing pages — sleek monochrome agency reference: white canvas, oversized
-   editorial headline with an italic final word, outlined pill buttons, hairline rules. */
-.programme-mono { background: hsl(var(--card)); }
-.programme-mono .programme-intro { background: hsl(var(--card)); border-bottom: 1px solid hsl(var(--navy-900) / .14); padding-block: 36px 56px; }
-.programme-mono .programme-intro h1 { font-family: "Google Sans", ui-sans-serif, system-ui, sans-serif; font-weight: 400; font-size: clamp(38px, 5.6vw, 76px); line-height: 1.02; letter-spacing: -.035em; color: hsl(var(--navy-900)); max-width: 16ch; margin-block: 18px 22px; }
-.programme-mono .programme-intro h1 em { font-family: Georgia, "Times New Roman", serif; font-style: italic; font-weight: 700; letter-spacing: -.02em; }
-.programme-mono .programme-intro h1::after { content: "\2192"; display: inline-block; margin-left: .25em; font-weight: 300; font-size: .7em; color: hsl(var(--navy-900) / .7); vertical-align: middle; }
-.programme-mono .programme-intro > .container > p { max-width: 62ch; color: hsl(var(--navy-900) / .72); font-size: 17px; }
-.programme-mono .programme-facts > div { display: block; padding: 12px 26px 12px 60px; position: relative; background: transparent; border: 1px solid hsl(var(--navy-900) / .9); border-radius: 999px; box-shadow: none; }
-.programme-mono .programme-facts svg { color: hsl(var(--navy-900)); position: absolute; left: 24px; top: 50%; transform: translateY(-50%); }
-.programme-mono .programme-actions { padding: 26px; overflow: hidden; }
-.programme-mono .programme-actions > a, .programme-mono .programme-actions > button { max-width: 100%; box-sizing: border-box; }
-.programme-mono .programme-detail-section { border-top: 1px solid hsl(var(--navy-900) / .14); padding-top: 32px; background: transparent; box-shadow: none; }
-.programme-mono .programme-detail-section > h2 { font-weight: 400; font-size: clamp(24px, 2.6vw, 32px); letter-spacing: -.02em; color: hsl(var(--navy-900)); }
-.programme-mono .programme-section-icon { background: transparent; border: 1px solid hsl(var(--navy-900) / .85); color: hsl(var(--navy-900)); border-radius: 999px; }
-.programme-mono .programme-actions { background: hsl(var(--card)); border: 1px solid hsl(var(--navy-900) / .9); border-radius: 22px; box-shadow: none; }
-.programme-mono .cta-enquire { background: hsl(var(--card)); color: hsl(var(--navy-900)); border: 1.5px solid hsl(var(--navy-900)); border-radius: 999px; box-shadow: none; background-image: none; }
-.programme-mono .cta-enquire:hover { background: hsl(var(--navy-900)); color: hsl(var(--card)); }
+/* Programme landing pages — Enfold multipurpose reference (4 Nov 2026): grey title bar,
+   white content with hairline grey boxes, small uppercase headings over a short accent rule,
+   round filled icon badges and a sidebar separated by a vertical rule. */
+.programme-enfold { background: hsl(var(--card)); }
+.programme-enfold .programme-intro { background: hsl(210 20% 97%); border-block: 1px solid hsl(210 16% 88%); padding-block: 28px 34px; }
+.programme-enfold .programme-intro h1 { font-weight: 400; font-size: clamp(28px, 3.4vw, 40px); line-height: 1.15; letter-spacing: -.01em; color: hsl(var(--navy-900)); margin-block: 14px 12px; max-width: none; }
+.programme-enfold .programme-intro h1 em { font-style: normal; font-family: inherit; }
+.programme-enfold .programme-intro > .container > p { max-width: 70ch; color: hsl(var(--muted-foreground)); font-size: 16px; line-height: 1.7; }
+.programme-enfold .programme-facts > div { display: block; position: relative; padding: 14px 20px 14px 66px; background: hsl(var(--card)); border: 1px solid hsl(210 16% 88%); border-radius: 3px; box-shadow: none; }
+.programme-enfold .programme-facts svg { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); width: 36px; height: 36px; padding: 8px; border-radius: 50%; background: hsl(var(--navy-900)); color: hsl(var(--card)); }
+.programme-enfold .programme-facts dt { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: hsl(var(--muted-foreground)); }
+.programme-enfold .programme-detail-body { padding-top: 44px; }
+.programme-enfold .programme-detail-section { padding: 28px 30px; margin-bottom: 26px; background: hsl(var(--card)); border: 1px solid hsl(210 16% 88%); border-radius: 3px; box-shadow: none; }
+.programme-enfold .programme-detail-section > h2 { display: flex; align-items: center; gap: 14px; font-size: 15px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: hsl(var(--navy-900)); padding-bottom: 14px; margin-bottom: 18px; border-bottom: 1px solid hsl(210 16% 90%); position: relative; }
+.programme-enfold .programme-detail-section > h2::after { content: ""; position: absolute; left: 0; bottom: -1px; width: 48px; height: 2px; background: hsl(var(--navy-900)); }
+.programme-enfold .programme-section-icon { width: 40px; height: 40px; border: 0; border-radius: 50%; background: hsl(var(--navy-900)); color: hsl(var(--card)); }
+.programme-enfold .programme-usp-list .programme-section-icon { background: hsl(205 70% 94%); color: hsl(var(--navy-900)); }
+.programme-enfold .programme-section-body, .programme-enfold .programme-section-body li { color: hsl(var(--muted-foreground)); line-height: 1.75; }
+.programme-enfold .programme-actions { padding: 6px 0 6px 28px; background: transparent; border: 0; border-left: 1px solid hsl(210 16% 88%); border-radius: 0; box-shadow: none; overflow: hidden; }
+.programme-enfold .programme-actions > h2 { font-size: 13px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; }
+.programme-enfold .programme-actions > a, .programme-enfold .programme-actions > button { max-width: 100%; box-sizing: border-box; }
+.programme-enfold .cta-enquire { background: hsl(var(--navy-900)); background-image: none; color: hsl(var(--card)); border: 0; border-radius: 3px; box-shadow: none; }
+.programme-enfold .cta-enquire:hover { background: hsl(var(--navy-700, var(--navy-900))); color: hsl(var(--card)); }
+@media (max-width: 1023px) { .programme-enfold .programme-actions { border-left: 0; border-top: 1px solid hsl(210 16% 88%); padding: 24px 0 0; } .programme-enfold .programme-detail-section { padding: 22px 18px; } }
 
 /* Placements — Archbook landing-page model (client, 4 November 2026): a wash hero with an
    uppercase headline and two buttons, a copy/artwork split, a navy record band and the records
