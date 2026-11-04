@@ -1279,4 +1279,5 @@ body:not(:has(.homepage-static)) main .svu-career-records--logistics .svu-career
 @media (max-width: 639px) {
   .svu-pl-person { gap: 8px; }
   .svu-pl-card .svu-outcome-role, .svu-pl-card .svu-outcome-org { gap: 7px; }
+  .svu-pl-card, .svu-career-records--logistics .svu-pl-card { min-height: 300px; padding: 24px 22px 22px; }
 }
