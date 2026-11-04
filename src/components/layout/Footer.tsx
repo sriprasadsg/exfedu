@@ -52,9 +52,12 @@ const Footer = () => (
           {/* Client, 4 November 2026: the two countries' offices share one grid, so the
               second office in each country (New Jersey and Bangalore) starts on the same
               row and lines up across the columns. */}
-          {footerLocations.map((country) =>
-            country.offices.map((office, officeIndex) => (
-              <div className="footer-office-cell" key={`${country.code}-${office.label}`}>
+          {[0, 1].map((row) =>
+            footerLocations.map((country) => {
+              const office = country.offices[row];
+              if (!office) return null;
+              return (
+                <div className="footer-office-cell" key={`${country.code}-${office.label}`}>
                 {officeIndex === 0 && (
                   <p className="footer-country-name">
                     <CountryFlag code={country.code} />
