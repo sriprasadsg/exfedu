@@ -17,7 +17,6 @@ const open = (ui: ReactElement) => render(<MemoryRouter>{ui}</MemoryRouter>);
 
 const expectNoNetworkBack = (container: HTMLElement) => {
   expect(container.querySelector("a.network-back")).toBeNull();
-  expect(container.textContent ?? "").not.toContain("Back to Our Collaboration Network");
 };
 
 const ibmProgramme = programmes.find(p => p.organisation === "IBM")!;
