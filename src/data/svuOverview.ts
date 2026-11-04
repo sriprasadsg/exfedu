@@ -11,6 +11,26 @@ export const svuOverview = {
   seoDescription: "Explore industry-integrated data science education through Exafluence and SVU, with applied AI, Gen AI projects, research and student innovation.",
 };
 
+/* Approved section copy, client, 4 November 2026: one reading band on the SVU Overview page
+   holding three parts — Tools & Technologies (the logo strip), Research & Innovation, and
+   Industry Exposure & Career Development. Wording is the client's, so it is kept verbatim. */
+export const svuGrowth = {
+  title: "Technology, Research & Professional Growth",
+  intro: "Building practical skills, encouraging innovation and connecting academic learning with industry experience.",
+  tools: {
+    title: "Tools & Technologies",
+    text: "Explore tools and technologies across data science, AI, Generative AI, cloud computing and quantum computing. Strengthen technical understanding through guided exercises and project work, with coverage tailored to each programme\u2019s curriculum.",
+  },
+  research: {
+    title: "Research & Innovation",
+    text: "Investigate technical challenges, explore new ideas and develop solutions through research and experimentation. Build analytical thinking and communicate findings through project demonstrations, research papers and conference presentations.",
+  },
+  industry: {
+    title: "Industry Exposure & Career Development",
+    text: "Connect technical knowledge with professional practice through industry case studies, mentor guidance and internship opportunities. Develop problem-solving, teamwork and communication skills to approach workplace challenges with confidence.",
+  },
+};
+
 export const svuProjectAreas = [
   { title: "Data Engineering", text: "Data pipelines, ETL automation, lineage tracking and data quality.", icon: Database, tone: "blue", projectIndex: 1 },
   { title: "AI & Generative AI", text: "Conversational assistants, document processing and research tools.", icon: BrainCircuit, tone: "violet", projectIndex: 4 },

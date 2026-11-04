@@ -3,10 +3,11 @@ import { render } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import SvuPages from "@/components/site/SvuPages";
 
-/* Client, 3 November 2026: the SVU Overview technologies section is titled "Technologies You
-   Work With" and sits between "Applied AI and Data Science" and "Research and Technical
-   Exploration". It shows logos only — each in its own cell — rising one after
-   another in a vertical strip in the section's corner. The list is fixed by the brief, and the
+/* Client, 3 November 2026: the SVU Overview technologies strip shows logos only — each in its
+   own cell — rising one after another in a vertical strip in the section's corner.
+   Client, 4 November 2026: that strip is now the "Tools & Technologies" part of the
+   "Technology, Research & Professional Growth" band, so its heading is a part title (h3) and
+   the introduction is the client's new wording. The list is fixed by the brief, and the
    wording must never imply that every item is covered in every programme. */
 
 const EXPECTED = [
@@ -32,25 +33,26 @@ const primaryCells = (root: ParentNode) => [...root.querySelectorAll(".svu-tech-
 const cellName = (cell: Element) =>
   cell.querySelector("img")?.getAttribute("alt") ?? cell.querySelector(".sr-only")?.textContent?.trim();
 
-describe("SVU Overview — Technologies You Work With", () => {
-  it("is titled as the client asked and sits between Applied AI and Research, keeping the coverage caveat", () => {
+describe("SVU Overview — Tools & Technologies", () => {
+  it("reads as the Tools & Technologies part of the growth band, keeping the coverage caveat", () => {
     const { container } = overview();
     const headings = [...container.querySelectorAll(".svu-flow .svu-block h2")].map(h => h.textContent!.trim());
     expect(headings).not.toContain("Tools, Platforms & Technologies");
-    // Programmes now sit between Applied AI and the technologies strip (3 Nov 2026 page flow).
-    expect(headings.indexOf("Technologies You Work With")).toBe(headings.indexOf("Industry-Integrated Programmes") + 1);
+    // Programmes now sit between Applied AI and the growth band (3 Nov 2026 page flow).
+    expect(headings.indexOf("Technology, Research & Professional Growth")).toBe(headings.indexOf("Industry-Integrated Programmes") + 1);
     expect(headings.indexOf("Industry-Integrated Programmes")).toBe(headings.indexOf("Applied AI and Data Science") + 1);
-    expect(headings.indexOf("Research and Technical Exploration")).toBe(headings.indexOf("Technologies You Work With") + 1);
+    expect(container.querySelector(".svu-tech h3")?.textContent).toBe("Tools & Technologies");
     expect(container.querySelector(".svu-tech .svu-reading")?.textContent).toBe(
-      "Explore the tools, platforms and emerging technologies featured across SVU\u2013Exafluence programmes. Coverage varies by programme and curriculum.",
+      "Explore tools and technologies across data science, AI, Generative AI, cloud computing and quantum computing. Strengthen technical understanding through guided exercises and project work, with coverage tailored to each programme\u2019s curriculum.",
     );
   });
 
-  it("shows logos only, one technology per numbered cell, in brief order", () => {
+  it("shows logos only, one technology per cell, in brief order", () => {
     const { container } = overview();
     const section = container.querySelector(".svu-tech")!;
-    // No category rows or printed technology names any more.
-    expect(section.querySelector(".svu-tool-row, .svu-tool-label, .svu-tool-name, h3")).toBeNull();
+    // No category rows or printed technology names any more; the only heading is the part title.
+    expect(section.querySelector(".svu-tool-row, .svu-tool-label, .svu-tool-name")).toBeNull();
+    expect([...section.querySelectorAll("h3")].map(h => h.textContent)).toEqual(["Tools & Technologies"]);
 
     const cells = primaryCells(section);
     expect(cells).toHaveLength(22);

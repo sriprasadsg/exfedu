@@ -771,13 +771,13 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 }
 .banner-story, .bs-svg { border: 0 !important; box-shadow: none !important; outline: 0; filter: none !important; background: transparent !important; }
 
-/* ===== SVU Overview: Technologies You Work With (client, 3 November 2026) =====
+/* ===== SVU Overview: Tools & Technologies (client, 3 and 4 November 2026) =====
    Logos only, each in its own cell, rising one after another in a narrow vertical strip in
    the section's right corner. The track holds two identical copies and slides by exactly
    one, so the loop is seamless. Hover pauses it; a reduced-motion preference lays every
    cell out at once with no motion. */
 .svu-tech { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 300px); gap: 24px 48px; align-items: center; }
-.svu-tech h2 { margin: 0; }
+.svu-tech h3 { margin: 0; }
 .svu-tech .svu-reading { margin-top: 12px; max-width: 560px; }
 .svu-tech-window { --tech-cell-h: 92px; --tech-gap: 12px; position: relative; min-width: 0; }
 .svu-tech.is-scrolling .svu-tech-window {
@@ -944,3 +944,22 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 @media (max-width: 520px) { .svu-intern-cards { grid-template-columns: minmax(0,1fr); } }
 @media (prefers-reduced-motion: reduce) { .svu-intern-card, .svu-upskill-strip svg { transition: none; } }
 .svu-pages .svu-upskill-hero h1 em, .svu-upskill-hero h1 > em { font-style: normal; color: hsl(var(--connection-blue)) !important; -webkit-text-fill-color: hsl(var(--connection-blue)); }
+
+/* ===== SVU Overview: Technology, Research & Professional Growth (client, 4 November 2026) =====
+   One reading band holding three parts — Tools & Technologies (the logo strip), Research &
+   Innovation, and Industry Exposure & Career Development. The heading and introduction sit
+   above a hairline and each part is divided by the same hairline, so the three read as one
+   section instead of three separate boxed panels. */
+.svu-growth { padding: 30px 34px 8px; border: 1px solid hsl(var(--connection-blue) / .16); border-radius: 18px; background: hsl(var(--academic-sky) / .09); }
+.svu-growth-head { padding-bottom: 24px; border-bottom: 1px solid hsl(var(--connection-blue) / .16); }
+.svu-growth-head h2 { margin: 0; }
+.svu-growth-head .svu-reading { margin-top: 10px; }
+.svu-growth-part { padding: 26px 0; border-top: 1px solid hsl(var(--connection-blue) / .12); }
+.svu-growth-part:first-of-type { border-top: 0; }
+.svu-growth-part h3 { margin: 0; font-size: 19px; line-height: 1.45; font-weight: 500; color: hsl(var(--navy-900)); }
+.svu-growth-part .svu-reading { margin-top: 10px; }
+.svu-growth-part > a { padding-left: 0; margin-top: 6px; }
+@media (max-width: 767px) {
+  .svu-growth { padding: 22px 18px 4px; border-radius: 14px; }
+  .svu-growth-part { padding: 20px 0; }
+}

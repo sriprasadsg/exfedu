@@ -1,8 +1,10 @@
 import { useEffect, useState, type CSSProperties } from "react";
-import { svuTechnologies, svuToolsIntro } from "@/data/svuTools";
+import { svuTechnologies } from "@/data/svuTools";
+import { svuGrowth } from "@/data/svuOverview";
 
-/* "Technologies You Work With" (client, 3 November 2026): logos only, each in its own cell,
-   rising one after another in a narrow vertical strip in the section's right corner. The strip
+/* The "Tools & Technologies" part of the SVU Overview growth band (client, 3 and 4 November
+   2026): logos only, each in its own cell, rising one after another in a narrow vertical strip
+   in the section's right corner. The strip
    holds two copies of the list and slides by exactly one copy, so the loop is seamless; the
    second copy is hidden from assistive technology so every technology is announced once.
    Hover pauses the strip and a reduced-motion preference gets one still grid with every logo
@@ -60,12 +62,12 @@ const SvuTechTicker = () => {
 
   return (
     <section
-      className={`svu-block svu-tech${reducedMotion ? " is-expanded" : " is-scrolling"}`}
+      className={`svu-growth-part svu-tech${reducedMotion ? " is-expanded" : " is-scrolling"}`}
       aria-labelledby="svu-tech-title"
     >
       <div className="svu-tech-lead">
-        <h2 id="svu-tech-title">Technologies You Work With</h2>
-        <p className="svu-reading">{svuToolsIntro}</p>
+        <h3 id="svu-tech-title">{svuGrowth.tools.title}</h3>
+        <p className="svu-reading">{svuGrowth.tools.text}</p>
       </div>
       <div className="svu-tech-window" id="svu-tech-window">
         <div

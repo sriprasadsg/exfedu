@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { organisations, programmes } from "@/data/site";
-import { svuOverview, svuProjectAreas, svuOverviewAchievements } from "@/data/svuOverview";
+import { svuGrowth, svuOverview, svuProjectAreas, svuOverviewAchievements } from "@/data/svuOverview";
 import SvuTechTicker from "./SvuTechTicker";
 import { svuConferencePapers, svuFeaturedAchievement, svuProjects, svuPublications } from "@/data/svuReviewed";
 import { programmePath, svuPagePath, svuSectionPath, type SvuPageId } from "@/lib/programmeNavigation";
@@ -77,20 +77,28 @@ const SvuOverview = () => {
 
     <SvuProgrammes embedded />
 
-    <SvuTechTicker />
-
-    <section className="svu-block svu-split">
-      <div className="svu-split-lead"><h2>Research and Technical Exploration</h2></div>
-      <div className="svu-split-body">
-      <p className="svu-reading">Students investigate technical questions and communicate their findings through papers and conference presentations, on topics including explainable AI, retrieval-based systems, multimodal applications, reinforcement learning and quantum machine learning.</p>
-      <Button variant="link" asChild><Link to={svuSectionPath("projects-research")}>Explore Projects &amp; Research<ArrowRight size={16} /></Link></Button>
+    {/* One reading band (client copy, 4 November 2026): the heading and introduction sit above
+        three hairline-separated parts — the logo strip, Research & Innovation and Industry
+        Exposure & Career Development — instead of three separate boxed sections. */}
+    <section className="svu-block svu-growth" aria-labelledby="svu-growth-title">
+      <div className="svu-growth-head">
+        <h2 id="svu-growth-title">{svuGrowth.title}</h2>
+        <p className="svu-reading">{svuGrowth.intro}</p>
       </div>
-    </section>
 
-    <section className="svu-block">
-      <h2>Industry Exposure and Career Development</h2>
-      <p className="svu-reading">Industry case studies, mentor guidance and internship exposure connect technical study with professional practice.</p>
-      <div className="svu-actions"><Button variant="outline" asChild><Link to={svuSectionPath("internships")}>Explore Internships<ArrowRight size={16} /></Link></Button><Button variant="outline" asChild><Link to={svuSectionPath("placements")}>View Placements<ArrowRight size={16} /></Link></Button><Button asChild className="cta-enquire"><Link to="/contact">Enquire Now<ArrowRight size={16} /></Link></Button></div>
+      <SvuTechTicker />
+
+      <section className="svu-growth-part svu-growth-part--text">
+        <h3>{svuGrowth.research.title}</h3>
+        <p className="svu-reading">{svuGrowth.research.text}</p>
+        <Button variant="link" asChild><Link to={svuSectionPath("projects-research")}>Explore Projects &amp; Research<ArrowRight size={16} /></Link></Button>
+      </section>
+
+      <section className="svu-growth-part svu-growth-part--text">
+        <h3>{svuGrowth.industry.title}</h3>
+        <p className="svu-reading">{svuGrowth.industry.text}</p>
+        <div className="svu-actions"><Button variant="outline" asChild><Link to={svuSectionPath("internships")}>Explore Internships<ArrowRight size={16} /></Link></Button><Button variant="outline" asChild><Link to={svuSectionPath("placements")}>View Placements<ArrowRight size={16} /></Link></Button><Button asChild className="cta-enquire"><Link to="/contact">Enquire Now<ArrowRight size={16} /></Link></Button></div>
+      </section>
     </section>
   </div>;
 };

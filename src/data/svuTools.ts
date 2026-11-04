@@ -27,8 +27,8 @@ import git from "@/assets/tech/git.svg";
 export type ToolItem = { name: string; logo?: string; icon?: LucideIcon; short?: string };
 export type ToolCategory = { label: string; items: ToolItem[] };
 
-export const svuToolsIntro =
-  "Explore the tools, platforms and emerging technologies featured across SVU\u2013Exafluence programmes. Coverage varies by programme and curriculum.";
+/* The section's own heading and introduction moved to svuGrowth in svuOverview.ts
+   (client copy, 4 November 2026); this file holds the technology list only. */
 
 export const svuToolCategories: ToolCategory[] = [
   { label: "Programming", items: [
