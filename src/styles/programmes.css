@@ -200,8 +200,6 @@
 .svu-publications a { display: flex; align-items: center; justify-content: space-between; gap: 18px; border-bottom: 1px solid hsl(var(--academic-edge)); padding-block: 16px; font-size: 14px; line-height: 1.7; }
 .svu-publications a:hover { color: hsl(var(--connection-blue)); }
 .svu-publications svg { flex-shrink: 0; }
-.svu-academic-resources > h4 { font-size: 17px; font-weight: 500; margin-top: 26px; }
-.svu-academic-resources > h3 { font-size: 20px; margin-bottom: 12px; }
 .svu-faculty-grid article { border-bottom: 1px solid hsl(var(--academic-edge)); padding-bottom: 16px; }
 .svu-faculty-grid h5 { font-size: 15px; font-weight: 500; margin-bottom: 4px; }
 @media (max-width: 767px) { .svu-content-grid, .svu-faculty-grid { grid-template-columns: minmax(0, 1fr); } .svu-gallery { grid-template-columns: minmax(0, 1fr); } .svu-gallery img { height: 280px; } }
@@ -346,7 +344,7 @@
 .svu-tabbar { position: sticky; top: 80px; z-index: 20; margin-top: 16px; background: hsl(var(--background)); border-bottom: 1px solid hsl(var(--academic-edge)); }
 .svu-tabbar-inner { display: flex; gap: 28px; overflow-x: auto; scrollbar-width: none; }
 .svu-tabbar-inner::-webkit-scrollbar { display: none; }
-.svu-tabbar a { flex-shrink: 0; padding: 14px 0 12px; font-size: 14px; font-weight: 500; color: hsl(var(--connection-blue)); border-bottom: 2px solid transparent; transition: filter 200ms ease, border-color 200ms ease; }
+.svu-tabbar a { flex-shrink: 0; padding: 14px 0 12px; font-size: 14.5px; font-weight: 400; color: hsl(var(--connection-blue)); border-bottom: 2px solid transparent; transition: filter 200ms ease, border-color 200ms ease; }
 /* Client, 4 November 2026: "use single color" — every tab keeps one colour. */
 .svu-tabbar a:hover { filter: brightness(.82); }
 .svu-tabbar a.is-active { font-weight: 500; border-bottom-color: currentColor; }
@@ -865,8 +863,6 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 .fd.fd-page { margin-top: 48px; }
 .fd.fd-page .fd-title { font-size: clamp(24px, 2.6vw, 32px); margin-bottom: 6px; }
 .fd .fd-intro { font-size: 15px; line-height: 1.7; color: hsl(var(--muted-foreground)); margin: 0 0 20px; max-width: 70ch; }
-.svu-faculty-callout { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-top: 20px; padding: 18px 20px; border: 1px solid hsl(var(--academic-edge)); border-radius: 8px; }
-.svu-faculty-callout p { margin: 0; }
 
 
 .svu-outcome-part { margin-top: 0; scroll-margin-top: 96px; }

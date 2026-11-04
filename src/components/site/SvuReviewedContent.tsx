@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { svuProjects, svuPublications, svuResearchMetrics, svuConferencePapers, svuFaculty, svuSupport, svuBrochureReview } from "@/data/svuReviewed";
 import { svuProjectAreas, svuOverviewAchievements } from "@/data/svuOverview";
-import { svuSectionPath } from "@/lib/programmeNavigation";
 
 export const SvuOverviewContent = () => <div className="svu-overview-content">
   <section className="svu-overview-band"><h2><BookOpen size={23} strokeWidth={1.4} aria-hidden="true" />Industry-Integrated Teaching Approach</h2>
@@ -50,13 +49,6 @@ export const SvuResearchContent = () => {
   </div>;
 };
 
-export const SvuAcademicResources = () => <div className="svu-academic-resources">
-  <p>Industry-integrated teaching aligned with NEP 2020 connects AI, ML and Generative AI concepts with projects, case studies and real-world applications.</p>
-  <div className="svu-faculty-callout">
-    <p>Meet the faculty, industry mentors and technical mentors who guide this programme.</p>
-    <Link className="svu-directory-link" to={svuSectionPath("faculty")}>View Faculty &amp; Mentors<ArrowRight size={15} aria-hidden="true" /></Link>
-  </div>
-</div>;
 
 export const SvuFacultyPage = () => <>
   <FacultyDirectory page cols={4} title="Faculty & Industry Mentors" intro="Faculty and Exafluence industry professionals who teach and mentor across AI, machine learning, data engineering and cloud." people={svuFaculty} />

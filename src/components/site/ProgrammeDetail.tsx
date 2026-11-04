@@ -2,15 +2,14 @@ import { SvuTabBar } from "./SvuPages";
 import { svuSectionPath } from "@/lib/programmeNavigation";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, ArrowRight, Clock3, Monitor, Download, Cpu, FlaskConical, Library, Sparkles, Users } from "lucide-react";
+import { ArrowLeft, ArrowRight, Clock3, Monitor, Download, Cpu, FlaskConical, Library, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
-import { academicResources, organisations, PENDING, type Programme } from "@/data/site";
+import { organisations, PENDING, type Programme } from "@/data/site";
 import { useProgrammeSeo } from "./ProgrammeDirectory";
 import { organisationPath } from "@/lib/programmeNavigation";
 import InstitutionBrochureForm from "@/components/site/InstitutionBrochureForm";
 import { programmeDetailSections, ibmProgrammeSections, svuProgrammeUsp } from "@/lib/programmeSections";
-import { SvuAcademicResources } from "./SvuReviewedContent";
 
 const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { programme: Programme; organisationOverview?: boolean }) => {
   const org = organisations[p.organisation];
@@ -144,25 +143,6 @@ const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { progr
             </section>
           ))}
 
-          {/* Faculty and academic resources stand on their own, before the enquiry. */}
-          <section className="programme-detail-section programme-reveal" aria-labelledby="programme-resources-heading">
-            <h2 id="programme-resources-heading">
-              <span className="programme-section-icon tone-teal">
-                <Users size={22} aria-hidden="true" />
-              </span>
-              {isSvu ? "Faculty & Academic Resources" : "Academic Resources"}
-            </h2>
-            {p.organisation === "SVU" ? <SvuAcademicResources /> : <div className="programme-resource-box">
-              <ul>{academicResources.items.map(item => <li key={item}>{item}</li>)}</ul>
-              <p>{academicResources.note}</p>
-              <Button variant="outline" size="sm" asChild>
-                <Link to={academicResources.link.path}>
-                  {academicResources.link.label}
-                  <ArrowRight size={15} />
-                </Link>
-              </Button>
-            </div>}
-          </section>
 
           <section className="programme-detail-section programme-reveal" id={offersBrochure ? "brochure-enquiry" : "programme-enquiry"}>
             <h2>
