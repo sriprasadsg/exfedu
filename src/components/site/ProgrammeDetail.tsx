@@ -1,5 +1,4 @@
 import { SvuTabBar } from "./SvuPages";
-import NetworkBackButton from "./NetworkBackButton";
 import { svuSectionPath } from "@/lib/programmeNavigation";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
@@ -72,7 +71,6 @@ const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { progr
       {isSvu && <SvuTabBar active="overview" detail />}
       <header className={`programme-intro${isSvu ? " programme-intro-after-tabs" : ""}`}>
         <div className="container">
-          {!isSvu && <NetworkBackButton />}
           {!isSvu && breadcrumb}
           <img className={`programme-detail-logo ${org.logoClass}`} src={org.logo} alt={`${org.name} logo`} />
           <h1>{p.title}</h1>

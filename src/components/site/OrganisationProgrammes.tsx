@@ -7,7 +7,6 @@ import { organisationPath, programmePath } from "@/lib/programmeNavigation";
 import { useProgrammeSeo } from "./ProgrammeDirectory";
 import { svuOverview } from "@/data/svuOverview";
 import SvuCareerRecords from "./SvuCareerRecords";
-import NetworkBackButton from "./NetworkBackButton";
 
 const OrganisationProgrammes = ({ organisation }: { organisation: Organisation }) => {
   const org = organisations[organisation];
@@ -26,7 +25,6 @@ const OrganisationProgrammes = ({ organisation }: { organisation: Organisation }
 
   return <main className="programme-experience organisation-programmes">
     <header className={`programme-intro${organisation === "SVU" ? " svu-overview-opening" : ""}`}><div className="container">
-      <NetworkBackButton />
       <nav aria-label="Breadcrumb"><Link to="/">Home</Link><span aria-hidden="true">/</span><span aria-current="page">{org.name}</span></nav>
       {organisation === "SVU" ? <div className="svu-overview-intro"><div>
         <img className={`programme-detail-logo ${org.logoClass}`} src={org.logo} alt={`${org.name} logo`} />

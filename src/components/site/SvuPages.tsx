@@ -13,7 +13,6 @@ import { programmePath, svuPagePath, svuSectionPath, type SvuPageId } from "@/li
 import { SvuFacultyPage } from "./SvuReviewedContent";
 import { useProgrammeSeo } from "./ProgrammeDirectory";
 import SvuCareerRecords from "./SvuCareerRecords";
-import NetworkBackButton from "./NetworkBackButton";
 
 const tabs: { id: SvuPageId; label: string }[] = [
   { id: "overview", label: "Overview & Programmes" },
@@ -228,9 +227,6 @@ const SvuPages = ({ section }: { section: SvuPageId }) => {
     return () => window.clearTimeout(t);
   }, [section, hash]);
   return <main className="programme-experience svu-pages">
-    <div className="svu-container">
-      <nav aria-label="Our Collaboration Network" className="svu-breadcrumb"><NetworkBackButton /></nav>
-    </div>
     <SvuTabBar active={section} />
     <div className="svu-container svu-body">
       {section === "overview" && <SvuOverview />}
