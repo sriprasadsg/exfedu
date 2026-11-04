@@ -43,7 +43,7 @@ export default function SvuCareerRecords({ kind, embedded = false }: { kind: "pl
   const title = placements ? "Student Placements" : "Student Internships";
   const Title = embedded ? "h2" : "h1";
   const Sub = embedded ? "h3" : "h2";
-  return <div className={placements ? "svu-career-records svu-career-records--archbook" : "svu-career-records svu-career-records--upskill"}>
+  return <div className={placements ? "svu-career-records svu-career-records--archbook svu-career-records--logistics" : "svu-career-records svu-career-records--upskill"}>
     <div className="svu-career-title-card">
       <Title>{title}</Title>
       <p className="svu-career-subtitle">{placements ? "Career outcomes in data science, artificial intelligence and technology." : svuInternshipIntroduction.subtitle}</p>

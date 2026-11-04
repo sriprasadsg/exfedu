@@ -1202,3 +1202,32 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
   .svu-framo .svu-upskill-strip a:nth-child(2) { border-right: 0; }
   .svu-framo > .svu-upskill-hero + * { margin-top: 40px; }
 }
+
+/* Placements: Framo logistics composition, using approved education content only. */
+.svu-career-records--logistics .svu-career-title-card { padding: 56px 48px; border: 0; border-radius: 0; background: hsl(var(--navy-900)); }
+.svu-career-records--logistics .svu-career-title-card > h1,
+.svu-career-records--logistics .svu-career-title-card > h2 { max-width: 18ch; font-size: 48px; line-height: 1.12; font-weight: 700; letter-spacing: 0; text-transform: none; color: hsl(var(--primary-foreground)); background: none; -webkit-text-fill-color: currentColor; }
+.svu-career-records--logistics .svu-career-subtitle { max-width: 48ch; margin-top: 18px; color: hsl(var(--primary-foreground)); line-height: 1.75; }
+.svu-career-records--logistics .svu-hero-primary { border: 1px solid hsl(var(--primary-foreground)); border-radius: 4px; background: hsl(var(--primary-foreground)); color: hsl(var(--navy-900)); }
+.svu-career-records--logistics .svu-hero-secondary { border: 1px solid hsl(var(--primary-foreground)); border-radius: 4px; background: transparent; color: hsl(var(--primary-foreground)); }
+.svu-career-records--logistics .svu-hero-primary:hover { background: hsl(var(--secondary)); }
+.svu-career-records--logistics .svu-hero-secondary:hover { background: hsl(var(--primary-foreground) / .12); }
+.svu-career-records--logistics .svu-career-content-card { margin-top: 0; }
+.svu-career-records--logistics .svu-pl-split { padding: 44px 36px; margin: 0; gap: 36px; background: hsl(var(--secondary)); border: 0; }
+.svu-career-records--logistics .svu-pl-art { padding: 0; border: 0; border-radius: 0; background: transparent; }
+.svu-career-records--logistics .svu-pl-band { margin-top: 44px; padding: 28px 32px; border-radius: 0; }
+.svu-career-records--logistics .svu-pl-band .svu-career-records-heading { font-size: 24px; line-height: 1.3; font-weight: 500; letter-spacing: 0; text-transform: none; }
+.svu-career-records--logistics .svu-pl-band .svu-career-records-heading::after { display: none; }
+.svu-career-records--logistics .svu-pl-card { padding: 28px 24px; border: 1px solid hsl(var(--border)); border-top: 0; border-radius: 6px; box-shadow: none; transition: transform .25s ease, box-shadow .25s ease; }
+.svu-career-records--logistics .svu-pl-card:hover { transform: translateY(-3px); box-shadow: 0 16px 24px -20px hsl(var(--navy-900) / .45); }
+.svu-career-records--logistics .svu-pl-mark { width: 54px; height: 54px; border-radius: 50%; background: hsl(var(--secondary)); color: hsl(var(--navy-900)); letter-spacing: 0; }
+.svu-career-records--logistics .svu-pl-card h3 { font-size: 19px; letter-spacing: 0; }
+.svu-career-records--logistics .svu-pl-card .svu-outcome-batch { letter-spacing: 0; }
+@media (max-width: 639px) {
+  .svu-career-records--logistics .svu-career-title-card { padding: 32px 22px; }
+  .svu-career-records--logistics .svu-career-title-card > h1,
+  .svu-career-records--logistics .svu-career-title-card > h2 { font-size: 32px; }
+  .svu-career-records--logistics .svu-pl-split { padding: 28px 22px; gap: 20px; }
+  .svu-career-records--logistics .svu-pl-band { margin-top: 28px; padding: 24px 22px; }
+}
+@media (prefers-reduced-motion: reduce) { .svu-career-records--logistics .svu-pl-card { transition: none; } .svu-career-records--logistics .svu-pl-card:hover { transform: none; } }
