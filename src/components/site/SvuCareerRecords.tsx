@@ -43,11 +43,6 @@ export default function SvuCareerRecords({ kind, embedded = false }: { kind: "pl
     <div className="svu-career-title-card">
       <Title>{title}</Title>
       <p className="svu-career-subtitle">{placements ? "Career outcomes in data science, artificial intelligence and technology." : svuInternshipIntroduction.subtitle}</p>
-      <dl className="svu-career-figures">
-        <div><dt>{placements ? "Students placed" : "Interns recorded"}</dt><dd>{shown.length}</dd></div>
-        <div><dt>Organisations</dt><dd>{new Set(shown.map(r => r.organisation)).size}</dd></div>
-        <div><dt>Batches</dt><dd>{new Set(shown.map(r => r.batch)).size}</dd></div>
-      </dl>
     </div>
     <div className="svu-career-content-card">
     {placements
