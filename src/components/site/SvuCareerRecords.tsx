@@ -40,8 +40,11 @@ export default function SvuCareerRecords({ kind, embedded = false }: { kind: "pl
   const Title = embedded ? "h2" : "h1";
   const Sub = embedded ? "h3" : "h2";
   return <div className="svu-career-records">
-    <Title>{title}</Title>
-    <p className="svu-career-subtitle">{placements ? "Career outcomes in data science, artificial intelligence and technology." : svuInternshipIntroduction.subtitle}</p>
+    <div className="svu-career-title-card">
+      <Title>{title}</Title>
+      <p className="svu-career-subtitle">{placements ? "Career outcomes in data science, artificial intelligence and technology." : svuInternshipIntroduction.subtitle}</p>
+    </div>
+    <div className="svu-career-content-card">
     {placements
       ? <p>Students from the SVU–Exafluence MS Data Science programme have secured roles in data science and AI engineering, alongside trainee positions. The following records show their organisations, designations and academic batches.</p>
       : svuInternshipIntroduction.paragraphs.map(text => <p key={text}>{text}</p>)}
@@ -57,5 +60,6 @@ export default function SvuCareerRecords({ kind, embedded = false }: { kind: "pl
       <th scope="col"><i className="svu-career-head-icon svu-career-head-3"><CalendarRange size={14} aria-hidden="true" /></i><span>Batch</span></th>
       <th scope="col"><i className="svu-career-head-icon svu-career-head-4"><Building2 size={14} aria-hidden="true" /></i><span>{placements ? "Organisation" : "Internship Organisation"}</span></th>
     </tr></thead><tbody>{shown.map(record => <tr key={record.student}><th scope="row" data-label="Student Name">{record.student}</th><td data-label="Batch">{record.batch}</td><td data-label={placements ? "Organisation" : "Internship Organisation"}>{record.organisation}</td></tr>)}</tbody></table></div>}
+    </div>
   </div>;
 }
