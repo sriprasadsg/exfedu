@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import logo from "@/assets/exfedu-logo-nibless.png";
 import logoNib from "@/assets/exfedu-logo-nib.png";
 
-import { Menu, X, Search, Plus, Minus, Network } from "lucide-react";
+import { Menu, X, Search, Plus, Minus, Network, ChevronDown } from "lucide-react";
 import { svuSectionPath, type SvuSectionId } from "@/lib/programmeNavigation";
 import { menuCategories, navPages, organisationSections, primaryNavigation, organisations, programmes, type Organisation } from "@/data/site";
 import { organisationPath, programmePath } from "@/lib/programmeNavigation";
@@ -24,8 +24,9 @@ const Header = () => {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [expanded, setExpanded] = useState<string | null>(null);
+  const [networkOpen, setNetworkOpen] = useState(false);
   const { pathname } = useLocation();
-  useEffect(() => { setOpen(false); setQuery(""); setExpanded(null); }, [pathname]);
+  useEffect(() => { setOpen(false); setQuery(""); setExpanded(null); setNetworkOpen(false); }, [pathname]);
   useEffect(() => {
     if (!open) return;
     const previousOverflow = document.body.style.overflow;
@@ -62,9 +63,9 @@ const Header = () => {
               <Link to={item.path} aria-current={!item.path.includes("#") && pathname.startsWith(item.path) ? "page" : undefined}><item.icon aria-hidden="true" />{item.title}</Link>
             </Button>;
             if (item.path !== "/collaboration-network") return btn;
-            return <div key={item.path} className="group relative">
-              {btn}
-              <ul className="invisible absolute left-0 top-full z-50 min-w-[260px] rounded-lg border border-border bg-background p-1.5 opacity-0 shadow-lg transition-opacity group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+            return <div key={item.path} className="group relative" onKeyDown={(event) => { if (event.key === "Escape") { setNetworkOpen(false); event.currentTarget.querySelector("button")?.focus(); } }}>
+              <Button type="button" variant="ghost" className="nav-on-navy nav-tone-network gap-1.5 px-2 lg:px-3" aria-expanded={networkOpen} aria-controls="desktop-collaboration" onClick={() => setNetworkOpen(!networkOpen)}><item.icon aria-hidden="true" />{item.title}<ChevronDown className="h-3.5 w-3.5" aria-hidden="true" /></Button>
+              <ul id="desktop-collaboration" className={`${networkOpen ? "visible opacity-100" : "invisible opacity-0"} absolute left-0 top-full z-50 min-w-[260px] rounded-lg border border-border bg-background p-1.5 shadow-lg transition-opacity group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100`}>
                 {collaborationOrder.map((o, i) => <li key={o}>
                   {/* Hover swaps front and back: the block takes the label's navy, the label takes the panel's white. */}
                   <Link to={organisationPath(o)} className="flex items-center gap-2 rounded-md px-3 py-2 text-sm text-foreground transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:bg-accent focus-visible:text-accent-foreground focus-visible:outline-none">
@@ -101,7 +102,7 @@ const Header = () => {
                   ))}
                   <li className="border-t">
                     <div className="flex min-h-12 items-center gap-2">
-                      <Link to="/collaboration-network" onClick={() => setOpen(false)} className="nav-tone-network flex min-w-0 flex-1 items-center gap-3 text-base font-medium text-primary"><Network className="h-4 w-4 shrink-0" aria-hidden="true" />Our Collaboration Network</Link>
+                      <Button type="button" variant="ghost" onClick={() => setExpanded(openGroup ? null : "collaboration")} aria-expanded={openGroup} aria-controls="sidebar-collaboration" className="nav-tone-network h-auto min-w-0 flex-1 justify-start gap-3 px-0 text-base font-medium text-primary"><Network className="h-4 w-4 shrink-0" aria-hidden="true" />Our Collaboration Network</Button>
                       <Button type="button" variant="ghost" size="icon" aria-label={openGroup ? "Hide collaboration sections" : "Show collaboration sections"} aria-expanded={openGroup} aria-controls="sidebar-collaboration" onClick={() => setExpanded(openGroup ? null : "collaboration")} className="h-9 w-9 shrink-0 text-primary">{openGroup ? <Minus className="h-4 w-4" aria-hidden="true" /> : <Plus className="h-4 w-4" aria-hidden="true" />}</Button>
                     </div>
                     {openGroup && (
