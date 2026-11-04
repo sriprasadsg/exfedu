@@ -74,7 +74,7 @@ const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { progr
           <img className={`programme-detail-logo ${org.logoClass}`} src={org.logo} alt={`${org.name} logo`} />
           <h1>{(() => { const w = p.title.split(" "); const last = w.pop(); return <>{w.join(" ")}{w.length ? " " : ""}<em>{last}</em></>; })()}</h1>
           <p>{p.overview}</p>
-          <dl className="programme-facts">
+          <dl className={`programme-facts${isSvu ? " programme-facts--centred" : ""}`}>
             <div>
               <Clock3 aria-hidden="true" size={22} />
               <dt>Duration</dt>

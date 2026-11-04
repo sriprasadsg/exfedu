@@ -1108,6 +1108,11 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 .programme-enfold .programme-intro > .container > p { max-width: 70ch; color: hsl(var(--muted-foreground)); font-size: 16px; line-height: 1.7; }
 .programme-enfold .programme-facts > div { display: block; position: relative; padding: 14px 20px 14px 66px; background: hsl(var(--card)); border: 1px solid hsl(210 16% 88%); border-radius: 3px; box-shadow: none; }
 .programme-enfold .programme-facts svg { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); width: 36px; height: 36px; padding: 8px; border-radius: 50%; background: hsl(var(--navy-900)); color: hsl(var(--card)); }
+/* SVU programme pages (client, 4 November 2026): the Duration and Delivery icons sit
+   centred in their card with the label and value beneath, not at the left edge. */
+.programme-enfold .programme-facts--centred > div { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 18px 20px; }
+.programme-enfold .programme-facts--centred svg { position: static; transform: none; margin-bottom: 10px; }
+
 .programme-enfold .programme-facts dt { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: hsl(var(--muted-foreground)); }
 .programme-enfold .programme-detail-body { padding-top: 44px; }
 .programme-enfold .programme-detail-section { padding: 28px 30px; margin-bottom: 26px; background: hsl(var(--card)); border: 1px solid hsl(210 16% 88%); border-radius: 3px; box-shadow: none; }
