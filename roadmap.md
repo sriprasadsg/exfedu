@@ -1,6 +1,7 @@
 - [x] About page: connecting-technology details (approved Exafluence Inc. industry scope) + embedded partner enquiry form; verified 1280/375px, FAQs route now 404
 - [x] FAQs removed from the About Us (Core) menu; /faqs removed from site data
 # Roadmap
+- [ ] Split SVU outcomes into separate pages: Student Innovations & Internships and Placements, keeping Projects & Research and the site's editorial theme; no loading jank.
 - [x] Remove the "Back to Our Collaboration Network" pill from every page (SVU, IBM, organisation listings, programme details); component, styles and tests updated, breadcrumbs preserved.
 - [x] Remove numeric labels (1, 2, 3 / 01, 02, 03) beside programme category titles, student project titles and the collaboration menu items; anchors and ordering unchanged.
 - [x] Remove the repeated "Duration & Delivery" and "Features" blocks from every programme page (SVU and IBM); header facts and practical-learning text keep the information.
