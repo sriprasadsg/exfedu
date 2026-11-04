@@ -466,5 +466,5 @@ Content Approval → Final Responsive QA → AWS Integration → Production Depl
 - [x] SVU placements boxes: industry name at the bottom centre with the year directly beneath it, inside spacing evened out (client, 4 Nov 2026). Verified in browser: company and year centred below the hairline near the box bottom, with the free space split evenly above the name group and between the role and the company; boxes 343x400 on desktop, 342x340 on a phone.
 
 ## 4 Nov 2026 (cont.)
-- [ ] About Us boxes: make responsive like the student projects page boxes (client, 4 Nov 2026)
-- [ ] SVU overview: make the boxed panel in the client screenshot responsive (client, 4 Nov 2026)
+- [x] About Us boxes: make responsive like the student projects page boxes (client, 4 Nov 2026). Verified in browser: industry boxes 4 → 3 → 1 columns and solution boxes 3 → 2 → 1 as the width narrows, equal box sizes in every row, no horizontal overflow at 1280/1062/900/768/480/390.
+- [x] SVU internships: make the "Advancing Skills in Generative AI" box responsive (client, 4 Nov 2026). Verified in browser: the box is a size container, its four highlights stay two across on desktop/tablet and stack to one full-width column when the box itself is narrow (panel 432px and 342px), no overflow.
