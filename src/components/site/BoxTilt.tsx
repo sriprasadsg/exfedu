@@ -7,6 +7,21 @@ const SELECTOR = [
   '.svu-outcome', '.ibm-steps li', '.ibm-choice li', '.svu-career-table-wrap', '.svu-step', '.svu-area', '.svu-champion',
 ].join(",");
 const EXCLUDE = "[class*='svu-story-'], .cap-card, .education-arm, header *, footer *, nav *, input, textarea, select, [role=dialog] *";
+/** Wider panels that still lift gently; the width guard otherwise protects page-wide layout shells. */
+const FULL_WIDTH = ".svu-champion, .svu-internship-update, .svu-career-table-wrap";
+
+/** Nearest card-like ancestor allowed to move. Excluded inner parts (a story card's text panel,
+ *  for example) are stepped over, so the whole block lifts wherever the pointer touches it
+ *  rather than only over its artwork. (client, 4 November 2026) */
+const liftTarget = (from: Element | null) => {
+  let el = from as HTMLElement | null;
+  while (el) {
+    const allowed = el.matches(SELECTOR) && !el.matches(EXCLUDE) && !!el.closest("main");
+    if (allowed && (el.matches(FULL_WIDTH) || el.offsetWidth <= 900)) return el;
+    el = el.parentElement;
+  }
+  return null;
+};
 
 export function BoxTilt() {
   useEffect(() => {
@@ -16,9 +31,7 @@ export function BoxTilt() {
     let current: HTMLElement | null = null;
     const reset = (el: HTMLElement) => { el.style.transform = ""; el.classList.remove("box-tilt-active"); };
     const onMove = (e: PointerEvent) => {
-      const target = e.target as Element | null;
-      let el = target?.closest?.(SELECTOR) as HTMLElement | null;
-      if (el && (el.matches(EXCLUDE) || !el.closest("main") || el.offsetWidth > 900)) el = null;
+      let el = liftTarget(e.target as Element | null);
       if (el && isHome()) el = null;
       if (current && current !== el) reset(current);
       current = el;
