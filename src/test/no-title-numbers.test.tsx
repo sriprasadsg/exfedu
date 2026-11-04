@@ -17,7 +17,7 @@ describe("no numeric labels beside titles (client, 4 November 2026)", () => {
   });
 
   it("shows student projects without numbered badges", () => {
-    const { container } = render(<MemoryRouter><SvuPages section="projects-research" /></MemoryRouter>);
+    const { container } = render(<MemoryRouter><SvuPages section="outcomes" /></MemoryRouter>);
     expect(container.querySelector(".svu-project-number")).toBeNull();
     const { container: reviewed } = render(<MemoryRouter><SvuResearchContent /></MemoryRouter>);
     expect(reviewed.querySelector(".svu-project-number")).toBeNull();
