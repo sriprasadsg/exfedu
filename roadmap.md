@@ -1,6 +1,7 @@
 - [x] About page: connecting-technology details (approved Exafluence Inc. industry scope) + embedded partner enquiry form; verified 1280/375px, FAQs route now 404
 - [x] FAQs removed from the About Us (Core) menu; /faqs removed from site data
 # Roadmap
+- [ ] Remove numeric labels (1, 2, 3 / 01, 02, 03) beside programme and menu titles.
 - [x] Remove the repeated "Duration & Delivery" and "Features" blocks from every programme page (SVU and IBM); header facts and practical-learning text keep the information.
 - [x] Remove curriculum sections from every programme page and curriculum references in programme-list introductions; preserve tools and other course facts.
 - [x] Remove the highlighted network back button from SVU programme detail pages; preserve breadcrumbs and programme return links.
