@@ -57,11 +57,22 @@ const Header = () => {
 
         </Link>
         <nav aria-label="Main navigation" className="hidden items-center gap-0 min-[900px]:flex">
-          {primaryNavigation.map((item) => (
-            <Button key={item.path} asChild variant={item.path.includes("#") ? "default" : "ghost"} size={item.path.includes("#") ? "sm" : "default"} className={`${item.path.includes("#") ? "ml-2 nav-cta gap-1.5" : "nav-on-navy gap-1.5 px-2 lg:px-3"} ${navTone[item.path] ?? ""}`}>
+          {primaryNavigation.map((item) => {
+            const btn = <Button key={item.path} asChild variant={item.path.includes("#") ? "default" : "ghost"} size={item.path.includes("#") ? "sm" : "default"} className={`${item.path.includes("#") ? "ml-2 nav-cta gap-1.5" : "nav-on-navy gap-1.5 px-2 lg:px-3"} ${navTone[item.path] ?? ""}`}>
               <Link to={item.path} aria-current={!item.path.includes("#") && pathname.startsWith(item.path) ? "page" : undefined}><item.icon aria-hidden="true" />{item.title}</Link>
-            </Button>
-          ))}
+            </Button>;
+            if (item.path !== "/collaboration-network") return btn;
+            return <div key={item.path} className="group relative">
+              {btn}
+              <ul className="invisible absolute left-0 top-full z-50 min-w-[260px] rounded-lg border border-border bg-background p-1.5 opacity-0 shadow-lg transition-opacity group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                {collaborationOrder.map((o, i) => <li key={o}>
+                  <Link to={organisationPath(o)} className="flex items-center gap-2 rounded-md px-3 py-2 text-sm text-foreground hover:bg-accent focus-visible:bg-accent">
+                    <span className="text-muted-foreground">{i + 1}.</span>{o === "SVU" ? "Sri Venkateswara University" : "IBM"}
+                  </Link>
+                </li>)}
+              </ul>
+            </div>;
+          })}
         </nav>
         <Button variant="ghost" size="icon" className="nav-on-navy nav-icon-btn" onClick={() => setOpen(!open)} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} aria-controls="mobile-navigation">
 
