@@ -953,6 +953,17 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 .svu-career-records--upskill .svu-career-title-card > h2 { font-size: clamp(24px, 2.6vw, 30px); }
 .svu-career-records--upskill .svu-career-content-card { margin: 0; padding: 0; border: 0; border-radius: 0; background: none; }
 .svu-career-records--upskill .svu-career-content-card > p { max-width: 820px; }
+.svu-career-records--upskill { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 28px 36px; align-items: start; }
+.svu-career-records--upskill .svu-career-content-card { display: contents; }
+.svu-career-records--upskill .svu-intern-introduction { margin-top: 18px; font-size: 14px; line-height: 1.8; color: hsl(var(--muted-foreground)); }
+.svu-career-records--upskill .svu-internship-update { margin-top: 0; padding: 24px; border-color: hsl(var(--border)); border-radius: 6px; }
+.svu-career-records--upskill .svu-internship-update-head { display: block; }
+.svu-career-records--upskill .svu-internship-update-meta { margin-top: 12px; }
+.svu-career-records--upskill .svu-internship-update-highlights { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 0; }
+.svu-career-records--upskill .svu-internship-update-highlights li { padding: 0 12px; }
+.svu-career-records--upskill .svu-internship-update-highlights li:nth-child(odd) { padding-left: 0; border-left: 0; }
+.svu-career-records--upskill .svu-career-records-heading, .svu-career-records--upskill .svu-intern-cards { grid-column: 1 / -1; margin-top: 0; }
+@media (max-width: 900px) { .svu-career-records--upskill { grid-template-columns: minmax(0, 1fr); gap: 24px; } }
 .svu-career-records--upskill [class*="card"]::before, .svu-career-records--upskill [class*="card"]::after { display: none; }
 .svu-intern-cards { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 16px; }
 .svu-intern-card { display: flex; flex-direction: column; gap: 10px; padding: 18px; border: 1px solid hsl(205 32% 87%); border-radius: 14px; background: hsl(var(--card)); transition: transform .25s ease, box-shadow .25s ease; }
