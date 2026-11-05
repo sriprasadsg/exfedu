@@ -501,6 +501,14 @@
 .ibm-institution { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 420px); gap: 40px; align-items: start; }
 .ibm-institutional-form { align-self: start; }
 .ibm-back { display: inline-flex; align-items: center; gap: 8px; margin-top: 26px; font-size: 14px; color: hsl(var(--connection-blue)); }
+/* Client brief, 5 November 2026: a compact collaboration card below the institutions
+   section — white face, subtle pale-blue edge, gently rounded corners, navy medium heading. */
+.ibm-partnership { padding: 26px 28px; border: 1px solid hsl(var(--academic-edge)); border-radius: 14px; background: hsl(var(--card)); box-shadow: 0 16px 34px -30px hsl(var(--navy-900) / .5); }
+.ibm-partnership h3 { font-size: 20px; line-height: 1.45; font-weight: 500; letter-spacing: -.01em; color: hsl(var(--navy-900)); }
+@media (max-width: 767px) {
+  .ibm-partnership { padding: 20px 18px; border-radius: 12px; }
+  .ibm-partnership h3 { font-size: 18px; }
+}
 @media (max-width: 1050px) {
   .ibm-intro { gap: 28px; }
   .ibm-directory-head, .ibm-directory-row { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) 90px minmax(0, 1fr) 130px; gap: 12px; }
