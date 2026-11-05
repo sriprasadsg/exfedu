@@ -13,7 +13,7 @@ import { SvuFacultyPage } from "./SvuReviewedContent";
 import { SvuConferenceProceedings } from "./SvuConferenceProceedings";
 import { useProgrammeSeo } from "./ProgrammeDirectory";
 import SvuCareerRecords from "./SvuCareerRecords";
-import svuCampusArtwork from "@/assets/svu-partner-illustration.png";
+import svuFrameworkArtwork from "@/assets/svu-technology-framework.png.asset.json";
 
 const tabs: { id: SvuPageId; label: string }[] = [
   { id: "overview", label: "Overview & Programmes" },
@@ -48,14 +48,13 @@ const SvuOverview = () => {
       <span className="svu-banner-support svu-banner-support--right" aria-hidden="true" />
       <div className="svu-banner-face">
         <h1>{svuOverview.title}</h1>
-        <div className="svu-banner-layout">
-          <figure className="svu-banner-art"><img src={svuCampusArtwork} alt="University campus connected to data and AI systems" /></figure>
-          <div className="svu-banner-copy">
-            <img className={`programme-detail-logo ${org.logoClass}`} src={org.logo} alt={`${org.name} logo`} />
-            <p className="svu-lead">{svuOverview.introduction}</p>
-            <Button variant="link" asChild className="svu-ca-link"><a href="#programmes">Explore Programmes<ArrowRight size={16} /></a></Button>
-          </div>
+        <div className="svu-banner-copy">
+          <img className={`programme-detail-logo ${org.logoClass}`} src={org.logo} alt={`${org.name} logo`} />
+          <p className="svu-lead">{svuOverview.introduction}</p>
+          <Button variant="link" asChild className="svu-ca-link"><a href="#programmes">Explore Programmes<ArrowRight size={16} /></a></Button>
         </div>
+        {/* The client's technology framework diagram: shown whole, full width, so its labels stay readable. */}
+        <figure className="svu-banner-art"><img src={svuFrameworkArtwork.url} alt="Exafluence Education technology framework: foundation of technology expertise, industry applications and innovation and research feeding programme domains in data science, quantum, AI, Gen AI, cloud technologies and cybersecurity, delivered as 80% lab and 20% theory" /></figure>
       </div>
     </section>
 

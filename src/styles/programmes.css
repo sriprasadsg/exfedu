@@ -1088,9 +1088,8 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 .svu-banner-support--right { right: 16%; }
 .svu-banner-support::after { content: ""; position: absolute; width: 20px; height: 12px; bottom: 0; left: -9px; border-radius: 3px 3px 0 0; background: hsl(var(--navy-900)); }
 .svu-banner-face { padding: 32px 28px; background: hsl(var(--academic-surface)); box-shadow: 0 32px 22px -30px hsl(var(--navy-900) / .35); }
-.svu-banner-layout { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); align-items: center; gap: 36px; margin-top: 28px; }
-.svu-banner-art { margin: 0; min-width: 0; }
-.svu-banner-art img { display: block; width: 100%; max-height: 300px; object-fit: contain; mix-blend-mode: multiply; }
+.svu-banner-art { margin: 30px 0 0; min-width: 0; }
+.svu-banner-art img { display: block; width: 100%; height: auto; object-fit: contain; mix-blend-mode: multiply; }
 .svu-banner-copy { min-width: 0; }
 .svu-banner-copy .programme-detail-logo { margin-bottom: 0; }
 /* Headline kept on one line wherever there is room: the size is derived from the
@@ -1103,8 +1102,8 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
   .svu-ca-hero { padding-top: 40px; }
   .svu-banner-support { height: 48px; }
   .svu-banner-face { padding: 28px 20px; }
-  .svu-banner-layout { grid-template-columns: minmax(0, 1fr); gap: 24px; margin-top: 24px; }
-  .svu-banner-art img { max-height: 220px; }
+  .svu-banner-art { margin-top: 22px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .svu-banner-art img { width: 760px; min-width: 760px; }
   .svu-banner-copy .programme-detail-logo { max-width: 100%; }
 }
 .svu-ca-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 26px; padding-bottom: 4px; font-size: 15px; font-weight: 500; color: hsl(var(--navy-900)); border-bottom: 3px solid hsl(var(--connection-blue)); transition: gap .25s ease; }
