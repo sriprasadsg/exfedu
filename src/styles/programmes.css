@@ -514,9 +514,10 @@
 .ibm-partnership-details li { padding: 2px 20px; border-left: 1px solid hsl(205 30% 90%); font-size: 13px; font-weight: 500; color: hsl(var(--navy-900)); }
 .ibm-partnership-details li:first-child { padding-left: 0; border-left: 0; }
 .ibm-partnership-more { margin-top: 18px; padding-top: 16px; border-top: 1px solid hsl(205 30% 90%); }
-/* The control is the supplied full-width navy bar: label at one edge, royal-blue arrow disc at the other. */
-.ibm-partnership-toggle { display: flex; align-items: center; justify-content: space-between; gap: 14px; width: 100%; height: auto; padding: 12px 18px; border-radius: 8px; background: hsl(var(--navy-900)); color: hsl(var(--card)); font-family: inherit; font-size: 14px; font-weight: 500; text-transform: none; letter-spacing: 0; cursor: pointer; transition: background .3s ease; }
-.ibm-partnership-toggle:hover { background: hsl(var(--navy-800)); color: hsl(var(--card)); }
+/* The control is the supplied full-width navy bar: label at one edge, royal-blue arrow disc at
+   the other. Scoped under the card so the shared button's centred layout cannot win. */
+.ibm-partnership .ibm-partnership-toggle { display: flex; align-items: center; justify-content: space-between; gap: 14px; width: 100%; height: auto; padding: 12px 18px; border-radius: 8px; background: hsl(var(--navy-900)); color: hsl(var(--card)); font-family: inherit; font-size: 14px; font-weight: 500; text-transform: none; letter-spacing: 0; cursor: pointer; transition: background .3s ease; }
+.ibm-partnership .ibm-partnership-toggle:hover { background: hsl(var(--navy-800)); color: hsl(var(--card)); }
 .ibm-partnership-disc { display: inline-grid; place-items: center; flex: none; width: 30px; height: 30px; border-radius: 50%; background: hsl(var(--connection-blue)); color: hsl(var(--card)); transition: transform .3s ease; }
 .ibm-partnership-disc svg { transition: transform .3s ease; }
 .ibm-partnership-toggle[aria-expanded="true"] .ibm-partnership-disc svg { transform: rotate(180deg); }
