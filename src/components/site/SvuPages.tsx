@@ -13,6 +13,7 @@ import { SvuFacultyPage } from "./SvuReviewedContent";
 import { SvuConferenceProceedings } from "./SvuConferenceProceedings";
 import { useProgrammeSeo } from "./ProgrammeDirectory";
 import SvuCareerRecords from "./SvuCareerRecords";
+import svuCampusArtwork from "@/assets/svu-partner-illustration.png";
 
 const tabs: { id: SvuPageId; label: string }[] = [
   { id: "overview", label: "Overview & Programmes" },
@@ -41,12 +42,21 @@ const svuTeachingSteps = [
 const SvuOverview = () => {
   const org = organisations.SVU;
   return <div className="svu-flow svu-ca">
-    {/* Statement opening, staggered areas and a dark band after the Creative Agency reference (4 Nov 2026) */}
+    {/* Suspended rectangular banner, scoped to Overview & Programmes. */}
     <section className="svu-block svu-intro svu-ca-hero">
-      <img className={`programme-detail-logo ${org.logoClass}`} src={org.logo} alt={`${org.name} logo`} />
-      <h1>{svuOverview.title}</h1>
-      <p className="svu-lead">{svuOverview.introduction}</p>
-      <a className="svu-ca-link" href="#programmes">Explore Programmes<ArrowRight size={16} /></a>
+      <span className="svu-banner-support svu-banner-support--left" aria-hidden="true" />
+      <span className="svu-banner-support svu-banner-support--right" aria-hidden="true" />
+      <div className="svu-banner-face">
+        <h1>{svuOverview.title}</h1>
+        <div className="svu-banner-layout">
+          <figure className="svu-banner-art"><img src={svuCampusArtwork} alt="University campus connected to data and AI systems" /></figure>
+          <div className="svu-banner-copy">
+            <img className={`programme-detail-logo ${org.logoClass}`} src={org.logo} alt={`${org.name} logo`} />
+            <p className="svu-lead">{svuOverview.introduction}</p>
+            <Button variant="link" asChild className="svu-ca-link"><a href="#programmes">Explore Programmes<ArrowRight size={16} /></a></Button>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section className="svu-block">
