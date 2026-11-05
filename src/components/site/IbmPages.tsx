@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, ArrowRight, Award, BookOpen, Clock3, Cpu, FlaskConical, GraduationCap, Layers, Target, Wrench, type LucideIcon } from "lucide-react";
+import { ArrowDown, ArrowLeft, ArrowRight, Award, BookOpen, Clock3, Cpu, FlaskConical, GraduationCap, Layers, Target, Wrench, type LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { organisations } from "@/data/site";
 import { ibmOverview, ibmProgrammes } from "@/data/ibm";
@@ -17,6 +18,7 @@ const choiceTones = ["blue", "teal", "violet", "amber", "blue", "teal"] as const
 const IbmPages = () => {
   useProgrammeSeo(ibmOverview.seoTitle, ibmOverview.seoDescription);
   const org = organisations.IBM;
+  const [detailsOpen, setDetailsOpen] = useState(false);
 
   return (
     <main className="programme-experience ibm-page ibm-pm">
@@ -62,6 +64,27 @@ const IbmPages = () => {
           </div>
         </section>
 
+        <section className="ibm-block ibm-partnership" aria-labelledby="ibm-partnership-heading">
+          <header className="ibm-partnership-head">
+            <h3 id="ibm-partnership-heading">{ibmOverview.partnership.title}</h3>
+            <p className="ibm-partnership-meta">
+              <span className="ibm-partnership-status">{ibmOverview.partnership.status}</span>
+              <span className="ibm-partnership-record">{ibmOverview.partnership.record}</span>
+            </p>
+          </header>
+          <p className="ibm-partnership-summary">{ibmOverview.partnership.summary}</p>
+          <ul className="ibm-partnership-details" aria-label="Programme details">
+            {ibmOverview.partnership.details.map(item => <li key={item}>{item}</li>)}
+          </ul>
+          <div className="ibm-partnership-more">
+            <Button variant="ghost" type="button" className="ibm-partnership-toggle" aria-expanded={detailsOpen} aria-controls="ibm-partnership-text" onClick={() => setDetailsOpen(open => !open)}>
+              <span>{detailsOpen ? "Hide Collaboration Details" : "View Collaboration Details"}</span>
+              <span className="ibm-partnership-disc" aria-hidden="true"><ArrowDown size={15} /></span>
+            </Button>
+            <p id="ibm-partnership-text" className="ibm-partnership-extra" hidden={!detailsOpen}>{ibmOverview.partnership.more}</p>
+          </div>
+        </section>
+
         <section className="ibm-block" aria-labelledby="ibm-applied-heading">
           <h2 id="ibm-applied-heading">{ibmOverview.applied.title}</h2>
           <ul className="ibm-steps">
@@ -90,11 +113,6 @@ const IbmPages = () => {
             <p>{ibmOverview.institution.text}</p>
           </div>
           <IbmInstitutionalEnquiry />
-        </section>
-
-        <section className="ibm-block ibm-partnership" aria-labelledby="ibm-partnership-heading">
-          <h3 id="ibm-partnership-heading">{ibmOverview.partnership.title}</h3>
-          <p>{ibmOverview.partnership.text}</p>
         </section>
 
         <section className="ibm-block ibm-learner" aria-labelledby="ibm-learner-heading">
