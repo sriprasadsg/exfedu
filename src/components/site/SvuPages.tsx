@@ -13,7 +13,7 @@ import { SvuFacultyPage } from "./SvuReviewedContent";
 import { SvuConferenceProceedings } from "./SvuConferenceProceedings";
 import { useProgrammeSeo } from "./ProgrammeDirectory";
 import SvuCareerRecords from "./SvuCareerRecords";
-import svuFrameworkArtwork from "@/assets/svu-technology-framework.png.asset.json";
+import svuProgramDiagram from "@/assets/exafluence-education-program-diagram.png.asset.json";
 
 const tabs: { id: SvuPageId; label: string }[] = [
   { id: "overview", label: "Overview & Programmes" },
@@ -54,7 +54,7 @@ const SvuOverview = () => {
           <Button variant="link" asChild className="svu-ca-link"><a href="#programmes">Explore Programmes<ArrowRight size={16} /></a></Button>
         </div>
         {/* The client's technology framework diagram: shown whole, full width, so its labels stay readable. */}
-        <figure className="svu-banner-art"><img src={svuFrameworkArtwork.url} alt="Exafluence Education technology framework: foundation of technology expertise, industry applications and innovation and research feeding programme domains in data science, quantum, AI, Gen AI, cloud technologies and cybersecurity, delivered as 80% lab and 20% theory" /></figure>
+        <figure className="svu-banner-art"><img src={svuProgramDiagram.url} alt="Exafluence Education technology framework: foundation of technology expertise, industry applications and innovation and research feeding programme domains in data science, quantum, AI, Gen AI, cloud technologies and cybersecurity, delivered as 80% lab and 20% theory" /></figure>
       </div>
     </section>
 

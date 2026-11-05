@@ -9,18 +9,18 @@ import { describe, expect, it } from "vitest";
 const page = readFileSync(resolve(process.cwd(), "src/components/site/SvuPages.tsx"), "utf8");
 const css = readFileSync(resolve(process.cwd(), "src/styles/programmes.css"), "utf8");
 const pointer = JSON.parse(
-  readFileSync(resolve(process.cwd(), "src/assets/svu-technology-framework.png.asset.json"), "utf8"),
+  readFileSync(resolve(process.cwd(), "src/assets/exafluence-education-program-diagram.png.asset.json"), "utf8"),
 );
 
 describe("SVU Overview & Programmes banner shows the technology framework diagram", () => {
   it("imports the client's framework diagram from its stored asset", () => {
-    expect(page).toContain('import svuFrameworkArtwork from "@/assets/svu-technology-framework.png.asset.json"');
-    expect(pointer.url).toBe("/__l5e/assets-v1/cb3f1d8d-6682-473d-829a-68ea44170a78/svu-technology-framework.png");
+    expect(page).toContain('import svuProgramDiagram from "@/assets/exafluence-education-program-diagram.png.asset.json"');
+    expect(pointer.url).toBe("/__l5e/assets-v1/35ccd268-429f-49ef-a4cf-e0c985031a73/exafluence-education-program-diagram.png");
   });
 
   it("renders the diagram in the banner and drops the campus illustration from this page", () => {
     const figure = page.slice(page.indexOf('<figure className="svu-banner-art">'));
-    expect(figure.slice(0, 400)).toContain("src={svuFrameworkArtwork.url}");
+    expect(figure.slice(0, 400)).toContain("src={svuProgramDiagram.url}");
     expect(figure.slice(0, 900)).toContain("technology framework");
     expect(page).not.toContain("svuCampusArtwork");
     expect(page).not.toContain("svu-partner-illustration");
