@@ -1102,7 +1102,8 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
   .svu-ca-hero { padding-top: 40px; }
   .svu-banner-support { height: 48px; }
   .svu-banner-face { padding: 28px 20px; }
-  .svu-banner-art { margin-top: 22px; }
+  .svu-banner-art { margin-top: 22px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .svu-banner-art img { width: 760px; min-width: 760px; }
   .svu-banner-copy .programme-detail-logo { max-width: 100%; }
 }
 .svu-ca-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 26px; padding-bottom: 4px; font-size: 15px; font-weight: 500; color: hsl(var(--navy-900)); border-bottom: 3px solid hsl(var(--connection-blue)); transition: gap .25s ease; }
