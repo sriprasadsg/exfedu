@@ -42,10 +42,17 @@ export const ibmOverview = {
     title: "For Universities and Organisations",
     text: "Discuss programme suitability for student groups, faculty development or workforce learning. Share your audience, technical priorities, preferred schedule and expected participant numbers so the Exafluence Education team can advise on available options.",
   },
-  /** Client-supplied collaboration announcement, 5 November 2026 — wording kept verbatim. */
+  /** Client-supplied collaboration announcement, 5 November 2026 — wording kept verbatim.
+   * The card follows the SVU internship-update presentation (client, 5 November 2026):
+   * the opening sentence stays visible and the closing sentence opens on click, so the
+   * two together still read exactly as supplied. */
   partnership: {
     title: "Exafluence Education and IBM Join Hands with SVCET",
-    text: "Exafluence Education, in collaboration with IBM, has introduced “Generative AI Using IBM watsonx” at Sri Venkateswara College of Engineering and Technology (Autonomous), Chittoor, as a value-added programme for all final-year B.Tech students, helping them gain practical knowledge and skills in Generative AI. Students who successfully complete the programme will receive a joint certificate.",
+    status: "Value-Added Programme",
+    record: "For all final-year B.Tech students",
+    summary: "Exafluence Education, in collaboration with IBM, has introduced “Generative AI Using IBM watsonx” at Sri Venkateswara College of Engineering and Technology (Autonomous), Chittoor, as a value-added programme for all final-year B.Tech students, helping them gain practical knowledge and skills in Generative AI.",
+    details: ["Generative AI", "IBM watsonx", "Chittoor", "Joint certificate"],
+    more: "Students who successfully complete the programme will receive a joint certificate.",
   },
   learner: {
     title: "Discuss Your Learning Goals",
