@@ -5,16 +5,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { ibmAudiences, ibmProgrammes } from "@/data/ibm";
-import { submitTestEnquiry } from "@/components/home/PartnerEnquiry";
+import { submitEnquiry } from "@/lib/enquiryDelivery";
 
-/**
- * Institutional enquiry — TEST MODE, like the partner enquiry.
- * Answers stay in memory, the current field is validated before advancing, the
- * whole schema is validated before a simulated delivery, and nothing is stored
- * or sent. Delivery will be repointed by swapping submitTestEnquiry for a fetch
- * to enquiryConfig.endpoint (Exafluence AWS Cloud).
- * QA: add ?enquiryTest=fail to the URL to simulate a network/server error.
- */
+/** Institutional enquiry validates each field and uses shared HTTP delivery. */
 // Zod needs a non-empty tuple for an enum; the option list itself is data-supplied.
 const programmeOptions = [...ibmProgrammes.map(p => p.title), "Not sure yet"] as unknown as [string, ...string[]];
 const audienceOptions = [...ibmAudiences] as [string, ...string[]];
@@ -91,11 +84,11 @@ const IbmInstitutionalEnquiry = () => {
     inFlight.current = true;
     setStatus({ kind: "submitting" });
     try {
-      await submitTestEnquiry(parsed.data);
+      await submitEnquiry({ kind: "ibm-institutional", ...parsed.data });
       setAnswers({ ...emptyAnswers });
       setStatus({ kind: "success" });
     } catch {
-      setStatus({ kind: "error", message: "Test submission failed — simulated network error. Your details are kept; please try again." });
+      setStatus({ kind: "error", message: "Your enquiry could not be sent. Your details are kept; please try again or contact contact@exafluence.com." });
     } finally {
       inFlight.current = false;
     }
@@ -109,7 +102,7 @@ const IbmInstitutionalEnquiry = () => {
       {completed ? (
         <div className="space-y-4">
           <span className="enquiry-success-icon"><CheckCircle2 size={26} strokeWidth={1.7} aria-hidden="true" /></span>
-          <p role="status" className="text-sm leading-relaxed">Test submission received. Delivery is not connected yet — this confirms the form workflow only.</p>
+          <p role="status" className="text-sm leading-relaxed">Your enquiry has been received.</p>
           <Button variant="outline" type="button" className="enquiry-restart" onClick={() => { setStep(0); setAnswers({ ...emptyAnswers }); setStatus({ kind: "idle" }); }}>
             <RotateCcw size={15} strokeWidth={1.9} aria-hidden="true" />New enquiry
           </Button>

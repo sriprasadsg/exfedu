@@ -4,10 +4,10 @@ import { ArrowUpRight, ArrowLeft, CheckCircle2, AlertCircle, RotateCcw, User, Ma
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { submitTestEnquiry } from "@/components/home/PartnerEnquiry";
+import { submitEnquiry } from "@/lib/enquiryDelivery";
 import { organisations, programmes } from "@/data/site";
 
-/** Student programme enquiry — test mode, delivered through the shared submitTestEnquiry.
+/** Student programme enquiry uses the shared production HTTP delivery.
  * Kept separate from the institutional partner enquiry so learners are never asked
  * for organisation or collaboration details. */
 export const learnerStatuses = ["Student", "Recent graduate", "Working professional", "Other"] as const;
@@ -29,7 +29,7 @@ const labels: Record<Field, string> = { programme: "Programme", name: "Your name
 const icons: Partial<Record<Field, typeof User>> = { programme: BookOpen, name: User, email: Mail, phone: Phone, status: GraduationCap, message: MessageSquare };
 
 const StudentEnquiry = ({ programmeSlug }: { programmeSlug?: string }) => {
-  const preset = studentProgrammes.some(p => p.slug === programmeSlug) ? programmeSlug! : "";
+  const preset = programmeSlug && studentProgrammes.some(p => p.slug === programmeSlug) ? programmeSlug : "";
   const empty = { programme: preset, name: "", email: "", phone: "", status: "", message: "", consent: "" };
   const [answers, setAnswers] = useState<Record<Field, string>>(empty);
   // A preselected programme is kept; the form opens on the next question.
@@ -54,7 +54,7 @@ const StudentEnquiry = ({ programmeSlug }: { programmeSlug?: string }) => {
     if (!parsed.success) { setStep(Math.max(0, fields.findIndex(f => parsed.error.issues.some(i => i.path[0] === f)))); setError(parsed.error.issues[0]?.message ?? ""); return; }
     setState("submitting");
     try {
-      await submitTestEnquiry({ kind: "student-programme", ...parsed.data, programmeTitle: selected?.title });
+      await submitEnquiry({ kind: "student-programme", ...parsed.data, programmeTitle: selected?.title });
       setState("success");
     } catch { setState("error"); }
   };
@@ -75,7 +75,7 @@ const StudentEnquiry = ({ programmeSlug }: { programmeSlug?: string }) => {
             {state === "success" ? (
               <div className="space-y-4">
                 <span className="enquiry-success-icon"><CheckCircle2 size={26} strokeWidth={1.7} aria-hidden="true" /></span>
-                <p role="status" className="text-sm leading-relaxed">Test submission received. Delivery is not connected yet — this confirms the form workflow only.</p>
+                <p role="status" className="text-sm leading-relaxed">Your enquiry has been received.</p>
                 <Button variant="outline" type="button" className="enquiry-restart" onClick={() => { setAnswers(empty); setStep(preset ? 1 : 0); setState("idle"); }}>
                   <RotateCcw size={15} aria-hidden="true" />New enquiry
                 </Button>
@@ -120,7 +120,7 @@ const StudentEnquiry = ({ programmeSlug }: { programmeSlug?: string }) => {
                     {submitting ? "Sending…" : step === fields.length - 1 ? "Send Enquiry" : field === "phone" && !answers.phone ? "Skip" : "Continue"}<ArrowUpRight />
                   </Button>
                 </div>
-                {state === "error" && <p role="alert" className="mt-3 flex gap-2 text-sm text-destructive"><AlertCircle className="h-4 w-4 shrink-0" />Test submission failed — simulated network error. Your details are kept; please try again.</p>}
+                {state === "error" && <p role="alert" className="mt-3 flex gap-2 text-sm text-destructive"><AlertCircle className="h-4 w-4 shrink-0" />Your enquiry could not be sent. Your details are kept; please try again or contact contact@exafluence.com.</p>}
               </>
             )}
           </form>
