@@ -1324,7 +1324,7 @@ body:not(:has(.homepage-static)) main .svu-career-records--logistics .svu-career
 /* Prantokon feature composition: approved internship text replaces the reference phone.
    The surrounding circular-icon details sit on a blue band, not inside extra cards. */
 .svu-career-records--upskill:has(.svu-internship-update--prantokon) { grid-template-columns: minmax(0, 1fr); gap: 28px; }
-.svu-career-records--upskill:has(.svu-internship-update--prantokon) .svu-career-title-card { max-width: 820px; margin: 0 auto; text-align: center; }
+.svu-career-records--upskill:has(.svu-internship-update--prantokon) .svu-career-title-card { max-width: 820px; margin: 0; text-align: left; }
 .svu-career-records--upskill:has(.svu-internship-update--prantokon) .svu-career-title-card > h2 { font-size: 28px; font-weight: 500; text-transform: none; }
 .svu-career-records--upskill .svu-internship-update--prantokon { position: relative; isolation: isolate; container-type: normal; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr) minmax(0, 1fr); column-gap: 30px; padding: 44px 32px; margin: 0; border: 0; border-radius: 0; background: linear-gradient(110deg, hsl(var(--navy-900)), hsl(var(--connection-blue))); box-shadow: none; }
 .svu-career-records--upskill .svu-internship-update--prantokon::before { content: ""; position: absolute; z-index: -1; grid-column: 2 / 3; inset: 28px 0; background: hsl(var(--card)); border-radius: 8px; box-shadow: 0 16px 36px -20px hsl(var(--navy-900) / .55); }
@@ -1376,8 +1376,8 @@ body:not(:has(.homepage-static)) main .svu-career-records--logistics .svu-career
 .svu-career-records--upskill .svu-internship-update--prantokon .svu-internship-update-toggle:hover,
 .svu-career-records--upskill .svu-internship-update--prantokon .svu-internship-update-toggle[aria-expanded="true"] { color: hsl(var(--navy-900)); }
 .svu-career-records--upskill .svu-internship-update-names--full { max-width: 860px; margin-inline: auto; }
-.svu-career-records--upskill:has(.svu-internship-update--prantokon) .svu-career-records-heading { text-align: center; }
-.svu-career-records--upskill:has(.svu-internship-update--prantokon) .svu-intern-introduction { max-width: 68ch; margin-inline: auto; }
+.svu-career-records--upskill:has(.svu-internship-update--prantokon) .svu-career-records-heading { text-align: left; }
+.svu-career-records--upskill:has(.svu-internship-update--prantokon) .svu-intern-introduction { max-width: 68ch; margin-inline: 0; }
 @media (max-width: 640px) {
   .svu-internship-update--prantokon .svu-internship-update-summary { max-width: none; text-align: left; }
   .svu-career-records--upskill .svu-internship-update-names--full { margin-inline: 0; }
