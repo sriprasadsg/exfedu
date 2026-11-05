@@ -37,4 +37,14 @@ describe("SVU internship update box responds to its own width", () => {
     expect(body).toContain("width: 100%");
     expect(body).toContain("justify-content: space-between");
   });
+
+  it("comes gently forward when the pointer rests on the box", () => {
+    const rule = css.slice(css.indexOf(".svu-career-records--upskill .svu-internship-update:hover {"));
+    const body = rule.slice(0, rule.indexOf("}") + 1);
+    expect(body).toContain("transform: translateY(-3px)");
+    expect(body).toContain("box-shadow: 0 22px 40px -28px hsl(var(--navy-900) / .55)");
+    expect(body).toContain("border-color: hsl(var(--connection-blue) / .45)");
+    // and it must not move for visitors who ask for less motion
+    expect(css).toContain(".svu-career-records--upskill .svu-internship-update:hover { transform: none; }");
+  });
 });
