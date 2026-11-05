@@ -969,6 +969,15 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 /* The students control spans the box so its row never floats half-empty: the label sits at one
    edge and the arrow disc at the other (client, 5 November 2026). */
 .svu-career-records--upskill .svu-internship-update-toggle { display: flex; width: 100%; flex-direction: row-reverse; justify-content: space-between; }
+/* The update box comes gently forward when the pointer rests on it, the same treatment the
+   site's other blocks carry: a small lift, a soft shadow and a hint of blue on the edge
+   (client, 5 November 2026). Nothing moves for visitors who ask for less motion. */
+.svu-career-records--upskill .svu-internship-update { transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease; }
+.svu-career-records--upskill .svu-internship-update:hover { transform: translateY(-3px); border-color: hsl(var(--connection-blue) / .45); box-shadow: 0 22px 40px -28px hsl(var(--navy-900) / .55); }
+@media (prefers-reduced-motion: reduce) {
+  .svu-career-records--upskill .svu-internship-update { transition: none; }
+  .svu-career-records--upskill .svu-internship-update:hover { transform: none; }
+}
 /* The update box responds to its own width, not the screen's: the four highlights spread
    four-across when the box is wide enough, hold two-across in the middle range, and stack one
    under the other when the box itself cannot fit two readable columns (client, 5 November 2026). */
