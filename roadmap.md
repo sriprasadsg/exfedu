@@ -1,3 +1,9 @@
+## 5 November 2026 — source and production handoff
+- [ ] Correct npm lockfile and verify clean npm ci, tests and production build in isolated export folder.
+- [ ] Replace simulated enquiry client with configurable HTTP delivery; verify failure and response handling.
+- [ ] Supply complete source ZIP, separate dist.zip, secret-free environment example and service/configuration handoff.
+- [ ] Live Cloudflare hosting and enquiry backend — blocked: Cloudflare hosting infrastructure generation/deployment is unsupported here; client infrastructure team must supply a real service and delivery verification.
+
 - [x] Applied Prantokon's surrounding-icon presentation to the enclosed Student Internships introduction/update only; text, 15 participating names and 11 records preserved; expand/collapse and 1280/1062/768/390px layouts verified, 17 tests pass, build OK.
 - [x] Restyled only conference presentations in Projects & Research using Carbook's blue side panel, white presentation grid and circular icons; all six records preserved, seven tests pass, desktop/phone checked with no overflow or runtime errors, build OK.
 - [x] SVU introduction: desktop 55:45 columns and 32px gap, compact whole diagram on the right with click-to-enlarge, stacked phone layout; wording, artwork and background preserved. Verified at 1280/1062/390px, enlargement/close and programme link work; 10 relevant tests pass, build OK.
@@ -100,7 +106,7 @@
 - [x] Full website responsive QA — all 27 routes at 1440/1280/1024/768/430/390/360, nav dropdowns, mobile menu, no overflow
 - [x] Collaboration-type dropdown set to client's list
 - [ ] Real-device check of the form on iPhone/Android (layout held in desktop browser at short heights)
-- [ ] Connect enquiry delivery to Exafluence AWS Cloud (client deploys backend after UI/workflow testing; never Lovable Cloud)
+- [ ] Connect enquiry delivery to client-owned Cloudflare service (supersedes AWS; endpoint and verified delivery await infrastructure team)
 
 - [x] Rebuild per full brief: 4 categories (Core, Academic, Industry & Technology, Learning & Student Ecosystem), reusable page templates, programme template, gallery filters, navy/grey slim styling
 - [ ] Approved content for placeholder sections, team, photos — waits on client
