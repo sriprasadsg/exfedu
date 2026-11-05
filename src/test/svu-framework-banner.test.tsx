@@ -2,7 +2,7 @@ import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { afterEach, describe, expect, it } from "vitest";
 import SvuPages from "@/components/site/SvuPages";
-import diagram from "@/assets/exafluence-education-program-diagram.png.asset.json";
+import diagram from "@/assets/svu-framework-royal-blue.png.asset.json";
 
 afterEach(cleanup);
 

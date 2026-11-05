@@ -14,7 +14,7 @@ import { SvuFacultyPage } from "./SvuReviewedContent";
 import { SvuConferenceProceedings } from "./SvuConferenceProceedings";
 import { useProgrammeSeo } from "./ProgrammeDirectory";
 import SvuCareerRecords from "./SvuCareerRecords";
-import svuProgramDiagram from "@/assets/exafluence-education-program-diagram.png.asset.json";
+import svuProgramDiagram from "@/assets/svu-framework-royal-blue.png.asset.json";
 
 const tabs: { id: SvuPageId; label: string }[] = [
   { id: "overview", label: "Overview & Programmes" },
