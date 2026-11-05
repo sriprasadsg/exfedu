@@ -1365,6 +1365,9 @@ body:not(:has(.homepage-static)) main .svu-career-records--logistics .svu-career
 .svu-internship-update--prantokon .svu-internship-update-meta { justify-content: center; }
 .svu-internship-update--prantokon .svu-internship-update-summary { margin-inline: auto; max-width: 62ch; text-align: center; }
 .svu-career-records--upskill .svu-internship-update--prantokon .svu-internship-update-students { text-align: center; }
+/* The flanking stat columns set the band's height, so the student control is centred inside
+   whatever row height is left; otherwise the card ends with a void under the button. */
+.svu-internship-update--prantokon .svu-internship-update-students { align-self: stretch; display: grid; place-content: center; }
 .svu-career-records--upskill .svu-internship-update--prantokon .svu-internship-update-toggle { display: inline-flex; width: auto; flex-direction: row; justify-content: center; gap: 12px; padding: 10px 22px 10px 12px; border: 1px solid hsl(var(--connection-blue) / .35); border-radius: 999px; background: hsl(205 92% 97%); }
 .svu-career-records--upskill .svu-internship-update--prantokon .svu-internship-update-toggle:hover { background: hsl(205 92% 94%); }
 .svu-career-records--upskill .svu-internship-update-names--full { max-width: 860px; margin-inline: auto; }
