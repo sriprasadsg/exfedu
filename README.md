@@ -1,4 +1,4 @@
-# Exafluence Education New Website Home
+# Exafluence Education
 
 Remix of fe0b76fd-a362-4bd0-8036-5448a29643f7
 
@@ -15,6 +15,8 @@ Continue developing this project in the [Lovable editor](https://lovable.dev/pro
 - **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
 
 ## Development
+
+For the corrected npm source release, environment setup, service inventory and outstanding infrastructure requirements, read **HANDOFF.md** and **VERIFICATION.md**. Real enquiry delivery requires a configured service; Cloudflare hosting and backend provisioning are not included.
 
 Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
 

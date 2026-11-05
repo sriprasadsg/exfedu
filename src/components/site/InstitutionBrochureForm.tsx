@@ -4,11 +4,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { submitTestEnquiry } from "@/components/home/PartnerEnquiry";
+import { submitEnquiry } from "@/lib/enquiryDelivery";
 
 /** Institutional brochure request (client, 2 November 2026): collaborations are
  * institutional only, so visitors identify their institution and location.
- * Test mode — reuses submitTestEnquiry, never persists or sends. */
+ * Uses shared HTTP delivery and only unlocks after a server receipt. */
 export const institutionBrochureSchema = z.object({
   name: z.string().trim().min(2, "Please enter your name").max(100),
   institution: z.string().trim().min(2, "Please enter your organisation or institution").max(150),
@@ -31,9 +31,11 @@ export const InstitutionBrochureForm = ({ programme, onSuccess }: { programme: s
   const [values, setValues] = useState<Values>(empty);
   const [errors, setErrors] = useState<Partial<Record<keyof Values, string>>>({});
   const [submitting, setSubmitting] = useState(false);
+  const [deliveryError, setDeliveryError] = useState("");
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (submitting) return;
     const parsed = institutionBrochureSchema.safeParse(values);
     if (!parsed.success) {
       const next: Partial<Record<keyof Values, string>> = {};
@@ -42,10 +44,16 @@ export const InstitutionBrochureForm = ({ programme, onSuccess }: { programme: s
       return;
     }
     setErrors({});
+    setDeliveryError("");
     setSubmitting(true);
-    await submitTestEnquiry({ ...parsed.data, programme });
-    setSubmitting(false);
-    onSuccess();
+    try {
+      await submitEnquiry({ kind: "brochure", ...parsed.data, programme });
+      onSuccess();
+    } catch {
+      setDeliveryError("Your request could not be sent. Please try again or contact contact@exafluence.com.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -61,6 +69,7 @@ export const InstitutionBrochureForm = ({ programme, onSuccess }: { programme: s
         </div>
       ))}
       <Button type="submit" disabled={submitting} className="w-full">{submitting ? "Sending…" : "Request Brochure"}</Button>
+      {deliveryError && <p role="alert" className="text-sm text-destructive">{deliveryError}</p>}
     </form>
   );
 };

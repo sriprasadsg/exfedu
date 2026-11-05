@@ -1,6 +1,7 @@
 import { cleanup, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
-import { afterEach, describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
+import { enquiryConfig } from "@/lib/enquiryDelivery";
 import IbmPages from "@/components/site/IbmPages";
 import ProgrammeDetail from "@/components/site/ProgrammeDetail";
 import { ibmProgrammes } from "@/data/ibm";
@@ -10,7 +11,7 @@ import { programmePath } from "@/lib/programmeNavigation";
 
 // Client brief, 2 November 2026: IBM gets one dedicated page under Our Collaboration
 // Network, in the approved reading order, with a separate institutional enquiry.
-afterEach(cleanup);
+afterEach(() => { cleanup(); enquiryConfig.endpoint = ""; vi.unstubAllGlobals(); });
 
 const open = () => render(<MemoryRouter><IbmPages /></MemoryRouter>);
 
@@ -67,7 +68,10 @@ describe("IBM institutional enquiry", () => {
     expect(screen.queryByLabelText("Contact person")).not.toBeInTheDocument();
   });
 
-  it("captures every field the brief asks for and confirms a test submission", async () => {
+  it("sends every institutional field to the configured enquiry service", async () => {
+    enquiryConfig.endpoint = "https://enquiry.example.test/submit";
+    const fetcher = vi.fn().mockResolvedValue(new Response(JSON.stringify({ success: true, id: "ibm-receipt" })));
+    vi.stubGlobal("fetch", fetcher);
     open();
     await step("Organisation", "Sri Venkateswara University");
     await step("Contact person", "Dr A. Rao");
@@ -78,8 +82,10 @@ describe("IBM institutional enquiry", () => {
     await step(/Preferred schedule/);
     fireEvent.click(screen.getByLabelText("I agree to be contacted by Exafluence Education about this enquiry."));
     fireEvent.click(screen.getByRole("button", { name: "Send Institutional Enquiry" }));
-    expect(await screen.findByRole("status")).toHaveTextContent("Test submission received");
-    expect((window as unknown as { __enquiryTestSubmissions?: number }).__enquiryTestSubmissions).toBeGreaterThan(0);
+    await waitFor(() => expect(fetcher).toHaveBeenCalledTimes(1));
+    const payload = JSON.parse(fetcher.mock.calls[0][1].body);
+    expect(payload.to).toBe("contact@exafluence.com");
+    expect(payload.data).toMatchObject({ kind: "ibm-institutional", participants: "60", email: "a.rao@example.edu", consent: "on" });
   });
 
   it("refuses a participant count that is not a number", async () => {

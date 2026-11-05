@@ -201,8 +201,8 @@ const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { progr
             <div role="status">
               <p>
                 {p.brochure
-                  ? "Your test enquiry is complete. The brochure is ready below."
-                  : "Test enquiry completed. The approved brochure is not available yet; no details have been sent."}
+                  ? "Your enquiry has been received. The brochure is ready below."
+                  : "Your enquiry has been received. The approved brochure is not available yet."}
               </p>
               {p.brochure && (
                 <Button asChild>

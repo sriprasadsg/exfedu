@@ -4,31 +4,10 @@ import { ArrowUpRight, ArrowLeft, CheckCircle2, AlertCircle, RotateCcw, User, Bu
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import { submitEnquiry } from "@/lib/enquiryDelivery";
+export { enquiryConfig, recipientFor, buildEnquiryPayload } from "@/lib/enquiryDelivery";
 
-/**
- * Partner enquiry — TEST MODE.
- * Delivery is intentionally not connected. When the production backend is
- * deployed on Exafluence AWS Cloud, set enquiryConfig.endpoint (and any auth
- * headers / env vars) and replace submitTestEnquiry with a real fetch — no
- * other part of this component needs to change.
- * QA: add ?enquiryTest=fail to the URL to simulate a network/server error.
- */
-export const enquiryConfig = {
-  mode: "test" as "test" | "production",
-  endpoint: "", // e.g. import.meta.env.VITE_ENQUIRY_API_URL — set for AWS deployment
-  /** Single inbox every enquiry form on the site routes to. */
-  recipient: "contact@exafluence.com",
-};
-
-/** Every form, on every page, goes to the one Exafluence inbox. */
-export const recipientFor = (_path: string): string => enquiryConfig.recipient;
-
-/** Payload shape the AWS endpoint will receive: form answers plus routing. */
-export const buildEnquiryPayload = (data: unknown, path: string) => ({
-  to: recipientFor(path),
-  sourcePage: path,
-  data,
-});
+/** Partner enquiry uses the shared, configurable production HTTP service. */
 
 export const collaborationTypes = [
   "Academic Collaboration",
@@ -59,21 +38,6 @@ export const enquirySchema = z.object({
 type EnquiryData = z.infer<typeof enquirySchema>;
 type Field = keyof EnquiryData;
 type Status = { kind: "idle" } | { kind: "submitting" } | { kind: "success" } | { kind: "error"; message: string };
-
-let testSubmissionCount = 0;
-/** Simulated delivery for UI/workflow testing, shared by every enquiry form on the site.
- * Replace with a fetch to enquiryConfig.endpoint for production. */
-export const submitTestEnquiry = async (data: unknown): Promise<void> => {
-  const path = typeof window !== "undefined" ? window.location.pathname : "/";
-  const payload = buildEnquiryPayload(data, path);
-  if (typeof window !== "undefined") (window as unknown as { __lastEnquiryPayload?: unknown }).__lastEnquiryPayload = payload;
-  await new Promise((resolve) => setTimeout(resolve, 800));
-  if (typeof window !== "undefined" && new URLSearchParams(window.location.search).get("enquiryTest") === "fail") {
-    throw new Error("Simulated network error");
-  }
-  testSubmissionCount += 1;
-  (window as unknown as { __enquiryTestSubmissions?: number }).__enquiryTestSubmissions = testSubmissionCount;
-};
 
 const fields: Field[] = ["name", "organisation", "email", "phone", "type", "message", "consent"];
 
@@ -135,12 +99,12 @@ const PartnerEnquiry = ({ intro = defaultIntro, programme, onSuccess }: { intro?
     inFlight.current = true;
     setStatus({ kind: "submitting" });
     try {
-      await submitTestEnquiry(parsed.data);
+      await submitEnquiry({ kind: "partner", ...parsed.data });
       setAnswers({ ...emptyAnswers });
       setStatus({ kind: "success" });
       onSuccess?.();
     } catch {
-      setStatus({ kind: "error", message: "Test submission failed — simulated network error. Your details are kept; please try again." });
+      setStatus({ kind: "error", message: "Your enquiry could not be sent. Your details are kept; please try again or contact contact@exafluence.com." });
     } finally {
       inFlight.current = false;
     }
@@ -164,7 +128,7 @@ const PartnerEnquiry = ({ intro = defaultIntro, programme, onSuccess }: { intro?
             {completed ? (
               <div className="space-y-4">
                 <span className="enquiry-success-icon"><CheckCircle2 size={26} strokeWidth={1.7} aria-hidden="true" /></span>
-                <p role="status" className="text-sm leading-relaxed">Test submission received. Delivery is not connected yet — this confirms the form workflow only.</p>
+                <p role="status" className="text-sm leading-relaxed">Your enquiry has been received.</p>
                 <Button variant="outline" type="button" className="enquiry-restart" onClick={() => { setStep(0); setStatus({ kind: "idle" }); }}>
                   <RotateCcw size={15} strokeWidth={1.9} aria-hidden="true" />New enquiry
                 </Button>
