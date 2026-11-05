@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowDown, ArrowRight, BrainCircuit, Briefcase, Building2, CalendarRange, Cpu, GraduationCap, UserRound } from "lucide-react";
+import { ArrowDown, ArrowRight, BrainCircuit, Briefcase, Building2, CalendarRange, Cpu, GraduationCap, UserRound, UsersRound, CalendarDays, Layers, Monitor } from "lucide-react";
 import studentProfileEmblem from "@/assets/circular-student-profile-emblem.png.asset.json";
 import { svuPagePath } from "@/lib/programmeNavigation";
 import { filterSvuCareerRecords, svuInternshipIntroduction, svuInternshipUpdate, svuInternships, svuPlacements } from "@/data/svuCareer";
@@ -10,7 +10,8 @@ import { filterSvuCareerRecords, svuInternshipIntroduction, svuInternshipUpdate,
  * introduction and the records table, so existing records stay untouched and no student is
  * listed twice. The name list opens beneath its own control, one at a time. */
 const SvuInternshipUpdate = ({ open, onToggle }: { open: boolean; onToggle: () => void }) => {
-  return <section className="svu-internship-update" aria-labelledby="svu-internship-update-heading">
+  const highlightIcons = [UsersRound, CalendarDays, Layers, Monitor];
+  return <section className="svu-internship-update svu-internship-update--prantokon" aria-labelledby="svu-internship-update-heading">
     <header className="svu-internship-update-head">
       <h2 id="svu-internship-update-heading">{svuInternshipUpdate.heading}</h2>
       <p className="svu-internship-update-meta">
@@ -20,7 +21,10 @@ const SvuInternshipUpdate = ({ open, onToggle }: { open: boolean; onToggle: () =
     </header>
     <p className="svu-internship-update-summary">{svuInternshipUpdate.summary}</p>
     <ul className="svu-internship-update-highlights" aria-label="Internship highlights">
-      {svuInternshipUpdate.highlights.map(item => <li key={item}>{item}</li>)}
+      {svuInternshipUpdate.highlights.map((item, index) => {
+        const Icon = highlightIcons[index] ?? GraduationCap;
+        return <li key={item}><span className="svu-internship-feature-icon" aria-hidden="true"><Icon size={24} strokeWidth={1.6} /></span><span>{item}</span></li>;
+      })}
     </ul>
     <div className="svu-internship-update-students">
       <Button variant="ghost" type="button" className="svu-internship-update-toggle" aria-expanded={open} aria-controls="svu-internship-update-list" onClick={onToggle}>

@@ -1321,6 +1321,41 @@ body:not(:has(.homepage-static)) main .svu-career-records--logistics .svu-career
 }
 @media (prefers-reduced-motion: reduce) { .svu-career-records--logistics .svu-pl-card { transition: none; } .svu-career-records--logistics .svu-pl-card:hover { transform: none; } }
 
+/* Prantokon feature composition: approved internship text replaces the reference phone.
+   The surrounding circular-icon details sit on a blue band, not inside extra cards. */
+.svu-career-records--upskill:has(.svu-internship-update--prantokon) { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+.svu-career-records--upskill:has(.svu-internship-update--prantokon) .svu-career-title-card { max-width: 820px; margin: 0 auto; text-align: center; }
+.svu-career-records--upskill:has(.svu-internship-update--prantokon) .svu-career-title-card > h2 { font-size: 28px; font-weight: 500; text-transform: none; }
+.svu-career-records--upskill .svu-internship-update--prantokon { position: relative; isolation: isolate; container-type: normal; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr) minmax(0, 1fr); column-gap: 30px; padding: 44px 32px; margin: 0; border: 0; border-radius: 0; background: linear-gradient(110deg, hsl(var(--navy-900)), hsl(var(--connection-blue))); box-shadow: none; }
+.svu-career-records--upskill .svu-internship-update--prantokon::before { content: ""; position: absolute; z-index: -1; grid-column: 2 / 3; inset: 28px 0; background: hsl(var(--card)); border-radius: 8px; box-shadow: 0 16px 36px -20px hsl(var(--navy-900) / .55); }
+.svu-internship-update--prantokon .svu-internship-update-head { grid-column: 2; grid-row: 1; padding: 16px 24px 18px; border-bottom: 1px solid hsl(var(--border)); }
+.svu-internship-update--prantokon .svu-internship-update-head h2 { font-size: 20px; font-weight: 500; text-transform: none; letter-spacing: 0; }
+.svu-internship-update--prantokon .svu-internship-update-summary { grid-column: 2; grid-row: 2; margin: 0; padding: 20px 24px; font-size: 14px; line-height: 1.8; }
+.svu-career-records--upskill .svu-internship-update--prantokon .svu-internship-update-highlights { display: contents; }
+.svu-career-records--upskill .svu-internship-update--prantokon .svu-internship-update-highlights li { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; padding: 24px 0; margin: 0; border: 0; text-align: center; color: hsl(var(--primary-foreground)); font-size: 17px; line-height: 1.6; font-weight: 500; }
+.svu-internship-update--prantokon .svu-internship-update-highlights li:nth-child(1) { grid-column: 1; grid-row: 1 / 3; }
+.svu-internship-update--prantokon .svu-internship-update-highlights li:nth-child(2) { grid-column: 3; grid-row: 1 / 3; }
+.svu-internship-update--prantokon .svu-internship-update-highlights li:nth-child(3) { grid-column: 1; grid-row: 3; }
+.svu-internship-update--prantokon .svu-internship-update-highlights li:nth-child(4) { grid-column: 3; grid-row: 3; }
+.svu-internship-feature-icon { display: grid; place-items: center; flex: none; width: 56px; height: 56px; border: 1px dashed currentColor; border-radius: 50%; }
+.svu-internship-update--prantokon .svu-internship-update-students { grid-column: 2; grid-row: 3; margin: 0; padding: 20px 24px 16px; border-top: 1px solid hsl(var(--border)); align-self: start; }
+.svu-career-records--upskill .svu-internship-update--prantokon:hover { transform: translateY(-3px); border-color: transparent; box-shadow: none; }
+@media (max-width: 900px) {
+  .svu-career-records--upskill .svu-internship-update--prantokon { column-gap: 18px; padding: 36px 22px; grid-template-columns: minmax(0, 1fr) minmax(0, 2.4fr) minmax(0, 1fr); }
+  .svu-career-records--upskill .svu-internship-update--prantokon .svu-internship-update-highlights li { font-size: 15px; }
+}
+@media (max-width: 640px) {
+  .svu-career-records--upskill .svu-internship-update--prantokon { display: flex; flex-direction: column; gap: 0; padding: 24px 18px; }
+  .svu-career-records--upskill .svu-internship-update--prantokon::before { display: none; }
+  .svu-internship-update--prantokon .svu-internship-update-head { padding: 24px 20px 18px; background: hsl(var(--card)); border-radius: 8px 8px 0 0; }
+  .svu-internship-update--prantokon .svu-internship-update-summary { padding: 20px; background: hsl(var(--card)); }
+  .svu-career-records--upskill .svu-internship-update--prantokon .svu-internship-update-highlights { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 18px; margin: 0; padding: 28px 0; border: 0; order: 4; }
+  .svu-career-records--upskill .svu-internship-update--prantokon .svu-internship-update-highlights li { grid-column: auto; grid-row: auto; padding: 0; font-size: 14px; }
+  .svu-internship-update--prantokon .svu-internship-update-students { width: 100%; padding: 18px 20px 24px; background: hsl(var(--card)); border-radius: 0 0 8px 8px; }
+  .svu-internship-update--prantokon .svu-internship-update-toggle { white-space: normal; text-align: left; }
+}
+@media (prefers-reduced-motion: reduce) { .svu-career-records--upskill .svu-internship-update--prantokon:hover { transform: none; } }
+
 /* ===== Carbook-inspired conference presentation (client, 5 November 2026) =====
    A blue event panel projects beside a white, circular-icon presentation grid.
    Only conference work uses this layout; the other research sections stay unchanged. */
