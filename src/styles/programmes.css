@@ -1356,6 +1356,25 @@ body:not(:has(.homepage-static)) main .svu-career-records--logistics .svu-career
 }
 @media (prefers-reduced-motion: reduce) { .svu-career-records--upskill .svu-internship-update--prantokon:hover { transform: none; } }
 
+/* Client brief, 5 November 2026: the internship band reads as one centred composition.
+   Heading, status row, summary and the student control share the card's centre line; the
+   long summary keeps a comfortable measure so the centred lines stay even. Phones return
+   the summary to a left edge so a narrow column of centred text never becomes a chore. */
+.svu-internship-update--prantokon .svu-internship-update-head { text-align: center; }
+.svu-internship-update--prantokon .svu-internship-update-head h2 { margin-inline: auto; }
+.svu-internship-update--prantokon .svu-internship-update-meta { justify-content: center; }
+.svu-internship-update--prantokon .svu-internship-update-summary { margin-inline: auto; max-width: 62ch; text-align: center; }
+.svu-career-records--upskill .svu-internship-update--prantokon .svu-internship-update-students { text-align: center; }
+.svu-career-records--upskill .svu-internship-update--prantokon .svu-internship-update-toggle { display: inline-flex; width: auto; flex-direction: row; justify-content: center; gap: 12px; padding: 10px 22px 10px 12px; border: 1px solid hsl(var(--connection-blue) / .35); border-radius: 999px; background: hsl(205 92% 97%); }
+.svu-career-records--upskill .svu-internship-update--prantokon .svu-internship-update-toggle:hover { background: hsl(205 92% 94%); }
+.svu-career-records--upskill .svu-internship-update-names--full { max-width: 860px; margin-inline: auto; }
+.svu-career-records--upskill:has(.svu-internship-update--prantokon) .svu-career-records-heading { text-align: center; }
+.svu-career-records--upskill:has(.svu-internship-update--prantokon) .svu-intern-introduction { max-width: 68ch; margin-inline: auto; }
+@media (max-width: 640px) {
+  .svu-internship-update--prantokon .svu-internship-update-summary { max-width: none; text-align: left; }
+  .svu-career-records--upskill .svu-internship-update-names--full { margin-inline: 0; }
+}
+
 /* ===== Carbook-inspired conference presentation (client, 5 November 2026) =====
    A blue event panel projects beside a white, circular-icon presentation grid.
    Only conference work uses this layout; the other research sections stay unchanged. */
