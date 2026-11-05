@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowDown, ArrowRight, BrainCircuit, Briefcase, Building2, CalendarRange, Cpu, GraduationCap, UserRound, UsersRound, CalendarDays, Layers, Monitor } from "lucide-react";
-import studentProfileEmblem from "@/assets/circular-student-profile-emblem.png.asset.json";
+import studentProfileEmblem from "@/assets/circular-student-profile-emblem.png";
 import { svuPagePath } from "@/lib/programmeNavigation";
 import { filterSvuCareerRecords, svuInternshipIntroduction, svuInternshipUpdate, svuInternships, svuPlacements } from "@/data/svuCareer";
 
