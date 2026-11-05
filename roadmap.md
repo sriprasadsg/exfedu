@@ -1,3 +1,4 @@
+- [ ] Apply Prantokon's surrounding-icon presentation to the enclosed Student Internships introduction/update only; preserve text, names and records, verify expand/collapse and phone layout.
 - [x] Restyled only conference presentations in Projects & Research using Carbook's blue side panel, white presentation grid and circular icons; all six records preserved, seven tests pass, desktop/phone checked with no overflow or runtime errors, build OK.
 - [x] SVU introduction: desktop 55:45 columns and 32px gap, compact whole diagram on the right with click-to-enlarge, stacked phone layout; wording, artwork and background preserved. Verified at 1280/1062/390px, enlargement/close and programme link work; 10 relevant tests pass, build OK.
 - [x] SVU Overview & Programmes banner: swapped the banner artwork for the client's newer programme diagram (uploaded 5 Nov 2026); the original full-width layout is superseded by the side-by-side introduction.
