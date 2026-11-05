@@ -1,7 +1,7 @@
 ## 5 November 2026 — source and production handoff
 - [x] Correct npm lockfile and verify clean npm ci, tests and production build in isolated export folder (228 tests passed).
 - [x] Replace simulated enquiry client with configurable HTTP delivery; verify failure and response handling (live form fails honestly without endpoint).
-- [ ] Supply complete source ZIP, separate dist.zip, secret-free environment example and service/configuration handoff.
+- [x] Supply complete source ZIP, separate dist.zip, secret-free environment example and service/configuration handoff; archives integrity checked, seven uploaded assets included.
 - [ ] Live Cloudflare hosting and enquiry backend — blocked: Cloudflare hosting infrastructure generation/deployment is unsupported here; client infrastructure team must supply a real service and delivery verification.
 
 - [x] Applied Prantokon's surrounding-icon presentation to the enclosed Student Internships introduction/update only; text, 15 participating names and 11 records preserved; expand/collapse and 1280/1062/768/390px layouts verified, 17 tests pass, build OK.

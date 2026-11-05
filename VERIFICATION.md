@@ -8,6 +8,8 @@
 - Real enquiry-client unit checks: missing configuration fails; payload is posted to the configured URL; only a successful response with a submission id is accepted; HTTP errors and missing receipts are rejected.
 - Live desktop/phone form check: completed the partnership form with QA input; absent delivery configuration showed an error, retained the form, and displayed no success status. Phone width 390px had no horizontal overflow.
 - Seven uploaded assets downloaded byte-for-byte from their existing published paths, matching advertised sizes/content types (23,668,541 bytes total). Included in source `public/` and the production output, not just remote pointers.
+- Actual production output rendered in a browser: SVU overview loaded 39 images with no page errors; desktop/phone screenshots inspected, no phone horizontal overflow.
+- Both ZIP archives were inspected for excluded files and passed ZIP integrity checks. The production ZIP has 58 entries, including all seven uploaded assets; the source ZIP has 408 entries.
 
 ## Warnings / not verified
 
