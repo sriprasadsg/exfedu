@@ -1088,24 +1088,26 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 .svu-banner-support--right { right: 16%; }
 .svu-banner-support::after { content: ""; position: absolute; width: 20px; height: 12px; bottom: 0; left: -9px; border-radius: 3px 3px 0 0; background: hsl(var(--navy-900)); }
 .svu-banner-face { padding: 32px 28px; background: hsl(var(--academic-surface)); box-shadow: 0 32px 22px -30px hsl(var(--navy-900) / .35); }
-.svu-banner-art { margin: 30px 0 0; min-width: 0; }
-.svu-banner-art img { display: block; width: 100%; height: auto; object-fit: contain; mix-blend-mode: multiply; }
+.svu-banner-layout { display: grid; grid-template-columns: minmax(0, 55fr) minmax(0, 45fr); gap: 32px; align-items: center; }
+.svu-banner-art { margin: 0; min-width: 0; width: 100%; max-width: 440px; justify-self: center; }
+.svu-banner-art .svu-banner-image-button { display: block; width: 100%; height: 300px; padding: 16px; border: 1px solid hsl(var(--connection-blue) / .2); border-radius: 16px; background: hsl(var(--background)); cursor: zoom-in; white-space: normal; }
+.svu-banner-art .svu-banner-image-button:hover { background: hsl(var(--background)); border-color: hsl(var(--connection-blue) / .4); }
+.svu-banner-art img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.svu-framework-dialog[role="dialog"] { width: calc(100vw - 32px); max-width: 1200px; padding: 40px 16px 16px; background: hsl(var(--background)); }
+.svu-framework-dialog img { display: block; width: 100%; height: auto; max-height: calc(100dvh - 100px); object-fit: contain; }
 .svu-banner-copy { min-width: 0; }
 /* The SVU mark reads as a small emblem tucked to the left edge of the banner face,
    not a full-width plate above the introduction. */
 .svu-banner-copy .programme-detail-logo { margin-bottom: 0; margin-right: auto; max-width: 186px; height: 54px; }
-/* Headline kept on one line wherever there is room: the size is derived from the
-   available column width (this wording measures ~27.2 x font-size in Google Sans Flex 700,
-   and the SVU column is 1072px wide at most). */
-.svu-ca-hero h1 { max-width: none; white-space: nowrap; font-size: min(36px, calc((100vw - 128px) / 27.2)); line-height: 1.15; font-weight: 700; color: hsl(var(--navy-900)); }
+.svu-ca-hero h1 { max-width: none; white-space: normal; font-size: 28px; line-height: 1.2; font-weight: 700; color: hsl(var(--navy-900)); }
 .svu-ca-hero .svu-lead { max-width: 720px; margin-top: 20px; }
-@media (max-width: 760px) { .svu-ca-hero h1 { white-space: normal; font-size: clamp(26px, 7.4vw, 34px); } }
 @media (max-width: 760px) {
   .svu-ca-hero { padding-top: 40px; }
   .svu-banner-support { height: 48px; }
   .svu-banner-face { padding: 28px 20px; }
-  .svu-banner-art { margin-top: 22px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  .svu-banner-art img { width: 760px; min-width: 760px; }
+  .svu-banner-layout { grid-template-columns: minmax(0, 1fr); }
+  .svu-banner-art .svu-banner-image-button { height: auto; aspect-ratio: 440 / 300; }
+  .svu-ca-hero h1 { font-size: 26px; }
   .svu-banner-copy .programme-detail-logo { max-width: 150px; height: 44px; }
 }
 .svu-ca-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 26px; padding-bottom: 4px; font-size: 15px; font-weight: 500; color: hsl(var(--navy-900)); border-bottom: 3px solid hsl(var(--connection-blue)); transition: gap .25s ease; }

@@ -4,6 +4,7 @@ import { Link, Navigate, useLocation } from "react-router-dom";
 import { ArrowRight, ArrowUpRight, BookOpen, Lightbulb, Rocket, Sparkles, Code2, Presentation, Search, FolderKanban, FileText, Trophy, GraduationCap, ScrollText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Dialog, DialogTrigger, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { organisations, programmes } from "@/data/site";
 import { svuGrowth, svuOverview, svuProjectAreas, svuOverviewAchievements } from "@/data/svuOverview";
 import SvuTechTicker from "./SvuTechTicker";
@@ -47,14 +48,27 @@ const SvuOverview = () => {
       <span className="svu-banner-support svu-banner-support--left" aria-hidden="true" />
       <span className="svu-banner-support svu-banner-support--right" aria-hidden="true" />
       <div className="svu-banner-face">
-        <h1>{svuOverview.title}</h1>
+        <div className="svu-banner-layout">
         <div className="svu-banner-copy">
+          <h1>{svuOverview.title.split("Data Science")[0]}<span className="svu-nowrap">Data Science</span>{svuOverview.title.split("Data Science")[1]}</h1>
           <img className={`programme-detail-logo ${org.logoClass}`} src={org.logo} alt={`${org.name} logo`} />
           <p className="svu-lead">{svuOverview.introduction}</p>
           <Button variant="link" asChild className="svu-ca-link"><a href="#programmes">Explore Programmes<ArrowRight size={16} /></a></Button>
         </div>
-        {/* The client's technology framework diagram: shown whole, full width, so its labels stay readable. */}
-        <figure className="svu-banner-art"><img src={svuProgramDiagram.url} alt="Exafluence Education technology framework: foundation of technology expertise, industry applications and innovation and research feeding programme domains in data science, quantum, AI, Gen AI, cloud technologies and cybersecurity, delivered as 80% lab and 20% theory" /></figure>
+        <Dialog>
+          <figure className="svu-banner-art">
+            <DialogTrigger asChild>
+              <Button variant="ghost" className="svu-banner-image-button" aria-label="Enlarge technology framework image">
+                <img src={svuProgramDiagram.url} alt="Exafluence Education technology framework: foundation of technology expertise, industry applications and innovation and research feeding programme domains in data science, quantum, AI, Gen AI, cloud technologies and cybersecurity, delivered as 80% lab and 20% theory" />
+              </Button>
+            </DialogTrigger>
+          </figure>
+          <DialogContent className="svu-framework-dialog" aria-describedby={undefined}>
+            <DialogTitle className="sr-only">Exafluence Education technology framework</DialogTitle>
+            <img src={svuProgramDiagram.url} alt="Enlarged Exafluence Education technology framework" />
+          </DialogContent>
+        </Dialog>
+        </div>
       </div>
     </section>
 
