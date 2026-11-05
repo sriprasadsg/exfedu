@@ -82,7 +82,7 @@ export default function SvuCareerRecords({ kind, embedded = false }: { kind: "pl
         <p>Students from the SVU–Exafluence MS Data Science programme have secured roles in data science and AI engineering, alongside trainee positions. The following records show their organisations, designations and academic batches.</p>
         <Link to={`${svuPagePath("overview")}#programmes`} className="svu-pl-link">Explore Programmes <ArrowRight size={15} aria-hidden="true" /></Link>
       </div>
-      <figure className="svu-pl-art"><img src={studentProfileEmblem.url} alt="Circular emblem of a graduation cap above a student profile card and an open book" /></figure>
+      <figure className="svu-pl-art"><img src={studentProfileEmblem} alt="Circular emblem of a graduation cap above a student profile card and an open book" /></figure>
     </div>
       : null}
     {!placements && <>

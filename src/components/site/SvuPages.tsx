@@ -59,13 +59,13 @@ const SvuOverview = () => {
           <figure className="svu-banner-art">
             <DialogTrigger asChild>
               <Button variant="ghost" className="svu-banner-image-button" aria-label="Enlarge technology framework image">
-                <img src={svuProgramDiagram.url} alt="Exafluence Education technology framework: foundation of technology expertise, industry applications and innovation and research feeding programme domains in data science, quantum, AI, Gen AI, cloud technologies and cybersecurity, delivered as 80% lab and 20% theory" />
+                <img src={svuProgramDiagram} alt="Exafluence Education technology framework: foundation of technology expertise, industry applications and innovation and research feeding programme domains in data science, quantum, AI, Gen AI, cloud technologies and cybersecurity, delivered as 80% lab and 20% theory" />
               </Button>
             </DialogTrigger>
           </figure>
           <DialogContent className="svu-framework-dialog" aria-describedby={undefined}>
             <DialogTitle className="sr-only">Exafluence Education technology framework</DialogTitle>
-            <img src={svuProgramDiagram.url} alt="Enlarged Exafluence Education technology framework" />
+            <img src={svuProgramDiagram} alt="Enlarged Exafluence Education technology framework" />
           </DialogContent>
         </Dialog>
         </div>
