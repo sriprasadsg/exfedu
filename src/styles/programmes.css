@@ -1090,10 +1090,10 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 .svu-banner-face { padding: 32px 28px; background: hsl(var(--academic-surface)); box-shadow: 0 32px 22px -30px hsl(var(--navy-900) / .35); }
 .svu-banner-layout { display: grid; grid-template-columns: minmax(0, 55fr) minmax(0, 45fr); gap: 32px; align-items: center; }
 .svu-banner-art { margin: 0; min-width: 0; width: 100%; max-width: 440px; justify-self: center; }
-.svu-banner-image-button { display: block; width: 100%; height: 300px; padding: 16px; border: 1px solid hsl(var(--connection-blue) / .2); border-radius: 16px; background: hsl(var(--background)); cursor: zoom-in; white-space: normal; }
-.svu-banner-image-button:hover { background: hsl(var(--background)); border-color: hsl(var(--connection-blue) / .4); }
+.svu-banner-art .svu-banner-image-button { display: block; width: 100%; height: 300px; padding: 16px; border: 1px solid hsl(var(--connection-blue) / .2); border-radius: 16px; background: hsl(var(--background)); cursor: zoom-in; white-space: normal; }
+.svu-banner-art .svu-banner-image-button:hover { background: hsl(var(--background)); border-color: hsl(var(--connection-blue) / .4); }
 .svu-banner-art img { display: block; width: 100%; height: 100%; object-fit: contain; }
-.svu-framework-dialog { width: calc(100vw - 32px); max-width: 1200px; padding: 40px 16px 16px; background: hsl(var(--background)); }
+.svu-framework-dialog[role="dialog"] { width: calc(100vw - 32px); max-width: 1200px; padding: 40px 16px 16px; background: hsl(var(--background)); }
 .svu-framework-dialog img { display: block; width: 100%; height: auto; max-height: calc(100dvh - 100px); object-fit: contain; }
 .svu-banner-copy { min-width: 0; }
 /* The SVU mark reads as a small emblem tucked to the left edge of the banner face,
@@ -1106,7 +1106,7 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
   .svu-banner-support { height: 48px; }
   .svu-banner-face { padding: 28px 20px; }
   .svu-banner-layout { grid-template-columns: minmax(0, 1fr); }
-  .svu-banner-image-button { height: auto; aspect-ratio: 440 / 300; }
+  .svu-banner-art .svu-banner-image-button { height: auto; aspect-ratio: 440 / 300; }
   .svu-ca-hero h1 { font-size: 26px; }
   .svu-banner-copy .programme-detail-logo { max-width: 150px; height: 44px; }
 }
