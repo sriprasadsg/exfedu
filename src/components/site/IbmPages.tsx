@@ -92,6 +92,11 @@ const IbmPages = () => {
           <IbmInstitutionalEnquiry />
         </section>
 
+        <section className="ibm-block ibm-partnership" aria-labelledby="ibm-partnership-heading">
+          <h3 id="ibm-partnership-heading">{ibmOverview.partnership.title}</h3>
+          <p>{ibmOverview.partnership.text}</p>
+        </section>
+
         <section className="ibm-block ibm-learner" aria-labelledby="ibm-learner-heading">
           <h2 id="ibm-learner-heading">{ibmOverview.learner.title}</h2>
           <p>{ibmOverview.learner.text}</p>
