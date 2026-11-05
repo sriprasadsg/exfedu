@@ -2,9 +2,8 @@ import { MapPin } from "lucide-react";
 import { svuConferencePapers } from "@/data/svuReviewed";
 import { researchTheme } from "./ResearchThemeIcon";
 
-/** Conference work reads as a proceedings board (client, 4 November 2026): every presentation
- * sits under the event it was given at — a navy event band over pale paper tiles — so the
- * section never repeats the plain icon-and-rule list the student projects use. */
+/** Carbook-inspired conference panels keep the event beside its presentation cards,
+ * separate from the ordinary student-project list. */
 export const SvuConferenceProceedings = () => {
   const venues = [...new Set(svuConferencePapers.map(paper => paper.conference))].map(name => ({
     name,
@@ -18,7 +17,7 @@ export const SvuConferenceProceedings = () => {
         return (
           <section className="svu-proceeding" key={venue.name}>
             <header className="svu-proceeding-head">
-              <span className="svu-proceeding-pin" aria-hidden="true"><MapPin size={15} strokeWidth={1.8} /></span>
+              <span className="svu-proceeding-pin" aria-hidden="true"><MapPin size={24} strokeWidth={1.6} /></span>
               <h4 className="svu-proceeding-event">{event}</h4>
               <span className="svu-proceeding-place">{place}</span>
             </header>
@@ -31,7 +30,7 @@ export const SvuConferenceProceedings = () => {
                     key={`${paper.student}-${paper.title}`}
                     style={{ "--theme-hue": hue } as React.CSSProperties}
                   >
-                    <span className="research-theme-icon" aria-hidden="true"><Icon size={17} strokeWidth={1.8} /></span>
+                    <span className="research-theme-icon" aria-hidden="true"><Icon size={28} strokeWidth={1.6} /></span>
                     <div className="svu-proceeding-body">
                       <h5 className="svu-proceeding-title">{paper.title}</h5>
                       <p className="svu-proceeding-by">Presented by <b>{paper.student}</b></p>
