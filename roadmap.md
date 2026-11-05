@@ -1,6 +1,6 @@
 ## 5 November 2026 — source and production handoff
-- [ ] Correct npm lockfile and verify clean npm ci, tests and production build in isolated export folder.
-- [ ] Replace simulated enquiry client with configurable HTTP delivery; verify failure and response handling.
+- [x] Correct npm lockfile and verify clean npm ci, tests and production build in isolated export folder (228 tests passed).
+- [x] Replace simulated enquiry client with configurable HTTP delivery; verify failure and response handling (live form fails honestly without endpoint).
 - [ ] Supply complete source ZIP, separate dist.zip, secret-free environment example and service/configuration handoff.
 - [ ] Live Cloudflare hosting and enquiry backend — blocked: Cloudflare hosting infrastructure generation/deployment is unsupported here; client infrastructure team must supply a real service and delivery verification.
 
