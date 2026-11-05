@@ -36,9 +36,10 @@ describe("SVU Overview & Programmes banner shows the technology framework diagra
   });
 
   it("keeps the diagram readable on phones as a swipeable strip", () => {
-    const phone = css.slice(css.indexOf("@media (max-width: 760px)"));
-    const block = phone.slice(0, phone.indexOf("}", phone.indexOf(".svu-banner-art img")) + 1);
-    expect(block).toContain(".svu-banner-art { margin-top: 22px; overflow-x: auto;");
-    expect(block).toContain(".svu-banner-art img { width: 760px; min-width: 760px; }");
+    const art = css.indexOf(".svu-banner-art { margin-top: 22px; overflow-x: auto;");
+    expect(art).toBeGreaterThan(-1);
+    // The strip rules live inside the phone media query, not at desktop width.
+    expect(css.slice(0, art)).toContain("@media (max-width: 760px)");
+    expect(css.slice(art, art + 220)).toContain(".svu-banner-art img { width: 760px; min-width: 760px; }");
   });
 });
