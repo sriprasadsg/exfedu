@@ -4,7 +4,7 @@ import worker, { handleRequest, type Env } from "../../infrastructure/enquiry-wo
 import { buildOwnerEmail, enquiryRequestSchema } from "../../infrastructure/enquiry-worker/schema";
 
 const origin = "https://exfedu.exafluence.workers.dev";
-const env: Env = { ALLOWED_ORIGINS: origin, EMAIL_FROM: "forms@example.org", RESEND_API_KEY: "test-only-not-a-credential" };
+const env: Env = { ALLOWED_ORIGINS: origin, EMAIL_FROM: "contact@exafluence.com", M365_TENANT_ID: "11111111-1111-4111-8111-111111111111", M365_CLIENT_ID: "22222222-2222-4222-8222-222222222222", M365_CLIENT_SECRET: "test-only-not-a-credential" };
 export const formFixtures = [
   { kind: "partner", name: "Test Person", organisation: "Test Institution", email: "test@example.org", phone: "+91 9876543210", location: "Chittoor", type: "Academic Collaboration", message: "Test enquiry", consent: "on" },
   { kind: "student-programme", programme: "masters-data-science", programmeTitle: "M.S. Data Science", name: "Test Person", institution: "Test Institution", email: "test@example.org", phone: "+91 9876543210", location: "Chittoor", status: "Student", message: "Test enquiry", consent: "on" },
@@ -13,7 +13,10 @@ export const formFixtures = [
 ];
 const envelope = (data: unknown) => ({ to: "contact@exafluence.com", sourcePage: "/contact", data });
 const request = (data: unknown, from = origin) => new Request("https://worker.example.org/api/enquiries", { method: "POST", headers: { Origin: from, "Content-Type": "application/json" }, body: JSON.stringify(envelope(data)) });
-const accepted = () => vi.fn<typeof fetch>().mockResolvedValue(new Response(JSON.stringify({ id: "provider-receipt" })));
+const receiptId = "33333333-3333-4333-8333-333333333333";
+const tokenResponse = () => new Response(JSON.stringify({ access_token: "test-access-token", token_type: "Bearer" }));
+const accepted = () => vi.fn<typeof fetch>().mockImplementation(async url => String(url).includes("login.microsoftonline.com")
+  ? tokenResponse() : new Response(null, { status: 202, headers: { "request-id": receiptId } }));
 beforeEach(() => vi.stubGlobal("crypto", webcrypto));
 afterEach(() => vi.unstubAllGlobals());
 
@@ -22,14 +25,15 @@ describe("Cloudflare enquiry API", () => {
     const send = accepted();
     const response = await handleRequest(request(data), env, send);
     expect(response.status).toBe(200);
-    expect(await response.json()).toEqual({ success: true, id: "provider-receipt" });
-    const [url, options] = send.mock.calls[0];
-    expect(url).toBe("https://api.resend.com/emails");
+    expect(await response.json()).toEqual({ success: true, id: receiptId });
+    const [url, options] = send.mock.calls[1];
+    expect(url).toBe("https://graph.microsoft.com/v1.0/users/contact%40exafluence.com/sendMail");
     const body = JSON.parse(String(options?.body));
-    expect(body.to).toEqual(["contact@exafluence.com"]);
-    expect(body.from).toBe("forms@example.org");
-    expect(body.text).toContain(data.kind === "ibm-institutional" ? "contactPerson: Test Person" : "name: Test Person");
-    expect(body.reply_to).toBe("test@example.org");
+    expect(body.message.toRecipients).toEqual([{ emailAddress: { address: "contact@exafluence.com" } }]);
+    expect(body.message.body.contentType).toBe("Text");
+    expect(body.message.body.content).toContain(data.kind === "ibm-institutional" ? "contactPerson: Test Person" : "name: Test Person");
+    expect(body.message.replyTo).toEqual([{ emailAddress: { address: "test@example.org" } }]);
+    expect(body.saveToSentItems).toBe(true);
   });
   it("never trusts a browser-selected recipient", async () => {
     const send = accepted();
@@ -52,7 +56,7 @@ describe("Cloudflare enquiry API", () => {
   });
   it("fails closed without email credentials", async () => {
     const send = accepted();
-    expect((await handleRequest(request(formFixtures[0]), { ...env, RESEND_API_KEY: "" }, send)).status).toBe(503);
+    expect((await handleRequest(request(formFixtures[0]), { ...env, M365_CLIENT_SECRET: "" }, send)).status).toBe(503);
     expect(send).not.toHaveBeenCalled();
   });
   it("restricts origins and permits preflight only for the deployed website", async () => {
@@ -69,25 +73,48 @@ describe("Cloudflare enquiry API", () => {
     expect(send).not.toHaveBeenCalled();
   });
   it.each([401, 429, 500])("reports provider %s without false success or secrets", async status => {
-    const send = vi.fn<typeof fetch>().mockResolvedValue(new Response("private-provider-error", { status }));
+    const send = vi.fn<typeof fetch>().mockResolvedValueOnce(tokenResponse()).mockResolvedValueOnce(new Response("private-provider-error", { status }));
     const response = await handleRequest(request(formFixtures[0]), env, send);
     expect(response.status).toBe(502);
     const body = await response.text();
     expect(body).toContain(String(status));
-    expect(body).not.toContain(env.RESEND_API_KEY);
+    expect(body).not.toContain(env.M365_CLIENT_SECRET);
+    expect(body).not.toContain("test-access-token");
     expect(body).not.toContain("private-provider-error");
   });
   it("rejects provider success without a receipt", async () => {
-    const send = vi.fn<typeof fetch>().mockResolvedValue(new Response("{}"));
+    const send = vi.fn<typeof fetch>().mockResolvedValueOnce(tokenResponse()).mockResolvedValueOnce(new Response(null, { status: 202 }));
     expect((await handleRequest(request(formFixtures[0]), env, send)).status).toBe(502);
   });
-  it("uses the same provider idempotency key for unchanged retries", async () => {
+  it("rejects a sender outside exafluence.com", async () => {
+    const send = accepted();
+    expect((await handleRequest(request(formFixtures[0]), { ...env, EMAIL_FROM: "forms@example.org" }, send)).status).toBe(503);
+    expect(send).not.toHaveBeenCalled();
+  });
+  it("uses tenant-specific app credentials and the Graph scope", async () => {
     const send = accepted();
     await handleRequest(request(formFixtures[0]), env, send);
-    await handleRequest(request(formFixtures[0]), env, send);
-    const header = (n: number) => new Headers(send.mock.calls[n][1]?.headers).get("Idempotency-Key");
-    expect(header(0)).toMatch(/^exfedu-[0-9a-f]{64}$/);
-    expect(header(1)).toBe(header(0));
+    expect(send.mock.calls[0][0]).toBe(`https://login.microsoftonline.com/${env.M365_TENANT_ID}/oauth2/v2.0/token`);
+    const params = new URLSearchParams(String(send.mock.calls[0][1]?.body));
+    expect(params.get("scope")).toBe("https://graph.microsoft.com/.default");
+    expect(params.get("grant_type")).toBe("client_credentials");
+    expect(params.get("client_id")).toBe(env.M365_CLIENT_ID);
+  });
+  it("does not call sendMail when token acquisition fails", async () => {
+    const send = vi.fn<typeof fetch>().mockResolvedValue(new Response("private-token-error", { status: 401 }));
+    const response = await handleRequest(request(formFixtures[0]), env, send);
+    expect(response.status).toBe(502);
+    expect(send).toHaveBeenCalledTimes(1);
+    expect(await response.text()).not.toContain("private-token-error");
+  });
+  it("does not retry a send whose outcome is ambiguous", async () => {
+    const send = vi.fn<typeof fetch>().mockResolvedValueOnce(tokenResponse()).mockRejectedValueOnce(new Error("timeout"));
+    expect((await handleRequest(request(formFixtures[0]), env, send)).status).toBe(502);
+    expect(send).toHaveBeenCalledTimes(2);
+  });
+  it.each([200, 201, 204])("never treats HTTP %s as sendMail acceptance", async status => {
+    const send = vi.fn<typeof fetch>().mockResolvedValueOnce(tokenResponse()).mockResolvedValueOnce(new Response(null, { status, headers: { "request-id": receiptId } }));
+    expect((await handleRequest(request(formFixtures[0]), env, send)).status).toBe(502);
   });
   it("Worker entry point accepts the Cloudflare execution context argument", async () => {
     // The entry point must not treat Cloudflare's third argument as a fetch function.
