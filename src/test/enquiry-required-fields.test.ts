@@ -28,7 +28,7 @@ for (const { schema, affiliation, data } of forms) {
         const send = vi.fn<typeof fetch>();
         const response = await handleRequest(new Request("https://worker.example.org/api/enquiries", {
           method: "POST", headers: { Origin: "https://exfedu.exafluence.workers.dev", "Content-Type": "application/json" }, body: JSON.stringify(envelope(invalid)),
-        }), { ALLOWED_ORIGINS: "https://exfedu.exafluence.workers.dev", EMAIL_FROM: "forms@example.org", RESEND_API_KEY: "test-only" }, send);
+        }), { ALLOWED_ORIGINS: "https://exfedu.exafluence.workers.dev", EMAIL_FROM: "contact@exafluence.com", M365_TENANT_ID: "11111111-1111-4111-8111-111111111111", M365_CLIENT_ID: "22222222-2222-4222-8222-222222222222", M365_CLIENT_SECRET: "test-only" }, send);
         expect(response.status).toBe(400);
         expect(send).not.toHaveBeenCalled();
       }
