@@ -1,5 +1,5 @@
-// @vitest-environment node
-import { describe, expect, it, vi } from "vitest";
+import { webcrypto } from "node:crypto";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import worker, { handleRequest, type Env } from "../../infrastructure/enquiry-worker/worker";
 import { buildOwnerEmail, enquiryRequestSchema } from "../../infrastructure/enquiry-worker/schema";
 
@@ -14,6 +14,8 @@ export const formFixtures = [
 const envelope = (data: unknown) => ({ to: "contact@exafluence.com", sourcePage: "/contact", data });
 const request = (data: unknown, from = origin) => new Request("https://worker.example.org/api/enquiries", { method: "POST", headers: { Origin: from, "Content-Type": "application/json" }, body: JSON.stringify(envelope(data)) });
 const accepted = () => vi.fn<typeof fetch>().mockResolvedValue(new Response(JSON.stringify({ id: "provider-receipt" })));
+beforeEach(() => vi.stubGlobal("crypto", webcrypto));
+afterEach(() => vi.unstubAllGlobals());
 
 describe("Cloudflare enquiry API", () => {
   it.each(formFixtures)("routes $kind to contact@exafluence.com only after provider acceptance", async data => {
