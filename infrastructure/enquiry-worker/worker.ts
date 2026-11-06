@@ -71,4 +71,4 @@ export async function handleRequest(request: Request, env: Env, send: typeof fet
   finally { clearTimeout(timer); }
 }
 
-export default { fetch: handleRequest };
+export default { fetch(request: Request, env: Env) { return handleRequest(request, env); } };
