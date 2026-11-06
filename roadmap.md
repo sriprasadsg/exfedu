@@ -1,3 +1,6 @@
+## 6 November 2026 — required enquiry fields
+- [ ] Require phone number, email, institution and location in all four forms and the Cloudflare service; verify validation and submission flows.
+
 ## 6 November 2026 — enquiry service handoff
 - [x] Prepare a standalone Cloudflare Workers enquiry API for all four forms, with fixed owner email, server validation and private email credentials.
 - [x] Wire the shared form client to the configurable API and verify receipts, failures and all four submission flows (39 tests with a mocked email provider; live preview fails honestly without configuration).
