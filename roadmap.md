@@ -1,4 +1,5 @@
 ## 6 November 2026 — required enquiry fields
+- [ ] Replace Resend in the enquiry Worker — blocked pending the organisation's verified sender domain and sending-service details.
 - [x] Require phone number, email, institution and location in all four forms and the Cloudflare service; 107 targeted tests passed, all four live form journeys reject blanks and fail honestly without the endpoint, phone brochure layout checked with no overflow or runtime errors. Production requires the updated website and Worker to be deployed together.
 
 ## 6 November 2026 — enquiry service handoff
