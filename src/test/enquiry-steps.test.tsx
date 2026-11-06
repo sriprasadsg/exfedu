@@ -22,9 +22,10 @@ describe("sequential partner enquiry", () => {
     expect(screen.queryByLabelText("Organisation / Institution")).not.toBeInTheDocument();
   });
 
-  it("allows an empty optional phone number but requires contact permission", () => {
-    const answers = { name: "Example", organisation: "Example Institution", email: "partner@example.org", phone: "", type: "Academic Collaboration", message: "Research collaboration", consent: "on" };
+  it("requires a phone number and contact permission", () => {
+    const answers = { name: "Example", organisation: "Example Institution", email: "partner@example.org", phone: "+91 9876543210", location: "Chittoor", type: "Academic Collaboration", message: "Research collaboration", consent: "on" };
     expect(enquirySchema.safeParse(answers).success).toBe(true);
+    expect(enquirySchema.safeParse({ ...answers, phone: "" }).success).toBe(false);
     expect(enquirySchema.safeParse({ ...answers, consent: "" }).success).toBe(false);
   });
 });

@@ -40,20 +40,21 @@ describe("all four form UIs through the Worker contract", () => {
   it("submits the partnership form", async () => {
     render(<PartnerEnquiry />);
     next("Contact name", "Test Person"); next("Organisation / Institution", "Test Institution"); next("Work email", "test@example.org");
-    fireEvent.click(screen.getByRole("button", { name: "Skip" }));
+    next("Phone number", "+91 9876543210"); next("Location", "Chittoor");
     next("Collaboration type", "Academic Collaboration"); next("Collaboration requirement", "Test enquiry"); finish("Send Partner Enquiry");
     await accepted("Partnership enquiry");
   });
   it("submits the student programme form", async () => {
     render(<StudentEnquiry programmeSlug="masters-data-science" />);
     next("Your name", "Test Person"); next("Email", "test@example.org");
-    fireEvent.click(screen.getByRole("button", { name: "Skip" }));
+    next("Phone number", "+91 9876543210"); next("Institution", "Test Institution"); next("Location", "Chittoor");
     next("Which best describes you?", "Student"); next("Your question", "Test enquiry"); finish();
     await accepted("Student programme enquiry");
   });
   it("submits the IBM institutional form", async () => {
     render(<IbmInstitutionalEnquiry />);
     next("Organisation", "Test Institution"); next("Contact person", "Test Person"); next("Work email", "test@example.org");
+    next("Phone number", "+91 9876543210"); next("Location", "Chittoor");
     next("Programme interest", "Value-Added Courses"); next("Audience", "Undergraduate students"); next("Expected participants", "40");
     fireEvent.click(screen.getByRole("button", { name: "Skip" })); finish("Send Institutional Enquiry");
     await accepted("IBM institutional enquiry");
@@ -61,7 +62,7 @@ describe("all four form UIs through the Worker contract", () => {
   it("unlocks brochure access only after provider acceptance", async () => {
     const unlock = vi.fn();
     render(<InstitutionBrochureForm programme="M.S. Data Science" onSuccess={unlock} />);
-    for (const [label, value] of [["Name", "Test Person"], ["Organisation or institution", "Test Institution"], ["Designation", "Dean"], ["Location", "Chittoor"]]) {
+    for (const [label, value] of [["Name", "Test Person"], ["Organisation or institution", "Test Institution"], ["Email", "test@example.org"], ["Phone number", "+91 9876543210"], ["Designation", "Dean"], ["Location", "Chittoor"]]) {
       fireEvent.change(screen.getByLabelText(label, { exact: true }), { target: { value } });
     }
     fireEvent.click(screen.getByRole("button", { name: "Request Brochure" }));
@@ -73,7 +74,7 @@ describe("all four form UIs through the Worker contract", () => {
     provider.mockImplementation(async () => new Response("rejected", { status: 503 }));
     const unlock = vi.fn();
     render(<InstitutionBrochureForm programme="M.S. Data Science" onSuccess={unlock} />);
-    for (const [label, value] of [["Name", "Test Person"], ["Organisation or institution", "Test Institution"], ["Designation", "Dean"], ["Location", "Chittoor"]]) {
+    for (const [label, value] of [["Name", "Test Person"], ["Organisation or institution", "Test Institution"], ["Email", "test@example.org"], ["Phone number", "+91 9876543210"], ["Designation", "Dean"], ["Location", "Chittoor"]]) {
       fireEvent.change(screen.getByLabelText(label, { exact: true }), { target: { value } });
     }
     fireEvent.click(screen.getByRole("button", { name: "Request Brochure" }));

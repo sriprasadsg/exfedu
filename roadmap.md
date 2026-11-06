@@ -1,3 +1,6 @@
+## 6 November 2026 — required enquiry fields
+- [x] Require phone number, email, institution and location in all four forms and the Cloudflare service; 107 targeted tests passed, all four live form journeys reject blanks and fail honestly without the endpoint, phone brochure layout checked with no overflow or runtime errors. Production requires the updated website and Worker to be deployed together.
+
 ## 6 November 2026 — enquiry service handoff
 - [x] Prepare a standalone Cloudflare Workers enquiry API for all four forms, with fixed owner email, server validation and private email credentials.
 - [x] Wire the shared form client to the configurable API and verify receipts, failures and all four submission flows (39 tests with a mocked email provider; live preview fails honestly without configuration).

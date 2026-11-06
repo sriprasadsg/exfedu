@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { z } from "zod";
-import { ArrowUpRight, ArrowLeft, CheckCircle2, AlertCircle, RotateCcw, User, Mail, Phone, BookOpen, GraduationCap, MessageSquare } from "lucide-react";
+import { ArrowUpRight, ArrowLeft, CheckCircle2, AlertCircle, RotateCcw, User, Mail, Phone, MapPin, Building2, BookOpen, GraduationCap, MessageSquare } from "lucide-react";
+import { requiredPhone, requiredEmail, requiredInstitution, requiredLocation } from "@/lib/enquiryFields";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -9,28 +10,29 @@ import { organisations, programmes } from "@/data/site";
 
 /** Student programme enquiry uses the shared production HTTP delivery.
  * Kept separate from the institutional partner enquiry so learners are never asked
- * for organisation or collaboration details. */
+ * for partnership or collaboration details. */
 export const learnerStatuses = ["Student", "Recent graduate", "Working professional", "Other"] as const;
 const studentProgrammes = programmes.filter(p => p.organisation !== "IBM");
-const phonePattern = /^\+?[0-9\s\-()]{7,20}$/;
 
 export const studentEnquirySchema = z.object({
   programme: z.string().refine(v => studentProgrammes.some(p => p.slug === v), "Please choose a programme"),
   name: z.string().trim().min(1, "Please enter your name").max(100, "Name must be under 100 characters"),
-  email: z.string().trim().min(1, "Please enter your email").email("Please enter a valid email").max(255, "Email must be under 255 characters"),
-  phone: z.string().trim().max(20, "Phone must be under 20 characters").refine(v => v === "" || phonePattern.test(v), "Please enter a valid phone number"),
+  email: requiredEmail,
+  phone: requiredPhone,
+  institution: requiredInstitution,
+  location: requiredLocation,
   status: z.enum(learnerStatuses, { errorMap: () => ({ message: "Please choose what describes you" }) }),
   message: z.string().trim().min(1, "Please enter your question").max(1000, "Please keep this under 1000 characters"),
   consent: z.literal("on", { errorMap: () => ({ message: "Please agree to be contacted about this enquiry" }) }),
 });
 type Field = keyof z.infer<typeof studentEnquirySchema>;
-const fields: Field[] = ["programme", "name", "email", "phone", "status", "message", "consent"];
-const labels: Record<Field, string> = { programme: "Programme", name: "Your name", email: "Email", phone: "Phone number", status: "Which best describes you?", message: "Your question", consent: "Contact permission" };
-const icons: Partial<Record<Field, typeof User>> = { programme: BookOpen, name: User, email: Mail, phone: Phone, status: GraduationCap, message: MessageSquare };
+const fields: Field[] = ["programme", "name", "email", "phone", "institution", "location", "status", "message", "consent"];
+const labels: Record<Field, string> = { programme: "Programme", name: "Your name", email: "Email", phone: "Phone number", institution: "Institution", location: "Location", status: "Which best describes you?", message: "Your question", consent: "Contact permission" };
+const icons: Partial<Record<Field, typeof User>> = { programme: BookOpen, name: User, email: Mail, phone: Phone, institution: Building2, location: MapPin, status: GraduationCap, message: MessageSquare };
 
 const StudentEnquiry = ({ programmeSlug }: { programmeSlug?: string }) => {
   const preset = programmeSlug && studentProgrammes.some(p => p.slug === programmeSlug) ? programmeSlug : "";
-  const empty = { programme: preset, name: "", email: "", phone: "", status: "", message: "", consent: "" };
+  const empty = { programme: preset, name: "", email: "", phone: "", institution: "", location: "", status: "", message: "", consent: "" };
   const [answers, setAnswers] = useState<Record<Field, string>>(empty);
   // A preselected programme is kept; the form opens on the next question.
   const [step, setStep] = useState(preset ? 1 : 0);
@@ -88,7 +90,7 @@ const StudentEnquiry = ({ programmeSlug }: { programmeSlug?: string }) => {
                 <div className="enquiry-progress" aria-hidden="true"><span style={{ width: `${((step + 1) / fields.length) * 100}%` }} /></div>
                 <div className="enquiry-step-body" key={field}>
                   <label htmlFor={`student-${field}`} className="mb-3 block text-sm font-medium">
-                    {labels[field]}{field === "phone" && <span className="ml-2 font-normal text-muted-foreground">(optional)</span>}
+                    {labels[field]}
                   </label>
                   {field === "consent" ? (
                     <label className="flex cursor-pointer items-start gap-3 text-sm leading-relaxed text-muted-foreground">
@@ -108,7 +110,7 @@ const StudentEnquiry = ({ programmeSlug }: { programmeSlug?: string }) => {
                       ) : field === "message" ? (
                         <Textarea id="student-message" name="message" rows={3} maxLength={1000} value={answers.message} disabled={submitting} onChange={e => update(e.target.value)} {...aria} />
                       ) : (
-                        <Input id={`student-${field}`} name={field} type={field === "email" ? "email" : field === "phone" ? "tel" : "text"} autoComplete={field === "phone" ? "tel" : field} maxLength={field === "email" ? 255 : field === "phone" ? 20 : 100} value={answers[field]} disabled={submitting} onChange={e => update(e.target.value)} {...aria} />
+                        <Input id={`student-${field}`} name={field} required type={field === "email" ? "email" : field === "phone" ? "tel" : "text"} autoComplete={field === "institution" ? "organization" : field === "location" ? "address-level2" : field === "phone" ? "tel" : field} maxLength={field === "email" ? 255 : field === "phone" ? 20 : field === "institution" || field === "location" ? 150 : 100} value={answers[field]} disabled={submitting} onChange={e => update(e.target.value)} {...aria} />
                       )}
                     </div>
                   )}
@@ -117,7 +119,7 @@ const StudentEnquiry = ({ programmeSlug }: { programmeSlug?: string }) => {
                 <div className="mt-5 flex items-center justify-between gap-3">
                   <Button type="button" variant="ghost" size="icon" aria-label="Previous field" disabled={step === 0 || submitting} onClick={() => { setError(""); setStep(s => s - 1); }}><ArrowLeft /></Button>
                   <Button type="submit" disabled={submitting} className="enquiry-cta text-sm font-medium">
-                    {submitting ? "Sending…" : step === fields.length - 1 ? "Send Enquiry" : field === "phone" && !answers.phone ? "Skip" : "Continue"}<ArrowUpRight />
+                    {submitting ? "Sending…" : step === fields.length - 1 ? "Send Enquiry" : "Continue"}<ArrowUpRight />
                   </Button>
                 </div>
                 {state === "error" && <p role="alert" className="mt-3 flex gap-2 text-sm text-destructive"><AlertCircle className="h-4 w-4 shrink-0" />Your enquiry could not be sent. Your details are kept; please try again or contact contact@exafluence.com.</p>}

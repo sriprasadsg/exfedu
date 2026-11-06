@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { z } from "zod";
-import { ArrowUpRight, ArrowLeft, CheckCircle2, AlertCircle, RotateCcw, User, Building2, Mail, Phone, Network, MessageSquare } from "lucide-react";
+import { ArrowUpRight, ArrowLeft, CheckCircle2, AlertCircle, RotateCcw, User, Building2, Mail, Phone, MapPin, Network, MessageSquare } from "lucide-react";
+import { requiredPhone, requiredEmail, requiredInstitution, requiredLocation } from "@/lib/enquiryFields";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -19,17 +20,12 @@ export const collaborationTypes = [
   "Other",
 ] as const;
 
-const phonePattern = /^\+?[0-9\s\-()]{7,20}$/;
-
 export const enquirySchema = z.object({
   name: z.string().trim().min(1, "Please enter your name").max(100, "Name must be under 100 characters"),
-  organisation: z.string().trim().min(1, "Please enter your organisation").max(150, "Organisation must be under 150 characters"),
-  email: z.string().trim().min(1, "Please enter your work email").email("Please enter a valid work email").max(255, "Email must be under 255 characters"),
-  phone: z
-    .string()
-    .trim()
-    .max(20, "Phone must be under 20 characters")
-    .refine((v) => v === "" || phonePattern.test(v), "Please enter a valid phone number (digits, spaces, + - ( ) only)"),
+  organisation: requiredInstitution,
+  email: requiredEmail,
+  phone: requiredPhone,
+  location: requiredLocation,
   type: z.enum(collaborationTypes, { errorMap: () => ({ message: "Please choose a collaboration type" }) }),
   message: z.string().trim().min(1, "Please tell us your collaboration requirement").max(1000, "Please keep this under 1000 characters"),
   consent: z.literal("on", { errorMap: () => ({ message: "Please agree to be contacted about this enquiry" }) }),
@@ -39,14 +35,14 @@ type EnquiryData = z.infer<typeof enquirySchema>;
 type Field = keyof EnquiryData;
 type Status = { kind: "idle" } | { kind: "submitting" } | { kind: "success" } | { kind: "error"; message: string };
 
-const fields: Field[] = ["name", "organisation", "email", "phone", "type", "message", "consent"];
+const fields: Field[] = ["name", "organisation", "email", "phone", "location", "type", "message", "consent"];
 
 const labels: Record<Field, string> = {
   name: "Contact name", organisation: "Organisation / Institution", email: "Work email",
-  phone: "Phone number", type: "Collaboration type", message: "Collaboration requirement", consent: "Contact permission",
+  phone: "Phone number", location: "Location", type: "Collaboration type", message: "Collaboration requirement", consent: "Contact permission",
 };
-const emptyAnswers: Record<Field, string> = { name: "", organisation: "", email: "", phone: "", type: "", message: "", consent: "" };
-const fieldIcons: Partial<Record<Field, typeof User>> = { name: User, organisation: Building2, email: Mail, phone: Phone, type: Network, message: MessageSquare };
+const emptyAnswers: Record<Field, string> = { name: "", organisation: "", email: "", phone: "", location: "", type: "", message: "", consent: "" };
+const fieldIcons: Partial<Record<Field, typeof User>> = { name: User, organisation: Building2, email: Mail, phone: Phone, location: MapPin, type: Network, message: MessageSquare };
 export type EnquiryIntro = { title: string; description: string; points?: { label: string; text: string }[] };
 
 const defaultIntro: EnquiryIntro = {
@@ -141,7 +137,7 @@ const PartnerEnquiry = ({ intro = defaultIntro, programme, onSuccess }: { intro?
                 <div className="enquiry-progress" aria-hidden="true"><span style={{ width: `${((step + 1) / fields.length) * 100}%` }} /></div>
                 <div className="enquiry-step-body" key={field}>
                   <label htmlFor={`enquiry-${field}`} className="mb-3 block text-sm font-medium">
-                    {labels[field]}{field === "phone" && <span className="ml-2 font-normal text-muted-foreground">(optional)</span>}
+                    {labels[field]}
                   </label>
                   {field === "type" ? (
                     <div className={`enquiry-field enquiry-field--${field}`}>
@@ -164,7 +160,7 @@ const PartnerEnquiry = ({ intro = defaultIntro, programme, onSuccess }: { intro?
                   ) : (
                     <div className={`enquiry-field enquiry-field--${field}`}>
                       <span className="enquiry-field-icon" aria-hidden="true">{(() => { const FIcon = fieldIcons[field] ?? User; return <FIcon size={17} strokeWidth={1.8} />; })()}</span>
-                      <Input id={`enquiry-${field}`} name={field} type={field === "email" ? "email" : field === "phone" ? "tel" : "text"} autoComplete={field === "organisation" ? "organization" : field === "phone" ? "tel" : field} maxLength={field === "name" ? 100 : field === "organisation" ? 150 : field === "email" ? 255 : 20} value={answers[field]} disabled={submitting} onChange={(e) => update(e.target.value)} {...aria} />
+                      <Input id={`enquiry-${field}`} name={field} required type={field === "email" ? "email" : field === "phone" ? "tel" : "text"} autoComplete={field === "organisation" ? "organization" : field === "location" ? "address-level2" : field === "phone" ? "tel" : field} maxLength={field === "name" ? 100 : field === "organisation" || field === "location" ? 150 : field === "email" ? 255 : 20} value={answers[field]} disabled={submitting} onChange={(e) => update(e.target.value)} {...aria} />
                     </div>
                   )}
                   {error && <p id="enquiry-field-error" role="alert" className="mt-2 text-sm text-destructive">{error}</p>}
@@ -172,7 +168,7 @@ const PartnerEnquiry = ({ intro = defaultIntro, programme, onSuccess }: { intro?
                 <div className="mt-5 flex items-center justify-between gap-3">
                   <Button type="button" variant="ghost" size="icon" aria-label="Previous field" disabled={step === 0 || submitting} onClick={() => { setError(""); setStatus({ kind: "idle" }); setStep((previous) => previous - 1); }}><ArrowLeft /></Button>
                   <Button type="submit" disabled={submitting} className="enquiry-cta text-sm font-medium">
-                    {submitting ? "Sending…" : step === fields.length - 1 ? "Send Partner Enquiry" : field === "phone" && !answers.phone ? "Skip" : "Continue"}<ArrowUpRight />
+                    {submitting ? "Sending…" : step === fields.length - 1 ? "Send Partner Enquiry" : "Continue"}<ArrowUpRight />
                   </Button>
                 </div>
                 {status.kind === "error" && <p role="alert" className="mt-3 flex gap-2 text-sm text-destructive"><AlertCircle className="h-4 w-4 shrink-0" />{status.message}</p>}

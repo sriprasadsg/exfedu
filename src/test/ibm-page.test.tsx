@@ -61,10 +61,10 @@ describe("IBM institutional enquiry", () => {
 
   it("asks one field at a time and rejects an empty organisation", async () => {
     open();
-    expect(screen.getByLabelText("Organisation")).toBeInTheDocument();
+    expect(screen.getByLabelText("Organisation / Institution")).toBeInTheDocument();
     expect(screen.queryByLabelText("Contact person")).not.toBeInTheDocument();
     fireEvent.click(screen.getByRole("button", { name: /Continue/ }));
-    expect(await screen.findByRole("alert")).toHaveTextContent("Please enter your organisation");
+    expect(await screen.findByRole("alert")).toHaveTextContent("Please enter your institution");
     expect(screen.queryByLabelText("Contact person")).not.toBeInTheDocument();
   });
 
@@ -73,9 +73,11 @@ describe("IBM institutional enquiry", () => {
     const fetcher = vi.fn().mockResolvedValue(new Response(JSON.stringify({ success: true, id: "ibm-receipt" })));
     vi.stubGlobal("fetch", fetcher);
     open();
-    await step("Organisation", "Sri Venkateswara University");
+    await step("Organisation / Institution", "Sri Venkateswara University");
     await step("Contact person", "Dr A. Rao");
     await step("Work email", "a.rao@example.edu");
+    await step("Phone number", "+91 9876543210");
+    await step("Location", "Chittoor");
     await step("Programme interest", "Certificate Programme in Quantum Computing");
     await step("Audience", "Undergraduate students");
     await step("Expected participants", "60");
@@ -90,9 +92,11 @@ describe("IBM institutional enquiry", () => {
 
   it("refuses a participant count that is not a number", async () => {
     open();
-    await step("Organisation", "Exafluence College");
+    await step("Organisation / Institution", "Exafluence College");
     await step("Contact person", "Priya");
     await step("Work email", "priya@example.edu");
+    await step("Phone number", "+91 9876543210");
+    await step("Location", "Chittoor");
     await step("Programme interest", "Not sure yet");
     await step("Audience", "Faculty development");
     fireEvent.change(screen.getByLabelText("Expected participants"), { target: { value: "about sixty" } });
