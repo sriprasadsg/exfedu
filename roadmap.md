@@ -1,8 +1,14 @@
+## 6 November 2026 — enquiry service handoff
+- [x] Prepare a standalone Cloudflare Workers enquiry API for all four forms, with fixed owner email, server validation and private email credentials.
+- [x] Wire the shared form client to the configurable API and verify receipts, failures and all four submission flows (39 tests with a mocked email provider; live preview fails honestly without configuration).
+- [x] Deliver an inspected source package and deployment/configuration guide for the infrastructure team.
+- [ ] Production activation and mailbox delivery proof — blocked until the infrastructure team deploys the API, sets email credentials and confirms its URL.
+
 ## 5 November 2026 — source and production handoff
 - [x] Correct npm lockfile and verify clean npm ci, tests and production build in isolated export folder (228 tests passed).
 - [x] Replace simulated enquiry client with configurable HTTP delivery; verify failure and response handling (live form fails honestly without endpoint).
 - [x] Supply complete source ZIP, separate dist.zip, secret-free environment example and service/configuration handoff; archives integrity checked, seven uploaded assets included.
-- [ ] Live Cloudflare hosting and enquiry backend — blocked: Cloudflare hosting infrastructure generation/deployment is unsupported here; client infrastructure team must supply a real service and delivery verification.
+- [ ] Live enquiry activation — separate Worker source is prepared; API URL, deployment, sender credentials and real mailbox delivery proof await the infrastructure team. Website hosting is outside this handoff.
 
 - [x] Applied Prantokon's surrounding-icon presentation to the enclosed Student Internships introduction/update only; text, 15 participating names and 11 records preserved; expand/collapse and 1280/1062/768/390px layouts verified, 17 tests pass, build OK.
 - [x] Restyled only conference presentations in Projects & Research using Carbook's blue side panel, white presentation grid and circular icons; all six records preserved, seven tests pass, desktop/phone checked with no overflow or runtime errors, build OK.

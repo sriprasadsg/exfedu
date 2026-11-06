@@ -11,6 +11,19 @@ describe("production enquiry delivery", () => {
     await expect(submitEnquiry({})).rejects.toThrow("not configured");
     expect(fetcher).not.toHaveBeenCalled();
   });
+  it("supports a same-origin API path once infrastructure supplies it", async () => {
+    enquiryConfig.endpoint = "/api/enquiries";
+    const fetcher = vi.fn().mockResolvedValue(new Response(JSON.stringify({ success: true, id: "receipt" })));
+    vi.stubGlobal("fetch", fetcher);
+    await submitEnquiry({ kind: "partner" });
+    expect(fetcher.mock.calls[0][0]).toBe(new URL("/api/enquiries", window.location.origin).toString());
+  });
+  it("does not send visitor data to an insecure remote endpoint", async () => {
+    enquiryConfig.endpoint = "http://remote.example.org/api/enquiries";
+    const fetcher = vi.fn(); vi.stubGlobal("fetch", fetcher);
+    await expect(submitEnquiry({})).rejects.toThrow("secure API URL");
+    expect(fetcher).not.toHaveBeenCalled();
+  });
   it("posts the real payload and accepts a durable receipt", async () => {
     enquiryConfig.endpoint = "https://enquiry.example.test/submit";
     const fetcher = vi.fn().mockResolvedValue(new Response(JSON.stringify({ success: true, id: "receipt-123" })));
