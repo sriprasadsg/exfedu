@@ -1,13 +1,10 @@
-import { z } from "zod";
-import { buildOwnerEmail, enquiryRequestSchema } from "./schema";
+import { enquiryRequestSchema } from "./schema";
+import { microsoftConfigured, MicrosoftEmailError, sendMicrosoftEmail, type MicrosoftEnv } from "./microsoft365";
 
-export interface Env {
+export interface Env extends MicrosoftEnv {
   ALLOWED_ORIGINS: string;
-  EMAIL_FROM: string;
-  RESEND_API_KEY: string;
 }
 const MAX_BYTES = 16384;
-const providerReceipt = z.object({ id: z.string().trim().min(1).max(200) });
 
 async function readJson(request: Request) {
   if (!request.body) throw new Error("empty");
@@ -48,26 +45,15 @@ export async function handleRequest(request: Request, env: Env, send: typeof fet
   catch (error) { return reply(error instanceof Error && error.message === "too-large" ? 413 : 400, { error: "Invalid or oversized JSON" }); }
   const parsed = enquiryRequestSchema.safeParse(input);
   if (!parsed.success) return reply(400, { error: "Invalid enquiry", fields: parsed.error.issues.map(i => i.path.join(".")) });
-  const from = z.string().trim().email().safeParse(env.EMAIL_FROM);
-  if (!env.RESEND_API_KEY || !from.success) return reply(503, { error: "Email delivery is not configured" });
+  if (!microsoftConfigured(env)) return reply(503, { error: "Email delivery is not configured" });
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), 10000);
   try {
-    const email = buildOwnerEmail(parsed.data, from.data);
-    // Same validated request within the provider's 24-hour window reuses its receipt.
-    const bytes = new TextEncoder().encode(JSON.stringify(email) + parsed.data.sourcePage);
-    const hash = await crypto.subtle.digest("SHA-256", bytes);
-    const key = Array.from(new Uint8Array(hash), v => v.toString(16).padStart(2, "0")).join("");
-    const result = await send("https://api.resend.com/emails", { method: "POST", signal: controller.signal,
-      headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, "Content-Type": "application/json", "Idempotency-Key": `exfedu-${key}` }, body: JSON.stringify(email) });
-    if (!result.ok) {
-      // Do not expose credentials, visitor details or the provider response body.
-      return reply(502, { error: "Email provider did not accept the enquiry", providerStatus: result.status });
-    }
-    const receipt = providerReceipt.safeParse(await result.json());
-    if (!receipt.success) return reply(502, { error: "Email provider did not confirm acceptance" });
-    return reply(200, { success: true, id: receipt.data.id });
-  } catch { return reply(502, { error: "Email service unavailable; acceptance is unconfirmed" }); }
+    const id = await sendMicrosoftEmail(parsed.data, env, send, controller.signal);
+    return reply(200, { success: true, id });
+  } catch (error) {
+    return reply(502, { error: "Microsoft 365 acceptance is unconfirmed", ...(error instanceof MicrosoftEmailError ? { providerStatus: error.providerStatus } : {}) });
+  }
   finally { clearTimeout(timer); }
 }
 

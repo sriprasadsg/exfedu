@@ -10,10 +10,12 @@ import { handleRequest } from "../../infrastructure/enquiry-worker/worker";
 
 const provider = vi.fn<typeof fetch>();
 const origin = "https://exfedu.exafluence.workers.dev";
-const env = { ALLOWED_ORIGINS: origin, EMAIL_FROM: "forms@example.org", RESEND_API_KEY: "test-only" };
+const env = { ALLOWED_ORIGINS: origin, EMAIL_FROM: "contact@exafluence.com", M365_TENANT_ID: "11111111-1111-4111-8111-111111111111", M365_CLIENT_ID: "22222222-2222-4222-8222-222222222222", M365_CLIENT_SECRET: "test-only" };
 beforeEach(() => {
   vi.stubGlobal("crypto", webcrypto);
-  provider.mockReset().mockImplementation(async () => new Response(JSON.stringify({ id: "accepted-test-email" })));
+  provider.mockReset().mockImplementation(async url => String(url).includes("login.microsoftonline.com")
+    ? new Response(JSON.stringify({ access_token: "test-access-token", token_type: "Bearer" }))
+    : new Response(null, { status: 202, headers: { "request-id": "33333333-3333-4333-8333-333333333333" } }));
   enquiryConfig.endpoint = "https://worker.example.org/api/enquiries";
   vi.stubGlobal("fetch", async (url: string, init: RequestInit) => handleRequest(new Request(url, {
     ...init, headers: { ...init.headers, Origin: origin },
@@ -31,10 +33,10 @@ function finish(label = "Send Enquiry") {
 }
 async function accepted(kind: string) {
   await screen.findByRole("status");
-  expect(provider).toHaveBeenCalledTimes(1);
-  const body = JSON.parse(String(provider.mock.calls[0][1]?.body));
-  expect(body.to).toEqual(["contact@exafluence.com"]);
-  expect(body.text).toContain(kind);
+  expect(provider).toHaveBeenCalledTimes(2);
+  const body = JSON.parse(String(provider.mock.calls[1][1]?.body));
+  expect(body.message.toRecipients).toEqual([{ emailAddress: { address: "contact@exafluence.com" } }]);
+  expect(body.message.body.content).toContain(kind);
 }
 describe("all four form UIs through the Worker contract", () => {
   it("submits the partnership form", async () => {
@@ -67,8 +69,8 @@ describe("all four form UIs through the Worker contract", () => {
     }
     fireEvent.click(screen.getByRole("button", { name: "Request Brochure" }));
     await waitFor(() => expect(unlock).toHaveBeenCalledTimes(1));
-    expect(provider).toHaveBeenCalledTimes(1);
-    expect(JSON.parse(String(provider.mock.calls[0][1]?.body)).to).toEqual(["contact@exafluence.com"]);
+    expect(provider).toHaveBeenCalledTimes(2);
+    expect(JSON.parse(String(provider.mock.calls[1][1]?.body)).message.toRecipients).toEqual([{ emailAddress: { address: "contact@exafluence.com" } }]);
   });
   it("keeps a failed brochure request locked", async () => {
     provider.mockImplementation(async () => new Response("rejected", { status: 503 }));

@@ -6,6 +6,8 @@
   "workers_dev": true,
   "vars": {
     "ALLOWED_ORIGINS": "https://exfedu.exafluence.workers.dev",
-    "EMAIL_FROM": ""
+    "EMAIL_FROM": "",
+    "M365_TENANT_ID": "",
+    "M365_CLIENT_ID": ""
   }
 }
