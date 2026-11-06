@@ -1,0 +1,9 @@
+{
+  "name": "exfedu-enquiry-worker",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": { "dev": "wrangler dev", "deploy": "wrangler deploy" },
+  "dependencies": { "zod": "3.25.76" },
+  "devDependencies": { "wrangler": "^4.0.0" }
+}
