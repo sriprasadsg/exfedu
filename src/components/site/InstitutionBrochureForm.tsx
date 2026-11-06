@@ -5,23 +5,28 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { submitEnquiry } from "@/lib/enquiryDelivery";
+import { requiredPhone, requiredEmail, requiredInstitution, requiredLocation } from "@/lib/enquiryFields";
 
 /** Institutional brochure request (client, 2 November 2026): collaborations are
  * institutional only, so visitors identify their institution and location.
  * Uses shared HTTP delivery and only unlocks after a server receipt. */
 export const institutionBrochureSchema = z.object({
   name: z.string().trim().min(2, "Please enter your name").max(100),
-  institution: z.string().trim().min(2, "Please enter your organisation or institution").max(150),
+  institution: requiredInstitution,
+  email: requiredEmail,
+  phone: requiredPhone,
   designation: z.string().trim().min(2, "Please enter your designation").max(100),
-  location: z.string().trim().min(2, "Please enter the institution's location").max(150),
+  location: requiredLocation,
   notes: z.string().trim().max(1000).optional().or(z.literal("")),
 });
 type Values = z.infer<typeof institutionBrochureSchema>;
-const empty: Values = { name: "", institution: "", designation: "", location: "", notes: "" };
+const empty: Values = { name: "", institution: "", email: "", phone: "", designation: "", location: "", notes: "" };
 
 const fields: { key: keyof Values; label: string; placeholder: string; optional?: boolean }[] = [
   { key: "name", label: "Name", placeholder: "Your full name" },
   { key: "institution", label: "Organisation or institution", placeholder: "Institution name" },
+  { key: "email", label: "Email", placeholder: "Your email address" },
+  { key: "phone", label: "Phone number", placeholder: "Your phone number" },
   { key: "designation", label: "Designation", placeholder: "e.g. Dean, Placement Officer" },
   { key: "location", label: "Location", placeholder: "City, State" },
   { key: "notes", label: "Other notes", placeholder: "Anything you'd like us to know (optional)", optional: true },
@@ -64,8 +69,8 @@ export const InstitutionBrochureForm = ({ programme, onSuccess }: { programme: s
           <Label htmlFor={`ibf-${f.key}`}>{f.label}{f.optional && <span className="text-muted-foreground"> (optional)</span>}</Label>
           {f.key === "notes"
             ? <Textarea id={`ibf-${f.key}`} rows={3} maxLength={1000} placeholder={f.placeholder} value={values.notes} onChange={e => setValues(v => ({ ...v, notes: e.target.value }))} />
-            : <Input id={`ibf-${f.key}`} placeholder={f.placeholder} value={values[f.key]} aria-invalid={!!errors[f.key]} onChange={e => setValues(v => ({ ...v, [f.key]: e.target.value }))} />}
-          {errors[f.key] && <p className="text-sm text-destructive">{errors[f.key]}</p>}
+            : <Input id={`ibf-${f.key}`} name={f.key} required disabled={submitting} type={f.key === "email" ? "email" : f.key === "phone" ? "tel" : "text"} maxLength={f.key === "email" ? 255 : f.key === "phone" ? 20 : f.key === "institution" || f.key === "location" ? 150 : 100} autoComplete={f.key === "institution" ? "organization" : f.key === "location" ? "address-level2" : f.key === "phone" ? "tel" : f.key === "email" ? "email" : f.key === "name" ? "name" : undefined} placeholder={f.placeholder} value={values[f.key]} aria-invalid={!!errors[f.key]} aria-describedby={errors[f.key] ? `ibf-${f.key}-error` : undefined} onChange={e => setValues(v => ({ ...v, [f.key]: e.target.value }))} />}
+          {errors[f.key] && <p id={`ibf-${f.key}-error`} role="alert" className="text-sm text-destructive">{errors[f.key]}</p>}
         </div>
       ))}
       <Button type="submit" disabled={submitting} className="w-full">{submitting ? "Sending…" : "Request Brochure"}</Button>

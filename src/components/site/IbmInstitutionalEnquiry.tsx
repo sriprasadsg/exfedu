@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { z } from "zod";
-import { ArrowLeft, ArrowUpRight, AlertCircle, BookOpen, Building2, CalendarDays, CheckCircle2, Mail, RotateCcw, User, Users, type LucideIcon } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, AlertCircle, BookOpen, Building2, CalendarDays, CheckCircle2, Mail, Phone, MapPin, RotateCcw, User, Users, type LucideIcon } from "lucide-react";
+import { requiredPhone, requiredEmail, requiredInstitution, requiredLocation } from "@/lib/enquiryFields";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -12,10 +13,12 @@ import { submitEnquiry } from "@/lib/enquiryDelivery";
 const programmeOptions = [...ibmProgrammes.map(p => p.title), "Not sure yet"] as unknown as [string, ...string[]];
 const audienceOptions = [...ibmAudiences] as [string, ...string[]];
 
-const institutionalSchema = z.object({
-  organisation: z.string().trim().min(1, "Please enter your organisation").max(150, "Organisation must be under 150 characters"),
+export const institutionalSchema = z.object({
+  organisation: requiredInstitution,
   contactPerson: z.string().trim().min(1, "Please enter a contact name").max(100, "Contact name must be under 100 characters"),
-  email: z.string().trim().min(1, "Please enter your work email").email("Please enter a valid work email").max(255, "Email must be under 255 characters"),
+  email: requiredEmail,
+  phone: requiredPhone,
+  location: requiredLocation,
   programmeInterest: z.enum(programmeOptions, { errorMap: () => ({ message: "Please choose the programme you have in mind" }) }),
   audience: z.enum(audienceOptions, { errorMap: () => ({ message: "Please choose who the learning is for" }) }),
   participants: z.string().trim().regex(/^[1-9][0-9]{0,4}$/, "Please enter the expected number of participants (digits only)"),
@@ -26,9 +29,9 @@ const institutionalSchema = z.object({
 type Field = keyof z.infer<typeof institutionalSchema>;
 type Status = { kind: "idle" } | { kind: "submitting" } | { kind: "success" } | { kind: "error"; message: string };
 
-const fields: Field[] = ["organisation", "contactPerson", "email", "programmeInterest", "audience", "participants", "schedule", "consent"];
+const fields: Field[] = ["organisation", "contactPerson", "email", "phone", "location", "programmeInterest", "audience", "participants", "schedule", "consent"];
 const labels: Record<Field, string> = {
-  organisation: "Organisation", contactPerson: "Contact person", email: "Work email",
+  organisation: "Organisation / Institution", contactPerson: "Contact person", email: "Work email", phone: "Phone number", location: "Location",
   programmeInterest: "Programme interest", audience: "Audience", participants: "Expected participants",
   schedule: "Preferred schedule", consent: "Contact permission",
 };
@@ -37,10 +40,10 @@ const hints: Partial<Record<Field, string>> = {
   schedule: "Optional. A preferred month, term or batch pattern is helpful.",
 };
 const icons: Partial<Record<Field, LucideIcon>> = {
-  organisation: Building2, contactPerson: User, email: Mail, programmeInterest: BookOpen,
+  organisation: Building2, contactPerson: User, email: Mail, phone: Phone, location: MapPin, programmeInterest: BookOpen,
   audience: Users, participants: Users, schedule: CalendarDays,
 };
-const emptyAnswers: Record<Field, string> = { organisation: "", contactPerson: "", email: "", programmeInterest: "", audience: "", participants: "", schedule: "", consent: "" };
+const emptyAnswers: Record<Field, string> = { organisation: "", contactPerson: "", email: "", phone: "", location: "", programmeInterest: "", audience: "", participants: "", schedule: "", consent: "" };
 
 const IbmInstitutionalEnquiry = () => {
   const [step, setStep] = useState(0);
@@ -138,7 +141,7 @@ const IbmInstitutionalEnquiry = () => {
             ) : (
               <div className={`enquiry-field enquiry-field--${field}`}>
                 {Icon && <span className="enquiry-field-icon" aria-hidden="true"><Icon size={17} strokeWidth={1.8} /></span>}
-                <Input id={`ibm-institutional-${field}`} name={field} type={field === "email" ? "email" : field === "participants" ? "text" : "text"} inputMode={field === "participants" ? "numeric" : undefined} autoComplete={field === "organisation" ? "organization" : field === "contactPerson" ? "name" : field === "email" ? "email" : undefined} maxLength={field === "participants" ? 5 : 255} value={answers[field]} disabled={submitting} onChange={e => update(e.target.value)} {...aria} />
+                <Input id={`ibm-institutional-${field}`} name={field} required type={field === "email" ? "email" : field === "phone" ? "tel" : "text"} inputMode={field === "participants" ? "numeric" : undefined} autoComplete={field === "organisation" ? "organization" : field === "location" ? "address-level2" : field === "phone" ? "tel" : field === "contactPerson" ? "name" : field === "email" ? "email" : undefined} maxLength={field === "participants" ? 5 : field === "phone" ? 20 : field === "contactPerson" ? 100 : field === "email" ? 255 : 150} value={answers[field]} disabled={submitting} onChange={e => update(e.target.value)} {...aria} />
               </div>
             )}
             {hints[field] && !error && <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{hints[field]}</p>}
