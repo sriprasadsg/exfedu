@@ -6,10 +6,10 @@ import { buildOwnerEmail, enquiryRequestSchema } from "../../infrastructure/enqu
 const origin = "https://exfedu.exafluence.workers.dev";
 const env: Env = { ALLOWED_ORIGINS: origin, EMAIL_FROM: "forms@example.org", RESEND_API_KEY: "test-only-not-a-credential" };
 export const formFixtures = [
-  { kind: "partner", name: "Test Person", organisation: "Test Institution", email: "test@example.org", phone: "", type: "Academic Collaboration", message: "Test enquiry", consent: "on" },
-  { kind: "student-programme", programme: "masters-data-science", programmeTitle: "M.S. Data Science", name: "Test Person", email: "test@example.org", phone: "", status: "Student", message: "Test enquiry", consent: "on" },
-  { kind: "ibm-institutional", organisation: "Test Institution", contactPerson: "Test Person", email: "test@example.org", programmeInterest: "Value-Added Courses", audience: "Undergraduate students", participants: "40", schedule: "", consent: "on" },
-  { kind: "brochure", name: "Test Person", institution: "Test Institution", designation: "Dean", location: "Chittoor", notes: "", programme: "M.S. Data Science" },
+  { kind: "partner", name: "Test Person", organisation: "Test Institution", email: "test@example.org", phone: "+91 9876543210", location: "Chittoor", type: "Academic Collaboration", message: "Test enquiry", consent: "on" },
+  { kind: "student-programme", programme: "masters-data-science", programmeTitle: "M.S. Data Science", name: "Test Person", institution: "Test Institution", email: "test@example.org", phone: "+91 9876543210", location: "Chittoor", status: "Student", message: "Test enquiry", consent: "on" },
+  { kind: "ibm-institutional", organisation: "Test Institution", contactPerson: "Test Person", email: "test@example.org", phone: "+91 9876543210", location: "Chittoor", programmeInterest: "Value-Added Courses", audience: "Undergraduate students", participants: "40", schedule: "", consent: "on" },
+  { kind: "brochure", name: "Test Person", institution: "Test Institution", email: "test@example.org", phone: "+91 9876543210", designation: "Dean", location: "Chittoor", notes: "", programme: "M.S. Data Science" },
 ];
 const envelope = (data: unknown) => ({ to: "contact@exafluence.com", sourcePage: "/contact", data });
 const request = (data: unknown, from = origin) => new Request("https://worker.example.org/api/enquiries", { method: "POST", headers: { Origin: from, "Content-Type": "application/json" }, body: JSON.stringify(envelope(data)) });
@@ -29,7 +29,7 @@ describe("Cloudflare enquiry API", () => {
     expect(body.to).toEqual(["contact@exafluence.com"]);
     expect(body.from).toBe("forms@example.org");
     expect(body.text).toContain(data.kind === "ibm-institutional" ? "contactPerson: Test Person" : "name: Test Person");
-    expect(body.reply_to).toBe(data.kind === "brochure" ? undefined : "test@example.org");
+    expect(body.reply_to).toBe("test@example.org");
   });
   it("never trusts a browser-selected recipient", async () => {
     const send = accepted();
