@@ -23,11 +23,11 @@ afterEach(() => { cleanup(); enquiryConfig.endpoint = ""; vi.unstubAllGlobals();
 function next(label: string, value: string) {
   const field = screen.getByLabelText(label, { exact: false });
   fireEvent.change(field, { target: { value } });
-  fireEvent.click(screen.getByRole("button", { name: "Continue", exact: true }));
+  fireEvent.click(screen.getByRole("button", { name: "Continue" }));
 }
 function finish(label = "Send Enquiry") {
   fireEvent.click(screen.getByRole("checkbox"));
-  fireEvent.click(screen.getByRole("button", { name: label, exact: true }));
+  fireEvent.click(screen.getByRole("button", { name: label }));
 }
 async function accepted(kind: string) {
   await screen.findByRole("status");
@@ -40,14 +40,14 @@ describe("all four form UIs through the Worker contract", () => {
   it("submits the partnership form", async () => {
     render(<PartnerEnquiry />);
     next("Contact name", "Test Person"); next("Organisation / Institution", "Test Institution"); next("Work email", "test@example.org");
-    fireEvent.click(screen.getByRole("button", { name: "Skip", exact: true }));
+    fireEvent.click(screen.getByRole("button", { name: "Skip" }));
     next("Collaboration type", "Academic Collaboration"); next("Collaboration requirement", "Test enquiry"); finish("Send Partner Enquiry");
     await accepted("Partnership enquiry");
   });
   it("submits the student programme form", async () => {
     render(<StudentEnquiry programmeSlug="masters-data-science" />);
     next("Your name", "Test Person"); next("Email", "test@example.org");
-    fireEvent.click(screen.getByRole("button", { name: "Skip", exact: true }));
+    fireEvent.click(screen.getByRole("button", { name: "Skip" }));
     next("Which best describes you?", "Student"); next("Your question", "Test enquiry"); finish();
     await accepted("Student programme enquiry");
   });
@@ -55,7 +55,7 @@ describe("all four form UIs through the Worker contract", () => {
     render(<IbmInstitutionalEnquiry />);
     next("Organisation", "Test Institution"); next("Contact person", "Test Person"); next("Work email", "test@example.org");
     next("Programme interest", "Value-Added Courses"); next("Audience", "Undergraduate students"); next("Expected participants", "40");
-    fireEvent.click(screen.getByRole("button", { name: "Skip", exact: true })); finish("Send Institutional Enquiry");
+    fireEvent.click(screen.getByRole("button", { name: "Skip" })); finish("Send Institutional Enquiry");
     await accepted("IBM institutional enquiry");
   });
   it("unlocks brochure access only after provider acceptance", async () => {
