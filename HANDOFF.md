@@ -1,5 +1,9 @@
 # Exafluence Education infrastructure handoff
 
+## Enquiry update — 6 November 2026
+
+A separate enquiry-only Cloudflare Workers source package is now prepared in `infrastructure/enquiry-worker/`; its README contains deployment steps, Worker-only email secrets, exact origin settings and the single public frontend API setting. This does not deploy or configure the website. It uses Resend to notify `contact@exafluence.com` and returns the provider's acceptance ID, without adding a submissions store. This email-only design supersedes the older storage/queue recommendation below; a stored lead copy can be added after owner approval. All four forms use the shared client, which supports a confirmed HTTPS endpoint or a provisioned same-origin API path. The API URL and verified sender are deliberately unset; no account resources or email sends have been provisioned, and mailbox delivery remains unverified. Read the new README for current enquiry instructions; the following 5 November section is historical.
+
 ## Delivery status — 5 November 2026
 
 The source and production build retain the existing design and approved page content. Enquiry status messages have changed because simulated delivery has been removed. **This is not a deployed Cloudflare backend or a Cloudflare-ready full-stack release.**

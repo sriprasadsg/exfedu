@@ -20,7 +20,7 @@ beforeEach(() => {
   }), env, provider));
 });
 afterEach(() => { cleanup(); enquiryConfig.endpoint = ""; vi.unstubAllGlobals(); });
-function next(label: string, value: string, select = false) {
+function next(label: string, value: string) {
   const field = screen.getByLabelText(label, { exact: false });
   fireEvent.change(field, { target: { value } });
   fireEvent.click(screen.getByRole("button", { name: "Continue", exact: true }));
@@ -41,7 +41,7 @@ describe("all four form UIs through the Worker contract", () => {
     render(<PartnerEnquiry />);
     next("Contact name", "Test Person"); next("Organisation / Institution", "Test Institution"); next("Work email", "test@example.org");
     fireEvent.click(screen.getByRole("button", { name: "Skip", exact: true }));
-    next("Collaboration type", "Academic Collaboration"); next("Collaboration requirement", "Test enquiry"); finish();
+    next("Collaboration type", "Academic Collaboration"); next("Collaboration requirement", "Test enquiry"); finish("Send Partner Enquiry");
     await accepted("Partnership enquiry");
   });
   it("submits the student programme form", async () => {
