@@ -1,3 +1,9 @@
+## 6 November 2026 — enquiry service handoff
+- [ ] Prepare a standalone Cloudflare Workers enquiry API for all four forms, with fixed owner email, server validation and private email credentials.
+- [ ] Wire the shared form client to the configurable API and verify receipts, failures and all four submission flows.
+- [ ] Deliver an inspected source package and deployment/configuration guide for the infrastructure team.
+- [ ] Production activation and mailbox delivery proof — blocked until the infrastructure team deploys the API, sets email credentials and confirms its URL.
+
 ## 5 November 2026 — source and production handoff
 - [x] Correct npm lockfile and verify clean npm ci, tests and production build in isolated export folder (228 tests passed).
 - [x] Replace simulated enquiry client with configurable HTTP delivery; verify failure and response handling (live form fails honestly without endpoint).
