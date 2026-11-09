@@ -72,6 +72,23 @@ describe("Cloudflare enquiry API", () => {
     expect(preflight.headers.get("Vary")).toBe("Origin");
     expect(send).not.toHaveBeenCalled();
   });
+  it("allows the canonical production website even when the dashboard allowlist is stale", async () => {
+    const send = accepted();
+    const staleEnv = { ...env, ALLOWED_ORIGINS: "https://old-preview.example.org" };
+    const preflight = await handleRequest(new Request("https://worker.example.org/api/enquiries", {
+      method: "OPTIONS",
+      headers: {
+        Origin: origin,
+        "Access-Control-Request-Method": "POST",
+        "Access-Control-Request-Headers": "content-type",
+      },
+    }), staleEnv, send);
+    expect(preflight.status).toBe(204);
+    expect(preflight.headers.get("Access-Control-Allow-Origin")).toBe(origin);
+    expect(preflight.headers.get("Access-Control-Allow-Methods")).toBe("POST, OPTIONS");
+    expect(preflight.headers.get("Access-Control-Allow-Headers")).toBe("Content-Type, Accept");
+    expect(send).not.toHaveBeenCalled();
+  });
   it("rejects oversized input before provider access", async () => {
     const send = accepted();
     expect((await handleRequest(request({ ...formFixtures[0], message: "x".repeat(17000) }), env, send)).status).toBe(413);
