@@ -85,3 +85,42 @@ Tests cover all four form-to-Worker flows using mocked Microsoft token and Graph
 - https://learn.microsoft.com/en-us/exchange/permissions-exo/application-access-policies
 - https://learn.microsoft.com/en-us/exchange/monitoring/trace-an-email-message/message-trace-modern-eac
 - https://developers.cloudflare.com/workers/configuration/secrets/
+
+
+## Cloudflare Dashboard deployment (recommended)
+
+The API is a separate Worker from the website Worker. Do not connect the website's `exfedu` Worker to this subdirectory, and do not deploy this API source over the website Worker.
+
+1. In Cloudflare Dashboard, open **Workers & Pages** and select the existing Worker named **`exfedu-enquiries`** (the name must match `name` in this folder's `wrangler.jsonc`).
+2. Under **Settings → Variables and Secrets**, configure these runtime values:
+   - `ALLOWED_ORIGINS` (Text): `https://exfedu.exafluence.workers.dev,https://exfedu.lovable.app,https://id-preview--6a6eef78-c02c-449d-a8d6-90f1dd4349d1.lovable.app`
+   - `EMAIL_FROM` (Text): `contact@exafluence.com`
+   - `M365_TENANT_ID` (Text): the Microsoft Entra tenant/directory ID.
+   - `M365_CLIENT_ID` (Text): the dedicated single-tenant Entra application/client ID.
+   - `M365_CLIENT_SECRET` (**Secret**): the client-secret value, never the secret ID. Do not paste it into GitHub, source files, build logs or chat.
+3. Save/deploy the variables. Before allowing real submissions, the Microsoft Entra application must have mailbox-scoped Exchange Online **Application Mail.Send** permission for `contact@exafluence.com`, and the mailbox owner/infrastructure administrator must verify effective authorization. Avoid an unscoped tenant-wide Graph `Mail.Send` app grant.
+4. Still on this Worker, open **Settings → Builds → Connect** and connect GitHub repository `sriprasadsg/exfedu`. Select production branch `main`.
+5. Set the repository root/path to `.` (repository root), **Build command** to `npm ci && npm test && npm run build`, and **Deploy command** to `npx wrangler deploy --config infrastructure/enquiry-worker/wrangler.jsonc`. The explicit config path is important because the repository also contains the separate website configuration. The Vite build output is only a validation/build check here; the deploy command publishes only the enquiry Worker.
+6. Save the build settings. After the fix is merged to `main`, the commit triggers a Worker build and deployment. Review the build log and confirm the deployed Worker name is `exfedu-enquiries`.
+
+The Worker Wrangler config has `keep_vars: true` so dashboard-managed runtime variables are not erased by a code deployment. The sender and origin values are also documented in source as defaults; confirm that the live Worker settings contain the exact values above after deployment.
+
+### Post-deployment smoke tests
+
+Run from a terminal with public network access:
+
+```sh
+curl -i https://exfedu-enquiries.exafluence.workers.dev/health
+
+curl -i -X OPTIONS \
+  https://exfedu-enquiries.exafluence.workers.dev/api/enquiries \
+  -H 'Origin: https://exfedu.exafluence.workers.dev' \
+  -H 'Access-Control-Request-Method: POST' \
+  -H 'Access-Control-Request-Headers: content-type'
+```
+
+Expected health response: HTTP 200 with `{"status":"ok","service":"exfedu-enquiries"}`. Expected preflight response: HTTP 204 and `Access-Control-Allow-Origin: https://exfedu.exafluence.workers.dev`.
+
+Then submit one clearly labelled test from each of the four live forms. Confirm HTTP 200 with a non-empty receipt ID, then verify Exchange Online Sent Items, message trace and actual arrival in `contact@exafluence.com`. A Graph 202 acceptance receipt is not proof of mailbox delivery. Do not repeatedly retry an ambiguous timeout; check Sent Items/message trace first because Microsoft Graph sendMail has no idempotency guarantee.
+
+If the HTTPS endpoint still shows `ERR_SSL_PROTOCOL_ERROR`, check **Workers & Pages → exfedu-enquiries → Settings → Domains & Routes** and verify that the `workers.dev` subdomain is enabled and the expected hostname is assigned to this Worker. Do not work around TLS by changing the browser request to HTTP. Also inspect the browser Network panel for the exact URL that raised the SSL error; the HTTPS API request and any other failing asset URL must be diagnosed independently.
