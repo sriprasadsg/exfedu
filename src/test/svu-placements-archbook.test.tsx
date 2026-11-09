@@ -52,7 +52,8 @@ describe("SVU placements on the Hall of Fame model", () => {
       });
     });
     expect(new Set(rendered.map(row => row.student)).size).toBe(svuPlacements.length);
-    expect(container.querySelectorAll(".svu-pl-placed")).toHaveLength(svuPlacements.length);
+    expect(container.querySelectorAll(".svu-pl-placed")).toHaveLength(0);
+    expect(container.querySelector(".svu-hof-status")?.textContent).toContain("Placed");
   });
 
   it("leaves the internships page on its own layout", () => {

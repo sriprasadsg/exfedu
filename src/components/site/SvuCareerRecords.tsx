@@ -138,7 +138,6 @@ export default function SvuCareerRecords({ kind, embedded = false }: { kind: "pl
           <p className="svu-outcome-org"><Building2 size={17} aria-hidden="true" /><span>{record.organisation}</span></p>
           <div className="svu-pl-foot">
             <p className="svu-outcome-batch"><span className="sr-only">Batch </span>{record.batch}</p>
-            <span className="svu-pl-placed"><BadgeCheck size={15} aria-hidden="true" />Placed</span>
           </div>
         </li>;
       })}</ul>

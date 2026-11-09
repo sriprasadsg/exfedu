@@ -1,3 +1,6 @@
+## 9 November 2026 — placement card duplicate
+- [x] Remove the repeated “Placed” badge from each achiever card while retaining all eleven approved placement records and the hero’s overall Placed status; nine targeted tests pass and 1062/390px browser checks confirm no card badges, no overflow and no runtime errors.
+
 ## 9 November 2026 — white placement portraits
 - [x] Replace the backgrounds of all ten supplied placement portraits with clean white, preserve each person unchanged, and use the revised images throughout the SVU Placements hero and achiever wall; 17 targeted tests pass, desktop/phone checks confirm all 16 image instances load, K Mounika's fallback remains, and there is no overflow or runtime error.
 
