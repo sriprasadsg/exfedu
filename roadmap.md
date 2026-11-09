@@ -1,5 +1,5 @@
 ## 9 November 2026 — white placement portraits
-- [ ] Replace the backgrounds of all ten supplied placement portraits with clean white, preserve each person unchanged, and use the revised images throughout the SVU Placements hero and achiever wall.
+- [x] Replace the backgrounds of all ten supplied placement portraits with clean white, preserve each person unchanged, and use the revised images throughout the SVU Placements hero and achiever wall; 17 targeted tests pass, desktop/phone checks confirm all 16 image instances load, K Mounika's fallback remains, and there is no overflow or runtime error.
 
 ## 9 November 2026 — SVU Hall of Fame presentation
 - [x] Adapt the Jobaaj Learnings Hall of Fame presentation for SVU Placements with fresh Exafluence wording, a six-portrait collage, three organisation tiles and eleven compact achiever profiles; all approved records and ten supplied portraits preserved, K Mounika's honest fallback retained, all 316 tests pass, and 1280/1062/768/390px browser checks confirm working navigation, loaded images, equal cards and no overflow or runtime errors.
