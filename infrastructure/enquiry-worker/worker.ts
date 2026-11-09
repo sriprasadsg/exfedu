@@ -26,8 +26,14 @@ async function readJson(request: Request) {
 
 export async function handleRequest(request: Request, env: Env, send: typeof fetch = fetch): Promise<Response> {
   const origin = request.headers.get("Origin");
-  const allowed = (env.ALLOWED_ORIGINS || "").split(",").map(v => v.trim()).filter(Boolean);
-  const permitted = !!origin && allowed.includes(origin);
+  // Always allow the canonical production website origin. This prevents a stale
+  // Cloudflare Dashboard ALLOWED_ORIGINS value from breaking the live form.
+  // Additional origins remain explicitly configurable; no wildcard is used.
+  const allowed = new Set([
+    "https://exfedu.exafluence.workers.dev",
+    ...(env.ALLOWED_ORIGINS || "").split(",").map(v => v.trim()).filter(Boolean),
+  ]);
+  const permitted = !!origin && allowed.has(origin);
   const headers: Record<string, string> = { "Content-Type": "application/json", "Cache-Control": "no-store", Vary: "Origin", "X-Content-Type-Options": "nosniff" };
   if (permitted && origin) headers["Access-Control-Allow-Origin"] = origin;
   const reply = (status: number, body: unknown) => new Response(JSON.stringify(body), { status, headers });
