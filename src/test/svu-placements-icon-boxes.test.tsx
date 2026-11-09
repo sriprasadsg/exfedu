@@ -4,8 +4,8 @@ import { describe, expect, it } from "vitest";
 import { svuPlacements } from "@/data/svuCareer";
 import SvuCareerRecords from "@/components/site/SvuCareerRecords";
 
-/* Client, 9 November 2026: the supplied placed-student portraits lead the existing rectangular
-   records. Role and organisation icons remain; no photograph is invented for K Mounika. */
+/* Client, 9 November 2026: supplied placed-student portraits lead the Hall of Fame profile
+   cards. Role and organisation icons remain; no photograph is invented for K Mounika. */
 const cards = () => {
   const { container } = render(<MemoryRouter><SvuCareerRecords kind="placements" /></MemoryRouter>);
   return [...container.querySelectorAll(".svu-pl-card")];
@@ -13,7 +13,7 @@ const cards = () => {
 
 const iconClass = (element: Element | null | undefined) => element?.firstElementChild?.getAttribute("class") ?? "";
 
-describe("SVU placement records as portrait-led rectangular boxes", () => {
+describe("SVU placement records as compact portrait profiles", () => {
   it("shows the ten supplied portraits against their approved student names", () => {
     const rows = cards();
     expect(rows).toHaveLength(svuPlacements.length);

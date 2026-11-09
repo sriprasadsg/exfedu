@@ -4,30 +4,36 @@ import { describe, expect, it } from "vitest";
 import { svuPlacements } from "@/data/svuCareer";
 import SvuCareerRecords from "@/components/site/SvuCareerRecords";
 
-/* Archbook landing-page brief (client, 4 November 2026): the placements page follows the
-   template's presentation — a wash hero with two buttons, a copy/artwork split, a navy record
-   band and the records as cards. All eleven approved records and their wording are unchanged. */
+/* Jobaaj Hall of Fame reference (client, 9 November 2026): a factual hero, supplied-portrait
+   collage, organisation strip and compact achiever wall. No testimonials or metrics are invented. */
 const placements = () => render(<MemoryRouter><SvuCareerRecords kind="placements" /></MemoryRouter>);
 
-describe("SVU placements on the Archbook model", () => {
-  it("keeps the internship destination available from placements", () => {
+describe("SVU placements on the Hall of Fame model", () => {
+  it("uses fresh factual wording and keeps both programme and internship destinations", () => {
     const { container } = placements();
-    const hero = container.querySelector(".svu-career-title-card");
-    expect(hero?.textContent).toContain("Student Placements");
-    expect(hero?.querySelector(".svu-career-subtitle")?.textContent).toBe("Career outcomes in data science, artificial intelligence and technology.");
-    expect(hero?.querySelector("a.svu-hero-secondary")?.getAttribute("href")).toBe("/collaboration-network/svu/innovations#internships");
+    const hero = container.querySelector(".svu-hof-hero");
+    expect(hero?.querySelector("#svu-hof-title")?.textContent).toBe("From learning tocareer momentum.");
+    expect(hero?.querySelector(".svu-hof-lead")?.textContent).toContain("SVU–Exafluence MS Data Science programme");
+    expect(hero?.querySelector("a.svu-hof-primary")?.getAttribute("href")).toBe("/collaboration-network/svu#programmes");
+    expect(hero?.querySelector("a.svu-hof-secondary")?.getAttribute("href")).toBe("/collaboration-network/svu/innovations#internships");
+    expect(hero?.querySelector(".svu-hof-facts")?.textContent).toContain("Data Science & AI");
+    expect(hero?.querySelector(".svu-hof-facts")?.textContent).toContain("2023–2026");
   });
 
-  it("pairs the approved introduction with the student profile emblem", () => {
+  it("builds the collage and organisation strip only from approved records", () => {
     const { container } = placements();
-    const split = container.querySelector(".svu-pl-split");
-    expect(split?.querySelector("p")?.textContent).toContain("SVU–Exafluence MS Data Science programme");
-    // Client, 4 November 2026: the placements artwork is now the circular student profile emblem.
-    expect(split?.querySelector("img")?.getAttribute("src")).toContain("circular-student-profile-emblem");
-    expect(split?.querySelector("a.svu-pl-link")?.getAttribute("href")).toBe("/collaboration-network/svu#programmes");
+    const featured = [...container.querySelectorAll(".svu-hof-mini")];
+    expect(featured).toHaveLength(6);
+    featured.forEach(card => {
+      expect(card.querySelector("img")?.getAttribute("src")).toContain("/src/assets/placed-students/");
+      expect(svuPlacements.some(record => record.student === card.querySelector("strong")?.textContent)).toBe(true);
+    });
+    const organisations = [...container.querySelectorAll(".svu-hof-organisations li")].map(item => item.textContent);
+    expect(organisations).toHaveLength(3);
+    organisations.forEach(organisation => expect(svuPlacements.some(record => record.organisation === organisation)).toBe(true));
   });
 
-  it("keeps all eleven approved records", () => {
+  it("keeps all eleven approved records in the achiever wall", () => {
     const { container } = placements();
     const rows = [...container.querySelectorAll(".svu-pl-card")];
     expect(rows).toHaveLength(svuPlacements.length);
@@ -46,12 +52,13 @@ describe("SVU placements on the Archbook model", () => {
       });
     });
     expect(new Set(rendered.map(row => row.student)).size).toBe(svuPlacements.length);
+    expect(container.querySelectorAll(".svu-pl-placed")).toHaveLength(svuPlacements.length);
   });
 
   it("leaves the internships page on its own layout", () => {
     const { container } = render(<MemoryRouter><SvuCareerRecords kind="internships" /></MemoryRouter>);
-    expect(container.querySelector(".svu-pl-split")).toBeNull();
-    expect(container.querySelector(".svu-pl-band")).toBeNull();
+    expect(container.querySelector(".svu-hof-hero")).toBeNull();
+    expect(container.querySelector(".svu-hof-wall")).toBeNull();
     expect(container.querySelector(".svu-intern-card")).not.toBeNull();
     expect(container.querySelector(".svu-internship-update")).not.toBeNull();
   });
