@@ -17,7 +17,7 @@ concurrency:
 
 jobs:
   deploy:
-    name: Validate and deploy enquiry API
+    name: Test and deploy enquiry API
     runs-on: ubuntu-latest
     environment: production
     steps:
@@ -29,7 +29,16 @@ jobs:
         with:
           node-version: "22"
           cache: npm
-          cache-dependency-path: infrastructure/enquiry-worker/package.json
+          cache-dependency-path: package-lock.json
+
+      - name: Install website dependencies
+        run: npm ci
+
+      - name: Run complete website and Worker contract tests
+        run: npm test
+
+      - name: Build website
+        run: npm run build
 
       - name: Validate required deployment settings
         shell: bash
