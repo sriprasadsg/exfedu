@@ -1,0 +1,45 @@
+name: Validate ExfEdu enquiry contract
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "src/components/home/PartnerEnquiry.tsx"
+      - "src/components/site/IbmInstitutionalEnquiry.tsx"
+      - "src/components/site/InstitutionBrochureForm.tsx"
+      - "src/components/site/StudentEnquiry.tsx"
+      - "src/lib/enquiryDelivery.ts"
+      - "src/lib/enquiryFields.ts"
+      - "infrastructure/enquiry-worker/**"
+      - "src/test/enquiry-*.test.ts"
+      - "src/test/enquiry-*.test.tsx"
+      - "package.json"
+      - "package-lock.json"
+      - "vitest.config.ts"
+      - ".github/workflows/validate-enquiry-contract.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  test-and-build:
+    name: Enquiry contract tests and production build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run all tests
+        run: npm test
+
+      - name: Build production frontend
+        run: npm run build
