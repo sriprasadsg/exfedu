@@ -19,14 +19,46 @@ const envelope = (data: unknown) => ({
   data,
 });
 
-describe("IBM enquiry contract compatibility", () => {
+describe("enquiry contract compatibility", () => {
+  it("accepts newly added student programme slugs without a backend code change", () => {
+    const result = enquiryRequestSchema.safeParse(envelope({
+      kind: "student-programme",
+      programme: "cloud-technologies",
+      programmeTitle: "Cloud Technologies",
+      name: "Test Person",
+      email: "test@example.org",
+      phone: "+91 9876543210",
+      institution: "Test Institution",
+      location: "Chittoor",
+      status: "Working professional",
+      message: "Test enquiry",
+      consent: "on",
+    }));
+    expect(result.success).toBe(true);
+  });
+
+  it("rejects unsafe student programme slug values", () => {
+    const result = enquiryRequestSchema.safeParse(envelope({
+      kind: "student-programme",
+      programme: "../cloud",
+      name: "Test Person",
+      email: "test@example.org",
+      phone: "+91 9876543210",
+      institution: "Test Institution",
+      location: "Chittoor",
+      status: "Student",
+      message: "Test enquiry",
+      consent: "on",
+    }));
+    expect(result.success).toBe(false);
+  });
+
   it("accepts current programme titles supplied by the IBM programme catalogue", () => {
     const result = enquiryRequestSchema.safeParse(envelope({
       kind: "ibm-institutional",
       ...shared,
       programmeInterest: "A newly published IBM programme title",
     }));
-
     expect(result.success).toBe(true);
   });
 
@@ -36,7 +68,6 @@ describe("IBM enquiry contract compatibility", () => {
       ...shared,
       programmeInterest: "Value-Added Courses",
     }));
-
     expect(result.success).toBe(true);
   });
 
@@ -52,7 +83,6 @@ describe("IBM enquiry contract compatibility", () => {
       notes: "",
       programme: "M.S. Data Science",
     }));
-
     expect(result.success).toBe(true);
   });
 });

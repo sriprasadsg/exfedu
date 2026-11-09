@@ -26,9 +26,7 @@ async function readJson(request: Request) {
 
 export async function handleRequest(request: Request, env: Env, send: typeof fetch = fetch): Promise<Response> {
   const origin = request.headers.get("Origin");
-  // Always allow the canonical production website origin. This prevents a stale
-  // Cloudflare Dashboard ALLOWED_ORIGINS value from breaking the live form.
-  // Additional origins remain explicitly configurable; no wildcard is used.
+  // Exact production origin is always permitted; additional origins remain explicitly configured.
   const allowed = new Set([
     "https://exfedu.exafluence.workers.dev",
     ...(env.ALLOWED_ORIGINS || "").split(",").map(v => v.trim()).filter(Boolean),
@@ -38,7 +36,10 @@ export async function handleRequest(request: Request, env: Env, send: typeof fet
   if (permitted && origin) headers["Access-Control-Allow-Origin"] = origin;
   const reply = (status: number, body: unknown) => new Response(JSON.stringify(body), { status, headers });
   const path = new URL(request.url).pathname;
-  if (path === "/health" && request.method === "GET") return reply(200, { status: "ok", service: "exfedu-enquiries" });
+  // This reports configuration presence only; it does not test Microsoft credentials or inbox delivery.
+  if (path === "/health" && request.method === "GET") return reply(200, {
+    status: "ok", service: "exfedu-enquiries", emailConfigured: microsoftConfigured(env),
+  });
   if (path !== "/api/enquiries") return reply(404, { error: "Not found" });
   if (!permitted) return reply(403, { error: "Origin not allowed" });
   if (request.method === "OPTIONS") return new Response(null, { status: 204, headers: { ...headers,
@@ -50,7 +51,15 @@ export async function handleRequest(request: Request, env: Env, send: typeof fet
   try { input = await readJson(request); }
   catch (error) { return reply(error instanceof Error && error.message === "too-large" ? 413 : 400, { error: "Invalid or oversized JSON" }); }
   const parsed = enquiryRequestSchema.safeParse(input);
-  if (!parsed.success) return reply(400, { error: "Invalid enquiry", fields: parsed.error.issues.map(i => i.path.join(".")) });
+  if (!parsed.success) return reply(400, {
+    error: "Invalid enquiry",
+    fields: parsed.error.issues.map(issue => issue.path.join(".") || "request"),
+    details: parsed.error.issues.map(issue => ({
+      field: issue.path.join(".") || "request",
+      code: issue.code,
+      message: issue.message,
+    })),
+  });
   if (!microsoftConfigured(env)) return reply(503, { error: "Email delivery is not configured" });
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), 10000);
