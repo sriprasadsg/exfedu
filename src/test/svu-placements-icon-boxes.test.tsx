@@ -4,9 +4,8 @@ import { describe, expect, it } from "vitest";
 import { svuPlacements } from "@/data/svuCareer";
 import SvuCareerRecords from "@/components/site/SvuCareerRecords";
 
-/* Client, 4 November 2026: placement records present as rectangular boxes in which a person
-   icon leads the student's name, an icon matched to the designation leads the role, and an
-   industry icon leads the organisation. Wording of all eleven approved records is unchanged. */
+/* Client, 9 November 2026: the supplied placed-student portraits lead the existing rectangular
+   records. Role and organisation icons remain; no photograph is invented for K Mounika. */
 const cards = () => {
   const { container } = render(<MemoryRouter><SvuCareerRecords kind="placements" /></MemoryRouter>);
   return [...container.querySelectorAll(".svu-pl-card")];
@@ -14,19 +13,31 @@ const cards = () => {
 
 const iconClass = (element: Element | null | undefined) => element?.firstElementChild?.getAttribute("class") ?? "";
 
-describe("SVU placement records as icon-led rectangular boxes", () => {
-  it("leads every student name with a person icon", () => {
+describe("SVU placement records as portrait-led rectangular boxes", () => {
+  it("shows the ten supplied portraits against their approved student names", () => {
     const rows = cards();
     expect(rows).toHaveLength(svuPlacements.length);
-    rows.forEach(card => {
-      const person = card.querySelector(".svu-pl-person");
-      expect(person).not.toBeNull();
-      expect(iconClass(person?.querySelector(".svu-pl-avatar"))).toContain("lucide-user-round");
-      expect(person?.querySelector("h3")?.textContent?.trim()).toBeTruthy();
-      expect(person?.querySelector("h3")?.textContent).toBe(
-        svuPlacements.find(record => record.student === person?.querySelector("h3")?.textContent)?.student,
-      );
+    const portraits = rows.flatMap(card => {
+      const image = card.querySelector(".svu-pl-portrait img");
+      return image ? [{ student: card.querySelector("h3")?.textContent, alt: image.getAttribute("alt"), src: image.getAttribute("src"), loading: image.getAttribute("loading") }] : [];
     });
+    expect(portraits).toHaveLength(10);
+    portraits.forEach(portrait => {
+      expect(portrait.alt).toBe(`Portrait of ${portrait.student}`);
+      expect(portrait.src).toContain("/src/assets/placed-students/");
+      expect(portrait.loading).toBe("lazy");
+    });
+    expect(portraits.some(portrait => portrait.student === "K Mounika")).toBe(false);
+    expect(portraits.find(portrait => portrait.student === "Kamatam Meghana")?.src).toContain("kamatam-meghana.webp");
+    expect(portraits.find(portrait => portrait.student === "Muthyala Bharadwaj")?.src).toContain("muthyala-bharadwaj.webp");
+  });
+
+  it("uses an honest icon fallback only for K Mounika's missing photograph", () => {
+    const row = cards().find(card => card.querySelector("h3")?.textContent === "K Mounika");
+    expect(row?.querySelector(".svu-pl-portrait img")).toBeNull();
+    const fallback = row?.querySelector(".svu-pl-avatar");
+    expect(fallback?.getAttribute("aria-label")).toBe("Photograph not supplied for K Mounika");
+    expect(iconClass(fallback)).toContain("lucide-user-round");
   });
 
   it("leads every organisation with an industry icon", () => {
@@ -41,18 +52,16 @@ describe("SVU placement records as icon-led rectangular boxes", () => {
     const rows = cards();
     const roleIcon = (student: string) =>
       iconClass(rows.find(card => card.querySelector("h3")?.textContent === student)?.querySelector(".svu-outcome-role"));
-    expect(roleIcon("G V Sumanth")).toContain("lucide-brain-circuit"); // Associate Data Scientist
-    expect(roleIcon("Kamatam Meghana")).toContain("lucide-cpu"); // AI Engineer
-    expect(roleIcon("K Mounika")).toContain("lucide-graduation-cap"); // Trainee
-    // A compound title keeps the icon of the role it trains for, not the trainee one.
+    expect(roleIcon("G V Sumanth")).toContain("lucide-brain-circuit");
+    expect(roleIcon("Kamatam Meghana")).toContain("lucide-cpu");
+    expect(roleIcon("K Mounika")).toContain("lucide-graduation-cap");
     expect(roleIcon("Veeravalli Sri Satya")).toContain("lucide-brain-circuit");
-    // Every box carries exactly the three icons: person, designation, industry.
-    rows.forEach(card => expect(card.querySelectorAll("svg")).toHaveLength(3));
+    rows.forEach(card => expect(card.querySelectorAll(".svu-outcome-role svg, .svu-outcome-org svg")).toHaveLength(2));
   });
 
-  it("keeps the internships page free of the placement icon rows", () => {
+  it("keeps the internships page free of the placement profile cards", () => {
     const { container } = render(<MemoryRouter><SvuCareerRecords kind="internships" /></MemoryRouter>);
-    expect(container.querySelector(".svu-pl-person")).toBeNull();
+    expect(container.querySelector(".svu-pl-portrait")).toBeNull();
     expect(container.querySelector(".svu-pl-card")).toBeNull();
   });
 });

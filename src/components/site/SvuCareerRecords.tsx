@@ -5,6 +5,7 @@ import { ArrowDown, ArrowRight, BrainCircuit, Briefcase, Building2, CalendarRang
 import studentProfileEmblem from "@/assets/circular-student-profile-emblem.png";
 import { svuPagePath } from "@/lib/programmeNavigation";
 import { filterSvuCareerRecords, svuInternshipIntroduction, svuInternshipUpdate, svuInternships, svuPlacements } from "@/data/svuCareer";
+import { svuPlacementPhotos } from "@/data/svuPlacementPhotos";
 
 /** Approved text-only internship update (client, 3 November 2026): the panel sits between the
  * introduction and the records table, so existing records stay untouched and no student is
@@ -94,15 +95,22 @@ export default function SvuCareerRecords({ kind, embedded = false }: { kind: "pl
     {placements
       ? <Sub className="svu-career-records-heading">Placement Records</Sub>
       : <Sub id="internship-records" className="svu-career-records-heading">Internship Records</Sub>}
-    {placements ? <ul className="svu-pl-cards" aria-label={title}>{shown.map(record => <li key={record.student} className="svu-outcome svu-pl-card">
-      <div className="svu-pl-person">
-        <span className="svu-pl-avatar" aria-hidden="true"><UserRound size={26} /></span>
-        <h3>{record.student}</h3>
-      </div>
-      <p className="svu-outcome-role" data-tone={designationTone(record.designation)}>{designationIcon(record.designation)}<span>{record.designation}</span></p>
-      <p className="svu-outcome-org"><Building2 size={16} aria-hidden="true" /><span>{record.organisation}</span></p>
-      <p className="svu-outcome-batch"><span className="sr-only">Batch </span>{record.batch}</p>
-    </li>)}</ul> : <ul className="svu-intern-cards" aria-label={title}>{shown.map(record => <li key={record.student} className="svu-intern-card">
+    {placements ? <ul className="svu-pl-cards" aria-label={title}>{shown.map(record => {
+      const photo = svuPlacementPhotos[record.student];
+      return <li key={record.student} className="svu-outcome svu-pl-card">
+        <div className="svu-pl-portrait">
+          {photo
+            ? <img src={photo} alt={`Portrait of ${record.student}`} loading="lazy" decoding="async" />
+            : <span className="svu-pl-avatar" role="img" aria-label={`Photograph not supplied for ${record.student}`}><UserRound size={42} aria-hidden="true" /></span>}
+        </div>
+        <div className="svu-pl-profile">
+          <div className="svu-pl-person"><h3>{record.student}</h3></div>
+          <p className="svu-outcome-role" data-tone={designationTone(record.designation)}>{designationIcon(record.designation)}<span>{record.designation}</span></p>
+          <p className="svu-outcome-org"><Building2 size={16} aria-hidden="true" /><span>{record.organisation}</span></p>
+          <p className="svu-outcome-batch"><span className="sr-only">Batch </span>{record.batch}</p>
+        </div>
+      </li>;
+    })}</ul> : <ul className="svu-intern-cards" aria-label={title}>{shown.map(record => <li key={record.student} className="svu-intern-card">
       <span className="svu-intern-org"><Building2 size={13} aria-hidden="true" />{record.organisation}</span>
       <h4>{record.student}</h4>
       <p className="svu-intern-meta" data-label="Batch"><CalendarRange size={14} aria-hidden="true" /><span className="sr-only">Batch </span>{record.batch}</p>

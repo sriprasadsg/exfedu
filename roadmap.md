@@ -1,3 +1,6 @@
+## 9 November 2026 — SVU placed-student portraits
+- [x] Present the placements records with the ten supplied student portraits in equal responsive profile cards; all eleven approved records preserved, K Mounika has an explicit photograph-not-supplied fallback, 16 targeted tests pass, and 1280/1062/390px browser checks confirm every image loads with no overflow or runtime errors.
+
 ## 6 November 2026 — required enquiry fields
 - [x] Replace Resend with Microsoft 365 in the enquiry Worker; fixed recipient, approved sender-domain restriction and server-only credentials retained; all four UI-to-Worker flows and 90 targeted checks pass with mocked Microsoft responses; deployment guide updated.
 - [ ] Microsoft 365 live activation — blocked by tenant/client configuration, Worker secret, scoped mailbox access and confirmed API URL; actual mailbox delivery must be tested after deployment.

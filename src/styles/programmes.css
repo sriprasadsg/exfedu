@@ -1407,31 +1407,35 @@ body:not(:has(.homepage-static)) main .svu-career-records--logistics .svu-career
 @media (max-width: 640px) { .svu-proceedings { gap: 24px; } .svu-proceeding { grid-template-columns: minmax(0, 1fr); padding-block: 0; } .svu-proceeding-head { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 4px 14px; padding: 22px; } .svu-proceeding-pin { grid-row: span 2; width: 44px; height: 44px; } .svu-proceeding-head .svu-proceeding-event { font-size: 20px; } .svu-proceeding-list { grid-template-columns: minmax(0, 1fr); margin: -4px 10px 0; padding: 12px 18px; } .svu-proceeding-paper { padding: 24px 8px; } .svu-proceeding-paper:nth-child(even) { border-left: 0; } .svu-proceeding-paper + .svu-proceeding-paper { border-top: 1px solid hsl(var(--border)); } }
 @media (prefers-reduced-motion: reduce) { .svu-proceeding-paper { transition: none; } .svu-proceeding-paper:hover { transform: none; } }
 
-/* ===== SVU placement boxes: tall rectangles led by a centred colourful icon (client, 4 November 2026) =====
-   Every record sits in a square-cornered box taller than it is wide. A colourful student glyph
-   sits centred at the very top, the role carries an icon matched to its designation in that
-   role's colour, and the organisation carries an industry icon in its own colour. */
+/* ===== SVU placed-student profile cards (client-supplied portraits, 9 November 2026) =====
+   Ten approved portraits lead the records; K Mounika keeps an explicit fallback until a photo
+   is supplied. Square-cornered cards stay equal within each row and reflow 3 → 2 → 1 columns. */
+.svu-pl-cards { grid-auto-rows: 1fr; align-items: stretch; }
 .svu-pl-card,
-.svu-career-records--logistics .svu-pl-card { border-radius: 0; border: 1px solid hsl(205 35% 88%); border-top: 2px solid hsl(var(--navy-900)); background: hsl(208 90% 97%); box-shadow: none; display: flex; flex-direction: column; align-items: center; text-align: center; min-height: 400px; padding: 0; }
-.svu-pl-person { display: flex; flex-direction: column; align-items: center; gap: 12px; width: 100%; margin-top: auto; padding: 0 26px; }
-.svu-pl-avatar { display: grid; place-items: center; flex: none; width: 72px; height: 72px; border-radius: 20px; background: linear-gradient(135deg, hsl(202 95% 55%), hsl(168 78% 44%)); color: hsl(var(--primary-foreground)); box-shadow: 0 14px 24px -16px hsl(190 82% 38% / .95); }
-.svu-pl-avatar svg { width: 30px; height: 30px; }
-.svu-pl-person h3 { min-width: 0; font-size: 21px; }
-.svu-pl-card .svu-outcome-role { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 14px; padding: 0 26px; font-size: 15px; }
+.svu-career-records--logistics .svu-pl-card { border-radius: 0; border: 1px solid hsl(205 35% 88%); border-top: 2px solid hsl(var(--navy-900)); background: hsl(var(--card)); box-shadow: none; display: flex; flex-direction: column; align-items: stretch; text-align: center; min-height: 0; height: 100%; padding: 0; overflow: hidden; }
+.svu-pl-portrait { display: grid; place-items: center; width: 100%; aspect-ratio: 1; overflow: hidden; border-bottom: 1px solid hsl(var(--academic-edge)); background: hsl(var(--academic-surface)); }
+.svu-pl-portrait img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 0%; transition: transform 320ms ease; }
+.svu-pl-card:hover .svu-pl-portrait img { transform: scale(1.025); }
+.svu-pl-avatar { display: grid; place-items: center; width: 88px; height: 88px; border-radius: 50%; background: hsl(var(--secondary)); color: hsl(var(--connection-blue)); box-shadow: none; }
+.svu-pl-avatar svg { width: 42px; height: 42px; }
+.svu-pl-profile { display: flex; flex: 1; flex-direction: column; align-items: center; width: 100%; padding: 22px 22px 24px; }
+.svu-pl-person { display: grid; place-items: center; width: 100%; min-height: 2.8em; margin: 0; padding: 0; }
+.svu-pl-person h3 { min-width: 0; margin: 0; font-size: 19px; line-height: 1.4; overflow-wrap: anywhere; }
+.svu-pl-card .svu-outcome-role { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 2.9em; margin: 12px 0 0; padding: 0; border: 0; font-size: 14px; line-height: 1.45; }
 .svu-pl-card .svu-outcome-role svg { flex: none; }
 .svu-pl-card .svu-outcome-role[data-tone="data"] svg { color: hsl(262 72% 58%); }
 .svu-pl-card .svu-outcome-role[data-tone="engineer"] svg { color: hsl(172 72% 36%); }
 .svu-pl-card .svu-outcome-role[data-tone="trainee"] svg { color: hsl(36 92% 48%); }
 .svu-pl-card .svu-outcome-role[data-tone="other"] svg { color: hsl(var(--connection-blue)); }
-.svu-pl-card .svu-outcome-org { display: flex; align-items: flex-start; justify-content: center; gap: 8px; margin-top: auto; padding: 18px 26px 0; }
-.svu-pl-card .svu-outcome-org svg { flex: none; margin-top: 3px; color: hsl(152 62% 36%); }
-.svu-pl-card .svu-outcome-batch { margin: 0; padding: 6px 26px 28px; }
+.svu-pl-card .svu-outcome-org { display: flex; align-items: flex-start; justify-content: center; gap: 8px; width: 100%; margin: auto 0 0; padding: 16px 0 0; border-top: 1px solid hsl(var(--navy-900) / .12); font-size: 13px; line-height: 1.55; }
+.svu-pl-card .svu-outcome-org svg { flex: none; margin-top: 2px; color: hsl(152 62% 36%); }
+.svu-pl-card .svu-outcome-batch { margin: 0; padding: 7px 0 0; }
 @media (max-width: 639px) {
-  .svu-pl-person { gap: 10px; padding: 0 22px; }
-  .svu-pl-avatar { width: 60px; height: 60px; border-radius: 18px; }
+  .svu-pl-profile { padding: 20px 20px 22px; }
+  .svu-pl-avatar { width: 76px; height: 76px; }
   .svu-pl-card .svu-outcome-role, .svu-pl-card .svu-outcome-org { gap: 7px; }
-  .svu-pl-card, .svu-career-records--logistics .svu-pl-card { min-height: 340px; }
-  .svu-pl-card .svu-outcome-role { padding: 0 22px; }
-  .svu-pl-card .svu-outcome-org { padding: 16px 22px 0; }
-  .svu-pl-card .svu-outcome-batch { padding: 6px 22px 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .svu-pl-portrait img { transition: none; }
+  .svu-pl-card:hover .svu-pl-portrait img { transform: none; }
 }
