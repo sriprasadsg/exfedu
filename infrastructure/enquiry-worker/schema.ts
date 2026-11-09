@@ -1,10 +1,10 @@
 import { z } from "zod";
 
 export const OWNER_EMAIL = "contact@exafluence.com";
-const line = (max: number, min = 1) => z.string().trim().min(min).max(max).regex(/^[^\\r\\n\\u0000]*$/);
+const line = (max: number, min = 1) => z.string().trim().min(min).max(max).regex(/^[^\r\n\u0000]*$/);
 const email = line(255).email();
-const phone = line(20).regex(/^\\+?[0-9 ()-]+$/).refine(v => {
-  const digits = v.replace(/\\D/g, "").length;
+const phone = line(20).regex(/^\+?[0-9 ()-]+$/).refine(v => {
+  const digits = v.replace(/\D/g, "").length;
   return digits >= 7 && digits <= 15;
 });
 const optionalLine = (max: number) => z.string().trim().max(max);
@@ -17,6 +17,7 @@ const dataSchema = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("student-programme"), programme: z.enum(["masters-data-science", "pg-diploma-data-science", "python-ai-ml-genai", "data-visualization"]), programmeTitle: line(200).optional(),
     name: line(100), email, phone, institution: line(150), location: line(150), status: z.enum(["Student", "Recent graduate", "Working professional", "Other"]), message, consent }).strict(),
   z.object({ kind: z.literal("ibm-institutional"), organisation: line(150), contactPerson: line(100), email, phone, location: line(150),
+    // Programme choices are sourced dynamically from the approved IBM catalogue on the website.
     programmeInterest: line(200),
     audience: z.enum(["Undergraduate students", "Postgraduate students", "Faculty development", "Working professionals", "Mixed group", "Other"]),
     participants: z.string().trim().regex(/^[1-9][0-9]{0,4}$/), schedule: optionalLine(200), consent }).strict(),
@@ -36,10 +37,10 @@ export function buildOwnerEmail(enquiry: EnquiryRequest, from: string) {
   const labels = { partner: "Partnership enquiry", "student-programme": "Student programme enquiry", "ibm-institutional": "IBM institutional enquiry", brochure: "Institutional brochure request" };
   const data = enquiry.data;
   const fields = Object.entries(data).filter(([key]) => key !== "kind")
-    .map(([key, value]) => `${key}: ${value || "Not supplied"}`).join("\\n");
+    .map(([key, value]) => key + ": " + (value || "Not supplied")).join("\n");
   return {
-    from, to: [OWNER_EMAIL], subject: `Exafluence Education — ${labels[data.kind]}`,
-    text: `${labels[data.kind]}\\nSource page: ${enquiry.sourcePage}\\n\\n${fields}`,
+    from, to: [OWNER_EMAIL], subject: "Exafluence Education — " + labels[data.kind],
+    text: labels[data.kind] + "\nSource page: " + enquiry.sourcePage + "\n\n" + fields,
     ...("email" in data ? { reply_to: data.email } : {}),
   };
 }
