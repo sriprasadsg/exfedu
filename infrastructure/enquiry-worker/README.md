@@ -105,7 +105,7 @@ The API is a separate Worker from the website Worker. Do not connect the website
 7. Set **Deploy command** to `npx wrangler deploy`. With the root/path set to `infrastructure/enquiry-worker`, Wrangler automatically reads this folder's `wrangler.jsonc` and publishes only `exfedu-enquiries`; do not use the repository-root Wrangler config.
 8. Save the build settings. After the fix is merged to `main`, the commit triggers a Worker build and deployment. Review the build log and confirm the deployed Worker name is `exfedu-enquiries`.
 
-The Worker Wrangler config has `keep_vars: true` so dashboard-managed runtime variables are not erased by a code deployment. The sender and origin values are also documented in source as defaults; confirm that the live Worker settings contain the exact values above after deployment.
+The Worker Wrangler config has `keep_vars: true` so dashboard-managed runtime variables are not erased by a code deployment. The canonical production origin `https://exfedu.exafluence.workers.dev` is also allowlisted directly in Worker code, so a stale dashboard `ALLOWED_ORIGINS` value cannot block the production website. The environment variable remains available for additional approved origins. No wildcard is used. Confirm the live Worker has the exact values above after deployment.
 
 ### Post-deployment smoke tests
 
