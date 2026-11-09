@@ -1,18 +1,15 @@
 import { z } from "zod";
 
 export const OWNER_EMAIL = "contact@exafluence.com";
-const line = (max: number, min = 1) => z.string().trim().min(min).max(max).regex(/^[^\\r\\n\\u0000]*$/);
+const line = (max: number, min = 1) => z.string().trim().min(min).max(max).regex(/^[^\r\n\u0000]*$/);
 const email = line(255).email();
-const phone = line(20).regex(/^\\+?[0-9 ()-]+$/).refine(v => {
-  const digits = v.replace(/\\D/g, "").length;
+const phone = line(20).regex(/^\+?[0-9 ()-]+$/).refine(v => {
+  const digits = v.replace(/\D/g, "").length;
   return digits >= 7 && digits <= 15;
 });
 const optionalLine = (max: number) => z.string().trim().max(max);
 const message = z.string().trim().min(1).max(1000);
 const consent = z.literal("on");
-
-// Programme catalogues are content-managed and can grow without a code release.
-// Accept a safe slug rather than freezing the server contract to today's options.
 const programmeSlug = z.string().trim().min(1).max(200).regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
 
 const dataSchema = z.discriminatedUnion("kind", [
@@ -29,7 +26,6 @@ const dataSchema = z.discriminatedUnion("kind", [
 ]);
 
 export const enquiryRequestSchema = z.object({
-  // The recipient remains fixed server-side; retain the legacy envelope for compatibility.
   to: z.literal(OWNER_EMAIL).optional(),
   sourcePage: line(500).startsWith("/"),
   data: dataSchema,
@@ -40,10 +36,10 @@ export function buildOwnerEmail(enquiry: EnquiryRequest, from: string) {
   const labels = { partner: "Partnership enquiry", "student-programme": "Student programme enquiry", "ibm-institutional": "IBM institutional enquiry", brochure: "Institutional brochure request" };
   const data = enquiry.data;
   const fields = Object.entries(data).filter(([key]) => key !== "kind")
-    .map(([key, value]) => key + ": " + (value || "Not supplied")).join("\\n");
+    .map(([key, value]) => key + ": " + (value || "Not supplied")).join("\n");
   return {
     from, to: [OWNER_EMAIL], subject: "Exafluence Education — " + labels[data.kind],
-    text: labels[data.kind] + "\\nSource page: " + enquiry.sourcePage + "\\n\\n" + fields,
+    text: labels[data.kind] + "\nSource page: " + enquiry.sourcePage + "\n\n" + fields,
     ...("email" in data ? { reply_to: data.email } : {}),
   };
 }
