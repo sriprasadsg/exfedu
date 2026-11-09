@@ -20,14 +20,21 @@ describe("SVU placements on the Hall of Fame model", () => {
     expect(hero?.querySelector(".svu-hof-facts")?.textContent).toContain("2023–2026");
   });
 
-  it("builds the collage and organisation strip only from approved records", () => {
+  it("builds the complete portrait display and organisation strip only from approved records", () => {
     const { container } = placements();
     const featured = [...container.querySelectorAll(".svu-hof-mini")];
-    expect(featured).toHaveLength(6);
+    expect(featured).toHaveLength(svuPlacements.length);
     featured.forEach(card => {
-      expect(card.querySelector("img")?.getAttribute("src")).toContain("/src/assets/placed-students/");
-      expect(svuPlacements.some(record => record.student === card.querySelector("strong")?.textContent)).toBe(true);
+      const student = card.querySelector("strong")?.textContent;
+      expect(svuPlacements.some(record => record.student === student)).toBe(true);
+      if (student === "K Mounika") {
+        expect(card.querySelector("img")).toBeNull();
+        expect(card.querySelector(".svu-hof-mini-fallback")?.getAttribute("aria-label")).toBe("Photograph not supplied for K Mounika");
+      } else {
+        expect(card.querySelector("img")?.getAttribute("src")).toContain("/src/assets/placed-students/white/");
+      }
     });
+    expect(container.querySelector(".svu-hof-hero")?.textContent).not.toMatch(/\b(?:11|eleven)\b/i);
     const organisations = [...container.querySelectorAll(".svu-hof-organisations li")].map(item => item.textContent);
     expect(organisations).toHaveLength(3);
     organisations.forEach(organisation => expect(svuPlacements.some(record => record.organisation === organisation)).toBe(true));

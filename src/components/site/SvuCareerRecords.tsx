@@ -58,22 +58,10 @@ const designationTone = (designation = "") => {
   return "other";
 };
 
-const placementFeatureNames = [
-  "G V Sumanth",
-  "K Vinay",
-  "Kamatam Meghana",
-  "Muthyala Bharadwaj",
-  "Muvvala Rajeswari",
-  "Sri Tulasi Satya Saketh Raprolu",
-];
-
 /** Jobaaj Hall of Fame reference, adapted 9 November 2026 with original Exafluence wording.
- * The collage and organisation strip use only the approved records and supplied portraits;
- * no testimonials, salary figures, hiring totals or podcast links are invented. */
+ * The portrait display and organisation strip use only the approved records and supplied portraits;
+ * no numerical student total, testimonials, salary figures, hiring totals or podcast links are added. */
 const SvuPlacementHero = ({ records, Title }: { records: SvuCareerRecord[]; Title: "h1" | "h2" }) => {
-  const featured = placementFeatureNames
-    .map(name => records.find(record => record.student === name))
-    .filter((record): record is SvuCareerRecord => Boolean(record));
   const organisations = [...new Set(records.map(record => record.organisation))];
   return <>
     <section className="svu-hof-hero" aria-labelledby="svu-hof-title">
@@ -91,12 +79,17 @@ const SvuPlacementHero = ({ records, Title }: { records: SvuCareerRecord[]; Titl
           <div><dt>Academic batches</dt><dd>2023–2026</dd></div>
         </dl>
       </div>
-      <div className="svu-hof-collage" role="group" aria-label="Selected placed students">
+      <div className="svu-hof-collage" role="group" aria-label="Placed students">
         <p className="svu-hof-status"><BadgeCheck size={22} aria-hidden="true" /><span><strong>Placed</strong><small>SVU–Exafluence outcomes</small></span></p>
-        {featured.map((record, index) => <article className="svu-hof-mini" data-feature={index} key={record.student}>
-          <img src={svuPlacementPhotos[record.student]} alt="" loading="eager" decoding="async" />
-          <div><strong>{record.student}</strong><span>{record.designation}</span></div>
-        </article>)}
+        {records.map(record => {
+          const photo = svuPlacementPhotos[record.student];
+          return <article className="svu-hof-mini" key={record.student}>
+            {photo
+              ? <img src={photo} alt="" loading="eager" decoding="async" />
+              : <span className="svu-hof-mini-fallback" role="img" aria-label={`Photograph not supplied for ${record.student}`}><UserRound size={30} aria-hidden="true" /></span>}
+            <div><strong>{record.student}</strong><span>{record.designation}</span></div>
+          </article>;
+        })}
       </div>
     </section>
     <section className="svu-hof-organisations" aria-label="Organisations in the placement records">

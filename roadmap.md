@@ -1,3 +1,6 @@
+## 9 November 2026 — complete placement portrait display
+- [x] Show every placement student in the opening portrait display without writing a numerical student total; retain the honest K Mounika fallback and all approved records. Seventeen targeted tests pass; 1062/390px browser checks confirm every profile, all ten supplied photos, one fallback, no numerical total, no overflow and no runtime errors.
+
 ## 9 November 2026 — placement card duplicate
 - [x] Remove the repeated “Placed” badge from each achiever card while retaining all eleven approved placement records and the hero’s overall Placed status; nine targeted tests pass and 1062/390px browser checks confirm no card badges, no overflow and no runtime errors.
 
