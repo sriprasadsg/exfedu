@@ -25,8 +25,11 @@ describe("SVU placements on the Hall of Fame model", () => {
     const featured = [...container.querySelectorAll(".svu-hof-mini")];
     expect(featured).toHaveLength(svuPlacements.length);
     featured.forEach(card => {
-      const student = card.querySelector("strong")?.textContent;
+      const student = card.querySelector("img")?.getAttribute("alt")?.replace("Portrait of ", "")
+        ?? card.querySelector(".svu-hof-mini-fallback")?.getAttribute("aria-label")?.replace("Photograph not supplied for ", "");
       expect(svuPlacements.some(record => record.student === student)).toBe(true);
+      expect(card.textContent).toBe("");
+      expect(card.querySelector("strong, div")).toBeNull();
       if (student === "K Mounika") {
         expect(card.querySelector("img")).toBeNull();
         expect(card.querySelector(".svu-hof-mini-fallback")?.getAttribute("aria-label")).toBe("Photograph not supplied for K Mounika");

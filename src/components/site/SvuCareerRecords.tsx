@@ -85,9 +85,8 @@ const SvuPlacementHero = ({ records, Title }: { records: SvuCareerRecord[]; Titl
           const photo = svuPlacementPhotos[record.student];
           return <article className="svu-hof-mini" key={record.student}>
             {photo
-              ? <img src={photo} alt="" loading="eager" decoding="async" />
+              ? <img src={photo} alt={`Portrait of ${record.student}`} loading="eager" decoding="async" />
               : <span className="svu-hof-mini-fallback" role="img" aria-label={`Photograph not supplied for ${record.student}`}><UserRound size={30} aria-hidden="true" /></span>}
-            <div><strong>{record.student}</strong><span>{record.designation}</span></div>
           </article>;
         })}
       </div>

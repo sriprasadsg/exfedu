@@ -1,3 +1,6 @@
+## 9 November 2026 — circular portraits without duplicate details
+- [x] Show the opening placement portraits as circles and remove their duplicated visible names and designations; retain accessible student labels, the K Mounika fallback and full details in the achiever cards. Nine targeted tests pass; 1062/390px browser checks confirm circular portraits, no duplicated text, complete wall details, loaded images, no overflow and no runtime errors.
+
 ## 9 November 2026 — complete placement portrait display
 - [x] Show every placement student in the opening portrait display without writing a numerical student total; retain the honest K Mounika fallback and all approved records. Seventeen targeted tests pass; 1062/390px browser checks confirm every profile, all ten supplied photos, one fallback, no numerical total, no overflow and no runtime errors.
 
