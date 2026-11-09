@@ -9,6 +9,7 @@ import { organisations, PENDING, type Programme } from "@/data/site";
 import { useProgrammeSeo } from "./ProgrammeDirectory";
 import { organisationPath } from "@/lib/programmeNavigation";
 import InstitutionBrochureForm from "@/components/site/InstitutionBrochureForm";
+import { ENQUIRY_ACCEPTED_MESSAGE } from "@/lib/enquiryDelivery";
 import { programmeDetailSections, ibmProgrammeSections, svuProgrammeUsp } from "@/lib/programmeSections";
 
 const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { programme: Programme; organisationOverview?: boolean }) => {
@@ -201,8 +202,8 @@ const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { progr
             <div role="status">
               <p>
                 {p.brochure
-                  ? "Your enquiry has been received. The brochure is ready below."
-                  : "Your enquiry has been received. The approved brochure is not available yet."}
+                  ? `${ENQUIRY_ACCEPTED_MESSAGE} The brochure is ready below.`
+                  : `${ENQUIRY_ACCEPTED_MESSAGE} The approved brochure is not available yet.`}
               </p>
               {p.brochure && (
                 <Button asChild>

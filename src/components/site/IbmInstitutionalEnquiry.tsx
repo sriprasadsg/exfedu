@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { ibmAudiences, ibmProgrammes } from "@/data/ibm";
-import { submitEnquiry } from "@/lib/enquiryDelivery";
+import { ENQUIRY_ACCEPTED_MESSAGE, enquiryErrorMessage, submitEnquiry } from "@/lib/enquiryDelivery";
 
 /** Institutional enquiry validates each field and uses shared HTTP delivery. */
 // Zod needs a non-empty tuple for an enum; the option list itself is data-supplied.
@@ -90,8 +90,8 @@ const IbmInstitutionalEnquiry = () => {
       await submitEnquiry({ kind: "ibm-institutional", ...parsed.data });
       setAnswers({ ...emptyAnswers });
       setStatus({ kind: "success" });
-    } catch {
-      setStatus({ kind: "error", message: "Your enquiry could not be sent. Your details are kept; please try again or contact contact@exafluence.com." });
+    } catch (error) {
+      setStatus({ kind: "error", message: enquiryErrorMessage(error) });
     } finally {
       inFlight.current = false;
     }
@@ -105,7 +105,7 @@ const IbmInstitutionalEnquiry = () => {
       {completed ? (
         <div className="space-y-4">
           <span className="enquiry-success-icon"><CheckCircle2 size={26} strokeWidth={1.7} aria-hidden="true" /></span>
-          <p role="status" className="text-sm leading-relaxed">Your enquiry has been received.</p>
+          <p role="status" className="text-sm leading-relaxed">{ENQUIRY_ACCEPTED_MESSAGE}</p>
           <Button variant="outline" type="button" className="enquiry-restart" onClick={() => { setStep(0); setAnswers({ ...emptyAnswers }); setStatus({ kind: "idle" }); }}>
             <RotateCcw size={15} strokeWidth={1.9} aria-hidden="true" />New enquiry
           </Button>

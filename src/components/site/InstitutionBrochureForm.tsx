@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { submitEnquiry } from "@/lib/enquiryDelivery";
+import { enquiryErrorMessage, submitEnquiry } from "@/lib/enquiryDelivery";
 import { requiredPhone, requiredEmail, requiredInstitution, requiredLocation } from "@/lib/enquiryFields";
 
 /** Institutional brochure request (client, 2 November 2026): collaborations are
@@ -54,8 +54,8 @@ export const InstitutionBrochureForm = ({ programme, onSuccess }: { programme: s
     try {
       await submitEnquiry({ kind: "brochure", ...parsed.data, programme });
       onSuccess();
-    } catch {
-      setDeliveryError("Your request could not be sent. Please try again or contact contact@exafluence.com.");
+    } catch (error) {
+      setDeliveryError(enquiryErrorMessage(error));
     } finally {
       setSubmitting(false);
     }

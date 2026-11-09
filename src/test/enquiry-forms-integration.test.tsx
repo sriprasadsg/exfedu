@@ -1,11 +1,14 @@
 import { webcrypto } from "node:crypto";
-import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { cleanup, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import PartnerEnquiry from "@/components/home/PartnerEnquiry";
 import StudentEnquiry from "@/components/site/StudentEnquiry";
 import IbmInstitutionalEnquiry from "@/components/site/IbmInstitutionalEnquiry";
 import InstitutionBrochureForm from "@/components/site/InstitutionBrochureForm";
-import { enquiryConfig } from "@/lib/enquiryDelivery";
+import ProgrammeDetail from "@/components/site/ProgrammeDetail";
+import { programmes } from "@/data/site";
+import { ENQUIRY_ACCEPTED_MESSAGE, enquiryConfig } from "@/lib/enquiryDelivery";
 import { handleRequest } from "../../infrastructure/enquiry-worker/worker";
 
 const provider = vi.fn<typeof fetch>();
@@ -32,7 +35,8 @@ function finish(label = "Send Enquiry") {
   fireEvent.click(screen.getByRole("button", { name: label }));
 }
 async function accepted(kind: string) {
-  await screen.findByRole("status");
+  expect(await screen.findByRole("status")).toHaveTextContent(ENQUIRY_ACCEPTED_MESSAGE);
+  expect(screen.queryByText("Your enquiry has been received.")).not.toBeInTheDocument();
   expect(provider).toHaveBeenCalledTimes(2);
   const body = JSON.parse(String(provider.mock.calls[1][1]?.body));
   expect(body.message.toRecipients).toEqual([{ emailAddress: { address: "contact@exafluence.com" } }]);
@@ -72,6 +76,58 @@ describe("all four form UIs through the Worker contract", () => {
     expect(provider).toHaveBeenCalledTimes(2);
     expect(JSON.parse(String(provider.mock.calls[1][1]?.body)).message.toRecipients).toEqual([{ emailAddress: { address: "contact@exafluence.com" } }]);
   });
+  it("describes brochure acceptance without claiming inbox delivery", async () => {
+    const programme = programmes.find(item => item.slug === "masters-data-science");
+    if (!programme) throw new Error("Programme fixture missing");
+    render(<MemoryRouter><ProgrammeDetail programme={programme} /></MemoryRouter>);
+    fireEvent.click(screen.getByRole("button", { name: "Request Brochure" }));
+    const dialog = await screen.findByRole("dialog");
+    for (const [label, value] of [["Name", "Test Person"], ["Organisation or institution", "Test Institution"], ["Email", "test@example.org"], ["Phone number", "+91 9876543210"], ["Designation", "Dean"], ["Location", "Chittoor"]]) {
+      fireEvent.change(within(dialog).getByLabelText(label, { exact: true }), { target: { value } });
+    }
+    fireEvent.click(within(dialog).getByRole("button", { name: "Request Brochure" }));
+    const status = await screen.findByRole("status");
+    expect(status).toHaveTextContent(ENQUIRY_ACCEPTED_MESSAGE);
+    expect(status).toHaveTextContent("The brochure is ready below.");
+    expect(status).not.toHaveTextContent("Your enquiry has been received");
+  });
+  it("keeps partner entries and reports uncertain acceptance without claiming saved data", async () => {
+    provider.mockImplementation(async () => new Response("rejected", { status: 503 }));
+    render(<PartnerEnquiry />);
+    next("Contact name", "Test Person"); next("Organisation / Institution", "Test Institution"); next("Work email", "test@example.org");
+    next("Phone number", "+91 9876543210"); next("Location", "Chittoor");
+    next("Collaboration type", "Academic Collaboration"); next("Collaboration requirement", "Test enquiry"); finish("Send Partner Enquiry");
+    const alert = await screen.findByRole("alert");
+    expect(alert).toHaveTextContent("could not confirm whether Microsoft 365 accepted");
+    expect(alert).toHaveTextContent("entries remain in this form; no website enquiry record was saved");
+    fireEvent.click(screen.getByRole("button", { name: "Previous field" }));
+    expect(screen.getByLabelText("Collaboration requirement")).toHaveValue("Test enquiry");
+  });
+  it("keeps student entries and reports uncertain acceptance without claiming saved data", async () => {
+    provider.mockImplementation(async () => new Response("rejected", { status: 503 }));
+    render(<StudentEnquiry programmeSlug="masters-data-science" />);
+    next("Your name", "Test Person"); next("Email", "test@example.org");
+    next("Phone number", "+91 9876543210"); next("Institution", "Test Institution"); next("Location", "Chittoor");
+    next("Which best describes you?", "Student"); next("Your question", "Test enquiry"); finish();
+    const alert = await screen.findByRole("alert");
+    expect(alert).toHaveTextContent("could not confirm whether Microsoft 365 accepted");
+    expect(alert).toHaveTextContent("entries remain in this form; no website enquiry record was saved");
+    fireEvent.click(screen.getByRole("button", { name: "Previous field" }));
+    expect(screen.getByLabelText("Your question")).toHaveValue("Test enquiry");
+  });
+  it("keeps IBM entries and reports uncertain acceptance without claiming saved data", async () => {
+    provider.mockImplementation(async () => new Response("rejected", { status: 503 }));
+    render(<IbmInstitutionalEnquiry />);
+    next("Organisation", "Test Institution"); next("Contact person", "Test Person"); next("Work email", "test@example.org");
+    next("Phone number", "+91 9876543210"); next("Location", "Chittoor");
+    next("Programme interest", "Value-Added Courses"); next("Audience", "Undergraduate students"); next("Expected participants", "40");
+    fireEvent.click(screen.getByRole("button", { name: "Skip" })); finish("Send Institutional Enquiry");
+    const alert = await screen.findByRole("alert");
+    expect(alert).toHaveTextContent("could not confirm whether Microsoft 365 accepted");
+    expect(alert).toHaveTextContent("entries remain in this form; no website enquiry record was saved");
+    fireEvent.click(screen.getByRole("button", { name: "Previous field" }));
+    expect(screen.getByLabelText("Preferred schedule", { exact: false })).toHaveValue("");
+  });
   it("keeps a failed brochure request locked", async () => {
     provider.mockImplementation(async () => new Response("rejected", { status: 503 }));
     const unlock = vi.fn();
@@ -80,7 +136,9 @@ describe("all four form UIs through the Worker contract", () => {
       fireEvent.change(screen.getByLabelText(label, { exact: true }), { target: { value } });
     }
     fireEvent.click(screen.getByRole("button", { name: "Request Brochure" }));
-    await screen.findByRole("alert");
+    const alert = await screen.findByRole("alert");
+    expect(alert).toHaveTextContent("could not confirm whether Microsoft 365 accepted");
+    expect(alert).toHaveTextContent("entries remain in this form; no website enquiry record was saved");
     expect(unlock).not.toHaveBeenCalled();
     expect(screen.getByLabelText("Name", { exact: true })).toHaveValue("Test Person");
   });

@@ -56,7 +56,9 @@ describe("Cloudflare enquiry API", () => {
   });
   it("fails closed without email credentials", async () => {
     const send = accepted();
-    expect((await handleRequest(request(formFixtures[0]), { ...env, M365_CLIENT_SECRET: "" }, send)).status).toBe(503);
+    const response = await handleRequest(request(formFixtures[0]), { ...env, M365_CLIENT_SECRET: "" }, send);
+    expect(response.status).toBe(503);
+    expect(response.headers.get("Access-Control-Allow-Origin")).toBe(origin);
     expect(send).not.toHaveBeenCalled();
   });
   it("restricts origins and permits preflight only for the deployed website", async () => {
@@ -65,6 +67,9 @@ describe("Cloudflare enquiry API", () => {
     const preflight = await handleRequest(new Request("https://worker.example.org/api/enquiries", { method: "OPTIONS", headers: { Origin: origin } }), env, send);
     expect(preflight.status).toBe(204);
     expect(preflight.headers.get("Access-Control-Allow-Origin")).toBe(origin);
+    expect(preflight.headers.get("Access-Control-Allow-Methods")).toBe("POST, OPTIONS");
+    expect(preflight.headers.get("Access-Control-Allow-Headers")).toBe("Content-Type, Accept");
+    expect(preflight.headers.get("Vary")).toBe("Origin");
     expect(send).not.toHaveBeenCalled();
   });
   it("rejects oversized input before provider access", async () => {
@@ -78,6 +83,8 @@ describe("Cloudflare enquiry API", () => {
     expect(response.status).toBe(502);
     const body = await response.text();
     expect(body).toContain(String(status));
+    expect(body).toContain("acceptance_unconfirmed");
+    expect(response.headers.get("Access-Control-Allow-Origin")).toBe(origin);
     expect(body).not.toContain(env.M365_CLIENT_SECRET);
     expect(body).not.toContain("test-access-token");
     expect(body).not.toContain("private-provider-error");

@@ -52,7 +52,7 @@ export async function handleRequest(request: Request, env: Env, send: typeof fet
     const id = await sendMicrosoftEmail(parsed.data, env, send, controller.signal);
     return reply(200, { success: true, id });
   } catch (error) {
-    return reply(502, { error: "Microsoft 365 acceptance is unconfirmed", ...(error instanceof MicrosoftEmailError ? { providerStatus: error.providerStatus } : {}) });
+    return reply(502, { error: "Microsoft 365 acceptance is unconfirmed", code: "acceptance_unconfirmed", ...(error instanceof MicrosoftEmailError ? { providerStatus: error.providerStatus } : {}) });
   }
   finally { clearTimeout(timer); }
 }

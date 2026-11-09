@@ -5,7 +5,7 @@ import { requiredPhone, requiredEmail, requiredInstitution, requiredLocation } f
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { submitEnquiry } from "@/lib/enquiryDelivery";
+import { ENQUIRY_ACCEPTED_MESSAGE, enquiryErrorMessage, submitEnquiry } from "@/lib/enquiryDelivery";
 import { organisations, programmes } from "@/data/site";
 
 /** Student programme enquiry uses the shared production HTTP delivery.
@@ -38,6 +38,7 @@ const StudentEnquiry = ({ programmeSlug }: { programmeSlug?: string }) => {
   const [step, setStep] = useState(preset ? 1 : 0);
   const [error, setError] = useState("");
   const [state, setState] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [deliveryError, setDeliveryError] = useState("");
   const formRef = useRef<HTMLFormElement>(null);
   const field = fields[step];
   const submitting = state === "submitting";
@@ -54,11 +55,15 @@ const StudentEnquiry = ({ programmeSlug }: { programmeSlug?: string }) => {
     if (step < fields.length - 1) { setStep(s => s + 1); return; }
     const parsed = studentEnquirySchema.safeParse(answers);
     if (!parsed.success) { setStep(Math.max(0, fields.findIndex(f => parsed.error.issues.some(i => i.path[0] === f)))); setError(parsed.error.issues[0]?.message ?? ""); return; }
+    setDeliveryError("");
     setState("submitting");
     try {
       await submitEnquiry({ kind: "student-programme", ...parsed.data, programmeTitle: selected?.title });
       setState("success");
-    } catch { setState("error"); }
+    } catch (error) {
+      setDeliveryError(enquiryErrorMessage(error));
+      setState("error");
+    }
   };
   const aria = { "aria-invalid": !!error, "aria-describedby": error ? "student-field-error" : undefined };
   const Icon = icons[field] ?? User;
@@ -77,7 +82,7 @@ const StudentEnquiry = ({ programmeSlug }: { programmeSlug?: string }) => {
             {state === "success" ? (
               <div className="space-y-4">
                 <span className="enquiry-success-icon"><CheckCircle2 size={26} strokeWidth={1.7} aria-hidden="true" /></span>
-                <p role="status" className="text-sm leading-relaxed">Your enquiry has been received.</p>
+                <p role="status" className="text-sm leading-relaxed">{ENQUIRY_ACCEPTED_MESSAGE}</p>
                 <Button variant="outline" type="button" className="enquiry-restart" onClick={() => { setAnswers(empty); setStep(preset ? 1 : 0); setState("idle"); }}>
                   <RotateCcw size={15} aria-hidden="true" />New enquiry
                 </Button>
@@ -122,7 +127,7 @@ const StudentEnquiry = ({ programmeSlug }: { programmeSlug?: string }) => {
                     {submitting ? "Sending…" : step === fields.length - 1 ? "Send Enquiry" : "Continue"}<ArrowUpRight />
                   </Button>
                 </div>
-                {state === "error" && <p role="alert" className="mt-3 flex gap-2 text-sm text-destructive"><AlertCircle className="h-4 w-4 shrink-0" />Your enquiry could not be sent. Your details are kept; please try again or contact contact@exafluence.com.</p>}
+                {state === "error" && <p role="alert" className="mt-3 flex gap-2 text-sm text-destructive"><AlertCircle className="h-4 w-4 shrink-0" />{deliveryError}</p>}
               </>
             )}
           </form>
