@@ -1,12 +1,16 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { buildEnquiryPayload, enquiryConfig, submitEnquiry } from "@/lib/enquiryDelivery";
+import { buildEnquiryPayload, DEFAULT_ENQUIRY_ENDPOINT, enquiryConfig, submitEnquiry } from "@/lib/enquiryDelivery";
 
-afterEach(() => { enquiryConfig.endpoint = ""; vi.unstubAllGlobals(); });
+afterEach(() => { enquiryConfig.endpoint = DEFAULT_ENQUIRY_ENDPOINT; vi.unstubAllGlobals(); });
 describe("production enquiry delivery", () => {
+  it("uses the live enquiry service when no build override is supplied", () => {
+    expect(enquiryConfig.endpoint).toBe("https://exfedu-enquiries.exafluence.workers.dev/api/enquiries");
+  });
   it("routes enquiries to contact@exafluence.com", () => {
     expect(buildEnquiryPayload({ kind: "partner" }, "/contact").to).toBe("contact@exafluence.com");
   });
   it("never simulates success without an endpoint", async () => {
+    enquiryConfig.endpoint = "";
     const fetcher = vi.fn(); vi.stubGlobal("fetch", fetcher);
     await expect(submitEnquiry({})).rejects.toThrow("not configured");
     expect(fetcher).not.toHaveBeenCalled();

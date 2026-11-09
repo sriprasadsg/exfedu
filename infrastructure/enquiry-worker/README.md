@@ -1,6 +1,6 @@
 # Exafluence Education enquiry API — Microsoft 365 handoff
 
-Prepared 6 November 2026. **Source prepared, not deployed. Microsoft credentials, effective mailbox permissions, the production API URL and actual inbox delivery remain unverified.** This is a separate enquiry API, not website hosting infrastructure. Existing website: https://exfedu.exafluence.workers.dev/.
+Prepared 6 November 2026; configuration corrected 9 November 2026. **The website now defaults to the live API address and the Worker source sets contact@exafluence.com as sender and recipient. The corrected Worker still must be deployed. Microsoft credentials, effective mailbox permissions and actual inbox delivery remain unverified.** This is a separate enquiry API, not website hosting infrastructure. Existing website: https://exfedu.exafluence.workers.dev/.
 
 ## Sending architecture
 
@@ -12,12 +12,12 @@ Phone, email, institution (organisation on partnership/IBM forms) and location r
 
 | Value | Location | Infrastructure action |
 | --- | --- | --- |
-| `EMAIL_FROM` | Worker vars | Set an existing Microsoft 365 mailbox's primary address on exafluence.com. `contact@exafluence.com` can be used if it is an actual mailbox and the app is authorised for it. Do not use an unprovisioned alias or visitor address. Left blank until confirmed. |
+| `EMAIL_FROM` | Worker vars | Configured as `contact@exafluence.com`. Confirm this is an existing Exchange Online mailbox and authorise the app for it. Do not replace it with an unprovisioned alias or visitor address. |
 | `M365_TENANT_ID` | Worker vars | Directory/tenant UUID for the organisation's Microsoft 365 tenant. Non-secret. |
 | `M365_CLIENT_ID` | Worker vars | Application/client UUID for a dedicated single-tenant Entra app. Non-secret. |
 | `M365_CLIENT_SECRET` | Worker secret only | Client-secret **value**, not its ID. Set through the interactive secret prompt. Keep expiry/rotation under infrastructure control; never put in website configuration, chat or source. |
-| `ALLOWED_ORIGINS` | Worker vars | Defaults to https://exfedu.exafluence.workers.dev without trailing slash. Comma-separated exact approved origins, no wildcard. |
-| `VITE_ENQUIRY_API_URL` | Website public build configuration | The confirmed HTTPS API URL ending in `/api/enquiries`; rebuild/release the website after setting it. |
+| `ALLOWED_ORIGINS` | Worker vars | Configured for the deployed website, published Lovable site and this project's preview origin. Comma-separated exact approved origins, no wildcard or trailing slashes. Remove test origins after acceptance if desired. |
+| `VITE_ENQUIRY_API_URL` | Optional website public build override | The source defaults to `https://exfedu-enquiries.exafluence.workers.dev/api/enquiries`. Set this only for a different confirmed API URL, then rebuild/release the website. |
 
 ## Microsoft 365 administrator setup
 
@@ -46,7 +46,7 @@ Phone, email, institution (organisation on partnership/IBM forms) and location r
    ```
    No account deployment or DNS changes were performed from this project. Wrangler may offer to create a new Worker while adding its first secret. Use an approved API custom domain if your account disallows workers.dev.
 4. Record the actual URL returned by Wrangler. `GET <confirmed-worker-origin>/health` proves reachability only, **not Microsoft email readiness**. Do not guess the service URL from the website URL. The enquiry URL is `<confirmed-worker-origin>/api/enquiries`.
-5. Set `VITE_ENQUIRY_API_URL` in the existing website build configuration and rebuild/release through your team's normal process. A relative `/api/enquiries` works only if that path is separately routed to this API. Website hosting is not part of this package.
+5. Rebuild/release the website so its new default API address is included. Set `VITE_ENQUIRY_API_URL` only if the deployed API URL differs from the default above. A relative `/api/enquiries` works only if that path is separately routed to this API. Website hosting is not part of this package.
 6. Submit clearly labelled test enquiries through each of the four deployed forms: partnership, student programme, IBM institutional and brochure. Check the successful API response, sender Sent Items, Exchange Online **message trace** and actual arrival at **contact@exafluence.com** (including quarantine/spam). Check the subject, fields, source page and Reply-To. Verify phone layouts, required fields and consent, failure retention, and brochure unlocking only after acceptance.
 7. Have the mailbox owner confirm actual receipt for every form. Do not call delivery verified merely because the API returned success. Share the confirmed enquiry API URL so the same deployed endpoint can be tested from the application.
 
@@ -69,9 +69,13 @@ Phone, email, institution (organisation on partnership/IBM forms) and location r
 - Local development: `npx wrangler dev`, dedicated test mailbox/app and local-only allowed origin. Do not publish local origin settings accidentally.
 - This package needs no Lovable Cloud email domain, database, API key or managed-project credentials.
 
+## Live deployment finding — 9 November 2026
+
+The deployed website bundle contained no enquiry API address. The service currently at the proposed API URL returned no `Access-Control-Allow-Origin` for the deployed website and rejected the prepared request envelope with `Name is required`; it does not match this Worker's contract. Deploy this corrected Worker over that service and release the rebuilt website together. Cloudflare deployment could not be performed from this workspace because Wrangler is not authenticated.
+
 ## Verification
 
-Tests cover all four form-to-Worker flows using mocked Microsoft token and Graph responses, fixed recipient, the approved sender domain, required contact fields, consent, origin restrictions, payload size, token errors, provider rejection, missing request IDs and no ambiguous-send retries. These are not real email sends. Production testing remains blocked by credentials, scoped access and the deployed API URL.
+Tests cover all four form-to-Worker flows using mocked Microsoft token and Graph responses, fixed recipient, the approved sender domain, required contact fields, consent, origin restrictions, payload size, token errors, provider rejection, missing request IDs and no ambiguous-send retries. These are not real email sends. Production testing remains blocked by Cloudflare deployment, credentials and scoped mailbox access.
 
 ## Official references
 

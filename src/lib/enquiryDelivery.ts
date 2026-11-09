@@ -1,9 +1,11 @@
 import { z } from "zod";
 
 /** Only public configuration belongs here. Email credentials belong on the server. */
+export const DEFAULT_ENQUIRY_ENDPOINT = "https://exfedu-enquiries.exafluence.workers.dev/api/enquiries";
+
 export const enquiryConfig = {
   mode: "production" as const,
-  endpoint: import.meta.env.VITE_ENQUIRY_API_URL || "",
+  endpoint: import.meta.env.VITE_ENQUIRY_API_URL || DEFAULT_ENQUIRY_ENDPOINT,
   recipient: "contact@exafluence.com",
 };
 

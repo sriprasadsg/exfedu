@@ -5,8 +5,8 @@
   "compatibility_date": "2026-11-06",
   "workers_dev": true,
   "vars": {
-    "ALLOWED_ORIGINS": "https://exfedu.exafluence.workers.dev",
-    "EMAIL_FROM": "",
+    "ALLOWED_ORIGINS": "https://exfedu.exafluence.workers.dev,https://exfedu.lovable.app,https://id-preview--6a6eef78-c02c-449d-a8d6-90f1dd4349d1.lovable.app",
+    "EMAIL_FROM": "contact@exafluence.com",
     "M365_TENANT_ID": "",
     "M365_CLIENT_ID": ""
   }

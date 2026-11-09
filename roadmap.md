@@ -1,3 +1,7 @@
+## 9 November 2026 — live enquiry configuration repair
+- [x] Configure the live enquiry API as the website default, set contact@exafluence.com as the Worker sender and allow the exact production/test website origins; 107 targeted checks pass, and a real preview form attempt confirms the corrected URL is called while the current remote service blocks it with net::ERR_FAILED and no false success is shown.
+- [ ] Deploy the corrected Worker and website, then prove real Microsoft 365 delivery — blocked by Cloudflare authentication, tenant/client IDs, the server-only client secret and scoped mailbox permission. The currently deployed website has no API address; the current service returns no browser CORS permission and rejects the prepared envelope with “Name is required”.
+
 ## 9 November 2026 — circular portraits without duplicate details
 - [x] Show the opening placement portraits as circles and remove their duplicated visible names and designations; retain accessible student labels, the K Mounika fallback and full details in the achiever cards. Nine targeted tests pass; 1062/390px browser checks confirm circular portraits, no duplicated text, complete wall details, loaded images, no overflow and no runtime errors.
 
