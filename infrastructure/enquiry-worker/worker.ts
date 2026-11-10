@@ -64,8 +64,11 @@ export async function handleRequest(request: Request, env: Env, send: typeof fet
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), 10000);
   try {
-    const id = await sendMicrosoftEmail(parsed.data, env, send, controller.signal);
-    return reply(200, { success: true, id });
+    const { providerRequestId } = await sendMicrosoftEmail(parsed.data, env, send, controller.signal);
+    // `id` is generated here as a support trace reference; it is not a Microsoft message ID.
+    const id = crypto.randomUUID();
+    console.log(JSON.stringify({ event: "enquiry_accepted", id, providerRequestId }));
+    return reply(200, { success: true, id, ...(providerRequestId ? { providerRequestId } : {}) });
   } catch (error) {
     return reply(502, { error: "Microsoft 365 acceptance is unconfirmed", code: "acceptance_unconfirmed", ...(error instanceof MicrosoftEmailError ? { providerStatus: error.providerStatus } : {}) });
   }

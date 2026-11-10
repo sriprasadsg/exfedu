@@ -14,11 +14,17 @@ export const buildEnquiryPayload = (data: unknown, path: string) => ({
   to: recipientFor(path), sourcePage: path, data,
 });
 
-const receiptSchema = z.object({ success: z.literal(true), id: z.string().uuid() }).strict();
+/**
+ * Acceptance requires an explicit `success: true` flag in a JSON object. Trace IDs and other
+ * metadata are optional diagnostics and never decide the outcome; a body that also reports an
+ * error is contradictory and is not treated as acceptance.
+ */
+export const receiptSchema = z.object({ success: z.literal(true) }).passthrough()
+  .refine(body => !("error" in body) || body.error === undefined || body.error === null || body.error === false || body.error === "");
 
-export const ENQUIRY_ACCEPTED_MESSAGE = "Microsoft 365 accepted your enquiry for sending to contact@exafluence.com. This confirms acceptance only, not inbox delivery.";
-const ENQUIRY_REJECTED_MESSAGE = "The enquiry service did not accept your request. Your entries remain in this form; no website enquiry record was saved. Please try again or email contact@exafluence.com.";
-const ENQUIRY_UNCONFIRMED_MESSAGE = "We could not confirm whether Microsoft 365 accepted your enquiry. Your entries remain in this form; no website enquiry record was saved. Before retrying, contact contact@exafluence.com to avoid a duplicate.";
+export const ENQUIRY_ACCEPTED_MESSAGE = "Thank you. Your enquiry has been submitted successfully.";
+const ENQUIRY_REJECTED_MESSAGE = "Your enquiry could not be submitted. Your entries remain in this form. Please check your details and try again, or email contact@exafluence.com.";
+const ENQUIRY_UNCONFIRMED_MESSAGE = "We could not confirm that your enquiry was submitted. Your entries remain in this form. Before trying again, please email contact@exafluence.com so we can check and avoid a duplicate.";
 
 export class EnquiryDeliveryError extends Error {
   constructor(message: string, public readonly outcome: "rejected" | "unconfirmed") {

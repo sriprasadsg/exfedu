@@ -18,10 +18,16 @@ export class MicrosoftEmailError extends Error {
   constructor(public readonly providerStatus: number) { super("Microsoft 365 acceptance unconfirmed"); }
 }
 
-/** The receipt is Microsoft's send request ID, not a message ID or delivery proof. */
+export interface MicrosoftAcceptance {
+  /** Microsoft's diagnostic request-id header when present; not a message ID or delivery proof. */
+  providerRequestId: string | null;
+}
+const diagnosticId = z.string().trim().min(1).max(128).regex(/^[\x21-\x7e]+$/);
+
+/** Graph sendMail success is HTTP 202 with an empty body; request-id is diagnostics only. */
 export async function sendMicrosoftEmail(
   input: z.infer<typeof enquiryRequestSchema>, env: MicrosoftEnv, send: typeof fetch, signal: AbortSignal,
-): Promise<string> {
+): Promise<MicrosoftAcceptance> {
   const tokenResponse = await send(`https://login.microsoftonline.com/${env.M365_TENANT_ID}/oauth2/v2.0/token`, {
     method: "POST", signal, redirect: "error",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -43,7 +49,6 @@ export async function sendMicrosoftEmail(
     }, saveToSentItems: true }),
   });
   if (response.status !== 202) throw new MicrosoftEmailError(response.status);
-  const receipt = uuid.safeParse(response.headers.get("request-id"));
-  if (!receipt.success) throw new MicrosoftEmailError(502);
-  return receipt.data;
+  const header = diagnosticId.safeParse(response.headers.get("request-id") ?? response.headers.get("client-request-id"));
+  return { providerRequestId: header.success ? header.data : null };
 }

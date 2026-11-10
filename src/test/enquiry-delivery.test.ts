@@ -51,10 +51,42 @@ describe("production enquiry delivery", () => {
     vi.stubGlobal("fetch", vi.fn().mockResolvedValue(new Response("Unavailable", { status: 503 })));
     await expect(submitEnquiry({})).rejects.toMatchObject({ outcome: "rejected" });
   });
-  it("rejects a receipt that is not Microsoft's request UUID", async () => {
+  it.each([
+    ["no trace ID", { success: true }],
+    ["a non-UUID trace ID", { success: true, id: "receipt-123" }],
+    ["extra metadata", { success: true, id: receiptId, providerRequestId: "abc", status: "accepted", message: "Sent" }],
+  ])("accepts explicit backend acceptance with %s", async (_label, body) => {
     enquiryConfig.endpoint = "https://enquiry.example.test/submit";
-    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(new Response(JSON.stringify({ success: true, id: "receipt-123" }))));
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(new Response(JSON.stringify(body))));
+    await expect(submitEnquiry({})).resolves.toBeUndefined();
+  });
+  it.each([
+    ["an empty 200", ""],
+    ["an HTML 200", "<!doctype html><html><body>OK</body></html>"],
+    ["success as a string", JSON.stringify({ success: "true" })],
+    ["a body without a success flag", JSON.stringify({ ok: true, id: receiptId })],
+    ["contradictory success and error", JSON.stringify({ success: true, error: "Failed to send enquiry" })],
+    ["a JSON array", JSON.stringify([{ success: true }])],
+  ])("never treats %s as acceptance", async (_label, body) => {
+    enquiryConfig.endpoint = "https://enquiry.example.test/submit";
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(new Response(body, { status: 200 })));
     await expect(submitEnquiry({})).rejects.toMatchObject({ outcome: "unconfirmed" });
+  });
+  it("never treats an error status as acceptance even with success in the body", async () => {
+    enquiryConfig.endpoint = "https://enquiry.example.test/submit";
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(new Response(JSON.stringify({ success: true }), { status: 500 })));
+    await expect(submitEnquiry({})).rejects.toMatchObject({ outcome: "unconfirmed" });
+  });
+  it("reports a timed-out request as unconfirmed", async () => {
+    vi.useFakeTimers();
+    enquiryConfig.endpoint = "https://enquiry.example.test/submit";
+    vi.stubGlobal("fetch", vi.fn((_url: string, init: RequestInit) => new Promise((_resolve, reject) => {
+      init.signal?.addEventListener("abort", () => reject(new DOMException("Aborted", "AbortError")));
+    })));
+    const pending = expect(submitEnquiry({})).rejects.toMatchObject({ outcome: "unconfirmed" });
+    await vi.advanceTimersByTimeAsync(15000);
+    await pending;
+    vi.useRealTimers();
   });
   it("marks provider acceptance failures as unconfirmed", async () => {
     enquiryConfig.endpoint = "https://enquiry.example.test/submit";
@@ -77,10 +109,9 @@ describe("production enquiry delivery", () => {
     await expect(submitEnquiry({})).rejects.toMatchObject({ outcome: "rejected" });
     expect(fetcher).not.toHaveBeenCalled();
   });
-  it("describes acceptance and retained entries without claiming inbox delivery or saved data", () => {
-    expect(ENQUIRY_ACCEPTED_MESSAGE).toContain("acceptance only, not inbox delivery");
+  it("shows the simple success wording without claiming inbox delivery or stored data", () => {
+    expect(ENQUIRY_ACCEPTED_MESSAGE).toBe("Thank you. Your enquiry has been submitted successfully.");
     expect(enquiryErrorMessage(new Error("unknown"))).toContain("could not confirm");
     expect(enquiryErrorMessage(new Error("unknown"))).toContain("entries remain in this form");
-    expect(enquiryErrorMessage(new Error("unknown"))).toContain("no website enquiry record was saved");
   });
 });

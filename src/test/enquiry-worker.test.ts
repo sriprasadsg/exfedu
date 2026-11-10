@@ -25,7 +25,10 @@ describe("Cloudflare enquiry API", () => {
     const send = accepted();
     const response = await handleRequest(request(data), env, send);
     expect(response.status).toBe(200);
-    expect(await response.json()).toEqual({ success: true, id: receiptId });
+    const receipt = await response.json();
+    expect(receipt).toMatchObject({ success: true, providerRequestId: receiptId });
+    expect(receipt.id).toMatch(/^[0-9a-f-]{36}$/);
+    expect(receipt.id).not.toBe(receiptId);
     const [url, options] = send.mock.calls[1];
     expect(url).toBe("https://graph.microsoft.com/v1.0/users/contact%40exafluence.com/sendMail");
     const body = JSON.parse(String(options?.body));
@@ -106,9 +109,20 @@ describe("Cloudflare enquiry API", () => {
     expect(body).not.toContain("test-access-token");
     expect(body).not.toContain("private-provider-error");
   });
-  it("rejects provider success without a receipt", async () => {
+  it("accepts Graph 202 even when the diagnostic request-id header is absent", async () => {
     const send = vi.fn<typeof fetch>().mockResolvedValueOnce(tokenResponse()).mockResolvedValueOnce(new Response(null, { status: 202 }));
-    expect((await handleRequest(request(formFixtures[0]), env, send)).status).toBe(502);
+    const response = await handleRequest(request(formFixtures[0]), env, send);
+    expect(response.status).toBe(200);
+    const receipt = await response.json();
+    expect(receipt.success).toBe(true);
+    expect(receipt.id).toMatch(/^[0-9a-f-]{36}$/);
+    expect(receipt).not.toHaveProperty("providerRequestId");
+  });
+  it("accepts Graph 202 with a non-UUID diagnostic request-id and passes it through", async () => {
+    const send = vi.fn<typeof fetch>().mockResolvedValueOnce(tokenResponse()).mockResolvedValueOnce(new Response(null, { status: 202, headers: { "request-id": "req-abc_123" } }));
+    const response = await handleRequest(request(formFixtures[0]), env, send);
+    expect(response.status).toBe(200);
+    expect(await response.json()).toMatchObject({ success: true, providerRequestId: "req-abc_123" });
   });
   it("rejects a sender outside exafluence.com", async () => {
     const send = accepted();
