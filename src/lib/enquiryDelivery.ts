@@ -19,12 +19,16 @@ export const buildEnquiryPayload = (data: unknown, path: string) => ({
  * metadata are optional diagnostics and never decide the outcome; a body that also reports an
  * error is contradictory and is not treated as acceptance.
  */
-export const receiptSchema = z.object({ success: z.literal(true) }).passthrough()
+export const receiptSchema = z.union([
+  z.object({ success: z.literal(true) }).passthrough(),
+  // The live service currently answers acceptance with only its message id.
+  z.object({ id: z.string().min(1) }).passthrough().refine(body => !("success" in body) || body.success === true),
+])
   .refine(body => !("error" in body) || body.error === undefined || body.error === null || body.error === false || body.error === "");
 
 export const ENQUIRY_ACCEPTED_MESSAGE = "Thank you. Your enquiry has been submitted successfully.";
-const ENQUIRY_REJECTED_MESSAGE = "Your enquiry could not be submitted. Your entries remain in this form. Please check your details and try again, or email contact@exafluence.com.";
-const ENQUIRY_UNCONFIRMED_MESSAGE = "We could not confirm that your enquiry was submitted. Your entries remain in this form. Before trying again, please email contact@exafluence.com so we can check and avoid a duplicate.";
+const ENQUIRY_REJECTED_MESSAGE = "Sorry, your enquiry was not sent. Please try again.";
+const ENQUIRY_UNCONFIRMED_MESSAGE = ENQUIRY_REJECTED_MESSAGE;
 
 export class EnquiryDeliveryError extends Error {
   constructor(message: string, public readonly outcome: "rejected" | "unconfirmed") {

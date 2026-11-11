@@ -98,8 +98,7 @@ describe("all four form UIs through the Worker contract", () => {
     next("Phone number", "+91 9876543210"); next("Location", "Chittoor");
     next("Collaboration type", "Academic Collaboration"); next("Collaboration requirement", "Test enquiry"); finish("Send Partner Enquiry");
     const alert = await screen.findByRole("alert");
-    expect(alert).toHaveTextContent("could not confirm that your enquiry was submitted");
-    expect(alert).toHaveTextContent("Your entries remain in this form");
+    expect(alert).toHaveTextContent("Sorry, your enquiry was not sent");
     fireEvent.click(screen.getByRole("button", { name: "Previous field" }));
     expect(screen.getByLabelText("Collaboration requirement")).toHaveValue("Test enquiry");
   });
@@ -110,8 +109,7 @@ describe("all four form UIs through the Worker contract", () => {
     next("Phone number", "+91 9876543210"); next("Institution", "Test Institution"); next("Location", "Chittoor");
     next("Which best describes you?", "Student"); next("Your question", "Test enquiry"); finish();
     const alert = await screen.findByRole("alert");
-    expect(alert).toHaveTextContent("could not confirm that your enquiry was submitted");
-    expect(alert).toHaveTextContent("Your entries remain in this form");
+    expect(alert).toHaveTextContent("Sorry, your enquiry was not sent");
     fireEvent.click(screen.getByRole("button", { name: "Previous field" }));
     expect(screen.getByLabelText("Your question")).toHaveValue("Test enquiry");
   });
@@ -123,8 +121,7 @@ describe("all four form UIs through the Worker contract", () => {
     next("Programme interest", "Value-Added Courses"); next("Audience", "Undergraduate students"); next("Expected participants", "40");
     fireEvent.click(screen.getByRole("button", { name: "Skip" })); finish("Send Institutional Enquiry");
     const alert = await screen.findByRole("alert");
-    expect(alert).toHaveTextContent("could not confirm that your enquiry was submitted");
-    expect(alert).toHaveTextContent("Your entries remain in this form");
+    expect(alert).toHaveTextContent("Sorry, your enquiry was not sent");
     fireEvent.click(screen.getByRole("button", { name: "Previous field" }));
     expect(screen.getByLabelText("Preferred schedule", { exact: false })).toHaveValue("");
   });
@@ -137,8 +134,7 @@ describe("all four form UIs through the Worker contract", () => {
     }
     fireEvent.click(screen.getByRole("button", { name: "Request Brochure" }));
     const alert = await screen.findByRole("alert");
-    expect(alert).toHaveTextContent("could not confirm that your enquiry was submitted");
-    expect(alert).toHaveTextContent("Your entries remain in this form");
+    expect(alert).toHaveTextContent("Sorry, your enquiry was not sent");
     expect(unlock).not.toHaveBeenCalled();
     expect(screen.getByLabelText("Name", { exact: true })).toHaveValue("Test Person");
   });

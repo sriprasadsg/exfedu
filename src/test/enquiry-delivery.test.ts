@@ -64,7 +64,7 @@ describe("production enquiry delivery", () => {
     ["an empty 200", ""],
     ["an HTML 200", "<!doctype html><html><body>OK</body></html>"],
     ["success as a string", JSON.stringify({ success: "true" })],
-    ["a body without a success flag", JSON.stringify({ ok: true, id: receiptId })],
+    ["a body without a success flag", JSON.stringify({ ok: true })],
     ["contradictory success and error", JSON.stringify({ success: true, error: "Failed to send enquiry" })],
     ["a JSON array", JSON.stringify([{ success: true }])],
   ])("never treats %s as acceptance", async (_label, body) => {
@@ -111,7 +111,13 @@ describe("production enquiry delivery", () => {
   });
   it("shows the simple success wording without claiming inbox delivery or stored data", () => {
     expect(ENQUIRY_ACCEPTED_MESSAGE).toBe("Thank you. Your enquiry has been submitted successfully.");
-    expect(enquiryErrorMessage(new Error("unknown"))).toContain("could not confirm");
-    expect(enquiryErrorMessage(new Error("unknown"))).toContain("entries remain in this form");
+    expect(enquiryErrorMessage(new Error("unknown"))).toBe("Sorry, your enquiry was not sent. Please try again.");
+  });
+});
+describe("live service reply", () => {
+  it("treats a 2xx reply carrying only a message id as sent", async () => {
+    enquiryConfig.endpoint = "https://enquiry.example.test/submit";
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(new Response(JSON.stringify({ id: "re_abc123" }), { status: 200 })));
+    await expect(submitEnquiry({})).resolves.toBeUndefined();
   });
 });
