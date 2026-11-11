@@ -14,3 +14,9 @@ export const requiredPhone = singleLine("phone number", 20)
 export const requiredEmail = singleLine("email", 255).email("Please enter a valid email");
 export const requiredInstitution = singleLine("institution", 150);
 export const requiredLocation = singleLine("location", 150);
+
+const optionalLine = (label: string, max: number) => z.string().trim()
+  .max(max, `Please keep ${label} under ${max} characters`)
+  .regex(/^[^\r\n\u0000]*$/, `Please enter a valid ${label}`);
+export const optionalInstitution = optionalLine("institution", 150);
+export const optionalLocation = optionalLine("location", 150);

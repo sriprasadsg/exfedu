@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { z } from "zod";
 import { ArrowUpRight, ArrowLeft, CheckCircle2, AlertCircle, RotateCcw, User, Building2, Mail, Phone, MapPin, Network, MessageSquare } from "lucide-react";
-import { requiredPhone, requiredEmail, requiredInstitution, requiredLocation } from "@/lib/enquiryFields";
+import { requiredPhone, requiredEmail, optionalInstitution, optionalLocation } from "@/lib/enquiryFields";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -22,10 +22,10 @@ export const collaborationTypes = [
 
 export const enquirySchema = z.object({
   name: z.string().trim().min(1, "Please enter your name").max(100, "Name must be under 100 characters"),
-  organisation: requiredInstitution,
+  organisation: optionalInstitution,
   email: requiredEmail,
   phone: requiredPhone,
-  location: requiredLocation,
+  location: optionalLocation,
   type: z.enum(collaborationTypes, { errorMap: () => ({ message: "Please choose a collaboration type" }) }),
   message: z.string().trim().min(1, "Please tell us your collaboration requirement").max(1000, "Please keep this under 1000 characters"),
   consent: z.literal("on", { errorMap: () => ({ message: "Please agree to be contacted about this enquiry" }) }),
@@ -38,8 +38,8 @@ type Status = { kind: "idle" } | { kind: "submitting" } | { kind: "success" } | 
 const fields: Field[] = ["name", "organisation", "email", "phone", "location", "type", "message", "consent"];
 
 const labels: Record<Field, string> = {
-  name: "Contact name", organisation: "Organisation / Institution", email: "Work email",
-  phone: "Phone number", location: "Location", type: "Collaboration type", message: "Collaboration requirement", consent: "Contact permission",
+  name: "Contact name", organisation: "Organisation / Institution (optional)", email: "Work email",
+  phone: "Phone number", location: "Location (optional)", type: "Collaboration type", message: "Collaboration requirement", consent: "Contact permission",
 };
 const emptyAnswers: Record<Field, string> = { name: "", organisation: "", email: "", phone: "", location: "", type: "", message: "", consent: "" };
 const fieldIcons: Partial<Record<Field, typeof User>> = { name: User, organisation: Building2, email: Mail, phone: Phone, location: MapPin, type: Network, message: MessageSquare };
@@ -160,7 +160,7 @@ const PartnerEnquiry = ({ intro = defaultIntro, programme, onSuccess }: { intro?
                   ) : (
                     <div className={`enquiry-field enquiry-field--${field}`}>
                       <span className="enquiry-field-icon" aria-hidden="true">{(() => { const FIcon = fieldIcons[field] ?? User; return <FIcon size={17} strokeWidth={1.8} />; })()}</span>
-                      <Input id={`enquiry-${field}`} name={field} required type={field === "email" ? "email" : field === "phone" ? "tel" : "text"} autoComplete={field === "organisation" ? "organization" : field === "location" ? "address-level2" : field === "phone" ? "tel" : field} maxLength={field === "name" ? 100 : field === "organisation" || field === "location" ? 150 : field === "email" ? 255 : 20} value={answers[field]} disabled={submitting} onChange={(e) => update(e.target.value)} {...aria} />
+                      <Input id={`enquiry-${field}`} name={field} required={field !== "organisation" && field !== "location"} type={field === "email" ? "email" : field === "phone" ? "tel" : "text"} autoComplete={field === "organisation" ? "organization" : field === "location" ? "address-level2" : field === "phone" ? "tel" : field} maxLength={field === "name" ? 100 : field === "organisation" || field === "location" ? 150 : field === "email" ? 255 : 20} value={answers[field]} disabled={submitting} onChange={(e) => update(e.target.value)} {...aria} />
                     </div>
                   )}
                   {error && <p id="enquiry-field-error" role="alert" className="mt-2 text-sm text-destructive">{error}</p>}

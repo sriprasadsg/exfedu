@@ -10,7 +10,7 @@ describe("sequential partner enquiry", () => {
     fireEvent.change(screen.getByLabelText("Contact name"), { target: { value: "Example Partner" } });
     fireEvent.click(screen.getByRole("button", { name: "Continue" }));
     expect(screen.queryByLabelText("Contact name")).not.toBeInTheDocument();
-    expect(screen.getByLabelText("Organisation / Institution")).toBeInTheDocument();
+    expect(screen.getByLabelText("Organisation / Institution (optional)")).toBeInTheDocument();
     fireEvent.click(screen.getByRole("button", { name: "Previous field" }));
     expect(screen.getByLabelText("Contact name")).toHaveValue("Example Partner");
   });
@@ -19,7 +19,7 @@ describe("sequential partner enquiry", () => {
     render(<PartnerEnquiry />);
     fireEvent.click(screen.getByRole("button", { name: "Continue" }));
     expect(screen.getByLabelText("Contact name")).toBeInTheDocument();
-    expect(screen.queryByLabelText("Organisation / Institution")).not.toBeInTheDocument();
+    expect(screen.queryByLabelText("Organisation / Institution (optional)")).not.toBeInTheDocument();
   });
 
   it("requires a phone number and contact permission", () => {

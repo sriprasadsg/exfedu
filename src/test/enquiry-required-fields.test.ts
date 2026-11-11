@@ -8,20 +8,29 @@ import { handleRequest } from "../../infrastructure/enquiry-worker/worker";
 
 const contact = { email: "test@example.org", phone: "+91 9876543210", location: "Chittoor" };
 const forms = [
-  { schema: enquirySchema, affiliation: "organisation", data: { kind: "partner", ...contact, name: "Test Person", organisation: "Test Institution", type: "Academic Collaboration", message: "Test enquiry", consent: "on" } },
-  { schema: studentEnquirySchema, affiliation: "institution", data: { kind: "student-programme", ...contact, name: "Test Person", institution: "Test Institution", programme: "masters-data-science", status: "Student", message: "Test enquiry", consent: "on" } },
-  { schema: institutionalSchema, affiliation: "organisation", data: { kind: "ibm-institutional", ...contact, organisation: "Test Institution", contactPerson: "Test Person", programmeInterest: "Value-Added Courses", audience: "Undergraduate students", participants: "40", schedule: "", consent: "on" } },
-  { schema: institutionBrochureSchema, affiliation: "institution", data: { kind: "brochure", ...contact, name: "Test Person", institution: "Test Institution", designation: "Dean", programme: "M.S. Data Science", notes: "" } },
+  { schema: enquirySchema, affiliation: "organisation", required: ["phone", "email"], data: { kind: "partner", ...contact, name: "Test Person", organisation: "Test Institution", type: "Academic Collaboration", message: "Test enquiry", consent: "on" } },
+  { schema: studentEnquirySchema, affiliation: "institution", required: ["phone", "email", "institution", "location"], data: { kind: "student-programme", ...contact, name: "Test Person", institution: "Test Institution", programme: "masters-data-science", status: "Student", message: "Test enquiry", consent: "on" } },
+  { schema: institutionalSchema, affiliation: "organisation", required: ["phone", "email", "organisation", "location"], data: { kind: "ibm-institutional", ...contact, organisation: "Test Institution", contactPerson: "Test Person", programmeInterest: "Value-Added Courses", audience: "Undergraduate students", participants: "40", schedule: "", consent: "on" } },
+  { schema: institutionBrochureSchema, affiliation: "institution", required: ["phone", "email", "institution", "location"], data: { kind: "brochure", ...contact, name: "Test Person", institution: "Test Institution", designation: "Dean", programme: "M.S. Data Science", notes: "" } },
 ];
 const envelope = (data: unknown) => ({ sourcePage: "/contact", data });
 
-for (const { schema, affiliation, data } of forms) {
+describe("partner optional fields", () => {
+  const partner = forms[0].data;
+  it.each(["organisation", "location"])("accepts an empty %s on website and server", field => {
+    const valid = { ...partner, [field]: "" };
+    expect(enquirySchema.safeParse(valid).success).toBe(true);
+    expect(enquiryRequestSchema.safeParse(envelope(valid)).success).toBe(true);
+  });
+});
+
+for (const { schema, affiliation, required, data } of forms) {
   describe(`${data.kind} mandatory fields`, () => {
     it("accepts all four supplied fields on website and server", () => {
       expect(schema.safeParse(data).success).toBe(true);
       expect(enquiryRequestSchema.safeParse(envelope(data)).success).toBe(true);
     });
-    it.each(["phone", "email", affiliation, "location"])("requires %s on website and server", async field => {
+    it.each(required)("requires %s on website and server", async field => {
       for (const value of [undefined, "", "   "]) {
         const invalid = { ...data, [field]: value };
         expect(schema.safeParse(invalid).success).toBe(false);
