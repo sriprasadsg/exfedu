@@ -6,7 +6,7 @@
   "workers_dev": true,
   "keep_vars": true,
   "vars": {
-    "ALLOWED_ORIGINS": "https://exfedu.exafluence.workers.dev,https://exfedu.lovable.app,https://id-preview--6a6eef78-c02c-449d-a8d6-90f1dd4349d1.lovable.app",
+    "ALLOWED_ORIGINS": "https://exfedu.exafluence.workers.dev,https://exfedu.lovable.app,https://id-preview--6a6eef78-c02c-449d-a8d6-90f1dd4349d1.lovable.app,https://6a6eef78-c02c-449d-a8d6-90f1dd4349d1.lovableproject.com",
     "EMAIL_FROM": "contact@exafluence.com"
   }
 }
