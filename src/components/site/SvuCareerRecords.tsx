@@ -60,12 +60,12 @@ export default function SvuCareerRecords({ kind, embedded = false }: { kind: "pl
       <ul className="svu-placement-photo-grid" aria-label="Student Placements">
         {photographed.map(record => <li key={record.student} className="svu-outcome svu-placement-photo-card">
           <div className="svu-placement-photo">
-            <img src={svuPlacementPhotos[record.student]} alt={`Portrait of ${record.student}`} loading="lazy" decoding="async" />
+            <img src={svuPlacementPhotos[record.student]} alt={`Portrait of ${record.student}`} width={600} height={660} loading="lazy" decoding="async" />
           </div>
           <div className="svu-placement-details">
             <h3>{record.student}</h3>
-            <p className="svu-outcome-org">{record.organisation}</p>
             {record.designation && <p className="svu-outcome-role">{record.designation}</p>}
+            <p className="svu-outcome-org">{record.organisation}</p>
             <p className="svu-outcome-batch"><span className="sr-only">Batch </span>{record.batch}</p>
           </div>
         </li>)}
@@ -74,8 +74,8 @@ export default function SvuCareerRecords({ kind, embedded = false }: { kind: "pl
         <Sub id="svu-placement-additional-title">Additional placement records</Sub>
         <ul>{additional.map(record => <li className="svu-outcome svu-placement-text-record" key={record.student}>
           <h3>{record.student}</h3>
-          <p className="svu-outcome-org">{record.organisation}</p>
           {record.designation && <p className="svu-outcome-role">{record.designation}</p>}
+          <p className="svu-outcome-org">{record.organisation}</p>
           <p className="svu-outcome-batch"><span className="sr-only">Batch </span>{record.batch}</p>
         </li>)}</ul>
       </section>}

@@ -21,8 +21,8 @@ describe("Edited placed-student photo associations", () => {
   it("matches all ten supplied filenames to the verified student names", () => {
     expect(Object.keys(svuPlacementPhotos)).toHaveLength(10);
     for (const [student, filename] of Object.entries(expected)) {
-      expect(svuPlacementPhotos[student]).toMatch(/^https:\/\/exfedu\.lovable\.app\/__l5e\/assets-v1\//);
-      expect(svuPlacementPhotos[student]?.split("/").pop()).toBe(filename);
+      expect(svuPlacementPhotos[student]).toContain("/placed-students/gallery/");
+      expect(svuPlacementPhotos[student]?.split("/").pop()).toBe(filename.replace(".webp", ".jpg"));
     }
   });
   it("keeps K Mounika's verified record without inventing a photo", () => {

@@ -1,3 +1,6 @@
+## 12 November 2026 — professional placement gallery refinement
+- [x] Refined the existing gallery with bundled original-pixel head-and-shoulders crops, a 1200px container, width-aware 4/3/2/1 columns, 24px gaps, equal row heights, navy names, subtle borders and bottom-anchored batches. All verified records and photo matches preserved; 14 regression checks pass, all ten images decode at 1280/1062/768/390/320px without text/page overflow, programme navigation works and preview build is OK. External Cloudflare deployment was not performed.
+
 ## 12 November 2026 — edited placement photo cards
 - [x] Replaced duplicate portrait presentations with ten permanent filename-matched photo cards; all eleven verified records preserved, with K Mounika text-only and no placeholder. Thirty targeted tests pass; 1280/1062/768/390px checks confirm 4/2/1 columns, all ten permanent-host images decode, no overflow/runtime errors and programme navigation works. Preview build OK; external Cloudflare deployment has not been performed.
 
