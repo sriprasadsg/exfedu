@@ -48,7 +48,10 @@ export default function SvuCareerRecords({ kind, embedded = false }: { kind: "pl
     const unique = shown.filter((record, index) => shown.findIndex(item => item.student === record.student) === index);
     return <div className="svu-career-records svu-career-records--portraits">
       <header className="svu-placement-intro">
-        <Title>Placements</Title>
+        <div className="svu-placement-title-row">
+          <span className="glossy-icon svu-placement-title-icon" aria-hidden="true"><GraduationCap size={25} strokeWidth={1.5} /></span>
+          <Title>Placements</Title>
+        </div>
         <p>Meet students from the SVU–Exafluence MS Data Science programme and explore their documented career outcomes.</p>
         <div className="svu-placement-links">
           <Button variant="link" asChild><Link to={`${svuPagePath("overview")}#programmes`}>Explore Programmes <ArrowRight size={16} aria-hidden="true" /></Link></Button>
