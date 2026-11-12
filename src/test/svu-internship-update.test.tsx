@@ -86,10 +86,6 @@ describe("SVU internships programme update (client, 3 November 2026)", () => {
     expect(content?.querySelector(".svu-career-records-heading")).not.toBeNull();
     expect(content?.querySelectorAll(".svu-intern-card")).toHaveLength(11);
 
-    const { container: place } = render(<MemoryRouter><SvuCareerRecords kind="placements" /></MemoryRouter>);
-    expect(place.querySelector(".svu-hof-hero .svu-hof-lead")).not.toBeNull();
-    expect(place.querySelector(".svu-hof-wall .svu-career-records-heading")).not.toBeNull();
-    expect(place.querySelector(".svu-hof-wall .svu-outcome")).not.toBeNull();
   });
 
   it("preserves every existing internship record without duplicating an update student", () => {

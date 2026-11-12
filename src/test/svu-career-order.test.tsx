@@ -4,8 +4,8 @@ import { describe, expect, it } from "vitest";
 import SvuCareerRecords from "@/components/site/SvuCareerRecords";
 
 const placementOrder = [
-  "G V Sumanth", "Jonnalagadda Sahithya", "K Mounika", "K Vinay", "Vemuri Bharath Kumar", "Yaram Lakshmi Nisoka",
-  "Kamatam Meghana", "Muthyala Bharadwaj", "Muvvala Rajeswari", "Sri Tulasi Satya Saketh Raprolu", "Veeravalli Sri Satya",
+  "G V Sumanth", "Jonnalagadda Sahithya", "K Vinay", "Vemuri Bharath Kumar", "Yaram Lakshmi Nisoka",
+  "Kamatam Meghana", "Muthyala Bharadwaj", "Muvvala Rajeswari", "Sri Tulasi Satya Saketh Raprolu", "Veeravalli Sri Satya", "K Mounika",
 ];
 const internshipOrder = [
   "Bandarupalli Madhuri", "G Mohana Priya", "G V Sumanth", "Jonnalagadda Sahithya", "K Vinay", "M Sreelekha",
@@ -17,7 +17,7 @@ describe("SVU career records display order (client, 2 November 2026)", () => {
     const { container } = render(<MemoryRouter><SvuCareerRecords kind="placements" /></MemoryRouter>);
     expect([...container.querySelectorAll(".svu-outcome h3")].map(h => h.textContent?.trim())).toEqual(placementOrder);
     expect([...container.querySelectorAll(".svu-outcome-batch")].map(b => b.textContent?.trim())).toEqual([
-      ...Array(6).fill("Batch 2023–2025"), ...Array(5).fill("Batch 2024–2026"),
+      ...Array(5).fill("Batch 2023–2025"), ...Array(5).fill("Batch 2024–2026"), "Batch 2023–2025",
     ]);
   });
 

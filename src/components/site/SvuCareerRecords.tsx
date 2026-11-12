@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowDown, ArrowRight, BadgeCheck, BrainCircuit, Briefcase, Building2, CalendarRange, Cpu, GraduationCap, UserRound, UsersRound, CalendarDays, Layers, Monitor } from "lucide-react";
+import { ArrowDown, ArrowRight, Building2, CalendarRange, GraduationCap, UsersRound, CalendarDays, Layers, Monitor } from "lucide-react";
 import { svuPagePath } from "@/lib/programmeNavigation";
-import { filterSvuCareerRecords, svuInternshipIntroduction, svuInternshipUpdate, svuInternships, svuPlacements, type SvuCareerRecord } from "@/data/svuCareer";
+import { filterSvuCareerRecords, svuInternshipIntroduction, svuInternshipUpdate, svuInternships, svuPlacements } from "@/data/svuCareer";
 import { svuPlacementPhotos } from "@/data/svuPlacementPhotos";
 
 /** Approved text-only internship update (client, 3 November 2026): the panel sits between the
@@ -35,69 +35,6 @@ const SvuInternshipUpdate = ({ open, onToggle }: { open: boolean; onToggle: () =
   </section>;
 };
 
-/** Placement cards carry an icon matched to the role itself (client, 4 November 2026): research
- * and analytics roles read as a neural circuit, engineering roles as a processor, plain trainee
- * roles as a graduation cap, and anything else as a case. Checked in this order so a compound
- * title such as "Data Scientist – Trainee" keeps the icon of the role it is trained for. */
-const designationIcon = (designation = "") => {
-  const role = designation.toLowerCase();
-  if (role.includes("data scientist")) return <BrainCircuit size={16} aria-hidden="true" />;
-  if (role.includes("engineer")) return <Cpu size={16} aria-hidden="true" />;
-  if (role.includes("trainee")) return <GraduationCap size={16} aria-hidden="true" />;
-  return <Briefcase size={16} aria-hidden="true" />;
-};
-
-/** Each designation family carries its own colour (client, 4 November 2026): analytics roles in
- * violet, engineering roles in teal, plain trainee roles in amber and anything else in the
- * site's connection blue. Checked in the same order as the icons above. */
-const designationTone = (designation = "") => {
-  const role = designation.toLowerCase();
-  if (role.includes("data scientist")) return "data";
-  if (role.includes("engineer")) return "engineer";
-  if (role.includes("trainee")) return "trainee";
-  return "other";
-};
-
-/** Jobaaj Hall of Fame reference, adapted 9 November 2026 with original Exafluence wording.
- * The portrait display and organisation strip use only the approved records and supplied portraits;
- * no numerical student total, testimonials, salary figures, hiring totals or podcast links are added. */
-const SvuPlacementHero = ({ records, Title }: { records: SvuCareerRecord[]; Title: "h1" | "h2" }) => {
-  const organisations = [...new Set(records.map(record => record.organisation))];
-  return <>
-    <section className="svu-hof-hero" aria-labelledby="svu-hof-title">
-      <div className="svu-hof-copy">
-        <p className="svu-hof-kicker"><span>SVU Hall of Fame</span><span>Real roles. Documented outcomes.</span></p>
-        <Title id="svu-hof-title"><span>From learning to</span><span className="svu-hof-accent">career momentum.</span></Title>
-        <p className="svu-hof-lead">Meet students from the SVU–Exafluence MS Data Science programme who have moved into data science, AI engineering and trainee roles. Every profile brings together their designation, organisation and academic batch.</p>
-        <div className="svu-hof-actions">
-          <Link to={`${svuPagePath("overview")}#programmes`} className="svu-hof-primary">Explore Programmes <ArrowRight size={16} aria-hidden="true" /></Link>
-          <Link to={`${svuPagePath("innovations")}#internships`} className="svu-hof-secondary">View Internships</Link>
-        </div>
-        <dl className="svu-hof-facts">
-          <div><dt>Programme</dt><dd>MS Data Science</dd></div>
-          <div><dt>Role families</dt><dd>Data Science &amp; AI</dd></div>
-          <div><dt>Academic batches</dt><dd>2023–2026</dd></div>
-        </dl>
-      </div>
-      <div className="svu-hof-collage" role="group" aria-label="Placed students">
-        <p className="svu-hof-status"><BadgeCheck size={22} aria-hidden="true" /><span><strong>Placed</strong><small>SVU–Exafluence outcomes</small></span></p>
-        {records.map(record => {
-          const photo = svuPlacementPhotos[record.student];
-          return <article className="svu-hof-mini" key={record.student}>
-            {photo
-              ? <img src={photo} alt={`Portrait of ${record.student}`} loading="eager" decoding="async" />
-              : <span className="svu-hof-mini-fallback" role="img" aria-label={`Photograph not supplied for ${record.student}`}><UserRound size={30} aria-hidden="true" /></span>}
-          </article>;
-        })}
-      </div>
-    </section>
-    <section className="svu-hof-organisations" aria-label="Organisations in the placement records">
-      <p>Organisations connected to these outcomes</p>
-      <ul>{organisations.map(organisation => <li key={organisation}><Building2 size={19} aria-hidden="true" /><span>{organisation}</span></li>)}</ul>
-    </section>
-  </>;
-};
-
 export default function SvuCareerRecords({ kind, embedded = false }: { kind: "placements" | "internships"; embedded?: boolean }) {
   const [studentsOpen, setStudentsOpen] = useState(false);
   const placements = kind === "placements";
@@ -107,34 +44,43 @@ export default function SvuCareerRecords({ kind, embedded = false }: { kind: "pl
   const Title = embedded ? "h2" : "h1";
   const Sub = embedded ? "h3" : "h2";
 
-  if (placements) return <div className="svu-career-records svu-career-records--hof">
-    <SvuPlacementHero records={shown} Title={Title} />
-    <section className="svu-hof-wall" aria-labelledby="svu-hof-wall-title">
-      <p className="svu-hof-wall-eyebrow">The wall</p>
-      <Sub id="svu-hof-wall-title" className="svu-career-records-heading">Meet the SVU achievers</Sub>
-      <p className="svu-hof-wall-intro">Explore the documented placement records, with each student’s role, organisation and academic batch presented in one compact profile.</p>
-      <ul className="svu-pl-cards" aria-label="Student Placements">{shown.map(record => {
-        const photo = svuPlacementPhotos[record.student];
-        return <li key={record.student} className="svu-outcome svu-pl-card">
-          <div className="svu-pl-head">
-            <div className="svu-pl-portrait">
-              {photo
-                ? <img src={photo} alt={`Portrait of ${record.student}`} loading="lazy" decoding="async" />
-                : <span className="svu-pl-avatar" role="img" aria-label={`Photograph not supplied for ${record.student}`}><UserRound size={32} aria-hidden="true" /></span>}
-            </div>
-            <div className="svu-pl-profile">
-              <div className="svu-pl-person"><h3>{record.student}</h3></div>
-              <p className="svu-outcome-role" data-tone={designationTone(record.designation)}>{designationIcon(record.designation)}<span>{record.designation}</span></p>
-            </div>
+  if (placements) {
+    const unique = shown.filter((record, index) => shown.findIndex(item => item.student === record.student) === index);
+    const photographed = unique.filter(record => svuPlacementPhotos[record.student]);
+    const additional = unique.filter(record => !svuPlacementPhotos[record.student]);
+    return <div className="svu-career-records svu-career-records--portraits">
+      <header className="svu-placement-intro">
+        <Title>Placements</Title>
+        <p>Meet students from the SVU–Exafluence MS Data Science programme and explore their documented career outcomes.</p>
+        <div className="svu-placement-links">
+          <Button variant="link" asChild><Link to={`${svuPagePath("overview")}#programmes`}>Explore Programmes <ArrowRight size={16} aria-hidden="true" /></Link></Button>
+          <Button variant="link" asChild><Link to={`${svuPagePath("innovations")}#internships`}>View Internships <ArrowRight size={16} aria-hidden="true" /></Link></Button>
+        </div>
+      </header>
+      <ul className="svu-placement-photo-grid" aria-label="Student Placements">
+        {photographed.map(record => <li key={record.student} className="svu-outcome svu-placement-photo-card">
+          <div className="svu-placement-photo">
+            <img src={svuPlacementPhotos[record.student]} alt={`Portrait of ${record.student}`} loading="lazy" decoding="async" />
           </div>
-          <p className="svu-outcome-org"><Building2 size={17} aria-hidden="true" /><span>{record.organisation}</span></p>
-          <div className="svu-pl-foot">
+          <div className="svu-placement-details">
+            <h3>{record.student}</h3>
+            <p className="svu-outcome-org">{record.organisation}</p>
+            {record.designation && <p className="svu-outcome-role">{record.designation}</p>}
             <p className="svu-outcome-batch"><span className="sr-only">Batch </span>{record.batch}</p>
           </div>
-        </li>;
-      })}</ul>
-    </section>
-  </div>;
+        </li>)}
+      </ul>
+      {additional.length > 0 && <section className="svu-placement-additional" aria-labelledby="svu-placement-additional-title">
+        <Sub id="svu-placement-additional-title">Additional placement records</Sub>
+        <ul>{additional.map(record => <li className="svu-outcome svu-placement-text-record" key={record.student}>
+          <h3>{record.student}</h3>
+          <p className="svu-outcome-org">{record.organisation}</p>
+          {record.designation && <p className="svu-outcome-role">{record.designation}</p>}
+          <p className="svu-outcome-batch"><span className="sr-only">Batch </span>{record.batch}</p>
+        </li>)}</ul>
+      </section>}
+    </div>;
+  }
 
   return <div className="svu-career-records svu-career-records--upskill">
     <div className="svu-career-title-card">

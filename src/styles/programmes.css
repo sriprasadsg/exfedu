@@ -1531,3 +1531,30 @@ body:not(:has(.homepage-static)) main .svu-career-records--logistics .svu-career
   .svu-hof-primary, .svu-hof-secondary, .svu-career-records--hof .svu-pl-card { transition: none; }
   .svu-career-records--hof .svu-pl-card:hover { transform: none; }
 }
+
+/* Edited placement portraits: a single photo grid, with unpictured verified records kept separately. */
+.svu-career-records.svu-career-records--portraits { display: block; }
+.svu-placement-intro { padding: 8px 0 28px; border-bottom: 1px solid hsl(var(--academic-edge)); }
+.svu-placement-intro h1, .svu-placement-intro h2 { margin: 0; font-size: 34px; line-height: 1.2; font-weight: 500; letter-spacing: 0; color: hsl(var(--navy-900)); }
+.svu-placement-intro > p { max-width: 70ch; margin: 14px 0 0; font-size: 15px; line-height: 1.75; color: hsl(var(--muted-foreground)); }
+.svu-placement-links { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 12px; }
+.svu-placement-links a { padding: 0; color: hsl(var(--navy-900)); }
+.svu-placement-photo-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: 1fr; gap: 24px; margin: 32px 0 0; padding: 0; list-style: none; }
+.svu-career-records--portraits .svu-placement-photo-card { display: flex; flex-direction: column; min-width: 0; padding: 0; border: 1px solid hsl(var(--academic-edge)); border-radius: 8px; overflow: hidden; background: hsl(var(--card)); }
+.svu-career-records--portraits .svu-placement-photo-card:hover { background: hsl(var(--card)); }
+.svu-placement-photo { position: relative; width: 100%; aspect-ratio: 4 / 5; background: hsl(var(--card)); }
+.svu-placement-photo img { position: absolute; inset: 12px 12px 0; display: block; width: calc(100% - 24px); height: calc(100% - 12px); object-fit: contain; object-position: center; }
+.svu-placement-details { display: flex; flex-direction: column; flex: 1; padding: 20px; border-top: 1px solid hsl(var(--academic-edge)); text-align: center; }
+.svu-career-records--portraits h3 { margin: 0; font-size: 17px; line-height: 1.45; font-weight: 500; letter-spacing: 0; color: hsl(var(--navy-900)); overflow-wrap: anywhere; }
+.svu-career-records--portraits .svu-outcome-org { display: block; margin: 10px 0 0; padding: 0; border: 0; font-size: 13px; line-height: 1.6; color: hsl(var(--muted-foreground)); }
+.svu-career-records--portraits .svu-outcome-role { margin: 8px 0 16px; padding: 0; border: 0; font-size: 13px; line-height: 1.6; font-weight: 400; color: hsl(var(--navy-700)); }
+.svu-career-records--portraits .svu-outcome-batch { display: block; margin: auto 0 0; padding: 12px 0 0; border: 0; border-top: 1px solid hsl(var(--academic-edge)); border-radius: 0; background: none; font-size: 12px; font-weight: 400; letter-spacing: 0; text-transform: none; color: hsl(var(--muted-foreground)); }
+.svu-career-records--portraits .svu-outcome-batch::before { display: none; }
+.svu-placement-additional { margin-top: 36px; padding-top: 24px; border-top: 1px solid hsl(var(--academic-edge)); }
+.svu-placement-additional h2, .svu-placement-additional h3 { font-size: 20px; font-weight: 500; letter-spacing: 0; color: hsl(var(--navy-900)); }
+.svu-placement-additional ul { padding: 0; margin: 20px 0 0; list-style: none; }
+.svu-career-records--portraits .svu-placement-text-record { padding: 0; border: 0; border-radius: 0; background: none; }
+.svu-career-records--portraits .svu-placement-text-record:hover { transform: none; background: none; }
+.svu-placement-text-record .svu-outcome-batch { max-width: 240px; }
+@media (max-width: 1023px) { .svu-placement-photo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 639px) { .svu-placement-photo-grid { grid-template-columns: minmax(0, 1fr); gap: 20px; } .svu-placement-intro h1, .svu-placement-intro h2 { font-size: 28px; } }

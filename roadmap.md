@@ -1,3 +1,6 @@
+## 12 November 2026 — edited placement photo cards
+- [x] Replaced duplicate portrait presentations with ten permanent filename-matched photo cards; all eleven verified records preserved, with K Mounika text-only and no placeholder. Thirty targeted tests pass; 1280/1062/768/390px checks confirm 4/2/1 columns, all ten permanent-host images decode, no overflow/runtime errors and programme navigation works. Preview build OK; external Cloudflare deployment has not been performed.
+
 ## 9 November 2026 — enquiry contract audit and correction
 - [x] Inspected all four forms, shared browser delivery, Microsoft 365 Worker, schemas and deployment configuration from clean commit 7d00da0. Corrected acceptance-versus-delivery wording, retained-fields-versus-saved-record wording, receipt UUID validation and rejected/unconfirmed error classification; added the Worker's machine-readable unconfirmed outcome. Approved design, content, recipient and Microsoft 365 approach unchanged.
 - [x] All 330 site tests pass (including 117 targeted enquiry checks), the production Vite build passes, and Wrangler's no-deployment dry run compiles the Worker. Read-only public checks still return 405 for GET /health and a 204 preflight without Access-Control-Allow-Origin; no POST, email, deployment or publication was performed, so live delivery remains unverified.
