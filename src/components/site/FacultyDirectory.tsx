@@ -1,4 +1,5 @@
 import { useId } from "react";
+import { UserRound } from "lucide-react";
 import { svuFacultyPhotos } from "@/data/svuFacultyPhotos";
 
 export type FacultyPerson = { name: string; role?: string; expertise: string };
@@ -23,7 +24,7 @@ export const FacultyDirectory = ({ title, people, intro, page = false, technical
         <div className="fd-portrait">
           {svuFacultyPhotos[p.name]
             ? <img src={svuFacultyPhotos[p.name]} alt={`Portrait of ${p.name}`} width={600} height={540} loading="lazy" />
-            : <span className="fd-photo-missing">Photo not supplied</span>}
+            : <UserRound size={72} strokeWidth={1.25} className="text-muted-foreground" role="img" aria-label={`Profile icon for ${p.name}`} />}
         </div>
         <div className="fd-copy">
         <Name className="fd-name">{p.name}</Name>

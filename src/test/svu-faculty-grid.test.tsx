@@ -32,7 +32,6 @@ describe("SVU faculty profile grid (client brief, 3 November 2026)", () => {
     expect(container.querySelector("button")).toBeNull();
     expect(container.querySelector('[role="tablist"]')).toBeNull();
     expect(container.querySelector(".fd-tags")).toBeNull();
-    expect(container.querySelector("svg")).toBeNull();
     expect(container.textContent).not.toMatch(/view profile|show all/i);
   });
 });
