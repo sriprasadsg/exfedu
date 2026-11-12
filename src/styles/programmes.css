@@ -1580,3 +1580,20 @@ body:not(:has(.homepage-static)) main .svu-career-records--portraits h3 { backgr
 .staff-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
 .staff-team .staff-card .staff-name { background: none; -webkit-text-fill-color: currentColor; font-family: "Google Sans", sans-serif; font-size: 18px; font-weight: 500; color: hsl(var(--navy-900)); margin: 16px 16px 4px; word-break: normal; overflow-wrap: normal; }
 .staff-role { font-size: 14px; line-height: 1.5; color: hsl(var(--muted-foreground)); margin: 0 16px; }
+
+/* Shared editorial title treatment; profile identities and reversed panels remain distinct. */
+body main :is(h1, h2, h3, h4, h5, h6):not(.sr-only):not(.fd-name):not(.staff-name):not(.svu-proceeding-event):not(.svu-champion-title):not(.svu-home-title):not(.cap-core-title):not(.cap-core-brand):not(.svu-placement-details h3):not(.svu-pl-person h3):not(.svu-ca .svu-growth h2):not(.svu-ca .svu-growth h3):not(.svu-pl-band h2):not(.svu-career-records--logistics .svu-career-title-card h1):not(.svu-career-records--logistics .svu-career-title-card h2) {
+  background-image: var(--gradient-heading) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+body main :is(h1, h2, h3, h4, h5, h6) :is(a, em, strong, span, small, cite):not(.brand-exa):not(.brand-fluence):not(.about-brand-exa):not(.about-brand-fluence):not(.glossy-icon):not(.programme-section-icon) {
+  background-image: none !important;
+  -webkit-text-fill-color: inherit !important;
+  font-weight: inherit;
+  letter-spacing: 0;
+}
+body main :is(h1, h2, h3, h4, h5, h6) svg { -webkit-text-fill-color: currentColor; }

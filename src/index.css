@@ -238,6 +238,8 @@
     --connection-teal: 172 65% 30%;
     --connection-amber: 34 85% 36%;
     --connection-violet: 270 57% 48%;
+    --title-blue: 202 76% 36%;
+    --gradient-heading: linear-gradient(100deg, hsl(var(--navy-800)) 0%, hsl(var(--connection-blue)) 65%, hsl(var(--title-blue)) 100%);
 
 
     --sidebar-background: 0 0% 98%;

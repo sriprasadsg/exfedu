@@ -1,3 +1,7 @@
+## 12 November 2026 — consistent page titles
+- [x] Apply the supplied navy-to-blue medium-weight title treatment across pages, retaining profile names, original wordmarks and reversed dark-panel headings.
+- [x] Checked twelve destinations at desktop and phone widths: titles share the navy-to-blue token and medium weight, original logos/profile names remain intact, no horizontal overflow and preview build OK.
+
 ## 12 November 2026 — circular faculty gallery
 - [x] Match eleven supplied faculty filenames to existing profiles, save original-pixel crops permanently and present circular portraits without changing technical portraits or profile content.
 - [x] Nine regression checks pass; eleven faculty and seven technical images load at desktop/tablet/phone widths with 3/2/1 faculty columns, circular frames, no overflow or runtime errors and preview build OK. Browser image checks use permanent asset downloads to bridge local Vite's absent CDN proxy.
