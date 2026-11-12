@@ -26,5 +26,5 @@
 - The SVU technologies strip (SvuTechTicker) renders the list twice in a two-column grid and slides the track by exactly one copy, with the repeat aria-hidden and no index numbers or show-all control; reduced motion drops the copy for one static grid, so the loop stays seamless without announcing anything twice.
 - SVU faculty render as photo-free cards in one responsive grid (FacultyDirectory); no selection state, no expertise pills.
 
-- Placements use filename-matched client portraits and container-based columns; every verified record renders once in the regular gallery without duplicates or invented photos.
-- The Admin & Support Team page (/admin-support-team) reads staff from src/data/adminTeam.ts and renders through the staff-team block, kept apart from faculty and technical support so no profile appears twice.
+- Placements: filename-matched portraits, container-query columns; each verified record renders once, no invented photos.
+- Admin & Support staff: src/data/adminTeam.ts, apart from faculty so no profile repeats.
