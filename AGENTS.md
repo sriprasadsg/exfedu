@@ -27,3 +27,4 @@
 - SVU faculty render as photo-free cards in one responsive grid (FacultyDirectory); no selection state, no expertise pills.
 
 - Placements use filename-matched client portraits and container-based columns; every verified record renders once in the regular gallery without duplicates or invented photos.
+- The Admin & Support Team page (/admin-support-team) reads staff from src/data/adminTeam.ts and renders through the staff-team block, kept apart from faculty and technical support so no profile appears twice.

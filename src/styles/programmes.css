@@ -1558,3 +1558,15 @@ body:not(:has(.homepage-static)) main .svu-career-records--portraits h3 { backgr
 @container placement-gallery (min-width: 840px) { .svu-placement-photo-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @container placement-gallery (min-width: 1100px) { .svu-placement-photo-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 @media (max-width: 639px) { .svu-body:has(.svu-career-records--portraits) { padding-inline: 20px; } .svu-placement-intro h1, .svu-placement-intro h2 { font-size: 28px; } }
+
+/* Admin & Support Team: photo cards in 3/2/1 columns */
+.staff-team { display: grid; gap: 48px; }
+.staff-team .staff-group-title { background: none; -webkit-text-fill-color: currentColor; font-family: "Google Sans", sans-serif; font-weight: 500; font-size: 1.5rem; color: hsl(var(--navy-900)); margin: 0 0 20px; }
+.staff-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: 24px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 959px) { .staff-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 599px) { .staff-grid { grid-template-columns: minmax(0, 1fr); } }
+.staff-card { background: hsl(var(--card)); border: 1px solid hsl(var(--border)); border-radius: 10px; overflow: hidden; text-align: center; padding-bottom: 18px; }
+.staff-photo { aspect-ratio: 5 / 6; background: hsl(0 0% 100%); border-bottom: 1px solid hsl(var(--border)); }
+.staff-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+.staff-team .staff-card .staff-name { background: none; -webkit-text-fill-color: currentColor; font-family: "Google Sans", sans-serif; font-size: 18px; font-weight: 500; color: hsl(var(--navy-900)); margin: 16px 16px 4px; word-break: normal; overflow-wrap: normal; }
+.staff-role { font-size: 14px; line-height: 1.5; color: hsl(var(--muted-foreground)); margin: 0 16px; }

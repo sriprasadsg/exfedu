@@ -37,6 +37,7 @@ export type Block =
   | { type: "about-story"; data: AboutStoryData }
   | { type: "about-overview"; data: AboutOverviewData }
   | { type: "collaboration-network" }
+  | { type: "staff-team" }
   | { type: "logo"; src: string; alt: string }
   | { type: "cta"; title: string; text: string; label: string; to?: string; appearance?: "academic-partner" | "skillshone" };
 
@@ -305,6 +306,9 @@ export const pages: Page[] = [
       ] },
       { type: "cta", title: "Start Building with SkillShone", text: "Explore practical AI project learning for your own development, or see how SkillShone supports institutions — visit the SkillShone site for details.", label: "Visit SkillShone", to: "https://skillshone.com/", appearance: "skillshone" },
     ] },
+  { path: "/admin-support-team", title: "Admin & Support Team", category: "learning", icon: Users,
+    summary: "Meet the team supporting admissions, student enquiries and the day-to-day administration of Exafluence Education.",
+    blocks: [{ type: "staff-team" }] },
   { path: "/gallery", title: "Gallery & Highlights", category: "learning", icon: Images,
     summary: "Moments from events, visits and achievements.",
     blocks: [{ type: "gallery", filters: ["All", "Academic Events", "Industry Visits", "Internships", "Research", "Hackathons", "Placements", "Student Activities", "Awards & Recognition"] }] },

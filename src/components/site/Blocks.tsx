@@ -9,6 +9,7 @@ import PartnerEnquiry from "@/components/home/PartnerEnquiry";
 import AboutStory from "@/components/site/AboutStory";
 import AboutOverview from "@/components/site/AboutOverview";
 import CollaborationNetwork from "@/components/site/CollaborationNetwork";
+import StaffTeam from "@/components/site/StaffTeam";
 import { programmePath } from "@/lib/programmeNavigation";
 
 // The closing panel's contact address sits inside a sentence, so it is lifted out in bold
@@ -96,6 +97,8 @@ const Gallery = ({ filters }: { filters: string[] }) => {
 
 export const BlockView = ({ block, page }: { block: Block; page: Page }) => {
   switch (block.type) {
+    case "staff-team":
+      return <StaffTeam />;
     case "collaboration-network":
       return <CollaborationNetwork />;
     case "text":
