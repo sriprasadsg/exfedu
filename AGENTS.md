@@ -27,5 +27,5 @@
 - Faculty portraits use explicit name-to-asset matches; missing photos are never substituted.
 
 - Placements: filename-matched portraits, container-query columns; each verified record renders once, no invented photos.
-- Admin & Support staff: src/data/adminTeam.ts, apart from faculty (no repeats).
-- Gallery & Highlights and Events & News pages removed (12 Nov 2026); old URLs redirect home.
+- Admin staff: src/data/adminTeam.ts, never in faculty.
+- Gallery and Events & News removed; old URLs redirect home.
