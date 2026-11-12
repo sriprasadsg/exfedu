@@ -24,7 +24,7 @@
 - Student and partnership enquiries stay separate on /contact using shared HTTP delivery; student affiliation does not imply partnership intent.
 - Common validators in src/lib/enquiryFields.ts must match the standalone Worker schema so all four forms enforce consistent contact validation.
 - The SVU technologies strip (SvuTechTicker) renders the list twice in a two-column grid and slides the track by exactly one copy, with the repeat aria-hidden and no index numbers or show-all control; reduced motion drops the copy for one static grid, so the loop stays seamless without announcing anything twice.
-- SVU faculty render as photo-free cards in one responsive grid (FacultyDirectory); no selection state, no expertise pills.
+- SVU faculty: photo-free cards in one responsive grid (FacultyDirectory), no selection state or pills.
 
 - Placements: filename-matched portraits, container-query columns; each verified record renders once, no invented photos.
 - Admin & Support staff: src/data/adminTeam.ts, apart from faculty so no profile repeats.
