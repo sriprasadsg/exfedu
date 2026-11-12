@@ -44,6 +44,7 @@ describe("SVU pages", () => {
       "/collaboration-network/svu/innovations",
       "/collaboration-network/svu/placements",
       "/collaboration-network/svu/faculty",
+      "/admin-support-team",
     ]);
   });
   it("overview carries the programmes and one h1", () => {
@@ -52,9 +53,9 @@ describe("SVU pages", () => {
     expect(container.querySelectorAll(".svu-directory-row").length).toBeGreaterThan(0);
     expect(container.querySelectorAll("h1")).toHaveLength(1);
   });
-  it("faculty page lists all 12 mentors and 5 technical faculty", () => {
+  it("faculty page lists all 12 mentors and 7 technical faculty", () => {
     const { container } = open("faculty");
-    expect(container.querySelectorAll(".fd-cell")).toHaveLength(17);
+    expect(container.querySelectorAll(".fd-cell")).toHaveLength(19);
     expect(container.querySelectorAll("h1")).toHaveLength(1);
   });
   it("projects show six at a time with pagination and no public approval note", () => {

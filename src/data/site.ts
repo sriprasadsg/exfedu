@@ -309,12 +309,6 @@ export const pages: Page[] = [
   { path: "/admin-support-team", title: "Admin & Support Team", category: "learning", icon: Users,
     summary: "Meet the team supporting admissions, student enquiries and the day-to-day administration of Exafluence Education.",
     blocks: [{ type: "staff-team" }] },
-  { path: "/gallery", title: "Gallery & Highlights", category: "learning", icon: Images,
-    summary: "Moments from events, visits and achievements.",
-    blocks: [{ type: "gallery", filters: ["All", "Academic Events", "Industry Visits", "Internships", "Research", "Hackathons", "Placements", "Student Activities", "Awards & Recognition"] }] },
-  { path: "/events-news", title: "Events & News", category: "learning", icon: Newspaper,
-    summary: "Announcements and upcoming events.",
-    blocks: [{ type: "pending", title: "Latest", items: ["Upcoming Events", "News & Announcements"] }] },
 ];
 
 export const findPage = (path: string) => pages.find((p) => p.path === path.replace(/\/$/, "") );
@@ -365,8 +359,6 @@ export const organisationSections: Partial<Record<Organisation, OrganisationSect
 /** Achievements, events and gallery now sit on the SVU overview page (client, 29 Oct 2026). */
 export const svuOverviewBlocks: { id: string; title: string; icon: LucideIcon; tone: Tone; pending: string; link: { label: string; path: string } }[] = [
   { id: "achievements", title: "Student Achievements", icon: Award, tone: "amber", pending: "Student achievements, competition results and recognised outcomes await approved university records.", link: { label: "Student Success", path: "/student-success" } },
-  { id: "events", title: "Events", icon: Newspaper, tone: "violet", pending: "SVU event listings and announcements await approved content.", link: { label: "Events & News", path: "/events-news" } },
-  { id: "gallery", title: "Gallery", icon: Images, tone: "teal", pending: "Photographs from SVU events, visits and campus life await approved images.", link: { label: "Gallery & Highlights", path: "/gallery" } },
 ];
 
 /** Academic resources now appear on the programme pages themselves. */
@@ -388,7 +380,6 @@ export const arms: { title: string; path: string; icon: LucideIcon; subtitle: st
   { title: "Student Success", path: "/student-success", icon: Award, subtitle: "Achievements · Career growth", priority: "student" },
   { title: "Student’s Corner", path: "/students-corner", icon: LayoutGrid, subtitle: "Resources · Updates · Downloads", priority: "student" },
   { title: "SkillShone", path: "/skillshone", icon: MonitorPlay, subtitle: "Digital learning platform", priority: "student" },
-  { title: "Gallery & Highlights", path: "/gallery", icon: Images, subtitle: "Events · Activities", priority: "student" },
 ];
 
 /** Add approved photos here: { src, alt, category } where category matches a gallery filter. */

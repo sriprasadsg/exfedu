@@ -11,9 +11,9 @@ describe("reviewed SVU folder records", () => {
     expect(svuPublications).toHaveLength(13);
     expect(new Set(svuPublications.map(p => p.href)).size).toBe(13);
   });
-  it("preserves twelve faculty and five programme support profiles", () => {
+  it("preserves twelve faculty and seven programme support profiles", () => {
     expect(svuFaculty).toHaveLength(12);
-    expect(svuSupport).toHaveLength(5);
+    expect(svuSupport).toHaveLength(7);
   });
   it("maps source curricula to the five SVU programmes only", () => {
     expect(Object.keys(svuReviewedCurricula)).toEqual(["masters-data-science", "pg-diploma-data-science", "python-ai-ml-genai", "data-visualization", "cloud-technologies"]);

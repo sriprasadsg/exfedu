@@ -57,9 +57,9 @@ describe("approved website structure", () => {
     expect(unverified.map(section => section.id)).toEqual(["projects-research"]);
   });
   it("moves achievements, events and gallery onto the SVU overview and academic resources onto programme pages", () => {
-    expect(svuOverviewBlocks.map(block => block.title)).toEqual(["Student Achievements", "Events", "Gallery"]);
+    expect(svuOverviewBlocks.map(block => block.title)).toEqual(["Student Achievements"]);
     expect(svuOverviewBlocks.every(block => block.pending.includes("await"))).toBe(true);
-    expect(svuOverviewBlocks.map(block => block.link.path)).toEqual(["/student-success", "/events-news", "/gallery"]);
+    expect(svuOverviewBlocks.map(block => block.link.path)).toEqual(["/student-success"]);
     expect(academicResources.link.path).toBe("/students-corner");
     expect(academicResources.items).toContain("Academic Resources");
     expect(pages.some(page => page.path === "/students-corner")).toBe(true);
@@ -79,8 +79,8 @@ describe("approved website structure", () => {
       if (programme.slug !== "ibm-semester-industry-learning") expect(programme.recognition).toBeUndefined();
     }
   });
-  it("connects all eleven ecosystem arms to existing pages", () => {
-    expect(arms).toHaveLength(11);
+  it("connects all ten ecosystem arms to existing pages", () => {
+    expect(arms).toHaveLength(10);
     for (const arm of arms) expect(pages.some((p) => p.path === arm.path)).toBe(true);
   });
   it("uses each uploaded partner illustration as the main banner artwork without a thumbnail", () => {

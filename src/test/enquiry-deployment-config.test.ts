@@ -15,6 +15,7 @@ describe("enquiry deployment configuration", () => {
       "https://exfedu.exafluence.workers.dev",
       "https://exfedu.lovable.app",
       "https://id-preview--6a6eef78-c02c-449d-a8d6-90f1dd4349d1.lovable.app",
+      "https://6a6eef78-c02c-449d-a8d6-90f1dd4349d1.lovableproject.com",
     ]);
   });
 
