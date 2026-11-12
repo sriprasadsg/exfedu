@@ -18,7 +18,7 @@ export const adminTeamGroups: StaffGroup[] = [
     { name: "V Pavan Kumar", role: "Admin & Finance Executive", photo: vPavanKumar },
     { name: "K Lavanya", role: "Student Desk", photo: kLavanya },
   ] },
-  { title: "Admissions & Student Support", people: [
+  { title: "Support Team", people: [
     { name: "P Parthibhan", role: "General Manager – EdTech", photo: pParthibhan },
     { name: "S Abdul Haque", role: "Senior Business Development Executive", photo: sAbdulHaque },
     { name: "C Venkata Suresh", role: "Business Development Executive", photo: cVenkataSuresh },
