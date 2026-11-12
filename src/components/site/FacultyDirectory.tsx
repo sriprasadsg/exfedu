@@ -1,8 +1,9 @@
 import { useId } from "react";
+import { svuFacultyPhotos } from "@/data/svuFacultyPhotos";
 
 export type FacultyPerson = { name: string; role?: string; expertise: string };
 
-/** Text-only profile cards; names lead directly without photos or initial tiles.
+/** Filename-matched portraits; missing photos remain explicit, never substituted.
  * `page` lifts the headings one level for the dedicated faculty page. */
 export const initialsOf = (name: string) => {
   const [first = "", second = ""] = name.split(" ");
@@ -19,9 +20,16 @@ export const FacultyDirectory = ({ title, people, intro, page = false }: { title
     {intro && <p className="fd-intro">{intro}</p>}
     <ul className="fd-grid">
       {people.map(p => <li key={p.name} className="fd-cell">
+        <div className="fd-portrait">
+          {svuFacultyPhotos[p.name]
+            ? <img src={svuFacultyPhotos[p.name]} alt={`Portrait of ${p.name}`} width={600} height={540} loading="lazy" />
+            : <span className="fd-photo-missing">Photo not supplied</span>}
+        </div>
+        <div className="fd-copy">
         <Name className="fd-name">{p.name}</Name>
         {p.role && <p className="fd-role">{p.role}</p>}
         <p className="fd-desc">{p.expertise}</p>
+        </div>
       </li>)}
     </ul>
   </section>;

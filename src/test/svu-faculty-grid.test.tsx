@@ -27,12 +27,12 @@ describe("SVU faculty profile grid (client brief, 3 November 2026)", () => {
     });
   });
 
-  it("carries no selection panel, pills, photos or placeholder artwork", () => {
+  it("carries no selection panel, pills or invented portrait artwork", () => {
     const { container } = renderBoth();
     expect(container.querySelector("button")).toBeNull();
     expect(container.querySelector('[role="tablist"]')).toBeNull();
     expect(container.querySelector(".fd-tags")).toBeNull();
-    expect(container.querySelector("img, svg")).toBeNull();
+    expect(container.querySelector("svg")).toBeNull();
     expect(container.textContent).not.toMatch(/view profile|show all/i);
   });
 });

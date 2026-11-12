@@ -27,7 +27,7 @@ describe("SVU faculty page on the Nexora model", () => {
       expertise: cell.querySelector(".fd-desc")?.textContent,
     }))).toEqual(svuFaculty.map(person => ({ ...person })));
     expect(container.querySelector(".fd-grid")?.hasAttribute("data-cols")).toBe(false);
-    expect(container.querySelector(".fd-cell img, .fd-cell svg")).toBeNull();
+    expect(container.querySelector(".fd-cell svg")).toBeNull();
     expect(cells[0].querySelector(".fd-name")?.textContent).toBe("Anjan Babu");
     expect(cells[0].querySelector(".fd-role")?.textContent).toBe("Professor & Coordinator");
   });
