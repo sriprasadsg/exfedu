@@ -16,12 +16,14 @@ import { useProgrammeSeo } from "./ProgrammeDirectory";
 import SvuCareerRecords from "./SvuCareerRecords";
 import svuProgramDiagram from "@/assets/svu-framework-royal-blue.png";
 
-const tabs: { id: SvuPageId; label: string }[] = [
-  { id: "overview", label: "Overview & Programmes" },
-  { id: "outcomes", label: "Projects & Research" },
-  { id: "innovations", label: "Student Innovations & Internships" },
-  { id: "placements", label: "Placements" },
-  { id: "faculty", label: "Faculty & Mentors" },
+const tabs: { id: string; label: string; href: string }[] = [
+  { id: "overview", label: "Overview & Programmes", href: svuPagePath("overview") },
+  { id: "outcomes", label: "Projects & Research", href: svuPagePath("outcomes") },
+  { id: "innovations", label: "Student Innovations & Internships", href: svuPagePath("innovations") },
+  { id: "placements", label: "Placements", href: svuPagePath("placements") },
+  { id: "faculty", label: "Faculty & Mentors", href: svuPagePath("faculty") },
+  // The Admin & Support Team page joins this bar at the client's request (12 Nov 2026).
+  { id: "admin-support", label: "Admin & Support Team", href: "/admin-support-team" },
 ];
 
 const seo: Record<SvuPageId, [string, string]> = {
@@ -297,7 +299,7 @@ const SvuFaculty = () => <div className="svu-flow">
 // `detail` places the bar inside a programme page's opening band (2 Nov 2026 brief):
 // it then shares the page's own content width so its left edge meets the programme title.
 export const SvuTabBar = ({ active, detail = false }: { active: SvuPageId; detail?: boolean }) => <nav aria-label="Sri Venkateswara University sections" className={`svu-tabbar${detail ? " svu-tabbar-detail" : ""}`}><div className={`svu-tabbar-inner ${detail ? "container" : "svu-container"}`}>
-  {tabs.map(t => <Link key={t.id} to={svuPagePath(t.id)} className={t.id === active ? "is-active" : undefined} aria-current={t.id === active ? "page" : undefined}>{t.label}</Link>)}
+  {tabs.map(t => <Link key={t.id} to={t.href} className={t.id === active ? "is-active" : undefined} aria-current={t.id === active ? "page" : undefined}>{t.label}</Link>)}
 </div></nav>;
 
 const SvuPages = ({ section }: { section: SvuPageId }) => {

@@ -122,7 +122,7 @@ const Header = () => {
                       </div>
                     )}
                   </li>
-                  {/* The Admin & Support Team page is reachable from the drawer (client, 12 Nov 2026). */}
+                  {/* The Admin & Support Team page stays reachable from the drawer (client, 12 Nov 2026). */}
                   <li className="border-t"><Link to="/admin-support-team" onClick={() => setOpen(false)} className="flex min-h-12 items-center gap-3 text-base font-medium text-primary"><Users className="h-4 w-4 shrink-0" aria-hidden="true" />Admin &amp; Support Team</Link></li>
                 </ul>
               )}
