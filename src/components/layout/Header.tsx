@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import logo from "@/assets/exfedu-logo-nibless.png";
 import logoNib from "@/assets/exfedu-logo-nib.png";
 
-import { Menu, X, Search, Plus, Minus, Network, ChevronDown } from "lucide-react";
+import { Menu, X, Search, Plus, Minus, Network, ChevronDown, Users } from "lucide-react";
 import { svuSectionPath, type SvuSectionId } from "@/lib/programmeNavigation";
 import { menuCategories, navPages, organisationSections, primaryNavigation, organisations, programmes, type Organisation } from "@/data/site";
 import { organisationPath, programmePath } from "@/lib/programmeNavigation";
@@ -122,6 +122,8 @@ const Header = () => {
                       </div>
                     )}
                   </li>
+                  {/* The Admin & Support Team page is reachable from the drawer (client, 12 Nov 2026). */}
+                  <li className="border-t"><Link to="/admin-support-team" onClick={() => setOpen(false)} className="flex min-h-12 items-center gap-3 text-base font-medium text-primary"><Users className="h-4 w-4 shrink-0" aria-hidden="true" />Admin &amp; Support Team</Link></li>
                 </ul>
               )}
               <div className="mt-6 flex flex-col gap-4 text-sm font-medium text-foreground">

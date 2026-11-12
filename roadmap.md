@@ -1,3 +1,6 @@
+## 12 November 2026 — Admin & Support Team menu link
+- [x] Added the missing "Admin & Support Team" link to the ☰ menu so the page is actually reachable from the menu bar; the new test passes, the live preview shows the link and opens the page with its introduction and both sections, and the preview build is OK.
+
 ## 12 November 2026 — K Mounika placement portrait
 - [x] Added K Mounika's supplied portrait to her regular Placements card and removed the separate additional-records holder. All eleven verified records render once in the same grid; nine related tests pass, all eleven images load at desktop and phone widths, 4/1 columns and no overflow or runtime errors were verified, and the preview build is OK. External Cloudflare deployment was not performed.
 
