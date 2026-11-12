@@ -886,6 +886,10 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 .fd-cell { display: flex; min-width: 0; flex-direction: column; background: hsl(var(--card)); border: 1px solid hsl(var(--academic-edge)); border-radius: 8px; padding: 0; overflow: hidden; box-shadow: none; }
 .fd-portrait { display: grid; place-items: center; width: 100%; aspect-ratio: 10 / 9; background: hsl(var(--card)); border-bottom: 1px solid hsl(var(--academic-edge)); }
 .fd-portrait img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.fd-faculty .fd-portrait { width: min(200px, calc(100% - 48px)); aspect-ratio: 1; margin: 24px auto 0; border: 1px solid hsl(var(--academic-edge)); border-radius: 50%; overflow: hidden; }
+.fd-faculty .fd-portrait img { object-fit: cover; }
+.fd-faculty .fd-copy { text-align: center; flex: 1; padding-top: 20px; }
+.fd-faculty .fd-grid { grid-auto-rows: 1fr; }
 .fd-photo-missing { color: hsl(var(--muted-foreground)); font-size: 13px; font-weight: 400; }
 .fd-copy { padding: 22px; }
 .fd .fd-cell:hover { transform: none; box-shadow: none; }

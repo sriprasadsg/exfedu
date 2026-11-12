@@ -15,7 +15,7 @@ export const FacultyDirectory = ({ title, people, intro, page = false, technical
   const Title = page ? "h2" : "h4";
   const Name = page ? "h3" : "h5";
 
-  return <section className={`fd${page ? " fd-page" : ""}${technical ? " fd-technical" : ""}`} aria-labelledby={`${uid}-h`}>
+  return <section className={`fd${page ? " fd-page" : ""}${technical ? " fd-technical" : " fd-faculty"}`} aria-labelledby={`${uid}-h`}>
     <Title id={`${uid}-h`} className="fd-title">{title}</Title>
     {intro && <p className="fd-intro">{intro}</p>}
     <ul className="fd-grid">
