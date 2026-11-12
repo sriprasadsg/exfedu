@@ -27,4 +27,4 @@
 - SVU faculty: photo-free cards in one responsive grid (FacultyDirectory), no selection state or pills.
 
 - Placements: filename-matched portraits, container-query columns; each verified record renders once, no invented photos.
-- Admin & Support staff: src/data/adminTeam.ts, apart from faculty so no profile repeats.
+- Admin & Support staff: src/data/adminTeam.ts, apart from faculty (no repeats).
