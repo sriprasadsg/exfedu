@@ -1,3 +1,6 @@
+## 12 November 2026 — K Mounika placement portrait
+- [x] Added K Mounika's supplied portrait to her regular Placements card and removed the separate additional-records holder. All eleven verified records render once in the same grid; nine related tests pass, all eleven images load at desktop and phone widths, 4/1 columns and no overflow or runtime errors were verified, and the preview build is OK. External Cloudflare deployment was not performed.
+
 ## 12 November 2026 — professional placement gallery refinement
 - [x] Refined the existing gallery with bundled original-pixel head-and-shoulders crops, a 1200px container, width-aware 4/3/2/1 columns, 24px gaps, equal row heights, navy names, subtle borders and bottom-anchored batches. All verified records and photo matches preserved; 14 regression checks pass, all ten images decode at 1280/1062/768/390/320px without text/page overflow, programme navigation works and preview build is OK. External Cloudflare deployment was not performed.
 

@@ -1532,7 +1532,7 @@ body:not(:has(.homepage-static)) main .svu-career-records--logistics .svu-career
   .svu-career-records--hof .svu-pl-card:hover { transform: none; }
 }
 
-/* Edited placement portraits: a single photo grid, with unpictured verified records kept separately. */
+/* Edited placement portraits: one regular photo grid for every verified record. */
 .svu-body:has(.svu-career-records--portraits) { max-width: 1200px; padding-inline: 24px; }
 .svu-career-records.svu-career-records--portraits { display: block; container: placement-gallery / inline-size; font-family: 'Google Sans Flex', 'Google Sans', system-ui, sans-serif; }
 .svu-placement-intro { padding: 8px 0 28px; border-bottom: 1px solid hsl(var(--academic-edge)); }
@@ -1554,12 +1554,6 @@ body:not(:has(.homepage-static)) main .svu-career-records--portraits h3 { backgr
 .svu-career-records--portraits .svu-outcome-role { margin: 10px 0 0; padding: 0; border: 0; font-size: 14px; line-height: 1.65; font-weight: 400; color: hsl(var(--muted-foreground)); }
 .svu-career-records--portraits .svu-outcome-batch { display: block; margin: auto 0 0; padding: 12px 0 0; border: 0; border-top: 1px solid hsl(var(--academic-edge)); border-radius: 0; background: none; font-size: 12px; font-weight: 400; letter-spacing: 0; text-transform: none; color: hsl(var(--muted-foreground)); }
 .svu-career-records--portraits .svu-outcome-batch::before { display: none; }
-.svu-placement-additional { margin-top: 36px; padding-top: 24px; border-top: 1px solid hsl(var(--academic-edge)); }
-.svu-placement-additional h2, .svu-placement-additional h3 { font-size: 20px; font-weight: 500; letter-spacing: 0; color: hsl(var(--navy-900)); }
-.svu-placement-additional ul { padding: 0; margin: 20px 0 0; list-style: none; }
-.svu-career-records--portraits .svu-placement-text-record { padding: 0; border: 0; border-radius: 0; background: none; }
-.svu-career-records--portraits .svu-placement-text-record:hover { transform: none; background: none; }
-.svu-placement-text-record .svu-outcome-batch { max-width: 240px; }
 @container placement-gallery (min-width: 540px) { .svu-placement-photo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @container placement-gallery (min-width: 840px) { .svu-placement-photo-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @container placement-gallery (min-width: 1100px) { .svu-placement-photo-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }

@@ -46,8 +46,6 @@ export default function SvuCareerRecords({ kind, embedded = false }: { kind: "pl
 
   if (placements) {
     const unique = shown.filter((record, index) => shown.findIndex(item => item.student === record.student) === index);
-    const photographed = unique.filter(record => svuPlacementPhotos[record.student]);
-    const additional = unique.filter(record => !svuPlacementPhotos[record.student]);
     return <div className="svu-career-records svu-career-records--portraits">
       <header className="svu-placement-intro">
         <Title>Placements</Title>
@@ -58,7 +56,7 @@ export default function SvuCareerRecords({ kind, embedded = false }: { kind: "pl
         </div>
       </header>
       <ul className="svu-placement-photo-grid" aria-label="Student Placements">
-        {photographed.map(record => <li key={record.student} className="svu-outcome svu-placement-photo-card">
+        {unique.map(record => <li key={record.student} className="svu-outcome svu-placement-photo-card">
           <div className="svu-placement-photo">
             <img src={svuPlacementPhotos[record.student]} alt={`Portrait of ${record.student}`} width={600} height={660} loading="lazy" decoding="async" />
           </div>
@@ -70,15 +68,6 @@ export default function SvuCareerRecords({ kind, embedded = false }: { kind: "pl
           </div>
         </li>)}
       </ul>
-      {additional.length > 0 && <section className="svu-placement-additional" aria-labelledby="svu-placement-additional-title">
-        <Sub id="svu-placement-additional-title">Additional placement records</Sub>
-        <ul>{additional.map(record => <li className="svu-outcome svu-placement-text-record" key={record.student}>
-          <h3>{record.student}</h3>
-          {record.designation && <p className="svu-outcome-role">{record.designation}</p>}
-          <p className="svu-outcome-org">{record.organisation}</p>
-          <p className="svu-outcome-batch"><span className="sr-only">Batch </span>{record.batch}</p>
-        </li>)}</ul>
-      </section>}
     </div>;
   }
 

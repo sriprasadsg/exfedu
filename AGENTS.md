@@ -26,4 +26,4 @@
 - The SVU technologies strip (SvuTechTicker) renders the list twice in a two-column grid and slides the track by exactly one copy, with the repeat aria-hidden and no index numbers or show-all control; reduced motion drops the copy for one static grid, so the loop stays seamless without announcing anything twice.
 - SVU faculty render as photo-free cards in one responsive grid (FacultyDirectory); no selection state, no expertise pills.
 
-- Placements use bundled filename-matched portrait crops and container-based columns; unpictured records stay text-only to avoid duplicates or invented photos.
+- Placements use filename-matched client portraits and container-based columns; every verified record renders once in the regular gallery without duplicates or invented photos.

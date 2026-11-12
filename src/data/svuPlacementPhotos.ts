@@ -8,10 +8,10 @@ import sriTulasiSatyaSakethRaprolu from "@/assets/placed-students/gallery/sri-tu
 import muvvalaRajeswari from "@/assets/placed-students/gallery/muvvala-rajeswari.jpg";
 import kamatamMeghana from "@/assets/placed-students/gallery/kamatam-meghana.jpg";
 import muthyalaBharadwaj from "@/assets/placed-students/gallery/muthyala-bharadwaj.jpg";
+import kMounika from "@/assets/placed-students/gallery/k-mounika.jpg";
 
 /** Client-supplied placed-student portraits with edited white backgrounds (12 November 2026),
- * keyed by the approved record name. K Mounika was not included in the supplied set and deliberately
- * has no invented image. */
+ * keyed by the approved record name. */
 // Original-pixel crops are bundled with the site, so external hosting needs no separate image host.
 
 export const svuPlacementPhotos: Record<string, string> = {
@@ -25,4 +25,5 @@ export const svuPlacementPhotos: Record<string, string> = {
   "Muvvala Rajeswari": muvvalaRajeswari,
   "Kamatam Meghana": kamatamMeghana,
   "Muthyala Bharadwaj": muthyalaBharadwaj,
+  "K Mounika": kMounika,
 };
