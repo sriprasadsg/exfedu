@@ -26,6 +26,6 @@
 - The SVU technologies strip (SvuTechTicker) renders the list twice in a two-column grid and slides the track by exactly one copy, with the repeat aria-hidden and no index numbers or show-all control; reduced motion drops the copy for one static grid, so the loop stays seamless without announcing anything twice.
 - Faculty portraits use explicit name-to-asset matches; missing photos are never substituted.
 
-- Placements: filename-matched portraits, container-query columns; each verified record renders once, no invented photos.
+- Placements: filename-matched portraits; each record once, no invented photos.
 - Admin staff: src/data/adminTeam.ts, never in faculty.
 - Gallery and Events & News removed; old URLs redirect home.
