@@ -67,12 +67,14 @@ export const svuFaculty = [
   { name: "Babu", role: "Faculty", expertise: "Agile, DevOps, DevSecOps, cloud, SRE and software quality." },
   { name: "Abhishek Kumar Ram", role: "Faculty", expertise: "DBMS, SQL, data processing and analytics." },
 ];
-export const svuSupport = [
+export const svuSupport: { name: string; role?: string; expertise: string }[] = [
   { name: "Neelakanteswara Pagadala", expertise: "AI/ML research, Industrial IoT and student project mentoring." },
   { name: "Saiteja Minchala", expertise: "Data Science, AI and software development." },
   { name: "Nynaru Teja", expertise: "Full-stack development, AI and MSDS academic assistance." },
   { name: "Sudeepthi Mahajanam", expertise: "Generative AI, NLP, cloud deployments and LLM evaluation." },
   { name: "Santharajupalli Umapathi", expertise: "Python, AI, Computer Vision and RAG applications." },
+  { name: "A Rohith Sai", role: "Technical Support", expertise: "" },
+  { name: "G Kiran Kumar", role: "Technical Support", expertise: "" },
 ];
 export const svuBrochureReview = "The supplied programme brochure is held for review: its ISO wording must identify Exafluence Global Analytics Private Limited and must not imply educational accreditation.";
 export const svuReviewedCurricula: Record<string, string[]> = {

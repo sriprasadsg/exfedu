@@ -1,7 +1,10 @@
+## 12 November 2026 — seven technical portraits
+- [x] Add A Rohith Sai and G Kiran Kumar using filename-provided Technical Support designations, preserving all five existing profiles and portraits; scope width-aware equal-height columns to the technical section.
+
 ## 12 November 2026 — Faculty & Mentors portraits
 - [x] Apply the portrait gallery to the existing page with unchanged profiles and a separate technical group; save the five filename-matched support portraits permanently.
 - [x] Seven profile/identity checks pass; all five hosted images decode in desktop/tablet/phone layouts with 3/2/1 columns and no overflow or runtime errors. Local browser checks proxy asset requests to their real hosted URLs because local Vite does not serve the CDN path; preview build is OK.
-- [ ] Faculty portraits await supply (all twelve); A Rohith Sai and G Kiran Kumar photographs have no existing verified profile and are not assigned.
+- [ ] Faculty portraits await supply (all twelve); all seven supplied technical portraits are now assigned to their own profiles.
 
 ## 12 November 2026 — Admin & Support Team menu link
 - [x] Added the missing "Admin & Support Team" link to the ☰ menu and, at the client's direction, as the last tab of the SVU section tab bar; the page stays out of the site's top menu bar, which keeps its four items. Three new checks pass, the live preview shows the new tab at desktop and phone widths, clicking it opens the page with its introduction and both sections, and the preview build is OK.

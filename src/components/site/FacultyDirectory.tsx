@@ -10,12 +10,12 @@ export const initialsOf = (name: string) => {
   return (first.slice(0, 1) + (second.slice(0, 1) || first.slice(1, 2))).toUpperCase();
 };
 
-export const FacultyDirectory = ({ title, people, intro, page = false }: { title: string; people: FacultyPerson[]; intro?: string; page?: boolean }) => {
+export const FacultyDirectory = ({ title, people, intro, page = false, technical = false }: { title: string; people: FacultyPerson[]; intro?: string; page?: boolean; technical?: boolean }) => {
   const uid = useId();
   const Title = page ? "h2" : "h4";
   const Name = page ? "h3" : "h5";
 
-  return <section className={`fd${page ? " fd-page" : ""}`} aria-labelledby={`${uid}-h`}>
+  return <section className={`fd${page ? " fd-page" : ""}${technical ? " fd-technical" : ""}`} aria-labelledby={`${uid}-h`}>
     <Title id={`${uid}-h`} className="fd-title">{title}</Title>
     {intro && <p className="fd-intro">{intro}</p>}
     <ul className="fd-grid">
@@ -28,7 +28,7 @@ export const FacultyDirectory = ({ title, people, intro, page = false }: { title
         <div className="fd-copy">
         <Name className="fd-name">{p.name}</Name>
         {p.role && <p className="fd-role">{p.role}</p>}
-        <p className="fd-desc">{p.expertise}</p>
+        {p.expertise && <p className="fd-desc">{p.expertise}</p>}
         </div>
       </li>)}
     </ul>

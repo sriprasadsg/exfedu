@@ -53,5 +53,5 @@ export const SvuResearchContent = () => {
 
 export const SvuFacultyPage = () => <>
   <FacultyDirectory page title="Faculty & Industry Mentors" intro="Faculty and Exafluence industry professionals who teach and mentor across AI, machine learning, data engineering and cloud." people={svuFaculty} />
-  <FacultyDirectory page title="Technical Mentors & Lab Faculty" intro="Mentors who guide lab exercises, student projects and hands-on implementation." people={svuSupport} />
+  <FacultyDirectory page technical title="Technical Mentors & Lab Faculty" intro="Mentors who guide lab exercises, student projects and hands-on implementation." people={svuSupport} />
 </>;

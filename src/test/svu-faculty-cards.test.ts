@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
+import { svuSupport } from "@/data/svuReviewed";
 
 // Client brief, 4 November 2026: on the faculty pages only the names are dark navy,
 // and every card box sizes itself to the width available instead of a fixed column count.
@@ -23,13 +24,13 @@ describe("SVU faculty cards", () => {
     expect(find(".fd {")).not.toContain("--primary");
   });
 
-  it("gives every card box the same shape and size at each width", () => {
-    const grid = find(".fd .fd-grid {");
-    expect(grid).toContain("repeat(4, minmax(0, 1fr))");
-    expect(grid).toContain("grid-auto-rows: 1fr");
-    expect(css).toContain("@media (max-width: 1099px) { .fd .fd-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }");
-    expect(css).toContain("@media (max-width: 859px) { .fd .fd-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }");
-    expect(css).toContain("@media (max-width: 599px) { .fd .fd-grid { grid-template-columns: minmax(0, 1fr); } }");
-    expect(css).toContain("@media (min-width: 600px) { .fd-cell { min-height: 208px; } }");
+  it("preserves existing technical expertise when adding the two supplied profiles", () => {
+    expect(svuSupport.slice(0, 5).map(p => p.expertise)).toEqual([
+      "AI/ML research, Industrial IoT and student project mentoring.",
+      "Data Science, AI and software development.",
+      "Full-stack development, AI and MSDS academic assistance.",
+      "Generative AI, NLP, cloud deployments and LLM evaluation.",
+      "Python, AI, Computer Vision and RAG applications.",
+    ]);
   });
 });

@@ -901,6 +901,10 @@ body:not(:has(.homepage-static)) main:is(.collaboration-network-page, .programme
 .fd.fd-page { margin-top: 48px; }
 .fd.fd-page .fd-title { font-size: clamp(24px, 2.6vw, 32px); margin-bottom: 6px; }
 .fd .fd-intro { font-size: 15px; line-height: 1.7; color: hsl(var(--muted-foreground)); margin: 0 0 20px; max-width: 70ch; }
+.fd.fd-technical { container-type: inline-size; border-top: 1px solid hsl(var(--academic-edge)); padding-top: 32px; }
+.fd-technical .fd-grid { grid-template-columns: minmax(0, 1fr); grid-auto-rows: 1fr; }
+@container (min-width: 540px) { .fd-technical .fd-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@container (min-width: 900px) { .fd-technical .fd-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 
 
 .svu-outcome-part { margin-top: 0; scroll-margin-top: 96px; }

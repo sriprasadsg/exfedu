@@ -3,17 +3,20 @@ import { svuFacultyPhotos } from "@/data/svuFacultyPhotos";
 import { svuFaculty, svuSupport } from "@/data/svuReviewed";
 
 describe("faculty portrait identity matches", () => {
-  it("matches only the five supplied technical profiles, preserving full names", () => {
+  it("matches all seven supplied technical profiles, preserving existing full names", () => {
     expect(Object.keys(svuFacultyPhotos)).toEqual([
       "Neelakanteswara Pagadala", "Saiteja Minchala", "Nynaru Teja",
       "Sudeepthi Mahajanam", "Santharajupalli Umapathi",
+      "A Rohith Sai", "G Kiran Kumar",
     ]);
     expect(svuSupport.every(p => Boolean(svuFacultyPhotos[p.name]))).toBe(true);
-    expect(new Set(Object.values(svuFacultyPhotos)).size).toBe(5);
+    expect(new Set(Object.values(svuFacultyPhotos)).size).toBe(7);
   });
-  it("does not borrow support photos for missing faculty or unmatched people", () => {
+  it("does not borrow support photos for missing faculty", () => {
     expect(svuFaculty.filter(p => svuFacultyPhotos[p.name])).toEqual([]);
-    expect(svuFacultyPhotos["A Rohith Sai"]).toBeUndefined();
-    expect(svuFacultyPhotos["G Kiran Kumar"]).toBeUndefined();
+    expect(svuSupport.slice(-2)).toEqual([
+      { name: "A Rohith Sai", role: "Technical Support", expertise: "" },
+      { name: "G Kiran Kumar", role: "Technical Support", expertise: "" },
+    ]);
   });
 });

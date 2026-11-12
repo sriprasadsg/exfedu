@@ -34,7 +34,7 @@ describe("SVU faculty page on the Nexora model", () => {
 
   it("gives the smaller technical group its own responsive row", () => {
     const { container } = render(<FacultyDirectory page title="Technical Mentors & Lab Faculty" people={svuSupport} />);
-    expect(container.querySelectorAll(".fd-cell")).toHaveLength(5);
+    expect(container.querySelectorAll(".fd-cell")).toHaveLength(7);
     expect(container.querySelector(".fd-grid")?.hasAttribute("data-cols")).toBe(false);
   });
 });

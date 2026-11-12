@@ -22,8 +22,8 @@ describe("SVU faculty profile grid (client brief, 3 November 2026)", () => {
     });
     svuSupport.forEach((person, i) => {
       const cell = cells[svuFaculty.length + i];
-      expect(cell.querySelector(".fd-role")).toBeNull();
-      expect(cell.querySelector(".fd-desc")?.textContent?.trim()).toBe(person.expertise);
+      expect(cell.querySelector(".fd-role")?.textContent?.trim()).toBe(person.role);
+      expect(cell.querySelector(".fd-desc")?.textContent?.trim() ?? "").toBe(person.expertise);
     });
   });
 
