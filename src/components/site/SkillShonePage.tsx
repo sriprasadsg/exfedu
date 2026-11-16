@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowUpRight, ArrowRight, GraduationCap, Landmark, Search, Database, Code2, GitPullRequest, FileText, MessageSquareText, Sparkles, BrainCircuit, MessageSquare, Terminal, FlaskConical, type LucideIcon } from "lucide-react";
+import { ArrowUpRight, ArrowRight, GraduationCap, Landmark, Search, Database, Code2, GitPullRequest, FileText, MessageSquareText, Sparkles, BrainCircuit, MessageSquare, Terminal, FlaskConical, Play, type LucideIcon } from "lucide-react";
 import type { Page, Tone } from "@/data/site";
 import { BlockView } from "@/components/site/Blocks";
 import { usePageTitle } from "@/hooks/usePageTitle";
-import skillshoneLogo from "@/assets/skillshone-original.png";
+import skillshoneVideo from "@/assets/skillshone-website-video.mp4.asset.json";
+import skillshoneVideoCover from "@/assets/skillshone-video-cover.jpg.asset.json";
 import featProblems from "@/assets/ss-feat-problems.png";
 import featDatasets from "@/assets/ss-feat-datasets.png";
 import featLlm from "@/assets/ss-feat-llm.png";
@@ -112,6 +113,7 @@ export default function SkillShonePage({ page }: { page: Page }) {
   const cta = page.blocks.find((b) => b.type === "cta");
   const faqItems = faq?.items ?? [];
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [videoPlaying, setVideoPlaying] = useState(false);
 
   return (
     <main className="ss-page">
@@ -131,7 +133,28 @@ export default function SkillShonePage({ page }: { page: Page }) {
             </div>
           </div>
           <div className="ss-hero-art">
-            <div className="ss-hero-card"><img src={skillshoneLogo} alt="SkillShone" width={392} height={48} /></div>
+            <div className="ss-hero-card ss-hero-video">
+              {videoPlaying ? (
+                <video
+                  className="ss-hero-video-el"
+                  src={skillshoneVideo.url}
+                  controls
+                  autoPlay
+                  playsInline
+                  aria-label="SkillShone overview video"
+                />
+              ) : (
+                <button
+                  type="button"
+                  className="ss-hero-video-btn"
+                  onClick={() => setVideoPlaying(true)}
+                  aria-label="Play the SkillShone overview video"
+                >
+                  <img src={skillshoneVideoCover.url} alt="" width={1920} height={1080} loading="lazy" />
+                  <span className="ss-hero-play" aria-hidden="true"><Play className="h-7 w-7" fill="currentColor" strokeWidth={0} /></span>
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </section>
