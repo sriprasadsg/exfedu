@@ -73,8 +73,9 @@ describe("approved website structure", () => {
   });
   it("keeps unspecified certification and brochure claims pending", () => {
     for (const programme of programmes) {
-      // Only IBM has approved brochures (client-supplied leaflets, 2 November 2026).
+      // Quantum has no supplied brochure; preserve the previously approved files.
       if (programme.organisation === "IBM") expect(programme.brochure).toMatch(/brochures\/ibm-.+\.pdf$/);
+      else if (programme.slug === "ms-quantum-computing") expect(programme.brochure).toBeUndefined();
       else expect(programme.brochure).toMatch(/svu-.+\.pdf$/);
       if (programme.slug !== "ibm-semester-industry-learning") expect(programme.recognition).toBeUndefined();
     }

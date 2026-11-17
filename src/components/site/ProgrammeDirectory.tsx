@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { programmes, organisations, filterProgrammes } from "@/data/site";
 import { programmePath } from "@/lib/programmeNavigation";
+import QuantumProgrammeFeature from "./QuantumProgrammeFeature";
 
 export const useProgrammeSeo = (title: string, description: string) => {
   useEffect(() => {
@@ -33,6 +34,7 @@ const ProgrammeDirectory = () => {
       <span className="programme-eyebrow"><BookOpen size={18} /> Programmes</span><h1>Industry-Integrated Programmes</h1><p className="programme-subtitle">Academic Learning Connected with Industry Practice</p>
       <p>Explore learning pathways in AI, Gen AI, Data Science, Cloud Technologies and Quantum Computing. Compare programmes by organisation, duration and delivery mode, then review the features, technologies and certification for your chosen course.</p></div></header>
     <section className="container programme-list" aria-label="Programme directory">
+      <QuantumProgrammeFeature />
       <div className="programme-filters"><label className="programme-search"><span>Search programmes</span><div><Search size={18} aria-hidden="true" /><Input aria-label="Search programmes" value={params.get("q") ?? ""} onChange={e => update("q", e.target.value)} placeholder="Programme or subject" /></div></label>
         {choices.map(choice => <label key={choice.key}><span>{choice.label}</span><Select value={params.get(choice.key) || "all"} onValueChange={value => update(choice.key, value)}><SelectTrigger aria-label={choice.label}><SelectValue /></SelectTrigger><SelectContent><SelectItem value="all">All {choice.label === "Programme Type" ? "types" : choice.label.toLowerCase() + "s"}</SelectItem>{choice.values.map(item => <SelectItem key={item.value} value={item.value}>{item.label}</SelectItem>)}</SelectContent></Select></label>)}
         <Button variant="ghost" onClick={() => setParams({})}><RotateCcw size={16} />Reset filters</Button></div>

@@ -15,6 +15,7 @@ import { SvuConferenceProceedings } from "./SvuConferenceProceedings";
 import { useProgrammeSeo } from "./ProgrammeDirectory";
 import SvuCareerRecords from "./SvuCareerRecords";
 import svuProgramDiagram from "@/assets/svu-framework-royal-blue.png";
+import QuantumProgrammeFeature from "./QuantumProgrammeFeature";
 
 const tabs: { id: string; label: string; href: string }[] = [
   { id: "overview", label: "Overview & Programmes", href: svuPagePath("overview") },
@@ -145,6 +146,7 @@ const SvuProgrammes = ({ embedded = false }: { embedded?: boolean }) => {
       <Title>Explore Programmes</Title>
       <p className="svu-lead">Explore programmes offered through the collaboration between Exafluence Inc., USA, and <span className="svu-nowrap">Sri Venkateswara University.</span> Compare study duration and delivery options, then view each programme’s eligibility and admission process.</p>
     </section>
+    <QuantumProgrammeFeature />
     <div className="svu-directory-groups">{svuCategories.map((cat) => {
       const rows = shown.filter(p => cat.levels.includes(p.level));
       if (!rows.length) return null;

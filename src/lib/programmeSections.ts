@@ -17,7 +17,8 @@ export const programmeDetailSections = (p: Programme): DetailSection[] => ([
   // The overview already opens the page header, so it is not repeated here.
   // The practical-learning wording is carried by the USP block above (client, 4 Nov 2026).
   { title: "Eligibility", icon: GraduationCap, tone: "teal", content: p.eligibility },
-  { title: "Admission Process", icon: CalendarDays, tone: "teal", content: p.admissions },
+  p.entrance ? { title: "Entrance Examination", icon: Target, tone: "blue", content: p.entrance } : false,
+  { title: "Admission Process", icon: CalendarDays, tone: p.admissionRows ? "blue" : "teal", content: p.admissions, items: p.admissionRows?.map(([label, value]) => `${label}: ${value}`), note: p.admissionNote },
   // Shown only with approved wording; never a placeholder or invented certificate.
   p.recognition ? { title: "Joint Certification on Completion", icon: Award, tone: "amber", content: p.recognition } : false,
 ] as (DetailSection | false)[]).filter((section): section is DetailSection => !!section);

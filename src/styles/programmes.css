@@ -1,4 +1,25 @@
 .network-section, .programme-experience { --programme-blue: var(--connection-blue); --programme-text: var(--navy-700); color: hsl(var(--programme-text)); }
+/* Compact, image-free Quantum corner; shared across the two programme listings. */
+.quantum-feature { padding-block: 28px; margin-bottom: 30px; border-block: 1px solid hsl(var(--academic-edge)); background: hsl(var(--background)); letter-spacing: 0; }
+.quantum-feature-heading { display: flex; align-items: center; gap: 16px; }
+.quantum-feature-heading > svg { flex-shrink: 0; color: hsl(var(--connection-blue)); }
+.quantum-feature-label { font-size: 13px; font-weight: 400; color: hsl(var(--connection-blue)); }
+.quantum-feature h2 { font-size: 28px; font-weight: 500; line-height: 1.3; margin-top: 5px; }
+.quantum-feature > p { font-size: 15px; line-height: 1.7; max-width: 780px; margin-top: 16px; }
+.quantum-feature .quantum-feature-attribution { font-size: 13px; color: hsl(var(--muted-foreground)); margin-top: 8px; }
+.quantum-feature-facts { display: flex; flex-wrap: wrap; gap: 20px 40px; margin-block: 22px; }
+.quantum-feature-facts dt { display: flex; align-items: center; gap: 8px; font-size: 13px; color: hsl(var(--connection-blue)); }
+.quantum-feature-facts dd { font-size: 15px; font-weight: 500; margin-top: 7px; }
+.quantum-feature-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; }
+.quantum-feature-actions > span { font-size: 13px; color: hsl(var(--muted-foreground)); }
+.programme-enfold.quantum-programme .programme-intro { background: hsl(var(--background)); }
+.programme-enfold.quantum-programme .programme-intro h1 { display: flex; align-items: center; gap: 16px; font-size: 38px; font-weight: 500; letter-spacing: 0; }
+.quantum-programme .programme-intro h1 > svg { flex-shrink: 0; color: hsl(var(--connection-blue)); }
+.quantum-programme .programme-intro .quantum-attribution { font-size: 14px; color: hsl(var(--muted-foreground)); }
+.quantum-programme .programme-facts dt, .quantum-programme .programme-facts dd { font-weight: 500; }
+.quantum-programme .programme-usp .programme-usp-list { grid-template-columns: minmax(0, 1fr); }
+.quantum-programme .programme-usp .programme-usp-list li { font-weight: 400; }
+@media (max-width: 767px) { .quantum-feature h2 { font-size: 24px; } .quantum-feature-heading { gap: 12px; } .programme-enfold.quantum-programme .programme-intro h1 { align-items: flex-start; font-size: 28px; } }
 .network-section { padding-block: 48px 28px; background: hsl(var(--background)); }
 .network-heading { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; gap: 20px; }
 .network-heading h1 { font-size: 30px; font-weight: 500; line-height: 1.3; }

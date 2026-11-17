@@ -133,8 +133,9 @@ describe("IBM programme page sections", () => {
     const headings = [...container.querySelectorAll(".programme-detail-section h2")].map(h => h.textContent?.trim());
     expect(headings[headings.length - 1]).toBe("Enquiry");
 
-    // SVU offers no brochure, so its closing section is simply "Enquiry".
-    const svu = programmes.find(p => p.organisation === "SVU")!;
+    // Keep testing the existing approved Data Science brochure separately from Quantum.
+    const svu = programmes.find(p => p.slug === "masters-data-science");
+    if (!svu) throw new Error("Existing Data Science programme missing");
     const other = render(<MemoryRouter><ProgrammeDetail programme={svu} /></MemoryRouter>);
     const otherHeadings = [...other.container.querySelectorAll(".programme-detail-section h2")].map(h => h.textContent?.trim());
     expect(otherHeadings[otherHeadings.length - 1]).toBe("Brochure & Enquiry");

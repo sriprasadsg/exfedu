@@ -1,3 +1,7 @@
+## 17 November 2026 — Quantum programme corner
+- [x] Verified original SVU snapshot acbde4b7; Quantum is first in /programmes and SVU #programmes with canonical /collaboration-network/svu/ms-quantum-computing details and an SVU email enquiry.
+- [x] All 357 regression tests pass; programme links, alias redirect and email subject checked at 1280/768/390/320px with loaded logos and no runtime errors or overflow. Preview build OK; unpublished, no service or domain changes.
+
 ## 12 November 2026 — consistent page titles
 - [x] Apply the supplied navy-to-blue medium-weight title treatment across pages, retaining profile names, original wordmarks and reversed dark-panel headings.
 - [x] Checked twelve destinations at desktop and phone widths: titles share the navy-to-blue token and medium weight, original logos/profile names remain intact, no horizontal overflow and preview build OK.

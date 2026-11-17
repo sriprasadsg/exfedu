@@ -3,8 +3,8 @@ import { collaborationSlides, filterProgrammes, programmes } from "@/data/site";
 
 describe("approved collaboration programme rules", () => {
   it("orders collaborations SVU, IBM", () => { expect(collaborationSlides.map(s => s.organisation)).toEqual(["SVU", "IBM"]); });
-  it("uses the four approved SVU durations and modes", () => {
-    expect(programmes.filter(p => p.organisation === "SVU").map(p => [p.duration, p.delivery])).toEqual([["2 years", "Regular, full-time hybrid"], ["1 year", "Part-time hybrid"], ["6 months", "Part-time hybrid"], ["6 months", "Part-time hybrid"]]);
+  it("uses the approved SVU durations and modes with Quantum first", () => {
+    expect(programmes.filter(p => p.organisation === "SVU").map(p => [p.duration, p.delivery])).toEqual([["2 years / 4 semesters", "Hybrid (Offline / Online)"], ["2 years", "Regular, full-time hybrid"], ["1 year", "Part-time hybrid"], ["6 months", "Part-time hybrid"], ["6 months", "Part-time hybrid"]]);
   });
   it("gives January and July intakes only to SVU diplomas", () => {
     expect(programmes.filter(p => p.organisation === "SVU" && p.level !== "Master's").map(p => p.intake)).toEqual(Array(3).fill("January and July"));
@@ -34,7 +34,7 @@ describe("approved collaboration programme rules", () => {
     expect(programmes.find(p => p.slug === "data-visualization")?.title).toBe("Diploma in Data Visualisation");
     expect(programmes.some(p => p.slug === "cloud-technologies")).toBe(false);
     expect(programmes.filter(p => p.organisation === "SVU").map(p => p.title)).toEqual([
-      "M.S. Data Science", "PG Diploma in Data Science", "Diploma in AI, ML & Generative AI", "Diploma in Data Visualisation",
+      "M.S. Quantum Computing", "M.S. Data Science", "PG Diploma in Data Science", "Diploma in AI, ML & Generative AI", "Diploma in Data Visualisation",
     ]);
     expect(programmes.filter(p => p.organisation === "SVU").flatMap(p => p.tools ?? [])).toEqual([]);
   });

@@ -36,7 +36,8 @@ const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { progr
   useProgrammeSeo(`${p.title} | ${org.name} | Exafluence Education`, `${p.overview} Duration: ${p.duration}. Review features, technologies and certification.`);
 
   // IBM offerings are institutional; every other programme takes a student enquiry.
-  const enquiryUrl = `/contact?${p.organisation === "IBM" ? "type=institution&" : ""}programme=${encodeURIComponent(p.slug)}`;
+  const enquiryUrl = p.enquiryHref ?? `/contact?${p.organisation === "IBM" ? "type=institution&" : ""}programme=${encodeURIComponent(p.slug)}`;
+  const enquiryLink = <>Enquire Now<ArrowRight /></>;
   const sections = p.organisation === "IBM" ? ibmProgrammeSections(p) : programmeDetailSections(p);
   // SVU programme pages carry no brochure at all (client brief, 2 November 2026);
   // the programme enquiry stays available on its own.
@@ -64,7 +65,7 @@ const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { progr
   );
 
   return (
-    <main className="programme-experience programme-enfold">
+    <main className={`programme-experience programme-enfold${p.admissionRows ? " quantum-programme" : ""}`}>
       {/* SVU programme pages (2 Nov 2026 brief): breadcrumb, then the section tabs,
           then the programme title and introduction. */}
       {isSvu && <div className="programme-crumb-band"><div className="container">{breadcrumb}</div></div>}
@@ -73,8 +74,9 @@ const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { progr
         <div className="container">
           {!isSvu && breadcrumb}
           <img className={`programme-detail-logo ${org.logoClass}`} src={org.logo} alt={`${org.name} logo`} />
-          <h1>{(() => { const w = p.title.split(" "); const last = w.pop(); return <>{w.join(" ")}{w.length ? " " : ""}<em>{last}</em></>; })()}</h1>
+          <h1>{p.admissionRows ? <><p.icon size={36} strokeWidth={1.25} aria-hidden="true" />{p.title}</> : (() => { const w = p.title.split(" "); const last = w.pop(); return <>{w.join(" ")}{w.length ? " " : ""}<em>{last}</em></>; })()}</h1>
           <p>{p.overview}</p>
+          {p.attribution && <p className="quantum-attribution">{p.attribution}</p>}
           <dl className={`programme-facts${isSvu ? " programme-facts--centred" : ""}`}>
             <div>
               <Clock3 aria-hidden="true" size={22} />
@@ -98,22 +100,22 @@ const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { progr
               <span className="programme-section-icon tone-blue">
                 <Sparkles size={22} aria-hidden="true" />
               </span>
-              Built Around Practical Learning
+              {p.admissionRows ? "Programme Highlights" : "Built Around Practical Learning"}
             </h2>
             <ul className="programme-usp-list">
-              {svuProgrammeUsp(p).map(point => <li key={point.label} className={point.wide ? "is-wide" : undefined}>
+              {(p.admissionRows ? p.features.map(label => ({ label, icon: p.icon, tone: p.tone, wide: true })) : svuProgrammeUsp(p)).map(point => <li key={point.label} className={point.wide ? "is-wide" : undefined}>
                 <span className={`programme-section-icon tone-${point.tone}`}>
                   <point.icon size={20} aria-hidden="true" />
                 </span>
                 <span>{point.label}</span>
               </li>)}
             </ul>
-            <Button variant="link" className="programme-usp-link" asChild>
+            {!p.admissionRows && <Button variant="link" className="programme-usp-link" asChild>
               <Link to={svuSectionPath("projects-research")}>
                 Explore Student Projects
                 <ArrowRight size={16} aria-hidden="true" />
               </Link>
-            </Button>
+            </Button>}
           </section>}
           {sections.map(({ title, icon: Icon, tone, content, items, sub, note }) => (
             <section className="programme-detail-section programme-reveal" key={title}>
@@ -160,10 +162,7 @@ const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { progr
                 </Button>
               )}
               <Button asChild className="cta-enquire">
-                <Link to={enquiryUrl}>
-                  Enquire Now
-                  <ArrowRight />
-                </Link>
+                {p.enquiryHref ? <a href={enquiryUrl}>{enquiryLink}</a> : <Link to={enquiryUrl}>{enquiryLink}</Link>}
               </Button>
             </div>
           </section>
@@ -173,10 +172,7 @@ const ProgrammeDetail = ({ programme: p, organisationOverview = false }: { progr
           <span className="programme-org">{org.name}</span>
           <h2>Programme Enquiry</h2>
           <Button asChild className="cta-enquire">
-            <Link to={enquiryUrl}>
-              Enquire Now
-              <ArrowRight />
-            </Link>
+            {p.enquiryHref ? <a href={enquiryUrl}>{enquiryLink}</a> : <Link to={enquiryUrl}>{enquiryLink}</Link>}
           </Button>
           {offersBrochure && (
             <>
